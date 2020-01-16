@@ -1,0 +1,38 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "dynamodb:DescribeStream",
+                "dynamodb:GetRecords",
+                "dynamodb:GetShardIterator",
+                "dynamodb:ListStreams"
+            ],
+            "Resource": [
+                "*"
+            ],
+            "Effect": "Allow"
+        },
+        {
+            "Action": [
+                "dynamodb:DeleteItem",
+                "dynamodb:PutItem"
+            ],
+            "Resource": [
+                "*"
+            ],
+            "Effect": "Allow"
+        },
+        {
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": [
+                "*"
+            ],
+            "Effect": "Allow"
+        }
+    ]
+}

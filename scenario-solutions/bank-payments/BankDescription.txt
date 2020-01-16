@@ -1,0 +1,42 @@
+Bank Payments Scenario: Solution Description
+(See BankModel.json for NoSQL Workbench Data Model)
+
+Understanding the OLTP component of this workload starts by evaluating the access patterns and related throughput requirements. This workload is driven by writes.
+
+It is primarily accessed by AccountID (insert payments by account and return payments by account). The secondary access is by date and status. Given that the primary access is by account, and the number of accounts represents a high cardinality key space that will grow as the workload throughput grows (as more accounts are added there will be more throughput), it makes sense to select AccountID as the base table partition key.
+
+We can fulfill the two associated access patterns by using a simple timestamp as a sort key. Alternatively, this could be a date with a unique GUID concatenated to the date. Either of these would need to use a conditional insert, such that payment items are only inserted 'if item does not exist.' By using a timestamp with per second granularity or using a concatenated GUID allows for any number of payments to be scheduled for a single date (if just a date were used, then only 1 payment per day could be scheduled as uniqueness is determined by the combination of the partition and sort key).
+
+- Access pattern one: Put Item:{PK:<AccountID>, SK:<Timestamp>, DataBlob}
+- Access pattern two: Query TABLE Where PK = <AccountID> and SK BETWEEN = <Timestamp_Now> AND <Timestamp+90days>
+
+The secondary access pattern (return payments across users for a specific date by status) can be achieved using a GSI. There are two basic ways to achieve this, but both require understanding throughput constraints on a single partition key (on the GSI). Throughput constraints are roughly 1,000 WCUs per partition key. When you calculate the 1 million inserts in 30 minutes, you discover that this will exceed the throughput constraints.
+- 1M 8KB writes in 30 minutes = 555 inserts/second
+- Each write will consume 8 WCU so we need to be able to drive 8*555 = 4445 WCU in the GSI partition key.
+
+A common approach is to artificially increase throughput to a single partition key by 'Write Sharding' the GSI partition key. Essentially, use a random value either as the partition key or concatenated to a date value on the partition key.
+If there is a minimum requirement for 4,445 WCUs - then there needs to be a minimum of 5 artificial shards on the GSI partition key.
+
+The secondary access pattern also requires querying by Status, so we will need a new sort key for the GSI that includes status - but also carries the timestamp so that both status and timestamp can be queried against as range queries. Let's see what this will look like.
+
+These new items will require us to modify access pattern one and then access pattern three is as follows:
+- Access pattern one: Put Item:{PK:<AccountID>, SK:<Timestamp>, GSI-PK:<RAND(0,4)>, GSI-SK:<Status#Timestamp>, DataBlob}
+- Access pattern three will require Queries against each shard: 
+  - Query GSI Where PK = 0 and SK BETWEEN = <Status#DateT00:00:00> AND <Status#DateT23:59:59>
+  - Query GSI Where PK = 1 and SK BETWEEN = <Status#DateT00:00:00> AND <Status#DateT23:59:59>
+  - Query GSI Where PK = 2 and SK BETWEEN = <Status#DateT00:00:00> AND <Status#DateT23:59:59>
+  - Query GSI Where PK = 3 and SK BETWEEN = <Status#DateT00:00:00> AND <Status#DateT23:59:59>
+  - Query GSI Where PK = 4 and SK BETWEEN = <Status#DateT00:00:00> AND <Status#DateT23:59:59>
+
+Another solution, would be to use a limited projection GSI. When the GSI is created - it could project only the base table keys, and omit the data blob (which comprises the the 8KB). This would require a subsequent round trips to retrieve the full items to perform the operations on them - which is a trade-off that would need to be discussed with the customer: it could lower cost (as it would reduce the WCUs consumed by the GSI), but it would potentially increase the latency on the processing side when querying for payments scheduled for a specific date.
+
+Design considerations & common mis-steps:
+- By not concatenating the Status with the Date in the sort key, we are optimizing writes. If the status were to be in the sort key, that it would ultimately require an additional write to change the status of an item. This is because sort keys cannot be updated, but rather need to be deleted and inserted. It is both simpler and more efficient to keep the status only on the GSI sort key.
+- It is a frequent mis-step to use a date for either the partition key on the base table or GSI. By using a date - it means that all of the writes will land on the same partition key (effectively limiting throughput to 1,000 WCUs).
+
+Additional References: 
+- GSI Write Sharding: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-indexes-gsi-sharding.html
+- GSI Projectsion: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.html#GSI.Projections
+
+The bonus challenge can simply be achieved by creating a second second table with the same base table schema and GSI, but add a second GSI to query for specific TransactionIds.
+

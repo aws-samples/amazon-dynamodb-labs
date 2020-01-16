@@ -1,0 +1,24 @@
+[
+  {
+    "Create": {
+      "IndexName": "GSI_2",
+      "KeySchema": [
+        {
+          "AttributeName": "GSI_2_PK",
+          "KeyType": "HASH"
+        },
+        {
+          "AttributeName": "GSI_2_SK",
+          "KeyType": "RANGE"
+        }
+      ],
+      "Projection": {
+        "ProjectionType": "ALL"
+      },
+      "ProvisionedThroughput": {
+        "ReadCapacityUnits": 10,
+        "WriteCapacityUnits": 10
+      }
+    }
+  }
+]

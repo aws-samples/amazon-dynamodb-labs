@@ -1,0 +1,225 @@
+{
+  "ModelName": "Bank",
+  "ModelMetadata": {
+    "Author": "yoderd",
+    "DateCreated": "Sep 23, 2019, 8:57 AM",
+    "DateLastModified": "Sep 23, 2019, 1:49 PM",
+    "Description": "Model for Lab: Account that schedules payments - status: pending/processed\n1M new payments per day (pending - 6am-6pm)\n2min batch job to pull all pending payments\n-EOD process switches status to processed\nQuery by account\nQuery by scheduled date\n"
+  },
+  "DataModel": [
+    {
+      "TableName": "PaymentScheduler",
+      "KeyAttributes": {
+        "PartitionKey": {
+          "AttributeName": "AccountID",
+          "AttributeType": "S"
+        },
+        "SortKey": {
+          "AttributeName": "ScheduledTime",
+          "AttributeType": "S"
+        }
+      },
+      "NonKeyAttributes": [
+        {
+          "AttributeName": "DataBlob",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "Sharded-GSI-PK",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "Status#Time",
+          "AttributeType": "S"
+        }
+      ],
+      "GlobalSecondaryIndexes": [
+        {
+          "IndexName": "Query_All_Scheduled_Payments",
+          "KeyAttributes": {
+            "PartitionKey": {
+              "AttributeName": "Sharded-GSI-PK",
+              "AttributeType": "S"
+            },
+            "SortKey": {
+              "AttributeName": "Status#Time",
+              "AttributeType": "S"
+            }
+          },
+          "Projection": {
+            "ProjectionType": "ALL"
+          }
+        }
+      ],
+      "TableData": [
+        {
+          "AccountID": {
+            "S": "Account1"
+          },
+          "ScheduledTime": {
+            "S": "2019-09-25T010101"
+          },
+          "DataBlob": {
+            "S": "PaymentInfo Here"
+          },
+          "Sharded-GSI-PK": {
+            "S": "0"
+          },
+          "Status#Time": {
+            "S": "PENDING#2019-09-25T010101"
+          }
+        },
+        {
+          "AccountID": {
+            "S": "Account1"
+          },
+          "ScheduledTime": {
+            "S": "2019-09-26T020202"
+          },
+          "DataBlob": {
+            "S": "PaymentInfo Here"
+          },
+          "Sharded-GSI-PK": {
+            "S": "1"
+          },
+          "Status#Time": {
+            "S": "PENDING#2019-09-26T020202"
+          }
+        },
+        {
+          "AccountID": {
+            "S": "Account1"
+          },
+          "ScheduledTime": {
+            "S": "2019-09-24T010101"
+          },
+          "DataBlob": {
+            "S": "PaymentInfo Here"
+          },
+          "Sharded-GSI-PK": {
+            "S": "3"
+          },
+          "Status#Time": {
+            "S": "PROCESSED#2019-09-24T010101"
+          }
+        },
+        {
+          "AccountID": {
+            "S": "Account2"
+          },
+          "ScheduledTime": {
+            "S": "2019-09-24T010101"
+          },
+          "DataBlob": {
+            "S": "PaymentInfo Here"
+          },
+          "Sharded-GSI-PK": {
+            "S": "4"
+          },
+          "Status#Time": {
+            "S": "SCHEDULED#2019-09-24T010101"
+          }
+        }
+      ],
+      "DataAccess": {
+        "MySql": {}
+      }
+    },
+    {
+      "TableName": "TransactionHistory",
+      "KeyAttributes": {
+        "PartitionKey": {
+          "AttributeName": "AccountID",
+          "AttributeType": "S"
+        },
+        "SortKey": {
+          "AttributeName": "Timestamp",
+          "AttributeType": "S"
+        }
+      },
+      "NonKeyAttributes": [
+        {
+          "AttributeName": "DataBlob",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "Sharded-GSI-PK",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "TransactionID",
+          "AttributeType": "S"
+        }
+      ],
+      "GlobalSecondaryIndexes": [
+        {
+          "IndexName": "QueryAll_byTime",
+          "KeyAttributes": {
+            "PartitionKey": {
+              "AttributeName": "Sharded-GSI-PK",
+              "AttributeType": "S"
+            },
+            "SortKey": {
+              "AttributeName": "Timestamp",
+              "AttributeType": "S"
+            }
+          },
+          "Projection": {
+            "ProjectionType": "ALL"
+          }
+        },
+        {
+          "IndexName": "Query_TransactionID",
+          "KeyAttributes": {
+            "PartitionKey": {
+              "AttributeName": "TransactionID",
+              "AttributeType": "S"
+            }
+          },
+          "Projection": {
+            "ProjectionType": "ALL"
+          }
+        }
+      ],
+      "TableData": [
+        {
+          "AccountID": {
+            "S": "Account1"
+          },
+          "Timestamp": {
+            "S": "2019-09-24T010101"
+          },
+          "DataBlob": {
+            "S": "TransactionInfo Here"
+          },
+          "Sharded-GSI-PK": {
+            "S": "0"
+          },
+          "TransactionID": {
+            "S": "UUID-UUID-UUID-UUID"
+          }
+        },
+        {
+          "AccountID": {
+            "S": "Account2"
+          },
+          "Timestamp": {
+            "S": "2019-09-25T120501"
+          },
+          "DataBlob": {
+            "S": "TransactionInfo Here"
+          },
+          "Sharded-GSI-PK": {
+            "S": "1"
+          },
+          "TransactionID": {
+            "S": "UUID-UUID-UUID-UUID"
+          }
+        }
+      ],
+      "DataAccess": {
+        "MySql": {}
+      }
+    }
+  ]
+}
