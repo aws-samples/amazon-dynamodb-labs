@@ -30,7 +30,6 @@ Python code:
 - query_responsecode.py
 - scan_logfile_parallel.py
 - scan_logfile_simple.py
-- update_employees.py
 
 JSON:
 
