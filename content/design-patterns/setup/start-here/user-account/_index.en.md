@@ -6,7 +6,11 @@ chapter = true
 pre = "<b>Start: </b>"
 +++
 
-## CREATE AN AWS ACCOUNT
+
+{{% notice info %}}
+Only complete this section if you are running the workshop on your own. If you are at an AWS hosted event (such as re:Invent, Immersion Day, etc), go to [At an AWS hosted Event]({{< ref "design-patterns/setup/start-here/aws-event">}})
+{{% /notice %}}
+## Create an AWS account
 
 1. If you don’t already have an AWS account with Administrator access: [create one now by clicking here](https://aws.amazon.com/getting-started/)
 
@@ -25,18 +29,17 @@ pre = "<b>Start: </b>"
 ![Login URL](/images/iam-4-save-url.png)
 
 7. Login using the URL and user credentials you just created:
-![Sign in](/images/iam-signin.png)
+![Sign in](/images/iam-signin.png)  
 
-8. Launch the CloudFormation template in US East 1 to deploy the resources in your account:
+## Launch the CloudFormation stack
+{{% notice warning %}}
+During the course of the lab, you will make DynamoDB tables that will incur a cost that could approach tens or hundreds of dollars per day. Ensure you clean up the Amazon DynamoDB tables by deleting the CloudFormation stack as soon as the lab is complete.
+{{% /notice %}}
 
-<a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=amazon-dynamodb-labs&templateURL={{% siteparam "design_patterns_s3_lab_yaml" %}}" target="_blank">
-<img src="/images/cloudformation-launch-stack.png" alt="CloudFormation"/>
-
-</a>
-
-
-
+1. Launch the CloudFormation template in US East 1 to deploy the resources in your account:
+  <a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=amazon-dynamodb-labs&templateURL={{% siteparam "design_patterns_s3_lab_yaml" %}}" target="_blank"><img src="/images/cloudformation-launch-stack.png" alt="CloudFormation"/></a>
   *Optionally, download [the YAML template]({{% siteparam "design_patterns_s3_lab_yaml" %}}) and launch it your own way*
+
 1. Click *Next* on the first dialog.
 
 1. In the Parameters section, note the default option for *VPCSelection* is `CreateNewVPC`. **The `CreateNewVPC` option has the highest chance of success**.  

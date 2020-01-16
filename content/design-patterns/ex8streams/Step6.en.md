@@ -49,5 +49,8 @@ NEXTTOKEN       eyJFeGNsdXNpdmVTdGFydEtleSI6IG51bGwsICJib3RvX3RydW5jYXRlX2Ftb3Vu
 **Note**: *Your log entries may differ. So long as you have two log entries, you've verified successful replication. If you don't see any entries, re-run the load_logfile.py command - you may have run the inserts too soon after creating the AWS Lambda function.*
 
 ## Congratulations, you have successfully completed all the exercises in the workshop.
+{{% notice warning %}}
+If you ran the lab on your own AWS account, you should delete all of the tables made during the course of this exercise. If you are are at an AWS event using the AWS Workshop platform (e.g. Event Engine) then you do not need to delete your tables.
+{{% /notice %}}
 
 **Questions? If you're in the room please raise your hand and ask. Thanks for attending!**
