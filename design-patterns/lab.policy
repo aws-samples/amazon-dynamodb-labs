@@ -1,0 +1,64 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "iam:GetRole",
+                "iam:PassRole"
+            ],
+            "Effect": "Allow",
+            "Resource": "arn:aws:iam::*:role/*-DDBReplicationRole-*"
+        },
+        {
+            "Action": [
+                "dynamodb:Describe*",
+                "dynamodb:List*",
+                "dynamodb:Scan",
+                "dynamodb:Query",
+                "dynamodb:PutItem",
+                "dynamodb:DeleteItem",
+                "dynamodb:CreateTable",
+                "dynamodb:UpdateTable",
+                "dynamodb:DeleteTable",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:BatchGetItem",
+                "dynamodb:UpdateItem",
+                "dynamodb:TagResource",
+                "s3:Get*",
+                "s3:List*",
+                "lambda:CreateFunction",
+                "lambda:ListFunctions",
+                "lambda:ListEventSourceMappings",
+                "lambda:CreateEventSourceMapping",
+                "lambda:DeleteEventSourceMapping",
+                "lambda:GetFunctionConfiguration",
+                "lambda:DeleteFunction",
+                "cloudwatch:DescribeAlarmHistory",
+                "cloudwatch:DescribeAlarms",
+                "cloudwatch:DescribeAlarmsForMetric",
+                "cloudwatch:GetMetricStatistics",
+                "cloudwatch:ListMetrics",
+                "application-autoscaling:DescribeScalableTargets",
+                "application-autoscaling:DescribeScalingActivities",
+                "application-autoscaling:DescribeScalingPolicies",
+                "cloudwatch:DescribeAlarmHistory",
+                "dax:Describe*",
+                "dax:List*",
+                "ssm:Describe*",
+                "ssm:DescribeSessions",
+                "ssm:List*",
+                "ssm:Get*",
+                "ec2:DescribeInstances",
+                "ssm:TerminateSession",
+                "ssm:StartSession",
+                "tag:Get*",
+                "resource-groups:CreateGroup",
+                "resource-groups:List*",
+                "resource-groups:Get*",
+                "resource-groups:SearchResources",
+            ],
+            "Effect": "Allow",
+            "Resource": "*"
+        }
+    ]
+}

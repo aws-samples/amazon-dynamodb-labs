@@ -1,0 +1,418 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'DynamoDB Workshop CloudFormation Template: Create an Amazon EC2 instance
+  running the Amazon Linux with the applications required for running the DynamoDB
+  workshop'
+Parameters:
+  WorkshopCodeURL:
+    Description: "The python script package, zip'd, with the workshop code."
+    Default: "https://amazon-dynamodb-labs.com/assets/workshop.zip"
+    Type: String
+  InstanceType:
+    Description: Workshop EC2 Instance type
+    Type: String
+    Default: t3.xlarge
+    AllowedValues:
+      - t3.xlarge
+    ConstraintDescription: Must be a valid EC2 instance type
+  VPCSelection:
+    Description: This setting will control if the  DesignPatterns server will launch
+      in the default VPC or if a new VPC will be created, or if you wish to launch
+      into an existing non-default VPC.
+    Type: String
+    Default: CreateNewVPC
+    AllowedValues:
+    - Default
+    - CreateNewVPC
+    ConstraintDescription: must be either Default or CreateNewVPC
+Conditions:
+  DefaultVPC:
+    Fn::Equals:
+    - !Ref VPCSelection
+    - Default
+  CreateNewVPC:
+    Fn::Equals:
+    - !Ref VPCSelection
+    - CreateNewVPC
+
+Mappings:
+  AmazonLinuxAMI:
+    eu-central-1:
+      # Name: amzn-ami-hvm-2018.03.0.20190826-x86_64-ebs
+      AMI: ami-07a06e1c9f42df03e
+      GUID: fd3054b03123
+    us-west-1:
+      # Name: amzn-ami-hvm-2018.03.0.20190826-x86_64-ebs
+      AMI: ami-01daf83d8a6f588c5
+      GUID: fd3054b03123
+    us-west-2:
+      # Name: amzn-ami-hvm-2018.03.0.20190826-x86_64-ebs
+      AMI: ami-09b92cd132204c704
+      GUID: fd3054b03123
+    eu-west-1:
+      # Name: amzn-ami-hvm-2018.03.0.20190826-x86_64-ebs
+      AMI: ami-0ce6dfbc4cb843402
+      GUID: fd3054b03123
+    eu-west-2:
+      # Name: amzn-ami-hvm-2018.03.0.20190826-x86_64-ebs
+      AMI: ami-0e30eafcc0935e6a7
+      GUID: fd3054b03123
+    sa-east-1:
+      # Name: amzn-ami-hvm-2018.03.0.20190826-x86_64-ebs
+      AMI: ami-0e7d312b22eb1a81b
+      GUID: fd3054b03123
+    ap-south-1:
+      # Name: amzn-ami-hvm-2018.03.0.20190826-x86_64-ebs
+      AMI: ami-08e789bb5ca3b9bfd
+      GUID: fd3054b03123
+    ap-southeast-1:
+      # Name: amzn-ami-hvm-2018.03.0.20190826-x86_64-ebs
+      AMI: ami-05ab00911168ec7af
+      GUID: fd3054b03123
+    ap-southeast-2:
+      # Name: amzn-ami-hvm-2018.03.0.20190826-x86_64-ebs
+      AMI: ami-042710e2a62ecec92
+      GUID: fd3054b03123
+    ap-northeast-1:
+      # Name: amzn-ami-hvm-2018.03.0.20190826-x86_64-ebs
+      AMI: ami-0a9fb4802d08e965a
+      GUID: fd3054b03123
+    ap-northeast-2:
+      # Name: amzn-ami-hvm-2018.03.0.20190826-x86_64-ebs
+      AMI: ami-01ea3038c7b18e526
+      GUID: fd3054b03123
+    us-east-1:
+      # Name: amzn-ami-hvm-2018.03.0.20190826-x86_64-ebs
+      AMI: ami-001efa431f19d816f
+      GUID: fd3054b03123
+    us-east-2:
+      # Name: amzn-ami-hvm-2018.03.0.20190826-x86_64-ebs
+      AMI: ami-02950d3d85d31b6f9
+      GUID: fd3054b03123
+  DesignPatterns:
+    options:
+      UserDataURL: "https://amazon-dynamodb-labs.com/assets/UserData.sh"
+Resources:
+  DDBReplicationRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - lambda.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      Path: /
+      Policies:
+        - PolicyName: root
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - dynamodb:DescribeStream
+                  - dynamodb:GetRecords
+                  - dynamodb:GetShardIterator
+                  - dynamodb:ListStreams
+                Resource:
+                  - '*'
+              - Effect: Allow
+                Action:
+                  - dynamodb:DeleteItem
+                  - dynamodb:PutItem
+                Resource:
+                  - '*'
+              - Effect: Allow
+                Action:
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource:
+                  - '*'
+  DDBInstanceRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - ec2.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      Path: /
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
+      Policies:
+        - PolicyName: root
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - dynamodb:Describe*
+                  - dynamodb:List*
+                  - dynamodb:Scan
+                  - dynamodb:Query
+                  - dynamodb:PutItem
+                  - dynamodb:DeleteItem
+                  - dynamodb:CreateTable
+                  - dynamodb:UpdateTable
+                  - dynamodb:BatchWriteItem
+                  - dynamodb:BatchGetItem
+                  - dynamodb:UpdateItem
+                  - dynamodb:TagResource
+                  - iam:GetRole
+                  - iam:PassRole
+                  - lambda:CreateFunction
+                  - lambda:CreateEventSourceMapping
+                  - ssm:UpdateInstanceInformation
+                Resource:
+                  - '*'
+
+  RootInstanceProfile:
+     Type: "AWS::IAM::InstanceProfile"
+     Properties:
+       Path: "/"
+       Roles:
+         - !Ref DDBInstanceRole
+  WorkshopWaitHandle:
+    Type: AWS::CloudFormation::WaitConditionHandle
+  WorkshopWaitCondition:
+    Type: AWS::CloudFormation::WaitCondition
+    Properties:
+      Count: 1
+      Handle: !Ref 'WorkshopWaitHandle'
+      Timeout: '600'
+  WorkshopEC2Instance:
+    Type: AWS::EC2::Instance
+    Condition: DefaultVPC
+    Properties:
+      ImageId: !FindInMap
+        - AmazonLinuxAMI
+        - !Ref 'AWS::Region'
+        - AMI
+      InstanceType: !Ref 'InstanceType'
+      IamInstanceProfile: !Ref 'RootInstanceProfile'
+      SecurityGroups:
+        - !Ref 'WorkshopSecurityGroup'
+      Tags:
+        - Key: Name
+          Value: !Ref 'AWS::StackName'
+      UserData:
+        Fn::Base64:
+          Fn::Sub:
+            - |
+              Content-Type: multipart/mixed; boundary="//"
+              MIME-Version: 1.0
+
+              --//
+              Content-Type: text/cloud-config; charset="us-ascii"
+              MIME-Version: 1.0
+              Content-Transfer-Encoding: 7bit
+              Content-Disposition: attachment; filename="cloud-config.txt"
+
+              #cloud-config
+              locale: en_US.utf-8
+
+              --//
+              Content-Type: text/x-shellscript; charset="us-ascii"
+              MIME-Version: 1.0
+              Content-Transfer-Encoding: 7bit
+              Content-Disposition: attachment; filename="userdata.sh"
+
+              #!/bin/bash
+              echo [`date -u +"%Y-%m-%dT%H:%M:%SZ"`] Started Design Patterns User Data
+              set -x
+
+              function sleep_delay
+              {
+                if (( $SLEEP_TIME < $SLEEP_TIME_MAX )); then
+                  echo Sleeping $SLEEP_TIME
+                  sleep $SLEEP_TIME
+                  SLEEP_TIME=$(($SLEEP_TIME * 2))
+                else
+                  echo Sleeping $SLEEP_TIME_MAX
+                  sleep $SLEEP_TIME_MAX
+                fi
+              }
+
+              # Executing bootstrap script
+              SLEEP_TIME=10
+              SLEEP_TIME_MAX=3600
+              while true; do
+                curl "${SUB_USERDATA_URL}" > /tmp/designpatternsbootstrap.sh
+                RESULT=$?
+                if [[ "$RESULT" -ne 0 ]]; then
+                  sleep_delay
+                else
+                  /bin/bash /tmp/designpatternsbootstrap.sh ${SUB_GUID} "${WorkshopCodeURL}" ${AWS::Region} ${AWS::AccountId} "${SUB_REPL_ROLE}" "${WorkshopWaitHandle}" &&
+                  exit 0
+                fi
+              done
+              --//
+            - {
+              SUB_USERDATA_URL: !FindInMap [DesignPatterns, options, UserDataURL],
+              SUB_GUID: !FindInMap [AmazonLinuxAMI, !Ref "AWS::Region", GUID],
+              SUB_REPL_ROLE: !GetAtt ['DDBReplicationRole', 'Arn'],
+            }
+  WorkshopEC2InstanceCustomVPC:
+    Type: AWS::EC2::Instance
+    Condition: CreateNewVPC
+    Properties:
+      ImageId: !FindInMap
+        - AmazonLinuxAMI
+        - !Ref 'AWS::Region'
+        - AMI
+      InstanceType: !Ref 'InstanceType'
+      IamInstanceProfile: !Ref 'RootInstanceProfile'
+      SubnetId: !Ref 'VPCSubnet'
+      SecurityGroupIds:
+        - Fn::GetAtt: ['WorkshopSecurityGroup', GroupId]
+      Tags:
+        - Key: Name
+          Value: !Ref 'AWS::StackName'
+      UserData:
+        Fn::Base64:
+          Fn::Sub:
+            - |
+              Content-Type: multipart/mixed; boundary="//"
+              MIME-Version: 1.0
+
+              --//
+              Content-Type: text/cloud-config; charset="us-ascii"
+              MIME-Version: 1.0
+              Content-Transfer-Encoding: 7bit
+              Content-Disposition: attachment; filename="cloud-config.txt"
+
+              #cloud-config
+              locale: en_US.utf-8
+
+              --//
+              Content-Type: text/x-shellscript; charset="us-ascii"
+              MIME-Version: 1.0
+              Content-Transfer-Encoding: 7bit
+              Content-Disposition: attachment; filename="userdata.sh"
+
+              #!/bin/bash
+              echo [`date -u +"%Y-%m-%dT%H:%M:%SZ"`] Started Design Patterns User Data
+              set -x
+
+              function sleep_delay
+              {
+                if (( $SLEEP_TIME < $SLEEP_TIME_MAX )); then
+                  echo Sleeping $SLEEP_TIME
+                  sleep $SLEEP_TIME
+                  SLEEP_TIME=$(($SLEEP_TIME * 2))
+                else
+                  echo Sleeping $SLEEP_TIME_MAX
+                  sleep $SLEEP_TIME_MAX
+                fi
+              }
+
+              # Executing bootstrap script
+              SLEEP_TIME=10
+              SLEEP_TIME_MAX=3600
+              while true; do
+                curl "${SUB_USERDATA_URL}" > /tmp/designpatternsbootstrap.sh
+                RESULT=$?
+                if [[ "$RESULT" -ne 0 ]]; then
+                  sleep_delay
+                else
+                  /bin/bash /tmp/designpatternsbootstrap.sh ${SUB_GUID} "${WorkshopCodeURL}" ${AWS::Region} ${AWS::AccountId} "${SUB_REPL_ROLE}" "${WorkshopWaitHandle}" &&
+                  exit 0
+                fi
+              done
+              --//
+            - {
+              SUB_USERDATA_URL: !FindInMap [DesignPatterns, options, UserDataURL],
+              SUB_GUID: !FindInMap [AmazonLinuxAMI, !Ref "AWS::Region", GUID],
+              SUB_REPL_ROLE: !GetAtt ['DDBReplicationRole', 'Arn'],
+            }
+
+
+  WorkshopSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security Group, kept for legacy reasons.
+      VpcId:
+        Fn::If:
+        - CreateNewVPC
+        - Ref: VPC
+        - Ref: AWS::NoValue
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+      Tags:
+        - Key: Name
+          Value: !Ref 'AWS::StackName'
+  VPC:
+    Condition: CreateNewVPC
+    Type: AWS::EC2::VPC
+    Properties:
+      Tags:
+      - Key: Name
+        Value:   DesignPatternsVPC
+      CidrBlock: 10.10.11.0/24
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+  VPCSubnet:
+    Condition: CreateNewVPC
+    Type: AWS::EC2::Subnet
+    Properties:
+      MapPublicIpOnLaunch: true
+      AvailabilityZone:
+        Fn::Select:
+        - '0'
+        - Fn::GetAZs:
+            !Ref AWS::Region
+      VpcId:
+        !Ref VPC
+      CidrBlock: 10.10.11.0/24
+  VPCInternetGateway:
+    Condition: CreateNewVPC
+    Type: AWS::EC2::InternetGateway
+    Properties: {}
+  VPCAttachGateway:
+    Condition: CreateNewVPC
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref VPC
+      InternetGatewayId: !Ref 'VPCInternetGateway'
+  VPCRouteTable:
+    Condition: CreateNewVPC
+    Type: AWS::EC2::RouteTable
+    Properties:
+      Tags:
+      - Key: Name
+        Value:   DesignPatternsVPCRouteTable
+      VpcId:
+        !Ref VPC
+  VPCSubnetRouteTableAssociation:
+    Condition: CreateNewVPC
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId:
+        !Ref VPCSubnet
+      RouteTableId:
+        !Ref VPCRouteTable
+  RouteVPCAny:
+    Condition: CreateNewVPC
+    Type: AWS::EC2::Route
+    DependsOn: VPCAttachGateway
+    Properties:
+      RouteTableId:
+        !Ref VPCRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId:
+        !Ref VPCInternetGateway
+
+Outputs:
+  WorkshopEC2InstanceURL:
+    Description: WorkshopEC2InstanceURL
+    Value: !If [CreateNewVPC, !GetAtt 'WorkshopEC2InstanceCustomVPC.PublicDnsName', !GetAtt 'WorkshopEC2Instance.PublicDnsName']
