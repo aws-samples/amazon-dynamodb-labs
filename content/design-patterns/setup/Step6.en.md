@@ -30,7 +30,7 @@ This command will create a new table and one GSI with the following definition:
 - Table RCU = 5000
 - Table WCU = 5000
 - GSI(s):
-  - GSI_1 (5000 RCU, 5000 WCU) - *Allows for parallel or sequential scans of the access logs. Sorted by status code and timestamp.*
+  - GSI_1 (3000 RCU, 5000 WCU) - *Allows for parallel or sequential scans of the access logs. Sorted by status code and timestamp.*
 
 
 | Attribute name (Type)        | Special attribute?           | Attribute use case          | Sample attribute value  |

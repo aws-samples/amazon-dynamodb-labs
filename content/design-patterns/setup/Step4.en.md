@@ -33,7 +33,7 @@ Python code:
 
 JSON:
 
-- gsicitydept.json
+- gsi_city_dept.json
 - gsi_manager.json
 - iam-role-policy.json
 - iam-trust-relationship.json
