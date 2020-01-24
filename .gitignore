@@ -3,3 +3,4 @@
 public/
 __pycache__/
 .python-version
+build

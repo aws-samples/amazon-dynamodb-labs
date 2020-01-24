@@ -16,7 +16,7 @@ pygmentsStyle = "monokai"
 
 
 [params]
-  editURL = "https://github.com/aws-samples/amazon-dynamodb-labs/edit/master/content/"
+  editURL = "https://github.com/aws-samples/amazon-dynamodb-labs/blob/master/content/"
   description = "Hands on labs and real world design scenarios for Amazon DynamoDB"
   author = "Sean Shriver"
   disableBreadcrumb = false
