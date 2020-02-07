@@ -1,5 +1,5 @@
 +++
-title = "DynamoDB Streams and AWS Lambda"
+title = "Amazon DynamoDB Streams and AWS Lambda"
 date = 2019-12-02T10:18:15-08:00
 weight = 9
 chapter = true
