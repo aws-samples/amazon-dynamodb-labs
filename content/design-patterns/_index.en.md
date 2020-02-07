@@ -2,7 +2,7 @@
 #TODO swap this for variable
 title = "Advanced design patterns for Amazon DynamoDB"
 chapter = true
-description = "Hands on exercise using Python and our best practices."
+description = "Hands-on exercise using Python and DynamoDB best practices."
 pre = "<b>Hands on: </b>"
 
 weight = 1
