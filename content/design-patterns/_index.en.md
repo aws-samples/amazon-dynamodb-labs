@@ -23,3 +23,6 @@ This workshop is designed for developers, engineers, and database administrators
 - Knowledge of AWS services
 - Basic understanding of DynamoDB
 - Familiarity with Python/Boto3
+
+
+TODO review requirements above
