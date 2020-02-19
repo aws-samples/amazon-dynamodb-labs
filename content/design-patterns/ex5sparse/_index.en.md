@@ -1,5 +1,5 @@
 +++
-title = "Sparse Indexes"
+title = "Sparse Global Secondary Indexes"
 date = 2019-12-02T10:17:48-08:00
 weight = 6
 chapter = true

@@ -1,5 +1,5 @@
 +++
-title = "GSI Write Sharding"
+title = "Global Secondary Index Write Sharding"
 date = 2019-12-02T10:17:22-08:00
 weight = 4
 chapter = true

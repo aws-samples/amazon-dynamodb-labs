@@ -1,5 +1,5 @@
 +++
-title = "GSI key overloading"
+title = "Global Secondary Index Key Overloading"
 date = 2019-12-02T10:17:33-08:00
 weight = 5
 chapter = true
