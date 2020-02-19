@@ -21,13 +21,14 @@ Python code:
 - load_invoice.py
 - load_logfile_parallel.py
 - load_logfile.py
+- lab_config.py
 - query_city_dept.py
 - query_employees.py
 - query_index_invoiceandbilling.py
 - query_invoiceandbilling.py
-- query_managers_gsi.py
-- query_managers_table.py
 - query_responsecode.py
+- scan_for_managers_gsi.py
+- scan_for_managers.py
 - scan_logfile_parallel.py
 - scan_logfile_simple.py
 
