@@ -40,7 +40,7 @@ Wait until the new index is ACTIVE before proceeding:
     "ACTIVE"
 ]
 ```
-Now you can use the new GSI to query the table. You must to use the Partition-Key and you can optionally use the Sort-Key.
+Now you can use the new GSI to query the table. You must use the Partition-Key and you can optionally use the Sort-Key.
 
 For the Sort-Key you can use the **begins_with** expression to query starting with the left-most attribute of the composite key. Thus, you can query all employees within a city or within a specific department in the city.
 
