@@ -1,5 +1,5 @@
 +++
-title = "Table Scan and Parallel Table Scan"
+title = "Sequential and Parallel Table Scans"
 date = 2019-12-02T10:17:10-08:00
 weight = 3
 chapter = true
