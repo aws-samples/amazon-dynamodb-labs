@@ -47,7 +47,7 @@ def import_csv(tableName, fileName):
             newCurrentTitle = {}
             newCurrentTitle['employeeid'] = newEmployee['employeeid']
             newCurrentTitle['name'] = newEmployee['name']
-            newCurrentTitle['hire_date'] = newEmployee['previous_title_end']
+            newCurrentTitle['hire_date'] = newEmployee['hire_date']
             newCurrentTitle['PK'] = newEmployee['PK']
             newCurrentTitle['SK'] = 'current_title#' + newEmployee['title']
             newCurrentTitle['GSI_1_PK'] = newCurrentTitle['SK']
