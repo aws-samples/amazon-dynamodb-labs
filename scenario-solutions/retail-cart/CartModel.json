@@ -6,70 +6,42 @@
       "KeyAttributes": {
         "PartitionKey": {
           "AttributeName": "CustomerID",
-          "AttributeType": "S",
-          "Id": "11a8d3c7-7235-47d9-a228-0eedf42b31fc"
+          "AttributeType": "S"
         },
         "SortKey": {
-          "AttributeName": "Status#Date",
-          "AttributeType": "S",
-          "Id": "0ddc32f6-0b01-4d26-86aa-fc65fe44bb88"
+          "AttributeName": "Date#Status",
+          "AttributeType": "S"
         }
       },
       "NonKeyAttributes": [
         {
           "AttributeName": "Item_SKU",
-          "AttributeType": "S",
-          "Id": "1eb96db6-b036-4779-bfb2-12d57479050b"
+          "AttributeType": "S"
         },
         {
           "AttributeName": "Price",
-          "AttributeType": "S",
-          "Id": "0b225064-d23e-420d-a644-dd61028f3600"
+          "AttributeType": "S"
         },
         {
           "AttributeName": "Count",
-          "AttributeType": "S",
-          "Id": "10a72d7e-91f9-457e-b67e-bc5dc22cdded"
+          "AttributeType": "S"
         },
         {
-          "AttributeName": "Gift",
-          "AttributeType": "S",
-          "Id": "fb8ddb32-f29d-4233-b235-3558f6e81ddb"
+          "AttributeName": "Status",
+          "AttributeType": "S"
         }
       ],
-      "TableViews": [],
-      "LocalSecondaryIndexes": [],
       "GlobalSecondaryIndexes": [
         {
           "IndexName": "GSI-SKU",
           "KeyAttributes": {
             "PartitionKey": {
               "AttributeName": "Item_SKU",
-              "AttributeType": "S",
-              "Id": "aac300f3-504a-4c63-b0b5-380b5209f670"
+              "AttributeType": "S"
             },
             "SortKey": {
-              "AttributeName": "Status#Date",
-              "AttributeType": "S",
-              "Id": "2f9ee0be-b5fa-411a-a733-0b85f4739260"
-            }
-          },
-          "Projection": {
-            "ProjectionType": "ALL"
-          }
-        },
-        {
-          "IndexName": "Gift",
-          "KeyAttributes": {
-            "PartitionKey": {
-              "AttributeName": "Gift",
-              "AttributeType": "S",
-              "Id": "53eda863-b14f-4e1d-9bad-31b0bd1f1eed"
-            },
-            "SortKey": {
-              "AttributeName": "Status#Date",
-              "AttributeType": "S",
-              "Id": "0ddc32f6-0b01-4d26-86aa-fc65fe44bb88"
+              "AttributeName": "Date#Status",
+              "AttributeType": "S"
             }
           },
           "Projection": {
@@ -82,54 +54,51 @@
           "CustomerID": {
             "S": "Liz"
           },
-          "Status#Date": {
-            "S": "Shipped#2019-11-26T22:46:26"
+          "Date#Status": {
+            "S": "2019-11-26T22:46:26#Shipped"
           },
           "Item_SKU": {
             "S": "d9bl3"
-          },
-          "Status": {
-            "S": "Saved"
           },
           "Price": {
             "S": "34.99"
           },
           "Count": {
             "S": "1"
+          },
+          "Status": {
+            "S": "Saved"
           }
         },
         {
           "CustomerID": {
             "S": "Chad"
           },
-          "Status#Date": {
-            "S": "Active#2019-10-08T21:11:42"
+          "Date#Status": {
+            "S": "2019-10-08T21:11:42#Active"
           },
           "Item_SKU": {
             "S": "72f49"
-          },
-          "Status": {
-            "S": "Active"
           },
           "Price": {
             "S": "12.49"
           },
           "Count": {
             "S": "1"
+          },
+          "Status": {
+            "S": "Active"
           }
         },
         {
           "CustomerID": {
             "S": "Sue"
           },
-          "Status#Date": {
-            "S": "Active#2019-10-03T12:33:16"
+          "Date#Status": {
+            "S": "2019-10-03T12:33:16#Active"
           },
           "Item_SKU": {
             "S": "ef9ca"
-          },
-          "Status": {
-            "S": "Active"
           },
           "Price": {
             "S": "4.99"
@@ -137,22 +106,19 @@
           "Count": {
             "S": "1"
           },
-          "Gift": {
-            "S": null
+          "Status": {
+            "S": "Active"
           }
         },
         {
           "CustomerID": {
             "S": "Sue"
           },
-          "Status#Date": {
-            "S": "Saved#2019-10-07T08:24:22"
+          "Date#Status": {
+            "S": "2019-10-07T08:24:22#Saved"
           },
           "Item_SKU": {
             "S": "72f49"
-          },
-          "Status": {
-            "S": "Active"
           },
           "Price": {
             "S": "12.49"
@@ -160,22 +126,19 @@
           "Count": {
             "S": "1"
           },
-          "Gift": {
-            "S": "Alice"
+          "Status": {
+            "S": "Active"
           }
         },
         {
           "CustomerID": {
             "S": "Sue"
           },
-          "Status#Date": {
-            "S": "Active#2019-10-05T10:07:17"
+          "Date#Status": {
+            "S": "2019-10-05T10:07:17#Active"
           },
           "Item_SKU": {
             "S": "b932s"
-          },
-          "Status": {
-            "S": "Saved"
           },
           "Price": {
             "S": "67.99"
@@ -183,8 +146,8 @@
           "Count": {
             "S": "1"
           },
-          "Gift": {
-            "S": null
+          "Status": {
+            "S": "Saved"
           }
         }
       ],
@@ -195,7 +158,7 @@
   ],
   "ModelMetadata": {
     "DateCreated": "",
-    "DateLastModified": "",
+    "DateLastModified": "Feb 24, 2020, 3:50 PM",
     "Author": "",
     "Description": ""
   }
