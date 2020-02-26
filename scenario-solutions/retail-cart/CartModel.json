@@ -9,7 +9,7 @@
           "AttributeType": "S"
         },
         "SortKey": {
-          "AttributeName": "Date#Status",
+          "AttributeName": "Status#Date",
           "AttributeType": "S"
         }
       },
@@ -54,8 +54,8 @@
           "CustomerID": {
             "S": "Liz"
           },
-          "Date#Status": {
-            "S": "2019-11-26T22:46:26#Shipped"
+          "Status#Date": {
+            "S": "Shipped#2019-11-26T22:46:26"
           },
           "Item_SKU": {
             "S": "d9bl3"
@@ -74,8 +74,8 @@
           "CustomerID": {
             "S": "Chad"
           },
-          "Date#Status": {
-            "S": "2019-10-08T21:11:42#Active"
+          "Status#Date": {
+            "S": "Active#2019-10-08T21:11:42"
           },
           "Item_SKU": {
             "S": "72f49"
@@ -94,8 +94,8 @@
           "CustomerID": {
             "S": "Sue"
           },
-          "Date#Status": {
-            "S": "2019-10-03T12:33:16#Active"
+          "Status#Date": {
+            "S": "Active#2019-10-03T12:33:16"
           },
           "Item_SKU": {
             "S": "ef9ca"
@@ -114,8 +114,8 @@
           "CustomerID": {
             "S": "Sue"
           },
-          "Date#Status": {
-            "S": "2019-10-07T08:24:22#Saved"
+          "Status#Date": {
+            "S": "Saved#2019-10-07T08:24:22"
           },
           "Item_SKU": {
             "S": "72f49"
@@ -134,8 +134,8 @@
           "CustomerID": {
             "S": "Sue"
           },
-          "Date#Status": {
-            "S": "2019-10-05T10:07:17#Active"
+          "Status#Date": {
+            "S": "Active#2019-10-05T10:07:17"
           },
           "Item_SKU": {
             "S": "b932s"
@@ -157,8 +157,8 @@
     }
   ],
   "ModelMetadata": {
-    "DateCreated": "",
-    "DateLastModified": "Feb 24, 2020, 3:50 PM",
+    "DateCreated": "Feb 24, 2020, 3:50 PM",
+    "DateLastModified": "Feb 25, 2020, 10:39 PM",
     "Author": "",
     "Description": ""
   }
