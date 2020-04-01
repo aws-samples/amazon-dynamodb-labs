@@ -56,6 +56,8 @@ You can pause the operation by typing Ctrl+Z
 
 **Topic for discussion:** Can you explain the behavior of the test? An exception named `ProvisionedThroughputExceededException` was returned by DynamoDB with an exception message suggesting the provisioned capacity of the GSI be increased. This is a telling error, and one that needs to be acted upon. In short, if you want 100% of the writes on the DynamoDB base table to be copied into the GSI, then the GSI should be provisioned with 100% (the same amount) of the capacity on the base table, which should be 1,000 WCU in this example. Simply put, the GSI was under-provisioned.
 
+#### Review the table in the AWS Console
+
 Let's review the Amazon CloudWatch metrics for this test in the AWS management console for Amazon DynamoDB. We will need to see which metrics were emitted to CloudWatch during this bout of write throttling.
 
 Open the AWS console, or switch to your browser tab with the AWS console, to view the metrics for the `logfile_gsi_low` table. These are found under the DynamoDB section of the AWS management console in the tables view. If you don't see the table, remember to click the refresh button on the top right of the DynamoDB console.
