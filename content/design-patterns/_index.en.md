@@ -7,13 +7,13 @@ pre = "<b>Workshop: </b>"
 
 weight = 1
 +++
-In this workshop, you review [Amazon DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html) design patterns and best practices to build highly scalable applications that are optimized for performance and cost. This workshop implements these design patterns by using Python scripts. At the end of this workshop, you will have the knowledge to build and monitor DynamoDB applications that can grow to any size and scale. 
+In this workshop, you review [Amazon DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html) design patterns and best practices to build highly scalable applications that are optimized for performance and cost. This workshop implements these design patterns by using Python scripts. At the end of this workshop, you will have the knowledge to build and monitor DynamoDB applications that can grow to any size and scale.
 
 Here's what this workshop includes:
 
-{{% children  depth="1" description="false" %}}
+{{% children  depth="1" description="true" %}}
 
-TODO check above index
+TODO check above index. Add descriptions to all text
 
 ### Target audience
 

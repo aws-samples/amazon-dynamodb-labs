@@ -4,6 +4,7 @@ date = 2019-12-02T07:05:12-08:00
 weight = 1
 chapter = true
 pre = "<b>Start here: </b>"
+description = "Connect to AWS lab resource on EC2 and create table for later use."
 +++
 
 ## GETTING STARTED
@@ -15,4 +16,3 @@ To set up this workshop, choose one of the following links, depending on whether
 
 Once you have completed with either setup, continue on to:
 - [Excerise 1: DynamoDB Capacity Units and Partitioning]({{< ref "/design-patterns/ex1capacity" >}})
-

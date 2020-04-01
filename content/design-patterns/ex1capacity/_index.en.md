@@ -4,6 +4,7 @@ date = 2019-12-02T10:16:44-08:00
 weight = 2
 chapter = true
 pre = "<b>Exercise 1: </b>"
+description = "Learn about provisioned capacity."
 +++
 
 
