@@ -5,6 +5,7 @@ weight = 2
 +++
 
 In the DynamoDB console, open the **InvoiceAndBills** table and choose the **Items** tab. From the dropdown menu, choose `InvoiceAndBills GSI_1` and then `Scan` the table.
+
 In the output, choose PK to sort the data in reverse. Notice the different entity types in the same table.
 
-![Adjacency Lists](/images/adjacencylist1.jpg)
+![Adjacency Lists](/images/adjacencylist2.png)
