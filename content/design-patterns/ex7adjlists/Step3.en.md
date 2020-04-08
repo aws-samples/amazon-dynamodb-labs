@@ -12,7 +12,6 @@ python query_invoiceandbilling.py InvoiceAndBills 'I#1420'
 Output:
 
 ```bash
-
 =========================================================
 
 

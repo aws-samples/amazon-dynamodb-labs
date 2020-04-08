@@ -14,14 +14,10 @@ Output:
 ```bash
 
  =========================================================
-
-
  Invoice ID: I#661, Customer ID: C#1249
 
 
  Invoice ID: I#1249, Customer ID: C#1249
-
-
  =========================================================
 
 ```
@@ -37,9 +33,6 @@ python query_index_invoiceandbilling.py InvoiceAndBills 'B#3392'
 Output:
 ```bash
 =========================================================
-
-
-
  Invoice ID: I#506, Bill ID: B#3392, BillAmount: $383,572.00 , BillBalance: $5,345,699.00
 
 
@@ -47,7 +40,5 @@ Output:
 
 
  Invoice ID: I#390, Bill ID: B#3392, BillAmount: $581,765.00 , BillBalance: $11,588,362.00
-
-
  =========================================================
 ```
