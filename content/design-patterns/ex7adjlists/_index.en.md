@@ -16,7 +16,7 @@ You will model the table to execute the following queries:
 - Using the bill ID, retrieve the top-level bill details and the associated invoice details.
 
 
-#### Table `InvoiceAndBills`:
+#### Table: `InvoiceAndBills`
 - Key schema: HASH, RANGE
 - Table read capacity units (RCUs) = 100
 - Table write capacity units (WCUS) = 100
