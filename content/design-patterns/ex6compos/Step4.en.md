@@ -22,4 +22,4 @@ List of employees . State: TX
     Name: Marve Bignold. City: Dallas. Dept: Operation
 Total of employees: 9. Execution time: 0.174154996872 seconds
 ```
-In this exercise, we create a global secondary index to query an additional attributes. Data can now be retrieved using the City and Department fields.
+In this exercise, we created a global secondary index to query additional attributes. Data can now be retrieved using the City and Department fields.
