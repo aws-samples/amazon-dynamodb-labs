@@ -13,8 +13,6 @@ Output:
 
 ```bash
 =========================================================
-
-
  Invoice ID:I#1420, BillID:B#2485, BillAmount:$135,986.00 , BillBalance:$28,322,352.00
 
  Invoice ID:I#1420, BillID:B#2823, BillAmount:$592,769.00 , BillBalance:$8,382,270.00
@@ -22,7 +20,6 @@ Output:
  Invoice ID:I#1420, Customer ID:C#1420
 
  Invoice ID:I#1420, InvoiceStatus:Cancelled, InvoiceBalance:$28,458,338.00 , InvoiceDate:10/31/17, InvoiceDueDate:11/20/17
-
  =========================================================
 ```
 
