@@ -5,7 +5,7 @@ weight = 4
 +++
 
 You also can use the global secondary index to query employees by state. Run the following Python script to list all employees in the Operation department in Dallas, Texas.
-```py
+```bash
 python query_city_dept.py employees TX --citydept 'Dallas#Op'
 ```
 Output:
