@@ -6,7 +6,7 @@ weight = 3
 
 Run the following script to query the table’s invoice details.
 
-```py
+```bash
 python query_invoiceandbilling.py InvoiceAndBills 'I#1420'
 ```
 Output:
