@@ -6,12 +6,13 @@ weight = 4
 
 Query using the customer ID, and review the output showing the customer details and the list of related invoices. Notice how the output shows all the invoices associated with the customer.
 
-```py
+```bash
 python query_index_invoiceandbilling.py InvoiceAndBills 'C#1249'
 ```
 
-Output:
-```bash
+Here's a look at the output.
+
+```txt
 
  =========================================================
  Invoice ID: I#661, Customer ID: C#1249
@@ -26,12 +27,13 @@ Now, query using the bill ID, and review the output showing the bill details and
 
 Run the following Python script:
 
-```py
+```bash
 python query_index_invoiceandbilling.py InvoiceAndBills 'B#3392'
 ```
 
-Output:
-```bash
+Here's a look at the output.
+
+```txt
 =========================================================
  Invoice ID: I#506, Bill ID: B#3392, BillAmount: $383,572.00 , BillBalance: $5,345,699.00
 
