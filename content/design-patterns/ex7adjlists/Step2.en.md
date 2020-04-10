@@ -9,3 +9,5 @@ In the DynamoDB console, open the **InvoiceAndBills** table and choose the **Ite
 In the output, choose **PK** to sort the data in reverse. Notice the different entity types in the same table.
 
 ![Adjacency Lists](/images/adjacencylist2.png)
+
+In the following steps you will query the table and retrieve different entity types. Optionally consider performing the queries in the AWS console right after you query them with the Python scripts for extra insight.
