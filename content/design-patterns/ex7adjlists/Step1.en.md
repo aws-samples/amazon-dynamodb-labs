@@ -5,7 +5,7 @@ weight = 1
 +++
 
 
-Run the AWS CLI command to create the table named `InvoiceAndBilling` and create a GSI named `GSI_1` which is partitioned on "SK" attribute of the parent table:
+Run the AWS CLI command to create the table named `InvoiceAndBilling` and create a GSI named `GSI_1` which is partitioned on `SK` attribute of the parent table:
 ```py
 aws dynamodb create-table --table-name InvoiceAndBills \
 --attribute-definitions AttributeName=PK,AttributeType=S AttributeName=SK,AttributeType=S \
