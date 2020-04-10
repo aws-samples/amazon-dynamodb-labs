@@ -9,9 +9,10 @@ Run the following script to query the table’s invoice details.
 ```bash
 python query_invoiceandbilling.py InvoiceAndBills 'I#1420'
 ```
-Output:
 
-```bash
+Here's a look at the output.
+
+```txt
 =========================================================
  Invoice ID:I#1420, BillID:B#2485, BillAmount:$135,986.00 , BillBalance:$28,322,352.00
 
