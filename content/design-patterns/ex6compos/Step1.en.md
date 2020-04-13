@@ -1,19 +1,19 @@
 +++
-title = "Step 1 - Creating a new GSI for City-Department"
+title = "Step 1 - Create a new global secondary index for City-Department"
 date = 2019-12-02T12:16:25-08:00
 weight = 1
 +++
 
 
-You can run the following command to create the new GSI gsicitydept:
+Run the following command to create a new global secondary index called **GSI_3**:
 ```bash
 aws dynamodb update-table --table-name employees \
 --attribute-definitions AttributeName=GSI_3_PK,AttributeType=S AttributeName=GSI_3_SK,AttributeType=S \
 --global-secondary-index-updates file://gsi_city_dept.json
 ```
-You need to wait until the index has been created.
+You have to wait until the index has been created before proceeding.
 
-Notice that the GSI is currently in ```CREATING```:
+Notice that the following screenshot shows the global secondary index's status as ```CREATING```.
 ```bash
 aws dynamodb describe-table --table-name employees --query "Table.GlobalSecondaryIndexes[].IndexStatus"
 ```
@@ -25,12 +25,13 @@ Output:
     "CREATING"
 ]
 ```
-You can script the command to run every 2 seconds using watch. Let's do that:
+You can script this command to run every two seconds by using ```watch```, 
+so that you can more easily see when the table status has changed to `ACTIVE`.
 ```bash
-# Watch checks every 2 seconds by default
+# Watch checks every two seconds by default
 watch -n 2 "aws dynamodb describe-table --table-name employees --query \"Table.GlobalSecondaryIndexes[].IndexStatus\""
 ```
-*Use Ctrl + C to end ```watch``` when the GSI is done creating.*
+*Use Ctrl + C to end ```watch``` after the global secondary index has been created.*
 
 Wait until the new index is ACTIVE before proceeding:
 ```json
@@ -40,12 +41,15 @@ Wait until the new index is ACTIVE before proceeding:
     "ACTIVE"
 ]
 ```
-Now you can use the new GSI to query the table. You must to use the Partition-Key and you can optionally use the Sort-Key.
+Now you can use the new global secondary index to query the table. 
+You must to use the partition key, and you can use the sort key (but it is optional).
 
-For the Sort-Key you can use the **begins_with** expression to query starting with the left-most attribute of the composite key. Thus, you can query all employees within a city or within a specific department in the city.
+For the sort key, you can use the **begins_with** expression to query 
+starting with the left-most attribute of the composite key. 
+As a result, you can query all employees in a city or in a specific department in a city.
 
-The KeyConditionExpression will look like this:
+The ```KeyConditionExpression``` looks like the following.
 ```py
-Key('GSI_3_PK').eq("state#{}".format('TX')) & Key('GSI_3_SK').begins_with('Indianapolis')
+Key('GSI_3_PK').eq("state#{}".format('TX')) & Key('GSI_3_SK').begins_with('Austin')
 ```
-**Warning**: *Wait until the IndexStatus is ```ACTIVE``` on all indexes before continuing*
+**Caution**: *Wait until the ```IndexStatus``` is ```ACTIVE``` on all indexes before continuing.*

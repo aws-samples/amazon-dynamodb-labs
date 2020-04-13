@@ -1,13 +1,22 @@
 +++
-title = "Step 2 - Querying all the employees from a state"
+title = "Step 2 - Query all the employees from a state"
 date = 2019-12-02T12:16:25-08:00
 weight = 2
 +++
 
-We can use the new GSI to query the table. If we are using only the state the query will not use the sort key attribute. But if the query has a value for the second parameter, the code will use the attribute **GSI_3_SK** of the GSI, which holds the same value as the **city_dept** attribute, to query all the values that begin with the parameter value.
+You can use the new global secondary index to query the table. 
+If you use only the state, the query does not use the sort key attribute. 
+However, if the query has a value for the second parameter, 
+the code uses the **GSI_3_SK** attribute of the global secondary index, 
+which holds the same value as the **city_dept** attribute, 
+to query all the values that begin with the parameter value.
 
-**Figure - Using Composite key attributes to query by city and department**
-![Using Composite key attributes to query by city and department](/images/awsconsole7.png)
+The following screenshot shows using composite key attributes to query by city and department.
+![Using Composite key attributes to query by city and department](https://dynamodb-images.s3.amazonaws.com/img/awsconsole8.png)
+
+We can perform this same query in a Python script.  
+This snippet shows how a script can take two input parameters (shown as value1 and value2) 
+and craft a query against the GSI_3 global secondary index.
 
 ```py
 if value2 == "-":
@@ -20,7 +29,9 @@ response = table.query(
   KeyConditionExpression=ke
   )
 ```
-Run the following Python script:
+
+Run the following Python script to query global secondary index **GSI_3** 
+for all employees in the state of Texas.
 ```bash
 python query_city_dept.py employees TX
 ```
@@ -38,3 +49,4 @@ List of employees . State: TX
   Name: Odella Kringe. City: San Antonio. Dept: Support
 Total of employees: 197. Execution time: 0.238062143326 seconds
 ```
+
