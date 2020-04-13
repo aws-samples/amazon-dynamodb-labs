@@ -41,8 +41,7 @@ Wait until the new index is ACTIVE before proceeding:
     "ACTIVE"
 ]
 ```
-Now you can use the new global secondary index to query the table. 
-You must to use the partition key, and you can use the sort key (but it is optional).
+Now you can use the new global secondary index to query the table. You must to use the partition key, and you can use the sort key (but it is optional).
 
 For the sort key, you can use the **begins_with** expression to query 
 starting with the left-most attribute of the composite key. 

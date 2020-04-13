@@ -5,8 +5,7 @@ weight = 3
 +++
 
 
-You have a new global secondary index that you can use for querying employees by city. 
-Run the following Python command to list all employees by department in Dallas, Texas.
+You have a new global secondary index that you can use for querying employees by city. Run the following Python command to list all employees by department in Dallas, Texas.
 ```bash
 python query_city_dept.py employees TX --citydept Dallas
 ```
