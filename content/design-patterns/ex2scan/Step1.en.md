@@ -1,14 +1,15 @@
 +++
-title = "Step 1 - Execute a simple Scan"
+title = "Step 1 - Execute a sequential `Scan`"
 date = 2019-12-02T10:35:42-08:00
 weight = 1
 +++
 
-First, let's execute a simple (sequential) scan to calculate the total bytes sent for all records with **response code <> 200**. You can run a scan operation with a filter expression to filter out the uninteresting records. The application will then sum up the values of all the returned records where response code <> 200.
+First, execute a simple (sequential) Scan to calculate the total bytes sent for all records with **response code <> 200**. You can run a Scan with a filter expression to filter out unrelated records. The application worker will then sum the values of all the returned records where **response code <> 200**.
 
-The Python file **scan_logfile_simple.py** has the command to do the scan with filter and calculate the sum of bytes sent.
+The Python file, **scan_logfile_simple.py**, includes the command to run a `Scan` with a filter expression and then calculate the sum of bytes sent.
 
-Take a look at the code block used to scan the table:
+The following code block scans the table.
+
 ```py
   fe = "responsecode <> :f"
   eav = {":f": 200}
@@ -18,11 +19,12 @@ Take a look at the code block used to scan the table:
       Limit=pageSize,
       ProjectionExpression='bytessent')
 ```
-**Note:** *You can review the file on your own with ```vim``` with ```vim ~/workshop/scan_logfile_simple.py```. Type ```:q``` and hit enter to exit vim.*
+**Note:** *You can review the file on your own with ```vim ~/workshop/scan_logfile_simple.py```. Type ```:q``` and hit enter to exit vim.*
 
-Notice how there is a Limit parameter set in the scan command. A single Scan operation will read up to the maximum number of items set (if using the Limit parameter) or a maximum of 1 MB of data and then apply any filtering to the results using FilterExpression. If the total number of scanned items exceeds the maximum set by the limit parameter (or) the data set size limit of 1 MB, the scan stops and results are returned to the user as a LastEvaluatedKey value, which can then be used in a subsequent operation, so that you can pick up where you left off.
+Notice that there is a Limit parameter set in the Scan command. A single Scan operation will read up to the maximum number of items set (if using the Limit parameter) or a maximum of 1 MB of data, and then apply any filtering to the results by using FilterExpression. If the total number of scanned items exceeds the maximum set by the limit parameter or the data set size limit of 1 MB, the scan stops and results are returned to the user as a LastEvaluatedKey value. This value can be used in a subsequent operation so that you can pick up where you left off.
 
-See the code below. The LastEvaluatedKey value in the response is then passed to the subsequent scan method via the ExclusiveStartKey parameter.
+In the following code, the LastEvaluatedKey value in the response is passed to the Scan method via the ExclusiveStartKey parameter.
+
 ```py
   while 'LastEvaluatedKey' in response:
     response = table.scan(
@@ -34,17 +36,18 @@ See the code below. The LastEvaluatedKey value in the response is then passed to
     for i in response['Items']:
         totalbytessent += i['bytessent']
 ```
-When the last page is returned, LastEvaluatedKey is not part of the response, so you will know that the scan is complete.
+When the last page is returned, `LastEvaluatedKey` is not part of the response, so you know that the scan is complete.
 
-Now lets execute this code we just discussed:
-```bash
+Now, execute this code. 
+
 python scan_logfile_simple.py logfile_scan
-```
-Parameters: Tablename: **logfile_scan**
 
-Output:
-```txt
+**Parameters:** Tablename: ```logfile_scan```
+
+**Output**
+
 Scanning 1 million rows of table logfile_scan to get the total of bytes sent
 Total bytessent 6054250 in 24.5398740768 seconds
-```
-Note down the time it took for the scan to complete.
+
+Make a note of the time it took for the scan to complete.
+
