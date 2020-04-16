@@ -9,7 +9,7 @@ You have a new global secondary index that you can use for querying employees by
 ```bash
 python query_city_dept.py employees TX --citydept Dallas
 ```
-**Output:**
+The result should look like the following.
 ```txt
 List of employees . State: TX
     Name: Grayce Duligal. City: Dallas. Dept: Development
