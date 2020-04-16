@@ -1,21 +1,18 @@
 +++
-title = "Step 2 - Execute a parallel scan"
+title = "Step 2 - Execute a parallel `Scan`"
 date = 2019-12-02T10:35:42-08:00
 weight = 2
 +++
 
 
-To perform a parallel scan, each worker issues its own Scan request with the following parameters:
+To perform a parallel scan, each application worker issues its own `Scan` request with the following parameters:
 
-**Segment**: A segment to be scanned by a particular worker. Each worker should use a different value for Segment.
+`Segment`: The segment to be scanned by a specific application worker. Each worker should use a different value for `Segment`.
 
-**TotalSegments**: The total number of segments for the parallel scan. This value must be the same as the number of workers that your application will use.
+`TotalSegments`: The total number of segments for the parallel scan. This value must be the same as the number of workers that your application will use.
 
-Take a look at the code block from the **scan_logfile_parallel.py** for the parallel scan.
+Review the following code block, which is from the **scan_logfile_parallel.py**, for the parallel scan.
 
-We need to include the parameters:
-- **Segment**: For a parallel Scan request, Segment identifies an individual segment to be scanned by an application worker.
-- **TotalSegments**: For a parallel Scan request, TotalSegments represents the total number of segments into which the Scan operation will be divided. The value of TotalSegments corresponds to the number of application workers that will perform the parallel scan.
 
 ```py
   fe = "responsecode <> :f"
@@ -30,7 +27,8 @@ We need to include the parameters:
     )
 ```
 
-And after the first scan, we can continue scanning the table until LastEvaluatedKey equals null.
+After the first scan, you can continue scanning the table until `LastEvaluatedKey` equals null.
+
 ```py
   while 'LastEvaluatedKey' in response:
     response = table.scan(
@@ -44,15 +42,20 @@ And after the first scan, we can continue scanning the table until LastEvaluated
     for i in response['Items']:
         totalbytessent += i['bytessent']
 ```
-To run the code execute the following command:
+To run this code, execute the following AWS CLI command.
 ```bash
 python scan_logfile_parallel.py logfile_scan 2
 ```
-Parameters: 1) Table name: **logfile_scan** 2) Number of threads: **2** , this is number of threads to be executed in parallel, it will be used for number of segments as well.
+**Parameters:** 1) Table name: `logfile_scan`, 2) Number of threads: `2` (this is number of threads to be executed in parallel, which will be used for the number of segments as well).
 
-Output:
-```txt
-Scanning 1 million rows of table logfile_scan to get the total of bytes sent
+**Output**
+
+Scanning 1 million rows of the `logfile_scan` table to get the total of bytes sent
+
 Total bytessent 6054250 in 13.4376678467 seconds
-```
-**Note**: *The execution time using parallel scan will be shorter than the execution time for a regular scan. The difference will be even larger for larger tables*.
+
+Note: The execution time using a parallel scan will be shorter than the execution time for a sequential scan. The difference in execution time will be even more exaggerated for larger tables.
+
+**Summary**
+In this exercise, we have demonstrated use of two methods of DynamoDB table scanning: sequential and parallel, to read items from a table or secondary index. Use scans sparingly because they can consume large amounts of system resources. Sometimes a `Scan` is appropriate (such as scanning a small table) or unavoidable (such as performing a bulk export of data). However, as a general rule, you should design your applications to avoid performing scans.
+
