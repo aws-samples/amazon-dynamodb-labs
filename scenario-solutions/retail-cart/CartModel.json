@@ -40,7 +40,7 @@
               "AttributeType": "S"
             },
             "SortKey": {
-              "AttributeName": "Date#Status",
+              "AttributeName": "Status#Date",
               "AttributeType": "S"
             }
           },
