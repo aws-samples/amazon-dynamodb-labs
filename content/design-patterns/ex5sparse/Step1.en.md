@@ -5,7 +5,7 @@ weight = 1
 +++
 
 
-Add a new global secondary index that uses the is_manager attribute as the global secondary index partition key, which is stored under the attribute named GSI_2_PK. Employee job titles are stored under GSI_2_SK.
+Add a new global secondary index that uses the `is_manager` attribute as the global secondary index partition key, which is stored under the attribute named `GSI_2_PK`. Employee job titles are stored under `GSI_2_SK`.
 
 Run the following AWS CLI command.
 
@@ -16,29 +16,30 @@ aws dynamodb update-table --table-name employees \
 ```
 Wait until the global secondary index has been created. This takes approximately 5 minutes.
 
-Check output of the following command. If "IndexStatus": is "CREATING" you will have to wait until "IndexStatus" is "ACTIVE".
-```code
+Check output of the following command. If "`IndexStatus`": is "`CREATING`" you will have to wait until "`IndexStatus`" is "`ACTIVE`" before continuing to the next step.
+
+```bash
 aws dynamodb describe-table --table-name employees --query "Table.GlobalSecondaryIndexes[].IndexStatus"
 ```
-Output:
+The output will initially look like the following.
 ```json
 [
     "CREATING",
     "ACTIVE"
 ]
 ```
-You also can script the command to run every 2 seconds using watch.
+You also can script the command to run every 2 seconds using `watch`.
 ```bash
 # Watch checks every 2 seconds by default
 watch -n 2 "aws dynamodb describe-table --table-name employees --query \"Table.GlobalSecondaryIndexes[].IndexStatus\""
 ```
-*Press Ctrl + C to end ```watch``` after the global secondary index has been created.*
+Press **Ctrl + C** to end `watch` after the global secondary index has been created.
 
-Wait until the new index is ```ACTIVE``` before proceeding.
+Wait until the new index is `ACTIVE` before proceeding.
 ```json
 [
     "ACTIVE",
     "ACTIVE"
 ]
 ```
-**Caution:** *Do not continue until the IndexStatus is ACTIVE on both indexes. Querying the index before it is ACTIVE will result in a failure.*
+**Caution:** Do not continue until the `IndexStatus` is `ACTIVE` on both indexes. Querying the index before it is `ACTIVE` will result in a failure.
