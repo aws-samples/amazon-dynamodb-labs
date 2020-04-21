@@ -4,7 +4,7 @@ chapter = false
 weight = 1
 +++
 
-## How to tackle the challenge...
+## How to tackle this challenge
 
 What are the access patterns?
 
@@ -17,13 +17,13 @@ The access patterns in the scenario are outlined as:
 Identify possible partitions keys to fulfill the primary access pattern:
 
 - What item attribute (*AccountID, ScheduledDate, Status, DataBlob*) scales with access patterns?
-- What is a natural organization for the related payment items? (so as to return collected items relative to the access patterns above)
+- What is a natural organization for the related payment items (so as to return collected items relative to the access patterns above)?
 - Consider the dimension of access: both reads and writes.
 
-How to organize items related to the primary access pattern:
+When determining how to organize items related to the primary access pattern:
 
-- What organization do items need to be written with to return items by user for a date range? (sort by ?)
-- What is hierarchy of the relationships and when does it apply? (most general to more specific)
+- What organization do items need to be written with to return items by user for a date range (sort by)?
+- What is the hierarchy of the relationships and when does it apply (most general to more specific)?
 
 Fulfilling the third access patterns:
 
@@ -31,6 +31,8 @@ Fulfilling the third access patterns:
 
 Given the above, see below for some helpful references:
 
-**[Using GSIs to Fulfill Secondary Access Patterns](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.html)**
+
+**[Best Practices for Using Sort Keys to Organize Data](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-sort-keys.html)**
 **[Working with Queries](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html)**
-**[Write Shard a GSI for Selective Queries](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-indexes-gsi-sharding.html)**
+**[Using Global Secondary Indexes in DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.html)**
+**[Write Shard a GSI for Selective Queries in DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-indexes-gsi-sharding.html)**
