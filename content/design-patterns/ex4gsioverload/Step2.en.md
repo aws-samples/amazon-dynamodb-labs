@@ -5,17 +5,17 @@ weight = 2
 +++
 
 
-Now, execute a script that loads the data from the file named './employees.csv' into the table named 'employees'.
+Now, execute a script that loads the data from the file named `./employees.csv` into the table named `employees`.
 
 ```bash
 python load_employees.py employees ./data/employees.csv
 ```
 
-The sample 'employees.csv' record looks like the following:
+The sample `employees.csv` record looks like the following:
 ```csv
 1000,Nanine Denacamp,Programmer Analyst,Development,San Francisco,CA,1981-09-30,2014-06-01,Senior Database Administrator,2014-01-25
 ```
-When you ingest this data into the table, you concatenate some of the attributes, such as 'city_dept' (example: San Francisco:Development) because you have an access pattern in the query that takes advantage of this concatenated attribute. The 'colA' attribute is also a derived attribute. The concatenation is handled in the Python script, which assembles the record and then executes a 'put_item()' to write the record to the table.
+When you ingest this data into the table, you concatenate some of the attributes, such as `city_dept` (example: San Francisco:Development) because you have an access pattern in the query that takes advantage of this concatenated attribute. The `colA` attribute is also a derived attribute. The concatenation is handled in the Python script, which assembles the record and then executes a `put_item()` to write the record to the table.
 
 Output:
 ```txt
@@ -29,13 +29,13 @@ RowCount: 1000, Total seconds: 36.70457601547241
 ```
 The output confirms that 1000 items have been inserted to the table. 
 
-Review the 'employees' table in the DynamoDB console (as shown in the following screenshot) by choosing the "employees" table and then choosing the "Items" tab.
+Review the `employees` table in the DynamoDB console (as shown in the following screenshot) by choosing the **employees** table and then choosing the **Items** tab.
 
 TODO : Add a pointer border to the image 
 ![Employees table](/images/awsconsole4a.png)
 
 
-On the same page in the right pane, choose "[Index]" from the dropdown menu and then click "Start search".
+On the same page in the right pane, choose **[Index]** from the dropdown menu and then click **Start search**.
 
 TODO : Add a pointer border to the image
 ![Searching the GSI](/images/awsconsole5.png)
