@@ -1,11 +1,11 @@
 +++
-title = "Step 1 - Create the Employees table for GSI overloading"
+title = "Step 1 - Create the employees table for global secondary index key overloading"
 date = 2019-12-02T10:50:03-08:00
 weight = 1
 +++
 
 
-Run the AWS CLI command to create the table:
+Run the following AWS CLI command to create the `employees` table.
 ```bash
 aws dynamodb create-table --table-name employees \
 --attribute-definitions AttributeName=PK,AttributeType=S AttributeName=SK,AttributeType=S \
@@ -18,25 +18,25 @@ KeySchema=[{AttributeName=GSI_1_PK,KeyType=HASH},{AttributeName=GSI_1_SK,KeyType
 Projection={ProjectionType=ALL},\
 ProvisionedThroughput={ReadCapacityUnits=100,WriteCapacityUnits=100}"
 ```
-Run the command to wait until the table becomes Active:
+Run the following command to wait until the table becomes active.
 ```bash
 aws dynamodb wait table-exists --table-name employees
 ```
-Lets take a closer look at this create-table command. You are creating a table named "employees". The Partition key on the table is "PK" and it will hold the **employee ID**. The Sort key is "SK" which will contain a derived value we will choose in the python script. We will revisit this shortly. We will also create a GSI on this table and we will name this index as "GSI_1" and it will be an overloaded GSI. The partition key on the GSI is "GSI_1_PK", and will hold the same value as the sort key "SK" on the base table. The GSI_1 sort key value is **name**, and its attribute name will be "GSI_1_SK".
+Let's take a closer look at the `create-table` command. You are creating a table named `employees`. The partition key on the table is `PK` and it holds the employee ID. The sort key is `SK`, which contains a derived value that you choose in the Python script. (We'll revisit this shortly.) You will create a global secondary index on this table and name it `GSI_1`; This will be an overloaded global secondary index. The partition key on the global secondary index is `GSI_1_PK`, and holds the same value as the sort key `SK` on the base table. The `GSI_1` sort key value is `name`, and its attribute name is `GSI_1_SK`.
 
-#### Table: employees
+#### Table: `employees`
 
 - Key schema: HASH, RANGE
-- Table RCU = 100
-- Table WCU = 100
-- GSI(s):
-  - GSI_1 (100 RCU, 100 WCU) - *Allows for querying by host IP address.*
+- Table read capacity units (RCUs) = 100
+- Table write capacity units (WCUs)  = 100
+- Global secondary index:
+  - GSI_1 (100 RCUs, 100 WCUs) - Allows for querying by host IP address.
 
 
 
-| Attribute name (Type)        | Special attribute?           | Attribute use case          | Sample attribute value  |
+| Attribute Name (Type)        | Special Attribute?           | Attribute Use Case          | Sample Attribute Value  |
 | ------------- |:-------------:|:-------------:| -----:|
-| PK (STRING)      | Hash key | Holds the employee id  | *e#129*  |
-| SK (STRING)      | Sort key | Derived value  | *master*, *state#MI*  |
-| GSI_1_PK (STRING)      | GSI 1 hash key | Derived value  | *master*, *state#MI* |
-| GSI_1_SK (STRING)      | GSI 1 sort key | Employee name  | *Christine Milsted*  |
+| PK (STRING)      | Partition Key | Employee ID  | `e#129`  |
+| SK (STRING)      | Sort key | Derived value  | `master`, `state#MI`  |
+| GSI_1_PK (STRING)      | GSI_1 partition key | Derived value  | `master`, `state#MI` |
+| GSI_1_SK (STRING)      | GSI_1 sort key | Employee name  | `Christine Milsted`  |
