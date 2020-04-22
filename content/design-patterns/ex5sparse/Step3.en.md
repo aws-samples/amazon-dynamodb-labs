@@ -5,7 +5,7 @@ weight = 3
 +++
 
 
-Now, scan the new global secondary index, `GSI_2` on the `employees` table.  In using our new, sparse index, we expect that we'll consume read capacity for fewer items.  We'll use the sparse index as a very effective filter to improve efficiency for this access pattern.
+Now, scan the new global secondary index `GSI_2` on the `employees` table.  In using our new sparse index we expect that we'll consume read capacity for fewer items.  We'll use the sparse index as a very effective filter to improve efficiency for this access pattern.
 
 ```py
 response = table.scan(
@@ -26,5 +26,5 @@ The following output includes the scanned count and the execution time.
 Number of managers: 84. # of records scanned: 84. Execution time: 0.287754058838 seconds
 ```
 
-Observe the scanned count and execution time using the sparse index.  How does this compare to the result achieved from the Scan of the base table in Step 2 ?
+Observe the scanned count and execution time using the sparse index.  How does this compare to the result achieved from the Scan of the base table in Step 2 ? The sparse index has less data and is more efficient.
 
