@@ -18,7 +18,7 @@ KeySchema=[{AttributeName=GSI_1_PK,KeyType=HASH},{AttributeName=GSI_1_SK,KeyType
 Projection={ProjectionType=ALL},\
 ProvisionedThroughput={ReadCapacityUnits=100,WriteCapacityUnits=100}"
 ```
-Run the following command to wait until the table becomes active:
+Run the following command to wait until the table becomes active.
 ```bash
 aws dynamodb wait table-exists --table-name employees
 ```
