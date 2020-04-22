@@ -23,15 +23,12 @@ python scan_for_managers_gsi.py employees 100
 ```
 **Parameters:**
 1. Table name = `employees`
-2. Page size = `100` (this is size of the pagination for the scan).
+1. Page size = `100` (this is size of the pagination for the scan).
 
 The following output includes the scanned count and the execution time.
 ```txt
 Number of managers: 84. # of records scanned: 84. Execution time: 0.287754058838 seconds
 ```
-<<<<<<< HEAD
+
 Observe the scanned count and execution time using the sparse index.  How does this compare to the result achieved from the Scan of the base table (primary index) in Step 2 ?
-=======
-Observe the scanned count and execution time using the sparse index.
-TODO Observe how? We need to be explicit in explaining the difference instead of saying “observe this” and not giving any indication of what they’re looking for. 
->>>>>>> cf05ae3a723921891ee53bcef8c18313b7bf85c3
+
