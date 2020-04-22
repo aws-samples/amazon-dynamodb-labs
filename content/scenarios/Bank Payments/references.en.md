@@ -6,7 +6,7 @@ weight = 1
 
 ## How to tackle this challenge
 
-What are the access patterns?
+**What are the access patterns?**
 
 The access patterns in the scenario are outlined as:
 
@@ -16,7 +16,7 @@ The access patterns in the scenario are outlined as:
 
 Identify possible partitions keys to fulfill the primary access pattern:
 
-- What item attribute (*AccountID, ScheduledDate, Status, DataBlob*) scales with access patterns?
+- What item attribute (`AccountID`, `ScheduledDate`, `Status`, `DataBlob`) scales with access patterns?
 - What is a natural organization for the related payment items (so as to return collected items relative to the access patterns above)?
 - Consider the dimension of access: both reads and writes.
 
@@ -29,10 +29,13 @@ Fulfilling the third access patterns:
 
 - The third access pattern is OLTP and can be fulfilled directly on DynamoDB
 
-Given the above, see below for some helpful references:
 
 
-**[Best Practices for Using Sort Keys to Organize Data](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-sort-keys.html)**
-**[Working with Queries](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html)**
-**[Using Global Secondary Indexes in DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.html)**
-**[Write Shard a GSI for Selective Queries in DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-indexes-gsi-sharding.html)**
+#### Helpful references
+
+Given the above, see below for some helpful references.
+
+- **[Best Practices for Using Sort Keys to Organize Data](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-sort-keys.html)**
+- **[Working with Queries](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html)**
+- **[Using Global Secondary Indexes in DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.html)**
+- **[Write Shard a GSI for Selective Queries in DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-indexes-gsi-sharding.html)**
