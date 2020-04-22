@@ -42,4 +42,4 @@ Wait until the new index is `ACTIVE` before proceeding.
     "ACTIVE"
 ]
 ```
-**Caution:** Do not continue until the `IndexStatus` is `ACTIVE` on both indexes. Querying the index before it is `ACTIVE` will result in a failure.
+**Caution:** Do not continue until the `IndexStatus` is `ACTIVE` on both indexes. Querying the index before it is `ACTIVE` will result in a failed query.
