@@ -1,21 +1,21 @@
 +++
-title = "Step 5 - Map the DynamoDB Streams with the Lambda function"
+title = "Step 5 - Map the source stream to the Lambda function "
 date = 2019-12-02T12:34:07-08:00
 weight = 5
 +++
 
 
-So far, you have the source table with DynamoDB Streams enabled and the Lambda function, now you need to map the source stream with the Lambda function.
+So far, you have the source table with DynamoDB Streams enabled and the Lambda function. Now you need to map the source stream to the Lambda function.
+You need to copy the ARN from the previous step and paste it into the following command before running the command.
 
-You need to copy the ARN from the previous step to the command below and replace YOUR_STREAM_ARN_HERE and run this:
 ```bash
 aws lambda create-event-source-mapping \
 --function-name ddbreplica_lambda --enabled --batch-size 100 --starting-position TRIM_HORIZON \
 --event-source-arn YOUR_STREAM_ARN_HERE
 ```
-**Note**: *You must copy the full stream label ARN, including the timestamp on the end*
+**Note**: You must copy the full stream label ARN, including the timestamp on the end
 
-The expected result is:
+The following is the expected result.
 ```json
 {
     "MaximumBatchingWindowInSeconds": 0,
