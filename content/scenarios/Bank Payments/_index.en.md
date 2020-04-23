@@ -13,7 +13,7 @@ This is primarily an OLTP workload with daily batch processes. Items in the tabl
 #### Workload dimensions
 
 - Accounts can have multiple payments scheduled for any day in the future.
-- Payments have the following data fields: AccountID, ScheduledDate, Status (`SCHEDULED`, `PENDING` or `PROCESSED`), DataBlob (total size is < 8 KB)
+- Payments have the following data fields: *AccountID*, *ScheduledDate*, *Status* (`SCHEDULED`, `PENDING` or `PROCESSED`), *DataBlob* (total size is < 8 KB)
 - One million automated scheduled payments are added every day at 1:00 AM *for that day*, which need to complete in 30 minutes.
 - One million payments are added every day with the `SCHEDULED` state, mostly in the hours of 6 AM to 6 PM.
 - During the day, a batch job runs regularly to query for today's `SCHEDULED` payments. This service sends the `SCHEDULED` items to the transaction service. Upon sending the items to the transaction service, the payment status is changed to `PENDING`.
