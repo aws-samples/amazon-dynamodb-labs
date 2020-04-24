@@ -2,7 +2,6 @@
 title = "Step 6 - Populate the logfile table and verify replication to logfile_replica"
 date = 2019-12-02T12:34:07-08:00
 weight = 6
-#TODO make the issues link and all that a variable.
 +++
 
 
@@ -56,7 +55,6 @@ If you ran the lab on your own AWS account, you should delete all the tables mad
 
 #### Reporting issues
 
-If you encounter an issue running the lab that needs to be addressed, we first recommend you fork the code on GitHub and make a pull request with your change. Please review [our contributing guide on GitHub.com](https://github.com/aws-samples/amazon-dynamodb-labs/blob/master/CONTRIBUTING.md).
+Firstly, if you encounter an issue running the lab that needs to be addressed we recommend you fork the code on GitHub and make a pull request with your change. Please review [our contributing guide on GitHub.com]({{% siteparam "github_contributing_guide" %}}).
 
-Secondly, if you have a feature request or you are unable to fork the package to make a change yourself please submit [an issue on our GitHub page](https://github.com/aws-samples/amazon-dynamodb-labs/issues).
-
+Secondly, if you have a feature request or you are unable to fork the package to make a change yourself please submit [an issue on our GitHub page]({{% siteparam "github_issues_link" %}}).
