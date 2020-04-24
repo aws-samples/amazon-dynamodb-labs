@@ -33,7 +33,7 @@ watch -n 2 "aws dynamodb describe-table --table-name employees --query \"Table.G
 ```
 *Use Ctrl + C to end `watch` after the global secondary index has been created.*
 
-Wait until the new index is ACTIVE before proceeding:
+Wait until the new index is ACTIVE before proceeding.
 ```json
 [
     "ACTIVE",
