@@ -1,5 +1,4 @@
 +++
-#TODO swap this for variable
 title = "Advanced Design Patterns for Amazon DynamoDB"
 chapter = true
 description = "Hands-on exercise using Python and DynamoDB best practices."
