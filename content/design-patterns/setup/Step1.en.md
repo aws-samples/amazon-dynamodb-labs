@@ -25,7 +25,7 @@ weight = 10
    cd ~/workshop
    ```
 
-The output of your commands in the SSM Session Manger session should look like the following:
+The output of your commands in the SSM Session Manager session should look like the following:
 ```bash
 sh-4.2$ sudo su - ec2-user
 [ec2-user@ip-172-31-24-0 ~]$ #Verify login_shell is 'on'
