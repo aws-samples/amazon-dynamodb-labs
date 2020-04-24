@@ -34,5 +34,11 @@ Visit http://localhost:1313/ to see the site.
 #### Making Edits:
 As you save edits to a page, the site will live-reload to show your changes.
 
+#### Auto deploy:
+
+Within minutes of a commit to the master branch, a build and deploy using the default hugo grav learn theme will kick off. You can review your change at the following address.
+
+https://master.amazon-dynamodb-labs.com
+
 ## License
 This project is licensed under the Apache-2.0 License.
