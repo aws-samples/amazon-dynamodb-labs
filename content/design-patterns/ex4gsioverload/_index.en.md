@@ -4,6 +4,7 @@ date = 2019-12-02T10:17:33-08:00
 weight = 5
 chapter = true
 pre = "<b>Exercise 4: </b>"
+description = "Explore how to maintain the ability to query on many attributes when you have a multi-entity table."
 +++
 
 

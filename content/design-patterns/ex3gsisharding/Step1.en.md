@@ -5,11 +5,11 @@ weight = 1
 +++
 
 
-The GSI for this exercise was created during the Setup phase for this workshop. You can see the description of the GSI via executing the following command:
+The global secondary index for this exercise was created during the setup stage of this workshop. You can see the description of the global secondary index by executing the following AWS CLI command.
 ```bash
 aws dynamodb describe-table --table-name logfile_scan --query "Table.GlobalSecondaryIndexes"
 ```
-You will see the description of the Global Secondary Indexes, which will look like the below:
+The description of the global secondary indexes should look like the following.
 ```json
 {
   "GlobalSecondaryIndexes": [
@@ -42,4 +42,4 @@ You will see the description of the Global Secondary Indexes, which will look li
 }
 ```
 
-The DynamoDB *ItemCount* is zero. DynamoDB calculates the total item count seen in this API many times throughout the day, and it may be possible that you see a different number than what the output shows. This is normal.
+The DynamoDB `ItemCount` in this example is zero. DynamoDB calculates the total item count seen in this API many times throughout the day, and it may be possible that you see a different number than what the preceding output shows. This is normal.

@@ -5,14 +5,14 @@ weight = 3
 +++
 
 
-The table is created. Let's load some sample data into the table by running the following Python script:
+Now that you have created the table, you can load some sample data into the table by running the following Python script.
 ```bash
 cd /home/ec2-user/workshop
 python load_logfile.py logfile ./data/logfile_small1.csv
 ```
-Parameters in the above command: 1) Table Name = **logfile** 2) File Name = **logfile_small1.csv**
+The parameters in the preceding command: 1) Table name = `logfile` 2) File name = `logfile_small1.csv`
 
-The output will look like this:
+The output will look like the following.
 
 ```txt
 row: 100 in 0.780548095703125
@@ -24,4 +24,4 @@ RowCount: 500, Total seconds: 17.614499807357788
 ```
 
 
-**Curious behavior**: *You might be wondering why one of the runs took more than 5 seconds. Check out the next step to see this behavior explained.*
+**Curious behavior:** You might wonder why one of the runs took more than five seconds. See the next step for the explanation.
