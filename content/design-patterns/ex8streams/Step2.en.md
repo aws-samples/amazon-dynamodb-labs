@@ -51,7 +51,7 @@ Review the following policy which is attached to the IAM role `DDBReplicationRol
 
 These are some of the permissions granted to the Lambda function in the policy:
 
-1.  The AWS Lambda service should have the ability to call DynamoDB Streams and retrieve records from the stream.
+-  The AWS Lambda service should have the ability to call DynamoDB Streams and retrieve records from the stream.
 ```json
 {
     "Action": [
@@ -66,8 +66,8 @@ These are some of the permissions granted to the Lambda function in the policy:
     "Effect": "Allow"
 }
 ```
-  
-1. The Lambda function can put and delete items only in the `logfile_replica` table.
+
+- The Lambda function can put and delete items only in the `logfile_replica` table.
 ```json
 {
     "Action": [
@@ -80,7 +80,7 @@ These are some of the permissions granted to the Lambda function in the policy:
     "Effect": "Allow"
 }
 ```
-1. Log events are published to Amazon CloudWatch Logs (but in this lab they are not available).
+- Log events are published to Amazon CloudWatch Logs (but in this lab they are not available).
 ```json
 {
     "Action": [
