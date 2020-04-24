@@ -4,6 +4,7 @@ date = 2019-12-02T10:18:15-08:00
 weight = 9
 chapter = true
 pre = "<b>Exercise 8: </b>"
+description = "Learn how to process DynamoDB items with AWS Lambda for endless triggers."
 +++
 
 

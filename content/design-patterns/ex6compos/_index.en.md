@@ -4,6 +4,7 @@ date = 2019-12-02T10:17:57-08:00
 weight = 7
 chapter = true
 pre = "<b>Exercise 6: </b>"
+description = "Learn how to combine two attributes into one to take advantage of the DynamoDB sort key."
 +++
 
 

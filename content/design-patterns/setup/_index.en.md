@@ -4,7 +4,7 @@ date = 2019-12-02T07:05:12-08:00
 weight = 1
 chapter = true
 pre = "<b>Start here: </b>"
-description = "Connect to AWS lab resource on EC2 and create table for later use."
+description = "Setup the lab environment and connect to the lab instance on Amazon EC2."
 +++
 
 ## GETTING STARTED

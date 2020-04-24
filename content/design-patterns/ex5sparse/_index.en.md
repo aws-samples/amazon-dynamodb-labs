@@ -4,6 +4,7 @@ date = 2019-12-02T10:17:48-08:00
 weight = 6
 chapter = true
 pre = "<b>Exercise 5: </b>"
+description = "Learn how to cut down the resources required for your searches on uncommon attributes."
 +++
 
 

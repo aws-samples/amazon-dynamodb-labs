@@ -4,6 +4,7 @@ date = 2020-04-07T10:18:07-08:00
 weight = 8
 chapter = true
 pre = "<b>Exercise 7: </b>"
+description = "Learn how to store multiple entity types in one DynamoDB table."
 +++
 
 When different entities of an application have a [many-to-many relationship](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-adjacency-graphs.html) between them, it is easier to model the relationship as an adjacency list. In this model, all top-level entities (synonymous with nodes in the graph model) are represented as the partition key. Any relationship with other entities (edges in a graph) are represented as an item within the partition by setting the value of the sort key to the target entity ID (target node).
