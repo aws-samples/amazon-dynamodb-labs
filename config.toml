@@ -47,6 +47,11 @@ name = "<i class='fab fa-github'></i>&nbsp;&nbsp;Contributing (GitHub)"
 url = "https://github.com/aws-samples/amazon-dynamodb-labs/blob/master/CONTRIBUTING.md"
 weight = 2
 
+[[menu.shortcuts]]
+name = "<i class='fas fa-users'></i>&nbsp;Authors"
+url = "/authors.html"
+weight = 3
+
 
 
 [Languages]
