@@ -2,16 +2,16 @@
 title = "Step 6 - Populate the logfile table and verify replication to logfile_replica"
 date = 2019-12-02T12:34:07-08:00
 weight = 6
-#TODO add link to issues at the end on GH
+#TODO make the issues link and all that a variable.
 +++
 
 
-Run the following Python code to load more items into the `logfile` table.
+Run the following Python code to load more items into the `logfile` table. The rows will be copied to the DynamoDB stream, procecesed by the AWS Lambda function, and then writen into the `logfile_replica` table at the end.
 
 ```bash
 python load_logfile.py logfile ./data/logfile_stream.csv
 ```
-Output:
+The output will look like the following.
 ```txt
 RowCount: 2000, Total seconds: 15.808809518814087
 ```
@@ -53,4 +53,10 @@ NEXTTOKEN       eyJFeGNsdXNpdmVTdGFydEtleSI6IG51bGwsICJib3RvX3RydW5jYXRlX2Ftb3Vu
 ## Congratulations, you have successfully completed all the exercises in the workshop!
 
 If you ran the lab on your own AWS account, you should delete all the tables made during these exercises. If you are at an AWS event using the AWS Workshop platform (the Event Engine), you do not need to delete your tables.
+
+#### Reporting issues
+
+If you encounter an issue running the lab that needs to be addressed, we first recommend you fork the code on GitHub and make a pull request with your change. Please review [our contributing guide on GitHub.com](https://github.com/aws-samples/amazon-dynamodb-labs/blob/master/CONTRIBUTING.md).
+
+Secondly, if you have a feature request or you are unable to fork the package to make a change yourself please submit [an issue on our GitHub page](https://github.com/aws-samples/amazon-dynamodb-labs/issues).
 
