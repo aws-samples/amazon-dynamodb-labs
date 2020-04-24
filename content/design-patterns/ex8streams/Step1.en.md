@@ -4,8 +4,10 @@ date = 2019-12-02T12:34:06-08:00
 weight = 1
 +++
 
-TODO : "You can reuse the Python code python" should we mention the python file name  and we used that script to load data not to create the table. 
-You can reuse the Python code python to create a new table named `logfile_replica` for the replication. Run the following command:
+![DynamoDB stream with Lambda](/images/image6.jpg)
+
+Let's create a table named `logfile_replica` to hold the replicated rows. This `create-table` command is based on the command to create the `logfile` table. As a result, it creates a table that can hold the same items as its upstream table.
+
 ```bash
 aws dynamodb create-table --table-name logfile_replica \
 --attribute-definitions AttributeName=PK,AttributeType=S AttributeName=GSI_1_PK,AttributeType=S \
