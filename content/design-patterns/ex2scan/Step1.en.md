@@ -50,7 +50,7 @@ The output will look like the following.
 
 ```txt
 Scanning 1 million rows of table logfile_scan to get the total of bytes sent
-Total bytessent 6054250 in 24.5398740768 seconds
+Total bytessent 6054250 in 16.325594425201416 seconds
 ```
 
 Make a note of the time it took for the scan to complete. With this exercise's dataset, a parallel scan will complete faster than the sequential scan.
