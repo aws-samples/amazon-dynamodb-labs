@@ -64,7 +64,7 @@ Open the AWS console, or switch to your browser tab with the AWS console, to vie
 
 The following image shows the write capacity metric for the `logfile_gsi_low` table. Note that the consumed writes (the blue line) were lower than the provisioned writes (red line) for the table during the test. This tells us the base table had sufficient write capacity for the surge of requests.
 
-**Note:** It may take a few minutes for the Provisioned Capacity (red line) to show up in the graphs. The provisioned capacity metrics are synthetic and there can be delays of five to ten minutes until they show a change.
+**Note:** It may take a few minutes for the provisioned capacity (red line) to show up in the graphs. The provisioned capacity metrics are synthetic and there can be delays of five to ten minutes until they show a change.
 
 ![Write capacity metric for the table](/images/image2.jpg)
 
