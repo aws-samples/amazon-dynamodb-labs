@@ -6,7 +6,10 @@ weight = 50
 
 
 
-You will be working with different data contents during this lab: (1)Server Logs data; (2)Employees data; and (3) Invoices and Bills data
+You will be working with different data contents during this lab:
+1. Server Logs data
+2. Employees data
+3. Invoices and Bills data
 
 The Server Logs file has the following structure:
 
