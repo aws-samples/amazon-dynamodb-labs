@@ -12,7 +12,6 @@ def query_gsi(tableName,attribute,value,):
     if attribute == 'name':
         ke = Key('GSI_1_PK').eq('master') & Key('GSI_1_SK').eq(value)
     else:
-        ke = "GSI_1_PK = :f"
         ke = Key('GSI_1_PK').eq(attribute + "#" + value)
 
     response = table.query(
