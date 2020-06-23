@@ -38,5 +38,5 @@ On the same page in the right pane, choose **[Index]** from the dropdown menu an
 
 ![Searching the GSI](/images/awsconsole5.png)
 
-Now you can see result of "Scan" opration on overloaded global secondary index. There are many different entity types in the result set: a master, a previous title, and a current title.
+Now you can see result of "Scan" operation on an overloaded global secondary index. There are many different entity types in the result set: a master, a previous title, and a current title.
 ![Global Secondary Index](/images/awsconsole6.png)
