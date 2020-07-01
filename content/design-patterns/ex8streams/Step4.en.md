@@ -6,7 +6,7 @@ weight = 4
 
 Now that we have an AWS Lambda function created to process the DynamoDB Streams records, we need to enable the DynamoDB Stream on the `logfile` table. In the following step we will connect the stream with the function.
 
-We will enable the stream on the `logfile` table. When a stream is enabled you can choose whether DynamoDB copies the new item, or the old item, or both old and new items, or just the partition and sort keys of an item that has been created, updated, or deleted. For more information on the different options you can review the documentation on [`StreamSpecification`](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_StreamSpecification.html), which lists the options as follows: *NEW_IMAGE*, *OLD_IMAGE*, *NEW_AND_OLD_IMAGES*, or *KEYS_ONLY*.
+We will enable the stream on the `logfile` table. When a stream is enabled you can choose whether DynamoDB copies the new item, or the old item, or both old and new items, or just the partition and sort keys of an item that has been created, updated, or deleted. For more information on the different options [you can review the documentation on `StreamSpecification`](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_StreamSpecification.html), which lists the options as follows: *NEW_IMAGE*, *OLD_IMAGE*, *NEW_AND_OLD_IMAGES*, or *KEYS_ONLY*.
 
 Enable DynamoDB Streams for the `logfile` table with the *NEW_IMAGE*, which includes "The entire item, as it appears after it was modified, is written to the stream." according to the documentation linked above.
 ```bash
