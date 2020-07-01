@@ -15,7 +15,7 @@
       },
       "NonKeyAttributes": [
         {
-          "AttributeName": "Item_SKU",
+          "AttributeName": "ItemSKU",
           "AttributeType": "S"
         },
         {
@@ -36,7 +36,7 @@
           "IndexName": "GSI-SKU",
           "KeyAttributes": {
             "PartitionKey": {
-              "AttributeName": "Item_SKU",
+              "AttributeName": "ItemSKU",
               "AttributeType": "S"
             },
             "SortKey": {
@@ -57,7 +57,7 @@
           "Status#Date": {
             "S": "Shipped#2019-11-26T22:46:26"
           },
-          "Item_SKU": {
+          "ItemSKU": {
             "S": "d9bl3"
           },
           "Price": {
@@ -77,7 +77,7 @@
           "Status#Date": {
             "S": "Active#2019-10-08T21:11:42"
           },
-          "Item_SKU": {
+          "ItemSKU": {
             "S": "72f49"
           },
           "Price": {
@@ -97,7 +97,7 @@
           "Status#Date": {
             "S": "Active#2019-10-03T12:33:16"
           },
-          "Item_SKU": {
+          "ItemSKU": {
             "S": "ef9ca"
           },
           "Price": {
@@ -117,7 +117,7 @@
           "Status#Date": {
             "S": "Saved#2019-10-07T08:24:22"
           },
-          "Item_SKU": {
+          "ItemSKU": {
             "S": "72f49"
           },
           "Price": {
@@ -137,7 +137,7 @@
           "Status#Date": {
             "S": "Active#2019-10-05T10:07:17"
           },
-          "Item_SKU": {
+          "ItemSKU": {
             "S": "b932s"
           },
           "Price": {
