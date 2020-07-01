@@ -16,7 +16,7 @@ description = "Our editors and hall of fame."
 
 The following individuals put in hours of their time to revamp the guide to make it more instructional and less procedural in Spring 2020.
 
-1. Craig Liebendorfer - [@DynamoDB](https://twitter.com/DynamoDB) - Master technical editor who provided edits to the whole team to incorporate
+1. Craig Liebendorfer - [@DynamoDB](https://twitter.com/DynamoDB) - Primary technical editor who provided edits to the whole team to incorporate
 1. Prahlad Rao - ([prahladmr](https://github.com/prahladmr))
 1. Navneet Deshmukh - ([NavneetDeshmukh](https://github.com/NavneetDeshmukh)) - he edited two exercises!
 1. Pete Naylor - ([driftdiver](https://github.com/driftdiver))
