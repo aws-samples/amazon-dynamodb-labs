@@ -12,10 +12,8 @@ The combination of DynamoDB Streams ([documentation explaining the service](http
 
 DynamoDB Streams captures a time-ordered sequence of item-level modifications in any DynamoDB table and stores this information in a log for up to 24 hours. Applications can access this log and view the data items as they appeared before and after they were modified, in near-real time. DynamoDB Streams provides for the following use cases:
 
-- A global multi-player game has a multi-master topology, storing data in multiple AWS Regions. Each master stays in sync by consuming and replaying the changes that occur in the remote Regions.
- - In fact, DynamoDB Global Tables relies on DynamoDB Streams for global replication.
-- A new customer adds data to a DynamoDB table. This event invokes an AWS Lambda function to copy the data to a separate DynamoDB table for long term retention
- - This is very similar to this exercise, where we copy data from one DynamoDB table to another using DynamoDB Streams
+- A global multi-player game has a multi-master topology, storing data in multiple AWS Regions. Each master stays in sync by consuming and replaying the changes that occur in the remote Regions. (In fact, DynamoDB Global Tables relies on DynamoDB Streams for global replication.)
+- A new customer adds data to a DynamoDB table. This event invokes an AWS Lambda function to copy the data to a separate DynamoDB table for long term retention (This is very similar to this exercise, where we copy data from one DynamoDB table to another using DynamoDB Streams.)
 
 You will reuse the `logfile` table that you created in Exercise 1. You will enable DynamoDB Streams on the `logfile` table. Whenever a change is made to the `logfile` table, this change appears immediately in a stream. Next, you attach a Lambda function to the stream. The purpose of the Lambda function is to query DynamoDB Streams for updates to the `logfile` table and write the updates to a newly created table named `logfile_replica`. The following diagram shows an overview of this implementation.
 
