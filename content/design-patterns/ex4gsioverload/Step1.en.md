@@ -37,6 +37,6 @@ Let's take a closer look at the `create-table` command. You are creating a table
 | Attribute Name (Type)        | Special Attribute?           | Attribute Use Case          | Sample Attribute Value  |
 | ------------- |:-------------:|:-------------:| -----:|
 | PK (STRING)      | Partition Key | Employee ID  | `e#129`  |
-| SK (STRING)      | Sort key | Derived value  | `master`, `state#MI`  |
-| GSI_1_PK (STRING)      | GSI_1 partition key | Derived value  | `master`, `state#MI` |
+| SK (STRING)      | Sort key | Derived value  | `root`, `state#MI`  |
+| GSI_1_PK (STRING)      | GSI_1 partition key | Derived value  | `root`, `state#MI` |
 | GSI_1_SK (STRING)      | GSI_1 sort key | Employee name  | `Christine Milsted`  |

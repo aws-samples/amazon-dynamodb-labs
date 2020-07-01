@@ -10,7 +10,7 @@ def query_gsi(tableName,attribute,value,):
     table = dynamodb.Table(tableName)
 
     if attribute == 'name':
-        ke = Key('GSI_1_PK').eq('master') & Key('GSI_1_SK').eq(value)
+        ke = Key('GSI_1_PK').eq('root') & Key('GSI_1_SK').eq(value)
     else:
         ke = Key('GSI_1_PK').eq(attribute + "#" + value)
 
