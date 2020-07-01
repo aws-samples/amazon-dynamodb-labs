@@ -18,7 +18,7 @@ You will model the table to execute the following queries:
 
 
 #### Table: `InvoiceAndBills`
-- Key schema: HASH, RANGE
+- Key schema: HASH, RANGE (partition and sort key)
 - Table read capacity units (RCUs) = 100
 - Table write capacity units (WCUS) = 100
 - Global secondary index (GSI):
@@ -27,5 +27,5 @@ You will model the table to execute the following queries:
 
 | Attribute Name (Type)        | Special Attribute?           | Attribute Use Case          | Sample Attribute Value  |
 | ------------- |:-------------:|:-------------:| -----:|
-| PK (STRING)      | Hash key, GSI_1 hash key | Holds the ID of the entity, either a bill, invoice, or customer  | *B#3392* or *I#506* or *C#1317*  |
+| PK (STRING)      | Partition key, GSI_1 partition key | Holds the ID of the entity, either a bill, invoice, or customer  | *B#3392* or *I#506* or *C#1317*  |
 | SK (STRING)      | Sort key | Holds the related ID: either a bill, invoice, or customer  | *I#1721* or *C#506* or *I#1317*  |
