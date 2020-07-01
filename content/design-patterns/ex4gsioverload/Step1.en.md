@@ -26,7 +26,7 @@ Let's take a closer look at the `create-table` command. You are creating a table
 
 #### Table: `employees`
 
-- Key schema: HASH, RANGE
+- Key schema: HASH, RANGE (partition and sort key)
 - Table read capacity units (RCUs) = 100
 - Table write capacity units (WCUs)  = 100
 - Global secondary index:
