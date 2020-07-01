@@ -28,4 +28,4 @@ The following output includes the scanned count and the execution time.
 ```txt
 Managers count: 84. # of records scanned: 4000. Execution time: 0.596132993698 seconds
 ```
-Review the number of items scanned to return the values. The value of the number of records scanned in the above sample output, 4000, should match the number in your script's output. If you receive an error or inconsistency, ensure you completed Step 1 in this exercise and both indexes are `ACTIVE`.
+Review the number of items scanned to return the values. The value of the number of records scanned in the above sample output, 4000, should match the number in your script's output. If you receive an error or inconsistency, ensure you completed Step 1 in this exercise and both indexes are `ACTIVE`. Try changing the page size to a larger number such as 1000. The execution time will decrease because there are fewer round trips to DynamoDB. A `Scan` API call can return up to 1MB of data at a time.
