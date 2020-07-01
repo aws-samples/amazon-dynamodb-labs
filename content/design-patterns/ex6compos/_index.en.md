@@ -17,7 +17,7 @@ Previously (Exercise 4, Step 1) you ran commands to create the `employees` table
 
 | Attribute Name (Type)        | Special Attribute?           | Attribute Use Case          | Sample Attribute Value  |
 | ------------- |:-------------:|:-------------:| -----:|
-| `GSI_3_PK` (STRING)      | GSI_3 hash key | The state of the employee  | `state#WA`  |
+| `GSI_3_PK` (STRING)      | GSI_3 partition key | The state of the employee  | `state#WA`  |
 | `GSI_3_SK` (STRING)      | GSI_3 sort key | The city and department of the employee, concatenated  | `Seattle#Development`  |
 
 
