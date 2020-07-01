@@ -18,8 +18,8 @@ def import_csv(tableName, fileName):
             newEmployee = {}
             #primary keys
             newEmployee['PK'] = "e#{}".format(row[0])
-            newEmployee['SK']  = 'master'
-            newEmployee['GSI_1_PK'] = 'master'
+            newEmployee['SK']  = 'root'
+            newEmployee['GSI_1_PK'] = 'root'
             newEmployee['GSI_1_SK']  = row[1]
             newEmployee['GSI_3_PK'] = "state#{}".format(row[5])
             newEmployee['GSI_3_SK'] = "{}#{}".format(row[4], row[3])
@@ -39,7 +39,7 @@ def import_csv(tableName, fileName):
             if len(row) == 11:
                 newEmployee['is_manager'] = row[10]
                 newEmployee['GSI_2_PK'] = str(newEmployee['is_manager'])
-                newEmployee['GSI_2_SK'] = "master"
+                newEmployee['GSI_2_SK'] = "root"
 
 
             item = dynamodb_table.put_item(Item=newEmployee)
