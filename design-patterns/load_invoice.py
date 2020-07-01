@@ -17,7 +17,7 @@ def import_csv(tableName, fileName):
 
       Invoice = {}
       Invoice['PK'] = row[0]
-      Invoice['SK'] ='master'
+      Invoice['SK'] ='root'
       Invoice['InvoiceDate'] = row[1]
       Invoice['InvoiceBalance'] = row[2]
       Invoice['InvoiceStatus'] = row[3]
