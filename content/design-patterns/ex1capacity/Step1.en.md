@@ -21,7 +21,7 @@ The table you just created will have the following structure.
 
 #### Table `logfile`:
 
-- Key schema: HASH
+- Key schema: HASH (partition key)
 - Table read capacity units (RCUs) = 5
 - Table write capacity units (WCUs) = 5
 - Global secondary index (GSI):
@@ -29,8 +29,8 @@ The table you just created will have the following structure.
 
 | Attribute Name (Type)        | Special Attribute?           | Attribute Use Case          | Sample Attribute Value  |
 | ------------- |:-------------:|:-------------:| -----:|
-| PK (STRING)      | Hash key | Holds the request id for the access log  | *request#104009*  |
-| GSI_1_PK (STRING)      | GSI 1 hash key | The host for the request, an IPv4 address  | *host#66.249.67.3*  |
+| PK (STRING)      | Partition key | Holds the request id for the access log  | *request#104009*  |
+| GSI_1_PK (STRING)      | GSI 1 partition key | The host for the request, an IPv4 address  | *host#66.249.67.3*  |
 
 Special attributes include named attributes that define the primary key of a DynamoDB table or a global secondary index (GSI). Global secondary indexes have primary keys just like DynamoDB tables. In DynamoDB, the partition key is the same as the hash key, and the sort key is the same as the range key. The DynamoDB APIs use the terms hash and range, while the AWS documentation uses the terms partition and range. No matter which terms you use, these two keys together form the primary key. To learn more, please review our AWS Developer Guide for Amazon DynamoDB [section on the primary key](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.CoreComponents.html#HowItWorks.CoreComponents.PrimaryKey).
 
