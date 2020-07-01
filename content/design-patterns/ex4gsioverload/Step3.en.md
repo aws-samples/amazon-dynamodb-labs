@@ -8,7 +8,7 @@ You can query all the employees based in Washington state (WA) in the United Sta
 
 ```py
 if attribute == 'name':
-    ke = Key('GSI_1_PK').eq('master') & Key('GSI_1_SK').eq(value)
+    ke = Key('GSI_1_PK').eq('root') & Key('GSI_1_SK').eq(value)
 else:
     ke = Key('GSI_1_PK').eq(attribute + "#" + value)
 
