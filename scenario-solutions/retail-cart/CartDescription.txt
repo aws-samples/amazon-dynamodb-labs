@@ -1,11 +1,11 @@
 Retail Cart Scenario: Solution Description
 (See CartModel.json for NoSQL Workbench Data Model)
 
-This is primarily an OLTP workload, that would likely have higher reads than writes (users view the items in their cart more frequently than adding items to the cart).
+This is primarily an OLTP workload, that would likely have higher reads than writes (customers view the items in their cart more frequently than adding items to the cart).
 
 We can work backwards from the access patterns to identify the base table partition key. The primary access patterns are: 
-- Insert and update items placed in a cart by users.
-- Return items related to a user (AccountID), sorted by CreateTimestamp, and scoped to specific Status.
+- Insert and update items placed in a cart by customers.
+- Return items related to a customers (AccountID), sorted by CreateTimestamp, and scoped to specific Status.
 These can be fulfilled using AccountID as the partition key on the base table. This represents a high cardinality key space that will grow as the workload throughput grows (as more accounts are added there will be more throughput), it therefore makes sense to select AccountID as the base table partition key.
 
 To complete both of the access patterns, we will want to create a compound sort key - that uses Status as the prefix for the sort key and includes the timestamp. This allows for scoped queries that return items of a specific type.
@@ -14,8 +14,8 @@ To complete both of the access patterns, we will want to create a compound sort 
 - Access pattern two: Query Where PK = <AccountID> and SK Begins.With <Status> Sort by Desc 
 
 The secondary access pattern are:
-- Return items across user by ItemSKU, sorted by CreateTimestamp, and scoped to a specific Status.
-These can be fulfilled using a GSI with ItemSKU as the partition key and reuse the base table compound sort key. We are assuming that the product catalog represents a relatively high number of items and there is the expected writes per item will not exceed 1,000 writes per second (i.e. 1,000 concurrent users added the same item to their cart in the same second).
+- Return items across customers by ItemSKU, sorted by CreateTimestamp, and scoped to a specific Status.
+These can be fulfilled using a GSI with ItemSKU as the partition key and reuse the base table compound sort key. We are assuming that the product catalog represents a relatively high number of items and there is the expected writes per item will not exceed 1,000 writes per second (i.e. 1,000 concurrent customers added the same item to their cart in the same second).
 
 This is not going to change the insert, as we are not creating a new attribute. Once the GSI has been created the third access pattern can be completed by:
 - Access pattern three be: 
