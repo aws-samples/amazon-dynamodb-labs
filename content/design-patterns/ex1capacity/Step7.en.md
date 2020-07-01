@@ -27,7 +27,7 @@ aws dynamodb wait table-exists --table-name logfile_gsi_low
 The initial command creates a new table and one global secondary index with the following definition:
 #### Table: `logfile_gsi_low`
 
-- Key schema: HASH
+- Key schema: HASH (partition key)
 - Table read capacity units (RCUs) = 1000
 - Table write capacity units (WCUs) = 1000
 - Global secondary index:
@@ -37,8 +37,8 @@ The initial command creates a new table and one global secondary index with the 
 
 | Attribute Name (Type)        | Special Attribute?           | Attribute Use Case          | Sample Attribute Value  |
 | ------------- |:-------------:|:-------------:| -----:|
-| PK (STRING)      | Hash key | Holds the request ID for the access log  | *request#104009*  |
-| GSI_1_PK (STRING)      | GSI 1 hash key | The host for the request, an IPv4 address  | *host#66.249.67.3*  |
+| PK (STRING)      | Partition key | Holds the request ID for the access log  | *request#104009*  |
+| GSI_1_PK (STRING)      | GSI 1 partition key | The host for the request, an IPv4 address  | *host#66.249.67.3*  |
 
 
 
