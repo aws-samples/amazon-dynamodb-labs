@@ -21,7 +21,7 @@ This command creates a new table and an associated global secondary index with t
 
 #### Table: `logfile_replica`
 
-- Key schema: HASH
+- Key schema: HASH (partition key)
 - Table read capacity units (RCUs) = 10
 - Table write capacity units (WCUs) = 5
 - •	Global secondary index:
@@ -31,8 +31,8 @@ This command creates a new table and an associated global secondary index with t
 
 | Attribute Name (Type)        | Special Attribute?           | Attribute Use Case          | Sample Attribute Value  |
 | ------------- |:-------------:|:-------------:| -----:|
-| PK (STRING)      | Hash key | Holds the request id  | `request#104009`  |
-| GSI_1_PK (STRING)      | GSI 1 hash key | Host  | `host#66.249.67.3`  |
+| PK (STRING)      | Partition key | Holds the request id  | `request#104009`  |
+| GSI_1_PK (STRING)      | GSI 1 partition key | Host  | `host#66.249.67.3`  |
 
 
 Run the following command to wait until the table becomes active.
