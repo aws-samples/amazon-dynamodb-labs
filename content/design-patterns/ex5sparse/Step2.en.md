@@ -6,7 +6,7 @@ weight = 2
 
 The sparse index pattern cuts the haystack representing your data down into a smaller pile so that your searches on the index, with either the `Scan` or `Query` API, are more efficient. Instead of combing through all the data in the DynamoDB base table, you can create a sparse index to hold a fraction of your information for easy querying and searching. To learn the definition of a [DynamoDB sparse index please review our best practices documentation](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-indexes-general-sparse-indexes.html).
 
-To start, scan the table to find all the managers without using the global secondary index. The throughput consumed will give us a baseline for comparison laterin the exercise. In this case, you need to use a filter expression to return only the items where the attribute is_manager is equal to 1, as shown in the following code example.
+To start, scan the table to find all the managers without using the global secondary index. The throughput consumed will give us a baseline for comparison later in the exercise. In this case, you need to use a filter expression to return only the items where the attribute is_manager is equal to 1, as shown in the following code example.
 ```py
 fe = "is_manager = :f"
 eav = {":f": "1"}
