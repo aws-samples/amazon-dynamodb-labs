@@ -10,7 +10,7 @@ To perform a parallel `Scan`, each application worker issues its own `Scan` requ
 - `Segment`: The segment to be scanned by a specific application worker. Each worker should use a different value for `Segment`.
 - `TotalSegments`: The total number of segments for the parallel scan. This value must be the same as the number of workers that your application will use.
 
-Review the following code block for the parallel scan, which is from the file **scan_logfile_parallel.py**.
+Review the following code block for the parallel scan, which is from the file `scan_logfile_parallel.py`.
 
 
 ```py
