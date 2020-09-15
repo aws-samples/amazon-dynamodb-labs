@@ -118,9 +118,20 @@ function configure_python_and_install
   /usr/bin/pip-3.6 install -r /home/ec2-user/workshop/requirements.txt
 
   log frustrating pip user installs
-  mkdir /home/ec2-user/.local
+  mkdir /home/ec2-user/.local 1>&2 2>/dev/null
   chattr +i /home/ec2-user/.local
 
+}
+function verify_configuration_and_signal
+{
+  log verify_configuration_and_signal running.
+  log Checking if python36 installed by yum.
+  yum list installed python36 1>/dev/null || signal_failure_and_exit "Python3.6 not installed correctly."
+
+  log Checking if python scripts are in workshop directory.
+  ls -l /home/ec2-user/workshop/*.py 1>/dev/null || signal_failure_and_exit "Python scripts not in workshop directory."
+
+  signal_success
 }
 function lock_instance
 {
@@ -171,6 +182,12 @@ function signal_success
 {
   /opt/aws/bin/cfn-signal --success true $CFN_WAIT_HANDLE
 }
+function signal_failure_and_exit
+{
+  /opt/aws/bin/cfn-signal --success false $CFN_WAIT_HANDLE --reason "$@"
+  log failure signal sent to CloudFormation: "${@}"
+  exit 0
+}
 
 #Main Execution
 lock_instance
@@ -183,5 +200,5 @@ lock_repo_version
 update_yum_packages
 
 configure_python_and_install
+verify_configuration_and_signal
 unlock_instance
-signal_success
