@@ -90,7 +90,7 @@ Mappings:
       GUID: 6f7652f821ac
   DesignPatterns:
     options:
-      UserDataURL: "https://ss-6months.s3.amazonaws.com/UserData.sh"
+      UserDataURL: "https://amazon-dynamodb-labs.com/assets/UserData.sh"
 Resources:
   DDBReplicationRole:
     Type: AWS::IAM::Role
