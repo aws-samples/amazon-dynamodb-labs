@@ -18,21 +18,21 @@ aws lambda create-event-source-mapping \
 The following is the expected result.
 ```json
 {
-    "MaximumBatchingWindowInSeconds": 0,
-    "UUID": "be5884e0-bcd9-4301-b535-329e8c13bb73",
-    "StateTransitionReason": "User action",
-    "LastModified": 1607986748.972,
+    "UUID": "0dcede66-709c-4073-a628-724d01b92095",
     "BatchSize": 100,
+    "MaximumBatchingWindowInSeconds": 0,
+    "ParallelizationFactor": 1,
+    "EventSourceArn": "arn:aws:dynamodb:<REGION>:<ACCOUNTID>:table/logfile/stream/2021-12-31T00:00:00.000",
+    "FunctionArn": "arn:aws:lambda:<REGION>:<ACCOUNTID>:function:ddbreplica_lambda",
+    "LastModified": 1663286115.972,
+    "LastProcessingResult": "No records processed",
+    "State": "Creating",
+    "StateTransitionReason": "User action",
     "DestinationConfig": {
         "OnFailure": {}
     },
-    "EventSourceArn": "arn:aws:dynamodb:<REGION>:<ACCOUNTID>:table/logfile/stream/2020-12-31T00:00:00.000",
-    "FunctionArn": "arn:aws:lambda:<REGION>:<ACCOUNTID>:function:ddbreplica_lambda",
-    "State": "Creating",
-    "ParallelizationFactor": 1,
-    "LastProcessingResult": "No records processed",
-    "MaximumRetryAttempts": 10000,
-    "MaximumRecordAgeInSeconds": 604800,
-    "BisectBatchOnFunctionError": false
+    "MaximumRecordAgeInSeconds": -1,
+    "BisectBatchOnFunctionError": false,
+    "MaximumRetryAttempts": -1
 }
 ```

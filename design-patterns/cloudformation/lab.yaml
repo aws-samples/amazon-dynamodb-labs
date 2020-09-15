@@ -36,58 +36,58 @@ Conditions:
 
 Mappings:
   AmazonLinuxAMI:
-    eu-central-1:
-      # Name: amzn-ami-hvm-2018.03.0.20190826-x86_64-ebs
-      AMI: ami-07a06e1c9f42df03e
-      GUID: fd3054b03123
-    us-west-1:
-      # Name: amzn-ami-hvm-2018.03.0.20190826-x86_64-ebs
-      AMI: ami-01daf83d8a6f588c5
-      GUID: fd3054b03123
-    us-west-2:
-      # Name: amzn-ami-hvm-2018.03.0.20190826-x86_64-ebs
-      AMI: ami-09b92cd132204c704
-      GUID: fd3054b03123
-    eu-west-1:
-      # Name: amzn-ami-hvm-2018.03.0.20190826-x86_64-ebs
-      AMI: ami-0ce6dfbc4cb843402
-      GUID: fd3054b03123
-    eu-west-2:
-      # Name: amzn-ami-hvm-2018.03.0.20190826-x86_64-ebs
-      AMI: ami-0e30eafcc0935e6a7
-      GUID: fd3054b03123
-    sa-east-1:
-      # Name: amzn-ami-hvm-2018.03.0.20190826-x86_64-ebs
-      AMI: ami-0e7d312b22eb1a81b
-      GUID: fd3054b03123
-    ap-south-1:
-      # Name: amzn-ami-hvm-2018.03.0.20190826-x86_64-ebs
-      AMI: ami-08e789bb5ca3b9bfd
-      GUID: fd3054b03123
-    ap-southeast-1:
-      # Name: amzn-ami-hvm-2018.03.0.20190826-x86_64-ebs
-      AMI: ami-05ab00911168ec7af
-      GUID: fd3054b03123
-    ap-southeast-2:
-      # Name: amzn-ami-hvm-2018.03.0.20190826-x86_64-ebs
-      AMI: ami-042710e2a62ecec92
-      GUID: fd3054b03123
-    ap-northeast-1:
-      # Name: amzn-ami-hvm-2018.03.0.20190826-x86_64-ebs
-      AMI: ami-0a9fb4802d08e965a
-      GUID: fd3054b03123
-    ap-northeast-2:
-      # Name: amzn-ami-hvm-2018.03.0.20190826-x86_64-ebs
-      AMI: ami-01ea3038c7b18e526
-      GUID: fd3054b03123
     us-east-1:
-      # Name: amzn-ami-hvm-2018.03.0.20190826-x86_64-ebs
-      AMI: ami-001efa431f19d816f
-      GUID: fd3054b03123
+      # Name: amzn-ami-hvm-2018.03.0.20200904.0-x86_64-ebs
+      AMI: ami-0b46d3491dbc6c19e
+      GUID: 6f7652f821ac
     us-east-2:
-      # Name: amzn-ami-hvm-2018.03.0.20190826-x86_64-ebs
-      AMI: ami-02950d3d85d31b6f9
-      GUID: fd3054b03123
+      # Name: amzn-ami-hvm-2018.03.0.20200904.0-x86_64-ebs
+      AMI: ami-045ded0b933b76edd
+      GUID: 6f7652f821ac
+    us-west-1:
+      # Name: amzn-ami-hvm-2018.03.0.20200904.0-x86_64-ebs
+      AMI: ami-098679a260e1209d1
+      GUID: 6f7652f821ac
+    us-west-2:
+      # Name: amzn-ami-hvm-2018.03.0.20200904.0-x86_64-ebs
+      AMI: ami-0bd66fad2c6056e19
+      GUID: 6f7652f821ac
+    eu-west-1:
+      # Name: amzn-ami-hvm-2018.03.0.20200904.0-x86_64-ebs
+      AMI: ami-04fb47915aaea1e62
+      GUID: 6f7652f821ac
+    eu-west-2:
+      # Name: amzn-ami-hvm-2018.03.0.20200904.0-x86_64-ebs
+      AMI: ami-0b71de60f601e6897
+      GUID: 6f7652f821ac
+    eu-central-1:
+      # Name: amzn-ami-hvm-2018.03.0.20200904.0-x86_64-ebs
+      AMI: ami-08d125a524c37d22e
+      GUID: 6f7652f821ac
+    sa-east-1:
+      # Name: amzn-ami-hvm-2018.03.0.20200904.0-x86_64-ebs
+      AMI: ami-008dcd30fab4ab54d
+      GUID: 6f7652f821ac
+    ap-south-1:
+      # Name: amzn-ami-hvm-2018.03.0.20200904.0-x86_64-ebs
+      AMI: ami-0bfcf5aa671f35822
+      GUID: 6f7652f821ac
+    ap-southeast-1:
+      # Name: amzn-ami-hvm-2018.03.0.20200904.0-x86_64-ebs
+      AMI: ami-0253cac8b82dc7263
+      GUID: 6f7652f821ac
+    ap-southeast-2:
+      # Name: amzn-ami-hvm-2018.03.0.20200904.0-x86_64-ebs
+      AMI: ami-0e00766c034642337
+      GUID: 6f7652f821ac
+    ap-northeast-1:
+      # Name: amzn-ami-hvm-2018.03.0.20200904.0-x86_64-ebs
+      AMI: ami-00238cb37d54b2a4c
+      GUID: 6f7652f821ac
+    ap-northeast-2:
+      # Name: amzn-ami-hvm-2018.03.0.20200904.0-x86_64-ebs
+      AMI: ami-0ddea77382fd34b61
+      GUID: 6f7652f821ac
   DesignPatterns:
     options:
       UserDataURL: "https://amazon-dynamodb-labs.com/assets/UserData.sh"
