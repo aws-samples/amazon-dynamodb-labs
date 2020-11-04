@@ -4,7 +4,9 @@
     "Author": "yoderd",
     "DateCreated": "Sep 23, 2019, 8:57 AM",
     "DateLastModified": "Sep 23, 2019, 1:49 PM",
-    "Description": "Model for Lab: Account that schedules payments - status: pending/processed\n1M new payments per day (pending - 6am-6pm)\n2min batch job to pull all pending payments\n-EOD process switches status to processed\nQuery by account\nQuery by scheduled date\n"
+    "Description": "Model for Lab: Account that schedules payments - status: pending/processed\n1M new payments per day (pending - 6am-6pm)\n2min batch job to pull all pending payments\n-EOD process switches status to processed\nQuery by account\nQuery by scheduled date\n",
+    "AWSService": "Amazon DynamoDB",
+    "Version": "2.0"
   },
   "DataModel": [
     {
