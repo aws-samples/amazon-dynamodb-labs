@@ -160,6 +160,8 @@
     "DateCreated": "Feb 24, 2020, 3:50 PM",
     "DateLastModified": "Feb 25, 2020, 10:39 PM",
     "Author": "",
-    "Description": ""
+    "Description": "",
+    "AWSService": "Amazon DynamoDB",
+    "Version": "2.0"
   }
 }
