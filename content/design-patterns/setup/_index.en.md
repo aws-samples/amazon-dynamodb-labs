@@ -14,4 +14,4 @@ To set up this workshop, choose one of the following links, depending on whether
 - […attending an AWS-hosted event (using AWS-provided hashes)]({{< ref "start-here/aws-event/" >}})
 
 Once you have completed with either setup, continue on to:
-- [Excerise 1: DynamoDB Capacity Units and Partitioning]({{< ref "/design-patterns/ex1capacity" >}})
+- [Exercise 1: DynamoDB Capacity Units and Partitioning]({{< ref "/design-patterns/ex1capacity" >}})
