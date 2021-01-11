@@ -33,7 +33,7 @@ Only complete this section if you are running the workshop on your own. If you a
 
 ## Launch the CloudFormation stack
 {{% notice warning %}}
-During the course of the lab, you will make DynamoDB tables that will incur a cost that could approach tens or hundreds of dollars per day. Ensure you clean up the Amazon DynamoDB tables by deleting the CloudFormation stack as soon as the lab is complete.
+During the course of the lab, you will make DynamoDB tables that will incur a cost that could approach tens or hundreds of dollars per day. Ensure you delete the DynamoDB tables using the DynamoDB console, and make sure you delete the CloudFormation stack as soon as the lab is complete.
 {{% /notice %}}
 
 1. Launch the CloudFormation template in US East 1 to deploy the resources in your account:

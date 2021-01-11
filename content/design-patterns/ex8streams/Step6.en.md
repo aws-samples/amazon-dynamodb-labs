@@ -53,6 +53,10 @@ NEXTTOKEN       eyJFeGNsdXNpdmVTdGFydEtleSI6IG51bGwsICJib3RvX3RydW5jYXRlX2Ftb3Vu
 
 If you ran the lab on your own AWS account, you should delete all the tables made during these exercises. If you are at an AWS event using the AWS Workshop platform (the Event Engine), you do not need to delete your tables.
 
+{{% notice warning %}}
+During the course of the lab, you created DynamoDB tables that will incur a cost that could approach tens or hundreds of dollars per day. You must delete the DynamoDB tables using the DynamoDB console to clean up the lab. In addition, if you are not part of an AWS event or you are running this lab in your own account, make sure you delete the CloudFormation stack as soon as the lab is complete. If you're using event engine, you don't need to delete the CloudFormation stack.
+{{% /notice %}}
+
 #### Reporting issues
 
 Firstly, if you encounter an issue running the lab that needs to be addressed we recommend you fork the code on GitHub and make a pull request with your change. Please review [our contributing guide on GitHub.com]({{% siteparam "github_contributing_guide" %}}).
