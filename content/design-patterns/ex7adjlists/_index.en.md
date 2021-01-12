@@ -27,5 +27,5 @@ You will model the table to execute the following queries:
 
 | Attribute Name (Type)        | Special Attribute?           | Attribute Use Case          | Sample Attribute Value  |
 | ------------- |:-------------:|:-------------:| -----:|
-| PK (STRING)      | Partition key, GSI_1 partition key | Holds the ID of the entity, either a bill, invoice, or customer  | *B#3392* or *I#506* or *C#1317*  |
+| PK (STRING)      | Partition key | Holds the ID of the entity, either a bill, invoice, or customer  | *B#3392* or *I#506* or *C#1317*  |
 | SK (STRING)      | Sort key, GSI_1 partition key | Holds the related ID: either a bill, invoice, or customer  | *I#1721* or *C#506* or *I#1317*  |
