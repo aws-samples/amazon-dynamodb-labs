@@ -26,5 +26,6 @@ DynamoDB Related Tools:
 - **[EMR-DynamoDB-Connector: Access data stored in Amazon DynamoDB with Apache Hadoop, Apache Hive, and Apache Spark](https://github.com/awslabs/emr-dynamodb-connector)**
 
 Online Training Courses:
-- **[Linux Academy: Amazon DynamoDB Deep Dive](https://linuxacademy.com/course/dynamo-db-deep-dive/)**
+- **[A Cloud Guru: Amazon DynamoDB Deep Dive](https://acloudguru.com/course/amazon-dynamodb-deep-dive/)**
+- **[A Cloud Guru: Amazon DynamoDB Data Modeling](https://acloudguru.com/course/amazon-dynamodb-data-modeling/)**
 - **[edX: Amazon DynamoDB: Building NoSQL Database-Driven Applications](https://www.edx.org/course/amazon-dynamodb-building-nosql-database-driven-app)**
