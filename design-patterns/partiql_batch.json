@@ -1,0 +1,14 @@
+[
+    {
+        "Statement": "INSERT INTO Gamers value {'PK':'Saber9','SK':'Assets','Coins':2000}"
+    },
+   {
+        "Statement": "INSERT INTO Gamers value {'PK':'Saber9','SK':'Bank','Level':98,'Points':6000,'Tier':'Elite'}"
+   },
+   {
+        "Statement": "INSERT INTO Gamers value {'PK':'Saber9','SK':'Games','Genre':{'Action':['Halo','Call Of Duty'], 'Sports':['NBA','NHL']}}"
+   },
+   {
+        "Statement": "INSERT INTO Gamers value {'PK':'Saber9','SK':''}"
+   }
+]
