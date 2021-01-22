@@ -1,0 +1,8 @@
+[
+    {
+        "Statement": "update Gamers set Health = '100%' where PK='Atom12' and SK='Status'"
+    },
+    {
+        "Statement": "update Gamers set Coins=Coins - 400 where PK='Atom12' and SK='Assets' and Coins > 400"
+    }
+]
