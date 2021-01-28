@@ -114,6 +114,9 @@ function configure_python_and_install
   yum install -y python36
   alternatives --set python /usr/bin/python3.6
 
+  # This is used for the exercise with Global Tables
+  yum install -y parallel
+
   log Installing workshop requirements.
   /usr/bin/pip-3.6 install -r /home/ec2-user/workshop/requirements.txt
 
