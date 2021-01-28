@@ -1,0 +1,2 @@
+python write_recommendations_to_west.py recommendations ./data/recommendations.csv
+python write_recommendations_to_east.py recommendations ./data/recommendations.csv
