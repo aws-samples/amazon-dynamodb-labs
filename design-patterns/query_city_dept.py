@@ -33,7 +33,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("table", help="table name")
     parser.add_argument("state", help="state name")
-    parser.add_argument("--citydept", help="begin of city and dept in the format city:dept, examples, Sea or Seattle:Dev")
+    parser.add_argument("--citydept", help="begin of city and dept in the format city#dept, examples, Sea or Seattle#Dev")
     args = parser.parse_args()
 
     tableName = args.table
