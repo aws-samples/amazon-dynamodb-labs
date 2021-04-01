@@ -18,11 +18,11 @@ The output looks like the following.
 ```txt
 arn:aws:iam::<ACCOUNTID>:role/XXXXX-DDBReplicationRole-XXXXXXXXXXX
 ```
-Now, copy the ARN from the output in place of the placeholder `YOUR_ARN_HERE` and run the following command to create the Lambda function.
+Now, run the following command to create the Lambda function.
 ```bash
 aws lambda create-function \
 --function-name ddbreplica_lambda --zip-file fileb://ddbreplica_lambda.zip \
 --handler ddbreplica_lambda.lambda_handler --timeout 60 --runtime python3.7 \
 --description "Sample lambda function for dynamodb streams" \
---role YOUR_ARN_HERE
+--role $(cat ~/workshop/ddb-replication-role-arn.txt)
 ```
