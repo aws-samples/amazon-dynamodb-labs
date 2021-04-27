@@ -1,7 +1,7 @@
 +++
 title = "Load Sample Data"
 date = 2020-04-21T07:38:58-05:00
-weight = 22
+weight = 15
 +++
 
 Download and unzip the sample data:
@@ -26,4 +26,4 @@ After each data load you should get this message saying that there were no Unpro
         "UnprocessedItems": {}
     }
 
-![Cloud9 Setup](/images/hands-on-labs/explore-cli/load_data.png)
+![Cloud9 Setup](/images/hands-on-labs/setup/load_data.png)

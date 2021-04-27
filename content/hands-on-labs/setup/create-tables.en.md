@@ -1,7 +1,7 @@
 +++
 title = "Create the DynamoDB Tables"
 date = 2021-04-21T07:33:04-05:00
-weight = 21
+weight = 14
 +++
 
 We will now create tables (and in a subsequent step load data into them) based on [sample data from the DynamoDB Developer Guide](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SampleData.html).
@@ -53,4 +53,5 @@ Copy the 4 `create-table` commands below line of code and paste in your AWS Clou
             AttributeName=ReplyDateTime,KeyType=RANGE \
         --provisioned-throughput \
             ReadCapacityUnits=10,WriteCapacityUnits=5
+            
     aws dynamodb wait table-exists --table-name Reply
