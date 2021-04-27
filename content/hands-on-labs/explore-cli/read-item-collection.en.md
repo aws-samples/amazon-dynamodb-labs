@@ -17,45 +17,55 @@ We can optionally also specify a [Filter Expression](https://docs.aws.amazon.com
 
 The ProductCatalog table we used in the previous examples only has a Partition Key so let's look at the data in the Reply table which has both a Partition Key and a Sort Key:
 
-    aws dynamodb scan --table-name Reply
+```bash
+aws dynamodb scan --table-name Reply
+```
 
 Data in this table has an Id attribute which references items in the Thread table.  Our data has two threads, and each thread has 2 replies.  Let's use the *query* CLI to read just the items from thread 1:
 
-    aws dynamodb query \
-        --table-name Reply \
-        --key-condition-expression 'Id = :Id' \
-        --expression-attribute-values '{
-            ":Id" : {"S": "Amazon DynamoDB#DynamoDB Thread 1"}
-        }' \
-        --return-consumed-capacity TOTAL
+```bash
+aws dynamodb query \
+    --table-name Reply \
+    --key-condition-expression 'Id = :Id' \
+    --expression-attribute-values '{
+        ":Id" : {"S": "Amazon DynamoDB#DynamoDB Thread 1"}
+    }' \
+    --return-consumed-capacity TOTAL
+```
 
 Since the Sort Key in this table is a timestamp, we could specify a Key Condition Expression to return only the replies in a thread that were posted after a certain time by adding a sort key condition:
 
-    aws dynamodb query \
-        --table-name Reply \
-        --key-condition-expression 'Id = :Id and ReplyDateTime > :ts' \
-        --expression-attribute-values '{
-            ":Id" : {"S": "Amazon DynamoDB#DynamoDB Thread 1"},
-            ":ts" : {"S": "2015-09-21"}
-        }' \
-        --return-consumed-capacity TOTAL
+```bash
+aws dynamodb query \
+    --table-name Reply \
+    --key-condition-expression 'Id = :Id and ReplyDateTime > :ts' \
+    --expression-attribute-values '{
+        ":Id" : {"S": "Amazon DynamoDB#DynamoDB Thread 1"},
+        ":ts" : {"S": "2015-09-21"}
+    }' \
+    --return-consumed-capacity TOTAL
+```
 
 Remember we can use Filter Expressions if we want to limit our results based on non-key attributes.  For example, we could find all the replies in Thread 1 that were posted by User B:
 
-    aws dynamodb query \
-        --table-name Reply \
-        --key-condition-expression 'Id = :Id' \
-        --filter-expression 'PostedBy = :user' \
-        --expression-attribute-values '{
-            ":Id" : {"S": "Amazon DynamoDB#DynamoDB Thread 1"},
-            ":user" : {"S": "User B"}
-        }' \
-        --return-consumed-capacity TOTAL
+```bash
+aws dynamodb query \
+    --table-name Reply \
+    --key-condition-expression 'Id = :Id' \
+    --filter-expression 'PostedBy = :user' \
+    --expression-attribute-values '{
+        ":Id" : {"S": "Amazon DynamoDB#DynamoDB Thread 1"},
+        ":user" : {"S": "User B"}
+    }' \
+    --return-consumed-capacity TOTAL
+```
 
 Note than in the response we see these lines:
 
-    "Count": 1,
-    "ScannedCount": 2,
+```bash
+"Count": 1,
+"ScannedCount": 2,
+```
 
 This is telling us that the Key Condition Expression matched 2 items (ScannedCount) and thats what we were charged to read, but the Filter Expression reduced our result set size down to 1 item (Count).
 
@@ -74,26 +84,28 @@ Hint: consider the *max-items* and *scan-index-forward* options.  The solution i
 If we want to order items in ascending order of the sort key then we tell DynamoDB to scan the index moving forward using the *\-\-scan-index-forward* option. If we want to limit the number of items then we use the *\-\-max-items* option. This would be analogous in SQL to "ORDER BY ReplyDateTime ASC LIMIT 1".
 
 ```bash
-    aws dynamodb query \
-        --table-name Reply \
-        --key-condition-expression 'Id = :Id' \
-        --expression-attribute-values '{
-            ":Id" : {"S": "Amazon DynamoDB#DynamoDB Thread 1"}
-        }' \
-        --max-items 1 \
-        --scan-index-forward  \
-        --return-consumed-capacity TOTAL
+aws dynamodb query \
+    --table-name Reply \
+    --key-condition-expression 'Id = :Id' \
+    --expression-attribute-values '{
+        ":Id" : {"S": "Amazon DynamoDB#DynamoDB Thread 1"}
+    }' \
+    --max-items 1 \
+    --scan-index-forward  \
+    --return-consumed-capacity TOTAL
 ```
 
 If we want DynamoDB to order items in descending order of the sort key then we tell DynamoDB to scan the index backward using the *\-\-no-scan-index-forward* option. If we want to do the SQL analog to "ORDER BY ReplyDateTime DESC LIMIT 1" we would run:
 
-    aws dynamodb query \
-        --table-name Reply \
-        --key-condition-expression 'Id = :Id' \
-        --expression-attribute-values '{
-            ":Id" : {"S": "Amazon DynamoDB#DynamoDB Thread 1"}
-        }' \
-        --max-items 1 \
-        --no-scan-index-forward  \
-        --return-consumed-capacity TOTAL
+```bash
+aws dynamodb query \
+    --table-name Reply \
+    --key-condition-expression 'Id = :Id' \
+    --expression-attribute-values '{
+        ":Id" : {"S": "Amazon DynamoDB#DynamoDB Thread 1"}
+    }' \
+    --max-items 1 \
+    --no-scan-index-forward  \
+    --return-consumed-capacity TOTAL
+```
 {{% /expand%}}
