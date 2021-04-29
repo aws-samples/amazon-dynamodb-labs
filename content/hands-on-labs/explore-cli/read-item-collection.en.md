@@ -71,7 +71,7 @@ This is telling us that the Key Condition Expression matched 2 items (ScannedCou
 
 **Exercise**
 
-Read the documentation for limit and write two queries:
+Read the documentation for --max-items and write two queries:
 
 * return only the first reply to a thread
 * return only the most recent reply for a thread
