@@ -1,6 +1,6 @@
 +++
 title = "Reading Item Collections using Query"
-date = 2020-04-21T07:38:58-05:00
+date = 2021-04-21T07:38:58-05:00
 weight = 22
 +++
 
