@@ -1,5 +1,5 @@
-Explore the other options in the Item explorer and figure out how to get queries to return with Replies sorted from most recent to least recent.
-Collections using Query"
++++
+title = "Reading Item Collections using Query"
 date = 2020-04-21T07:38:58-05:00
 weight = 32
 +++

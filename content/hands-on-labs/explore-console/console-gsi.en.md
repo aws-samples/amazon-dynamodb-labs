@@ -99,3 +99,18 @@ The `query` could not be more optimal than this.  Even if the table has a billio
 2. In the base table, the Primary Key uniquely identifies the row which means that a `get-item` request will match AT MOST one item. Since we can select any attributes as the Keys for a GSI, there is no guarantee that the keys of a GSI will uniquely identify a single item. Therefore, DynamoDB prevents you from executing a `get-item` against a GSI.
 
 {{% /expand%}}
+
+**Cleanup**
+
+When you're done, make sure to remove the GSI.
+
+```bash
+aws dynamodb update-table \
+    --table-name Reply \
+    --global-secondary-index-updates '[{
+        "Delete":{
+            "IndexName": "PostedBy-ReplyDateTime-gsi"
+        }
+    }
+]'
+```
