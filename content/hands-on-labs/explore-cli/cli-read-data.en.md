@@ -12,6 +12,8 @@ DynamoDB provides the [Scan API](https://docs.aws.amazon.com/amazondynamodb/late
 aws dynamodb scan --table-name ProductCatalog
 ```
 
+Data input and output in the CLI utilizes the DynamoDB JSON format, which is described in the [DynamoDB Low-Level API](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.LowLevelAPI.html) section of the Developer Guide.
+
 We can see from our data that this ProductCatalog table has two types of products: Book and Bicyle items.
 
 If we wanted to read just a single item, we would use the [GetItem API](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_GetItem.html) which can be invoked using the [get-item CLI command](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/get-item.html). GetItem is the fastest and cheapest way to get data out of DynamoDB as you must specify the full Primary Key so the command is guaranteed to match at most one item in the table.

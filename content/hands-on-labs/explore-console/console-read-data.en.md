@@ -1,91 +1,23 @@
 +++
-title = "Console Read Sample Data"
+title = "Working with Sample Data"
 date = 2020-04-21T07:38:58-05:00
 weight = 31
 +++
 
-Before we can do anything we have to learn what our data looks like.
+First, go to the [DynamoDB Console](https://console.aws.amazon.com/dynamodbv2/) and click on *Tables* from the side menu.
 
-DynamoDB provides the [Scan API](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_Scan.html) which can be invoked using the [scan CLI command](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/scan.html). Scan will do a full table scan and return the items in 1MB chunks.  Scanning is the slowest and most expensive way to get data out of DynamoDB; Scanning this on a large table from the CLI might be unwieldy but we know there are only a few items in our sample data so its OK to do here.  Try running a scan on the ProductCatalog table:
+![Console Pick Tables](/images/hands-on-labs/explore-console/dynamodb_pick_tables.png)
 
-```bash
-aws dynamodb scan --table-name ProductCatalog
-```
+Next, choose the ProductCatalog table and scroll down to see the Items preview pane.
 
-We can see from our data that this ProductCatalog table has two types of products: Book and Bicyle items.
+![Console ProductCatalog Items Preview](/images/hands-on-labs/explore-console/console_productcatalog_preview.png)
 
-If we wanted to read just a single item, we would use the [GetItem API](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_GetItem.html) which can be invoked using the [get-item CLI command](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/get-item.html). GetItem is the fastest and cheapest way to get data out of DynamoDB as you must specify the full Primary Key so the command is guaranteed to match at most one item in the table.
+We can see visually that the table has a Partition Key of *Id* (which is the `Number` type), no sort key, and there are 8 items in the table.  Some items are Books and some items are Bicycles and some attributes like *Id*, *Price*, *ProductCategory*, and *Title* exist in every Item while other Category specific attributes like Authors or Colors exist only on some items.
 
-```bash
-aws dynamodb get-item \
-    --table-name ProductCatalog \
-    --key '{"Id":{"N":"101"}}'
-```
+Click on the *Id* attribute `101` to pull up the Item editor for that Item.  We can see and modify all the attributes for this item right from the console.  Try changing the *Title* to "Book 101 Title New and Improved".  Click **Add new attribute** named *Reviewers* of the String set type and then clicking **Insert a field** twice to add a couple of entries to that set.  When you're done click **Save changes**
 
-By default a read from DynamoDB will use *eventual consistency* because eventually consistent reads in DynamoDB are half the price of a *strongly consistent* read.  See [Read Consistency](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.html) in the DynamoDB Developer Guide for more information.
+![Console ProductCatalog Items Editor Forms](/images/hands-on-labs/explore-console/console_item_editor_forms.png)
 
-There are many useful options to the get-item command but a few that get used regularly are:
+You can also use the Item editor in DynamoDB JSON notation (instead of the default Form based editor) by clicking **JSON** in the top right corner. This notation should look familiar if you already went through the [Explore the DynamoDB CLI](/hands-on-labs/explore-cli.html) portion of the lab. The DynamoDB JSON format is described in the [DynamoDB Low-Level API](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.LowLevelAPI.html) section of the Developer Guide.
 
-* *\-\-consistent-read* : Specifying that you want a strongly consistent read
-* *\-\-projection-expression* : Specifying that you only want certain attributes returned in the request
-* *\-\-return-consume-capacity* : Tell us how much capacity was consumed by the request
-
-Let's run the previous command and add some of these options to the command line:
-
-```bash
-aws dynamodb get-item \
-    --table-name ProductCatalog \
-    --key '{"Id":{"N":"101"}}' \
-    --consistent-read \
-    --projection-expression "ProductCategory, Price, Title" \
-    --return-consumed-capacity TOTAL
-```
-
-We can see from the returned values:
-
-```json
-{
-    "Item": {
-        "Price": {
-            "N": "2"
-        },
-        "Title": {
-            "S": "Book 101 Title"
-        },
-        "ProductCategory": {
-            "S": "Book"
-        }
-    },
-    "ConsumedCapacity": {
-        "TableName": "ProductCatalog",
-        "CapacityUnits": 1.0
-    }
-}
-```
-
-That performing this request consume 1.0 RCU, because this item is less than 4KB.  If we run the command again but remove the *\-\-consistent-read* option, we will see that eventually consistent reads consume half as much capacity:
-
-```bash
-aws dynamodb get-item \
-    --table-name ProductCatalog \
-    --key '{"Id":{"N":"101"}}' \
-    --projection-expression "ProductCategory, Price, Title" \
-    --return-consumed-capacity TOTAL
-{
-    "Item": {
-        "Price": {
-            "N": "2"
-        },
-        "Title": {
-            "S": "Book 101 Title"
-        },
-        "ProductCategory": {
-            "S": "Book"
-        }
-    },
-    "ConsumedCapacity": {
-        "TableName": "ProductCatalog",
-        "CapacityUnits": 0.5
-    }
-}
-```
+![Console ProductCatalog Items Editor JSON](/images/hands-on-labs/explore-console/console_item_editor_json.png)
