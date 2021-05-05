@@ -23,7 +23,7 @@ aws dynamodb transact-write-items --client-request-token TRANSACTION1 --transact
                 "Id" : {"S": "Amazon DynamoDB#DynamoDB Thread 2"},
                 "ReplyDateTime" : {"S": "2021-04-27T17:47:30Z"},
                 "Message" : {"S": "DynamoDB Thread 2 Reply 3 text"},
-                "PostedBy" : {"S": "UserC"}
+                "PostedBy" : {"S": "User C"}
             }
         }
     },

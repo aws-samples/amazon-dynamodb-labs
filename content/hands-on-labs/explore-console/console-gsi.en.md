@@ -1,7 +1,7 @@
 +++
-title = "Console Global Secondary Indexes"
+title = "Global Secondary Indexes"
 date = 2021-04-24T07:38:58-05:00
-weight = 37
+weight = 35
 +++
 
 We have concerned ourself hitherto with accessing data based on the key attributes. If we wanted to look for items based on non-key attributes we had to do a full table scan and use filter conditions to find what we wanted, which would be both very slow and very expensive for systems operating at large scale.
