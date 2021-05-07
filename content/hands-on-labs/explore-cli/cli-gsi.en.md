@@ -20,7 +20,7 @@ aws dynamodb scan \
     --return-consumed-capacity TOTAL
 ```
 
-When running that scan operaton we could see that the *Count* returned was different than the *ScannedCount*.  If there had been a billion Reply items but only two of them were posted by User A, we would have to pay (both in time and money) to scan through a billion items just to find the two we wanted.
+When running that scan operaton we could see that the *Count* returned was different than the *ScannedCount*.  If there had been a billion Reply items but only three of them were posted by User A, we would have to pay (both in time and money) to scan through a billion items just to find the three we wanted.
 
 Armed with this knowledge of GSIs, we can now create a GSI on the **Reply** table to service this new access pattern.  GSIs can be created and removed at any time, even if the table has data in it already! This new GSI will use the *PostedBy* attribute as the Partition (HASH) key and we will still keep the messages sorted by *ReplyDateTime* as the Sort (RANGE) key.  We want all the attributes from the table copied (projected) into the GSI so we will use the ALL ProjectionType.  Note that the name of the index we create is `PostedBy-ReplyDateTime-gsi`.
 

@@ -1,5 +1,5 @@
 +++
-title = "Inserting/Updating/Deleting Data"
+title = "Modifying Data"
 date = 2020-04-21T07:38:58-05:00
 weight = 34
 +++

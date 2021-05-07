@@ -1,5 +1,5 @@
 +++
-title = "Working with Sample Data"
+title = "Viewing Table Data"
 date = 2020-04-21T07:38:58-05:00
 weight = 31
 +++
