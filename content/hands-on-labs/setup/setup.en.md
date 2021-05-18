@@ -6,7 +6,7 @@ weight = 12
 +++
 
 
-Download this [Cloud Formation Template](/files/hands-on-labs/dynamodb-labs-vpc.yaml) to you local machine.
+Download this [Cloud Formation Template](/files/hands-on-labs/dynamodb-labs-vpc.yaml) to your local machine.
 
 You'll now create a stack in your AWS environment using this template. The deployed stack will contain the following.
 

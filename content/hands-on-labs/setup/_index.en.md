@@ -9,7 +9,7 @@ pre = "<b>1. </b>"
 +++
 
 
-In this chapter, we'll cover the prerequisites needed to get started with [Amazon DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html). You'll create a DynamoDB cluster and use a AWS Cloud9 envrironment to query this cluster. You'll also query the cluster using a Python Client Application.
+In this chapter, we'll cover the prerequisites needed to get started with [Amazon DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html). You'll create DynamoDB tables and use a AWS Cloud9 envrironment to query these tables.
 
 The deployment architecture that you will be building in this lab will look like the below.
 
