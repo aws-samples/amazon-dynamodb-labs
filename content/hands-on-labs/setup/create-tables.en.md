@@ -18,8 +18,6 @@ aws dynamodb create-table \
     --provisioned-throughput \
         ReadCapacityUnits=10,WriteCapacityUnits=5
 
-aws dynamodb wait table-exists --table-name ProductCatalog
-
 aws dynamodb create-table \
     --table-name Forum \
     --attribute-definitions \
@@ -28,8 +26,6 @@ aws dynamodb create-table \
         AttributeName=Name,KeyType=HASH \
     --provisioned-throughput \
         ReadCapacityUnits=10,WriteCapacityUnits=5
-
-aws dynamodb wait table-exists --table-name Forum
 
 aws dynamodb create-table \
     --table-name Thread \
@@ -42,8 +38,6 @@ aws dynamodb create-table \
     --provisioned-throughput \
         ReadCapacityUnits=10,WriteCapacityUnits=5
 
-aws dynamodb wait table-exists --table-name Thread
-
 aws dynamodb create-table \
     --table-name Reply \
     --attribute-definitions \
@@ -55,5 +49,8 @@ aws dynamodb create-table \
     --provisioned-throughput \
         ReadCapacityUnits=10,WriteCapacityUnits=5
 
-aws dynamodb wait table-exists --table-name Reply
+aws dynamodb wait table-exists --table-name ProductCatalog && \
+aws dynamodb wait table-exists --table-name Reply && \
+aws dynamodb wait table-exists --table-name Forum && \
+aws dynamodb wait table-exists --table-name Thread
 ```

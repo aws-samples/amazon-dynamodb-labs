@@ -229,7 +229,7 @@ Resources:
           Key: Name
           Value: !Join ["", [!Ref ProjectTag, "-NatGWA"]]
 
-  Ide:
+  DynamoDBLabsIDE:
     Type: AWS::Cloud9::EnvironmentEC2
     Properties:
       Description: "Cloud 9 IDE"

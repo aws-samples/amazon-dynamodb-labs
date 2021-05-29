@@ -73,6 +73,11 @@ aws dynamodb get-item \
     --key '{"Id":{"N":"101"}}' \
     --projection-expression "ProductCategory, Price, Title" \
     --return-consumed-capacity TOTAL
+```
+
+We will see this output:
+
+```
 {
     "Item": {
         "Price": {

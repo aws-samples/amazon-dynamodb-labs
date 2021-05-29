@@ -55,3 +55,27 @@ aws dynamodb get-item \
 ```
 
 If you run the same transaction command again, with the same `client-request-token` value, you can verify that the other invocations of the transaction are essentially ignored and the *Messages* attributed remains at **5**.
+
+Now we need to do another transaction to reverse the above operation and clean up the table:
+
+```bash
+aws dynamodb transact-write-items --client-request-token TRANSACTION2 --transact-items '[
+    {
+        "Delete": {
+            "TableName" : "Reply",
+            "Key" : {
+                "Id" : {"S": "Amazon DynamoDB#DynamoDB Thread 2"},
+                "ReplyDateTime" : {"S": "2021-04-27T17:47:30Z"}
+            }
+        }
+    },
+    {
+        "Update": {
+            "TableName" : "Forum",
+            "Key" : {"Name" : {"S": "Amazon DynamoDB"}},
+            "UpdateExpression": "ADD Messages :inc",
+            "ExpressionAttributeValues" : { ":inc": {"N" : "-1"} }
+        }
+    }
+]'
+```
