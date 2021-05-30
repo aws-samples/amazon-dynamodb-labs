@@ -44,9 +44,9 @@ Now, we need to create backup plan.
     jobs are started within this window. I am configuring backup at 8 PM
     UTC start within 1 hour and completes within 4 hours.
 
-Further, select **lifecycle**. The lifecycle defines when a backup is
-transitioned to cold storage and when it expires. I am configuring
-backup to move cold storage after 31 days and expire after 366 days.
+	Further, select **lifecycle**. The lifecycle defines when a backup is
+	transitioned to cold storage and when it expires. I am configuring
+	backup to move cold storage after 31 days and expire after 366 days.
 
 <img src="/images/hands-on-labs/backup/image18.png"  />
 
@@ -114,9 +114,8 @@ dashboard.
 
 <img src="/images/hands-on-labs/backup/image27.png"  />
 
-To see the restored table, In the AWS Management Console, navigate to
-**Services -&gt; DynamoDB.** You can see the table is restored along
-with data.
+To see the restored table,  go to the [DynamoDB Console](https://console.aws.amazon.com/dynamodbv2/) and click on *Tables* from the side menu.Choose 
+*ProductCatalogRestotred* table. You can see the table is restored along with data.
 
 <img src="/images/hands-on-labs/backup/image28.png" />
 
