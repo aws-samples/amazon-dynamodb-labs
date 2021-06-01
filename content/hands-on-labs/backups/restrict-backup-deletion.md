@@ -87,14 +87,13 @@ You can restrict in AWS backup by denying as well by denying
 
 ```
 You can apply the policy to role and assign the role to IAM group. Now
-user belong to this IAM group will inherit the permission.
+users belonging to this IAM group will inherit the permission.
 
-Let’s say now user tries to delete the backup in AWS backup.
+Let’s say now the user tries to delete the backup in AWS backup.
 
-<img src="/images/hands-on-labs/backup/image29.png" />
+![Restrict Backup Deletion 1](/images/hands-on-labs/backup/restrict_delete_1.png)
 
 User gets the access denied error due to insufficient permission to
 delete the backup.
 
-<img src="/images/hands-on-labs/backup/image30.png"/>
-
+![Restrict Backup Deletion 2](/images/hands-on-labs/backup/restrict_delete_2.png)

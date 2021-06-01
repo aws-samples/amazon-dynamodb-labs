@@ -15,7 +15,7 @@ policies to configure, manage, and govern your backup activity across
 your organization’s AWS accounts and resources, including [Amazon
 EC2](https://aws.amazon.com/ec2/) instances, [Amazon
 EBS](https://aws.amazon.com/ebs) volumes, [Amazon
-RDS](https://aws.amazon.com/rds/) databases , Amazon DynamoDB tables,
+RDS](https://aws.amazon.com/rds/) databases, Amazon DynamoDB tables,
 [Amazon EFS](https://aws.amazon.com/efs/), [Amazon FSx for
 Lustre](https://aws.amazon.com/fsx/lustre/), [Amazon FSx for Windows
 File Server](https://aws.amazon.com/fsx/windows/), and [AWS Storage

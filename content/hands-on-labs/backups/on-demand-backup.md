@@ -16,27 +16,25 @@ table performance or availability.
 1.  First, go to the [DynamoDB Console](https://console.aws.amazon.com/dynamodbv2/) and click on *Tables* from the side menu.Choose ProductCatalog table.
     On the **Backups** tab of the ProductCatalog table, choose **Create backup**.
 
-<img src="/images/hands-on-labs/backup/image7.png"  />
+![OD Backup 1](/images/hands-on-labs/backup/od_backup_1.png)
 
 2.  Make sure that ProductCatalog is the source table name. Enter
     ProductCatalogBackup for the backup name. Choose **Create backup** to
     create the backup.
 
-<img src="/images/hands-on-labs/backup/image8.png"  />
+![OD Backup 2](/images/hands-on-labs/backup/od_backup_2.png)
 
 While the backup is being created, the backup status is set to
 **Creating**. After the backup is complete, the backup status changes to
 **Available**.
 
-
 **Restore Backup**
-
 
 1.  go to the [DynamoDB Console](https://console.aws.amazon.com/dynamodbv2/) and click on *Tables* from the side menu.Choose ProductCatalog table.
     Choose **Backups** tab. In the list of backups, choose ProductCatalogBackup.
 	Choose **Restore**.
 
-<img src="/images/hands-on-labs/backup/image9.png" />
+![OD Backup 3](/images/hands-on-labs/backup/od_backup_3.png)
 
 2.  Enter ProductCatalogODRestore as the new table name. Confirm the
     backup name and other backup details. Choose **Restore**
@@ -45,7 +43,7 @@ While the backup is being created, the backup status is set to
     finished, the status of the ProductCatalogODRestore table changes to
     **Active**.
 
-<img src="/images/hands-on-labs/backup/image10.png"  />
+![OD Backup 4](/images/hands-on-labs/backup/od_backup_4.png)
 
 **To delete a backup**
 
@@ -56,8 +54,8 @@ ProductCatalogBackup
 Choose **Backups** tab. In the list of backups, choose ProductCatalogBackup.
 Choose **Delete**:
 
-<img src="/images/hands-on-labs/backup/image11.png"/>
+![OD Backup 5](/images/hands-on-labs/backup/od_backup_5.png)
 
 2. Choose **Delete** to delete the backup.
 
-<img src="/images/hands-on-labs/backup/image12.png"  />
+![OD Backup 6](/images/hands-on-labs/backup/od_backup_6.png)

@@ -12,29 +12,29 @@ starting a backup job.
 1.  In the AWS Management Console, navigate to **Services -&gt; AWS
     Backup.** Click on **Create Backup vault** under **Backup vaults**.
 
-<img src="/images/hands-on-labs/backup/image13.png"  />
+![Scheduled Backup 1](/images/hands-on-labs/backup/sched_backup_1.png)
 
 2.  Provide Backup vault name of your choice. AWS KMS encryption master
     key. By default, AWS Backup creates a master key with the alias
     aws/backup for you. You can choose that key or choose any other key
     in your account. Click on **Create Backup vault**
 
-<img src="/images/hands-on-labs/backup/image14.png"  />
+![Scheduled Backup 2](/images/hands-on-labs/backup/sched_backup_2.png)
 
 You can see Backup vault is created successfully
 
-<img src="/images/hands-on-labs/backup/image15.png"  />
+![Scheduled Backup 3](/images/hands-on-labs/backup/sched_backup_3.png)
 
 Now, we need to create backup plan.
 
 3.  Click on **Create Backup plan** under **Backup plans**.
 
-<img src="/images/hands-on-labs/backup/image16.png"  />
+![Scheduled Backup 4](/images/hands-on-labs/backup/sched_backup_4.png)
 
 4.  Select **Build a new plan**. Provide **backup plan name** and **rule
     name**.
 
-<img src="/images/hands-on-labs/backup/image17.png"  />
+![Scheduled Backup 5](/images/hands-on-labs/backup/sched_backup_5.png)
 
 5.  Select **backup frequency.** The backup frequency determines how
     often a backup is created. Using the console, you can choose a
@@ -48,7 +48,7 @@ Now, we need to create backup plan.
 	transitioned to cold storage and when it expires. I am configuring
 	backup to move cold storage after 31 days and expire after 366 days.
 
-<img src="/images/hands-on-labs/backup/image18.png"  />
+![Scheduled Backup 6](/images/hands-on-labs/backup/sched_backup_6.png)
 
 *Note: Currently cold storage isn't supported for DynamoDB .Only Amazon
 EFS file system backups can be transitioned to cold storage. However,
@@ -57,7 +57,7 @@ you should configure it anyway.*
 6.  Select **backup vault** we created earlier. Click on **Create
     plan**.
 
-<img src="/images/hands-on-labs/backup/image19.png"  />
+![Scheduled Backup 7](/images/hands-on-labs/backup/sched_backup_7.png)
 
 *Note: Backups that are transitioned to cold storage must be stored in
 cold storage for a minimum of 90 days*
@@ -68,19 +68,19 @@ backup plan.
 
 7.  Click on **Assign resources** under **Backup plans**.
 
-<img src="/images/hands-on-labs/backup/image20.png" />
+![Scheduled Backup 8](/images/hands-on-labs/backup/sched_backup_8.png)
 
 8.  Give Resource assignment name. Choose default IAM role. Choose our
     DynamoDB table in the assign resources section. Click on **Assign
     resources**.
 
-<img src="/images/hands-on-labs/backup/image21.png" style="width:7.4375in;height:5.70109in" />
+![Scheduled Backup 9](/images/hands-on-labs/backup/sched_backup_9.png)
 
 9.  You can see the status of your backup job under jobs section after
     your scheduled backup window timeframe. You can see your DynamoDB
     backup is completed.
 
-<img src="/images/hands-on-labs/backup/image22.png"/>
+![Scheduled Backup 10](/images/hands-on-labs/backup/sched_backup_10.png)
 
 **Restore a Backup:**
 
@@ -91,31 +91,29 @@ protected and is available to be restored using AWS Backup.
     resources that are backed up in AWS Backup. Choose our DynamoDB
     table resource.
 
-<img src="/images/hands-on-labs/backup/image23.png" />
+![Scheduled Backup 11](/images/hands-on-labs/backup/sched_backup_11.png)
 
 2.  Choose the recovery point ID of the resource. Click on **Restore**.
 
-<img src="/images/hands-on-labs/backup/image24.png"  />
+![Scheduled Backup 12](/images/hands-on-labs/backup/sched_backup_12.png)
 
 3.  Provide new DynamoDB table name. Choose default role and click on
     **Restore backup**
 
-
-<img src="/images/hands-on-labs/backup/image25.png"/>
+![Scheduled Backup 13](/images/hands-on-labs/backup/sched_backup_13.png)
 
 The **Restore jobs** pane appears. A message at the top of the page
 provides information about the restore job. You can see job status is
 running.After some time you can see status changes to completed
 
-<img src="/images/hands-on-labs/backup/image26.png"/>
+![Scheduled Backup 14](/images/hands-on-labs/backup/sched_backup_14.png)
 
 You can also monitor the all backup and restore jobs in central
 dashboard.
 
-<img src="/images/hands-on-labs/backup/image27.png"  />
+![Scheduled Backup 15](/images/hands-on-labs/backup/sched_backup_15.png)
 
-To see the restored table,  go to the [DynamoDB Console](https://console.aws.amazon.com/dynamodbv2/) and click on *Tables* from the side menu.Choose 
+To see the restored table,  go to the [DynamoDB Console](https://console.aws.amazon.com/dynamodbv2/) and click on *Tables* from the side menu.Choose
 *ProductCatalogRestotred* table. You can see the table is restored along with data.
 
-<img src="/images/hands-on-labs/backup/image28.png" />
-
+![Scheduled Backup 16](/images/hands-on-labs/backup/sched_backup_16.png)
