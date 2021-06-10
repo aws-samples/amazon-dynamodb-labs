@@ -15,7 +15,7 @@ recovery, you can restore that table to any point in time during the
 last 35 days. DynamoDB maintains incremental backups of your table. By
 default, PITR is disabled.
 
-**<u>How to enable PITR</u>**
+### How to enable PITR
 
 1.  First, go to the [DynamoDB Console](https://console.aws.amazon.com/dynamodbv2/) and click on *Tables* from the side menu.
 In the list of tables, choose the ProductCatalog table.On the **Backups** tab of the ProductCatalog table in the  **Point-in-time recovery** section, choose **Edit**.
@@ -26,7 +26,7 @@ In the list of tables, choose the ProductCatalog table.On the **Backups** tab of
 
 ![PITR Backup 2](/images/hands-on-labs/backup/pitr_backup_2.png)
 
-**<u>To restore a table to a point in time</u>**
+### To restore a table to a point in time
 
 Now let us say we get some unwanted records in ProductCatalog table as highlighted below.
 

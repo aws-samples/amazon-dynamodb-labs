@@ -4,7 +4,7 @@ date = 2020-04-21T07:38:58-05:00
 weight = 34
 +++
 
-**Inserting Data**
+## Inserting Data
 
 The DynamoDB [PutItem API](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_PutItem.html) is used to create a new item or to replace existing items completely with a new item.  It is invoked using the [put-item CLI command](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/put-item.html).
 
@@ -14,7 +14,7 @@ Let's say we wanted to insert a new item into the *Reply* table from the console
 
 You will need to click **Add new attribute** a couple of times to make some new String attributes, and then fill in the following data, then click **Create Item**.
 
-```json
+```text
         "Id" : "Amazon DynamoDB#DynamoDB Thread 2",
         "ReplyDateTime" : "2021-04-27T17:47:30Z",
         "Message" : "DynamoDB Thread 2 Reply 3 text",
@@ -23,7 +23,7 @@ You will need to click **Add new attribute** a couple of times to make some new 
 
 ![Console Create Item 2](/images/hands-on-labs/explore-console/console_create_item_2.png)
 
-**Updating or Deleting Data**
+## Updating or Deleting Data
 
 The DynamoDB [UpdateItem API](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_UpdateItem.html) is used to create a new item or to replace existing items completely with a new item.  It is invoked using the [update-item CLI command](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/update-item.html).  This API requires you to specify the full Primary Key and can selectively modify specific attributes without changing others(you don't need to pass in the full item).
 
@@ -33,7 +33,7 @@ You can easily modify or delete an item using the console by selecting the check
 
 ![Console Delete Item](/images/hands-on-labs/explore-console/console_delete_item.png)
 
-**Exercise**
+## Exercise
 
 Update the ProductCatalog item where Id=201 to add new colors "Silver" and "Green" to the list of colors for that bike type.  Then use the Item Editor again to remove those "Silver" and "Green" list entries to return it to the original state.
 

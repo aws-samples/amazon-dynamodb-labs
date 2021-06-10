@@ -69,7 +69,7 @@ Note than in the response we see these lines:
 
 This is telling us that the Key Condition Expression matched 2 items (ScannedCount) and thats what we were charged to read, but the Filter Expression reduced our result set size down to 1 item (Count).
 
-**Exercise**
+## Exercise
 
 Read the documentation for --max-items and write two queries:
 

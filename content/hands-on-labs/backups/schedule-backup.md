@@ -50,7 +50,7 @@ Now, we need to create backup plan.
 
 ![Scheduled Backup 6](/images/hands-on-labs/backup/sched_backup_6.png)
 
-*Note: Currently cold storage isn't supported for DynamoDB .Only Amazon
+*Note: Currently cold storage isn't supported for DynamoDB. Only Amazon
 EFS file system backups can be transitioned to cold storage. However,
 you should configure it anyway.*
 
@@ -82,7 +82,7 @@ backup plan.
 
 ![Scheduled Backup 10](/images/hands-on-labs/backup/sched_backup_10.png)
 
-**Restore a Backup:**
+### Restore a Backup:
 
 After a resource has been backed up at least once, it is considered
 protected and is available to be restored using AWS Backup.

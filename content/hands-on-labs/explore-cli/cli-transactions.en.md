@@ -46,7 +46,7 @@ aws dynamodb get-item \
     --key '{"Name" : {"S": "Amazon DynamoDB"}}'
 ```
 
-```json
+```text
 ...
 "Messages": {
     "N": "5"

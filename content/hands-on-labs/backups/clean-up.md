@@ -7,10 +7,10 @@ weight = 66
 
 If you used an account provided by Event Engine, you do not need to do any cleanup. The account terminates when the event is over.
 
-If you used your own account,you might want to clean up what you have created to avoid incurring any unnecessary charges. 
+If you used your own account,you might want to clean up what you have created to avoid incurring any unnecessary charges.
 
 
-**Step 1: Delete restored AWS resources**
+### Step 1: Delete restored AWS resources
 
 Delete three DynamoDB restored tables using following command.
 
@@ -28,13 +28,13 @@ aws dynamodb delete-table \
 
 ```
 
-**Step 2: Delete the backup plan**
+### Step 2: Delete the backup plan
 
 Follow these steps to delete a backup plan:
 
 
 
-1. In the AWS Management Console, navigate to **Services -&gt; AWS Backup.** 
+1. In the AWS Management Console, navigate to **Services -&gt; AWS Backup.**
 In the navigation pane, choose Backup plans.On the Backup plans page, choose *dbBackupPlan*. This takes you to the details page.
 
 ![Backup Plan Delete 1](/images/hands-on-labs/backup/backup_plan_delete_1.png)
@@ -50,8 +50,8 @@ In the navigation pane, choose Backup plans.On the Backup plans page, choose *db
 4. On the confirmation page, enter *dbBackupPlan*, and choose **Delete plan**.
 
 ![Backup Plan Delete 4](/images/hands-on-labs/backup/backup_plan_delete_4.png)
-	
-**Step 3: Delete the recovery points**
+
+### Step 3: Delete the recovery points
 
 
 
@@ -76,8 +76,8 @@ Keep your browser tab open until you see the green success banner at the top of 
 Prematurely closing this tab will end the deletion process and might leave behind some of the recovery points you wanted to delete.
 
 
-**Step 4: Delete the backup vault**
-1. Select the backup vault *dynamodb-backup-vault* and choose **Delete**. 
+### Step 4: Delete the backup vault
+1. Select the backup vault *dynamodb-backup-vault* and choose **Delete**.
 
 ![Backup Vault Delete 1](/images/hands-on-labs/backup/backup_vault_delete_1.png)
 

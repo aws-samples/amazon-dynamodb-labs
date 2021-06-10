@@ -9,7 +9,7 @@ Item Collections are groups of Items that share a Partition Key.  By definition,
 When we invoke the *Query* API we must specify a [Key Condition Expression](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.KeyConditionExpressions). If we were comparing this to SQL, we would say "this is the part of the WHERE clause that acts on the Partition Key and Sort Key attributes".  This could take a couple of forms:
 
 * Just the Partition Key value of our Item Collection.  This indicates that we want to read ALL the items in the item collection.
-* The Partition Key value and some kind ofExplore the other options in the Item explorer and figure out how to get queries to return with Replies sorted from most recent to least recent.
+* The Partition Key value and some kind ofExplore the other options in the Item explorer and figure out how to get queries to returwn with Replies sorted from most recent to least recent.
 , >=, BETWEEN, and BEGINS_WITH.
 
 The Key Condition Expression will define the number of RRUs or RCUs that are consumed by our Query.  DynamoDB will add up the size of all the rows matched by the Key Condition Expression, then divide that total size by 4KB to calculate the consumed capacity (and then it will divide that number in half if you're using an eventually consistent read).
@@ -42,7 +42,7 @@ Remember we can use Filter Expressions if we want to limit our results based on 
 
 ![Item Explorer Query Reply 3](/images/hands-on-labs/explore-console/console_item_explorer_query_reply_3.png)
 
-**Exercise**
+## Exercise
 
 Explore the other options in the Item explorer and figure out how to get queries to return with Replies sorted from most recent to least recent.
 

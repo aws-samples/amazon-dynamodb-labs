@@ -16,9 +16,9 @@ Navigate to the **Reply** table, switch to the **Indexes** tab and click `Create
 
 ![Console Create GSI 1](/images/hands-on-labs/explore-console/console_create_gsi_1.png)
 
-Enter `PostedBy` as the Partition key, `ReplyDateTime` as the Sort key, and `PostedBy-ReplyDateTime-gsi` as the Index name.  Leave the other settings as defaults and click `Create Index`.  Once the index leaves the **Creating** state you can continue on to the exercise below.
+Enter `PostedBy` as the Partition key, `ReplyDateTime` as the Sort key, and `PostedBy-ReplyDateTime-gsi` as the Index name.  Leave the other settings as defaults and click `Create Index`.  Once the index leaves the `Creating` state you can continue on to the exercise below.
 
-**Exercise**
+## Exercise
 
 1. Find all the Replies written by User A sorted, using the console to issue a Query instead of a Scan.
 
@@ -38,7 +38,7 @@ Even if the table has a billion **Reply** items authored by other Users, this qu
 
 {{% /expand%}}
 
-**Cleanup**
+### Cleanup
 
 When you're done, make sure to remove the GSI. Return to the Indexes tab, select the `PostedBy-ReplyDateTime-gsi` index and click `Delete`.
 

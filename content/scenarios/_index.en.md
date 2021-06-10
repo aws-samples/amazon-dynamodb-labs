@@ -2,7 +2,7 @@
 title = "Design Challenges"
 chapter = true
 weight = 2
-description = "A collection of data model design challenge labs to help you understand the decisions required when building efficient data models."
+description = "400 level: A collection of data model design challenge labs to help you understand the decisions required when building efficient data models."
 pre = "<b>Scenarios: </b>"
 +++
 ## Design Challenges

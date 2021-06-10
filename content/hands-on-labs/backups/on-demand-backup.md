@@ -28,9 +28,9 @@ While the backup is being created, the backup status is set to
 **Creating**. After the backup is complete, the backup status changes to
 **Available**.
 
-**Restore Backup**
+### Restore Backup
 
-1.  go to the [DynamoDB Console](https://console.aws.amazon.com/dynamodbv2/) and click on *Tables* from the side menu.Choose ProductCatalog table.
+1.  Go to the [DynamoDB Console](https://console.aws.amazon.com/dynamodbv2/) and click on *Tables* from the side menu.Choose ProductCatalog table.
     Choose **Backups** tab. In the list of backups, choose ProductCatalogBackup.
 	Choose **Restore**.
 
@@ -45,17 +45,19 @@ While the backup is being created, the backup status is set to
 
 ![OD Backup 4](/images/hands-on-labs/backup/od_backup_4.png)
 
-**To delete a backup**
+### To delete a backup
 
 The following procedure shows how to use the console to delete the
 ProductCatalogBackup
 
-1.  go to the [DynamoDB Console](https://console.aws.amazon.com/dynamodbv2/) and click on *Tables* from the side menu.Choose ProductCatalog table.
-Choose **Backups** tab. In the list of backups, choose ProductCatalogBackup.
-Choose **Delete**:
+1.  Go to the [DynamoDB Console](https://console.aws.amazon.com/dynamodbv2/) and click on *Tables* from the side menu
+1. Choose ProductCatalog table.
+1. Choose **Backups** tab.
+1. In the list of backups, choose ProductCatalogBackup.
+1. Click **Delete**:
 
 ![OD Backup 5](/images/hands-on-labs/backup/od_backup_5.png)
 
-2. Choose **Delete** to delete the backup.
+Finally, type the world `Delete` and click **Delete** to delete the backup.
 
 ![OD Backup 6](/images/hands-on-labs/backup/od_backup_6.png)

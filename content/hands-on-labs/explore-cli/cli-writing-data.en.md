@@ -4,7 +4,7 @@ date = 2020-04-21T07:38:58-05:00
 weight = 24
 +++
 
-**Inserting Data**
+## Inserting Data
 
 The DynamoDB [PutItem API](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_PutItem.html) is used to create a new item or to replace existing items completely with a new item.  It is invoked using the [put-item CLI command](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/put-item.html).
 
@@ -33,7 +33,7 @@ We can see in the response that this request consume 1 WCU:
 }
 ```
 
-**Updating Data**
+## Updating Data
 
 The DynamoDB [UpdateItem API](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_UpdateItem.html) is used to create a new item or to replace existing items completely with a new item.  It is invoked using the [update-item CLI command](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/update-item.html).  This API requires you to specify the full Primary Key and can selectively modify specific attributes without changing others(you don't need to pass in the full item).
 
@@ -60,13 +60,13 @@ aws dynamodb update-item \
 
 Note that if you run this exact same command again you will see this error:
 
-```
+```text
 An error occurred (ConditionalCheckFailedException) when calling the UpdateItem operation: The conditional request failed
 ```
 
 Because the *Messages* attribute had already been incremented to *5* in the previous `update-item` call, the second request fails with a *ConditionalCheckFailedException*.
 
-**Exercise**
+## Exercise
 
 Update the ProductCatalog item where Id=201 to add new colors "Blue" and "Yellow" to the list of colors for that bike type.  Then use the API to remove those "Blue" and "Yellow" list entries to return it to the original state.
 

@@ -1,7 +1,7 @@
 +++
 title = "Hands-on Labs for Amazon DynamoDB"
 chapter = true
-description = "Hands-on exercises for learning DynamoDB."
+description = "200 level: Hands-on exercises with Cloud9 using the AWS CLI and Console."
 pre = "<b>Workshop: </b>"
 
 weight = 1

@@ -26,7 +26,7 @@ For example, we could find all the replies in the Reply that were posted by User
 
 You should see 3 **Reply** items posted by User A.
 
-**Exercise**
+## Exercise
 
 Explore the data in the *Forum* table and write a scan command to return only the Forums that have more than 1 thread and more than 50 views.
 

@@ -45,9 +45,9 @@ Backup” and “Delete Table” and denies “Delete Backup” of DynamoDB tabl
 
 
 ```
-Refer the below documentation for more details:-
+[At this documentation page you will find out more about using IAM with DynamoDB backups](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/backuprestore_IAM.html)
 
-<https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/backuprestore_IAM.html>
+
 
 You can restrict in AWS backup by denying as well by denying
 “DeleteBackupSelection” in IAM policy.

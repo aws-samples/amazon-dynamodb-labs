@@ -43,7 +43,7 @@ aws dynamodb scan \
 ```
 We can see in the response that there is a
 
-```json
+```text
 "NextToken": "eyJFeGNsdXNpdmVTdGFydEtleSI6IG51bGwsICJib3RvX3RydW5jYXRlX2Ftb3VudCI6IDJ9"
 ```
 
@@ -61,7 +61,7 @@ aws dynamodb scan \
     --return-consumed-capacity TOTAL
 ```
 
-**Exercise**
+## Exercise
 
 Explore the data in the *Forum* table and write a scan command to return only the Forums that have more than 1 thread and more than 50 views.
 

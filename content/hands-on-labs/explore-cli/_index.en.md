@@ -1,6 +1,6 @@
 +++
-title = "Explore the DynamoDB CLI"
-menuTitle = "Explore the DynamoDB CLI"
+title = "Explore the DynamoDB with the CLI"
+menuTitle = "Explore the DynamoDB with the CLI"
 date = 2021-04-21T07:33:04-05:00
 weight = 20
 chapter = true
@@ -8,7 +8,7 @@ pre = "<b>2. </b>"
 
 +++
 
-We will be exploring the DynamoDB CLI using the [AWS cloud9 management Console](https://console.aws.amazon.com/cloud9/home).  If you haven't already, choose *open IDE* to launch AWS Cloud9 environment. You can close the Welcome screen and adjust your terminal to increase screen area, or close all the windows and navigate to *Window* -> *New Terminal* to open a new terminal window.
+We will be exploring DynamoDB with the AWS CLI using the [AWS cloud9 management Console](https://console.aws.amazon.com/cloud9/home).  If you haven't already, choose *open IDE* to launch AWS Cloud9 environment. You can close the Welcome screen and adjust your terminal to increase screen area, or close all the windows and navigate to *Window* -> *New Terminal* to open a new terminal window.
 
 The highest level of abstraction in DynamoDB is a *Table* (there isn't a concept of a "Database" that has a bunch of tables inside of it like in other NOSQL or RDBMS services).  Inside of a Table you will insert *Items*, which are analogous to what you might think of as a row in other services.  Items are a collection of *Attributes*, which are analogous to columns.  Every item must have a *Primary Key* which will uniquely identify that row (two items may not contain the same Primary Key).  At a minimum when you create a table you must choose an attribute to be the *Partition Key* (aka the Hash Key) and you can optionally specify another attribute to be the *Sort Key*.  
 
@@ -18,4 +18,4 @@ For more information please read about [Core Concepts in DynamoDB](https://docs.
 
 Operations in DynamoDB consume capacity from the table.  When the table is using On-Demand capacity, read operations will consume *Read Request Units (RRUs)* and write operations will consume *Write Request Units (WRUs)*. When the table is using Provisioned Capacity, read operations will consume *Read Capacity Units (RCUs)* and write operations will consume *Write Capacity Units (WCUs)*.  For more information please see the [Read/Write Capacity Mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html) in the DynamoDB Developer Guide.
 
-Now lets dive into the shell and explore the DynamoDB CLI.
+Now lets dive into the shell and explore DynamoDB with the AWS CLI.

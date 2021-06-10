@@ -60,7 +60,7 @@ aws dynamodb describe-table --table-name Reply | grep IndexStatus
 
 Once the GSI has become `ACTIVE`, continue on to the exercise below.
 
-**Exercise**
+## Exercise
 
 1. Find all the Replies written by User A sorted, using the query command instead of the scan command.
 
@@ -100,7 +100,7 @@ The `query` could not be more optimal than this.  Even if the table has a billio
 
 {{% /expand%}}
 
-**Cleanup**
+### Cleanup
 
 When you're done, make sure to remove the GSI.
 

@@ -8,7 +8,7 @@ pre = "<b>3. </b>"
 
 +++
 
-In this lab we will be exploring the [DynamoDB Console](https://console.aws.amazon.com/dynamodbv2/).  There are two versions of the console and while you can always click "Revert to the current console" we will be working with V2 of the console.
+In this lab we will be exploring the [DynamoDB section of the AWS Management Console](https://console.aws.amazon.com/dynamodbv2/).  There are two versions of the console and while you can always click "Revert to the current console" we will be working with V2 of the console.
 
 The highest level of abstraction in DynamoDB is a *Table* (there isn't a concept of a "Database" that has a bunch of tables inside of it like in other NOSQL or RDBMS services).  Inside of a Table you will insert *Items*, which are analogous to what you might think of as a row in other services.  Items are a collection of *Attributes*, which are analogous to columns.  Every item must have a *Primary Key* which will uniquely identify that row (two items may not contain the same Primary Key).  At a minimum when you create a table you must choose an attribute to be the *Partition Key* (aka the Hash Key) and you can optionally specify another attribute to be the *Sort Key*.  
 
