@@ -1,0 +1,267 @@
+AWSTemplateFormatVersion: "2010-09-09"
+
+# Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this
+# software and associated documentation files (the "Software"), to deal in the Software
+# without restriction, including without limitation the rights to use, copy, modify,
+# merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+# permit persons to whom the Software is furnished to do so.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+# INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+# PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+# HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+# OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+# SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Description: >
+  This template builds a VPC with 1 public and 3 private subnets.
+
+Parameters:
+  vpccidr:
+    Type: String
+    MinLength: 9
+    MaxLength: 18
+    AllowedPattern: "(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})"
+    ConstraintDescription: Must be a valid CIDR range in the form x.x.x.x/16
+    Default: 10.20.0.0/16
+  AppPublicCIDRA:
+    Type: String
+    MinLength: 9
+    MaxLength: 18
+    AllowedPattern: "(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})"
+    ConstraintDescription: Must be a valid CIDR range in the form x.x.x.x/22
+    Default: 10.20.1.0/24
+  AppPrivateCIDRA:
+    Type: String
+    MinLength: 9
+    MaxLength: 18
+    AllowedPattern: "(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})"
+    ConstraintDescription: Must be a valid CIDR range in the form x.x.x.x/22
+    Default: 10.20.2.0/24
+  AppPrivateCIDRB:
+    Type: String
+    MinLength: 9
+    MaxLength: 18
+    AllowedPattern: "(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})"
+    ConstraintDescription: Must be a valid CIDR range in the form x.x.x.x/22
+    Default: 10.20.3.0/24
+  AppPrivateCIDRC:
+    Type: String
+    MinLength: 9
+    MaxLength: 18
+    AllowedPattern: "(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})"
+    ConstraintDescription: Must be a valid CIDR range in the form x.x.x.x/22
+    Default: 10.20.4.0/24
+  IdeType:
+    Type: String
+    Default: "t3.medium"
+  ProjectTag:
+    Type: String
+    Default: "dynamodb-labs"
+
+Resources:
+  VPC:
+    Type: "AWS::EC2::VPC"
+    Properties:
+      CidrBlock: !Ref vpccidr
+      EnableDnsHostnames: 'true'
+      EnableDnsSupport: 'true'
+      Tags:
+        -
+          Key: Project
+          Value: !Ref ProjectTag
+        -
+          Key: Name
+          Value: !Join ["", [!Ref ProjectTag, "-VPC"]]
+  IGW:
+    Type: "AWS::EC2::InternetGateway"
+    Properties:
+      Tags:
+        -
+          Key: Project
+          Value: !Ref ProjectTag
+        -
+          Key: Name
+          Value: !Join ["", [!Ref ProjectTag, "-IGW"]]
+  GatewayAttach:
+    Type: "AWS::EC2::VPCGatewayAttachment"
+    Properties:
+      InternetGatewayId: !Ref IGW
+      VpcId: !Ref VPC
+  SubnetPublicA:
+    Type: "AWS::EC2::Subnet"
+    Properties:
+      AvailabilityZone: !Select [0, !GetAZs ]
+      CidrBlock: !Ref AppPublicCIDRA
+      MapPublicIpOnLaunch: true
+      VpcId: !Ref VPC
+      Tags:
+        -
+          Key: Project
+          Value: !Ref ProjectTag
+        -
+          Key: Name
+          Value: !Join ["", [!Ref ProjectTag, "-Subnet-PublicA"]]
+  SubnetPrivateA:
+    Type: "AWS::EC2::Subnet"
+    Properties:
+      AvailabilityZone: !Select [0, !GetAZs ]
+      CidrBlock: !Ref AppPrivateCIDRA
+      MapPublicIpOnLaunch: false
+      VpcId: !Ref VPC
+      Tags:
+        -
+          Key: Project
+          Value: !Ref ProjectTag
+        -
+          Key: Name
+          Value: !Join ["", [!Ref ProjectTag, "-Subnet-PrivateA"]]
+  SubnetPrivateB:
+    Type: "AWS::EC2::Subnet"
+    Properties:
+      AvailabilityZone: !Select [1, !GetAZs ]
+      CidrBlock: !Ref AppPrivateCIDRB
+      MapPublicIpOnLaunch: false
+      VpcId: !Ref VPC
+      Tags:
+        -
+          Key: Project
+          Value: !Ref ProjectTag
+        -
+          Key: Name
+          Value: !Join ["", [!Ref ProjectTag, "-Subnet-PrivateB"]]
+  SubnetPrivateC:
+    Type: "AWS::EC2::Subnet"
+    Properties:
+      AvailabilityZone: !Select [2, !GetAZs ]
+      CidrBlock: !Ref AppPrivateCIDRC
+      MapPublicIpOnLaunch: false
+      VpcId: !Ref VPC
+      Tags:
+        -
+          Key: Project
+          Value: !Ref ProjectTag
+        -
+          Key: Name
+          Value: !Join ["", [!Ref ProjectTag, "-Subnet-PrivateC"]]
+  SubnetRouteTableAssociatePublicA: # Associates the subnet with a route table - passed via import
+    DependsOn: SubnetPublicA
+    Type: "AWS::EC2::SubnetRouteTableAssociation"
+    Properties:
+      RouteTableId: !Ref RouteTablePublic
+      SubnetId: !Ref SubnetPublicA
+  SubnetRouteTableAssociatePrivateA: # Associates the subnet with a route table - passed via parameter
+    DependsOn: SubnetPrivateA
+    Type: "AWS::EC2::SubnetRouteTableAssociation"
+    Properties:
+      RouteTableId: !Ref RouteTablePrivateA
+      SubnetId: !Ref SubnetPrivateA # Associates the subnet with a route table - passed via parameter
+  SubnetRouteTableAssociatePrivateB: # Associates the subnet with a route table - passed via parameter
+    DependsOn: SubnetPrivateB
+    Type: "AWS::EC2::SubnetRouteTableAssociation"
+    Properties:
+      RouteTableId: !Ref RouteTablePrivateB
+      SubnetId: !Ref SubnetPrivateB # Associates the subnet with a route table - passed via parameter
+  SubnetRouteTableAssociatePrivateC: # Associates the subnet with a route table - passed via parameter
+    DependsOn: SubnetPrivateC
+    Type: "AWS::EC2::SubnetRouteTableAssociation"
+    Properties:
+      RouteTableId: !Ref RouteTablePrivateC
+      SubnetId: !Ref SubnetPrivateC # Associates the subnet with a route table - passed via parameter
+  RouteDefaultPublic:
+    Type: "AWS::EC2::Route"
+    DependsOn: GatewayAttach
+    Properties:
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref IGW
+      RouteTableId: !Ref RouteTablePublic
+  RouteTablePublic:
+    Type: "AWS::EC2::RouteTable"
+    Properties:
+      VpcId: !Ref VPC
+  RouteDefaultPrivateA:
+    Type: "AWS::EC2::Route"
+    Properties:
+      DestinationCidrBlock: 0.0.0.0/0
+      NatGatewayId: !Ref NatGatewayA
+      RouteTableId: !Ref RouteTablePrivateA
+  RouteDefaultPrivateB:
+    Type: "AWS::EC2::Route"
+    Properties:
+      DestinationCidrBlock: 0.0.0.0/0
+      NatGatewayId: !Ref NatGatewayA
+      RouteTableId: !Ref RouteTablePrivateB
+  RouteDefaultPrivateC:
+    Type: "AWS::EC2::Route"
+    Properties:
+      DestinationCidrBlock: 0.0.0.0/0
+      NatGatewayId: !Ref NatGatewayA
+      RouteTableId: !Ref RouteTablePrivateC
+  RouteTablePrivateA:
+    Type: "AWS::EC2::RouteTable"
+    Properties:
+      VpcId: !Ref VPC
+  RouteTablePrivateB:
+    Type: "AWS::EC2::RouteTable"
+    Properties:
+      VpcId: !Ref VPC
+  RouteTablePrivateC:
+    Type: "AWS::EC2::RouteTable"
+    Properties:
+      VpcId: !Ref VPC
+  EIPNatGWA:
+    DependsOn: GatewayAttach
+    Type: "AWS::EC2::EIP"
+    Properties:
+      Domain: vpc
+  NatGatewayA:
+    Type: "AWS::EC2::NatGateway"
+    Properties:
+      AllocationId: !GetAtt EIPNatGWA.AllocationId
+      SubnetId: !Ref SubnetPublicA
+      Tags:
+        -
+          Key: Project
+          Value: !Ref ProjectTag
+        -
+          Key: Name
+          Value: !Join ["", [!Ref ProjectTag, "-NatGWA"]]
+
+  DynamoDBLabsIDE:
+    Type: AWS::Cloud9::EnvironmentEC2
+    Properties:
+      Description: "Cloud 9 IDE"
+      InstanceType: !Ref IdeType
+      SubnetId: !Ref SubnetPublicA
+      Tags:
+        -
+          Key: Project
+          Value: !Ref ProjectTag
+        -
+          Key: ProjectName
+          Value: !Join ["", [!Ref ProjectTag, "-Ide"]]
+
+Outputs:
+  VpcId:
+    Description: VPC ID
+    Value: !Ref VPC
+  SubnetIdPublicA:
+    Description: Subnet ID for first public subnet
+    Value: !Ref SubnetPublicA
+  SubnetIdPrivateA:
+    Description: Subnet ID for first private subnet
+    Value: !Ref SubnetPrivateA
+  SubnetIdPrivateB:
+    Description: Subnet ID for second private subnet
+    Value: !Ref SubnetPrivateB
+  SubnetIdPrivateC:
+    Description: Subnet ID for third private subnet
+    Value: !Ref SubnetPrivateC
+  RouteTableIdPrivateC:
+    Value: !Ref RouteTablePrivateC
+  RouteTableIdPrivateB:
+    Value: !Ref RouteTablePrivateB
+  RouteTableIdPrivateA:
+    Value: !Ref RouteTablePrivateA
