@@ -12,6 +12,13 @@ description = "Our editors and hall of fame."
 1. Sean Shriver ([switch180](https://github.com/switch180)) - Ported the whole lab to amazon-dynamodb-labs.com with a custom Hugo theme. Made the "bullet-proof" CloudFormation template for the lab. Updated the hands on lab to Python3
 1. Daniel Yoder ([danielsyoder](https://github.com/danielsyoder)) - The brains behind amazon-dynamodb-labs.com and the co-creator of the design scenarios
 
+### 2021 editors
+
+A new section of labs was added in 2021 that are more focused on introductory and beginner material.  The following individuals have contributed to those lab sections.
+
+1. Chad Tindel - ([ctindel](https://github.com/ctindel)) - Created the CLI and Console Labs
+1. Dhiraj Thakur - ([dhirajk1108](https://github.com/dhirajk1108)) - Created the Backups lab
+
 ### 2020 editors
 
 The following individuals put in hours of their time to revamp the guide to make it more instructional and less procedural in Spring 2020.
