@@ -1,6 +1,6 @@
 +++
-title = "Explore the DynamoDB with the CLI"
-menuTitle = "Explore the DynamoDB with the CLI"
+title = "Explore DynamoDB with the CLI"
+menuTitle = "Explore DynamoDB with the CLI"
 date = 2021-04-21T07:33:04-05:00
 weight = 20
 chapter = true
