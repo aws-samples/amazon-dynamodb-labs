@@ -4,10 +4,10 @@ date = 2019-12-02T10:26:31-08:00
 weight = 8
 +++
 
-
 Now, create a new table with different capacity units. The new table’s global secondary index has only 1 write capacity unit (WCU) and 1 read capacity unit (RCU).
 
 To create the new table, run the following AWS CLI command.
+
 ```bash
 aws dynamodb create-table --table-name logfile_gsi_low \
 --attribute-definitions AttributeName=PK,AttributeType=S AttributeName=GSI_1_PK,AttributeType=S \
@@ -19,12 +19,15 @@ KeySchema=[{AttributeName=GSI_1_PK,KeyType=HASH}],\
 Projection={ProjectionType=INCLUDE,NonKeyAttributes=['bytessent']},\
 ProvisionedThroughput={ReadCapacityUnits=1,WriteCapacityUnits=1}"
 ```
+
 Run the following AWS CLI command to wait until the table becomes `ACTIVE`:
+
 ```bash
 aws dynamodb wait table-exists --table-name logfile_gsi_low
 ```
 
 The initial command creates a new table and one global secondary index with the following definition:
+
 #### Table: `logfile_gsi_low`
 
 - Key schema: HASH (partition key)
@@ -33,26 +36,45 @@ The initial command creates a new table and one global secondary index with the 
 - Global secondary index:
   - GSI_1 (**1 RCU, 1 WCU**) - Allows for querying by host IP address
 
-
-
-| Attribute Name (Type)        | Special Attribute?           | Attribute Use Case          | Sample Attribute Value  |
-| ------------- |:-------------:|:-------------:| -----:|
-| PK (STRING)      | Partition key | Holds the request ID for the access log  | *request#104009*  |
-| GSI_1_PK (STRING)      | GSI 1 partition key | The host for the request, an IPv4 address  | *host#66.249.67.3*  |
-
-
+| Attribute Name (Type) | Special Attribute?  |            Attribute Use Case             | Sample Attribute Value |
+| --------------------- | :-----------------: | :---------------------------------------: | ---------------------: |
+| PK (STRING)           |    Partition key    |  Holds the request ID for the access log  |       _request#104009_ |
+| GSI_1_PK (STRING)     | GSI 1 partition key | The host for the request, an IPv4 address |     _host#66.249.67.3_ |
 
 Let's populate this table with a large dataset. You will use a multi-threaded version of the Python load script to simulate more writes per second to the DynamoDB table. This will create contention for provisioned capacity to simulate a surge of traffic on an under-provisioned table.
+
 ```bash
 python load_logfile_parallel.py logfile_gsi_low
 ```
-After a few minutes, the execution of this script will be throttled and show an error message similar to the following error. This indicates you should increase the provisioned capacity of the DynamoDB table, or enable DynamoDB auto scaling if you have not already (read more about [DynamoDB auto scaling in the AWS documentation](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.AutoScaling)).
-```txt
-ProvisionedThroughputExceededException: An error occurred (ProvisionedThroughputExceededException) when calling the BatchWriteItem operation (reached max retries: 9): The level of configured provisioned throughput for one or more global secondary indexes of the table was exceeded. Consider increasing your provisioning level for the under-provisioned global secondary indexes with the UpdateTable API
-```
-You can pause the operation by typing Ctrl+Z
 
-**Note:** This new table has more RCUs (1,000) and WCUs (1,000), but you still got an error and the load time increased.
+After a few minutes, the execution of this script will be throttled and show an error message similar to the following error. This indicates you should increase the provisioned capacity of the DynamoDB table, or enable DynamoDB auto scaling if you have not already (read more about [DynamoDB auto scaling in the AWS documentation](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.AutoScaling)).
+
+```txt
+$ python load_logfile_parallel.py logfile_gsi_low
+starting thread for file: ./data/logfile_medium2.csv
+starting thread for file: ./data/logfile_medium1.csv
+thread_id: 0, row: 5000, 5.129777908325195
+thread_id: 1, row: 5000, 5.156322002410889
+thread_id: 0, row: 10000, 4.6723268032073975
+thread_id: 1, row: 10000, 4.671278476715088
+thread_id: 1, row: 15000, 4.664644956588745
+thread_id: 0, row: 15000, 4.881428956985474
+Exception in thread Thread-1:
+Traceback (most recent call last):
+  ...
+botocore.errorfactory.ProvisionedThroughputExceededException: An error occurred (ProvisionedThroughputExceededException) when calling the BatchWriteItem operation (reached max retries: 9): The level of configured provisioned throughput for one or more global secondary indexes of the table was exceeded. Consider increasing your provisioning level for the under-provisioned global secondary indexes with the UpdateTable API
+
+Exception in thread Thread-2:
+Traceback (most recent call last):
+  ...
+botocore.errorfactory.ProvisionedThroughputExceededException: An error occurred (ProvisionedThroughputExceededException) when calling the BatchWriteItem operation (reached max retries: 9): The level of configured provisioned throughput for one or more global secondary indexes of the table was exceeded. Consider increasing your provisioning level for the under-provisioned global secondary indexes with the UpdateTable API
+```
+
+You can pause the operation by typing Ctrl+Z (Ctrl+C if you are Mac user).
+
+{{% notice note %}}
+This new table has more RCUs (1,000) and WCUs (1,000), but you still got an error and the load time increased.
+{{% /notice %}}
 
 **Topic for discussion:** Can you explain the behavior of the test? An exception named `ProvisionedThroughputExceededException` was returned by DynamoDB with an exception message suggesting the provisioned capacity of the GSI be increased. This is a telling error, and one that needs to be acted upon. In short, if you want 100% of the writes on the DynamoDB base table to be copied into the GSI, then the GSI should be provisioned with 100% (the same amount) of the capacity on the base table, which should be 1,000 WCU in this example. Simply put, the GSI was under-provisioned.
 
@@ -64,7 +86,9 @@ Open the AWS console, or switch to your browser tab with the AWS console, to vie
 
 The following image shows the write capacity metric for the `logfile_gsi_low` table. Note that the consumed writes (the blue line) were lower than the provisioned writes (red line) for the table during the test. This tells us the base table had sufficient write capacity for the surge of requests.
 
-**Note:** It may take a few minutes for the provisioned capacity (red line) to show up in the graphs. The provisioned capacity metrics are synthetic and there can be delays of five to ten minutes until they show a change.
+{{% notice note %}}
+It may take a few minutes for the provisioned capacity (red line) to show up in the graphs. The provisioned capacity metrics are synthetic and there can be delays of five to ten minutes until they show a change.
+{{% /notice %}}
 
 ![Write capacity metric for the table](/images/image2.jpg)
 
@@ -80,7 +104,9 @@ To identify the source of these throttled write requests, review the throttled w
 When you review the throttle events for the GSI, you will see the source of our throttles! Only the GSI has 'Throttled write events', which means it is the source of throttling on the table, and the cause of the throttled Batch write requests.
 
 ![Throttled writes for the GSI](/images/image5.jpg)
-**Note:**: It may take some time for the write throttle events to appear on the GSI throttled write events graph. If you don't immediately see metrics, re-run the command above to load data into DynamoDB and let it continue for several minutes so that many throttling events are created.
+{{% notice note %}}
+It may take some time for the write throttle events to appear on the GSI throttled write events graph. If you don't immediately see metrics, re-run the command above to load data into DynamoDB and let it continue for several minutes so that many throttling events are created.
+{{% /notice %}}
 
 When a DynamoDB global secondary index's write throttles are sufficient enough to create throttled requests, the behavior is called GSI back pressure. Throttled requests are `ProvisionedThroughputExceededException` errors in the AWS SDKs, generate `ThrottledRequests` metrics in CloudWatch, and appear as 'throttled write requests' on the base table in the AWS console. When GSI back pressure occurs, all writes to the DynamoDB table are rejected until space in the buffer between the DynamoDB base table and GSI opens up. Regardless of whether a new row is destined for a GSI, writes for a time will be rejected on the base table until space is available - DynamoDB does not have time to determine if a row to be written will be in the GSI or not. This is a troubling situation, but it's an unavoidable constraint from DynamoDB because the service cannot create a buffer of unlimited size between your base table and GSI; there must be a limit to the number of items waiting to be copied from the base table into a GSI. In order to be aware of this behavior early, it's important to monitor throttled requests and events on your DynamoDB table and GSI.
 

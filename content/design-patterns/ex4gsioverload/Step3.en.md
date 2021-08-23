@@ -18,12 +18,14 @@ response = table.query(
     )
 ```
 
-Run the following AWS CLI command to run the script.
+Run the following python script to retrieve the employees based in Washington state (WA).
+
 ```bash
 python query_employees.py employees state 'WA'
 ```
 
 The script should give you output that looks like the following.
+
 ```txt
 List of employees with WA in the attribute state:
     Employee name: Alice Beilby - hire date: 2014-12-03
@@ -37,17 +39,33 @@ List of employees with WA in the attribute state:
     Employee name: Willie McCuthais - hire date: 2015-05-27
 Total of employees: 46. Execution time: 0.13477110862731934 seconds
 ```
+
 You can try a different US state by changing the last parameter of the command. The following command queries all employees based in Texas.
+
 ```bash
 python query_employees.py employees state 'TX'
 ```
-**The list of US states with some data in the sample data is: AZ, CA, CO, IL, IN, MA, MD, MI, NC, NY, OR, PA, TN, TX, and WA.**
+
+{{%expand "If you want to query other states, click here to open the list of US states with some data in the table" %}}
+
+|     |     |     |     |     |
+| --- | --- | --- | --- | --- |
+| AZ  | CA  | CO  | IL  | IN  |
+| MA  | MD  | MI  | NC  | NY  |
+| OR  | PA  | TN  | TX  | WA  |
+
+{{% /expand%}}
+
+<!-- **The list of US states with some data in the sample data is: AZ, CA, CO, IL, IN, MA, MD, MI, NC, NY, OR, PA, TN, TX, and WA.** -->
 
 Using the same query, you can query the employees by job title. Run the following command as an example.
+
 ```bash
 python query_employees.py employees current_title 'Software Engineer'
 ```
+
 The preceding command will give you the following results.
+
 ```txt
  List of employees with Software Engineer in the attribute current_title:
     Employee name: Alice Beilby - hire date: 2014-11-03
@@ -70,17 +88,42 @@ The preceding command will give you the following results.
     Employee name: Noelani Studde - hire date: 2015-03-30
 Total of employees: 18. Execution time: 0.11937260627746582 seconds
 ```
-You also can try a different title, as shown in the following AWS CLI command.
+
+You also can try a different title, as shown in the following python command.
+
 ```bash
 python query_employees.py employees current_title 'IT Support Manager'
 ```
-**The list of available titles is:** Application Developer,Application Support Analyst,Applications Engineer,Associate Developer,Chief Technology Officer (CTO) ,Chief Information Officer (CIO) ,Computer and Information Systems Manager,Computer Systems Manager,Customer Support Administrator,Customer Support Specialist,Data Center Support Specialist,Data Quality Manager,Database Administrator,Desktop Support Manager,Desktop Support Specialist,Developer,Director of Technology,Front End Developer,Help Desk Specialist,Help Desk Technician,Information Technology Coordinator,Information Technology Director,Information Technology Manager,IT Support Manager,IT Support Specialist,IT Systems Administrator,Java Developer,Junior Software Engineer,Management Information Systems Director,.NET Developer,Network Architect,Network Engineer,Network Systems Administrator,Programmer,Programmer Analyst,Security Specialist,Senior Applications Engineer,Senior Database Administrator,Senior Network Architect,Senior Network Engineer,Senior Network System Administrator,Senior Programmer,Senior Programmer Analyst,Senior Security Specialist,Senior Software Engineer,Senior Support Specialist,Senior System Administrator,Senior System Analyst,Senior System Architect,Senior System Designer,Senior Systems Analyst,Senior Systems Software Engineer,Senior Web Administrator,Senior Web Developer,Software Architect,Software Developer,Software Engineer,Software Quality Assurance Analyst,Support Specialist,Systems Administrator,Systems Analyst,System Architect,Systems Designer,Systems Software Engineer,Technical Operations Officer,Technical Support Engineer,Technical Support Specialist,Technical Specialist,Telecommunications Specialist,Web Administrator,Web Developer,Webmaster
+
+{{%expand "If you want to know the list of all the available titles, click here!" %}}
+
+|                                          |                               |                                    |                                    |                                         |                                 |
+| ---------------------------------------- | ----------------------------- | ---------------------------------- | ---------------------------------- | --------------------------------------- | ------------------------------- |
+| Application Developer                    | Application Support Analyst   | Applications Engineer              | Associate Developer                | Chief Technology Officer (CTO)          | Chief Information Officer (CIO) |
+| Computer and Information Systems Manager | Computer Systems Manager      | Customer Support Administrator     | Customer Support Specialist        | Data Center Support Specialist          | Data Quality Manager            |
+| Database Administrator                   | Desktop Support Manager       | Desktop Support Specialist         | Developer                          | Director of Technology                  | Front End Developer             |
+| Help Desk Specialist                     | Help Desk Technician          | Information Technology Coordinator | Information Technology Director    | Information Technology Manager          | IT Support Manager              |
+| IT Support Specialist                    | IT Systems Administrator      | Java Developer                     | Junior Software Engineer           | Management Information Systems Director | .NET Developer                  |
+| Network Architect                        | Network Engineer              | Network Systems Administrator      | Programmer                         | Programmer Analyst                      | Security Specialist             |
+| Senior Applications Engineer             | Senior Database Administrator | Senior Network Architect           | Senior Network Engineer            | Senior Network System Administrator     | Senior Programmer               |
+| Senior Programmer Analyst                | Senior Security Specialist    | Senior Software Engineer           | Senior Support Specialist          | Senior System Administrator             | Senior System Analyst           |
+| Senior System Architect                  | Senior System Designer        | Senior Systems Analyst             | Senior Systems Software Engineer   | Senior Web Administrator                | Senior Web Developer            |
+| Software Architect                       | Software Developer            | Software Engineer                  | Software Quality Assurance Analyst | Support Specialist                      | Systems Administrator           |
+| Systems Analyst                          | System Architect              | Systems Designer                   | Systems Software Engineer          | Technical Operations Officer            | Technical Support Engineer      |
+| Technical Support Specialist             | Technical Specialist          | Telecommunications Specialist      | Web Administrator                  | Web Developer                           | Webmaster                       |
+
+{{% /expand%}}
+
+<!-- **The list of available titles is:** Application Developer,Application Support Analyst,Applications Engineer,Associate Developer,Chief Technology Officer (CTO) ,Chief Information Officer (CIO) ,Computer and Information Systems Manager,Computer Systems Manager,Customer Support Administrator,Customer Support Specialist,Data Center Support Specialist,Data Quality Manager,Database Administrator,Desktop Support Manager,Desktop Support Specialist,Developer,Director of Technology,Front End Developer,Help Desk Specialist,Help Desk Technician,Information Technology Coordinator,Information Technology Director,Information Technology Manager,IT Support Manager,IT Support Specialist,IT Systems Administrator,Java Developer,Junior Software Engineer,Management Information Systems Director,.NET Developer,Network Architect,Network Engineer,Network Systems Administrator,Programmer,Programmer Analyst,Security Specialist,Senior Applications Engineer,Senior Database Administrator,Senior Network Architect,Senior Network Engineer,Senior Network System Administrator,Senior Programmer,Senior Programmer Analyst,Senior Security Specialist,Senior Software Engineer,Senior Support Specialist,Senior System Administrator,Senior System Analyst,Senior System Architect,Senior System Designer,Senior Systems Analyst,Senior Systems Software Engineer,Senior Web Administrator,Senior Web Developer,Software Architect,Software Developer,Software Engineer,Software Quality Assurance Analyst,Support Specialist,Systems Administrator,Systems Analyst,System Architect,Systems Designer,Systems Software Engineer,Technical Operations Officer,Technical Support Engineer,Technical Support Specialist,Technical Specialist,Telecommunications Specialist,Web Administrator,Web Developer,Webmaster -->
 
 Using the same query with one change, you can query the employees by name, as shown in the following command.
+
 ```bash
 python query_employees.py employees name 'Dale Marlin'
 ```
+
 The preceding command should give you the following result.
+
 ```txt
  List of employees with Dale Marlin in the attribute name:
     Employee name: Dale Marlin - hire date: 2014-10-19
