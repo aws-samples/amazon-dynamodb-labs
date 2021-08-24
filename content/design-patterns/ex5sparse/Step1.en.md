@@ -25,7 +25,10 @@ aws dynamodb describe-table --table-name employees --query "Table.GlobalSecondar
 The output will initially look like the following.
 
 ```json
-["CREATING", "ACTIVE"]
+[
+   "CREATING", 
+   "ACTIVE"
+]
 ```
 
 You also can script the command to run every 2 seconds using `watch`.
@@ -40,7 +43,10 @@ Press **Ctrl + C** to end `watch` after the global secondary index has been crea
 Wait until the new index is `ACTIVE` before proceeding.
 
 ```json
-["ACTIVE", "ACTIVE"]
+[
+   "ACTIVE",
+   "ACTIVE"
+]
 ```
 
 {{% notice warning %}}

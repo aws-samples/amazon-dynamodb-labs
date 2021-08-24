@@ -50,24 +50,7 @@ python load_logfile_parallel.py logfile_gsi_low
 After a few minutes, the execution of this script will be throttled and show an error message similar to the following error. This indicates you should increase the provisioned capacity of the DynamoDB table, or enable DynamoDB auto scaling if you have not already (read more about [DynamoDB auto scaling in the AWS documentation](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.AutoScaling)).
 
 ```txt
-$ python load_logfile_parallel.py logfile_gsi_low
-starting thread for file: ./data/logfile_medium2.csv
-starting thread for file: ./data/logfile_medium1.csv
-thread_id: 0, row: 5000, 5.129777908325195
-thread_id: 1, row: 5000, 5.156322002410889
-thread_id: 0, row: 10000, 4.6723268032073975
-thread_id: 1, row: 10000, 4.671278476715088
-thread_id: 1, row: 15000, 4.664644956588745
-thread_id: 0, row: 15000, 4.881428956985474
-Exception in thread Thread-1:
-Traceback (most recent call last):
-  ...
-botocore.errorfactory.ProvisionedThroughputExceededException: An error occurred (ProvisionedThroughputExceededException) when calling the BatchWriteItem operation (reached max retries: 9): The level of configured provisioned throughput for one or more global secondary indexes of the table was exceeded. Consider increasing your provisioning level for the under-provisioned global secondary indexes with the UpdateTable API
-
-Exception in thread Thread-2:
-Traceback (most recent call last):
-  ...
-botocore.errorfactory.ProvisionedThroughputExceededException: An error occurred (ProvisionedThroughputExceededException) when calling the BatchWriteItem operation (reached max retries: 9): The level of configured provisioned throughput for one or more global secondary indexes of the table was exceeded. Consider increasing your provisioning level for the under-provisioned global secondary indexes with the UpdateTable API
+ProvisionedThroughputExceededException: An error occurred (ProvisionedThroughputExceededException) when calling the BatchWriteItem operation (reached max retries: 9): The level of configured provisioned throughput for one or more global secondary indexes of the table was exceeded. Consider increasing your provisioning level for the under-provisioned global secondary indexes with the UpdateTable API
 ```
 
 You can pause the operation by typing Ctrl+Z (Ctrl+C if you are Mac user).

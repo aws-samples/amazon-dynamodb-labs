@@ -23,7 +23,11 @@ aws dynamodb describe-table --table-name employees --query "Table.GlobalSecondar
 The output looks similar to the following. The order of the table statuses may be different.
 
 ```json
-["ACTIVE", "ACTIVE", "CREATING"]
+[
+   "ACTIVE",
+   "ACTIVE",
+   "CREATING"
+]
 ```
 
 You can script this command to run every two seconds by using `watch`,
@@ -39,7 +43,11 @@ _Use Ctrl + C to end `watch` after the global secondary index has been created._
 Wait until the new index is ACTIVE before proceeding.
 
 ```json
-["ACTIVE", "ACTIVE", "ACTIVE"]
+[
+   "ACTIVE",
+   "ACTIVE",
+   "ACTIVE"
+]
 ```
 
 Now you can use the new global secondary index to query the table. You must to use the partition key, and you can use the sort key (but it is optional).
