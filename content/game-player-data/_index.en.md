@@ -1,7 +1,7 @@
 +++
 title = "Modeling Game Player Data with Amazon DynamoDB"
 chapter = true
-description = "300 level: Hands-on exercise with Cloud9 using Python and Console."
+description = "300 level: Hands-on exercise with Cloud9, Python and Data modelling best practices."
 pre = "<b>Workshop: </b>"
 weight = 1
 +++

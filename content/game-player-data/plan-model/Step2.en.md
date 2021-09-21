@@ -22,7 +22,7 @@ A `User` entity represents a user in the application. A user can create multiple
 
 Finally, a `Game` contains multiple `Users` and a `User` can play in multiple different `Games` over time. 
 
-Thus, there is a many-to-many relationship between `Users` and `Games`.You can represent this relationship with the `UserGameMapping` entity.
+Thus, there is a many-to-many relationship between `Users` and `Games`. You can represent this relationship with the `UserGameMapping` entity.
 
 With these entities and relationships in mind, the entity-relationship diagram is shown below.
 
