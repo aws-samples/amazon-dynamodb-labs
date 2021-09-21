@@ -16,7 +16,7 @@ pre = "<b>Start: </b>"
 
 3. Click on **Accept Terms & Login** to continue
 
-4. Choose **Email One-Time Password (OTP)** to sign in to the provided AWS account for this workshop. 
+4. Choose **Email One-Time Passcode (OTP)** to sign in to the provided AWS account for this workshop. 
 
 5. Provide an email address to receive a one-time passcode.
 
