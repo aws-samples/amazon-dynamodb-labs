@@ -76,7 +76,7 @@ join_game_for_user(GAME_ID, USERNAME)
 
 In this script’s `join_game_for_user` function, the `transact_write_items()` method performs a write transaction. This transaction has two operations.
 
-In the transaction’s first operation, youu se a `Put` operation to insert a new `UserGameMapping` entity. As part of that operation, you specify a condition that the `SK` attribute should not exist for this entity. This ensures that an entity with this `PK` and `SK` doesn’t already exist. If such an entity did already exist, that would mean this user already joined the game.
+In the transaction’s first operation, you use a `Put` operation to insert a new `UserGameMapping` entity. As part of that operation, you specify a condition that the `SK` attribute should not exist for this entity. This ensures that an entity with this `PK` and `SK` doesn’t already exist. If such an entity did already exist, that would mean this user already joined the game.
 
 The second operation is an `Update` operation on the `Game` entity to increment the `people` attribute by one. As part of this operation, you add a conditional check that the current value of `people` is not greater than 50. As soon as 50 people join a game, the game is full and ready to begin.
 

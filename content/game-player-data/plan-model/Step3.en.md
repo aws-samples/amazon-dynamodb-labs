@@ -48,7 +48,7 @@ During the game, players try to defeat other players with the goal of being the 
 
 Later, players may want to review past games they’ve played or that other players have played.
 
-Based on this information, youhave three access patterns:
+Based on this information, you have three access patterns:
 
 - Update game for user (Write)
 - Update game (Write)

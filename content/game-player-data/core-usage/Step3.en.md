@@ -43,7 +43,7 @@ python scripts/bulk_load_table.py
 You can ensure that all your data was loaded into the table by running a `Scan` operation and getting the count.
 
 ```sh
-aws dynamodb scan--table-name battle-royale --select COUNT --return-consumed-capacity TOTAL
+aws dynamodb scan --table-name battle-royale --select COUNT --return-consumed-capacity TOTAL
 ```
 
 This should display the following results:

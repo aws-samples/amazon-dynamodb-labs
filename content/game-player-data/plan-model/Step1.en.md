@@ -22,7 +22,7 @@ Before designing your DynamoDB table, document every need you have for reading a
 
 #### Optimize for the number of requests to DynamoDB
 
-After you have documented your application’s access pattern needs, you areready to design your table. You should design your table to minimize the number of requests to DynamoDB for each access pattern. Ideally, each access pattern should require only a single request to DynamoDB because network requests are considered slow, so you want to reduce the number of round trips from the application to the table.
+After you have documented your application’s access pattern needs, you are ready to design your table. You should design your table to minimize the number of requests to DynamoDB for each access pattern. Ideally, each access pattern should require only a single request to DynamoDB because network requests are considered slow, so you want to reduce the number of round trips from the application to the table.
 
 ##### To optimize for the number of requests to DynamoDB, you need to understand some core concepts:
 
