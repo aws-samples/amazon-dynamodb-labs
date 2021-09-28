@@ -1,6 +1,6 @@
 +++
-title = "Retrive Item collections"
-menuTitle = "Retrive Item collections"
+title = "Retrieve Item collections"
+menuTitle = "Retrieve Item collections"
 date = 2021-04-21T07:33:04-05:00
 weight = 34
 chapter = false
@@ -52,7 +52,7 @@ for user in game.users:
     print(user)
 ```
 
-At the beginning of this script, you import the Boto 3 library and some simple classes to represent the objects inthe application code. You can see the definitions for those entities in the **application/entities.py** file.
+At the beginning of this script, you import the Boto 3 library and some simple classes to represent the objects in the application code. You can see the definitions for those entities in the **application/entities.py** file.
 
 The real work of the script happens in the `fetch_game_and_users` function that’s defined in the module. This is similar to a function you would define in your application to be used by any endpoints that need this data.
 
