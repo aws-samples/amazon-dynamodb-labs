@@ -23,10 +23,10 @@ In this module, you'll configure your environment and download code that you wil
 To set up this workshop, choose one of the following paths, depending on whether you are:
 
 {{% notice warning %}}
-If following the lab in your own AWS Account, you will create DynamoDB tables that will incur a cost that could approach tens or hundreds of dollars per day. **Ensure you delete the DynamoDB tables using the DynamoDB console, and make sure you [delete the Cloud9 environment](https://docs.aws.amazon.com/cloud9/latest/user-guide/delete-environment.html) as soon as the lab is complete**.
+If following the lab in your own AWS Account, you will create DynamoDB tables that will incur a cost that could approach tens of dollars per day. **Ensure you delete the DynamoDB tables using the DynamoDB console, and make sure you [delete the Cloud9 environment](https://docs.aws.amazon.com/cloud9/latest/user-guide/delete-environment.html) as soon as the lab is complete**.
 {{% /notice %}}
 
-- …running the workshop on your own (in your own AWS account) in which case you must follow [this resource completely](https://aws.amazon.com/getting-started/hands-on/data-modeling-gaming-app-with-dynamodb/), 
+- …running the workshop on your own (in your own AWS account) in which case you must complete the section "Set up your AWS Cloud9 IDE" [on this website](https://aws.amazon.com/getting-started/hands-on/data-modeling-gaming-app-with-dynamodb/2/), which guides you in the process of creating a Cloud9 IDE in your AWS account using default settings.
 
 - […attending an AWS-hosted event (using AWS-provided hashes)]({{< ref "start-here/aws-event/" >}})
 
