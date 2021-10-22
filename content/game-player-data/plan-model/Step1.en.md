@@ -22,13 +22,13 @@ Before designing your DynamoDB table, document every need you have for reading a
 
 #### Optimize for the number of requests to DynamoDB
 
-After you have documented your application’s access pattern needs, you are ready to design your table. You should design your table to minimize the number of requests to DynamoDB for each access pattern. Ideally, each access pattern should require only a single request to DynamoDB because network requests are considered slow, so you want to reduce the number of round trips from the application to the table.
+After you have documented your application’s access pattern needs, you are ready to design your table. You should design your table to minimize the number of requests to DynamoDB for each access pattern. Ideally, each access pattern should require only a single request to DynamoDB, so you want to reduce the number of round trips from the application to the table.
 
 ##### To optimize for the number of requests to DynamoDB, you need to understand some core concepts:
 
 - [Primary Keys](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.CoreComponents.html#HowItWorks.CoreComponents.PrimaryKey)
 
-- [Secondary Keys](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SecondaryIndexes.html)
+- [Secondary Indexes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SecondaryIndexes.html)
 
 - [Transactions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/transactions.html)
 
@@ -42,7 +42,7 @@ People new to DynamoDB often try to implement a relational model on top of nonre
 
 In a relational database, you normalize your data to reduce data redundancy and storage space, and then use joins to combine multiple different tables. However, joins at scale are slow and expensive. DynamoDB does not allow for joins because they slow down as your table grows.
 
-**One data type per table**
+**One entity type per table**
 
 Your DynamoDB table will often include different types of data in a single table. In the example, you have `User`, `Game`, and `UserGameMapping` entities in a single table. In a relational database, this would be modeled as three different tables.
 
