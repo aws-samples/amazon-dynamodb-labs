@@ -1,0 +1,109 @@
+#Go to IAM and create role dms-vpc-role
+AWSTemplateFormatVersion: 2010-09-09
+
+Resources:
+  DMSVpc:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      InstanceTenancy: default
+      Tags:
+        - Key: Name
+          Value: DMS-VPC
+  DMSPUBSubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      CidrBlock: 10.0.1.0/24
+      MapPublicIpOnLaunch: true
+      VpcId: !Ref DMSVpc
+      AvailabilityZone: us-east-1a
+      Tags:
+        - Key: Name
+          Value: DMS-PUB01
+  DMSPUBSubnet2:
+     Type: AWS::EC2::Subnet
+     Properties:
+       CidrBlock: 10.0.2.0/24
+       MapPublicIpOnLaunch: true
+       VpcId: !Ref DMSVpc
+       AvailabilityZone: us-east-1b
+       Tags:
+         - Key: Name
+           Value: DMS-PUB02
+  DMSInternetGateway:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - Key: Name
+          Value: DMS-IGW
+  DMSAttachGateway:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref DMSVpc
+      InternetGatewayId: !Ref DMSInternetGateway
+  DMSPublicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref DMSVpc
+      Tags:
+        - Key: Name
+          Value: DMS-PUBRT
+  DMSPublicRoute:
+    Type: AWS::EC2::Route
+    DependsOn: DMSAttachGateway
+    Properties:
+      RouteTableId: !Ref DMSPublicRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref DMSInternetGateway
+  DbSubnetRouteTableAssociation1:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      RouteTableId: !Ref DMSPublicRouteTable
+      SubnetId: !Ref DMSPUBSubnet1
+  DbSubnetRouteTableAssociation2:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      RouteTableId: !Ref DMSPublicRouteTable
+      SubnetId: !Ref DMSPUBSubnet2
+  DMSSubnetGroup:
+    Properties:
+      ReplicationSubnetGroupDescription: MySQL Replication
+      ReplicationSubnetGroupIdentifier: DMS-SUBNET
+      SubnetIds: [!Ref DMSPUBSubnet1,!Ref DMSPUBSubnet2]
+      Tags:
+        -
+          Key: Name
+          Value: DMS-SUBNET
+    Type: "AWS::DMS::ReplicationSubnetGroup"
+  DMSSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security group for DMS Instance
+      GroupName: DMS Demo Security Group
+      VpcId: !Ref DMSVpc
+  DMSReplicationInstance:
+    Type: "AWS::DMS::ReplicationInstance"
+    Properties:
+      AllocatedStorage: 200
+      MultiAZ: false
+      PubliclyAccessible: true
+      ReplicationInstanceClass: dms.c5.2xlarge
+      ReplicationInstanceIdentifier: mysqltodynamo-instance
+      ReplicationSubnetGroupIdentifier: !Ref DMSSubnetGroup
+      VpcSecurityGroupIds: [!Ref DMSSecurityGroup]
+  DMSReplicationRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - dms.amazonaws.com
+            Action:
+              - 'sts:AssumeRole'
+      ManagedPolicyArns: ['arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess']
+      RoleName: dynamodb-access
