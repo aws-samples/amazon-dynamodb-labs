@@ -1,0 +1,123 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Parameters:
+  DbMasterUsername:
+    Description: The datbaase master user name
+    Type: String
+    Default: root
+  DbMasterPassword:
+    Description: The database master password
+    Type: String
+    Default: Password@123
+
+Resources:
+  Vpc:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      InstanceTenancy: default
+      Tags:
+        - Key: Name
+          Value: DB-VPC
+  InternetGateway:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - Key: Name
+          Value: DB-IGW
+  AttachGateway:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref Vpc
+      InternetGatewayId: !Ref InternetGateway
+  PublicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref Vpc
+      Tags:
+        - Key: Name
+          Value: DB-PUBRT
+  PublicRoute:
+    Type: AWS::EC2::Route
+    Properties:
+      RouteTableId: !Ref PublicRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref InternetGateway
+  DbSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      CidrBlock: 10.0.1.0/24
+      MapPublicIpOnLaunch: true
+      VpcId: !Ref Vpc
+      Tags:
+        - Key: Name
+          Value: DB-PUB01
+  DbSubnetRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      RouteTableId: !Ref PublicRouteTable
+      SubnetId: !Ref DbSubnet
+  DbSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: MySQL security group
+      VpcId: !Ref Vpc
+      SecurityGroupIngress:
+        - CidrIp: 0.0.0.0/0
+          IpProtocol: tcp
+          FromPort: 3306
+          ToPort: 3306
+        - CidrIp: 0.0.0.0/0
+          IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+      Tags:
+        - Key: Name
+          Value: MySQL-SecurityGroup
+  DbInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      KeyName: tfc-dynamodb
+      ImageId: ami-0c2b8ca1dad447f8a
+      InstanceType: m5.large
+      SecurityGroupIds:
+        - !GetAtt DbSecurityGroup.GroupId
+      SubnetId: !Ref DbSubnet
+      BlockDeviceMappings:
+        - DeviceName: /dev/xvda
+          Ebs:
+            VolumeType: gp2
+            VolumeSize: '200'
+            DeleteOnTermination: 'true'
+            Encrypted: 'true'
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash -ex
+          sudo su
+          yum localinstall -y https://dev.mysql.com/get/mysql80-community-release-el7-1.noarch.rpm
+          yum install -y mysql-community-server
+          systemctl enable mysqld
+          systemctl start mysqld
+          mysql -u root "-p$(grep -oP '(?<=root@localhost\: )\S+' /var/log/mysqld.log)" -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${DbMasterPassword}'" --connect-expired-password
+          mysql -u root "-p${DbMasterPassword}" -e "CREATE USER '${DbMasterUsername}'@'%' IDENTIFIED BY '${DbMasterPassword}'"
+          mysql -u root "-p${DbMasterPassword}" -e "GRANT ALL PRIVILEGES ON *.* TO '${DbMasterUsername}'@'%'"
+          mysql -u root "-p${DbMasterPassword}" -e "FLUSH PRIVILEGES"
+          cd /var/lib/mysql-files/
+          wget https://datasets.imdbws.com/name.basics.tsv.gz
+          wget https://datasets.imdbws.com/title.akas.tsv.gz
+          wget https://datasets.imdbws.com/title.basics.tsv.gz
+          wget https://datasets.imdbws.com/title.crew.tsv.gz
+          wget https://datasets.imdbws.com/title.episode.tsv.gz
+          wget https://datasets.imdbws.com/title.principals.tsv.gz
+          wget https://datasets.imdbws.com/title.ratings.tsv.gz
+          gzip -d *.gz
+      Tags:
+        - Key: Name
+          Value: MySQL-Instance
+
+Outputs:
+  DbPublicIP:
+    Description: Public IP address of the database EC2 instance
+    Value: !GetAtt DbInstance.PublicIp
