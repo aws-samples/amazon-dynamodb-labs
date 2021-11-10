@@ -9,12 +9,25 @@ Parameters:
     Description: The database master password
     Type: String
     Default: Password@123
-
+  vpccidr:
+    Type: String
+    MinLength: 9
+    MaxLength: 18
+    AllowedPattern: "(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})"
+    ConstraintDescription: Must be a valid CIDR range in the form x.x.x.x/16
+    Default: 10.20.0.0/16
+  DBSubnetCIDR:
+    Type: String
+    MinLength: 9
+    MaxLength: 18
+    AllowedPattern: "(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})"
+    ConstraintDescription: Must be a valid CIDR range in the form x.x.x.x/22
+    Default: 10.0.1.0/24
 Resources:
   Vpc:
     Type: AWS::EC2::VPC
     Properties:
-      CidrBlock: 10.0.0.0/16
+      CidrBlock: !Ref vpccidr
       EnableDnsSupport: true
       EnableDnsHostnames: true
       InstanceTenancy: default
@@ -48,7 +61,7 @@ Resources:
   DbSubnet:
     Type: AWS::EC2::Subnet
     Properties:
-      CidrBlock: 10.0.1.0/24
+      CidrBlock: !Ref DBSubnetCIDR
       MapPublicIpOnLaunch: true
       VpcId: !Ref Vpc
       Tags:
