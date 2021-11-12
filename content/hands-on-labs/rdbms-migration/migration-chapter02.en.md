@@ -8,14 +8,15 @@ weight = 20
 The following steps should be executed to deploy the emulated source environment in AWS account:
 
  1. Download the [CloudFormation](/files/hands-on-labs/migration-env-setup.yaml) template
- 2. Sign in to your AWS Account [AWS Console](https://console.aws.amazon.com/) using an account with administrative privileges
- 3. Select N. Virginia Region (us-east-1)
- ![Final Deployment Architecture](/images/migration1.jpg)
- 4. Open CloudFormation, click on Create Stack and select With new resources (standard)
-  ![Final Deployment Architecture](/images/migration2.jpg)
- 5. Select Template source as Upload a template file and choose the downloaded yaml file
+ 2. Open [CloudFormation](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/template), click on Create Stack and select With new resources (standard)
+ 3. Select Template source as Upload a template file and choose the downloaded yaml file
+   ![Final Deployment Architecture](/images/migration5.jpg)
+ 4. Click Next
+ 5. Provide Stack Name and Update Parameters
+   ![Final Deployment Architecture](/images/migration6.jpg)
  6. Click Next
- 7. Provide Stack Name and Update Parameters
- 8. Click Next
- 9. Click Create stack
-10. The CloudFormation template will take 15-20 minutes to build the envirorment.  
+ 7. Click Create stack
+ 8. The CloudFormation template will take 15-20 minutes to build the envirorment
+  ![Final Deployment Architecture](/images/migration7.jpg)
+ 9. Go to [EC2 Dashboard](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Instances:)  and ensure Status check column is 2/2 checks passed before moving to next step.
+ ![Final Deployment Architecture](/images/migration8.jpg)
