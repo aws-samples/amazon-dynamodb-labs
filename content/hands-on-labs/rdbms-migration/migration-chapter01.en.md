@@ -1,13 +1,16 @@
 +++
-title = "Excercise Overview"
-menuTitle = "Excercise Overview"
+title = "Create an Key Pair"
+menuTitle = "Create Key Pair"
 date = 2021-04-25T07:33:04-05:00
-weight = 10
+weight = 15
 
 +++
-In this module, you will create an environment to host MySQL database on Amazon EC2. This instance will be used as source database and help to simulate onpremise relational database structure.
-The resources will be deployed via [Amazon CloudFormation](https://aws.amazon.com/cloudformation/) template. The CloudFromation will deploy following resorces as shown in the diagram.
-  - OnPrem VPC: Source VPC will represent onpremise source environment in N. Virginia region. This VPC will host source MySQL database on Amazon EC2
-  - DMS VPC: DMS VPC will host DMS replication instance in N. Virginia region. This replication instance will facilitate database migration from source MySQL server to Amazon DynamoDB
-  - Amazon EC2 MySQL Database: Amazon EC2 Amazon Linux 2 AMI with MySQL installed and running
-![Final Deployment Architecture](/images/migration-environment.png)
+In this step, you will generate an EC2 key pair that you will use to connect to the EC2 instance.
+
+  1. Sign in to your AWS Account [AWS Console](https://console.aws.amazon.com/) using an account with administrative privileges
+  2. Select N. Virginia Region (us-east-1)
+   ![Final Deployment Architecture](/images/migration1.jpg)
+  3. Click [here](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#KeyPairs:) to navigate to the Key Pair section in the EC2 console. Ensure you are in the same region as you chose in the previous step. Then, click on the Create Key Pair button
+   ![Final Deployment Architecture](/images/migration3.jpg)
+  4. Name the key pair rdbmsmigration, and then click Create. At this point, your browser will download a file named DMSKeyPair.pem. Save this file. You will need it to complete the tutorial.
+   ![Final Deployment Architecture](/images/migration4.jpg)
