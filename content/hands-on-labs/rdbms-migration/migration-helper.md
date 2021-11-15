@@ -19,7 +19,7 @@ LOAD DATA INFILE '/var/lib/mysql-files/title.principals.tsv' IGNORE INTO TABLE i
 LOAD DATA INFILE '/var/lib/mysql-files/name.basics.tsv' IGNORE INTO TABLE imdb.name_basics FIELDS TERMINATED BY '\t'  IGNORE 1 LINES;
 LOAD DATA INFILE '/var/lib/mysql-files/title.akas.tsv' IGNORE INTO  TABLE imdb.title_akas FIELDS TERMINATED BY '\t'  IGNORE 1 LINES;
 # 4. Create view and to limit the result set, filter the dataset with US region and English language
-CREATE VIEW dynamo_migration AS \
+CREATE VIEW dynamo_migration AS\
 	SELECT tp.tconst,\
 		   tp.ordering,\
 		   tb.primaryTitle,\
@@ -46,7 +46,7 @@ CREATE VIEW dynamo_migration AS \
 	LEFT JOIN imdb.title_basics tb ON tp.tconst = tb.tconst\
 	LEFT JOIN imdb.name_basics nm ON tp.nconst = nm.nconst\
 	LEFT JOIN imdb.title_episode te ON te.tconst = tp.tconst\
-	LEFT JOIN imdb.title_ratings tr ON tr.tconst = tp.tconst;\
+	LEFT JOIN imdb.title_ratings tr ON tr.tconst = tp.tconst\
 	LEFT JOIN imdb.title_akas ta ON ta.titleId = tp.tconst\
 	WHERE ta.region = 'US' and ta.language = 'en';
 #DMS Migration rule (Check if Source View has all the Key fields avaiable)
@@ -97,3 +97,4 @@ CREATE VIEW dynamo_migration AS \
     ]
 }
 #Create DynamoDB table with tconst (String) as partition key and tconst_orderning (String) as Sort key
+# Access Pattern - PartiQL
