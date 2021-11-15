@@ -1,6 +1,6 @@
 +++
-title = "Configure the Environment"
-menuTitle = "Configure the Environment"
+title = "Configure MySQL Environment"
+menuTitle = "Configure MySQL Environment"
 date = 2021-04-25T07:33:04-05:00
 weight = 20
 
