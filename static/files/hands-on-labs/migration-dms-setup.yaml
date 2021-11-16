@@ -1,11 +1,29 @@
 #Go to IAM and create role dms-vpc-role
 AWSTemplateFormatVersion: 2010-09-09
-
+Parameters:
+  DMSVpcCIDR:
+    Type: String
+    MinLength: 9
+    MaxLength: 18
+    ConstraintDescription: Must be a valid CIDR range in the form x.x.x.x/16
+    Default: 10.0.0.0/16
+  DMSSubnet1CIDR:
+    Type: String
+    MinLength: 9
+    MaxLength: 18
+    ConstraintDescription: Must be a valid CIDR range in the form x.x.x.x/22
+    Default: 10.0.1.0/24
+  DMSSubnet2CIDR:
+    Type: String
+    MinLength: 9
+    MaxLength: 18
+    ConstraintDescription: Must be a valid CIDR range in the form x.x.x.x/22
+    Default: 10.0.2.0/24
 Resources:
   DMSVpc:
     Type: AWS::EC2::VPC
     Properties:
-      CidrBlock: 10.0.0.0/16
+      CidrBlock: !Ref DMSVpcCIDR
       EnableDnsSupport: true
       EnableDnsHostnames: true
       InstanceTenancy: default
@@ -15,7 +33,7 @@ Resources:
   DMSPUBSubnet1:
     Type: AWS::EC2::Subnet
     Properties:
-      CidrBlock: 10.0.1.0/24
+      CidrBlock: !Ref DMSSubnet1CIDR
       MapPublicIpOnLaunch: true
       VpcId: !Ref DMSVpc
       AvailabilityZone: us-east-1a
@@ -25,7 +43,7 @@ Resources:
   DMSPUBSubnet2:
      Type: AWS::EC2::Subnet
      Properties:
-       CidrBlock: 10.0.2.0/24
+       CidrBlock: !Ref DMSSubnet2CIDR
        MapPublicIpOnLaunch: true
        VpcId: !Ref DMSVpc
        AvailabilityZone: us-east-1b
