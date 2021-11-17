@@ -66,8 +66,8 @@ In this excercise we will setup Database Migration Service(DMS) jobs to migrate 
     | Target database endpoint     | dynamodb-endpoint|
     | Migration type     | Migrate existing data|
     | Enable CloudWatch logs | Checked |
-    | Table mappings | Select JSON editor and paste the JSON document mentioned below|
-    | Start task on create     | none|
+    | Table mappings | Select JSON editor option and copy the JSON document mentioned below|
+    | Start task on create     | Checked|
 
   ```json
 
@@ -118,3 +118,9 @@ In this excercise we will setup Database Migration Service(DMS) jobs to migrate 
           ]
       }
   ```
+
+![Final Deployment Architecture](/images/migration25.jpg)
+![Final Deployment Architecture](/images/migration26.jpg)
+The replication job for historical migration will start moving data from MySQL dynamo_migration denormalized view to DynamoDB table in few minutes. The job will migration 2.5 millions records and normally takes 4-5 Hrs..
+You can track status of data loading under Table statistics of migration task. Once loading is in progress, feel free to move to the next section of the excercise.
+![Final Deployment Architecture](/images/migration27.jpg)
