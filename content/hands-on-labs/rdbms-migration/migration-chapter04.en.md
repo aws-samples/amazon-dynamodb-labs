@@ -5,15 +5,15 @@ date = 2021-04-25T07:33:04-05:00
 weight = 40
 
 +++
-Once flatfile are successfully loaded into imdb database, explore the source data based on data definition available over [IMDB website](https://www.imdb.com/interfaces/).
+Once the flat files are successfully loaded into the imdb database, explore the source data based on the data definition available over [IMDB website](https://www.imdb.com/interfaces/).
 
-You can always perform lift and shift migration from relatational databases to DynamoDB using Database Migration Service.
-Though, our focus in this excercise is to migrate subset of data in the most denormalized format possible. This will help to avoid any join during read operations and improve query performance.
-Only subset of source data will be denormalized and moved to target DynamoDB tables. The degree of denormalization will highly depend upon the query access partterns.
-In this excercise we will focus on designing denormalized MySQL view that will be migrated to DynamoDB. The concept is widely adopted in design principals followed during Customer 360.
+You can always perform lift and shift migration from relational databases to DynamoDB using Database Migration Service.
+Though, our focus in this exercise is to migrate a subset of data in the most denormalized format possible. This will help to avoid any joins during query operations and improve query performance.
+The only subset of source data will be denormalized and moved to target DynamoDB tables. The degree of denormalization will highly depend upon the query access patterns.
+In this exercise, we will focus on designing a denormalized MySQL view that will be migrated to DynamoDB. The concept is widely adopted in design principles followed during Customer 360.
 
-Exploring the imdbdataset, you may notice tconst and nconst fields that is uniquely assigned to each movies and crew member respectively. We will use this primary key across all 7 tables to create joins
-and pull subset of columns inside the target view. Also, to demonstrate row level filtering the view just filters all the movies published in english language.
+Exploring the IMDB dataset, you may notice tconst and nconst fields that are uniquely assigned to each movie and crew member respectively. We will use this primary key across all 7 tables to create joins
+and pull a subset of columns inside the target view. Also, to demonstrate row-level filtering the view just filters all the movies published in the English language.
 
 Copy below code and paste into mysql command line
 ```bash

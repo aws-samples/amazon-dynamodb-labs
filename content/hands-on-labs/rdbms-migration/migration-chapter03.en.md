@@ -5,16 +5,16 @@ date = 2021-04-25T07:33:04-05:00
 weight = 30
 
 +++
-Using CloudFormation template, you have launched EC2 Amazon Linux 2 instance with MySQL installed and running. The templment has also created new user based on CloudFormation input parameter.
-The script has copied public IMDB dataset into file derectory at deployed EC2 server .
+Using CloudFormation template, you have launched EC2 Amazon Linux 2 instance with MySQL installed and running. The template has also created a new user based on the CloudFormation input parameter.
+The script has copied the public IMDB dataset into the file directory at deployed EC2 server.
 Learn more about [IMDB dataset](https://www.imdb.com/interfaces/).
 
  1. Go to [EC2 console](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Instances:instanceState=running)
  2. Select the MySQL-Instance and click Connect
     ![Final Deployment Architecture](/images/migration9.jpg)
- 3. Make sure ec2-user is filled under User name field. Click Connect
+ 3. Make sure ec2-user is filled under the User name field. Click Connect
     ![Final Deployment Architecture](/images/migration10.jpg)
- 4. Elevate your priviledge using sudo command
+ 4. Elevate your privilege using sudo command
     ```bash
       sudo su
     ```
@@ -24,17 +24,17 @@ Learn more about [IMDB dataset](https://www.imdb.com/interfaces/).
       cd /var/lib/mysql-files/
       ls -lrt
     ```
- 6. You can see all the 7 files copied from IMDB dataset to the local EC2 directory
+ 6. You can see all the 7 files copied from the IMDB dataset to the local EC2 directory
     ![Final Deployment Architecture](/images/migration12.jpg)
  8. Feel free to explore the files.
- 9. Go to AWS CloudFormation [Stacks](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks?filteringStatus=active&filteringText=&viewNested=true&hideStacks=false) and click on the stack you created earlier. Go to Parameters tab and copy the user name and password mentioned next to DbMasterUsername & DbMasterPassword
+ 9. Go to AWS CloudFormation [Stacks](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks?filteringStatus=active&filteringText=&viewNested=true&hideStacks=false) and click on the stack you created earlier. Go to the Parameters tab and copy the user name and password mentioned next to DbMasterUsername & DbMasterPassword
    ![Final Deployment Architecture](/images/migration13.jpg)
 10. Go back to EC2 Instance console and login to mysql
   ```bash
   mysql -u DbMasterUsername -pDbMasterPassword
   ```
    ![Final Deployment Architecture](/images/migration14.jpg)
-11. Congratulations! you are now connected to self managed MySQL database on EC2. We will create new imdb database and load dataset that are availabe as flatfile on EC2 directory
+11. Congratulations! you are now connected to a self-managed MySQL database on EC2. We will create a new imdb database and load datasets that are available as flat file on EC2 directory
   ```bash
   CREATE DATABASE imdb;
   USE imdb;
@@ -61,7 +61,7 @@ Learn more about [IMDB dataset](https://www.imdb.com/interfaces/).
    LOAD DATA INFILE '/var/lib/mysql-files/title.basics.tsv'  IGNORE INTO TABLE imdb.title_basics FIELDS TERMINATED BY '\t'  IGNORE 1 LINES;
    LOAD DATA INFILE '/var/lib/mysql-files/title.crew.tsv' IGNORE INTO TABLE imdb.title_crew FIELDS TERMINATED BY '\t'  IGNORE 1 LINES;
    LOAD DATA INFILE '/var/lib/mysql-files/title.episode.tsv' IGNORE INTO TABLE imdb.title_episode FIELDS TERMINATED BY '\t'  IGNORE 1 LINES;
-   LOAD DATA INFILE '/var/lib/mysql-files/title.principals.tsv' IGNORE INTO TABLE imdb.title_principals FIELDS TERMINATED BY '\t'  IGNORE 1 LINES; 
+   LOAD DATA INFILE '/var/lib/mysql-files/title.principals.tsv' IGNORE INTO TABLE imdb.title_principals FIELDS TERMINATED BY '\t'  IGNORE 1 LINES;
    LOAD DATA INFILE '/var/lib/mysql-files/name.basics.tsv' IGNORE INTO TABLE imdb.name_basics FIELDS TERMINATED BY '\t'  IGNORE 1 LINES;
    LOAD DATA INFILE '/var/lib/mysql-files/title.akas.tsv' IGNORE INTO  TABLE imdb.title_akas FIELDS TERMINATED BY '\t'  IGNORE 1 LINES;
    ```
