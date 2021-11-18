@@ -5,7 +5,7 @@ date = 2021-04-25T07:33:04-05:00
 weight = 50
 
 +++
-In this excercise we will setup Database Migration Service(DMS) jobs to migrate data from source denormalized relational view to Amazon DynamoDB.
+In this exercise, we will set up Database Migration Service(DMS) jobs to migrate data from source denormalized relational view to Amazon DynamoDB.
 
  1. Go to IAM console > Roles > Create Role
  2. Under AWS Services, Select DMS > Next Permissions
@@ -20,9 +20,9 @@ In this excercise we will setup Database Migration Service(DMS) jobs to migrate 
  5. Provide Stack Name and Update Parameters
    ![Final Deployment Architecture](/images/migration18.jpg)
  6. Click Next
- 7. Check I acknowledge and click Create stack. The CloudFormation template will take 5-10 minutes to build replication envirorment. You can monitor the progress using stack status.
+ 7. Check I acknowledge and click Create stack. The CloudFormation template will take 5-10 minutes to build a replication environment. You can monitor the progress using stack status.
    ![Final Deployment Architecture](/images/migration19.jpg)
- 9. Once CloudFormation stack status shows CREATE_COMPLETE, go to [DMS Console](https://console.aws.amazon.com/dms/v2/home?region=us-east-1#dashboard)  and click on Replication Instances. You can able to see replication instance with Class dms.c5.2xlarge in Available Status.
+ 9. Once CloudFormation stack status shows CREATE_COMPLETE, go to [DMS Console](https://console.aws.amazon.com/dms/v2/home?region=us-east-1#dashboard)  and click on Replication Instances. You can able to see a replication instance with Class dms.c5.2xlarge in Available Status.
    ![Final Deployment Architecture](/images/migration20.jpg)
 ## Create source and target endpoints
 
@@ -41,7 +41,7 @@ In this excercise we will setup Database Migration Service(DMS) jobs to migrate 
      | Password    | Value of DbMasterPassword added as parameter during Configure MySQL Environment|
 
      ![Final Deployment Architecture](/images/migration22.jpg)
-     Open Test endpoint connection (optional) section, then in the VPC drop-down select DMS-VPC and click the Run test button to verify that your endpoint configuration is valid.Test will run for a minute and you should see successful message in the Status column. Click on the Create endpoint button to create the endpoint.
+     Open Test endpoint connection (optional) section, then in the VPC drop-down select DMS-VPC and click the Run test button to verify that your endpoint configuration is valid. The test will run for a minute and you should see a successful message in the Status column. Click on the Create endpoint button to create the endpoint.
      ![Final Deployment Architecture](/images/migration23.jpg)
   3. Create the target endpoint. Repeat all steps to create the target endpoint with the following parameter values:
      | Parameter        | Value |
@@ -52,7 +52,7 @@ In this excercise we will setup Database Migration Service(DMS) jobs to migrate 
      | Service access role ARN     | CloudFormation template has created new role with full access to Amazon DynamoDB. Copy Role ARN from [dynamodb-access](https://console.aws.amazon.com/iam/home#/roles/dynamodb-access) role|
 
      ![Final Deployment Architecture](/images/migration24.jpg)
-     Open Test endpoint connection (optional) section, then in the VPC drop-down select DMS-VPC and click the Run test button to verify that your endpoint configuration is valid.Test will run for a minute and you should see successful message in the Status column. Click on the Create endpoint button to create the endpoint.
+     Open Test endpoint connection (optional) section, then in the VPC drop-down select DMS-VPC and click the Run test button to verify that your endpoint configuration is valid. The test will run for a minute and you should see a successful message in the Status column. Click on the Create endpoint button to create the endpoint.
 
    ## Configure and Run a Replication Task
 
@@ -121,6 +121,6 @@ In this excercise we will setup Database Migration Service(DMS) jobs to migrate 
 
 ![Final Deployment Architecture](/images/migration25.jpg)
 ![Final Deployment Architecture](/images/migration26.jpg)
-The replication job for historical migration will start moving data from MySQL dynamo_migration denormalized view to DynamoDB table in few minutes. The job will migration 2.5 millions records and normally takes 4-5 Hrs..
-You can track status of data loading under Table statistics of migration task. Once loading is in progress, feel free to move to the next section of the excercise.
+The replication job for historical migration will start moving data from MySQL dynamo_migration denormalized view to DynamoDB table in a few minutes. The job will migration 2.5 million records and normally takes 4-5 Hrs.
+You can track the status of data loading under the Table statistics of the migration task. Once loading is in progress, feel free to move to the next section of the exercise.
 ![Final Deployment Architecture](/images/migration27.jpg)
