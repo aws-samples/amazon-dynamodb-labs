@@ -57,11 +57,10 @@ Learn more about [IMDB dataset](https://www.imdb.com/interfaces/).
    ![Final Deployment Architecture](/images/migration16.jpg)
 14. Type below command to load data from flatfiles to MySQL imdb database. The process will take 20-30 minutes to load entire dataset.
   ```bash
-   LOAD DATA INFILE '/var/lib/mysql-files/title.ratings.tsv' IGNORE INTO TABLE imdb.title_ratings FIELDS TERMINATED BY '\t'  IGNORE 1 LINES;
-   LOAD DATA INFILE '/var/lib/mysql-files/title.basics.tsv'  IGNORE INTO TABLE imdb.title_basics FIELDS TERMINATED BY '\t'  IGNORE 1 LINES;
-   LOAD DATA INFILE '/var/lib/mysql-files/title.crew.tsv' IGNORE INTO TABLE imdb.title_crew FIELDS TERMINATED BY '\t'  IGNORE 1 LINES;
-   LOAD DATA INFILE '/var/lib/mysql-files/title.episode.tsv' IGNORE INTO TABLE imdb.title_episode FIELDS TERMINATED BY '\t'  IGNORE 1 LINES;
-   LOAD DATA INFILE '/var/lib/mysql-files/title.principals.tsv' IGNORE INTO TABLE imdb.title_principals FIELDS TERMINATED BY '\t'  IGNORE 1 LINES;
-   LOAD DATA INFILE '/var/lib/mysql-files/name.basics.tsv' IGNORE INTO TABLE imdb.name_basics FIELDS TERMINATED BY '\t'  IGNORE 1 LINES;
-   LOAD DATA INFILE '/var/lib/mysql-files/title.akas.tsv' IGNORE INTO  TABLE imdb.title_akas FIELDS TERMINATED BY '\t'  IGNORE 1 LINES;
+   LOAD DATA INFILE '/var/lib/mysql-files/title_ratings.tsv' IGNORE INTO TABLE imdb.title_ratings FIELDS TERMINATED BY '\t';
+   LOAD DATA INFILE '/var/lib/mysql-files/title_basics.tsv'  IGNORE INTO TABLE imdb.title_basics FIELDS TERMINATED BY '\t';
+   LOAD DATA INFILE '/var/lib/mysql-files/title_crew.tsv' IGNORE INTO TABLE imdb.title_crew FIELDS TERMINATED BY '\t';
+   LOAD DATA INFILE '/var/lib/mysql-files/title_principals.tsv' IGNORE INTO TABLE imdb.title_principals FIELDS TERMINATED BY '\t';
+   LOAD DATA INFILE '/var/lib/mysql-files/name_basics.tsv' IGNORE INTO TABLE imdb.name_basics FIELDS TERMINATED BY '\t';
+   LOAD DATA INFILE '/var/lib/mysql-files/title_akas.tsv' IGNORE INTO  TABLE imdb.title_akas FIELDS TERMINATED BY '\t';
    ```

@@ -12,5 +12,5 @@ In this step, you will generate an EC2 key pair that you will use to connect to 
    ![Final Deployment Architecture](/images/migration1.jpg)
   3. Click [here](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#KeyPairs:) to navigate to the Key Pair section in the EC2 console. Ensure you are in the same region as you chose in the previous step. Then, click on the Create Key Pair button
    ![Final Deployment Architecture](/images/migration3.jpg)
-  4. Name the key pair rdbmsmigration, and then click Create. At this point, your browser will download a file named DMSKeyPair.pem. Save this file. You will need it to complete the tutorial.
+  4. Name the key pair rdbmsmigration, and then click Create. At this point, your browser will download a file named rdbmsmigration.pem. Save this file. You will need it to complete the tutorial.
    ![Final Deployment Architecture](/images/migration4.jpg)
