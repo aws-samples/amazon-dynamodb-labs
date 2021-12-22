@@ -3,7 +3,7 @@ title = "Load Source Data"
 menuTitle = "Load Source Data"
 date = 2021-04-25T07:33:04-05:00
 weight = 30
-
+hidden = true
 +++
 Using CloudFormation template, you have launched EC2 Amazon Linux 2 instance with MySQL installed and running. The template has also created a new user based on the CloudFormation input parameter.
 The script has copied the public IMDB dataset into the file directory at deployed EC2 server.
