@@ -17,36 +17,31 @@ and pull a subset of columns inside the target view. Also, to demonstrate row-le
 
 Copy below code and paste into mysql command line
 ```bash
-CREATE VIEW dynamo_migration AS\
+CREATE VIEW imdb.dynamo_migration AS\
 	SELECT tp.tconst,\
 		   tp.ordering,\
-		   tb.primaryTitle,\
-		   tb.originalTitle,\
-		   tb.genres,\
-		   tb.isAdult,\
-		   tb.runtimeMinutes,\
-		   tb.startYear,\
-		   tb.titleType,\
-		   te.episodeNumber,\
-		   te.seasonNumber,\
-		   te.parentTconst,\
-		   tr.averageRating,\
-		   tr.numVotes,\
 		   tp.nconst,\
-		   nm.primaryName,\
-		   nm.birthYear,\
-		   nm.deathYear,\
 		   tp.category,\
 		   tp.job,\
 		   tp.characters,\
-		   nm.primaryProfession\
+		   tb.titleType,\
+		   tb.primaryTitle,\
+		   tb.originalTitle,\
+		   tb.isAdult,\
+		   tb.startYear,\
+		   tb.endYear,\
+		   tb.runtimeMinutes,\
+		   tb.genres,\
+		   nm.primaryName,\
+		   nm.birthYear,\
+		   nm.deathYear,\
+		   nm.primaryProfession,\
+		   tc.directors,\
+		   tc.writers\
 	FROM imdb.title_principals tp\
 	LEFT JOIN imdb.title_basics tb ON tp.tconst = tb.tconst\
 	LEFT JOIN imdb.name_basics nm ON tp.nconst = nm.nconst\
-	LEFT JOIN imdb.title_episode te ON te.tconst = tp.tconst\
-	LEFT JOIN imdb.title_ratings tr ON tr.tconst = tp.tconst\
-	LEFT JOIN imdb.title_akas ta ON ta.titleId = tp.tconst\
-	WHERE ta.language = 'en';
+	LEFT JOIN imdb.title_crew tc ON tc.tconst = tp.tconst;
   ```
   Use below command to review count of records from the denormalized view. You can foind approx 2.5 million records vs 47 million on the base table. At this point you source database is ready for migration to Amazon DynamoDB.
   ```bash
