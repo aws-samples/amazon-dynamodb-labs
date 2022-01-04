@@ -18,6 +18,8 @@ Amazon DynamoDB helps IT to rethink the data model in a key-value format. Data i
 Amazon DynamoDB offers a fully managed, serverless datastore for information stored in key-value format with single-digit millisecond latency at scale.
 
 This exercise will briefly discuss the technique to migrate relational datasets from MySQL to Amazon DynamoDB. The relational data from the MySQL database is scatterned across multiple tables. We will denormalized technique to create a 360 logical view of the buisness entity before facilitating migration.
-The information stored in the tables will be denormalized based on their primary-key/foriegn key relationship before migrating to Amazon DynamoDB. Data Denormalization is a common practice used in NoSQL data modeling to reduce the overhead of joins during Query operation.
+Also, it is important to identify degree of denormalization in order to better serve your query and transaction.
+The excercise will extend the technique of creating collection based on same primary key to reduce I/O and improve cost and performance.
+Data Denormalization and Item collections are common practice used in Amazon DynamoDB data modeling to reduce the overhead of joins during Query operation.
 
 ![Final Deployment Architecture](/images/denormalization.png)

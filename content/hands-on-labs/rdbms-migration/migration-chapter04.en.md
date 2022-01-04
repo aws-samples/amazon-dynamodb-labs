@@ -15,6 +15,8 @@ In this exercise, we will focus on designing a denormalized MySQL view that will
 Exploring the IMDB dataset, you may notice tconst and nconst fields that are uniquely assigned to each movie and crew member respectively. We will use this primary key across all 7 tables to create joins
 and pull a subset of columns inside the target view. Also, to demonstrate row-level filtering the view just filters all the movies published in the English language.
 
+![Final Deployment Architecture](/images/migration32.jpg)
+
 Copy below code and paste into mysql command line
 ```bash
 CREATE VIEW imdb.dynamo_migration AS\

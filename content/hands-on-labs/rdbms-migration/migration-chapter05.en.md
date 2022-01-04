@@ -119,58 +119,109 @@ To Migrate Denormalized View
           ]
       }
   ```
-  To Migrate Ratings table (Ensure to Change Target table preparation mode = Do nothing to preserve data from first historical load)
-    ```json
-
-    {
-      "rules": [
-          {
-              "rule-type": "selection",
-              "rule-id": "1",
-              "rule-name": "1",
-              "object-locator": {
-                  "schema-name": "imdb",
-                  "table-name": "title_ratings",
-                  "table-type": "table"
-              },
-              "rule-action": "include"
-          },
-          {
-              "rule-type": "object-mapping",
-              "rule-id": "2",
-              "rule-name": "2",
-              "rule-action": "map-record-to-record",
-              "object-locator": {
-                  "schema-name": "imdb",
-                  "table-name": "title_ratings",
-                  "table-type": "table"
-              },
-              "target-table-name": "dynamo_migration",
-              "mapping-parameters": {
-                  "partition-key-name": "tconst",
-                  "sort-key-name": "tconst_orderning",
-                  "exclude-columns": [],
-                  "attribute-mappings": [
-                      {
-                          "target-attribute-name": "tconst",
-                          "attribute-type": "scalar",
-                          "attribute-sub-type": "string",
-                          "value": "${tconst}"
-                      },
-                      {
-                          "target-attribute-name": "tconst_orderning",
-                          "attribute-type": "scalar",
-                          "attribute-sub-type": "string",
-                          "value": "RATINGS"
-                      }
-                  ]
-              }
-          }
-        ]
-      }
-    ```
 ![Final Deployment Architecture](/images/migration25.jpg)
 ![Final Deployment Architecture](/images/migration26.jpg)
 The replication job for historical migration will start moving data from MySQL dynamo_migration denormalized view to DynamoDB table in a few minutes. The job will migration 2.5 million records and normally takes 4-5 Hrs.
 You can track the status of data loading under the Table statistics of the migration task. Once loading is in progress, feel free to move to the next section of the exercise.
 ![Final Deployment Architecture](/images/migration27.jpg)
+
+To Migrate Ratings table (Ensure to Change Target table preparation mode = Do nothing to preserve data from first historical load)
+  ```json
+
+  {
+    "rules": [
+        {
+            "rule-type": "selection",
+            "rule-id": "1",
+            "rule-name": "1",
+            "object-locator": {
+                "schema-name": "imdb",
+                "table-name": "title_ratings",
+                "table-type": "table"
+            },
+            "rule-action": "include"
+        },
+        {
+            "rule-type": "object-mapping",
+            "rule-id": "2",
+            "rule-name": "2",
+            "rule-action": "map-record-to-record",
+            "object-locator": {
+                "schema-name": "imdb",
+                "table-name": "title_ratings",
+                "table-type": "table"
+            },
+            "target-table-name": "dynamo_migration",
+            "mapping-parameters": {
+                "partition-key-name": "tconst",
+                "sort-key-name": "tconst_orderning",
+                "exclude-columns": [],
+                "attribute-mappings": [
+                    {
+                        "target-attribute-name": "tconst",
+                        "attribute-type": "scalar",
+                        "attribute-sub-type": "string",
+                        "value": "${tconst}"
+                    },
+                    {
+                        "target-attribute-name": "tconst_orderning",
+                        "attribute-type": "scalar",
+                        "attribute-sub-type": "string",
+                        "value": "RATINGS"
+                    }
+                ]
+            }
+        }
+      ]
+    }
+  ```
+To Migrate title akas table (Ensure to Change Target table preparation mode = Do nothing to preserve data from first historical load).
+
+```json
+  {
+    "rules": [
+        {
+            "rule-type": "selection",
+            "rule-id": "1",
+            "rule-name": "1",
+            "object-locator": {
+                "schema-name": "imdb",
+                "table-name": "title_akas",
+                "table-type": "table"
+            },
+            "rule-action": "include"
+        },
+        {
+            "rule-type": "object-mapping",
+            "rule-id": "2",
+            "rule-name": "2",
+            "rule-action": "map-record-to-record",
+            "object-locator": {
+                "schema-name": "imdb",
+                "table-name": "title_akas",
+                "table-type": "table"
+            },
+            "target-table-name": "dynamo_migration",
+            "mapping-parameters": {
+                "partition-key-name": "tconst",
+                "sort-key-name": "tconst_orderning",
+                "exclude-columns": [],
+                "attribute-mappings": [
+                    {
+                        "target-attribute-name": "tconst",
+                        "attribute-type": "scalar",
+                        "attribute-sub-type": "string",
+                        "value": "${titleId}"
+                    },
+                    {
+                        "target-attribute-name": "tconst_orderning",
+                        "attribute-type": "scalar",
+                        "attribute-sub-type": "string",
+                        "value": "LANGUAGE|${ordering} "
+                    }
+                ]
+            }
+        }
+    ]
+  }
+```
