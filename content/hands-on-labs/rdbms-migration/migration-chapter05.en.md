@@ -80,7 +80,7 @@ To Migrate Denormalized View
                   "rule-name": "1",
                   "object-locator": {
                       "schema-name": "imdb",
-                      "table-name": "dynamo_migration",
+                      "table-name": "movies",
                       "table-type": "view"
                   },
                   "rule-action": "include"
@@ -92,26 +92,26 @@ To Migrate Denormalized View
                   "rule-action": "map-record-to-record",
                   "object-locator": {
                       "schema-name": "imdb",
-                      "table-name": "dynamo_migration",
+                      "table-name": "movies",
                       "table-type": "view"
                   },
-                  "target-table-name": "dynamo_migration",
+                  "target-table-name": "movies",
                   "mapping-parameters": {
-                      "partition-key-name": "tconst",
-                      "sort-key-name": "tconst_orderning",
+                      "partition-key-name": "mpkey",
+                      "sort-key-name": "mskey",
                       "exclude-columns": [],
                       "attribute-mappings": [
                           {
-                              "target-attribute-name": "tconst",
+                              "target-attribute-name": "mpkey",
                               "attribute-type": "scalar",
                               "attribute-sub-type": "string",
                               "value": "${tconst}"
                           },
                           {
-                              "target-attribute-name": "tconst_orderning",
+                              "target-attribute-name": "mskey",
                               "attribute-type": "scalar",
                               "attribute-sub-type": "string",
-                              "value": "${category}|${nconst}|${ordering}"
+                              "value": "DETL|${category}|${ordering}"
                           }
                       ]
                   }
@@ -151,23 +151,23 @@ To Migrate Ratings table (Ensure to Change Target table preparation mode = Do no
                 "table-name": "title_ratings",
                 "table-type": "table"
             },
-            "target-table-name": "dynamo_migration",
+            "target-table-name": "movies",
             "mapping-parameters": {
-                "partition-key-name": "tconst",
-                "sort-key-name": "tconst_orderning",
+                "partition-key-name": "mpkey",
+                "sort-key-name": "mskey",
                 "exclude-columns": [],
                 "attribute-mappings": [
                     {
-                        "target-attribute-name": "tconst",
+                        "target-attribute-name": "mpkey",
                         "attribute-type": "scalar",
                         "attribute-sub-type": "string",
                         "value": "${tconst}"
                     },
                     {
-                        "target-attribute-name": "tconst_orderning",
+                        "target-attribute-name": "mskey",
                         "attribute-type": "scalar",
                         "attribute-sub-type": "string",
-                        "value": "RATINGS"
+                        "value": "RTNG"
                     }
                 ]
             }
@@ -201,23 +201,23 @@ To Migrate title akas table (Ensure to Change Target table preparation mode = Do
                 "table-name": "title_akas",
                 "table-type": "table"
             },
-            "target-table-name": "dynamo_migration",
+            "target-table-name": "movies",
             "mapping-parameters": {
-                "partition-key-name": "tconst",
-                "sort-key-name": "tconst_orderning",
+                "partition-key-name": "mpkey",
+                "sort-key-name": "mskey",
                 "exclude-columns": [],
                 "attribute-mappings": [
                     {
-                        "target-attribute-name": "tconst",
+                        "target-attribute-name": "mpkey",
                         "attribute-type": "scalar",
                         "attribute-sub-type": "string",
                         "value": "${titleId}"
                     },
                     {
-                        "target-attribute-name": "tconst_orderning",
+                        "target-attribute-name": "mskey",
                         "attribute-type": "scalar",
                         "attribute-sub-type": "string",
-                        "value": "LANGUAGE|${ordering} "
+                        "value": "REGN|${region}"
                     }
                 ]
             }

@@ -1,6 +1,6 @@
 +++
-title = "Explore Source Data"
-menuTitle = "Explore Source Data"
+title = "Explore Source Model"
+menuTitle = "Explore Source Model"
 date = 2021-04-25T07:33:04-05:00
 weight = 30
 +++
@@ -48,10 +48,44 @@ The copy of the IMBb dataset (TSV files) is also copied into the local file dire
    ![Final Deployment Architecture](/images/migration16.jpg)
 
 For illustration purpose, below logical diagram represents relationaship between various source tables hosting IMDb dataset.
-  1.  title_basics table has all movies published in US after year 2000. tconst is an alphanumeric key uniquely assigned to each movies.
-  2.  title_akas holds information related to various region and language that movie was originally published. This has 1:many relationshify with title_basics table.
-  3.  title_ratings holds information related to average movies rating and vote count. We can assume this has dynamic information that can change over time post movies are published.
-  4.  title_principals has information related to various crew member worked inside the movie. The table has 1:many relationship with title_basics table.
-  5.  title_crew has information related to writer and director for movies. The table is 1:1 related with title_basics table.
-  6.  name_basics has information related to all crew members and thier primary professions. Every actor has unique nconst value assigned.
-![Final Deployment Architecture](/images/migration31.jpg)
+    1.  title_basics table has all movies published in US after year 2000. tconst is an alphanumeric key uniquely assigned to each movies.
+    2.  title_akas holds information related to various region and language that movie was originally published. This has 1:many relationshify with title_basics table.
+    3.  title_ratings holds information related to average movies rating and vote count. We can assume this has dynamic information that can change over time post movies are published.
+    4.  title_principals has information related to various crew member worked inside the movie. The table has 1:many relationship with title_basics table.
+    5.  title_crew has information related to writer and director for movies. The table is 1:1 related with title_basics table.
+    6.  name_basics has information related to all crew members and thier primary professions. Every actor has unique nconst value assigned.
+  ![Final Deployment Architecture](/images/migration31.jpg)
+
+13. We will create denormalized view and get ready for migration to Dynamo. For now go ahead and copy below code and paste into mysql command line.
+The details around why this denormalization is neccessary and target data model will be discussed in the next chapter.
+```bash
+CREATE VIEW imdb.movies AS\
+	SELECT tp.tconst,\
+		   tp.ordering,\
+		   tp.nconst,\
+		   tp.category,\
+		   tp.job,\
+		   tp.characters,\
+		   tb.titleType,\
+		   tb.primaryTitle,\
+		   tb.originalTitle,\
+		   tb.isAdult,\
+		   tb.startYear,\
+		   tb.endYear,\
+		   tb.runtimeMinutes,\
+		   tb.genres,\
+		   nm.primaryName,\
+		   nm.birthYear,\
+		   nm.deathYear,\
+		   nm.primaryProfession,\
+		   tc.directors,\
+		   tc.writers\
+	FROM imdb.title_principals tp\
+	LEFT JOIN imdb.title_basics tb ON tp.tconst = tb.tconst\
+	LEFT JOIN imdb.name_basics nm ON tp.nconst = nm.nconst\
+	LEFT JOIN imdb.title_crew tc ON tc.tconst = tp.tconst;
+  ```
+  Use below command to review count of records from the denormalized view. You can foind approx 2.5 million records vs 47 million on the base table. At this point you source database is ready for migration to Amazon DynamoDB.
+  ```bash
+  select count(*) from imdb.movies;
+  ```
