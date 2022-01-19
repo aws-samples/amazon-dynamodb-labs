@@ -1,51 +1,36 @@
 +++
-title = "Denormalized Schema Design"
-menuTitle = "Denormalized Schema Design"
+title = "Explore Target Model"
+menuTitle = "Explore Target Model"
 date = 2021-04-25T07:33:04-05:00
 weight = 40
 
 +++
-Once the flat files are successfully loaded into the imdb database, explore the source data based on the data definition available over [IMDB website](https://www.imdb.com/interfaces/).
 
+Relational Database Management System (RDBMS) platforms store data in a normalized relational structure. This structure reduces hierarchical data structures  and keeps data across multiple tables.
+You can often query the data from multiple tables, and assebmble at presentation layer. Though, for ultra low-latency response to high-traffic queries, taking advantage of a NoSQL system generally makes technical and economic sense.
 You can always perform lift and shift migration from relational databases to DynamoDB using Database Migration Service.
-Though, our focus in this exercise is to migrate a subset of data in the most denormalized format possible. This will help to avoid any joins during query operations and improve query performance.
-The only subset of source data will be denormalized and moved to target DynamoDB tables. The degree of denormalization will highly depend upon the query access patterns.
-In this exercise, we will focus on designing a denormalized MySQL view that will be migrated to DynamoDB. The concept is widely adopted in design principles followed during Customer 360.
 
-Exploring the IMDB dataset, you may notice tconst and nconst fields that are uniquely assigned to each movie and crew member respectively. We will use this primary key across all 7 tables to create joins
-and pull a subset of columns inside the target view. Also, to demonstrate row-level filtering the view just filters all the movies published in the English language.
+To start designing a DynamoDB table that will scale efficiently, you must identify the access patterns. For IMDb use case we have identified following access patterns:
+![Final Deployment Architecture](/images/migration32.png)
 
-![Final Deployment Architecture](/images/migration32.jpg)
+A common approach to DynamoDB schema design is to identify application layer entities and use denormalization and composite key aggregation to reduce query complexity.
+In DynamoDB, this means using composite sort keys, overloaded global secondary indexes, partitioned tables/indexes, and other design patterns.
+In this scenario, we will follow [Adjacency List Design Pattern](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-adjacency-graphs.html#bp-adjacency-lists), which is a common way to represent relational data structures in DynamoDB.
+The advantages of this pattern include minimal data duplication and simplified query patterns to find all metadata related to each movies.
+The partition key in this model is tconst (unique movie id) and sort key defines the type of record in the collection. Items has sort key starts with:
+	1.	DETL contains movies related metadata information (mostly static at the time of publication)
+	2.	REGN contains miltiple records, each with single region, languange and movie title
+	3.	RTNG contains IMDb rating and number of votes. This information is stores as seperate record since the information is dynamic and frequently updates over time. This will help to reduce I/O operation during update.
 
-Copy below code and paste into mysql command line
-```bash
-CREATE VIEW imdb.dynamo_migration AS\
-	SELECT tp.tconst,\
-		   tp.ordering,\
-		   tp.nconst,\
-		   tp.category,\
-		   tp.job,\
-		   tp.characters,\
-		   tb.titleType,\
-		   tb.primaryTitle,\
-		   tb.originalTitle,\
-		   tb.isAdult,\
-		   tb.startYear,\
-		   tb.endYear,\
-		   tb.runtimeMinutes,\
-		   tb.genres,\
-		   nm.primaryName,\
-		   nm.birthYear,\
-		   nm.deathYear,\
-		   nm.primaryProfession,\
-		   tc.directors,\
-		   tc.writers\
-	FROM imdb.title_principals tp\
-	LEFT JOIN imdb.title_basics tb ON tp.tconst = tb.tconst\
-	LEFT JOIN imdb.name_basics nm ON tp.nconst = nm.nconst\
-	LEFT JOIN imdb.title_crew tc ON tc.tconst = tp.tconst;
-  ```
-  Use below command to review count of records from the denormalized view. You can foind approx 2.5 million records vs 47 million on the base table. At this point you source database is ready for migration to Amazon DynamoDB.
-  ```bash
-  select count(*) from dynamo_migration;
-  ```
+![Final Deployment Architecture](/images/migration33.png)
+
+GSI is created on the movies table with new partion key: nconst (unique per movie's crew) and sort key: movie start year. This will help to query access pattern by crew member (#6 inside the common access pattern table)
+
+![Final Deployment Architecture](/images/migration34.png)
+
+Below video demonstrates how access pattern are evaluated against the DynamoDB model.
+
+<video width=100% controls autoplay>
+    <source src="/images/migration1.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
