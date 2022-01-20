@@ -15,7 +15,7 @@ We will use PartiQL scripts to demonstrate all 6 access patterns discussed at pr
 Get details by the movie: Each IMDB movie has a unique tconst. The denormalized table is created with each row representing a unique combination of movie and crew i.e. tconst and nconst.
 Since tconst is part of the partition key for the base table, it can use under WHERE conditions to select the details. Copy below command to run inside PartiQL query editor.
   ![Final Deployment Architecture](/images/migration35.png)
-  - Find all the cast and crew worked in a movie. Below query will include actor, actress, producer, cinemetorgapher worked in a given movie.
+  - Find all the cast and crew worked in a movie. Below query will include actor, actress, producer, cinematographer etc. worked in a given movie.
   ```bash
     SELECT * FROM "movies"
     WHERE "mpkey" = 'tt0309377' and begins_with("mskey",'DETL|')
@@ -50,10 +50,10 @@ Since tconst is part of the partition key for the base table, it can use under W
     SELECT * FROM "movies"
     WHERE "mpkey" = 'tt0309377' and begins_with("mskey",'REGN|') and "types" = 'original'
   ```
-To access information at the crew member level (#6 in the access pattern), we need to create an additional Global Secondary Index(GSI) with a new partition key nconst (unique for crew member).
+To access information at the crew member level (#6 in the access pattern), we need to create an additional Global Secondary Index (GSI) with a new partition key nconst (unique for crew member).
 This will allow querying on the new partition key for GSI vs scan on the base table.
 
-  3.  Select the Tables from the left navigation, choose dynamo_migration table and click on the Index tab.
+  3.  Select the Tables from the left navigation, choose movies table and click on the Index tab.
   4.  Click on Create Index and add the following details.
 
 | Parameter        | Value |
