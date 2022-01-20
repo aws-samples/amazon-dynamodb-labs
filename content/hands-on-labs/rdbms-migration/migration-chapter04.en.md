@@ -31,6 +31,6 @@ GSI is created on the movies table with new partion key: nconst (unique per movi
 Below video demonstrates how access pattern are evaluated against the DynamoDB model.
 
 <video width=100% controls autoplay>
-    <source src="/images/migration1.mp4" type="video/mp4">
+    <source src="/images/migration36.mp4" type="video/mp4">
     Your browser does not support the video tag.
 </video>
