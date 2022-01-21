@@ -5,9 +5,17 @@ date = 2021-04-25T07:33:04-05:00
 weight = 10
 
 +++
-In this module, you will create an environment to host the MySQL database on Amazon EC2. This instance will be used as a source database and help to simulate on-premise relational database structure.
-The resources are deployed via [Amazon CloudFormation](https://aws.amazon.com/cloudformation/) template. The CloudFromation will deploy the following resources as shown in the diagram.
+In this module, you will create an environment to host the MySQL database on Amazon EC2. This instance will be used to host source database and simulate on-premise side of migration architecture.
+All the resources to configure source infrastructure are deployed via [Amazon CloudFormation](https://aws.amazon.com/cloudformation/) template.
+There are two CloudFormation templates used in this exercise which will deploy following resources.
+
+CloudFormation Template1 Resources:
   - OnPrem VPC: Source VPC will represent an on-premise source environment in the N. Virginia region. This VPC will host source MySQL database on Amazon EC2
-  - DMS VPC: DMS VPC will host DMS replication instances in the N. Virginia region. This replication instance will facilitate database migration from source MySQL server to Amazon DynamoDB
   - Amazon EC2 MySQL Database: Amazon EC2 Amazon Linux 2 AMI with MySQL installed and running
+  - Load IMDb dataset: The template will create IMDb database on MySQL and load IMDb public dataset files into database. You can learn more about IMDb dataset inside [Explore Soure Model](http://localhost:1313/hands-on-labs/rdbms-migration/migration-chapter03.html)
+
+CloudFormation Template2 Resources:
+  - DMS VPC:  Migration VPC on in the N. Virginia region. This VPC will host DMS replication host.
+  - Replication Instance: DMS Replication instance that will facilitate database migration from source MySQL server on EC2 to Amazon DynamoDB
+
 ![Final Deployment Architecture](/images/migration-environment.png)
