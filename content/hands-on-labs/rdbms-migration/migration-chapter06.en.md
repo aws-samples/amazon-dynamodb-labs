@@ -83,4 +83,4 @@ This will allow querying on the new partition key for GSI vs scan on the base ta
   WHERE "nconst" = 'nm0000142' and "startYear" >= '2002'
   ORDER BY "startYear"
 ```
-Congratulations! you have completed the RDBMS migration exercise.
+Congratulations! you have completed the RDBMS migration exercise. 
