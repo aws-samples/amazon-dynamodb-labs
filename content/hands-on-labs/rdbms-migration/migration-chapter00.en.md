@@ -15,7 +15,7 @@ CloudFormation Template1 Resources:
   - Load IMDb dataset: The template will create IMDb database on MySQL and load IMDb public dataset files into database. You can learn more about IMDb dataset inside [Explore Soure Model](http://localhost:1313/hands-on-labs/rdbms-migration/migration-chapter03.html)
 
 CloudFormation Template2 Resources:
-  - DMS VPC:  Migration VPC on in the N. Virginia region. This VPC will host DMS replication host.
+  - DMS VPC:  Migration VPC on in the N. Virginia region. This VPC will host DMS replication instance.
   - Replication Instance: DMS Replication instance that will facilitate database migration from source MySQL server on EC2 to Amazon DynamoDB
 
 ![Final Deployment Architecture](/images/migration-environment.png)
