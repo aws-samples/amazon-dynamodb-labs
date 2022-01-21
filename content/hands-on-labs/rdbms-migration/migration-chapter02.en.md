@@ -5,14 +5,15 @@ date = 2021-04-25T07:33:04-05:00
 weight = 20
 
 +++
-The following steps should be executed to deploy the emulated source environment in the AWS account:
+This chapter will create source environment on AWS as discussed during Exercise Overview.
+The CloudFormation template used below will create Source VPC, EC2 hosting MySQL server, IMDb database and load IMDb public dataset into 6 tables.
 
  1. Download the [CloudFormation](/files/hands-on-labs/migration-env-setup.yaml) template
  2. Open [CloudFormation](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/template), click on Create Stack and select With new resources (standard)
  3. Select Template source as Upload a template file and choose the downloaded yaml file
    ![Final Deployment Architecture](/images/migration5.jpg)
  4. Click Next
- 5. Provide Stack Name and Update Parameters
+ 5. Provide Stack Name and Update Parameters as necessary (you can leave default value as well)
    ![Final Deployment Architecture](/images/migration6.jpg)
  6. Click Next
  7. Click Create stack

@@ -5,11 +5,12 @@ date = 2021-04-25T07:33:04-05:00
 weight = 30
 +++
 IMDb [(Internet Movie Database)](https://www.imdb.com/interfaces/) is one of the most recognized names for its comprehensive online database collection of movies, films, TV series and so on.
-The exercise is going to use subset of IMDb dataset. This workshop will utilize 6 IMDb dataset that are related to US based movies since year 2000. Each dataset is already loaded into 6 tables on MySQL imdb database deployed using previous CloudFormation template.
-The dataset has around 106K+ movies and crew information.
+The exercise is going to use subset of IMDb dataset (available in TSV format). This workshop will utilize 6 IMDb dataset that are related to US based movies since year 2000.
+The dataset has around 106K+ movies, ratings, votes and cast/crew information.
 
-Using CloudFormation template, you have launched EC2 Amazon Linux 2 instance with MySQL installed and running. The template has also created new imdb database, 6 tables (one for each IMDb dataset), loaded dataset into the tables and a new remote MySQL user based on the CloudFormation input parameter.
-The copy of the IMBb dataset (TSV files) is also copied into the local file directory at EC2 server. To explore dataset, follow below instructions to login to EC2 server.
+The CloudFormation template has launched EC2 Amazon Linux 2 instance with MySQL installed and running.
+It has created imdb database, 6 new tables (one for each IMDb dataset), downloaded IMDb TSV files to MySQL server local directory and uploaded the files to 6 new tables. To explore dataset, follow below instructions to login EC2 server.
+It has also configured a remote MySQL user based on the CloudFormation input parameter.
 
  1. Go to [EC2 console](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Instances:instanceState=running)
  2. Select the MySQL-Instance and click Connect
@@ -47,16 +48,17 @@ The copy of the IMBb dataset (TSV files) is also copied into the local file dire
    ```
    ![Final Deployment Architecture](/images/migration16.jpg)
 
-For illustration purpose, below logical diagram represents relationship between various source tables hosting IMDb dataset.
-    1.  title_basics table has all movies published in US after year 2000. tconst is an alphanumeric key uniquely assigned to each movie.
-    2.  title_akas holds information related to various region and language that movie was originally published. This has 1:many relationshify with title_basics table.
-    3.  title_ratings holds information related to average movies rating and vote count. We can assume this has dynamic information that can change over time post movies are published.
-    4.  title_principals has information related to various crew member worked inside the movie. The table has 1:many relationship with title_basics table.
-    5.  title_crew has information related to writer and director for movies. The table is 1:1 related with title_basics table.
-    6.  name_basics has information related to all crew members and thier primary professions. Every actor has unique nconst value assigned.
+For illustration purpose, below is a logical diagram represents relationship between various source tables hosting IMDb dataset.
+
+  - title_basics table has movies published in US after year 2000. tconst is an alphanumeric key uniquely assigned to each movie.
+  - title_akas has published regions, languages and respective movie titles. It's 1:many relationship with title_basics table.
+  - title_ratings has movies rating and vote count. For this exercise, we can assume the information has high frequency update post movie release. It's 1:1 related with title_basics table
+  - title_principals has cast and crew information. It's 1:many relationship with title_basics table.
+  - title_crew has writer and director information. The table is 1:1 related with title_basics table.
+  - name_basics has cast and crew details. Every member has unique nconst value assigned.
   ![Final Deployment Architecture](/images/migration31.jpg)
 
-12. We will create denormalized view and get ready for migration to Dynamo. For now, go ahead and copy below code and paste into mysql command line.
+12. We will create denormalized view with 1:1 static information and get it ready for migration to Amazon DynamoDB table. For now, go ahead and copy below code and paste into mysql command line.
 The details around target data model will be discussed in the next chapter.
 ```bash
 CREATE VIEW imdb.movies AS\
