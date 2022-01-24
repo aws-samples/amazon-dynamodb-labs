@@ -7,7 +7,7 @@ weight = 40
 +++
 
 Relational Database Management System (RDBMS) platforms store data in a normalized relational structure. This structure reduces hierarchical data structures and keeps data across multiple tables.
-You can often query the data from multiple tables, and assemble at presentation layer. Though, that won't be effecient for ultra-low latency workload.
+You can often query the data from multiple tables, and assemble at presentation layer. Though, that won't be efficient for ultra-low latency workload.
 To support high-traffic queries with ultra-low latency, taking advantage of a NoSQL system generally makes technical and economic sense.
 
 To start designing a target data model in Amazon DynamoDB that will scale efficiently, you must identify the common access patterns. For IMDb use case we have identified a set of access patterns as described below:
