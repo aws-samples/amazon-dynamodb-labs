@@ -225,7 +225,7 @@ JSON document to migrate title_ratings table from imdb MySQL database (Task iden
 ![Final Deployment Architecture](/images/migration26.jpg)
 You need to create two more tasks with similar steps (historical-migration02 and historical-migration03).
 Don't change any other parameter except the Table mappings Editing mode.
-For historical-migration02 and historical-migration03 tasks use the JSON document mentioned below.
+For historical-migration02 and historical-migration03 tasks use the JSON document mentioned above.
 The replication job for historical migration will start moving data from MySQL imdb.movies view, title_akas and title_ratings to DynamoDB table will start in a few minutes.
   - historical-migration01 job will migrate 800K+ records and normally takes 2-3 Hrs.
   - historical-migration02 job will migrate 747K+ records and normally takes 2-3 Hrs.

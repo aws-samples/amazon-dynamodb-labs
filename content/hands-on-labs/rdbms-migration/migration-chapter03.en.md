@@ -87,7 +87,7 @@ CREATE VIEW imdb.movies AS\
 	LEFT JOIN imdb.name_basics nm ON tp.nconst = nm.nconst\
 	LEFT JOIN imdb.title_crew tc ON tc.tconst = tp.tconst;
   ```
-  Use below command to review count of records from the denormalized view. You can foind approx 2.5 million records vs 47 million on the base table. At this point you source database is ready for migration to Amazon DynamoDB.
+  Use below command to review count of records from the denormalized view. At this point you source database is ready for migration to Amazon DynamoDB.
   ```bash
   select count(*) from imdb.movies;
   ```
