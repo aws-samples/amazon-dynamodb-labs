@@ -70,58 +70,173 @@ In this exercise, we will set up Database Migration Service (DMS) jobs to migrat
     | Task settings: Enable CloudWatch logs | Checked |
     | Table mappings: Editing mode | Select JSON editor option and paste JSON document as mentioned below|
 
-JSON document to migrate denormalized view from imdb MySQL database (Task identified: historical-migration01)
+    To reduce the loading time during Immersion Day, we have narrowed down the migration list to selective movies. Below JSON document has list of 28 movies worked by Clint Eastwood.
+    The remaining exercise will just focus on these movies. However, feel free to load remaining data in case you like to further explore.
+    Some statistics around full dataset is give at the bottom of this chapter.
+
+Copy list of selective movies by Clint Eastwood..
+```json
+    {
+      "filter-operator": "eq",
+      "value": "tt0309377"
+    },
+    {
+      "filter-operator": "eq",
+      "value": "tt12260846"
+    },
+    {
+      "filter-operator": "eq",
+      "value": "tt1212419"
+    },
+    {
+      "filter-operator": "eq",
+      "value": "tt1205489"
+    },
+    {
+      "filter-operator": "eq",
+      "value": "tt1057500"
+    },
+    {
+      "filter-operator": "eq",
+      "value": "tt0949815"
+    },
+    {
+      "filter-operator": "eq",
+      "value": "tt0824747"
+    },
+    {
+      "filter-operator": "eq",
+      "value": "tt0772168"
+    },
+    {
+      "filter-operator": "eq",
+      "value": "tt0498380"
+    },
+    {
+      "filter-operator": "eq",
+      "value": "tt0418689"
+    },
+    {
+      "filter-operator": "eq",
+      "value": "tt0405159"
+    },
+    {
+      "filter-operator": "eq",
+      "value": "tt0327056"
+    },
+    {
+      "filter-operator": "eq",
+      "value": "tt2310814"
+    },
+    {
+      "filter-operator": "eq",
+      "value": "tt2179136"
+    },
+    {
+      "filter-operator": "eq",
+      "value": "tt2083383"
+    },
+    {
+      "filter-operator": "eq",
+      "value": "tt1924245"
+    },
+    {
+      "filter-operator": "eq",
+      "value": "tt1912421"
+    },
+    {
+      "filter-operator": "eq",
+      "value": "tt1742044"
+    },
+    {
+      "filter-operator": "eq",
+      "value": "tt1616195"
+    },
+    {
+      "filter-operator": "eq",
+      "value": "tt6997426"
+    },
+    {
+      "filter-operator": "eq",
+      "value": "tt6802308"
+    },
+    {
+      "filter-operator": "eq",
+      "value": "tt3513548"
+    },
+    {
+      "filter-operator": "eq",
+      "value": "tt3263904"
+    },
+    {
+      "filter-operator": "eq",
+      "value": "tt3031654"
+    },
+    {
+      "filter-operator": "eq",
+      "value": "tt8884452"
+    }
+  ```
+  JSON document to migrate denormalized view from imdb MySQL database (Task identified: historical-migration01).
+  Replace the string "REPLACE THIS STRING BY MOVIES LIST" with list of movies copied earlier.
   ```json
 
+  {
+    "rules": [
       {
-          "rules": [
-              {
-                  "rule-type": "selection",
-                  "rule-id": "1",
-                  "rule-name": "1",
-                  "object-locator": {
-                      "schema-name": "imdb",
-                      "table-name": "movies",
-                      "table-type": "view"
-                  },
-                  "rule-action": "include"
-              },
-              {
-                  "rule-type": "object-mapping",
-                  "rule-id": "2",
-                  "rule-name": "2",
-                  "rule-action": "map-record-to-record",
-                  "object-locator": {
-                      "schema-name": "imdb",
-                      "table-name": "movies",
-                      "table-type": "view"
-                  },
-                  "target-table-name": "movies",
-                  "mapping-parameters": {
-                      "partition-key-name": "mpkey",
-                      "sort-key-name": "mskey",
-                      "exclude-columns": [],
-                      "attribute-mappings": [
-                          {
-                              "target-attribute-name": "mpkey",
-                              "attribute-type": "scalar",
-                              "attribute-sub-type": "string",
-                              "value": "${tconst}"
-                          },
-                          {
-                              "target-attribute-name": "mskey",
-                              "attribute-type": "scalar",
-                              "attribute-sub-type": "string",
-                              "value": "DETL|${category}|${ordering}"
-                          }
-                      ]
-                  }
-              }
+        "rule-type": "selection",
+        "rule-id": "1",
+        "rule-name": "1",
+        "object-locator": {
+          "schema-name": "imdb",
+          "table-name": "movies",
+          "table-type": "view"
+        },
+        "rule-action": "include",
+        "filters": [
+          {
+            "filter-type": "source",
+            "column-name": "tconst",
+            "filter-conditions": ["REPLACE THIS STRING BY MOVIES LIST"]
+          }
+        ]
+      },
+      {
+        "rule-type": "object-mapping",
+        "rule-id": "2",
+        "rule-name": "2",
+        "rule-action": "map-record-to-record",
+        "object-locator": {
+          "schema-name": "imdb",
+          "table-name": "movies",
+          "table-type": "view"
+        },
+        "target-table-name": "movies1",
+        "mapping-parameters": {
+          "partition-key-name": "mpkey",
+          "sort-key-name": "mskey",
+          "exclude-columns": [],
+          "attribute-mappings": [
+            {
+              "target-attribute-name": "mpkey",
+              "attribute-type": "scalar",
+              "attribute-sub-type": "string",
+              "value": "${tconst}"
+            },
+            {
+              "target-attribute-name": "mskey",
+              "attribute-type": "scalar",
+              "attribute-sub-type": "string",
+              "value": "DETL|${category}|${ordering}"
+            }
           ]
+        }
       }
+    ]
+  }
   ```
   JSON document to migrate title_akas table from imdb MySQL database (Task identified: historical-migration02)
-
+  Replace the string "REPLACE THIS STRING BY MOVIES LIST" with list of movies copied earlier.
   ```json
     {
       "rules": [
@@ -134,7 +249,14 @@ JSON document to migrate denormalized view from imdb MySQL database (Task identi
                   "table-name": "title_akas",
                   "table-type": "table"
               },
-              "rule-action": "include"
+              "rule-action": "include",
+              "filters": [
+                {
+                  "filter-type": "source",
+                  "column-name": "titleId",
+                  "filter-conditions": ["REPLACE THIS STRING BY MOVIES LIST"]
+                }
+              ]
           },
           {
               "rule-type": "object-mapping",
@@ -171,6 +293,7 @@ JSON document to migrate denormalized view from imdb MySQL database (Task identi
     }
   ```
 JSON document to migrate title_ratings table from imdb MySQL database (Task identified: historical-migration03)
+Replace the string "REPLACE THIS STRING BY MOVIES LIST" with list of movies copied earlier.
   ```json
 
   {
@@ -184,7 +307,14 @@ JSON document to migrate title_ratings table from imdb MySQL database (Task iden
                 "table-name": "title_ratings",
                 "table-type": "table"
             },
-            "rule-action": "include"
+            "rule-action": "include",
+            "filters": [
+              {
+                "filter-type": "source",
+                "column-name": "tconst",
+                "filter-conditions": ["REPLACE THIS STRING BY MOVIES LIST"]
+              }
+            ]
         },
         {
             "rule-type": "object-mapping",
@@ -227,6 +357,7 @@ You need to create two more tasks with similar steps (historical-migration02 and
 Don't change any other parameter except the Table mappings Editing mode.
 For historical-migration02 and historical-migration03 tasks use the JSON document mentioned above.
 The replication job for historical migration will start moving data from MySQL imdb.movies view, title_akas and title_ratings to DynamoDB table will start in a few minutes.
+If you are loading selective records based on the list above, it may take 5-10 minutes to complete all three jobs. For full loading below are the statistics.
   - historical-migration01 job will migrate 800K+ records and normally takes 2-3 Hrs.
   - historical-migration02 job will migrate 747K+ records and normally takes 2-3 Hrs.
   - historical-migration03 job will migrate 79K+ records and normally takes 10-15 Minutes.
