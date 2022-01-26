@@ -68,13 +68,17 @@ In this exercise, we will set up Database Migration Service (DMS) jobs to migrat
     | Task settings: Editing mode  | Wizard|
     | Task settings: Target table preparation mode | Do nothing|
     | Task settings: Enable CloudWatch logs | Checked |
-    | Table mappings: Editing mode | Select JSON editor option and paste JSON document as mentioned below|
+    | Table mappings: Editing mode | Select JSON editor option and follow the instructions after below screenshots|
 
-    To reduce the loading time during Immersion Day, we have narrowed down the migration list to selective movies. Below JSON document has list of 28 movies worked by Clint Eastwood.
-    The remaining exercise will just focus on these movies. However, feel free to load remaining data in case you like to further explore.
-    Some statistics around full dataset is give at the bottom of this chapter.
+  ![Final Deployment Architecture](/images/migration25.jpg)
+  ![Final Deployment Architecture](/images/migration26.jpg)
 
-Copy list of selective movies by Clint Eastwood..
+  In this section we will create Table mappings JSON document. This document includes source to target mapping including any transformation on the records that will be performed during migration.
+  To reduce the loading time during Immersion Day, we have narrowed down the migration list to selective movies. Below JSON document has list of 28 movies worked by Clint Eastwood.
+  The remaining exercise will just focus on these movies. However, feel free to load remaining data in case you like to further explore.
+  Some statistics around full dataset is give at the bottom of this chapter.
+
+Copy list of selective movies by Clint Eastwood.
 ```json
     {
       "filter-operator": "eq",
@@ -177,8 +181,8 @@ Copy list of selective movies by Clint Eastwood..
       "value": "tt8884452"
     }
   ```
-  JSON document to migrate denormalized view from imdb MySQL database (Task identified: historical-migration01).
-  Replace the string "REPLACE THIS STRING BY MOVIES LIST" with list of movies copied earlier.
+  Below JSON document will migrate denormalized view from imdb MySQL database (Task identified: historical-migration01).
+  Replace the string "REPLACE THIS STRING BY MOVIES LIST" with list of movies copied earlier (Checkout following screenshot for any confusion).
   ```json
 
   {
@@ -235,7 +239,12 @@ Copy list of selective movies by Clint Eastwood..
     ]
   }
   ```
-  JSON document to migrate title_akas table from imdb MySQL database (Task identified: historical-migration02)
+  ![Final Deployment Architecture](/images/migration36.png)
+  Go to the bottom and click on Create task. At this point the task will create will automatically start loading selective movies from source to target DynamoDB table.
+  You can move forward and create two more tasks with similar steps (historical-migration02 and historical-migration03).
+  Keep rest of the parameter as is except the JSON document. For historical-migration02 and historical-migration03 tasks use the JSON document mentioned below.
+
+  Below JSON document will migrate title_akas table from imdb MySQL database (Task identified: historical-migration02)
   Replace the string "REPLACE THIS STRING BY MOVIES LIST" with list of movies copied earlier.
   ```json
     {
@@ -292,7 +301,7 @@ Copy list of selective movies by Clint Eastwood..
       ]
     }
   ```
-JSON document to migrate title_ratings table from imdb MySQL database (Task identified: historical-migration03)
+Below JSON document will migrate title_ratings table from imdb MySQL database (Task identified: historical-migration03)
 Replace the string "REPLACE THIS STRING BY MOVIES LIST" with list of movies copied earlier.
   ```json
 
@@ -350,12 +359,6 @@ Replace the string "REPLACE THIS STRING BY MOVIES LIST" with list of movies copi
       ]
     }
   ```
-
-![Final Deployment Architecture](/images/migration25.jpg)
-![Final Deployment Architecture](/images/migration26.jpg)
-You need to create two more tasks with similar steps (historical-migration02 and historical-migration03).
-Don't change any other parameter except the Table mappings Editing mode.
-For historical-migration02 and historical-migration03 tasks use the JSON document mentioned above.
 The replication job for historical migration will start moving data from MySQL imdb.movies view, title_akas and title_ratings to DynamoDB table will start in a few minutes.
 If you are loading selective records based on the list above, it may take 5-10 minutes to complete all three jobs. For full loading below are the statistics.
   - historical-migration01 job will migrate 800K+ records and normally takes 2-3 Hrs.
