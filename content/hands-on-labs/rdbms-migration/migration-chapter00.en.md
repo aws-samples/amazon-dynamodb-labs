@@ -1,6 +1,6 @@
 +++
-title = "Excercise Overview"
-menuTitle = "Excercise Overview"
+title = "Exercise Overview"
+menuTitle = "Exercise Overview"
 date = 2021-04-25T07:33:04-05:00
 weight = 10
 
