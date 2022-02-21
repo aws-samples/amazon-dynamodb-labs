@@ -162,6 +162,7 @@ Resources:
         Fn::Base64: !Sub |
           #!/bin/bash -ex
           sudo su
+          rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022
           yum localinstall -y https://dev.mysql.com/get/mysql80-community-release-el7-1.noarch.rpm
           yum install -y mysql-community-server
           systemctl enable mysqld
@@ -179,7 +180,7 @@ Resources:
           #wget https://datasets.imdbws.com/title.principals.tsv.gz
           #wget https://datasets.imdbws.com/title.ratings.tsv.gz
           #gzip -d *.gz
-          aws s3 cp s3://dynamodb-lab102/rdbms-migration.zip rdbms-migration.zip
+          aws s3 cp s3://amazon-dynamodb-labs-static/static/rdbms-migration/rdbms-migration.zip
           unzip -q rdbms-migration.zip
           chmod 775 *.*
           mysql -u root "-p${DbMasterPassword}" -e "CREATE DATABASE imdb;"
