@@ -141,6 +141,7 @@ Resources:
       Path: /
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/AmazonS3FullAccess
+        - arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
   DbInstance:
     Type: AWS::EC2::Instance
     Properties:
@@ -180,7 +181,7 @@ Resources:
           #wget https://datasets.imdbws.com/title.principals.tsv.gz
           #wget https://datasets.imdbws.com/title.ratings.tsv.gz
           #gzip -d *.gz
-          aws s3 cp s3://amazon-dynamodb-labs-static/static/rdbms-migration/rdbms-migration.zip
+          curl -O https://www.amazondynamodblabs.com/static/rdbms-migration/rdbms-migration.zip
           unzip -q rdbms-migration.zip
           chmod 775 *.*
           mysql -u root "-p${DbMasterPassword}" -e "CREATE DATABASE imdb;"
