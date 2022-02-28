@@ -215,7 +215,7 @@ Copy list of selective movies by Clint Eastwood.
           "table-name": "movies",
           "table-type": "view"
         },
-        "target-table-name": "movies1",
+        "target-table-name": "movies",
         "mapping-parameters": {
           "partition-key-name": "mpkey",
           "sort-key-name": "mskey",

@@ -13,7 +13,7 @@ The CloudFormation template used below will create Source VPC, EC2 hosting MySQL
  3. Select Template source as Upload a template file and choose the downloaded yaml file
    ![Final Deployment Architecture](/images/migration5.jpg)
  4. Click Next
- 5. Provide Stack Name and Update Parameters as necessary (you can leave default value as well)
+ 5. Provide Stack Name, Select DBKeyName and Update Parameters as necessary (you can leave default value as well)
    ![Final Deployment Architecture](/images/migration6.jpg)
  6. Click Next
  7. Click Create stack
