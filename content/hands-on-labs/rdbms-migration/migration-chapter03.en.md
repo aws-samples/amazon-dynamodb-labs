@@ -39,7 +39,7 @@ It has also configured a remote MySQL user based on the CloudFormation input par
    ![Final Deployment Architecture](/images/migration14.jpg)
 10. Congratulations! you are now connected to a self-managed MySQL source database on EC2. In next steps we will explore database and tables hosting IMDb datasets
   ```bash
-  use imdbUSE imdb;
+  use imdb;
   ```
    ![Final Deployment Architecture](/images/migration15.jpg)
 11. Show all the tables created;
