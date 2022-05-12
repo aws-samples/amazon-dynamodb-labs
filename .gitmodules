@@ -1,3 +1,4 @@
 [submodule "themes/learn"]
 	path = themes/learn
-	url = https://github.com/brentley/hugo-theme-learn.git
+	url = https://github.com/switch180/hugo-theme-learn.git
+	branch = aws
