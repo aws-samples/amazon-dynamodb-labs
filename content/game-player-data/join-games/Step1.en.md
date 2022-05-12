@@ -55,7 +55,7 @@ def join_game_for_user(game_id, username):
                             "SK": { "S": "#METADATA#{}".format(game_id) },
                         },
                         "UpdateExpression": "SET people = people + :p",
-                        "ConditionExpression": "people <= :limit",
+                        "ConditionExpression": "people < :limit",
                         "ExpressionAttributeValues": {
                             ":p": { "N": "1" },
                             ":limit": { "N": "50" }
