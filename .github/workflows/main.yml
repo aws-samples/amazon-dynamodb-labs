@@ -27,4 +27,8 @@ jobs:
       uses: aws-actions/configure-aws-credentials@v1
       with:
         aws-region: us-east-1
-        role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }} 
+        role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+    - name: Test
+      run: pwd && ls -lath
+    - name: S3Sync
+      run: aws s3 sync . s3://test.amazon-dynamodb-labs.com --dryrun --delete
