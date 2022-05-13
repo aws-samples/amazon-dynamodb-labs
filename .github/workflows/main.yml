@@ -1,5 +1,7 @@
 name: PushToProd
 
+permissions:
+  id-token: write
 on:
   workflow_dispatch:
 
@@ -13,7 +15,6 @@ jobs:
       with:
         submodules: 'recursive'
         fetch-depth: '0'
-
     - name: Setup Hugo
       uses: peaceiris/actions-hugo@v2
       with:
@@ -22,3 +23,7 @@ jobs:
 
     - name: Build
       run: hugo --buildFuture
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-region: us-east-1
