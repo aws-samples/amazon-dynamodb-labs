@@ -53,9 +53,12 @@ After a few minutes, the execution of this script will be throttled and show an 
 ProvisionedThroughputExceededException: An error occurred (ProvisionedThroughputExceededException) when calling the BatchWriteItem operation (reached max retries: 9): The level of configured provisioned throughput for one or more global secondary indexes of the table was exceeded. Consider increasing your provisioning level for the under-provisioned global secondary indexes with the UpdateTable API
 ```
 
-You can pause the operation by typing Ctrl+Z
 
-**Note:** This new table has more RCUs (1,000) and WCUs (1,000), but you still got an error and the load time increased.
+You can pause the operation by typing Ctrl+Z (Ctrl+C if you are Mac user).
+
+{{% notice note %}}
+This new table has more RCUs (1,000) and WCUs (1,000), but you still got an error and the load time increased.
+{{% /notice %}}
 
 **Topic for discussion:** Can you explain the behavior of the test? An exception named `ProvisionedThroughputExceededException` was returned by DynamoDB with an exception message suggesting the provisioned capacity of the GSI be increased. This is a telling error, and one that needs to be acted upon. In short, if you want 100% of the writes on the DynamoDB base table to be copied into the GSI, then the GSI should be provisioned with 100% (the same amount) of the capacity on the base table, which should be 1,000 WCU in this example. Simply put, the GSI was under-provisioned.
 
@@ -67,7 +70,9 @@ Open the AWS console, or switch to your browser tab with the AWS console, to vie
 
 The following image shows the write capacity metric for the `logfile_gsi_low` table. Note that the consumed writes (the blue line) were lower than the provisioned writes (red line) for the table during the test. This tells us the base table had sufficient write capacity for the surge of requests.
 
-**Note:** It may take a few minutes for the provisioned capacity (red line) to show up in the graphs. The provisioned capacity metrics are synthetic and there can be delays of five to ten minutes until they show a change.
+{{% notice note %}}
+It may take a few minutes for the provisioned capacity (red line) to show up in the graphs. The provisioned capacity metrics are synthetic and there can be delays of five to ten minutes until they show a change.
+{{% /notice %}}
 
 ![Write capacity metric for the table](/images/lowgsi-table-wc.png)
 
@@ -83,7 +88,9 @@ To identify the source of these throttled write requests, review the throttled w
 When you review the throttle events for the GSI, you will see the source of our throttles! Only the GSI has 'Throttled write events', which means it is the source of throttling on the table, and the cause of the throttled Batch write requests.
 
 ![Throttled writes for the GSI](/images/lowgsi-gsi1-throttles.png)
-**Note:**: It may take some time for the write throttle events to appear on the GSI throttled write events graph. If you don't immediately see metrics, re-run the command above to load data into DynamoDB and let it continue for several minutes so that many throttling events are created.
+{{% notice note %}}
+It may take some time for the write throttle events to appear on the GSI throttled write events graph. If you don't immediately see metrics, re-run the command above to load data into DynamoDB and let it continue for several minutes so that many throttling events are created.
+{{% /notice %}}
 
 When a DynamoDB global secondary index's write throttles are sufficient enough to create throttled requests, the behavior is called GSI back pressure. Throttled requests are `ProvisionedThroughputExceededException` errors in the AWS SDKs, generate `ThrottledRequests` metrics in CloudWatch, and appear as 'throttled write requests' on the base table in the AWS console. When GSI back pressure occurs, all writes to the DynamoDB table are rejected until space in the buffer between the DynamoDB base table and GSI opens up. Regardless of whether a new row is destined for a GSI, writes for a time will be rejected on the base table until space is available - DynamoDB does not have time to determine if a row to be written will be in the GSI or not. This is a troubling situation, but it's an unavoidable constraint from DynamoDB because the service cannot create a buffer of unlimited size between your base table and GSI; there must be a limit to the number of items waiting to be copied from the base table into a GSI. In order to be aware of this behavior early, it's important to monitor throttled requests and events on your DynamoDB table and GSI.
 

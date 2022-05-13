@@ -19,7 +19,10 @@ The following code block scans the table.
       Limit=pageSize,
       ProjectionExpression='bytessent')
 ```
-**Note:** You can review the file on your own with `vim ~/workshop/scan_logfile_simple.py`. Type `:q` and hit enter to exit vim.
+
+{{% notice info %}}
+You can review the file on your own with `vim ~/workshop/scan_logfile_simple.py`. Type `:q` and hit enter to exit vim.
+{{% /notice %}}
 
 Notice that there is a `Limit` parameter set in the `Scan` command. A single `Scan` operation will read up to the maximum number of items set (if using the `Limit` parameter) or a maximum of 1 MB of data, and then apply any filtering to the results by using `FilterExpression`. If the total number of scanned items exceeds the maximum set by the limit parameter or the data set size limit of 1 MB, the scan stops and results are returned to the user as a `LastEvaluatedKey` value. This value can be used in a subsequent operation so that you can pick up where you left off.
 
@@ -36,9 +39,10 @@ In the following code, the `LastEvaluatedKey` value in the response is passed to
     for i in response['Items']:
         totalbytessent += i['bytessent']
 ```
+
 When the last page is returned, `LastEvaluatedKey` is not part of the response, so you know that the scan is complete.
 
-Now, execute this code. 
+Now, execute this code.
 
 ```bash
 python scan_logfile_simple.py logfile_scan
@@ -54,4 +58,3 @@ Total bytessent 6054250 in 16.325594425201416 seconds
 ```
 
 Make a note of the time it took for the scan to complete. With this exercise's dataset, a parallel scan will complete faster than the sequential scan.
-
