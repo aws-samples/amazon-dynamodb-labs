@@ -12,7 +12,7 @@ In this lab, you use Python scripts to interact with the DynamoDB API. Run the f
 
 ```bash
 cd ~/environment
-curl -sL https://s3.amazonaws.com/ddb-labs/battle-royale.tar | tar -xv
+curl -sL https://amazon-dynamodb-labs.com/static/game-player-data/battle-royale.tar | tar -xv
 ```
 
 You should see two directories in the AWS Cloud9 file explorer:
