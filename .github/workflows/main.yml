@@ -4,11 +4,20 @@ permissions:
   id-token: write
 on:
   workflow_dispatch:
+    inputs:
+      website:
+        description: 'Name of the S3 bucket aka website to publish to'
+        required: true
+        default: 'test.amazon-dynamodb-labs.com'
+        options:
+        - 'test.amazon-dynamodb-labs.com'
+        - 'amazon-dynamodb-labs.com'
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    env:
+      STEP_S3_BUCKET: ${{ github.event.inputs.website }}
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -34,4 +43,6 @@ jobs:
     - name: BuildAssets
       run: python3 ./.github/scripts/build-assets.py
     - name: S3Sync
-      run: aws s3 sync public s3://test.amazon-dynamodb-labs.com --dryrun --delete
+      run: aws s3 sync public s3://$STEP_S3_BUCKET
+    - name: SetS3Acl
+      run: aws s3api put-object-acl --grant-read uri=http://acs.amazonaws.com/groups/global/AllUsers --bucket $STEP_S3_BUCKET --key assets/lab.yaml
