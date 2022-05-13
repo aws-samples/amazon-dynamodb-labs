@@ -29,6 +29,6 @@ jobs:
         aws-region: us-east-1
         role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
     - name: Test
-      run: pwd && ls -lath
+      run: cd public && pwd && ls -lath
     - name: S3Sync
       run: aws s3 sync . s3://test.amazon-dynamodb-labs.com --dryrun --delete
