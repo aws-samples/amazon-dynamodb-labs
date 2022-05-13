@@ -133,7 +133,7 @@ When you run this command you receive the following error:
 An error occurred (ValidationException) when calling the Scan operation: Invalid FilterExpression: Attribute name is a reserved keyword; reserved keyword: Views
 ```
 
-That's because the *Views* attribute name is actually a [DynamoDB Reserved Word](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html).  DynamoDB gives us the ability to put a placeholder in the FilterExpression and provide the actual attribute name in the *\-\-expression\-attribute\-names* CLI parameter.  For more information please see the [Expression Attribute Names in DynamoDB]([https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ExpressionAttributeNames.html) in the Developer Guide.
+That's because the *Views* attribute name is actually a [DynamoDB Reserved Word](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html).  DynamoDB gives us the ability to put a placeholder in the FilterExpression and provide the actual attribute name in the *\-\-expression\-attribute\-names* CLI parameter.  For more information please see the [Expression Attribute Names in DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ExpressionAttributeNames.html) in the Developer Guide.
 
 To solve our problem here:
 

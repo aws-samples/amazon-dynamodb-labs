@@ -30,8 +30,6 @@ You should see 3 **Reply** items posted by User A.
 
 Explore the data in the *Forum* table and write a scan command to return only the Forums that have more than 1 thread and more than 50 views.
 
-Hint: Read about [Reserved Words](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html) in DynamoDB and how to deal with [situations where one of your attribute names is a reserved word](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ExpressionAttributeNames.html).
-
 The solution is expandable below but try to figure it out yourself before moving forward.
 
 **Click below to expand and see the exercise solutions**
