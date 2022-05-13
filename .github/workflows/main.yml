@@ -20,7 +20,10 @@ jobs:
       with:
         hugo-version: '0.74.3'
         # extended: true
-
+    - name: SetupPython
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
     - name: Build
       run: hugo --buildFuture
     - name: Configure AWS Credentials
@@ -28,7 +31,7 @@ jobs:
       with:
         aws-region: us-east-1
         role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
-    - name: Test
-      run: cd public && pwd && ls -lath
+    - name: BuildAssets
+      run: python3 ./.github/scripts/build-assets.py
     - name: S3Sync
-      run: aws s3 sync . s3://test.amazon-dynamodb-labs.com --dryrun --delete
+      run: aws s3 sync public s3://test.amazon-dynamodb-labs.com --dryrun --delete
