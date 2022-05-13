@@ -7,9 +7,9 @@ weight = 2
 You can use the new global secondary index to query the table. If you use only the state, the query does not use the sort key attribute. However, if the query has a value for the second parameter, the code uses the `GSI_3_SK` attribute of the global secondary index, which holds the same value as the `city_dept` attribute, to query all the values that begin with the parameter value.
 
 The following screenshot shows using composite key attributes to query by city and department.
-![Using Composite key attributes to query by city and department](/images/awsconsole7.png)
+![Using Composite key attributes to query by city and department](/images/employees-GSI3.png)
 
-We can perform this same query in a Python script.  This snippet shows how a script can take two input parameters (shown as value1 and value2) and craft a query against the GSI_3 global secondary index.
+We can perform this same query in a Python script. This snippet shows how a script can take two input parameters (shown as value1 and value2) and craft a query against the GSI_3 global secondary index.
 
 ```py
 if value2 == "-":
@@ -28,7 +28,9 @@ Run the following Python script to query global secondary index `GSI_3` for all 
 ```bash
 python query_city_dept.py employees TX
 ```
+
 The result should look similar to the following.
+
 ```txt
 List of employees . State: TX
     Name: Bree Gershom. City: Austin. Dept: Development
@@ -42,4 +44,3 @@ List of employees . State: TX
   Name: Odella Kringe. City: San Antonio. Dept: Support
 Total of employees: 197. Execution time: 0.238062143326 seconds
 ```
-

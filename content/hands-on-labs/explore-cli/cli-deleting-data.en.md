@@ -4,7 +4,7 @@ date = 2020-04-23T07:38:58-05:00
 weight = 25
 +++
 
-The DynamoDB [DeleteItem API](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_DeleteItem.html) is used to create a new item or to replace existing items completely with a new item.  It is invoked using the [delete-item CLI command](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/delete-item.html).
+The DynamoDB [DeleteItem API](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_DeleteItem.html) is used to delete an item.  It is invoked using the [delete-item CLI command](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/delete-item.html).
 
 Deletes in DynamoDB are always singleton operations.  There is no single command you can run that would delete all the rows in the table for example.
 
