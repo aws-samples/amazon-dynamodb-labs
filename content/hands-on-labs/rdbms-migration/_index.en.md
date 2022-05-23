@@ -7,7 +7,7 @@ pre = "<b>5. </b>"
 
 +++
 
-In this module, you will learn how to design target data model in DynamoDB for a highly normalized relational data in a relational database.
+In this module, you will learn how to design target data model in DynamoDB for a highly normalized relational data in relational database.
 The exercise also guides a step by step migration of an IMDb dataset from a self-managed MySQL database instance on EC2 to a fully managed key-value pair database Amazon DynamoDB.
 At the end of this lesson, you should feel confident in your ability to design and migrate an existing relational database to Amazon DynamoDB.
 
@@ -20,10 +20,9 @@ Schema flexibility lets DynamoDB store complex hierarchical data within an item 
 This module will briefly discuss the techniques to design target data model and migrate relational datasets from MySQL to Amazon DynamoDB. The IMDb data inside MySQL database is normalized across multiple tables.
 We will use denormalized/item collection modelling techniques to create comprehensive data model for identified access patterns.
 There are multiple factors that will influence our decision to build target data model
-
-- Access patterns
-- Cardinality
-- Overall I/O
+  - Access patterns
+  - Cardinality
+  - Overall I/O
 
 We will briefly discuss the key aspects to create a model that will serve various access patters with ultralow latency and lower I/O and cost.
 
