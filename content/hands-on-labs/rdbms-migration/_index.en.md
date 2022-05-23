@@ -7,7 +7,7 @@ pre = "<b>5. </b>"
 
 +++
 
-In this module, you will learn how to design target data model in DynamoDB for a highly normalized relational data in relational database.
+In this module, you will learn how to design target data model in DynamoDB for a highly normalized relational data in a relational database.
 The exercise also guides a step by step migration of an IMDb dataset from a self-managed MySQL database instance on EC2 to a fully managed key-value pair database Amazon DynamoDB.
 At the end of this lesson, you should feel confident in your ability to design and migrate an existing relational database to Amazon DynamoDB.
 
