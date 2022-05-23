@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "load_logfile_parallel.py", line 2, in <module>
+    import boto3
+ImportError: No module named boto3
+/usr/local/Cellar/python@3.9/3.9.5/Frameworks/Python.framework/Versions/3.9/lib/python3.9/multiprocessing/resource_tracker.py:216: UserWarning: resource_tracker: There appear to be 3 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
