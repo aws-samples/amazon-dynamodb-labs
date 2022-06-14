@@ -89,7 +89,10 @@ Resources:
     Type: AWS::EC2::Subnet
     Properties:
       CidrBlock: !Ref DBSubnetCIDR
-      AvailabilityZone: 'us-east-1a'
+      AvailabilityZone:
+        Fn::Select:
+        - 0
+        - Fn::GetAZs: !Ref 'AWS::Region'
       MapPublicIpOnLaunch: true
       VpcId: !Ref Vpc
       Tags:
