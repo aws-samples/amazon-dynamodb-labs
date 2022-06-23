@@ -4,7 +4,7 @@ date = 2019-12-02T10:26:29-08:00
 weight = 6
 +++
 
-To view the [Amazon CloudWatch](https://aws.amazon.com/cloudwatch/) metrics for your table:
+To view the Amazon CloudWatch metrics for your table:
 
 1. Navigate to the DynamoDB section of the AWS management console.
 2. As shown in the following image, in the navigation pane, choose Tables. Choose the logfile table, and in the right pane, choose the Metrics tab
