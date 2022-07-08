@@ -27,10 +27,10 @@ When determining how to organize items related to the primary access pattern:
 - What organization needs to be written to return items in sorted order (sort by)?
 - What is the hierarchy of the relationships (most general to more specific)?
 
-Fulfilling the second and third access patterns:
+Fulfilling the second, third, and fourth access patterns:
 
-- The second access pattern is an OLTP access pattern and can be modeled directly in DynamoDB
-- The third access pattern is OLAP and does not need to be fulfilled directly on DynamoDB
+- The second and third access patterns are OLTP access patterns and can be modeled directly in DynamoDB.
+- The fourth access pattern is OLAP and does not need to be fulfilled directly on DynamoDB, or in your solution for that matter.
 
 #### Helpful references
 
