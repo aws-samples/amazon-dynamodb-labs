@@ -67,7 +67,7 @@ These are some of the permissions granted to the Lambda function in the policy:
 }
 ```
 
-- The Lambda function can put and delete items only in the `logfile_replica` table.
+- The Lambda function can put and delete items in any DynamoDB table.
 ```json
 {
     "Action": [
