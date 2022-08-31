@@ -114,6 +114,6 @@ dashboard.
 ![Scheduled Backup 15](/images/hands-on-labs/backup/sched_backup_15.png)
 
 To see the restored table,  go to the [DynamoDB Console](https://console.aws.amazon.com/dynamodbv2/) and click on *Tables* from the side menu.Choose
-*ProductCatalogRestotred* table. You can see the table is restored along with data.
+*ProductCatalogRestored* table. You can see the table is restored along with data.
 
 ![Scheduled Backup 16](/images/hands-on-labs/backup/sched_backup_16.png)
