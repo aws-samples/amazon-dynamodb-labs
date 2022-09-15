@@ -8,8 +8,10 @@ On a mac:
 `brew install hugo`
 
 On Linux:
-  - Download from the releases page: https://github.com/gohugoio/hugo/releases/tag/v0.46
-  - Extract and save the executable to `/usr/local/bin`
+  - Download from the releases page: https://github.com/gohugoio/hugo/releases/tag/v0.102.3
+  - Extract and save the hugo executable to `/usr/local/bin/`
+
+Note: This workshop is built with [hugo v0.102.3](https://github.com/gohugoio/hugo/releases/tag/v0.102.3). Older versions may produce errors due to the aws theme we use.
 
 #### Clone this repo:
 From wherever you checkout repos:
