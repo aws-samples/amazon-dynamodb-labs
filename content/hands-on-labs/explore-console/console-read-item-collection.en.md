@@ -16,13 +16,13 @@ The Key Condition Expression will define the number of RRUs or RCUs that are con
 
 We can optionally also specify a [Filter Expression](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.FilterExpression) for our Query. If we were comparing this to SQL, we would say "this is the part of the WHERE clause that acts on the non-Key attributes".  Filter Expressions act to remove some items from the Result Set returned by the Query, **but they do not affect the consumed capacity of the Query**.  If your Key Condition Expression matches 1,000,000 items and your FilterExpression reduces the result set down to 100 items, you will still be charged to read all 1,000,000 items.  But the Filter Expression reduces the amount of data returned from the network connection so there is still a benefit to our application in using Filter Expressions even if it doesn't affect the price of the Query.
 
-The ProductCatalog table we used in the previous examples only has a Partition Key so let's look at the data in the **Reply** table which has both a Partition Key and a Sort Key. Select the left menu bar **Explore Items** under Tables. You may need to click the hamburger menu icon to expand the left menu if its hidden.
-
+The ProductCatalog table we used in the previous examples only has a Partition Key so let's look at the data in the **Reply** table which has both a Partition Key and a Sort Key. Select the left menu bar **Explore items** under Tables.
+![Console Menu Item Explorer](/images/hands-on-labs/explore-console/console_menu_explore_item.png)
+You may need to click the hamburger menu icon to expand the left menu if its hidden.
 ![Console Menu Hamburger Icon](/images/hands-on-labs/explore-console/console_menu_hamburger_icon.png)
 
-![Console Menu Item Explorer](/images/hands-on-labs/explore-console/console_menu_explore_item.png)
 
-Once you enter the Explore Items you need to select the **Reply** table to expand the Scan/Query items box.
+Once you enter the Explore Items you need to select the **Reply** table and then expand the Scan/Query items box.
 
 ![Item Explorer Expand Tables](/images/hands-on-labs/explore-console/console_explore_item_select_table.png)
 

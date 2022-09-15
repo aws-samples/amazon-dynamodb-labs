@@ -8,17 +8,15 @@ The [Scan API](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/AP
 
 The Scan API is similar to the Query API except that since we want to scan the whole table and not just a single Item Collection, there is no Key Condition Expression for a Scan.  However, you can specify a [Filter Expression](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.FilterExpression) which will reduce the size of the result set (even though it will not reduce the amount of capacity consumed).
 
-Let us look at the data in the **Reply** table which has both a Partition Key and a Sort Key. Select the left menu bar **Item explorer**. You may need to click the hamburger menu icon to expand the left menu if its hidden.
-
+Let us look at the data in the **Reply** table which has both a Partition Key and a Sort Key. Select the left menu bar **Explore items**.
+![Console Menu Item Explorer](/images/hands-on-labs/explore-console/console_menu_explore_item.png)
+You may need to click the hamburger menu icon to expand the left menu if its hidden.
 ![Console Menu Hamburger Icon](/images/hands-on-labs/explore-console/console_menu_hamburger_icon.png)
 
-![Console Menu Item Explorer](/images/hands-on-labs/explore-console/console_menu_item_explorer.png)
 
-Once you enter the Item explorer you might need to click the **>** button to expand the Tables list
+Once you enter the Explore Items you need to select the **Reply** table and then expand the Scan/Query items box.
 
-![Item Explorer Expand Tables](/images/hands-on-labs/explore-console/console_item_explorer_expand_tables.png)
-
-And then choose the **Reply** table.
+![Item Explorer Expand Tables](/images/hands-on-labs/explore-console/console_explore_item_select_table.png)
 
 For example, we could find all the replies in the Reply that were posted by User A.   
 
