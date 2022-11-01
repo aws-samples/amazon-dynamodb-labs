@@ -22,7 +22,7 @@ Note that both of these access patterns are writing data to DynamoDB, in contras
 
 To satisfy the “Join game for a user” access pattern in this module’s steps, you are going to use [DynamoDB transactions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/transactions.html). Transactions are popular in relational systems for operations that affect multiple data elements at once. For example, imagine you are running a bank. One customer transfers $100 to another customer. When recording this transaction, you would use a transaction to make sure the changes are applied to the balances of both customers rather than just one.
 
-DynamoDB transactions make it easier to build applications that alter multiple items as part of a single operation. With transactions, you can operate on up to 25 items as part of a single transaction request. In a [TransactWriteItems](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_TransactWriteItems.html) API call, you can use the following operations:
+DynamoDB transactions make it easier to build applications that alter multiple items as part of a single operation. With transactions, you can operate on up to 100 items as part of a single transaction request. In a [TransactWriteItems](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_TransactWriteItems.html) API call, you can use the following operations:
 
 - **Put**: For inserting or overwriting an item.
 - **Update**: For updating an existing item.
