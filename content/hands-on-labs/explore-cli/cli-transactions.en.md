@@ -4,7 +4,7 @@ date = 2020-04-24T07:38:58-05:00
 weight = 26
 +++
 
-The DynamoDB [TransactWriteItems API](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_TransactWriteItems.html) is a synchronous write operation that groups up to 25 action requests (subject to an aggregate 4MB size limit for the transaction). It is invoked using the [transact-write-items CLI command](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/transact-write-items.html).
+The DynamoDB [TransactWriteItems API](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_TransactWriteItems.html) is a synchronous write operation that groups up to 100 action requests (subject to an aggregate 4MB size limit for the transaction). It is invoked using the [transact-write-items CLI command](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/transact-write-items.html).
 
 These actions can target items in different tables, but not in different AWS accounts or Regions, and no two actions can target the same item. The actions are completed atomically so that either all of them succeed, or all of them fail. For a greater discussion on Isolation Levels for Transactions see the [Developer Guide](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/transaction-apis.html#transaction-isolation).
 
