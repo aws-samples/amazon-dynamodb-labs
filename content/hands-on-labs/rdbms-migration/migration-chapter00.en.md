@@ -12,7 +12,8 @@ There are two CloudFormation templates used in this exercise which will deploy f
 CloudFormation Template1 Resources:
   - OnPrem VPC: Source VPC will represent an on-premise source environment in the N. Virginia region. This VPC will host source MySQL database on Amazon EC2
   - Amazon EC2 MySQL Database: Amazon EC2 Amazon Linux 2 AMI with MySQL installed and running
-  - Load IMDb dataset: The template will create IMDb database on MySQL and load IMDb public dataset files into database. You can learn more about IMDb dataset inside [Explore Source Model](/hands-on-labs/rdbms-migration/migration-chapter03.html)
+  - Load IMDb dataset: The template will create IMDb database on MySQL and load IMDb public dataset files into database. You can learn more about IMDb dataset inside [Explore Source Model]({{< relref "/hands-on-labs/rdbms-migration/migration-chapter03.en.md" >}} "Explore Source Model")
+
 
 CloudFormation Template2 Resources:
   - DMS VPC:  Migration VPC on in the N. Virginia region. This VPC will host DMS replication instance.
