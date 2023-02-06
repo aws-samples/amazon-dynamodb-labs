@@ -46,3 +46,13 @@ jobs:
       run: aws s3 sync public s3://$STEP_S3_BUCKET --delete
     - name: SetS3Acl
       run: aws s3api put-object-acl --grant-read uri=http://acs.amazonaws.com/groups/global/AllUsers --bucket $STEP_S3_BUCKET --key assets/lab.yaml
+    - name: SetS3AclED1
+      run: aws s3api put-object-acl --grant-read uri=http://acs.amazonaws.com/groups/global/AllUsers --bucket $STEP_S3_BUCKET --key assets/GeneratorLambdaPackage.zip
+    - name: SetS3AclED2
+      run: aws s3api put-object-acl --grant-read uri=http://acs.amazonaws.com/groups/global/AllUsers --bucket $STEP_S3_BUCKET --key assets/MapLambdaPackage.zip
+    - name: SetS3AclED3
+      run: aws s3api put-object-acl --grant-read uri=http://acs.amazonaws.com/groups/global/AllUsers --bucket $STEP_S3_BUCKET --key assets/ReduceLambdaPackage.zip
+    - name: SetS3AclED4
+      run: aws s3api put-object-acl --grant-read uri=http://acs.amazonaws.com/groups/global/AllUsers --bucket $STEP_S3_BUCKET --key assets/StateLambdaPackage.zip
+    - name: SetS3AclED5
+      run: aws s3api put-object-acl --grant-read uri=http://acs.amazonaws.com/groups/global/AllUsers --bucket $STEP_S3_BUCKET --key assets/event-driven-cfn.yaml

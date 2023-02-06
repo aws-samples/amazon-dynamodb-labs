@@ -1,0 +1,22 @@
+{"TradeID"   : "0d957268", "Value": 10, "Version": 1,
+    "Hierarchy" : {"RiskType": "Delta", "Region": "AMER", "TradeDesk": "FXSpot"} }
+
+{"TradeID"   : "8ec2fdcd", "Value": 100, "Version": 1,
+    "Hierarchy" : {"RiskType": "Delta", "Region": "EMEA", "TradeDesk": "FXSpot"} }
+
+{"TradeID"   : "f5bb0ced", "Value": 5, "Version": 1,
+    "Hierarchy" : {"RiskType": "Delta", "Region": "EMEA", "TradeDesk": "FXOptions"} }
+
+{"TradeID"   : "8c935bf7", "Value": 3, "Version": 1,
+    "Hierarchy" : {"RiskType": "Delta", "Region": "EMEA", "TradeDesk": "FXOptions"} }
+
+{"TradeID"   : "395974a4", "Value": 20, "Version": 1,
+    "Hierarchy" : {"RiskType": "Delta", "Region": "AMER", "TradeDesk": "FXSpot"} }
+
+
+    1,3,4
+    2,5
+
+{"Delta":18, "Delta:AMER":10, "Delta:AMER:FXSpot": 10, "Delta:EMEA":8, "Delta:EMEA:FXOptions":8}
+
+{"Delta":120, "Delta:EMEA":100, "Delta:EMEA:FXSpot": 100, "Delta:AMER":20, "Delta:AMER:FXSpot":20}

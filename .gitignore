@@ -4,3 +4,4 @@ public/
 __pycache__/
 .python-version
 build
+.hugo_build.lock
