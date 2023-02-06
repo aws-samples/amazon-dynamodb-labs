@@ -8,7 +8,7 @@ description = "Query a sharded global secondary index to quickly read sorted dat
 +++
 
 {{% notice info %}}
-Points and socreboard only apply when this lab is run during an AWS Event.
+Points and scoreboard only apply when this lab is run during an AWS Event.
 {{% /notice %}}
 
 # Are you ready to start Lab 2?

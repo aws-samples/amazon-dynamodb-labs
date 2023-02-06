@@ -4,7 +4,7 @@ date = 2019-12-02T10:45:32-08:00
 weight = 3
 +++
 
-Congratulations, you succesfully completed *Lab 2*! If you've made it here and still have time left, we have added one optional step to the workshop for you! 
+Congratulations, you successfully completed *Lab 2*! If you've made it here and still have time left, we have added one optional step to the workshop for you!
 
 In this step, you will start an AWS Cloud9 instance and run a Python frontend that scans the DynamoDB `AggregateTable` twice per second and displays the results, i.e. the aggregated values for the different risk types, in your terminal.
 
@@ -74,31 +74,31 @@ speed = None
 # Indefinite Loop - Pull Data and Print it to Console
 # --------------------------------------------------------------------------------------------------
 
-while True: 
+while True:
     data = dict()
     message_count = 0
 
     # Read from DDB
     table_contents = table.scan(ConsistentRead = True)
-    
+
     # Arrange for displaying
     if 'Items' in table_contents:
         for item in table_contents['Items']:
             identifier = item[AGGREGATE_TABLE_KEY]
             data[identifier] = item[VALUE_COLUMN_NAME]
-                
+
     if data:
         message_count = data[MESSAGE_COUNT_NAME]
         del data[MESSAGE_COUNT_NAME]
-        
+
         ordered_data = collections.OrderedDict(sorted(data.items()))
-    
+
     # Init Speed
     if speed is None:
         speed_measure_start_time = time.time()
         speed_measure_start_count = message_count
         speed = 0
-    
+
     # Update Speed
     time_now = time.time()
     time_diff = time_now - speed_measure_start_time
@@ -106,7 +106,7 @@ while True:
         speed = max(0, int(message_count - speed_measure_start_count) / time_diff)
         speed_measure_start_count = message_count
         speed_measure_start_time = time_now
-    
+
     # Header
     stdscr.addstr(0 ,0, 'Current Time: ' + datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3])
     stdscr.addstr(1, 0, 'Total number of messages received: {}'.format(message_count))
@@ -120,13 +120,13 @@ while True:
         for k,v in ordered_data.items():
             if k[:10] == "timestamp_":
                 continue
-            level = k.count(':') 
+            level = k.count(':')
             try:
                 stdscr.addstr(row, 0, '{:<35}'.format(k) + (' ' * level) + '{:10.2f}'.format(v))
                 row +=1
             except:
                 pass
-            
+
     stdscr.refresh()
     time.sleep(0.5)
     stdscr.clear()

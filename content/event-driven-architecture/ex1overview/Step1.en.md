@@ -5,8 +5,9 @@ weight = 2
 +++
 
 {{% notice info %}}
-Points and socreboard only apply when this lab is run during an AWS Event. If you're running this lab independently, you have the top score!
-
+Points and scoreboard only apply when this lab is run during an AWS Event. If you're running this lab independently, you have the top score!
+{{% /notice %}}
+{{% notice info %}}
 AWS Event: Be sure you've set a family-friendly team name in Event Engine, especially if you think you'll be on the top of the scoreboard!
 {{% /notice %}}
 

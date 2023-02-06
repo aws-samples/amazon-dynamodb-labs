@@ -133,7 +133,7 @@ except ClientError as e:
         raise e
 ```
 
-Copy the code snippet above and replace it with the existing `table.update_item(...)` statement in your your `StateLambda` function code. Then click on `Deploy` to apply the changes.
+Copy the code snippet above and replace it with the existing `table.update_item(...)` statement in your `StateLambda` function code. Then click on `Deploy` to apply the changes.
 
 {{% notice info %}}
 The above change will also help avoid duplicate writes when the Lambda service retries the `StateLambda` function after it has previously failed with a batch of incoming messages. With this change we avoid writing duplicates into `StateTable` which ensures we do not generate additional messages in the downstream `StateTable` DynamoDB stream.

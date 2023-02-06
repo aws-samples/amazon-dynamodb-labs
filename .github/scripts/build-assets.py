@@ -55,7 +55,7 @@ shutil.move(os.path.join(os.getcwd(), 'scenario-solutions.zip'), os.path.join(de
 #Create Event Driven ZIPs
 os.chdir(os.path.join(pkg_root, 'event-driven'))
 zips_to_make = ['MapLambdaPackage', 'ReduceLambdaPackage', 'StateLambdaPackage', 'GeneratorLambdaPackage']
-with zip_name in zips_to_make:
+for zip_name in zips_to_make:
     zip_file_name = "{}.zip".format(zip_name)
     with ZipFile(zip_file_name, 'w') as workshop_zip:
         for python_script in glob.glob("./{}/*.py".format(zip_name)):

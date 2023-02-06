@@ -16,7 +16,7 @@ In this first lab you will process streaming data to create an end-to-end data p
 
 Amazon DynamoDB is a massive horizontally scaled NoSQL database designed for single-digit-millisecond latency with virtually no limits in scale, either in throughput or in storage. DynamoDB offers built-in security, continuous backups, automated multi-region replication, in-memory caching, and data export tools.
 
-This diagram shows the the features and integrations for DynamoDB:
+This diagram shows the features and integrations for DynamoDB:
 
 ![DynamoDB ecosystem](/images/event-driven-architecture/lab1/dynamodb-ecosystem.png)
 If you want to learn more [you can review the DynamoDB's features page on aws.amazon.com](https://aws.amazon.com/dynamodb/features/)
