@@ -35,7 +35,7 @@ The business problem of near real-time data aggregation is faced by customers in
 * `Hierarchy`: A list of attributes associated with this trade. To expand, this includes the type of risk, the region where the trade took place, and the type of the trading desk that performed the trade. These attributes will be used to group trades and aggregate the data.
 
 
-Consider an example where five risk messages are ingested in the pipeline, as represented in the following figure. For visibility we labeled each message with an identifier from M1 to M5. Each message has a unique `TradeID`, a risk `Value`, and a group of hierarchy attributes (as explained above). For simplicity, all messages have the `RiskType` `"Delta"` and the `Version` atttribute is always set to `1`.
+Consider an example where five risk messages are ingested in the pipeline, as represented in the following figure. For visibility we labeled each message with an identifier from M1 to M5. Each message has a unique `TradeID`, a risk `Value`, and a group of hierarchy attributes (as explained above). For simplicity, all messages have the `RiskType` `"Delta"` and the `Version` attribute is always set to `1`.
 
 ![DD Part1](/images/event-driven-architecture/deep-dive/pipeline-explanation-part-1.png)
 

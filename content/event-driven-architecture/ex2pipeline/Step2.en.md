@@ -22,7 +22,7 @@ Check that `MapLambda` has a correctly configured trigger to receive messages fr
 
 Any row written to the `StateTable` should trigger the `MapLambda` function. Therefore, you should be able to see logs for the Lambda invocations.
 
-Alternatively, you can observe the outputs of the `MapLambda` funection in the DynamoDB `ReduceTable`. To do that, navigate to the DynamoDB service in the AWS console, click `Items` on the left, and select `ReduceTable`. At this stage you should see multiple rows similar to the image below.
+Alternatively, you can observe the outputs of the `MapLambda` function in the DynamoDB `ReduceTable`. To do that, navigate to the DynamoDB service in the AWS console, click `Items` on the left, and select `ReduceTable`. At this stage you should see multiple rows similar to the image below.
 
 ![Reduce table items](/images/event-driven-architecture/lab1/reduce-table-items.png)
 
