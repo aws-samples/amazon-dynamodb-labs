@@ -35,7 +35,9 @@ Next, we want to connect the `ReduceLambda` function to the DynamoDB stream of t
 
 3. Click the `Add` button in the bottom right corner.
 
-::alert[Caution: You will see an error here! Before we can enable this trigger we need to add IAM permissions to this Lambda functions.]
+{{% notice warning %}}
+You will see an error here! Before we can enable this trigger we need to add IAM permissions to this Lambda functions.
+{{% /notice %}}
 
 ![Architecture-1](/images/event-driven-architecture/lab1/reduce-lambda-error-permissions.png)
 
@@ -54,7 +56,9 @@ The error message above informs you that the `ReduceLambda` function doesn't hav
 ![Architecture-1](/images/event-driven-architecture/lab1-permissions/click_on_edit_policy.png)
 
 ### Modify the IAM policy  
-::alert[There is already an IAM permission in place for DynamoDB: this is necessary to ensure the workshop runs as expected. Don't get confused by this and please don't delete the permissions we've already granted! All of the Lambda functions need to be able to access the ParameterTable to check the current progress of the lab and the respective failure modes. ]
+{{% notice info %}}
+There is already an IAM permission in place for DynamoDB: this is necessary to ensure the workshop runs as expected. Don't get confused by this and please don't delete the permissions we've already granted! All of the Lambda functions need to be able to access the ParameterTable to check the current progress of the lab and the respective failure modes.
+{{% /notice %}}
 
 * First we need to add permissions so the `ReduceLambda` function is able to read messages from the stream of the `ReduceTable`.
     * Click on `Add additional permissions`
