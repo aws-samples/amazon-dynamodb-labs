@@ -59,7 +59,8 @@ for zip_name in zips_to_make:
     zip_file_name = "{}.zip".format(zip_name)
     with ZipFile(zip_file_name, 'w') as workshop_zip:
         for python_script in glob.glob("./*.py".format(zip_name)):
-            workshop_zip.write(python_script)
+            head, tail = ntpath.split(python_script)
+            workshop_zip.write(python_script, tail)
     shutil.move(os.path.join(os.getcwd(), zip_file_name), os.path.join(dest_root, 'assets', zip_file_name))
 
 exit()
