@@ -205,7 +205,7 @@ def lambda_handler(event, context):
     totals = dict()
 
     # Initialize DDB Ressource
-    ddb_ressource = boto3.resource('dynamodb', region_name=constants.REGION_NAME)
+    ddb_ressource = boto3.resource('dynamodb')
 
     # Keep track of number of batches for timestamp mean
     batch_count = 0
@@ -239,7 +239,7 @@ def lambda_handler(event, context):
     total_new_message_count = totals[constants.MESSAGE_COUNT_NAME]
 
     # Update all Values within one single transaction
-    ddb_client = boto3.client('dynamodb', region_name=constants.REGION_NAME)
+    ddb_client = boto3.client('dynamodb')
 
     # Batch of Items
     batch = [
