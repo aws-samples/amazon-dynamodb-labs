@@ -22,7 +22,7 @@ weight = 1
         "dynamodb:GetShardIterator",
         "dynamodb:ListStreams"
         ],
-        "Resource": "arn:aws:dynamodb:us-west-1:${AWS::AccountId}:table/ReduceTable/stream/*"
+        "Resource": "arn:aws:dynamodb:*:*:table/ReduceTable/stream/*"
     },
     {
         "Sid": "CreateCloudwatchLogGroup",
@@ -30,7 +30,7 @@ weight = 1
         "Action": [
         "logs:CreateLogGroup"
         ],
-        "Resource": "arn:aws:logs:us-west-1:${AWS::AccountId}:*"
+        "Resource": "arn:aws:logs:*:*:*"
     },
 
     {
@@ -40,7 +40,7 @@ weight = 1
         "logs:CreateLogStream",
         "logs:PutLogEvents"
         ],
-        "Resource": "arn:aws:logs:us-west-1:${AWS::AccountId}:log-group:/aws/lambda/ReduceLambda:*"
+        "Resource": "arn:aws:logs:*:*:log-group:/aws/lambda/ReduceLambda:*"
     },
     {
         "Sid": "WriteToDynamoDBTable",
@@ -48,7 +48,7 @@ weight = 1
         "Action": [
         "dynamodb:UpdateItem"
         ],
-        "Resource": "arn:aws:dynamodb:us-west-1:${AWS::AccountId}:table/AggregateTable"
+        "Resource": "arn:aws:dynamodb:*:*:table/AggregateTable"
     },
     {
         "Sid": "ReadFromParameterTable",
@@ -56,7 +56,7 @@ weight = 1
         "Action": [
         "dynamodb:GetItem"
         ],
-        "Resource": "arn:aws:dynamodb:us-west-1:${AWS::AccountId}:table/ParameterTable"
+        "Resource": "arn:aws:dynamodb:*:*:table/ParameterTable"
     }
     ]
 }
