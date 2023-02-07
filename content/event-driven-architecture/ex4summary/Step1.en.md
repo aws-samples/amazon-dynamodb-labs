@@ -4,6 +4,10 @@ date = 2019-12-02T10:50:03-08:00
 weight = 1
 +++
 
+# Lab 1 Solutions
+
+## ReduceLambdaPolicy
+
 ```json
 
 {
@@ -28,7 +32,7 @@ weight = 1
         ],
         "Resource": "arn:aws:logs:us-west-1:${AWS::AccountId}:*"
     },
-    
+
     {
         "Sid": "WriteToCloudwatchLogGroup",
         "Effect": "Allow",

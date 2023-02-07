@@ -11,7 +11,7 @@ description = "Explore how to maintain the ability to query on many attributes w
 You finished both labs!
 
 ## Clean up all resources
-If you're running this lab as part of an AWS event on an account we provided, no further action is needed. If you're running this lab on your own, make sure to clean up any resources that were created.
+If you're running this lab as part of an AWS event on an account we provided, no further action is needed. If you're running this lab on your own, make sure to clean up any resources that were created by deleting the CloudFormation stack.
 
 ## Blogs
 
@@ -20,9 +20,9 @@ This workshop is based on a 2-part blog series on the AWS Database blog initiall
 1. Part 1: [Build a near real-time data aggregation pipeline using a serverless, event-driven architecture](https://aws.amazon.com/blogs/database/build-a-near-real-time-data-aggregation-pipeline-using-a-serverless-event-driven-architecture/)
 2. Part 2: [Build a fault-tolerant, serverless data aggregation pipeline with exactly-once processing](https://aws.amazon.com/blogs/database/build-a-fault-tolerant-serverless-data-aggregation-pipeline-with-exactly-once-processing/)
 
-## Source
+## Blog Source
 
-While this workshop is not open-sourced, the blogs were released with a GitHub repository with much of the same code that you use in the workshop. [The repo *aws-serverless-realtime-aggregation*](https://github.com/aws-samples/aws-serverless-realtime-aggregation) can't be used to re-produce this workshop, but you can study it and the two blogs to improve your understanding of the concepts.
+While this workshop is open-sourced, the blogs were released with a GitHub repository with much of the same code that you use in this workshop. [The repo *aws-serverless-realtime-aggregation*](https://github.com/aws-samples/aws-serverless-realtime-aggregation) is on GitHub.
 
 ## Solutions
 
