@@ -19,7 +19,7 @@ The serverless event driven architecture lab was added in 2023:
 1. Lucas Rettenmeier ([@rettenls](https://github.com/rettenls)) - Workshop creator for re:Invent 2021
 1. Kirill Bogdanov - ([@kirillsc](https://github.com/kirillsc)) - Workshop creator for re:Invent 2021
 1. Sean Shriver - ([@switch180](https://github.com/switch180)) - Presenter of the workshop at re:Invent 2021. Edited and merged the lab to labs.com.
-1. John Terhune - ([@terhunej](https://github.com/dhirajk1108)) - Prepared the lab guide for publshing to labs.com, editing and updating.
+1. John Terhune - ([@terhunej](https://github.com/terhunej)) - Prepared the lab guide for publshing to labs.com, editing and updating.
 
 
 
