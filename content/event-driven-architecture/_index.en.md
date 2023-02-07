@@ -1,7 +1,7 @@
 +++
 title = "Build a Serverless Event Driven Architecture with DynamoDB"
 chapter = true
-description = "300 level: Hands-on exercise using Python and DynamoDB Streams."
+description = "400 level: Hands-on exercise using Python and DynamoDB Streams."
 pre = "<b>Workshop: </b>"
 
 weight = 1
@@ -10,7 +10,7 @@ In this workshop you will be presented with a serverless event-driven data aggre
 
 While you may be happy to partake in this workshop, be aware that the pipeline is broken and it needs your attention to get running! As you will soon discover, the workshop is designed with an input stream that contains duplicates and Lambda functions that randomly fail.
 
-Over the crse of two labs you will have to first connect all the elements of the pipeline, and then update the Lambda functions to avoid message loss or duplication under (induced) random failures.
+Over the course of two labs you will have to first connect all the elements of the pipeline, and then update the Lambda functions to avoid message loss or duplication under (induced) random failures.
 
 Here's what this workshop includes:
 
