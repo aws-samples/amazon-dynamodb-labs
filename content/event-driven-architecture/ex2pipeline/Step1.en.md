@@ -16,7 +16,7 @@ When new messages become available in the Kinesis stream, the `StateLambda` func
 2. Click on the `StateLambda` function to edit its configuration. See the figure below.
 3. The function overview shows that the `StateLambda` function doesn't have any triggers yet. Click on the `Add trigger` button.
 
-![Architecture-1](/images/event-driven-architecture/lab1/add-trigger-state-lambda.jpg)
+![Architecture-1](/images/event-driven-architecture/lab1/add-trigger-state-lambda.png)
 
 4. Specify the following configuration (see the figure below for details):
     - In the first drop down select `Kinesis` as the data source.

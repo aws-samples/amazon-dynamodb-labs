@@ -12,6 +12,17 @@ description = "Our editors and hall of fame."
 1. Sean Shriver ([switch180](https://github.com/switch180)) - Ported the whole lab to amazon-dynamodb-labs.com with a custom Hugo theme. Made the "bullet-proof" CloudFormation template for the lab. Updated the hands on lab to Python3
 1. Daniel Yoder ([danielsyoder](https://github.com/danielsyoder)) - The brains behind amazon-dynamodb-labs.com and the co-creator of the design scenarios
 
+### 2023 additions
+
+The serverless event driven architecture lab was added in 2023:
+
+1. Lucas Rettenmeier ([@rettenls](https://github.com/rettenls)) - Workshop creator for re:Invent 2021
+1. Kirill Bogdanov - ([@kirillsc](https://github.com/kirillsc)) - Workshop creator for re:Invent 2021
+1. Sean Shriver - ([@switch180](https://github.com/switch180)) - Presenter of the workshop at re:Invent 2021. Edited and merged the lab to labs.com.
+1. John Terhune - ([@terhunej](https://github.com/dhirajk1108)) - Prepared the lab guide for publshing to labs.com, editing and updating.
+
+
+
 ### 2021 editors
 
 A new section of labs was added in 2021 that are more focused on introductory and beginner material.  The following individuals have contributed to those lab sections.
@@ -36,4 +47,4 @@ The following individuals put in hours of their time to revamp the guide to make
 
 This lab was built to run on Qwiklabs in 2018. In 2020 it was rewritten and updated to run outside Qwiklabs.
 
-A special thanks goes to Regis Gimenis ([regisgimenis](https://github.com/regisgimenis)) who is the original designer of the hands on workshop. He did one of the most difficult tasks - creating a lab from scratch. Remnants of Regis' work are found throughout the Python files of the workshop and the lab guide. Without him, this site would not exist.
+A special thanks goes to Regis Gimenis ([regisgimenis](https://github.com/regisgimenis)) who is the original designer of the advanced design patterns. He did one of the most difficult tasks - creating a lab from scratch. Remnants of Regis' work are found throughout the Python files of the workshop and the lab guide. Without him, this site would not exist.
