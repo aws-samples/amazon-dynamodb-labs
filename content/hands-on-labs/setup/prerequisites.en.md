@@ -19,6 +19,6 @@ If you are running this workshop as part of an Event Engine lab, please log into
 
 #### Using your own AWS account
 
-If you are using your own AWS account, be sure you have access to create and manage resources in Amazon DocumentDB and AWS Cloud9 environment
+If you are using your own AWS account, be sure you have access to create and manage resources in Amazon DynamoDB and AWS Cloud9 environment
 
 *After completing the workshop, remember to complete the [cleanup](/hands-on-labs/cleanup.html) section to remove any unnecessary AWS resources.*
