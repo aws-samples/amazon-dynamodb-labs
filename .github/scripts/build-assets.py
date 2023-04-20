@@ -21,7 +21,11 @@ shutil.rmtree(os.path.join(dest_root,'assets'), ignore_errors=True)
 
 #Move static assets
 Path(dest_root, 'assets').mkdir(parents=True, exist_ok=False)
-data_files = ['design-patterns/cloudformation/lab.yaml', 'design-patterns/cloudformation/UserData.sh', 'event-driven/event-driven-cfn.yaml']
+data_files = ['design-patterns/cloudformation/lab.yaml',
+    'design-patterns/cloudformation/UserData.sh',
+    'event-driven/event-driven-cfn.yaml',
+    'static/files/hands-on-labs/migration-env-setup.yaml',
+    'static/files/hands-on-labs/migration-dms-setup.yaml']
 for inp_file in data_files:
     src_file = os.path.join(pkg_root, inp_file)
     head, tail = ntpath.split(src_file)
