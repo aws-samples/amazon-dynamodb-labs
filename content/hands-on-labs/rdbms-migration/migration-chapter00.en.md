@@ -9,13 +9,13 @@ In this module, you will create an environment to host the MySQL database on Ama
 All the resources to configure source infrastructure are deployed via [Amazon CloudFormation](https://aws.amazon.com/cloudformation/) template.
 There are two CloudFormation templates used in this exercise which will deploy following resources.
 
-CloudFormation Template1 Resources:
+CloudFormation MySQL Template Resources:
   - OnPrem VPC: Source VPC will represent an on-premise source environment in the N. Virginia region. This VPC will host source MySQL database on Amazon EC2
   - Amazon EC2 MySQL Database: Amazon EC2 Amazon Linux 2 AMI with MySQL installed and running
   - Load IMDb dataset: The template will create IMDb database on MySQL and load IMDb public dataset files into database. You can learn more about IMDb dataset inside [Explore Source Model]({{< relref "/hands-on-labs/rdbms-migration/migration-chapter03.en.md" >}} "Explore Source Model")
 
 
-CloudFormation Template2 Resources:
+CloudFormation DMS Instance Resources:
   - DMS VPC:  Migration VPC on in the N. Virginia region. This VPC will host DMS replication instance.
   - Replication Instance: DMS Replication instance that will facilitate database migration from source MySQL server on EC2 to Amazon DynamoDB
 
