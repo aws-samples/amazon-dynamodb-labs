@@ -56,3 +56,7 @@ jobs:
       run: aws s3api put-object-acl --grant-read uri=http://acs.amazonaws.com/groups/global/AllUsers --bucket $STEP_S3_BUCKET --key assets/StateLambdaPackage.zip
     - name: SetS3AclED5
       run: aws s3api put-object-acl --grant-read uri=http://acs.amazonaws.com/groups/global/AllUsers --bucket $STEP_S3_BUCKET --key assets/event-driven-cfn.yaml
+    - name: SetS3AclLHOLEnv
+      run: aws s3api put-object-acl --grant-read uri=http://acs.amazonaws.com/groups/global/AllUsers --bucket $STEP_S3_BUCKET --key assets/migration-env-setup.yaml
+    - name: SetS3AclLHOLDMS
+      run: aws s3api put-object-acl --grant-read uri=http://acs.amazonaws.com/groups/global/AllUsers --bucket $STEP_S3_BUCKET --key assets/migration-dms-setup.yaml
