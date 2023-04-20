@@ -361,12 +361,22 @@ Replace the string "REPLACE THIS STRING BY MOVIES LIST" with list of movies copi
   ]
 }
 ```
+#### Solutions 
+{{%expand "If you are having trouble with making the JSON documents for the tasks, expand this section to get the solutions!" %}}
 
-The replication job for historical migration will start moving data from MySQL imdb.movies view, title_akas and title_ratings to DynamoDB table will start in a few minutes.
-If you are loading selective records based on the list above, it may take 5-10 minutes to complete all three jobs. For full loading below are the statistics.
+-   [First Task - historical-migration01](/files/hands-on-labs/Task_1.json)
+-   [Second Task - historical-migration02](/files/hands-on-labs/Task_2.json)
+-   [Third Task - historical-migration03](/files/hands-on-labs/Task_3.json)
+{{% /expand%}}
 
-- historical-migration01 job will migrate 800K+ records and normally takes 2-3 Hrs.
-- historical-migration02 job will migrate 747K+ records and normally takes 2-3 Hrs.
-- historical-migration03 job will migrate 79K+ records and normally takes 10-15 Minutes.
+### Monitor the tasks
+The replication task for historical migration will start moving data from MySQL imdb.movies view, title_akas and title_ratings to DynamoDB table will start in a few minutes.
+If you are loading selective records based on the list above, it may take 5-10 minutes to complete all three tasks. For full loading below are the statistics.
+
+- historical-migration01 task will migrate 800K+ records and normally takes 2-3 Hrs.
+- historical-migration02 task will migrate 747K+ records and normally takes 2-3 Hrs.
+- historical-migration03 task will migrate 79K+ records and normally takes 10-15 Minutes.
   You can track the status of data loading under the Table statistics of the migration task. Once loading is in progress, feel free to move to the next section of the exercise.
   ![Final Deployment Architecture](/images/migration27.jpg)
+
+

@@ -1,0 +1,153 @@
+{
+  "rules": [
+    {
+      "rule-type": "selection",
+      "rule-id": "1",
+      "rule-name": "1",
+      "object-locator": {
+        "schema-name": "imdb",
+        "table-name": "title_akas",
+        "table-type": "table"
+      },
+      "rule-action": "include",
+      "filters": [
+        {
+          "filter-type": "source",
+          "column-name": "titleId",
+          "filter-conditions": [
+		  {
+			  "filter-operator": "eq",
+			  "value": "tt0309377"
+			},
+			{
+			  "filter-operator": "eq",
+			  "value": "tt12260846"
+			},
+			{
+			  "filter-operator": "eq",
+			  "value": "tt1212419"
+			},
+			{
+			  "filter-operator": "eq",
+			  "value": "tt1205489"
+			},
+			{
+			  "filter-operator": "eq",
+			  "value": "tt1057500"
+			},
+			{
+			  "filter-operator": "eq",
+			  "value": "tt0949815"
+			},
+			{
+			  "filter-operator": "eq",
+			  "value": "tt0824747"
+			},
+			{
+			  "filter-operator": "eq",
+			  "value": "tt0772168"
+			},
+			{
+			  "filter-operator": "eq",
+			  "value": "tt0498380"
+			},
+			{
+			  "filter-operator": "eq",
+			  "value": "tt0418689"
+			},
+			{
+			  "filter-operator": "eq",
+			  "value": "tt0405159"
+			},
+			{
+			  "filter-operator": "eq",
+			  "value": "tt0327056"
+			},
+			{
+			  "filter-operator": "eq",
+			  "value": "tt2310814"
+			},
+			{
+			  "filter-operator": "eq",
+			  "value": "tt2179136"
+			},
+			{
+			  "filter-operator": "eq",
+			  "value": "tt2083383"
+			},
+			{
+			  "filter-operator": "eq",
+			  "value": "tt1924245"
+			},
+			{
+			  "filter-operator": "eq",
+			  "value": "tt1912421"
+			},
+			{
+			  "filter-operator": "eq",
+			  "value": "tt1742044"
+			},
+			{
+			  "filter-operator": "eq",
+			  "value": "tt1616195"
+			},
+			{
+			  "filter-operator": "eq",
+			  "value": "tt6997426"
+			},
+			{
+			  "filter-operator": "eq",
+			  "value": "tt6802308"
+			},
+			{
+			  "filter-operator": "eq",
+			  "value": "tt3513548"
+			},
+			{
+			  "filter-operator": "eq",
+			  "value": "tt3263904"
+			},
+			{
+			  "filter-operator": "eq",
+			  "value": "tt3031654"
+			},
+			{
+			  "filter-operator": "eq",
+			  "value": "tt8884452"
+			}]
+        }
+      ]
+    },
+    {
+      "rule-type": "object-mapping",
+      "rule-id": "2",
+      "rule-name": "2",
+      "rule-action": "map-record-to-record",
+      "object-locator": {
+        "schema-name": "imdb",
+        "table-name": "title_akas",
+        "table-type": "table"
+      },
+      "target-table-name": "movies",
+      "mapping-parameters": {
+        "partition-key-name": "mpkey",
+        "sort-key-name": "mskey",
+        "exclude-columns": [],
+        "attribute-mappings": [
+          {
+            "target-attribute-name": "mpkey",
+            "attribute-type": "scalar",
+            "attribute-sub-type": "string",
+            "value": "${titleId}"
+          },
+          {
+            "target-attribute-name": "mskey",
+            "attribute-type": "scalar",
+            "attribute-sub-type": "string",
+            "value": "REGN|${region}"
+          }
+        ]
+      }
+    }
+  ]
+}
