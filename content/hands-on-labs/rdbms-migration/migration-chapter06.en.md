@@ -11,7 +11,7 @@ Using PartiQL, you can easily interact with DynamoDB tables and run ad hoc queri
   1. Login to [DynamoDB console](https://console.aws.amazon.com/dynamodbv2/home) and select PartiQL editor from left navigation.
   2. Select movies table that was created and loaded by the Database Migration Service job. Select ellipsis next to the table name and click on the scan table.
   ![Final Deployment Architecture](/images/migration28.jpg)
-We will use PartiQL scripts to demonstrate all 6 access patterns discussed at previous chapter.
+We will use PartiQL scripts to demonstrate all 6 access patterns discussed at previous chapter. For our example we will provide you the partition key values, but in real life you will need to make an index of keys perhaps using a GSI.
 Get details by the movie: Each IMDB movie has a unique tconst. The denormalized table is created with each row representing a unique combination of movie and crew i.e. tconst and nconst.
 Since tconst is part of the partition key for the base table, it can use under WHERE conditions to select the details. Copy below command to run inside PartiQL query editor.
   ![Final Deployment Architecture](/images/migration35.png)
@@ -56,12 +56,13 @@ This will allow querying on the new partition key for GSI vs scan on the base ta
   3.  Select the Tables from the left navigation, choose movies table and click on the Index tab.
   4.  Click on Create Index and add the following details.
 
+
 | Parameter        | Value |
-| ------------- |:-------------:|
+| ------ |:-------------:|
 | Partition key     | nconst|
-| Data type     | string|
+| Data type     | String|
 | Sort key - optional     | startYear|
-| Data type     | Number|
+| Data type     | String|
 | Attribute projections     | All |
 
 ![Final Deployment Architecture](/images/migration29.jpg)
