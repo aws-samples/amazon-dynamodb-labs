@@ -8,27 +8,18 @@ weight = 50
 
 In this exercise, we will set up Database Migration Service (DMS) jobs to migrate data from source MySQL database (relational view, tables) to Amazon DynamoDB.
 
-1.  Go to IAM console > Roles > Create Role
-2.  Under AWS Services, Select DMS > Next Permissions
-3.  Attach AmazonDMSVPCManagementRole policy
-4.  Next Tag, skip this step
-5.  Next Review, add role name as dms-vpc-role and click Create role
-6.  Download the [CloudFormation](/files/hands-on-labs/migration-dms-setup.yaml) template
-7.  Open [CloudFormation](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/template), click on Create Stack and select with new resources (standard)
-8.  Select Template source as Upload a template file and choose the downloaded yaml file
-    ![Final Deployment Architecture](/images/migration17.jpg)
-9.  Click Next
-10. Provide Stack Name and Update Parameters
-    ![Final Deployment Architecture](/images/migration18.jpg)
-11. Click Next
-12. Check I acknowledge and click Create stack. The CloudFormation template will take 5-10 minutes to build a replication environment. You can monitor the progress using stack status.
-    ![Final Deployment Architecture](/images/migration19.jpg)
-13. Once CloudFormation stack status shows CREATE_COMPLETE, go to [DMS Console](https://console.aws.amazon.com/dms/v2/home?region=us-east-1#dashboard) and click on Replication Instances. You can able to see a replication instance with Class dms.c5.2xlarge in Available Status.
+## Verify DMS creation
+
+1. Go to [DMS Console](https://console.aws.amazon.com/dms/v2/home?region=us-east-1#dashboard) and click on Replication Instances. You can able to see a replication instance with Class dms.c5.2xlarge in Available Status.
     ![Final Deployment Architecture](/images/migration20.jpg)
+
+{{% notice note %}}
+_Make sure the DMS instance is Available before you continue. If it is not Available, return to the CloudFormation console to review and troubleshoot the CloudFormation stack._
+{{% /notice %}}
 
 ## Create source and target endpoints
 
-1.  Go back to AWS Console, AWS Database Migration Service screen, click on Endpoints and Create endpoint button
+1.  Click on Endpoints and Create endpoint button
     ![Final Deployment Architecture](/images/migration21.jpg)
 2.  Create the source endpoint. Use the following parameters to configure the endpoint:
 
@@ -80,14 +71,14 @@ Still in the AWS DMS console, go to Database migration tasks and click the Creat
 ![Final Deployment Architecture](/images/migration25.jpg)
 ![Final Deployment Architecture](/images/migration26.jpg)
 
-In this section we will create Table mappings JSON document. This document includes source to target mapping including any transformation on the records that will be performed during migration.
+Start with the JSON editor section open in your browser. In this section we will create Table mappings JSON document to replace what you see in the JSON editor. This document includes source to target mapping including any transformation on the records that will be performed during migration.
 To reduce the loading time during Immersion Day, we have narrowed down the migration list to selective movies. Below JSON document has list of 28 movies worked by Clint Eastwood.
 The remaining exercise will just focus on these movies. However, feel free to load remaining data in case you like to further explore.
 Some statistics around full dataset is give at the bottom of this chapter.
 
 Copy list of selective movies by Clint Eastwood.
 
-```json
+```
     {
       "filter-operator": "eq",
       "value": "tt0309377"
@@ -191,8 +182,7 @@ Copy list of selective movies by Clint Eastwood.
 ```
 
 Below JSON document will migrate denormalized view from imdb MySQL database (Task identified: historical-migration01).
-Replace the string "REPLACE THIS STRING BY MOVIES LIST" with list of movies copied earlier (Checkout following screenshot for any confusion).
-
+Replace the string “REPLACE THIS STRING BY MOVIES LIST” with list of movies copied earlier (Checkout following screenshot for any confusion). Then paste the resulting JSON code in to the JSON editor, replacing the existing code.
 ```json
 {
   "rules": [
@@ -250,7 +240,7 @@ Replace the string "REPLACE THIS STRING BY MOVIES LIST" with list of movies copi
 ```
 
 ![Final Deployment Architecture](/images/migration36.png)
-Go to the bottom and click on Create task. At this point the task will create will automatically start loading selective movies from source to target DynamoDB table.
+Go to the bottom and click on Create task. At this point the task will be created and will automatically start loading selected movies from source to target DynamoDB table. 
 You can move forward and create two more tasks with similar steps (historical-migration02 and historical-migration03).
 Keep rest of the parameter as is except the JSON document. For historical-migration02 and historical-migration03 tasks use the JSON document mentioned below.
 
@@ -371,12 +361,22 @@ Replace the string "REPLACE THIS STRING BY MOVIES LIST" with list of movies copi
   ]
 }
 ```
+#### Solutions 
+{{%expand "If you are having trouble with making the JSON documents for the tasks, expand this section to get the solutions!" %}}
 
-The replication job for historical migration will start moving data from MySQL imdb.movies view, title_akas and title_ratings to DynamoDB table will start in a few minutes.
-If you are loading selective records based on the list above, it may take 5-10 minutes to complete all three jobs. For full loading below are the statistics.
+-   [First Task - historical-migration01](/files/hands-on-labs/Task_1.json)
+-   [Second Task - historical-migration02](/files/hands-on-labs/Task_2.json)
+-   [Third Task - historical-migration03](/files/hands-on-labs/Task_3.json)
+{{% /expand%}}
 
-- historical-migration01 job will migrate 800K+ records and normally takes 2-3 Hrs.
-- historical-migration02 job will migrate 747K+ records and normally takes 2-3 Hrs.
-- historical-migration03 job will migrate 79K+ records and normally takes 10-15 Minutes.
+### Monitor the tasks
+The replication task for historical migration will start moving data from MySQL imdb.movies view, title_akas and title_ratings to DynamoDB table will start in a few minutes.
+If you are loading selective records based on the list above, it may take 5-10 minutes to complete all three tasks. For full loading below are the statistics.
+
+- historical-migration01 task will migrate 800K+ records and normally takes 2-3 Hrs.
+- historical-migration02 task will migrate 747K+ records and normally takes 2-3 Hrs.
+- historical-migration03 task will migrate 79K+ records and normally takes 10-15 Minutes.
   You can track the status of data loading under the Table statistics of the migration task. Once loading is in progress, feel free to move to the next section of the exercise.
   ![Final Deployment Architecture](/images/migration27.jpg)
+
+
