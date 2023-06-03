@@ -8,7 +8,7 @@ First, go to the [DynamoDB Console](https://console.aws.amazon.com/dynamodbv2/) 
 
 ![Console Pick Tables](/images/hands-on-labs/explore-console/dynamodb_pick_tables.png)
 
-Next, choose the ProductCatalog table and scroll down to see the Items preview pane.
+Next, choose the `ProductCatalog` table and scroll down to see the Items preview pane.
 
 ![Console ProductCatalog Items Preview](/images/hands-on-labs/explore-console/console_productcatalog_preview.png)
 

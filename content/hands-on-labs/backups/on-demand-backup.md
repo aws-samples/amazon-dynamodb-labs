@@ -18,9 +18,7 @@ table performance or availability.
 
 ![OD Backup 1](/images/hands-on-labs/backup/od_backup_1.png)
 
-2.  Make sure that ProductCatalog is the source table name. Enter
-    ProductCatalogBackup for the backup name. Choose **Create backup** to
-    create the backup.
+2.  Make sure that ProductCatalog is the source table name. Choose **Customize settings** and then select **Backup with DynamoDB**. Enter the name `ProductCatalogBackup`. Click **Create backup** to create the backup.
 
 ![OD Backup 2](/images/hands-on-labs/backup/od_backup_2.png)
 
@@ -36,11 +34,11 @@ While the backup is being created, the backup status is set to
 
 ![OD Backup 3](/images/hands-on-labs/backup/od_backup_3.png)
 
-2.  Enter ProductCatalogODRestore as the new table name. Confirm the
+2.  Enter `ProductCatalogODRestore` as the new table name. Confirm the
     backup name and other backup details. Choose **Restore**
     to start the restore process. The table that is being restored is
     shown with the status **Creating**. After the restore process is
-    finished, the status of the ProductCatalogODRestore table changes to
+    finished, the status of the `ProductCatalogODRestore` table changes to
     **Active**.
 
 ![OD Backup 4](/images/hands-on-labs/backup/od_backup_4.png)
@@ -48,7 +46,7 @@ While the backup is being created, the backup status is set to
 ### To delete a backup
 
 The following procedure shows how to use the console to delete the
-ProductCatalogBackup
+ProductCatalogBackup. You can only delete the backup after the table `ProductCatalogODRestore` is done restoring.
 
 1.  Go to the [DynamoDB Console](https://console.aws.amazon.com/dynamodbv2/) and click on *Tables* from the side menu
 1. Choose ProductCatalog table.

@@ -12,7 +12,7 @@ Let's say we wanted to insert a new item into the *Reply* table from the console
 
 ![Console Create Item 1](/images/hands-on-labs/explore-console/console_create_item_1.png)
 
-You will need to click **Add new attribute** a couple of times to make some new String attributes, and then fill in the following data, then click **Create Item**.
+Click ` JSON view`, ensure `View DynamoDB JSON` is deselected, and paste the following attributes, and then click **Create Item** to insert the new item.
 
 ```text
         "Id" : "Amazon DynamoDB#DynamoDB Thread 2",

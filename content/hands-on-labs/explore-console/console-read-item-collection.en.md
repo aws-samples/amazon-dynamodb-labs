@@ -33,7 +33,7 @@ We can see that there are two Reply items in the `DynamoDB Thread 1` thread.
 
 ![Item Explorer Query Reply 1](/images/hands-on-labs/explore-console/console_item_explorer_query_reply_1.png)
 
-Since the Sort Key in this table is a timestamp, we could specify a Key Condition Expression to return only the replies in a thread that were posted after a certain time by adding a sort key condition where ReplyDateTime is More than `2015-09-21` and clicking **Run**.
+Since the Sort Key in this table is a timestamp, we could specify a Key Condition Expression to return only the replies in a thread that were posted after a certain time by adding a sort key condition where `ReplyDateTime` is More than `2015-09-21` and clicking **Run**.
 
 ![Item Explorer Query Reply 2](/images/hands-on-labs/explore-console/console_item_explorer_query_reply_2.png)
 

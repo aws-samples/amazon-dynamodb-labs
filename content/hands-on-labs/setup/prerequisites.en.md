@@ -15,7 +15,7 @@ You can use your own account, or an account provided through Event Engine as par
 
 #### Using an account provided through Event Engine
 
-If you are running this workshop as part of an Event Engine lab, please log into the console using [this link](https://dashboard.eventengine.run/) and enter the hash provided to you as part of the workshop.
+If you are running this workshop as part of an Event Engine lab, please log into the console using [this link](https://dashboard.eventengine.run/) and enter the hash provided to you as part of the workshop. In event engine, the Cloud9 instance should be made in your account. Please open the "AWS Cloud9" section of the AWS Management Console in the correct region and look for a lab instance called "DynamoDBC9". 
 
 #### Using your own AWS account
 

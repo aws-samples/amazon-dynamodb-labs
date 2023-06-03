@@ -66,13 +66,11 @@ Now assign the resource to backup plan. When you assign a resource to a
 backup plan, that resource is backed up automatically according to the
 backup plan.
 
-7.  Click on **Assign resources** under **Backup plans**.
+7. Give Resource a assignment name. Choose the default role. Select **Include specific resource types** under "1. Define resource selection"
 
 ![Scheduled Backup 8](/images/hands-on-labs/backup/sched_backup_8.png)
 
-8.  Give Resource assignment name. Choose default IAM role. Choose our
-    DynamoDB table in the assign resources section. Click on **Assign
-    resources**.
+8.   Under "2. Select specific resource types" select the resource type **DynamoDB** in the drop down. Click choose resources, uncheck All, and select the **ProductCatalog** table. Click **Assign resources**
 
 ![Scheduled Backup 9](/images/hands-on-labs/backup/sched_backup_9.png)
 
@@ -93,11 +91,11 @@ protected and is available to be restored using AWS Backup.
 
 ![Scheduled Backup 11](/images/hands-on-labs/backup/sched_backup_11.png)
 
-2.  Choose the recovery point ID of the resource. Click on **Restore**.
+2.  Choose the recovery point ID of the resource. Click on **Restore**. _Note: If you do not see a recovery point, you can click "Create an on-demand backup" and complete the backup. For the purposes of this lab, you need a completed backup to continue, and you may not want to wait for your backup plan's scheduled backup._
 
 ![Scheduled Backup 12](/images/hands-on-labs/backup/sched_backup_12.png)
 
-3.  Provide new DynamoDB table name. Choose default role and click on
+3.  Provide new DynamoDB table name. Leave all the settings on the defaults and click
     **Restore backup**
 
 ![Scheduled Backup 13](/images/hands-on-labs/backup/sched_backup_13.png)
