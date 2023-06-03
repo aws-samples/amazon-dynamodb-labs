@@ -89,9 +89,9 @@ You can find out the current status of the table and its indexes by either way:
     ```sh
     aws dynamodb describe-table --table-name battle-royale --query "Table.GlobalSecondaryIndexes[].IndexStatus"
     ```
-    You also can script the command to run every 2 seconds using `watch`.
+    You also can script the command to run every 5 seconds using `watch`.
     ```bash
-    # Watch checks every 2 seconds by default
-    watch -n 2 "aws dynamodb describe-table --table-name battle-royale --query \"Table.GlobalSecondaryIndexes[].IndexStatus\""
+    # Watch checks every 5 seconds by default
+    watch -n 5 "aws dynamodb describe-table --table-name battle-royale --query \"Table.GlobalSecondaryIndexes[].IndexStatus\""
     ```
     Press **Ctrl + C** to end `watch` after the global secondary index has been created.
