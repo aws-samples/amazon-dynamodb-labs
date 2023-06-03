@@ -55,10 +55,13 @@ aws dynamodb update-table \
 It can take a little time while DynamoDB creates the GSI and backfills data from the table into the index.  We can watch this from the command line and wait until the IndexStatus goes `ACTIVE`:
 
 ```bash
-aws dynamodb describe-table --table-name Reply | grep IndexStatus
+#Get initial status
+aws dynamodb describe-table --table-name Reply --query "Table.GlobalSecondaryIndexes[0].IndexStatus"
+#Watch the status with the wait command (use Ctrl+C to exit):
+watch -n 5 "aws dynamodb describe-table --table-name Reply --query "Table.GlobalSecondaryIndexes[0].IndexStatus""
 ```
 
-Once the GSI has become `ACTIVE`, continue on to the exercise below.
+Once the GSI has become `ACTIVE`, continue on to the exercise below. Use `Ctrl+C` to exit the watch command.
 
 ## Exercise
 

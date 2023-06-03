@@ -22,7 +22,7 @@ aws dynamodb scan \
 
 Note than in the response we see these lines:
 
-```json
+```
 "Count": 3,
 "ScannedCount": 4,
 ```
@@ -129,7 +129,7 @@ aws dynamodb scan \
 
 When you run this command you receive the following error:
 
-```
+```text
 An error occurred (ValidationException) when calling the Scan operation: Invalid FilterExpression: Attribute name is a reserved keyword; reserved keyword: Views
 ```
 

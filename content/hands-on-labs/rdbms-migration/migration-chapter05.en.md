@@ -35,7 +35,7 @@ _Make sure the DMS instance is Available before you continue. If it is not Avail
     | Password            |                                            Value of DbMasterPassword added as parameter during Configure MySQL Environment                                            |
 
     ![Final Deployment Architecture](/images/migration22.jpg)
-    Open Test endpoint connection (optional) section, then in the VPC drop-down select DMS-VPC and click the Run test button to verify that your endpoint configuration is valid. The test will run for a minute and you should see a successful message in the Status column. Click on the Create endpoint button to create the endpoint.
+    Open Test endpoint connection (optional) section, then in the VPC drop-down select DMS-VPC and click the Run test button to verify that your endpoint configuration is valid. The test will run for a minute and you should see a successful message in the Status column. Click on the Create endpoint button to create the endpoint. If you see a connection error, re-type the username and password to ensure no mistakes were made. Further, ensure you provided the IPv4 DNS name ending in amazonaws.com in the field **Server name**.
     ![Final Deployment Architecture](/images/migration23.jpg)
 
 3.  Create the target endpoint. Repeat all steps to create the target endpoint with the following parameter values:
@@ -45,7 +45,7 @@ _Make sure the DMS instance is Available before you continue. If it is not Avail
     | Endpoint type           |                                                                                       Target endpoint                                                                                       |
     | Endpoint identifier     |                                                                                      dynamodb-endpoint                                                                                      |
     | Target engine           |                                                                                       Amazon DynamoDB                                                                                       |
-    | Service access role ARN | CloudFormation template has created new role with full access to Amazon DynamoDB. Copy Role ARN from [dynamodb-access](https://console.aws.amazon.com/iam/home#/roles/dynamodb-access) role |
+    | Service access role ARN | CloudFormation template has created new role with full access to Amazon DynamoDB. Copy Role ARN from [dynamodb-access](https://us-east-1.console.aws.amazon.com/iamv2/home#/roles/details/dynamodb-access?section=permissions) role |
 
     ![Final Deployment Architecture](/images/migration24.jpg)
     Open Test endpoint connection (optional) section, then in the VPC drop-down select DMS-VPC and click the Run test button to verify that your endpoint configuration is valid. The test will run for a minute and you should see a successful message in the Status column. Click on the Create endpoint button to create the endpoint.
@@ -65,7 +65,7 @@ Still in the AWS DMS console, go to Database migration tasks and click the Creat
    | Migration type                               |                             Migrate existing data                             |
    | Task settings: Editing mode                  |                                    Wizard                                     |
    | Task settings: Target table preparation mode |                                  Do nothing                                   |
-   | Task settings: Enable CloudWatch logs        |                                    Checked                                    |
+   | Task settings: Turn on CloudWatch logs       |                                    Checked                                    |
    | Table mappings: Editing mode                 | Select JSON editor option and follow the instructions after below screenshots |
 
 ![Final Deployment Architecture](/images/migration25.jpg)
@@ -369,14 +369,20 @@ Replace the string "REPLACE THIS STRING BY MOVIES LIST" with list of movies copi
 -   [Third Task - historical-migration03](/files/hands-on-labs/Task_3.json)
 {{% /expand%}}
 
-### Monitor the tasks
+### Monitor and the restart/resume the tasks
 The replication task for historical migration will start moving data from MySQL imdb.movies view, title_akas and title_ratings to DynamoDB table will start in a few minutes.
-If you are loading selective records based on the list above, it may take 5-10 minutes to complete all three tasks. For full loading below are the statistics.
+If you are loading selective records based on the list above, it may take 5-10 minutes to complete all three tasks.
 
+If you were to run this exercise again but do a full load, the load times would be as follows:
 - historical-migration01 task will migrate 800K+ records and normally takes 2-3 Hrs.
 - historical-migration02 task will migrate 747K+ records and normally takes 2-3 Hrs.
-- historical-migration03 task will migrate 79K+ records and normally takes 10-15 Minutes.
-  You can track the status of data loading under the Table statistics of the migration task. Once loading is in progress, feel free to move to the next section of the exercise.
+- historical-migration03 task will migrate 79K+ records and normally takes 10-15 Minutes.  
+
+
+You can track the status of data loading under the Table statistics of the migration task. Once loading is in progress, feel free to move to the next section of the exercise.
   ![Final Deployment Architecture](/images/migration27.jpg)
 
+{{% notice warning %}}
+_Make sure all tasks are running or complete before you continue. If a task says **Ready**, check its box and choose "Restart/Resume" under the Actions button to start the task._
+{{% /notice %}}
 

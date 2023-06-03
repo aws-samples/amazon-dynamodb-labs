@@ -5,6 +5,9 @@ date = 2021-04-21T07:39:31-05:00
 weight = 12
 +++
 
+{{% notice note %}}
+_These instructions are for users running the lab in their own AWS account. If you are part of a workshop, check the AWS Cloud9 console in the correct region for a running environment named "DynamoDBC9" before you follow these instructions. You may not need to launch the template._
+{{% /notice %}}
 
 Download this [Cloud Formation Template](/files/hands-on-labs/dynamodb-labs-vpc.yaml) to your local machine.
 
