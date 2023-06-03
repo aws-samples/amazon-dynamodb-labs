@@ -112,7 +112,7 @@ Another way to verify it is working is to observe the items written by `ReduceLa
 ![AggregateTable items](/images/event-driven-architecture/lab1/aggregate-table-items.png)
 
 {{% notice info %}}
-AWS Event: If Steps 1, 2, and 3 of *Lab 1* were completed successfully you should start gaining score points within one to two minutes. Please check the scoreboard! You can see the scoreboard by going to your team dashboard in Event Engine, clicking on `Readme`, and clicking on the link to the scoreboard.
+AWS Event: If Steps 1, 2, and 3 of *Lab 1* were completed successfully you should start gaining score points within one to two minutes. Please check the scoreboard! Ask your lab moderator to provide a link to the scoreboard.
 {{% /notice %}}
 
 Continue on to: [Lab 2]({{< ref "event-driven-architecture/ex3fixbugs" >}})
