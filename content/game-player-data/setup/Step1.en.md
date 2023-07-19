@@ -33,7 +33,7 @@ You should now see your AWS Cloud9 environment. You need to be familiar with the
 The [AWS SDK for Python (Boto3)](https://aws.amazon.com/sdk-for-python/) enables you to use Python code to interact with AWS services like Amazon DynamoDB. In the AWS Cloud9 Terminal, install Python 3.8 and switch to that version:
 
 ```bash
-sudo yum install -y python38
+sudo amazon-linux-extras install python3.8
 sudo alternatives --set python /usr/bin/python3.8 
 python -m pip --version
 ```
