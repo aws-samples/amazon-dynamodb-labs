@@ -16,7 +16,7 @@ The access patterns in the scenario are outlined as:
 
 Identify possible partitions keys to fulfill the primary access pattern:
 
-- What item attribute (*AccountID*, *ScheduledDate*, *Status*, *DataBlob*) scales with access patterns?
+- What item attribute (*AccountID*, *ScheduledTime*, *Status*, *DataBlob*) scales with access patterns?
 - What is a natural organization for the related payment items (so as to return collected items relative to the access patterns above)?
 - Consider the dimension of access: both reads and writes.
 
