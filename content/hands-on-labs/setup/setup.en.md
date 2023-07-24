@@ -15,7 +15,7 @@ You'll now create a stack in your AWS environment using this template. The deplo
 
 * 1 Public Subnet
 * 3 Private Subnets
-* AWS Cloud9 Envrionment deployed in the Public Subnet
+* AWS Cloud9 Environment deployed in the Public Subnet
 
 ### Creating the Stack
 
