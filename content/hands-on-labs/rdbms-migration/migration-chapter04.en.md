@@ -17,11 +17,11 @@ A common approach to DynamoDB schema design is to identify application layer ent
 In DynamoDB, this means using [composite sort keys](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-sort-keys.html), [overloaded global secondary indexes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-gsi-overloading.html), and other design patterns.
 
 
-In this scenario, we will follow the [Adjacency List Design Pattern](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-adjacency-graphs.html#bp-adjacency-lists) with primary key overloading to store relational data in the DynamoDB table. The advantages of this pattern includes optimal data duplication and simplified query patterns to find all metadata related to each movie. Normally the adjacency list pattern stores duplicate data under two items, each representing one half of the relationship. To associate a title with a region, for example, you would write one item for the region under the title and one item under the title under the region, like this:
+In this scenario, we will follow the [Adjacency List Design Pattern](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-adjacency-graphs.html#bp-adjacency-lists) with primary key overloading to store relational data in the DynamoDB table. The advantages of this pattern include optimal data duplication and simplified query patterns to find all metadata related to each movie. Normally the adjacency list pattern stores duplicate data under two items, each representing one half of the relationship. To associate a title with a region, for example, you would write one item for the region under the title and one item under the title under the region, like this:
 
 | Partition Key        |  Sort Key           | Attribute List         |
 | ------------- |:-------------:|:-------------:|
-| tt0309377     | REGN\|NZ | ordering, language, regiion, title, types |
+| tt0309377     | REGN\|NZ | ordering, language, region, title, types |
 | REGN\|NZ      | tt0309377 | language, region, title  |
 
 However in this lab we'll only work with one side of the relationship: the data residing under the title. Our partition key will be `mpkey` and our sort key `mskey` for the movies table. Each partition and sort key is prefixed with letters to identify the entity type, and the sort key uses `|` as a separator between the entity type and value.

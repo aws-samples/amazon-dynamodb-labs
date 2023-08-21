@@ -37,7 +37,7 @@ It has also configured a remote MySQL user based on the CloudFormation input par
   mysql -u DbMasterUsername -pDbMasterPassword
   ```
    ![Final Deployment Architecture](/images/migration14.jpg)
-10. Congratulations! you are now connected to a self-managed MySQL source database on EC2. In next steps we will explore database and tables hosting IMDb datasets
+10. Congratulations! You are now connected to a self-managed MySQL source database on EC2. In next steps, we will explore database and tables hosting IMDb datasets
   ```bash
   use imdb;
   ```
@@ -58,7 +58,7 @@ For illustration purpose, below is a logical diagram represents relationship bet
   - name_basics has cast and crew details. Every member has unique nconst value assigned.
   ![Final Deployment Architecture](/images/migration31.jpg)
 
-12. We will create denormalized view with 1:1 static information and get it ready for migration to Amazon DynamoDB table. For now, go ahead and copy below code and paste into mysql command line.
+12. We will create denormalized view with 1:1 static information and get it ready for migration to Amazon DynamoDB table. For now, go ahead and copy below code and paste into the MySQL command line.
 The details around target data model will be discussed in the next chapter.
 ```bash
 CREATE VIEW imdb.movies AS\
@@ -87,7 +87,7 @@ CREATE VIEW imdb.movies AS\
     LEFT JOIN imdb.name_basics nm ON tp.nconst = nm.nconst\
     LEFT JOIN imdb.title_crew tc ON tc.tconst = tp.tconst;
   ```
-  Use below command to review count of records from the denormalized view. At this point you source database is ready for migration to Amazon DynamoDB.
+  Use below command to review count of records from the denormalized view. At this point, your source database is ready to migrate to Amazon DynamoDB.
   ```bash
   select count(*) from imdb.movies;
   ```
