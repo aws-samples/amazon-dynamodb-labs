@@ -242,7 +242,7 @@ Replace the string “REPLACE THIS STRING BY MOVIES LIST” with list of movies 
 ![Final Deployment Architecture](/images/migration36.png)
 Go to the bottom and click on Create task. At this point the task will be created and will automatically start loading selected movies from source to target DynamoDB table. 
 You can move forward and create two more tasks with similar steps (historical-migration02 and historical-migration03).
-Keep rest of the parameter as is except the JSON document. For historical-migration02 and historical-migration03 tasks use the JSON document mentioned below.
+Use the same settings as above except the Table Mappings JSON document. For historical-migration02 and historical-migration03 tasks use the JSON document mentioned below.
 
 Below JSON document will migrate title_akas table from imdb MySQL database (Task identified: historical-migration02)
 Replace the string "REPLACE THIS STRING BY MOVIES LIST" with list of movies copied earlier.

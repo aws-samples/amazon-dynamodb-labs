@@ -23,5 +23,5 @@ The CloudFormation template used below will create Source VPC, EC2 hosting MySQL
 
 
 {{% notice note %}}
-_Do not continue unles the MySQL instance is passing both health checks, 2/2._
+_Do not continue unless the MySQL instance is passing both health checks, 2/2._
 {{% /notice %}}
