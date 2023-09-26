@@ -1,5 +1,5 @@
 +++
-title = "At an AWS Hosted Event"
+title = "(legacy) At an AWS Hosted Event"
 date = 2019-12-02T07:05:12-08:00
 weight = 3
 chapter = true
