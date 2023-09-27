@@ -26,6 +26,11 @@ pip3 install --user boto3
 
 Now, you can copy the code below into a file, give it a descriptive name (e.g. `frontend.py`) and run it (`python3 frontend.py`). You should see the current aggregates from the `AggregationTable`, with new messages coming in every 60 seconds!
 
+{{% notice info %}}
+Edit the script to update the correct region value of **REGION_NAME** as per the region you are running the lab in. Use the value in **Code** from [AWS Docs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
+For example, for Ireland, enter **eu-west-1**.
+{{% /notice %}}
+
 ```python
 # Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: MIT-0

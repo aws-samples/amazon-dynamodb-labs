@@ -5,12 +5,12 @@ weight = 10
 #TODO mod-xxx is not the same name when running in EC2
 +++
 
-1. Once you've gained access to the AWS Management Console for the lab, double check the region is correct and the TeamRole is selected.
-1. In the services search bar, search for Systems Manager and click on it to open the AWS Systems Manager section of the AWS Management Console.
-1. In the AWS Systems Manager console, locate the menu in the left, identify the section "Node Management" and select "Session Manager" from the list.
-1. Choose "Start session" to launch a shell session.
-1. Click the radio button to select the EC2 instance for the lab. If you see no instance, wait a few minutes and then click refresh. Wait until the ec2 instance beginning with name `mod-XXXXXXXXXXXXXXXX` is available before continuing.
-1. Click in the Start Session button (This action will open a new tab in your browser with a new black shell).
+1. Once you've gained access to the AWS Management Console for the lab, double check the region is correct and one of **TeamRole** OR **WSParticipantRole** appears on the top right of the console.
+1. In the services search bar, search for **Systems Manager** and click on it to open the AWS Systems Manager section of the AWS Management Console.
+1. In the AWS Systems Manager console, locate the menu in the left, identify the section **Node Management** and select **Session Manager** from the list.
+1. Choose **Start session** to launch a shell session.
+1. Click the radio button to select the EC2 instance for the lab. If you see no instance, wait a few minutes and then click refresh. Wait until an ec2 instance with name of `mod-XXXXXXXXXXXXXXXX` OR `ddb` is available before continuing. You will see only one of the two names.
+1. Click in the **Start Session** button (This action will open a new tab in your browser with a new black shell).
 1. In the new black shell, switch to the ec2-user account by running `sudo su - ec2-user`
    ```bash
    sudo su - ec2-user
