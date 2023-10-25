@@ -1,5 +1,5 @@
 +++
-title = "Step 3 - Check boto3 installation"
+title = "Step 3 - Boto3 installation"
 date = 2019-12-02T10:07:52-08:00
 weight = 30
 +++
