@@ -5,32 +5,33 @@ date = 2021-04-21T07:39:31-05:00
 weight = 12
 +++
 
-{{% notice note %}}
-_These instructions are for users running the lab in their own AWS account. If you are part of a workshop, check the AWS Cloud9 console in the correct region for a running environment named "DynamoDBC9" before you follow these instructions. You may not need to launch the template._
+{{% notice warning %}}
+These setup instructions are identitical for LADV, LHOL, and LGME - all of which use the same Cloud9 template.
+Only complete this section once, and only if you're at an AWS-hosted event.
 {{% /notice %}}
 
-Download this [Cloud Formation Template](/files/hands-on-labs/dynamodb-labs-vpc.yaml) to your local machine.
+{{% notice info %}}
+Only complete this section if you are running the workshop on your own. If you are at an AWS hosted event (such as re:Invent, Immersion Day, etc), go to [At an AWS hosted Event]({{< ref "design-patterns/setup/start-here/aws-ws-event">}})
+{{% /notice %}}
 
-You'll now create a stack in your AWS environment using this template. The deployed stack will contain the following.
+## Launch the CloudFormation stack
+{{% notice warning %}}
+During the course of the lab, you will make DynamoDB tables that will incur a cost that could approach tens or hundreds of dollars per day. Ensure you delete the DynamoDB tables using the DynamoDB console, and make sure you delete the CloudFormation stack as soon as the lab is complete.
+{{% /notice %}}
 
-* 1 Public Subnet
-* 3 Private Subnets
-* AWS Cloud9 Envrionment deployed in the Public Subnet
+1. Launch the CloudFormation template in US East 1 to deploy the resources in your account:
+  <a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=amazon-dynamodb-labs&templateURL={{% siteparam "design_patterns_s3_lab_yaml" %}}" target="_blank"><img src="/images/cloudformation-launch-stack.png" alt="CloudFormation"/></a>
+  *Optionally, download [the YAML template]({{% siteparam "design_patterns_s3_lab_yaml" %}}) and launch it your own way*
 
-### Creating the Stack
+1. Click *Next* on the first dialog.
 
-Navigate to [Cloud Formation console](https://console.aws.amazon.com/cloudformation/home) using your AWS management [console](https://console.aws.amazon.com/). Choose *Create Stack* . If you have existing stacks, then select *With new resources (standard)* during this step.
+1. In the Parameters section, note the *Timeout* is set to zero. This means the Cloud9 instance will not sleep; you may want to change this manually to a value such as 60 to protect against unexpected charges if you forget to delete the stack at the end.  
+    Leave the *WorkshopZIP* parameter unchanged and click *Next*
+![CloudFormation parameters](/images/awsconsole1.png)
 
-On the Create stack page, choose *Upload a template file* option. Select *Choose file* and upload the .yaml file you downloaded earlier. Choose *Next*
+1. Scroll to the bottom and click *Next*, and then review the *Template* and *Parameters*. When you are ready to create the stack, scroll to the bottom, check the box acknowledging the creation of IAM resources, and click *Create stack*.
+![CloudFormation parameters](/images/awsconsole2.png)
+  The stack will create a Cloud9 lab instance, a role for the instance, and a role for the AWS Lambda function used later on in the lab. It will use Systems Manager to configure the Cloud9 instance.
 
-![AWS Cloud Formation Template 1](/images/hands-on-labs/setup/dynamodb-labs-vpc-create-stack-1.png)
 
-Give a name for the Stack and a ProjectTag. For this lab, we'll use `dynamodb-labs` as the name and `dynamodb-labs` as the tag. `dynamodb-labs` is the default value for tag.
-
-![AWS Cloud Formation Template 2](/images/hands-on-labs/setup/dynamodb-labs-vpc-create-stack-2.png)
-
-Choose *Next* in the following screen and then choose *Create Stack*.
-
-The stack will be created in few minutes and you can view the VPC, public and private subnet IDs under the *Outputs* tab of your stack. You'll be using the VPC created by this Cloud Formation Template for the other sections of the lab.
-
-![AWS Cloud Formation Template 3](/images/hands-on-labs/setup/dynamodb-labs-vpc-create-stack-3.png)
+1. After the CloudFormation stack is `CREATE_COMPLETE`, [continue onto Step 1]({{< ref "design-patterns/setup/Step1" >}}).  

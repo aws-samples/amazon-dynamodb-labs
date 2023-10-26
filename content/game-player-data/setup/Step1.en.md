@@ -1,8 +1,8 @@
 +++
-title = "Setup AWS Cloud9 IDE"
-menuTitle = "Setup AWS Cloud9 IDE"
+title = "Obtain & Review Code"
+menuTitle = "Obtain & Review Code"
 date = 2021-04-21T07:33:04-05:00
-weight = 13
+weight = 14
 chapter = false
 pre = ""
 description = "To get started, you configure your environment and download code that you use during the lab."
@@ -30,24 +30,19 @@ You should now see your AWS Cloud9 environment. You need to be familiar with the
 - **Terminal**: On the lower right area of the IDE, this is where you run commands to execute code samples.
 
 
-The [AWS SDK for Python (Boto3)](https://aws.amazon.com/sdk-for-python/) enables you to use Python code to interact with AWS services like Amazon DynamoDB. In the AWS Cloud9 Terminal, install Python 3.8 and switch to that version:
+
+In this lab, you use Python scripts to interact with the DynamoDB API. Run the following commands in your AWS Cloud9 terminal to download and unpack this lab’s code.
 
 ```bash
-sudo yum install -y python38
-sudo alternatives --set python /usr/bin/python3.8 
-python -m pip --version
+cd ~/environment
+curl -sL https://amazon-dynamodb-labs.com/static/game-player-data/battle-royale.tar | tar -xv
 ```
 
-The output should look like this, showing Python3.8 is the default:
-```text
-$ python -m pip --version
-pip 9.0.3 from /usr/lib/python3.8/dist-packages (python 3.8)
-```
+You should see two directories in the AWS Cloud9 file explorer:
 
-Now, install the AWS SDK for Python (Boto3) by running: 
+- **application**: The _application_ directory contains example code for reading and writing data in your table. This code is similar to code you would have in your real gaming application.
 
-```bash
-pip install boto3 --user
-```
+- **scripts**: The _scripts_ directory contains administrator-level scripts, such as for creating a table, adding a secondary index, or deleting a table.
 
-Next, we would be downloading & reviewing the supporting code.
+
+You are now ready to start the lab. With DynamoDB, it is important to plan your data model up front so that you have fast, consistent performance in your application. In the next module, you will learn about planning your data model.

@@ -30,7 +30,6 @@ If following the lab in your own AWS Account, you will create DynamoDB tables th
 
 - […attending an AWS-hosted event (using AWS-provided access-code)]({{< ref "start-here/aws-ws-event/" >}})
 
-- (legacy)[…attending an AWS-hosted event (using AWS-provided hashes)]({{< ref "start-here/aws-event/" >}})
 
 Once you have completed with either setup, continue on to:
 - [Step 1: Setup AWS Cloud9 IDE]({{< ref "/game-player-data/setup/step1" >}})

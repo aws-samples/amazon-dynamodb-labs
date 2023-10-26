@@ -9,7 +9,7 @@ To run this lab, you'll need an AWS account, and a user identity with access to 
 * Amazon DynamoDB
 * AWS Cloud9 Environment
 
-You can use your own account, or an account provided through Event Engine as part of an AWS organized workshop.  Using an account provided by Event Engine is the easier path, as you will have full access to all AWS services, and the account will terminate automatically when the event is over.
+You can use your own account, or an account provided through Workshop Studio Event Delivery as part of an AWS organized workshop.  Using an account provided by Workshop Studio is the easier path, as you will have full access to all AWS services, and the account will terminate automatically when the event is over.
 
 ### Account setup
 
