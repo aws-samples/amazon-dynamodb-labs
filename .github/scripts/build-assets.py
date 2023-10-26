@@ -23,6 +23,7 @@ shutil.rmtree(os.path.join(dest_root,'assets'), ignore_errors=True)
 Path(dest_root, 'assets').mkdir(parents=True, exist_ok=False)
 data_files = ['design-patterns/cloudformation/lab.yaml',
     'design-patterns/cloudformation/UserData.sh',
+	'design-patterns/cloudformation/UserDataC9.sh',
     'event-driven/event-driven-cfn.yaml',
     'static/files/hands-on-labs/migration-env-setup.yaml',
     'static/files/hands-on-labs/migration-dms-setup.yaml']

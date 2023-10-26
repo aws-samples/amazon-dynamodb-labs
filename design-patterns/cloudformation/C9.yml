@@ -5,11 +5,11 @@ Parameters:
   EnvironmentName:
     Description: An environment name that is tagged to the resources.
     Type: String
-    Default: DynamoDBC9
+    Default: DynamoDBID
   InstanceName:
     Description: Cloud9 instance name.
     Type: String
-    Default: Workshop
+    Default: DynamoDBC9
   InstanceType:
     Description: The memory and CPU of the EC2 instance that will be created for Cloud9 to run on.
     Type: String
@@ -37,7 +37,7 @@ Parameters:
     Default: 0
   WorkshopZIP:
     Type: String
-    Description: Location of LEDA code ZIP
+    Description: Location of LADV code ZIP
     Default: https://amazon-dynamodb-labs.com/assets/workshop.zip
 
 Metadata:
@@ -71,7 +71,11 @@ Metadata:
 
 Conditions: 
   AssignCloud9Owner: !Not [!Equals [!Ref InstanceOwner, ""]]
-
+Mappings:
+  DesignPatterns:
+    options:
+      UserDataURL: "https://amazon-dynamodb-labs.com/assets/UserDataC9.sh"
+      version: "1"
 Resources:
 #LADV Role
   DDBReplicationRole:
@@ -194,6 +198,8 @@ Resources:
                   - ssm:DescribeInstanceInformation
                   - ssm:SendCommand
                   - ssm:GetCommandInvocation
+                  - ec2:DescribeSubnets
+                  - ec2:DescribeInstanceTypeOfferings
                 Resource: '*'
               - Effect: Allow
                 Action:
@@ -214,6 +220,128 @@ Resources:
                   Fn::GetAtt:
                     - Cloud9Role
                     - Arn
+  ################ LAMBDA INSTANCE TYPE FINDER ################
+  Cloud9FindTheInstanceTypeLambda:
+    Type: Custom::Cloud9FindTheInstanceTypeLambda
+    DependsOn:
+      - Cloud9LambdaExecutionRole
+    Properties:
+      Tags:
+        - Key: Environment
+          Value: !Sub ${EnvironmentName}
+      ServiceToken:
+        Fn::GetAtt:
+          - Cloud9FindTheInstanceTypeLambdaFunction
+          - Arn
+      Region:
+        Ref: AWS::Region
+      StackName:
+        Ref: AWS::StackName
+      InstanceType:
+        Ref: InstanceType
+      LogBucket:
+        Ref: Cloud9LogBucket
+  Cloud9FindTheInstanceTypeLambdaFunction:
+    Type: AWS::Lambda::Function
+    Metadata:
+      cfn_nag:
+        rules_to_suppress:
+          - id: W58
+            reason: Cloud9LambdaExecutionRole has the AWSLambdaBasicExecutionRole managed policy attached, allowing writing to CloudWatch logs
+          - id: W89
+            reason: Bootstrap function does not need the scaffolding of a VPC or provisioned concurrency
+          - id: W92
+            reason: Bootstrap function does not need provisioned concurrency   
+    Properties:
+      Tags:
+        - Key: Environment
+          Value: !Sub ${EnvironmentName}
+      Handler: index.lambda_handler
+      Role:
+        Fn::GetAtt:
+          - Cloud9LambdaExecutionRole
+          - Arn
+      Runtime: python3.9
+      MemorySize: 1024
+      Timeout: 400
+      Code:
+        ZipFile: |
+          import json
+          import boto3
+          import random
+          import cfnresponse
+          import logging
+          import traceback
+
+          logger = logging.getLogger(__name__)
+
+          ec2 = boto3.client('ec2')
+          def lambda_handler(event, context):
+              print(event.values())
+              print('context: {}'.format(context))
+              responseData = {}
+
+              status = cfnresponse.SUCCESS
+              if event['RequestType'] == 'Delete':
+                  responseData = {'Success': 'Custom Resource removed'}
+                  cfnresponse.send(event, context, status, responseData, 'CustomResourcePhysicalID')
+              elif event['RequestType'] == 'Update':
+                  responseData = {'Success': 'No-op'}
+                  cfnresponse.send(event, context, status, responseData, 'CustomResourcePhysicalID')
+              elif event['RequestType'] == 'Create':
+                  try:
+                      resp = ec2.describe_subnets(
+                          Filters = [
+                          {
+                              'Name':'default-for-az',
+                              'Values': ['true']
+                          }])
+                      inst_types = list()
+                      inst_types.append(event['ResourceProperties']['InstanceType'])
+                      subnet_ids = dict()
+                      for subnet in resp['Subnets']:
+                          subnet_ids[subnet['AvailabilityZone']] = subnet['SubnetId']
+                      offerings = get_offerings(inst_types)
+                      subnet_id = None
+                      #hunt time
+                      results = dict()
+                      for instance in inst_types:
+                          for az in offerings[instance]:
+                              if az in subnet_ids:
+                                  subnet_id = subnet_ids[az]
+                                  if instance not in results:
+                                      results[instance] = subnet_ids[az]
+                      instance_type, subnet = random.choice(list(results.items()))
+                      responseData = {'InstanceType':instance_type, 'SubnetId': subnet}
+                      cfnresponse.send(event, context, status, responseData, 'CustomResourcePhysicalID')
+                  except Exception as err:
+                      print(err)
+                      status = cfnresponse.FAILED
+                      print(traceback.format_exc())
+                      responseData = {'Error': traceback.format_exc(err)}
+                  finally:
+                      cfnresponse.send(event, context, status, responseData, 'CustomResourcePhysicalID')
+                      
+
+          def get_offerings(inst_types):
+              product_types = ('Linux/UNIX (Amazon VPC)', 'Windows (Amazon VPC)')
+              resp = ec2.describe_instance_type_offerings(
+                  LocationType='availability-zone',
+                  Filters = [
+                      {
+                          'Name': 'instance-type',
+                          'Values': inst_types
+                      }
+                  ])
+              offerings = dict()
+              for inst in resp['InstanceTypeOfferings']:
+                  if inst['InstanceType'] not in offerings:
+                      offerings[inst['InstanceType']] = list()
+                  offerings[inst['InstanceType']].append(inst['Location'])
+
+              # TODO implement
+              return offerings
+
 
   ################## LAMBDA BOOTSTRAP FUNCTION ################
   Cloud9BootstrapInstanceLambda:
@@ -271,6 +399,10 @@ Resources:
         Variables:
           DiskSize:
             Ref: InstanceVolumeSize
+          LogS3Bucket:
+            Fn::GetAtt:
+              - Cloud9LogBucket
+              - Arn
       Timeout: 400
       Code:
         ZipFile: |
@@ -292,6 +424,17 @@ Resources:
               status = cfnresponse.SUCCESS
               
               if event['RequestType'] == 'Delete':
+                  logger.info("Emptying the S3 bucket to allow for successful bucket delete.")
+                  s3 = boto3.resource('s3')
+                  bucket_name = os.getenv('LogS3Bucket', None)
+                  bucket_name = bucket_name.split(':::')[1]
+                  try:
+                    bucket = s3.Bucket(bucket_name)
+                    bucket.objects.all().delete()
+                    logger.info("Successfully deleted all objects in bucket '{}'".format(bucket_name))
+                  except err as err:
+                    logger.error(err)
+                    pass
                   responseData = {'Success': 'Custom Resource removed'}
                   cfnresponse.send(event, context, status, responseData, 'CustomResourcePhysicalID')              
               else:
@@ -479,72 +622,57 @@ Resources:
       Tags:
         - Key: Environment
           Value: !Sub ${EnvironmentName}
-      DocumentType: Command
-      Content:
-        schemaVersion: '2.2'
-        description: Bootstrap Cloud9 Instance
-        mainSteps:
-          - action: aws:runShellScript
-            name: Cloud9bootstrap
-            inputs:
-              runCommand:
-                - '#!/bin/bash'
-                - |
-                  function log
+      Content: !Sub
+        - |+
+          {
+            "schemaVersion": "1.2",
+            "description": "RunDaShellScript",
+            "parameters": {},
+            "runtimeConfig": {
+              "aws:runShellScript": {
+                "properties": [
                   {
-                    NANOSEC=`date +%N`
-                    echo -e [`date -u +"%Y-%m-%dT%H:%M:%S"`.${NANOSEC:0:3}Z] "$@"
+                    "id": "0.aws:runShellScript",
+                    "runCommand": [
+                      "#!/bin/bash",
+                      "echo \"`date -u +\"%Y-%m-%dT%H:%M:%SZ\"` Started DynamoDB Workshop User Data\"",
+                      "set -x",
+
+                      "function sleep_delay",
+                      "{",
+                      "  if (( $SLEEP_TIME < $SLEEP_TIME_MAX )); then",
+                      "    echo Sleeping $SLEEP_TIME",
+                      "    sleep $SLEEP_TIME",
+                      "    SLEEP_TIME=$(($SLEEP_TIME * 2))",
+                      "  else",
+                      "    echo Sleeping $SLEEP_TIME_MAX",
+                      "    sleep $SLEEP_TIME_MAX",
+                      "  fi",
+                      "}",
+                      "# Executing bootstrap script",
+                      "SLEEP_TIME=10",
+                      "SLEEP_TIME_MAX=3600",
+                      "while true; do",
+                      "  curl \"${SUB_USERDATA_URL}\" > /tmp/dynamodbworkshop.sh",
+                      "  RESULT=$?",
+                      "  if [[ \"$RESULT\" -ne 0 ]]; then",
+                      "    sleep_delay",
+                      "  else",
+                      "    /bin/bash /tmp/dynamodbworkshop.sh ${SUB_VERSION} ${AWS::AccountId} ${AWS::Region} \"${WorkshopZIP}\"  \"${SUB_REPL_ROLE}\" &&",
+                      "    exit 0",
+                      "  fi",
+                      "done"
+                    ]
                   }
-                - echo LANG=en_US.utf-8 >> /etc/environment
-                - echo LC_ALL=en_US.UTF-8 >> /etc/environment
-                - log INSTALL and CONFIGURE default software components
-                - . /home/ubuntu/.zshrc
-                - sudo apt-get update
-                - sudo apt-get -y install sqlite 
-                - sudo apt-get -y install telnet
-                - sudo apt-get -y install jq
-                - sudo apt-get -y install strace
-                - sudo apt-get -y install tree
-                - sudo apt-get -y install gcc
-                - sudo apt-get -y install python3
-                - sudo apt-get -y install python3-pip
-                - sudo apt-get -y install gettext
-                - sudo apt-get -y install bash-completion
-                - sudo apt-get -y install awscli 
-                ### TODO REMOVED INST RESIZE
-                ### CONFIGURE awscli and setting ENVIRONMENT VARS ###
-                - log CONFIGURE awscli and setting ENVIRONMENT VARS
-                - echo "complete -C '/usr/local/bin/aws_completer' aws" >> /home/ubuntu/.bashrc
-                - mkdir -p /home/ubuntu/.aws
-                - echo "[default]" > /home/ubuntu/.aws/config
-                - echo "output = json" >> /home/ubuntu/.aws/config
-                - !Sub echo "region = ${AWS::Region}" >> /home/ubuntu/.aws/config
-                - chmod 600 /home/ubuntu/.aws/config
-                - echo 'PATH=$PATH:/usr/local/bin' >> /home/ubuntu/.bashrc
-                - echo 'export PATH' >> /home/ubuntu/.bashrc
-                - !Sub echo "export AWS_ACCOUNT_ID=${AWS::AccountId}" | tee -a /home/ubuntu/.bash_profile
-                - !Sub echo "export AWS_REGION=${AWS::Region}" | tee -a /home/ubuntu/.bash_profile
-                ### LEDA setup
-                - log setting up LEDA files
-                - mkdir -p /home/ubuntu/workshop
-                - chown -R ubuntu:ubuntu /home/ubuntu/workshop
-                - !Sub curl -o /home/ubuntu/workshop/workshop.zip  -O "${WorkshopZIP}"
-                - unzip -o /home/ubuntu/workshop/workshop.zip -d /home/ubuntu/workshop
-                - !Sub echo ${DDBReplicationRole.Arn} > /home/ubuntu/workshop/ddb-replication-role-arn.txt
-                - rm /home/ubuntu/workshop/workshop.zip
-                - chown -R ubuntu:ubuntu /home/ubuntu/workshop/*
-                - sudo pip3 install boto3 > /dev/null 2>&1 
-                ### Disable Temporary credentials on login ###
-                - echo 'aws cloud9 update-environment --environment-id $C9_PID --managed-credentials-action DISABLE --region $AWS_REGION &> /dev/null' | tee -a /home/ubuntu/.bash_profile
-                - echo 'rm -vf ${HOME}/.aws/credentials  &> /dev/null' | tee -a /home/ubuntu/.bash_profile
-                ### General Cleanup and reboot ###
-                - log CLEANING /home/ubuntu
-                - rm -vf /home/ubuntu/.aws/credentials
-                - for f in cloud9; do rm -rf /home/ubuntu/$f; done
-                - chown -R ubuntu:ubuntu /home/ubuntu/
-                - log PREPARE REBOOT in 1 minute
-                - sudo shutdown --reboot
-                - log Bootstrap completed with return code "${?}"
+                ]
+              }
+            }
+          } 
+        - {
+          SUB_USERDATA_URL: !FindInMap [DesignPatterns, options, UserDataURL],
+          SUB_VERSION: !FindInMap [DesignPatterns, options, version],
+          SUB_REPL_ROLE: !GetAtt ['DDBReplicationRole', 'Arn'],
+          }
   Cloud9BootstrapAssociation:
     Type: AWS::SSM::Association
     Properties:
@@ -572,10 +700,9 @@ Resources:
     Properties:
       Description: !Sub AWS Cloud9 instance for ${EnvironmentName}
       AutomaticStopTimeMinutes: !Ref AutomaticStopTimeMinutes
-      InstanceType: !Ref InstanceType
+      InstanceType: !GetAtt Cloud9FindTheInstanceTypeLambda.InstanceType
       ImageId: ubuntu-22.04-x86_64
-      ### TODO remove subnet
-      SubnetId: subnet-03165a2b
+      SubnetId: !GetAtt Cloud9FindTheInstanceTypeLambda.SubnetId
       Name: !Ref InstanceName
       OwnerArn: 
         Fn::If:
