@@ -5,7 +5,7 @@ weight = 10
 #TODO mod-xxx is not the same name when running in EC2
 +++
 
-1. Once you've gained access to the AWS Management Console for the lab, double check the region is correct and one of **TeamRole** OR **WSParticipantRole** appears on the top right of the console.
+1. Once you've gained access to the AWS Management Console for the lab, double check the region is correct and the role name **WSParticipantRole** appears on the top right of the console.
 1. In the services search bar, search for **Systems Manager** and click on it to open the AWS Systems Manager section of the AWS Management Console.
 1. In the AWS Systems Manager console, locate the menu in the left, identify the section **Node Management** and select **Session Manager** from the list.
 1. Choose **Start session** to launch a shell session.

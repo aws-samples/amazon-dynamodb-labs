@@ -1,14 +1,14 @@
 +++
 title = "At an AWS Hosted Event"
 date = 2019-12-02T07:05:12-08:00
-weight = 5
+weight = 4
 chapter = true
 pre = "<b>Start: </b>"
 +++
 
 ### Login to AWS Workshop Studio Portal
 
-1. If you are provided a one-click join link (eg: https://catalog.us-east-1.prod.workshops.aws/join?access-code=abcd-012345-ef ), skip to step 3. If not, continue to step 2.
+1. If you are provided a one-click join link, use it and skip to step 3.
 
 2. Visit [https://catalog.us-east-1.prod.workshops.aws](https://catalog.us-east-1.prod.workshops.aws). If you attended any other workshop earlier on this portal, please logout first. Click on **Get Started** on the right hand side of the window.
 ![Workshop Studio Landing Page](/images/aws-ws-event1.png)

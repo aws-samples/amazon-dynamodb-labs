@@ -29,7 +29,7 @@ pygmentsStyle = "monokai"
   disableShortcutsTitle = true
   disableInlineCopyToClipBoard = true
   #AWS custom params
-  design_patterns_s3_lab_yaml = "https://s3.amazonaws.com/amazon-dynamodb-labs.com/assets/lab.yaml"
+  design_patterns_s3_lab_yaml = "https://s3.amazonaws.com/amazon-dynamodb-labs.com/assets/C9.yaml"
   lhol_migration_setup_yaml = "https://s3.amazonaws.com/amazon-dynamodb-labs.com/assets/migration-env-setup.yaml"
   lhol_migration_dms_setup_yaml = "https://s3.amazonaws.com/amazon-dynamodb-labs.com/assets/migration-dms-setup.yaml"
   event_driven_architecture_lab_yaml = "https://s3.amazonaws.com/amazon-dynamodb-labs.com/assets/event-driven-cfn.yaml"

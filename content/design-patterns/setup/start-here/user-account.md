@@ -1,14 +1,14 @@
 +++
 title = "On your own"
 date = 2019-12-02T07:05:12-08:00
-weight = 4
+weight = 3
 chapter = true
 pre = "<b>Start: </b>"
 +++
 
 
 {{% notice info %}}
-Only complete this section if you are running the workshop on your own. If you are at an AWS hosted event (such as re:Invent, Immersion Day, etc), go to [At an AWS hosted Event]({{< ref "design-patterns/setup/start-here/aws-event">}})
+Only complete this section if you are running the workshop on your own. If you are at an AWS hosted event (such as re:Invent, Immersion Day, etc), go to [At an AWS hosted Event]({{< ref "design-patterns/setup/start-here/aws-ws-event">}})
 {{% /notice %}}
 ## Create an AWS account
 
@@ -42,15 +42,13 @@ During the course of the lab, you will make DynamoDB tables that will incur a co
 
 1. Click *Next* on the first dialog.
 
-1. In the Parameters section, note the default option for *VPCSelection* is `CreateNewVPC`. **The `CreateNewVPC` option has the highest chance of success**.  
-    If you would like to use your default VPC, change this option to `Default`.  
-    Leave the *WorkshopCodeURL* parameter unchanged and click *Next*
+1. In the Parameters section, note the *Timeout* is set to zero. This means the Cloud9 instance will not sleep; you may want to change this manually to a value such as 60 to protect against unexpected charges if you forget to delete the stack at the end.  
+    Leave the *WorkshopZIP* parameter unchanged and click *Next*
 ![CloudFormation parameters](/images/awsconsole1.png)
 
 1. Scroll to the bottom and click *Next*, and then review the *Template* and *Parameters*. When you are ready to create the stack, scroll to the bottom, check the box acknowledging the creation of IAM resources, and click *Create stack*.
 ![CloudFormation parameters](/images/awsconsole2.png)
-  The stack will create an EC2 lab instance, a role for the EC2 instance, and a role for the AWS Lambda function used later on in the lab.
+  The stack will create a Cloud9 lab instance, a role for the instance, and a role for the AWS Lambda function used later on in the lab. It will use Systems Manager to configure the Cloud9 instance.
 
 
 1. After the CloudFormation stack is `CREATE_COMPLETE`, [continue onto Step 1]({{< ref "design-patterns/setup/Step1" >}}).  
-  *If you chose `Default` in the *VPCSelection* dialog and your stack fails to create due to a VPC issue, re-create the stack and choose the default option `CreateNewVPC`*.
