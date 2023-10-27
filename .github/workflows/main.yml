@@ -20,7 +20,7 @@ jobs:
       STEP_S3_BUCKET: ${{ github.event.inputs.website }}
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         submodules: 'recursive'
         fetch-depth: '0'
@@ -30,9 +30,9 @@ jobs:
         hugo-version: '0.102.3'
         # extended: true
     - name: Setup Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
-        python-version: 3.8
+        python-version: '3.10'
     - name: Build Hugo
       run: hugo --buildFuture
     - name: Configure AWS Credentials
