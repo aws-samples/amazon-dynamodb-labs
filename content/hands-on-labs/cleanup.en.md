@@ -26,7 +26,7 @@ aws dynamodb delete-table \
     --table-name Reply
 ```
 
-* The Cloudformation template that was launched during the getting started section.  Navigate to the Cloudformation console, select the `dynamodb-labs` stack and click `Delete`.
+* The Cloudformation template that was launched during the getting started section.  Navigate to the Cloudformation console, select the `amazon-dynamodb-labs` stack and click `Delete`.
 
 ![Cleanup Delete dynamodb-labs CFN Stack](/images/hands-on-labs/dynamodb-labs-cfn-delete-stack.png)
 

@@ -50,9 +50,6 @@ Now, we need to create backup plan.
 
 ![Scheduled Backup 6](/images/hands-on-labs/backup/sched_backup_6.png)
 
-*Note: Currently cold storage isn't supported for DynamoDB. Only Amazon
-EFS file system backups can be transitioned to cold storage. However,
-you should configure it anyway.*
 
 6.  Select **backup vault** we created earlier. Click on **Create
     plan**.
