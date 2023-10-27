@@ -1,14 +1,14 @@
 +++
 title = "At an AWS Hosted Event"
 date = 2019-12-02T07:05:12-08:00
-weight = 11
+weight = 4
 chapter = true
 pre = "<b>Start: </b>"
 +++
 
 ### Login to AWS Workshop Studio Portal
 
-1. If you are provided a one-click join link (eg: https://catalog.us-east-1.prod.workshops.aws/join?access-code=abcd-012345-ef ), skip to step 3. If not, continue to step 2.
+1. If you are provided a one-click join link, use it and skip to step 3.
 
 2. Visit [https://catalog.us-east-1.prod.workshops.aws](https://catalog.us-east-1.prod.workshops.aws). If you attended any other workshop earlier on this portal, please logout first. Click on **Get Started** on the right hand side of the window.
 ![Workshop Studio Landing Page](/images/aws-ws-event1.png)
@@ -29,4 +29,4 @@ pre = "<b>Start: </b>"
 8. On the event dashboard, click on **Open AWS console** to federate into AWS Management Console in a new tab. On the same page, click **Get started** to open the workshop instructions.
 ![Event dashboard](/images/aws-ws-event5.png)
 
-9. Now that you are connected continue on to: [Step 1]({{< ref "game-player-data/setup/Step1" >}}).
+9. Now that you are connected continue on to: [Step 1]({{< ref "design-patterns/setup/Step1" >}}).

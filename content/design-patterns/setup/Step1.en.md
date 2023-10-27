@@ -5,32 +5,32 @@ weight = 10
 #TODO mod-xxx is not the same name when running in EC2
 +++
 
-1. Once you've gained access to the AWS Management Console for the lab, double check the region is correct and one of **TeamRole** OR **WSParticipantRole** appears on the top right of the console.
+1. Once you've gained access to the AWS Management Console for the lab, double check the region is correct and the role name **WSParticipantRole** appears on the top right of the console.
 1. In the services search bar, search for **Systems Manager** and click on it to open the AWS Systems Manager section of the AWS Management Console.
 1. In the AWS Systems Manager console, locate the menu in the left, identify the section **Node Management** and select **Session Manager** from the list.
 1. Choose **Start session** to launch a shell session.
-1. Click the radio button to select the EC2 instance for the lab. If you see no instance, wait a few minutes and then click refresh. Wait until an ec2 instance with name of `mod-XXXXXXXXXXXXXXXX` OR `ddb` is available before continuing. You will see only one of the two names.
-1. Click in the **Start Session** button (This action will open a new tab in your browser with a new black shell).
-1. In the new black shell, switch to the ec2-user account by running `sudo su - ec2-user`
+1. Click the radio button to select the EC2 instance for the lab. If you see no instance, wait a few minutes and then click refresh. Wait until an ec2 instance with name of `DynamoDBC9` is available before continuing. Select the instance.
+1. Click the **Start Session** button (This action will open a new tab in your browser with a new black shell).
+1. In the new black shell, switch to the ubuntu account by running `sudo su - ubuntu`
    ```bash
-   sudo su - ec2-user
+   sudo su - ubuntu
    ```
-1. run `shopt login_shell` and be sure it says `login_shell on`. Then, change into the workshop directory to begin: `cd ~/workshop`
-
+1. run `shopt login_shell` and be sure it says `login_shell on` and then change into the workshop directory. 
    ```bash
    #Verify login_shell is 'on'
    shopt login_shell
    #Change into the workshop directory
-   cd ~/workshop
+   cd ~/workshop/
    ```
 
-   The output of your commands in the Session Manager session should look like the following:
 
+The output of your commands in the Session Manager session should look like the following:
    ```bash
-   sh-4.2$ sudo su - ec2-user
-   [ec2-user@ip-172-31-24-0 ~]$ #Verify login_shell is 'on'
-   [ec2-user@ip-172-31-24-0 ~]$ shopt login_shell
+   $ sudo su - ubuntu
+   :~ $ #Verify login_shell is 'on'
+   shopt login_shell
+   #Change into the workshop directory
+   cd ~/workshop/
    login_shell     on
-   [ec2-user@ip-172-31-24-0 ~]$ #Change into the workshop directory
-   [ec2-user@ip-172-31-24-0 ~]$ cd ~/workshop
+   :~/workshop $
    ```

@@ -1,8 +1,9 @@
 +++
-title = "Environment Set up"
-menutitle="Set Up"
-date = 2021-04-21T07:39:31-05:00
-weight = 12
+title = "On your own"
+date = 2019-12-02T07:05:12-08:00
+weight = 3
+chapter = true
+pre = "<b>Start: </b>"
 +++
 
 {{% notice warning %}}

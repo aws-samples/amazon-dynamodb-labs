@@ -8,7 +8,7 @@ weight = 2
 Points and scoreboard only apply when this lab is run during an AWS Event. If you're running this lab independently, you have the top score!
 {{% /notice %}}
 {{% notice info %}}
-AWS Event: Be sure you've set a family-friendly team name in Event Engine, especially if you think you'll be on the top of the scoreboard!
+AWS Event: Be sure you've set a family-friendly team name in Workshop Studio, especially if you think you'll be on the top of the scoreboard!
 {{% /notice %}}
 
 To make this workshop more interesting we introduced a scoring element! As you move through the workshop and fix the pipeline you are awarded points for successfully aggregating messages.

@@ -5,7 +5,7 @@ date = 2020-04-21T07:38:58-05:00
 weight = 66
 +++
 
-If you used an account provided by Event Engine, you do not need to do any cleanup. The account terminates when the event is over.
+If you used an account provided by Workshop Studio, you do not need to do any cleanup. The account terminates when the event is over.
 
 If you used your own account,you might want to clean up what you have created to avoid incurring any unnecessary charges.
 

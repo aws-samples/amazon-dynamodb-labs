@@ -7,7 +7,7 @@ weight = 3
 
 Now that you have created the table, you can load some sample data into the table by running the following Python script.
 ```bash
-cd /home/ec2-user/workshop
+cd /home/ubuntu/workshop
 python load_logfile.py logfile ./data/logfile_small1.csv
 ```
 The parameters in the preceding command: 1) Table name = `logfile` 2) File name = `logfile_small1.csv`

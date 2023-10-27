@@ -7,7 +7,7 @@ weight = 40
 On the EC2 instance, go to the workshop folder and run the ls command:
 
 ```bash
-cd /home/ec2-user/workshop
+cd /home/ubuntu/workshop
 ls -l .
 ```
 

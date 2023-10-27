@@ -1,8 +1,9 @@
 +++
-title = "Environment Set up"
-menutitle="Set Up"
+title = "On your own Set up"
+menutitle="On your own"
 date = 2021-04-21T07:39:31-05:00
 weight = 12
+pre = "<b>Start here:</b> "
 +++
 
 {{% notice warning %}}

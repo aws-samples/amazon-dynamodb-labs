@@ -2,7 +2,7 @@
 title = "Advanced Design Patterns for Amazon DynamoDB"
 chapter = true
 description = "300 level: Hands-on exercise using Python and DynamoDB best practices."
-pre = "<b>Workshop: </b>"
+pre = "<b>LADV: </b>"
 
 weight = 1
 +++

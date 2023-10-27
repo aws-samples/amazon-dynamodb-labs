@@ -2,7 +2,7 @@
 title = "Modeling Game Player Data with Amazon DynamoDB"
 chapter = true
 description = "300 level: Hands-on exercise with Cloud9, Python, and data modelling best practices."
-pre = "<b>Workshop: </b>"
+pre = "<b>LGME: </b>"
 weight = 1
 +++
 

@@ -2,7 +2,7 @@
 title = "Build a Serverless Event Driven Architecture with DynamoDB"
 chapter = true
 description = "400 level: Hands-on exercise using Python and DynamoDB Streams."
-pre = "<b>Workshop: </b>"
+pre = "<b>LEDA: </b>"
 
 weight = 1
 +++
