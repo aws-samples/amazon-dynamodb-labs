@@ -41,7 +41,7 @@ Now, we need to create backup plan.
     **frequency** of every 12 hours, daily, weekly, or monthly. Choose a
     **backup window**. Backup window consists of the time that the
     backup window begins and the duration of the window in hours. Backup
-    jobs are started within this window. I am configuring backup at 8 PM
+    jobs are started within this window. I am configuring backup at 6 PM
     UTC start within 1 hour and completes within 4 hours.
 
 	Further, select **lifecycle**. The lifecycle defines when a backup is
@@ -80,7 +80,7 @@ backup plan.
 ### Restore a Backup:
 
 After a resource has been backed up at least once, it is considered
-protected and is available to be restored using AWS Backup.
+protected and is available to be restored using AWS Backup. In your account a backup may not yet be available. If this is the case, review the screenshots in lieu of doing this in your own account.
 
 1.  On the **Protected resources** page, you can explore details of the
     resources that are backed up in AWS Backup. Choose our DynamoDB
