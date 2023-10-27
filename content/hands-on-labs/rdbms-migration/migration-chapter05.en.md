@@ -28,6 +28,7 @@ _Make sure the DMS instance is Available before you continue. If it is not Avail
     | Endpoint type       |                                                                            Source endpoint                                                                            |
     | Endpoint identifier |                                                                            mysql-endpoint                                                                             |
     | Source engine       |                                                                                 MySQL                                                                                 |
+    | Access to endpoint database |                                         Select the "Provide access information manually" radio button                                                         |
     | Server name         | From the [EC2 dashboard](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Instances:instanceState=running), select MySQL-Instance and copy Public IPv4 DNS |
     | Port                |                                                                                 3306                                                                                  |
     | SSL mode            |                                                                                 none                                                                                  |
@@ -38,7 +39,7 @@ _Make sure the DMS instance is Available before you continue. If it is not Avail
     Open Test endpoint connection (optional) section, then in the VPC drop-down select DMS-VPC and click the Run test button to verify that your endpoint configuration is valid. The test will run for a minute and you should see a successful message in the Status column. Click on the Create endpoint button to create the endpoint. If you see a connection error, re-type the username and password to ensure no mistakes were made. Further, ensure you provided the IPv4 DNS name ending in amazonaws.com in the field **Server name**.
     ![Final Deployment Architecture](/images/migration23.jpg)
 
-3.  Create the target endpoint. Repeat all steps to create the target endpoint with the following parameter values:
+4.  Create the target endpoint. Repeat all steps to create the target endpoint with the following parameter values:
 
     | Parameter               |                                                                                            Value                                                                                            |
     | ----------------------- | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
