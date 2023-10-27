@@ -7,7 +7,7 @@ weight = 12
 
 {{% notice warning %}}
 These setup instructions are identitical for LADV, LHOL, and LGME - all of which use the same Cloud9 template.
-Only complete this section once, and only if you're at an AWS-hosted event.
+Only complete this section once, and only if you're running it on your own account.
 {{% /notice %}}
 
 {{% notice info %}}
