@@ -8,7 +8,7 @@ pre = "<b>Start: </b>"
 
 
 {{% notice info %}}
-Only complete this section if you are running the workshop on your own. If you are at an AWS hosted event (such as re:Invent, Immersion Day, etc), go to [At an AWS hosted Event]({{< ref "event-driven-architecture/setup/start-here/aws-event">}})
+Only complete this section if you are running the workshop on your own. If you are at an AWS hosted event (such as re:Invent, Immersion Day, etc), go to [At an AWS hosted Event]({{< ref "event-driven-architecture/setup/start-here/aws-ws-event">}})
 {{% /notice %}}
 ## Launch the CloudFormation stack
 {{% notice warning %}}
