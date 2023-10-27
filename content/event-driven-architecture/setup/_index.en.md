@@ -12,7 +12,6 @@ description = "Setup the lab environment."
 To set up this workshop, choose one of the following links, depending on whether you are:
 - […running the workshop on your own (in your own account)]({{< ref "start-here/user-account/" >}}), or
 - [...attending an AWS-hosted event (using AWS-provided access codes)]({{< ref "start-here/aws-ws-event/" >}}), or
-- (legacy)[…attending an AWS-hosted event (using AWS-provided hashes)]({{< ref "start-here/aws-event/" >}})
 
 Once you have completed with either setup, continue on to:
 - [Exercise 1: Overview]({{< ref "/event-driven-architecture/ex1overview" >}})
