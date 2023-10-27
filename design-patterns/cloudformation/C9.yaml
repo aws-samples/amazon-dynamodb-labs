@@ -26,11 +26,9 @@ Parameters:
     Description: The size in GB of the Cloud9 instance volume
     Type: Number
     Default: 16
-  ### TODO remove Default
   InstanceOwner:
     Type: String
     Description: Assumed role username of Cloud9 owner, in the format 'Role/username'. Leave blank to assign leave the instance assigned to the role running the CloudFormation template.
-    Default: "Admin/seanshi-Isengard"
   AutomaticStopTimeMinutes:
     Description: How long Cloud9 can be inactive (no user input) before auto-hibernating. This helps prevent unnecessary charges.
     Type: Number
