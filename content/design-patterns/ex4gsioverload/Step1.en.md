@@ -1,8 +1,8 @@
-+++
-title = "Step 1 - Create the employees table for global secondary index key overloading"
-date = 2019-12-02T10:50:03-08:00
-weight = 1
-+++
+---
+title: "Step 1 - Create the employees table for global secondary index key overloading"
+date: 2019-12-02T10:50:03-08:00
+weight: 1
+---
 
 
 Run the following AWS CLI command to create the `employees` table.

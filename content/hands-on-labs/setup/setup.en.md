@@ -1,9 +1,9 @@
-+++
-title = "Environment Set up"
-menutitle="Set Up"
-date = 2021-04-21T07:39:31-05:00
-weight = 12
-+++
+---
+title: "Environment Set up"
+menuTitle: "Set Up"
+date: 2021-04-21T07:39:31-05:00
+weight: 12
+---
 
 {{% notice warning %}}
 These setup instructions are identitical for LADV, LHOL, and LGME - all of which use the same Cloud9 template.

@@ -1,8 +1,8 @@
-+++
-title = "Transactions"
-date = 2020-04-24T07:38:58-05:00
-weight = 26
-+++
+---
+title: "Transactions"
+date: 2020-04-24T07:38:58-05:00
+weight: 26
+---
 
 The DynamoDB [TransactWriteItems API](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_TransactWriteItems.html) is a synchronous write operation that groups up to 100 action requests (subject to an aggregate 4MB size limit for the transaction). It is invoked using the [transact-write-items CLI command](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/transact-write-items.html).
 

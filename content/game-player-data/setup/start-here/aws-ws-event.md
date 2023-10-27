@@ -1,10 +1,10 @@
-+++
-title = "At an AWS Hosted Event"
-date = 2019-12-02T07:05:12-08:00
-weight = 11
-chapter = true
-pre = "<b>Start here:</b> "
-+++
+---
+title: "At an AWS Hosted Event"
+date: 2019-12-02T07:05:12-08:00
+weight: 11
+chapter: true
+pre: "<b>Start here:</b> "
+---
 
 ### Login to AWS Workshop Studio Portal
 

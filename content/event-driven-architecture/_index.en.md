@@ -1,11 +1,11 @@
-+++
-title = "Build a Serverless Event Driven Architecture with DynamoDB"
-chapter = true
-description = "400 level: Hands-on exercise using Python and DynamoDB Streams."
-pre = "<b>LEDA: </b>"
+---
+title: "Build a Serverless Event Driven Architecture with DynamoDB"
+chapter: true
+description: "400 level: Hands-on exercise using Python and DynamoDB Streams."
+pre: "<b>LEDA: </b>"
 
-weight = 1
-+++
+weight: 1
+---
 In this workshop you will be presented with a serverless event-driven data aggregation pipeline. It's built with [AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html), [Amazon DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html), and [Amazon Kinesis Data Streams](https://docs.aws.amazon.com/streams/latest/dev/introduction.html).
 
 While you may be happy to partake in this workshop, be aware that the pipeline is broken and it needs your attention to get running! As you will soon discover, the workshop is designed with an input stream that contains duplicates and Lambda functions that randomly fail.

@@ -1,8 +1,8 @@
-+++
-title = "Step 3 - Load a larger file to compare the execution times"
-date = 2019-12-02T10:26:29-08:00
-weight = 4
-+++
+---
+title: "Step 3 - Load a larger file to compare the execution times"
+date: 2019-12-02T10:26:29-08:00
+weight: 4
+---
 
 
 Run the script again, but this time use a larger input data file.

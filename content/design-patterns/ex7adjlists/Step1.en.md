@@ -1,8 +1,8 @@
-+++
-title = "Step 1 - Create and load the the InvoiceandBilling table"
-date = 2019-12-02T12:24:33-08:00
-weight = 1
-+++
+---
+title: "Step 1 - Create and load the the InvoiceandBilling table"
+date: 2019-12-02T12:24:33-08:00
+weight: 1
+---
 
 
 Run the AWS CLI command to create the table named `InvoiceAndBilling` and create a GSI named `GSI_1` which is partitioned on `SK` attribute of the parent table:

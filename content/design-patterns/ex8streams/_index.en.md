@@ -1,11 +1,11 @@
-+++
-title = "Amazon DynamoDB Streams and AWS Lambda"
-date = 2019-12-02T10:18:15-08:00
-weight = 9
-chapter = true
-pre = "<b>Exercise 8: </b>"
-description = "Learn how to process DynamoDB items with AWS Lambda for endless triggers."
-+++
+---
+title: "Amazon DynamoDB Streams and AWS Lambda"
+date: 2019-12-02T10:18:15-08:00
+weight: 9
+chapter: true
+pre: "<b>Exercise 8: </b>"
+description: "Learn how to process DynamoDB items with AWS Lambda for endless triggers."
+---
 
 
 The combination of DynamoDB Streams ([documentation explaining the service](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html)) with AWS Lambda enables many powerful design patterns. In this exercise, you replicate items from one DynamoDB table to another table by using DynamoDB Streams and Lambda functions.

@@ -1,8 +1,8 @@
-+++
-title = "Step 1 - Create the replica table"
-date = 2019-12-02T12:34:06-08:00
-weight = 1
-+++
+---
+title: "Step 1 - Create the replica table"
+date: 2019-12-02T12:34:06-08:00
+weight: 1
+---
 
 ![DynamoDB stream with Lambda](/images/image6.jpg)
 

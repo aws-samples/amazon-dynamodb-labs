@@ -1,8 +1,8 @@
-+++
-title = "Step 3: Connect ReduceLambda"
-date = 2019-12-02T10:35:42-08:00
-weight = 3
-+++
+---
+title: "Step 3: Connect ReduceLambda"
+date: 2019-12-02T10:35:42-08:00
+weight: 3
+---
 
 The objective of this last step in *Lab 1* is to correctly configure the `ReduceLambda` function, connect it to the DynamoDB stream of `ReduceTable`, and ensure the total aggregates are written to the `AggregateTable`. When you successfully complete this step, you will begin to accumulate points on the scoreboard.
 

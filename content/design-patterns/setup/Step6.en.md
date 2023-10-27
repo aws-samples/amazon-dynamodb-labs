@@ -1,8 +1,8 @@
-+++
-title = "Step 6 - Preload the items for the table Scan exercise"
-date = 2019-12-02T10:20:18-08:00
-weight = 60
-+++
+---
+title: "Step 6 - Preload the items for the table Scan exercise"
+date: 2019-12-02T10:20:18-08:00
+weight: 60
+---
 
 {{% notice info %}}
 _Reminder: All commands are executed in the shell console connected to the EC2 instance, not your local machine. (If you are not sure you can always validate going back to [step 1](/design-patterns/setup/step1.html))_

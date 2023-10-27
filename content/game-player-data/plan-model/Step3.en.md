@@ -1,12 +1,12 @@
-+++
-title = "Review Access Patterns"
-menuTitle = "Review Access Patterns"
-date = 2021-04-21T07:33:04-05:00
-weight = 23
-chapter = false
-pre = ""
-description = "In this module, we look at different access patterns we need to model the data for."
-+++
+---
+title: "Review Access Patterns"
+menuTitle: "Review Access Patterns"
+date: 2021-04-21T07:33:04-05:00
+weight: 23
+chapter: false
+pre: ""
+description: "In this module, we look at different access patterns we need to model the data for."
+---
 
 Let's take a look at the different access patterns we need to model the data for.
 

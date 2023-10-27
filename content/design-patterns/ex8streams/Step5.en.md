@@ -1,8 +1,8 @@
-+++
-title = "Step 5 - Map the source stream to the Lambda function "
-date = 2019-12-02T12:34:07-08:00
-weight = 5
-+++
+---
+title: "Step 5 - Map the source stream to the Lambda function "
+date: 2019-12-02T12:34:07-08:00
+weight: 5
+---
 
 So far, you have the source table with DynamoDB Streams enabled and the Lambda function. Now you need to map the source stream to the Lambda function.
 You need to copy the ARN from the previous step and paste it into the following command before running the command.

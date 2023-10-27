@@ -1,8 +1,8 @@
-+++
-title = "Step 3 - Create the Lambda function"
-date = 2019-12-02T12:34:06-08:00
-weight = 3
-+++
+---
+title: "Step 3 - Create the Lambda function"
+date: 2019-12-02T12:34:06-08:00
+weight: 3
+---
 
 This AWS Lambda function will attach to the DynamoDB Stream of the `logfile` table to replicate item puts and deletes to the `logfile_replica` table. The Lambda function code has been provided for you in the file `ddbreplica_lambda.py`. You may review the contents of the script if you would like with `vim` or `less`.
 

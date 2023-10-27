@@ -1,8 +1,8 @@
-+++
-title = "Step 1 - Execute a sequential Scan"
-date = 2019-12-02T10:35:42-08:00
-weight = 1
-+++
+---
+title: "Step 1 - Execute a sequential Scan"
+date: 2019-12-02T10:35:42-08:00
+weight: 1
+---
 
 First, execute a simple (sequential) `Scan` to calculate the total bytes sent for all records with `response code <> 200`. You can run a `Scan` with a filter expression to filter out unrelated records. The application worker will then sum the values of all the returned records where `response code <> 200`.
 

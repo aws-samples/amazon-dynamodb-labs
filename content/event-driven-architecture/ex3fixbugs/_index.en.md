@@ -1,11 +1,11 @@
-+++
-title = "Ensure fault tolerance and exactly once processing"
-date = 2019-12-02T10:17:22-08:00
-weight = 4
-chapter = true
-pre = "<b>Lab 2: </b>"
-description = "Query a sharded global secondary index to quickly read sorted data by status code and date."
-+++
+---
+title: "Ensure fault tolerance and exactly once processing"
+date: 2019-12-02T10:17:22-08:00
+weight: 4
+chapter: true
+pre: "<b>Lab 2: </b>"
+description: "Query a sharded global secondary index to quickly read sorted data by status code and date."
+---
 
 {{% notice info %}}
 Points and scoreboard only apply when this lab is run during an AWS Event.

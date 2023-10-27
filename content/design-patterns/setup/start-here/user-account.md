@@ -1,10 +1,10 @@
-+++
-title = "On your own"
-date = 2019-12-02T07:05:12-08:00
-weight = 3
-chapter = true
-pre = "<b>Start: </b>"
-+++
+---
+title: "On your own"
+date: 2019-12-02T07:05:12-08:00
+weight: 3
+chapter: true
+pre: "<b>Start: </b>"
+---
 
 {{% notice warning %}}
 These setup instructions are identitical for LADV, LHOL, and LGME - all of which use the same Cloud9 template.

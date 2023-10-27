@@ -1,9 +1,9 @@
-+++
-title = "Contributors to Amazon DynamoDB Labs"
-hidden = "true"
-chapter = "true"
-description = "Our editors and hall of fame."
-+++
+---
+title: "Contributors to Amazon DynamoDB Labs"
+hidden: "true"
+chapter: "true"
+description: "Our editors and hall of fame."
+---
 
 
 

@@ -1,10 +1,10 @@
-+++
+---
 #TODO swap this for variable
 #ref https://learn.netlify.com/en/
-title = "Amazon DynamoDB Labs"
-chapter = true
-weight = 1
-+++
+title: "Amazon DynamoDB Labs"
+chapter: true
+weight: 1
+---
 
 ![Open the DynamoDB Logo](/images/Amazon-DynamoDB.png)
 

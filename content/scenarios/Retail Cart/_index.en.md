@@ -1,8 +1,8 @@
-+++
-title = "Retail Cart Scenario"
-chapter = false
-weight = 1
-+++
+---
+title: "Retail Cart Scenario"
+chapter: false
+weight:  1
+---
 
 ##  Retail Cart Challenge
 

@@ -1,8 +1,8 @@
-+++
-title = "Step 3 - Scan the employees table to find managers by using the sparse global secondary index"
-date = 2019-12-02T10:57:24-08:00
-weight = 3
-+++
+---
+title: "Step 3 - Scan the employees table to find managers by using the sparse global secondary index"
+date: 2019-12-02T10:57:24-08:00
+weight: 3
+---
 
 
 Now, scan the new global secondary index `GSI_2` on the `employees` table.  In using our new sparse index we expect that we'll consume read capacity for fewer items.  We'll use the sparse index as a very effective filter to improve efficiency for this access pattern.

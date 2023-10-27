@@ -1,12 +1,12 @@
-+++
-title = "Scan the sparse GSI"
-menuTitle = "Scan the sparse GSI"
-date = 2021-04-21T07:33:04-05:00
-weight = 44
-chapter = false
-pre = ""
-description = "To get started, you configure your environment and download code that you use during the lab."
-+++
+---
+title: "Scan the sparse GSI"
+menuTitle: "Scan the sparse GSI"
+date: 2021-04-21T07:33:04-05:00
+weight: 44
+chapter: false
+pre: ""
+description: "To get started, you configure your environment and download code that you use during the lab."
+---
 
 In the previous step, you saw how to find games for a particular map. Some players may prefer to play a specific map, so this is useful. Other players may be willing to play a game at any map. In this section, you learn how to find any open game in the application, regardless of the type of map. To do this, you use the [Scan](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_Scan.html) API.
 

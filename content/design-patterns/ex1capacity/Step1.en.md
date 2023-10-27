@@ -1,8 +1,8 @@
-+++
-title = "Step 1 - Create the DynamoDB table"
-date = 2019-12-02T10:26:23-08:00
-weight = 2
-+++
+---
+title: "Step 1 - Create the DynamoDB table"
+date: 2019-12-02T10:26:23-08:00
+weight: 2
+---
 
 
 Run the following AWS CLI command to create the first DynamoDB table called `logfile`:

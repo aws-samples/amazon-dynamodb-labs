@@ -1,8 +1,8 @@
-+++
-title = "Step 1 - Add a new global secondary index to the employees table"
-date = 2019-12-02T10:57:23-08:00
-weight = 1
-+++
+---
+title: "Step 1 - Add a new global secondary index to the employees table"
+date: 2019-12-02T10:57:23-08:00
+weight: 1
+---
 
 Add a new global secondary index that uses the `is_manager` attribute as the global secondary index partition key, which is stored under the attribute named `GSI_2_PK`. Employee job titles are stored under `GSI_2_SK`.
 

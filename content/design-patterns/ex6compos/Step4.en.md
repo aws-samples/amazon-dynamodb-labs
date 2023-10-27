@@ -1,8 +1,8 @@
-+++
-title = "Step 4 - Querying all the employees of a city and a specific department"
-date = 2019-12-02T12:16:26-08:00
-weight = 4
-+++
+---
+title: "Step 4 - Querying all the employees of a city and a specific department"
+date: 2019-12-02T12:16:26-08:00
+weight: 4
+---
 
 You also can use the global secondary index to query employees by state. Run the following Python script to list all employees in the Operation department in Dallas, Texas.
 ```bash

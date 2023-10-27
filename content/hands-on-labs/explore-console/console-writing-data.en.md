@@ -1,8 +1,8 @@
-+++
-title = "Modifying Data"
-date = 2020-04-21T07:38:58-05:00
-weight = 34
-+++
+---
+title: "Modifying Data"
+date: 2020-04-21T07:38:58-05:00
+weight: 34
+---
 
 ## Inserting Data
 

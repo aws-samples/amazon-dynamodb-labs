@@ -1,8 +1,8 @@
-+++
-title = "Deleting Data"
-date = 2020-04-23T07:38:58-05:00
-weight = 25
-+++
+---
+title: "Deleting Data"
+date: 2020-04-23T07:38:58-05:00
+weight: 25
+---
 
 The DynamoDB [DeleteItem API](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_DeleteItem.html) is used to delete an item.  It is invoked using the [delete-item CLI command](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/delete-item.html).
 

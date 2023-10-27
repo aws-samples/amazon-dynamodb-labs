@@ -1,8 +1,8 @@
-+++
-title = "Step 5 - Check the files format and content"
-date = 2019-12-02T10:07:58-08:00
-weight = 50
-+++
+---
+title: "Step 5 - Check the files format and content"
+date: 2019-12-02T10:07:58-08:00
+weight: 50
+---
 
 
 

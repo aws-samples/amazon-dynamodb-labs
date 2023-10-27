@@ -1,8 +1,8 @@
-+++
-title = "Step 7 - Create a new table with a low-capacity global secondary index"
-date = 2019-12-02T10:26:31-08:00
-weight = 8
-+++
+---
+title: "Step 7 - Create a new table with a low-capacity global secondary index"
+date: 2019-12-02T10:26:31-08:00
+weight: 8
+---
 
 Now, create a new table with different capacity units. The new table’s global secondary index has only 1 write capacity unit (WCU) and 1 read capacity unit (RCU).
 

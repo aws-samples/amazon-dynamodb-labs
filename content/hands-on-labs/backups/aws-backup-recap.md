@@ -1,9 +1,9 @@
-+++
-title = "AWS Backup Recap"
-menuTitle = "AWS Backup Recap"
-date = 2021-04-24T07:38:58-05:00
-weight = 61
-+++
+---
+title: "AWS Backup Recap"
+menuTitle: "AWS Backup Recap"
+date: 2021-04-24T07:38:58-05:00
+weight: 61
+---
 
 
 

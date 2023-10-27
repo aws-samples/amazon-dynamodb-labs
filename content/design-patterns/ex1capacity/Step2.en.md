@@ -1,8 +1,8 @@
-+++
-title = "Step 2 - Load sample data into the table"
-date = 2019-12-02T10:26:28-08:00
-weight = 3
-+++
+---
+title: "Step 2 - Load sample data into the table"
+date: 2019-12-02T10:26:28-08:00
+weight: 3
+---
 
 
 Now that you have created the table, you can load some sample data into the table by running the following Python script.

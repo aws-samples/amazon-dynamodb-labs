@@ -1,8 +1,8 @@
-+++
-title = "Optional: Add a simple Python frontend to view the data live"
-date = 2019-12-02T10:45:32-08:00
-weight = 3
-+++
+---
+title: "Optional: Add a simple Python frontend to view the data live"
+date: 2019-12-02T10:45:32-08:00
+weight: 3
+---
 
 Congratulations, you successfully completed *Lab 2*! If you've made it here and still have time left, we have added one optional step to the workshop for you!
 

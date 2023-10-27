@@ -1,11 +1,11 @@
-+++
-title = "Sparse Global Secondary Indexes"
-date = 2019-12-02T10:17:48-08:00
-weight = 6
-chapter = true
-pre = "<b>Exercise 5: </b>"
-description = "Learn how to cut down the resources required for your searches on uncommon attributes."
-+++
+---
+title: "Sparse Global Secondary Indexes"
+date: 2019-12-02T10:17:48-08:00
+weight: 6
+chapter: true
+pre: "<b>Exercise 5: </b>"
+description: "Learn how to cut down the resources required for your searches on uncommon attributes."
+---
 
 
 You can use a sparse global secondary index to locate table items that have an uncommon attribute. To do this, you take advantage of the fact that table items that do not contain global secondary index attribute(s) are not indexed at all.

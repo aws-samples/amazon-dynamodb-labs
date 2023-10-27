@@ -1,8 +1,8 @@
-+++
-title = "Step 3 - Query the employees table using the global secondary index with overloaded attributes"
-date = 2019-12-02T10:50:04-08:00
-weight = 3
-+++
+---
+title: "Step 3 - Query the employees table using the global secondary index with overloaded attributes"
+date: 2019-12-02T10:50:04-08:00
+weight: 3
+---
 
 You can query all the employees based in Washington state (WA) in the United States by running the following `query_employees.py` script, which includes code to query a table by using global secondary index overloading.
 

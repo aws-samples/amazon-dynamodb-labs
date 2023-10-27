@@ -1,8 +1,8 @@
-+++
-title = "Read Sample Data"
-date = 2020-04-21T07:38:58-05:00
-weight = 21
-+++
+---
+title: "Read Sample Data"
+date: 2020-04-21T07:38:58-05:00
+weight: 21
+---
 
 Before we can do anything we have to learn what our data looks like.
 

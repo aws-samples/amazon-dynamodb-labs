@@ -1,12 +1,12 @@
-+++
-title = "Plan your data model"
-menuTitle = "Plan your data model"
-date = 2021-04-21T07:33:04-05:00
-weight = 20
-chapter = true
-pre = "<b>2. </b>"
-description = "In this module, you learn about DynamoDB data modelling best practices and review application access patterns."
-+++
+---
+title: "Plan your data model"
+menuTitle: "Plan your data model"
+date: 2021-04-21T07:33:04-05:00
+weight: 20
+chapter: true
+pre: "<b>2. </b>"
+description: "In this module, you learn about DynamoDB data modelling best practices and review application access patterns."
+---
 
 **Data modeling** is the process of designing how an application stores data in a given database. With a NoSQL database such as DynamoDB, data modeling is different than modeling with a relational database. A relational database is built for flexibility and can be a great fit for analytical applications. In relational data modeling, you start with your entities first. When you have a [normalized](https://en.wikipedia.org/wiki/Database_normalization) relational model, you can satisfy any query pattern you need in your application. 
 

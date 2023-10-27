@@ -1,10 +1,10 @@
-+++
-title = "Exercise Overview"
-menuTitle = "Exercise Overview"
-date = 2021-04-25T07:33:04-05:00
-weight = 10
+---
+title: "Exercise Overview"
+menuTitle: "Exercise Overview"
+date: 2021-04-25T07:33:04-05:00
+weight: 10
 
-+++
+---
 In this module, you will create an environment to host the MySQL database on Amazon EC2. This instance will be used to host source database and simulate on-premise side of migration architecture.
 All the resources to configure source infrastructure are deployed via [Amazon CloudFormation](https://aws.amazon.com/cloudformation/) template.
 There are two CloudFormation templates used in this exercise which will deploy following resources.

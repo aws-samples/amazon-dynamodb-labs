@@ -1,8 +1,8 @@
-+++
-title = "Bank Payments References"
-chapter = false
-weight = 1
-+++
+---
+title: "Bank Payments References"
+chapter: false
+weight: 1
+---
 
 ## How to tackle this challenge
 

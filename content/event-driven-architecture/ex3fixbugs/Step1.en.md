@@ -1,8 +1,8 @@
-+++
-title = "Step 1: Prevent duplicates at StateLambda function"
-date = 2019-12-02T10:45:31-08:00
-weight = 1
-+++
+---
+title: "Step 1: Prevent duplicates at StateLambda function"
+date: 2019-12-02T10:45:31-08:00
+weight: 1
+---
 
 The objective of this step is to modify the `StateLambda` function such that it does not successfully write duplicate messages to downstream resources.
 

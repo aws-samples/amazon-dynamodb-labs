@@ -1,8 +1,8 @@
-+++
-title = "Step 2 - Load data into the new table"
-date = 2019-12-02T10:50:03-08:00
-weight = 2
-+++
+---
+title: "Step 2 - Load data into the new table"
+date: 2019-12-02T10:50:03-08:00
+weight: 2
+---
 
 Now, execute a script that loads the data from the file named `./employees.csv` into the table named `employees`.
 

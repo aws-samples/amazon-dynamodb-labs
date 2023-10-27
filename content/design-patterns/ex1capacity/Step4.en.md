@@ -1,8 +1,8 @@
-+++
-title = "Step 4 - View the CloudWatch metrics on your table"
-date = 2019-12-02T10:26:29-08:00
-weight = 6
-+++
+---
+title: "Step 4 - View the CloudWatch metrics on your table"
+date: 2019-12-02T10:26:29-08:00
+weight: 6
+---
 
 To view the Amazon CloudWatch metrics for your table:
 

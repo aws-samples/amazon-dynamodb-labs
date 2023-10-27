@@ -1,11 +1,11 @@
-+++
-title = "Connect the pipeline"
-date = 2019-12-02T10:17:10-08:00
-weight = 3
-chapter = true
-pre = "<b>Lab 1: </b>"
-description = "Process streaming data to create an end-to-end data processing pipeline"
-+++
+---
+title: "Connect the pipeline"
+date: 2019-12-02T10:17:10-08:00
+weight: 3
+chapter: true
+pre: "<b>Lab 1: </b>"
+description: "Process streaming data to create an end-to-end data processing pipeline"
+---
 
 ### Let’s go deep on streaming data sources with AWS Lambda!
 

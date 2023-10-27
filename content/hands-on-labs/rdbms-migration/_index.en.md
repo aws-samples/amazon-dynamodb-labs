@@ -1,11 +1,11 @@
-+++
-title = "Relational Modeling & Migration"
-menuTitle = "Relational Modeling & Migration"
-date = 2021-04-25T07:33:04-05:00
-weight = 50
-pre = "<b>5. </b>"
+---
+title: "Relational Modeling & Migration"
+menuTitle: "Relational Modeling & Migration"
+date: 2021-04-25T07:33:04-05:00
+weight: 50
+pre: "<b>5. </b>"
 
-+++
+---
 
 In this module, you will learn how to design a target data model in DynamoDB for highly normalized relational data in a relational database.
 The exercise also guides a step by step migration of an IMDb dataset from a self-managed MySQL database instance on EC2 to a fully managed key-value pair database Amazon DynamoDB.

@@ -1,9 +1,9 @@
-+++
-title = "Step 1 - Open the AWS Systems Manager Console "
-date = 2019-12-02T10:07:45-08:00
-weight = 10
+---
+title: "Step 1 - Open the AWS Systems Manager Console "
+date: 2019-12-02T10:07:45-08:00
+weight: 10
 #TODO mod-xxx is not the same name when running in EC2
-+++
+---
 
 1. Once you've gained access to the AWS Management Console for the lab, double check the region is correct and the role name **WSParticipantRole** appears on the top right of the console.
 1. In the services search bar, search for **Systems Manager** and click on it to open the AWS Systems Manager section of the AWS Management Console.

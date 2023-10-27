@@ -1,8 +1,8 @@
-+++
-title = "Step 6 - Populate the logfile table and verify replication to logfile_replica"
-date = 2019-12-02T12:34:07-08:00
-weight = 6
-+++
+---
+title: "Step 6 - Populate the logfile table and verify replication to logfile_replica"
+date: 2019-12-02T12:34:07-08:00
+weight: 6
+---
 
 Run the following Python code to load more items into the `logfile` table. The rows will be copied to the DynamoDB stream, procecesed by the AWS Lambda function, and then writen into the `logfile_replica` table at the end.
 

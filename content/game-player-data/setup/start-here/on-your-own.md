@@ -1,10 +1,10 @@
-+++
-title = "On your own Set up"
-menutitle="On your own"
-date = 2021-04-21T07:39:31-05:00
-weight = 12
-pre = "<b>Start here:</b> "
-+++
+---
+title: "On your own Set up"
+menuTitle: "On your own"
+date: 2021-04-21T07:39:31-05:00
+weight: 12
+pre: "<b>Start here:</b> "
+---
 
 {{% notice warning %}}
 These setup instructions are identitical for LADV, LHOL, and LGME - all of which use the same Cloud9 template.

@@ -1,11 +1,11 @@
-+++
-title = "Setup"
-date = 2019-12-02T07:05:12-08:00
-weight = 1
-chapter = true
-pre = "<b>Start here: </b>"
-description = "Setup the lab environment and connect to the lab instance on Amazon EC2."
-+++
+---
+title: "Setup"
+date: 2019-12-02T07:05:12-08:00
+weight: 1
+chapter: true
+pre: "<b>Start here: </b>"
+description: "Setup the lab environment and connect to the lab instance on Amazon EC2."
+---
 
 ## GETTING STARTED
 

@@ -1,8 +1,8 @@
-+++
-title = "Solutions"
-date = 2019-12-02T10:50:03-08:00
-weight = 1
-+++
+---
+title: "Solutions"
+date: 2019-12-02T10:50:03-08:00
+weight: 1
+---
 
 # Lab 1 Solutions
 

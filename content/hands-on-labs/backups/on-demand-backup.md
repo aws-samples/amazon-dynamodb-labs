@@ -1,9 +1,9 @@
-+++
-title = "On-Demand Backup"
-menuTitle = "On-Demand Backup"
-date = 2021-04-24T07:38:58-05:00
-weight = 63
-+++
+---
+title: "On-Demand Backup"
+menuTitle: "On-Demand Backup"
+date: 2021-04-24T07:38:58-05:00
+weight: 63
+---
 
 
 You can use the DynamoDB on-demand backup capability to create full

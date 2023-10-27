@@ -1,8 +1,8 @@
-+++
-title = "Working with Table Scans"
-date = 2020-04-21T07:38:58-05:00
-weight = 33
-+++
+---
+title: "Working with Table Scans"
+date: 2020-04-21T07:38:58-05:00
+weight: 33
+---
 
 The [Scan API](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_Scan.html) which can be invoked using the [scan CLI command](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/scan.html). Scan will do a full table scan and return the items in 1MB chunks.
 

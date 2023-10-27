@@ -1,10 +1,10 @@
-+++
-title = "Create DMS Resources"
-menuTitle = "Create DMS Resources"
-date = 2021-04-25T07:33:04-05:00
-weight = 25
+---
+title: "Create DMS Resources"
+menuTitle: "Create DMS Resources"
+date: 2021-04-25T07:33:04-05:00
+weight: 25
 
-+++
+---
 
 Let's create the DMS resources for the workshop.
 
