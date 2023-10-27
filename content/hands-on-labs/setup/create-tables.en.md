@@ -42,7 +42,7 @@ aws dynamodb create-table \
     --provisioned-throughput \
         ReadCapacityUnits=10,WriteCapacityUnits=5
 
-aws dynamodb wait table-exists --table-name Reply
+aws dynamodb wait table-exists --table-name Thread
 
 aws dynamodb create-table \
     --table-name Reply \
@@ -55,8 +55,5 @@ aws dynamodb create-table \
     --provisioned-throughput \
         ReadCapacityUnits=10,WriteCapacityUnits=5
 
-
-
-
-aws dynamodb wait table-exists --table-name Thread
+aws dynamodb wait table-exists --table-name Reply
 ```
