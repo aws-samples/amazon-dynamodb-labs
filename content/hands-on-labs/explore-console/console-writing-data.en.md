@@ -12,13 +12,15 @@ Let's say we wanted to insert a new item into the *Reply* table from the console
 
 ![Console Create Item 1](/images/hands-on-labs/explore-console/console_create_item_1.png)
 
-Click ` JSON view`, ensure `View DynamoDB JSON` is deselected, and paste the following attributes, and then click **Create Item** to insert the new item.
+Click `JSON view`, ensure `View DynamoDB JSON` is deselected, paste the following JSON, and then click **Create Item** to insert the new item.
 
-```text
+```json
+{
         "Id" : "Amazon DynamoDB#DynamoDB Thread 2",
         "ReplyDateTime" : "2021-04-27T17:47:30Z",
         "Message" : "DynamoDB Thread 2 Reply 3 text",
         "PostedBy" : "User C"
+}
 ```
 
 ![Console Create Item 2](/images/hands-on-labs/explore-console/console_create_item_2.png)
