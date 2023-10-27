@@ -6,7 +6,7 @@ weight = 14
 
 We will now create tables (and in a subsequent step load data into them) based on [sample data from the DynamoDB Developer Guide](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SampleData.html).
 
-Copy the four `create-table` commands below along with the `wait` commands and paste them in your AWS Cloud9 command prompt. Each command waits for the table to finish creating.
+Copy the `create-table` commands below along with their corresponding `wait` commands and paste them in your AWS Cloud9 command prompt. Each command waits for the table to finish creating. If you get an error from the wait command, you may have submitted it too fast; re-run the wait command in this case.
 
 ```bash
 aws dynamodb create-table \
@@ -18,6 +18,8 @@ aws dynamodb create-table \
     --provisioned-throughput \
         ReadCapacityUnits=10,WriteCapacityUnits=5
 
+aws dynamodb wait table-exists --table-name ProductCatalog
+
 aws dynamodb create-table \
     --table-name Forum \
     --attribute-definitions \
@@ -26,6 +28,8 @@ aws dynamodb create-table \
         AttributeName=Name,KeyType=HASH \
     --provisioned-throughput \
         ReadCapacityUnits=10,WriteCapacityUnits=5
+
+aws dynamodb wait table-exists --table-name Forum
 
 aws dynamodb create-table \
     --table-name Thread \
@@ -38,6 +42,8 @@ aws dynamodb create-table \
     --provisioned-throughput \
         ReadCapacityUnits=10,WriteCapacityUnits=5
 
+aws dynamodb wait table-exists --table-name Thread
+
 aws dynamodb create-table \
     --table-name Reply \
     --attribute-definitions \
@@ -49,8 +55,5 @@ aws dynamodb create-table \
     --provisioned-throughput \
         ReadCapacityUnits=10,WriteCapacityUnits=5
 
-aws dynamodb wait table-exists --table-name ProductCatalog && \
-aws dynamodb wait table-exists --table-name Reply && \
-aws dynamodb wait table-exists --table-name Forum && \
-aws dynamodb wait table-exists --table-name Thread
+aws dynamodb wait table-exists --table-name Reply
 ```

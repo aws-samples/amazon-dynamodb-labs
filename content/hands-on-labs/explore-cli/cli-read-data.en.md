@@ -11,6 +11,7 @@ DynamoDB provides the [Scan API](https://docs.aws.amazon.com/amazondynamodb/late
 ```bash
 aws dynamodb scan --table-name ProductCatalog
 ```
+Use the arrow keys to move up and down through the *Scan* response. **Type `:q` and hit enter to exit the viewer** once you're done reviewing the response.
 
 Data input and output in the CLI utilizes the DynamoDB JSON format, which is described in the [DynamoDB Low-Level API](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.LowLevelAPI.html) section of the Developer Guide.
 
