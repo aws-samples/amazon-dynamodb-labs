@@ -1,7 +1,7 @@
 ---
 title: "On your own"
 date: 2019-12-02T07:05:12-08:00
-weight: 4
+weight: 5
 chapter: true
 pre: "<b>Start: </b>"
 ---

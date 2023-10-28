@@ -1,7 +1,7 @@
 ---
 title: "At an AWS Hosted Event"
 date: 2019-12-02T07:05:12-08:00
-weight: 5
+weight: 4
 chapter: true
 pre: "<b>Start: </b>"
 ---
