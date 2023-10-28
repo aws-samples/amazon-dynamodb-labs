@@ -1,9 +1,9 @@
 ---
 title: "At an AWS Hosted Event"
 date: 2019-12-02T07:05:12-08:00
-weight: 4
+weight: 11
 chapter: true
-pre: "<b>Start: </b>"
+pre: "<b>Start here:</b> "
 ---
 
 ### Login to AWS Workshop Studio Portal
@@ -29,4 +29,4 @@ pre: "<b>Start: </b>"
 8. On the event dashboard, click on **Open AWS console** to federate into AWS Management Console in a new tab. On the same page, click **Get started** to open the workshop instructions.
 ![Event dashboard](/images/aws-ws-event5.png)
 
-Now that you are set up, continue on to: [Exercise 1: Overview]({{< ref "event-driven-architecture/ex1overview" >}}).
+9. Now that you are connected continue on to: [Step 1]({{< ref "game-player-data/setup/Step1" >}}).

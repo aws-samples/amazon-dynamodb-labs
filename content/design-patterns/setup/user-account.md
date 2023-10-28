@@ -1,10 +1,10 @@
-+++
-title = "On your own"
-date = 2019-12-02T07:05:12-08:00
-weight = 3
-chapter = true
-pre = "<b>Start: </b>"
-+++
+---
+title: "On your own"
+date: 2019-12-02T07:05:12-08:00
+weight: 5
+chapter: true
+pre: "<b>Start: </b>"
+---
 
 {{% notice warning %}}
 These setup instructions are identitical for LADV, LHOL, and LGME - all of which use the same Cloud9 template.
@@ -12,7 +12,7 @@ Only complete this section once, and only if you're running it on your own accou
 {{% /notice %}}
 
 {{% notice info %}}
-Only complete this section if you are running the workshop on your own. If you are at an AWS hosted event (such as re:Invent, Immersion Day, etc), go to [At an AWS hosted Event]({{< ref "design-patterns/setup/start-here/aws-ws-event">}})
+Only complete this section if you are running the workshop on your own. If you are at an AWS hosted event (such as re:Invent, Immersion Day, etc), go to [At an AWS hosted Event]({{< ref "design-patterns/setup/aws-ws-event">}})
 {{% /notice %}}
 
 ## Launch the CloudFormation stack

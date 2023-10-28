@@ -1,12 +1,12 @@
-+++
-title = "Getting Started"
-menuTitle = "Getting Started"
-date = 2021-04-21T07:33:04-05:00
-weight = 10
-chapter = true
-pre = "<b>1. </b>"
-description = "In this module, you configure your environment and download code that you will use throughout the lab."
-+++
+---
+title: "Getting Started"
+menuTitle: "Getting Started"
+date: 2021-04-21T07:33:04-05:00
+weight: 10
+chapter: true
+pre: "<b>1. </b>"
+description: "In this module, you configure your environment and download code that you will use throughout the lab."
+---
 
 ## Background
 
@@ -26,9 +26,9 @@ To set up this workshop, choose one of the following paths, depending on whether
 If following the lab in your own AWS Account, you will create DynamoDB tables that will incur a cost that could approach tens of dollars per day. **Ensure you delete the DynamoDB tables using the DynamoDB console, and make sure you [delete the Cloud9 environment](https://docs.aws.amazon.com/cloud9/latest/user-guide/delete-environment.html) as soon as the lab is complete**.
 {{% /notice %}}
 
-- …running the workshop on your own (in your own AWS account) in which case you must complete the section "Set up your AWS Cloud9 IDE" [on this website](https://aws.amazon.com/getting-started/hands-on/data-modeling-gaming-app-with-dynamodb/2/), which guides you in the process of creating a Cloud9 IDE in your AWS account using default settings.
+- […running the workshop on your own (in your own AWS account)]({{< ref "/game-player-data/setup/on-your-own" >}}), which guides you to launch a Cloud9 environment using CloudFormation
 
-- […attending an AWS-hosted event (using AWS-provided access-code)]({{< ref "start-here/aws-ws-event/" >}})
+- […attending an AWS-hosted event (using AWS-provided access-code)]({{< ref "/game-player-data/setup/aws-ws-event" >}})
 
 
 Once you have completed with either setup, continue on to:

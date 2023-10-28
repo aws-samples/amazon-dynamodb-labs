@@ -1,8 +1,8 @@
-+++
-title = "Step 5 - Increase the capacity of the table"
-date = 2019-12-02T10:26:29-08:00
-weight = 6
-+++
+---
+title: "Step 5 - Increase the capacity of the table"
+date: 2019-12-02T10:26:29-08:00
+weight: 6
+---
 
 
 Run the following AWS CLI command to increase the write capacity units and read capacity units from 5 to 100.

@@ -1,12 +1,11 @@
-+++
-title = "Getting Started"
-menuTitle = "Getting Started"
-date = 2021-04-21T07:33:04-05:00
-weight = 10
-chapter = true
-pre = "<b>1. </b>"
-
-+++
+---
+title: "Getting Started"
+menuTitle: "Getting Started"
+date: 2021-04-21T07:33:04-05:00
+weight: 10
+chapter: true
+pre: "<b>1. </b>"
+---
 
 
 In this chapter, we'll cover the prerequisites needed to get started with [Amazon DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html). You'll create DynamoDB tables and use a AWS Cloud9 envrironment to query these tables.

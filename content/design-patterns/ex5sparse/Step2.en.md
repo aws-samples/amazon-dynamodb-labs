@@ -1,8 +1,8 @@
-+++
-title = "Step 2 - Scan the employees table to find managers without using the sparse global secondary index"
-date = 2019-12-02T10:57:23-08:00
-weight = 2
-+++
+---
+title: "Step 2 - Scan the employees table to find managers without using the sparse global secondary index"
+date: 2019-12-02T10:57:23-08:00
+weight: 2
+---
 
 The sparse index pattern cuts the haystack representing your data down into a smaller pile so that your searches on the index, with either the `Scan` or `Query` API, are more efficient. Instead of combing through all the data in the DynamoDB base table, you can create a sparse index to hold a fraction of your information for easy querying and searching. To learn the definition of a [DynamoDB sparse index please review our best practices documentation](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-indexes-general-sparse-indexes.html).
 

@@ -1,8 +1,8 @@
-+++
-title = "Step 4 - Query the Customer details and Bill details using the Index"
-date = 2019-12-02T12:24:34-08:00
-weight = 4
-+++
+---
+title: "Step 4 - Query the Customer details and Bill details using the Index"
+date: 2019-12-02T12:24:34-08:00
+weight: 4
+---
 
 Query using the customer ID, and review the output showing the customer details and the list of related invoices. Notice how the output shows all the invoices associated with the customer.
 

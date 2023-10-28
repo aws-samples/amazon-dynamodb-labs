@@ -1,12 +1,12 @@
-+++
-title = "Retrieve Item collections"
-menuTitle = "Retrieve Item collections"
-date = 2021-04-21T07:33:04-05:00
-weight = 34
-chapter = false
-pre = ""
-description = "To get started, you configure your environment and download code that you use during the lab."
-+++
+---
+title: "Retrieve Item collections"
+menuTitle: "Retrieve Item collections"
+date: 2021-04-21T07:33:04-05:00
+weight: 34
+chapter: false
+pre: ""
+description: "To get started, you configure your environment and download code that you use during the lab."
+---
 
 An **Item collection** is a set of items with the same partition key value but different sort key values where the items of different entity types have relationships with the partition key.
 

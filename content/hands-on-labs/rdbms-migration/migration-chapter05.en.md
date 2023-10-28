@@ -1,10 +1,9 @@
-+++
-title = "Load DynamoDB Table"
-menuTitle = "Load DynamoDB Table"
-date = 2021-04-25T07:33:04-05:00
-weight = 50
-
-+++
+---
+title: "Load DynamoDB Table"
+menuTitle: "Load DynamoDB Table"
+date: 2021-04-25T07:33:04-05:00
+weight: 50
+---
 
 In this exercise, we will set up Database Migration Service (DMS) jobs to migrate data from source MySQL database (relational view, tables) to Amazon DynamoDB.
 

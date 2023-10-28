@@ -1,10 +1,9 @@
-+++
-title = "Explore Target Model"
-menuTitle = "Explore Target Model"
-date = 2021-04-25T07:33:04-05:00
-weight = 40
-
-+++
+---
+title: "Explore Target Model"
+menuTitle: "Explore Target Model"
+date: 2021-04-25T07:33:04-05:00
+weight: 40
+---
 
 Relational Database Management System (RDBMS) platforms store data in a normalized relational structure. This structure reduces hierarchical data structures and stores data across multiple tables.
 You can often query the data from multiple tables and assemble at the presentation layer. However, that is not preferrable and won't be efficient for ultra-low read latency workloads.

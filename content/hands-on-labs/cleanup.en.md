@@ -1,10 +1,9 @@
-+++
-title = "Cleanup"
-chapter = true
-description = "Cleanup Resources Created During Lab"
-
-weight = 1000
-+++
+---
+title: "Cleanup"
+chapter: true
+description: "Cleanup Resources Created During Lab"
+weight: 1000
+---
 
 If you used an account provided by Workshop Studio Event Delivery, you do not need to do any cleanup. The account terminates when the event is over.
 

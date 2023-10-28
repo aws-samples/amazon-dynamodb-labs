@@ -1,8 +1,8 @@
-+++
-title = "Retail Cart References"
-chapter = false
-weight = 1
-+++
+---
+title: "Retail Cart References"
+chapter: false
+weight: 1
+---
 
 
 ## How to tackle this challenge

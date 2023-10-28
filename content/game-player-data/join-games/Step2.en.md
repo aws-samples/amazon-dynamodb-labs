@@ -1,12 +1,12 @@
-+++
-title = "Start a game"
-menuTitle = "Start a game"
-date = 2021-04-21T07:33:04-05:00
-weight = 52
-chapter = false
-pre = ""
-description = "To get started, you configure your environment and download code that you use during the lab."
-+++
+---
+title: "Start a game"
+menuTitle: "Start a game"
+date: 2021-04-21T07:33:04-05:00
+weight: 52
+chapter: false
+pre: ""
+description: "To get started, you configure your environment and download code that you use during the lab."
+---
 
 As soon as a game has 50 users, the creator of the game can start the game to initiate gameplay. In this step, you see how to handle this access pattern.
 

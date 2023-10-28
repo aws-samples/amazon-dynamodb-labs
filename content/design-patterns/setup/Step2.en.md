@@ -1,8 +1,8 @@
-+++
-title = "Step 2 - Check the Python and AWS CLI installation"
-date = 2019-12-02T10:07:48-08:00
-weight = 20
-+++
+---
+title: "Step 2 - Check the Python and AWS CLI installation"
+date: 2019-12-02T10:07:48-08:00
+weight: 20
+---
 
 Run the following command to check Python on your EC2 instance:
 

@@ -1,9 +1,9 @@
-+++
-title = "Explore Source Model"
-menuTitle = "Explore Source Model"
-date = 2021-04-25T07:33:04-05:00
-weight = 30
-+++
+---
+title: "Explore Source Model"
+menuTitle: "Explore Source Model"
+date: 2021-04-25T07:33:04-05:00
+weight: 30
+---
 IMDb [(Internet Movie Database)](https://www.imdb.com/interfaces/) is one of the most recognized names for its comprehensive online database collection of movies, films, TV series and so on.
 The exercise is going to use subset of IMDb dataset (available in TSV format). This workshop will utilize 6 IMDb dataset that are related to US based movies since year 2000.
 The dataset has around 106K+ movies, ratings, votes and cast/crew information.

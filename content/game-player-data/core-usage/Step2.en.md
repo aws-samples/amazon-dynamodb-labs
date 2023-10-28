@@ -1,12 +1,12 @@
-+++
-title = "Create the table"
-menuTitle = "Create the table"
-date = 2021-04-21T07:33:04-05:00
-weight = 32
-chapter = false
-pre = ""
-description = "To get started, you configure your environment and download code that you use during the lab."
-+++
+---
+title: "Create the table"
+menuTitle: "Create the table"
+date: 2021-04-21T07:33:04-05:00
+weight: 32
+chapter: false
+pre: ""
+description: "To get started, you configure your environment and download code that you use during the lab."
+---
 
 Now that the primary key is designed, let’s create a table.
 

@@ -1,12 +1,12 @@
-+++
-title = "Query the sparse GSI"
-menuTitle = "Query the sparse GSI"
-date = 2021-04-21T07:33:04-05:00
-weight = 43
-chapter = false
-pre = ""
-description = "To get started, you configure your environment and download code that you use during the lab."
-+++
+---
+title: "Query the sparse GSI"
+menuTitle: "Query the sparse GSI"
+date: 2021-04-21T07:33:04-05:00
+weight: 43
+chapter: false
+pre: ""
+description: "To get started, you configure your environment and download code that you use during the lab."
+---
 
 Now that you have configured the GSI, let’s use it to satisfy some of the access patterns.
 

@@ -1,11 +1,11 @@
-+++
-title = "Sequential and Parallel Table Scans"
-date = 2019-12-02T10:17:10-08:00
-weight = 3
-chapter = true
-pre = "<b>Exercise 2: </b>"
-description = "Learn the difference between sequential and parallel scans."
-+++
+---
+title: "Sequential and Parallel Table Scans"
+date: 2019-12-02T10:17:10-08:00
+weight: 3
+chapter: true
+pre: "<b>Exercise 2: </b>"
+description: "Learn the difference between sequential and parallel scans."
+---
 
 
 This exercise demonstrates the two methods of DynamoDB table scanning: sequential and parallel.

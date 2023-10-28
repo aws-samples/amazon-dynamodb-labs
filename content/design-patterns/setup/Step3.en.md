@@ -1,8 +1,8 @@
-+++
-title = "Step 3 - Check boto3 installation"
-date = 2019-12-02T10:07:52-08:00
-weight = 30
-+++
+---
+title: "Step 3 - Check boto3 installation"
+date: 2019-12-02T10:07:52-08:00
+weight: 30
+---
 
 
 Boto3 is the Amazon Web Services (AWS) Software Development Kit (SDK) for Python, which allows Python developers to build applications using AWS services.

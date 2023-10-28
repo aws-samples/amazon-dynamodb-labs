@@ -1,8 +1,8 @@
-+++
-title = "Step 2: Check MapLambda trigger"
-date = 2019-12-02T10:35:42-08:00
-weight = 2
-+++
+---
+title: "Step 2: Check MapLambda trigger"
+date: 2019-12-02T10:35:42-08:00
+weight: 2
+---
 
 {{% notice info %}}
 The `MapLambda` function is already connected for you, so let us quickly check if it works as expected!

@@ -1,8 +1,8 @@
-+++
-title = "Reading Item Collections using Query"
-date = 2020-04-21T07:38:58-05:00
-weight = 32
-+++
+---
+title: "Reading Item Collections using Query"
+date: 2020-04-21T07:38:58-05:00
+weight: 32
+---
 
 Item Collections are groups of Items that share a Partition Key.  By definition, Item Collections can only exist in tables that have both a Partition Key and a Sort Key.  We can read all or part of an Item Collection using the [Query API](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_Query.html) which can be invoked using the [query CLI command](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/query.html).  It might seem confusing as the word "query" is generally used colloquially to mean "reading data from a database" but in DynamoDB "query" has a specific meaning: to read all or part of an Item Collection.  
 

@@ -1,11 +1,11 @@
-+++
-title = "Overview"
-date = 2019-12-02T10:16:44-08:00
-weight = 2
-chapter = true
-pre = "<b>Introduction: </b>"
-description = "Lab goals"
-+++
+---
+title: "Overview"
+date: 2019-12-02T10:16:44-08:00
+weight: 2
+chapter: true
+pre: "<b>Introduction: </b>"
+description: "Lab goals"
+---
 
 ## Architecture
 

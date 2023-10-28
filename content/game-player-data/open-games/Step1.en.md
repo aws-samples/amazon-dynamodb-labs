@@ -1,12 +1,12 @@
-+++
-title = "Model a sparse GSI"
-menuTitle = "Model a sparse GSI"
-date = 2021-04-21T07:33:04-05:00
-weight = 41
-chapter = false
-pre = ""
-description = "To get started, you configure your environment and download code that you use during the lab."
-+++
+---
+title: "Model a sparse GSI"
+menuTitle: "Model a sparse GSI"
+date: 2021-04-21T07:33:04-05:00
+weight: 41
+chapter: false
+pre: ""
+description: "To get started, you configure your environment and download code that you use during the lab."
+---
 
 [Secondary indexes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SecondaryIndexes.html) are crucial data modeling tools in DynamoDB. They allow you to reshape your data to allow for alternate query patterns. To create a secondary index, you specify the primary key of the index, just like when you previously created a table. Note that the primary key for a global secondary index does not have to be unique for each item. DynamoDB then copies items into the index based on the attributes specified, and you can query it just like you do the table.
 

@@ -1,12 +1,12 @@
-+++
-title = "Obtain & Review Code"
-menuTitle = "Obtain & Review Code"
-date = 2021-04-21T07:33:04-05:00
-weight = 14
-chapter = false
-pre = ""
-description = "To get started, you configure your environment and download code that you use during the lab."
-+++
+---
+title: "Obtain & Review Code"
+menuTitle: "Obtain & Review Code"
+date: 2021-04-21T07:33:04-05:00
+weight: 14
+chapter: false
+pre: ""
+description: "To get started, you configure your environment and download code that you use during the lab."
+---
 
 
 [AWS Cloud9](https://aws.amazon.com/cloud9/) is a cloud-based integrated development environment (IDE) that lets you write, run, and debug code with just a browser. AWS Cloud9 includes a code editor, debugger, and terminal. It also comes prepackaged with essential tools for popular programming languages and the AWS Command Line Interface (CLI) preinstalled so that you don’t have to install files or configure your laptop for this lab. Your AWS Cloud9 environment will have access to the same AWS resources as the user with which you signed in to the AWS Management Console.

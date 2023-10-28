@@ -1,10 +1,9 @@
-+++
-title = "Configure MySQL Environment"
-menuTitle = "Configure MySQL Environment"
-date = 2021-04-25T07:33:04-05:00
-weight = 20
-
-+++
+---
+title: "Configure MySQL Environment"
+menuTitle: "Configure MySQL Environment"
+date: 2021-04-25T07:33:04-05:00
+weight: 20
+---
 This chapter will create source environment on AWS as discussed during Exercise Overview.
 The CloudFormation template used below will create Source VPC, EC2 hosting MySQL server, IMDb database and load IMDb public dataset into 6 tables.
 

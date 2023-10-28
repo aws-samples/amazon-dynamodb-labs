@@ -1,8 +1,8 @@
-+++
-title = "Step 2 - Execute a parallel Scan"
-date = 2019-12-02T10:35:42-08:00
-weight = 2
-+++
+---
+title: "Step 2 - Execute a parallel Scan"
+date: 2019-12-02T10:35:42-08:00
+weight: 2
+---
 
 To perform a parallel `Scan`, each application worker issues its own `Scan` request with the following parameters:
 

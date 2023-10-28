@@ -1,9 +1,9 @@
-+++
-title = "Restrict backup deletion"
-menuTitle = "Restrict Backup Deletion"
-date = 2020-04-21T07:38:58-05:00
-weight = 65
-+++
+---
+title: "Restrict backup deletion"
+menuTitle: "Restrict Backup Deletion"
+date: 2020-04-21T07:38:58-05:00
+weight: 65
+---
 
 Customer has a common ask when they want their developer/admin should be
 allowed to create and delete DynamoDB tables but they shouldn’t be

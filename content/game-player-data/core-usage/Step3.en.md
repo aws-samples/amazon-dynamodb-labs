@@ -1,12 +1,12 @@
-+++
-title = "Bulk-load data"
-menuTitle = "Bulk-load data"
-date = 2021-04-21T07:33:04-05:00
-weight = 33
-chapter = false
-pre = ""
-description = "To get started, you configure your environment and download code that you use during the lab."
-+++
+---
+title: "Bulk-load data"
+menuTitle: "Bulk-load data"
+date: 2021-04-21T07:33:04-05:00
+weight: 33
+chapter: false
+pre: ""
+description: "To get started, you configure your environment and download code that you use during the lab."
+---
 
 
 In this step, you bulk-load some data into the DynamoDB you created in the preceding step. This means that in succeeding steps, you will have sample data to use.

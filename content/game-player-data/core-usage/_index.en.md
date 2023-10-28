@@ -1,12 +1,12 @@
-+++
-title = "Core usage: user profiles and games"
-menuTitle = "Core usage: user profiles and games"
-date = 2021-04-21T07:33:04-05:00
-weight = 30
-chapter = true
-pre = "<b>3. </b>"
-description = "In this module, you design the primary key for the game application’s table, create the table and perform some basic actions."
-+++
+---
+title: "Core usage: user profiles and games"
+menuTitle: "Core usage: user profiles and games"
+date: 2021-04-21T07:33:04-05:00
+weight: 30
+chapter: true
+pre: "<b>3. </b>"
+description: "In this module, you design the primary key for the game application’s table, create the table and perform some basic actions."
+---
 
 In the previous module, the game application’s access patterns were defined. In this module, the [primary key](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.CoreComponents.html#HowItWorks.CoreComponents.PrimaryKey) for the DynamoDB table is defined and the core access patterns are handled.
 

@@ -1,11 +1,11 @@
-+++
-title = "Global Secondary Index Key Overloading"
-date = 2019-12-02T10:17:33-08:00
-weight = 5
-chapter = true
-pre = "<b>Exercise 4: </b>"
-description = "Explore how to maintain the ability to query on many attributes when you have a multi-entity table."
-+++
+---
+title: "Global Secondary Index Key Overloading"
+date: 2019-12-02T10:17:33-08:00
+weight: 5
+chapter: true
+pre: "<b>Exercise 4: </b>"
+description: "Explore how to maintain the ability to query on many attributes when you have a multi-entity table."
+---
 
 You can create 20 global secondary indexes for a DynamoDB table as of the time this page was written. Sometimes, though, your application might need to support multiple access patterns and exceed the current limit of global secondary indexes per table. The global secondary index key overloading design pattern is enabled by designating and reusing an attribute name (column header) across different item types and storing a value in that attribute depending on the context of the item type. When you create a global secondary index on that attribute, you are indexing for multiple access patterns, each for a different item type—and have used only 1 global secondary index. For example, an `employees` table. An employee can contain items of type `metadata` (for employee details), `employee-title` (all the job titles that the employee has held), or `employee-location` (all the office buildings and locations where the employee has worked).
 

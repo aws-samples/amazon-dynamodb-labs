@@ -1,12 +1,12 @@
-+++
-title = "Retrieve games for a user"
-menuTitle = "Retrieve games for a user"
-date = 2021-04-21T07:33:04-05:00
-weight = 62
-chapter = false
-pre = ""
-description = "In this step, you add an inverted index to the table. An inverted index is created like any other secondary index."
-+++
+---
+title: "Retrieve games for a user"
+menuTitle: "Retrieve games for a user"
+date: 2021-04-21T07:33:04-05:00
+weight: 62
+chapter: false
+pre: ""
+description: "In this step, you add an inverted index to the table. An inverted index is created like any other secondary index."
+---
 
 Now that you have created the inverted index, let’s use it to retrieve the `Game` entities played by a `User`. To handle this, you need to query the inverted index with the `User` whose `Game` entities you want to see.
 

@@ -1,8 +1,8 @@
-+++
-title = "AWS Event: Game Rules"
-date = 2019-12-02T10:26:23-08:00
-weight = 2
-+++
+---
+title: "AWS Event: Game Rules"
+date: 2019-12-02T10:26:23-08:00
+weight: 2
+---
 
 {{% notice info %}}
 Points and scoreboard only apply when this lab is run during an AWS Event. If you're running this lab independently, you have the top score!

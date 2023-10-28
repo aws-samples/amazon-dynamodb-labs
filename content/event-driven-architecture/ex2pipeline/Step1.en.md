@@ -1,8 +1,8 @@
-+++
-title = "Step 1: Connect StateLambda"
-date = 2019-12-02T10:35:42-08:00
-weight = 1
-+++
+---
+title: "Step 1: Connect StateLambda"
+date: 2019-12-02T10:35:42-08:00
+weight: 1
+---
 
 The objective of this step is to connect the `StateLambda` function with the `IncomingDataStream` Kinesis stream as shown in the diagram below.
 When new messages become available in the Kinesis stream, the `StateLambda` function will be invoked to process the stream records. Each stream record contains a single trade.

@@ -1,11 +1,11 @@
-+++
-title = "Global Secondary Index Write Sharding"
-date = 2019-12-02T10:17:22-08:00
-weight = 4
-chapter = true
-pre = "<b>Exercise 3: </b>"
-description = "Query a sharded global secondary index to quickly read sorted data by status code and date."
-+++
+---
+title: "Global Secondary Index Write Sharding"
+date: 2019-12-02T10:17:22-08:00
+weight: 4
+chapter: true
+pre: "<b>Exercise 3: </b>"
+description: "Query a sharded global secondary index to quickly read sorted data by status code and date."
+---
 
 
 The primary key of a DynamoDB table or a global secondary index consists of a partition key and an optional sort key. The way you design the content of those keys is extremely important for the structure and performance of your database. Partition key values determine the logical partitions in which your data is stored. Therefore, it is important to choose a partition key value that uniformly distributes the workload across all partitions in the table or global secondary index. For a discussion on how to choose the right partition key, see our blog titled [Choosing the Right DynamoDB Partition Key](https://aws.amazon.com/blogs/database/choosing-the-right-dynamodb-partition-key/).

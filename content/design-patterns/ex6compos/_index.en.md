@@ -1,11 +1,11 @@
-+++
-title = "Composite Keys"
-date = 2019-12-02T10:17:57-08:00
-weight = 7
-chapter = true
-pre = "<b>Exercise 6: </b>"
-description = "Learn how to combine two attributes into one to take advantage of the DynamoDB sort key."
-+++
+---
+title: "Composite Keys"
+date: 2019-12-02T10:17:57-08:00
+weight: 7
+chapter: true
+pre: "<b>Exercise 6: </b>"
+description: "Learn how to combine two attributes into one to take advantage of the DynamoDB sort key."
+---
 
 
 Carefully choosing the sort key attribute is important because it can significantly improve the selectivity of the items retrieved by a query. Let's say you need to create an application to query the employees by geographic location (state and city) and by department. You have the attributes: `state`, `city`, and `dept`. You can create a global secondary index that will combine these attributes to allow queries by location/dept. In DynamoDB you can query the items using a combination of the partition key and the sort key. In this case, your query criteria need to use more than two attributes, so you will create a composite-key structure that allows you to query with more than two attributes.

@@ -1,11 +1,10 @@
-+++
-title = "Hands-on Labs for Amazon DynamoDB"
-chapter = true
-description = "200 level: Hands-on exercises with Cloud9 using the AWS CLI and Console."
-pre = "<b>LHOL: </b>"
-
-weight = 1
-+++
+---
+title: "Hands-on Labs for Amazon DynamoDB"
+chapter: true
+description: "200 level: Hands-on exercises with Cloud9 using the AWS CLI and Console."
+pre: "<b>LHOL: </b>"
+weight: 1
+---
 In this workshop, you will learn to create and work with [Amazon DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html).
 
 Here's what this workshop includes:

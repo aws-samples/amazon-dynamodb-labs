@@ -1,8 +1,8 @@
-+++
-title = "Step 1 - Create a new global secondary index for City-Department"
-date = 2019-12-02T12:16:25-08:00
-weight = 1
-+++
+---
+title: "Step 1 - Create a new global secondary index for City-Department"
+date: 2019-12-02T12:16:25-08:00
+weight: 1
+---
 
 Run the following command to create a new global secondary index called `GSI_3`:
 

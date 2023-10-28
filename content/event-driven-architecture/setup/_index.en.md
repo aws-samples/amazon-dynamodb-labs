@@ -1,11 +1,11 @@
-+++
-title = "Setup"
-date = 2019-12-02T07:05:12-08:00
-weight = 1
-chapter = true
-pre = "<b>Start here: </b>"
-description = "Setup the lab environment."
-+++
+---
+title: "Setup"
+date: 2019-12-02T07:05:12-08:00
+weight: 1
+chapter: true
+pre: "<b>Start here: </b>"
+description: "Setup the lab environment."
+---
 
 ## GETTING STARTED
 

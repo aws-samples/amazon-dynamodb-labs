@@ -1,10 +1,10 @@
-+++
-title = "On your own Set up"
-menutitle="On your own"
-date = 2021-04-21T07:39:31-05:00
-weight = 12
-pre = "<b>Start here:</b> "
-+++
+---
+title: "On your own Set up"
+menuTitle: "On your own"
+date: 2021-04-21T07:39:31-05:00
+weight: 12
+pre: "<b>Start here:</b> "
+---
 
 {{% notice warning %}}
 These setup instructions are identitical for LADV, LHOL, and LGME - all of which use the same Cloud9 template.
@@ -12,7 +12,7 @@ Only complete this section once, and only if you're running it on your own accou
 {{% /notice %}}
 
 {{% notice info %}}
-Only complete this section if you are running the workshop on your own. If you are at an AWS hosted event (such as re:Invent, Immersion Day, etc), go to [At an AWS hosted Event]({{< ref "design-patterns/setup/start-here/aws-ws-event">}})
+Only complete this section if you are running the workshop on your own. If you are at an AWS hosted event (such as re:Invent, Immersion Day, etc), go to [At an AWS hosted Event]({{< ref "game-player-data/setup/aws-ws-event">}})
 {{% /notice %}}
 
 ## Launch the CloudFormation stack

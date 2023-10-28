@@ -1,12 +1,11 @@
-+++
-title = "Explore the DynamoDB Console"
-menuTitle = "Explore the DynamoDB Console"
-date = 2021-04-25T07:33:04-05:00
-weight = 30
-chapter = true
-pre = "<b>3. </b>"
-
-+++
+---
+title: "Explore the DynamoDB Console"
+menuTitle: "Explore the DynamoDB Console"
+date: 2021-04-25T07:33:04-05:00
+weight: 30
+chapter: true
+pre: "<b>3. </b>"
+---
 
 In this lab we will be exploring the [DynamoDB section of the AWS Management Console](https://console.aws.amazon.com/dynamodbv2/).  There are two versions of the console and while you can always click "Revert to the current console" we will be working with V2 of the console.
 

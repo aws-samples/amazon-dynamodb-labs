@@ -1,8 +1,8 @@
-+++
-title = "Load Sample Data"
-date = 2020-04-21T07:38:58-05:00
-weight = 15
-+++
+---
+title: "Load Sample Data"
+date: 2020-04-21T07:38:58-05:00
+weight: 15
+---
 
 Download and unzip the sample data:
 

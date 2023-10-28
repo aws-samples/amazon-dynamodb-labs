@@ -1,12 +1,12 @@
-+++
-title = "Create a sparse GSI"
-menuTitle = "Create a sparse GSI"
-date = 2021-04-21T07:33:04-05:00
-weight = 42
-chapter = false
-pre = ""
-description = "To get started, you configure your environment and download code that you use during the lab."
-+++
+---
+title: "Create a sparse GSI"
+menuTitle: "Create a sparse GSI"
+date: 2021-04-21T07:33:04-05:00
+weight: 42
+chapter: false
+pre: ""
+description: "To get started, you configure your environment and download code that you use during the lab."
+---
 
 In this step, you create the sparse global secondary index (GSI) for open games (games that are not full already).
 

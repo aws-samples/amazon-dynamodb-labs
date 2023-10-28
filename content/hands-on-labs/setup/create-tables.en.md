@@ -1,8 +1,8 @@
-+++
-title = "Create the DynamoDB Tables"
-date = 2021-04-21T07:33:04-05:00
-weight = 14
-+++
+---
+title: "Create the DynamoDB Tables"
+date: 2021-04-21T07:33:04-05:00
+weight: 14
+---
 
 We will now create tables (and in a subsequent step load data into them) based on [sample data from the DynamoDB Developer Guide](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SampleData.html).
 

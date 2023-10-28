@@ -1,12 +1,12 @@
-+++
-title = "Design the primary key"
-menuTitle = "Design the primary key"
-date = 2021-04-21T07:33:04-05:00
-weight = 31
-chapter = false
-pre = ""
-description = "To get started, you configure your environment and download code that you use during the lab."
-+++
+---
+title: "Design the primary key"
+menuTitle: "Design the primary key"
+date: 2021-04-21T07:33:04-05:00
+weight: 31
+chapter: false
+pre: ""
+description: "To get started, you configure your environment and download code that you use during the lab."
+---
 
 Let’s consider the different entities, as suggested in the preceding introduction. In the gaming application, you have the following entities:
 

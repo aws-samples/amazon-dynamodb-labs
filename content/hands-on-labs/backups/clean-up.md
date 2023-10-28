@@ -1,9 +1,9 @@
-+++
-title = "Cleaning Up The Resources"
-menuTitle = "Cleaning Up The Resources"
-date = 2020-04-21T07:38:58-05:00
-weight = 66
-+++
+---
+title: "Cleaning Up The Resources"
+menuTitle: "Cleaning Up The Resources"
+date: 2020-04-21T07:38:58-05:00
+weight: 66
+---
 
 If you used an account provided by Workshop Studio, you do not need to do any cleanup. The account terminates when the event is over.
 

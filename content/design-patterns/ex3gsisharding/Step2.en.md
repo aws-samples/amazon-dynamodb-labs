@@ -1,13 +1,13 @@
-+++
-title = "Step 2 - Querying the GSI with shards"
-date = 2019-12-02T10:45:32-08:00
-weight = 2
-+++
+---
+title: "Step 2 - Querying the GSI with shards"
+date: 2019-12-02T10:45:32-08:00
+weight: 2
+---
 
 
 To get all the log records with a 404 response code, you need to query all the global secondary index partitions by using the sort key. You can do that using parallel threads in your application, and by using the partition key and sort key.
 ```py
-  if date == "all":
+  if date:= "all":
     ke = Key('GSI_1_PK').eq("shard#{}".format(shardid)) & Key('GSI_1_SK').begins_with(responsecode)
   else:
     ke = Key('GSI_1_PK').eq("shard#{}".format(shardid)) & Key('GSI_1_SK').begins_with(responsecode+"#"+date)

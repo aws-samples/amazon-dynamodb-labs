@@ -1,8 +1,8 @@
-+++
-title = "Step 2 - Review the AWS IAM policy for the IAM role"
-date = 2019-12-02T12:34:06-08:00
-weight = 2
-+++
+---
+title: "Step 2 - Review the AWS IAM policy for the IAM role"
+date: 2019-12-02T12:34:06-08:00
+weight: 2
+---
 
 
 We have pre-created the IAM role `DDBReplicationRole` that will be used as the [AWS Lambda Execution Role](https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html). This IAM role allows provides several permissions to the AWS Lambda function we will need to replicate data.

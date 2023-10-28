@@ -1,10 +1,9 @@
-+++
-title = "Access DynamoDB Table"
-menuTitle = "Access DynamoDB Table"
-date = 2021-04-25T07:33:04-05:00
-weight = 60
-
-+++
+---
+title: "Access DynamoDB Table"
+menuTitle: "Access DynamoDB Table"
+date: 2021-04-25T07:33:04-05:00
+weight: 60
+---
 Amazon DynamoDB supports [PartiQL](https://partiql.org/), a SQL-compatible query language, to select, insert, update, and delete data in Amazon DynamoDB.
 Using PartiQL, you can easily interact with DynamoDB tables and run ad hoc queries using the AWS Management Console. In this exercise, we will hands-on a few access patterns using PartiQL statements.
 

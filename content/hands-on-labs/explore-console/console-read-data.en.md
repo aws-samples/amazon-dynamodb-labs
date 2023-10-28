@@ -1,8 +1,8 @@
-+++
-title = "Viewing Table Data"
-date = 2020-04-21T07:38:58-05:00
-weight = 31
-+++
+---
+title: "Viewing Table Data"
+date: 2020-04-21T07:38:58-05:00
+weight: 31
+---
 
 First, go to the [DynamoDB Console](https://console.aws.amazon.com/dynamodbv2/) and click on *Tables* from the side menu.
 

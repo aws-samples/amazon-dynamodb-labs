@@ -1,8 +1,8 @@
-+++
-title = "Step 2 - Review the InvoiceAndBills table on the DynamoDB console"
-date = 2019-12-02T12:24:34-08:00
-weight = 2
-+++
+---
+title: "Step 2 - Review the InvoiceAndBills table on the DynamoDB console"
+date: 2019-12-02T12:24:34-08:00
+weight: 2
+---
 
 In the DynamoDB console, open the **InvoiceAndBills** table and choose the **Items** menu option. From the dropdown menu, choose `InvoiceAndBills GSI_1` and then `Scan` the table.
 

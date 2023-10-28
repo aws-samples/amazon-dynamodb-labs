@@ -1,8 +1,8 @@
-+++
-title = "Optional - Pipeline Deep Dive"
-date = 2019-12-02T10:26:28-08:00
-weight = 3
-+++
+---
+title: "Optional - Pipeline Deep Dive"
+date: 2019-12-02T10:26:28-08:00
+weight: 3
+---
 
 {{% notice info %}}
 Understanding how the pipeline works internally is recommended, however reading this page is not mandatory to complete the workshop.

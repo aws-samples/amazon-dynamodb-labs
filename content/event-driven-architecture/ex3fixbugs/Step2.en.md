@@ -1,8 +1,8 @@
-+++
-title = "Step 2: Ensure idempotency of ReduceLambda function"
-date = 2019-12-02T10:45:32-08:00
-weight = 2
-+++
+---
+title: "Step 2: Ensure idempotency of ReduceLambda function"
+date: 2019-12-02T10:45:32-08:00
+weight: 2
+---
 
 
 The objective of this step is to modify the `ReduceLambda` function to ensure idempotency, which means the values of the downstream `AggregateTable` will remain unchanged when old records are re-processed in the `ReduceLambda` function. DynamoDB transactions provide idempotency via the parameter `ClientRequestToken` that can be supplied with the  `TransactWriteItems` API operation. The `ClientRequestToken` makes sure that subsequent invocations of transactions with a token that was already used in the last 10 minutes don’t result in updates to the DynamoDB table.

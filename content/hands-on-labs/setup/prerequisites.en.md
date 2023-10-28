@@ -1,8 +1,8 @@
-+++
-title = "Prerequisites"
-date = 2020-08-06T07:38:58-05:00
-weight = 11
-+++
+---
+title: "Prerequisites"
+date: 2020-08-06T07:38:58-05:00
+weight: 11
+---
 
 To run this lab, you'll need an AWS account, and a user identity with access to the following services:
 

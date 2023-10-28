@@ -1,8 +1,8 @@
-+++
-title = "Step 6 - After increasing the table’s capacity, load more data"
-date = 2019-12-02T10:26:29-08:00
-weight = 7
-+++
+---
+title: "Step 6 - After increasing the table’s capacity, load more data"
+date: 2019-12-02T10:26:29-08:00
+weight: 7
+---
 
 After you increased the table’s capacity, run the following Python script again to populate the table using the `logfile_medium2.csv` input data file with the same number of rows as when you ran this command previously. Notice that the execution of the command happens more quickly this time.
 

@@ -1,8 +1,8 @@
-+++
-title = "Step 2 - Query all the employees from a state"
-date = 2019-12-02T12:16:25-08:00
-weight = 2
-+++
+---
+title: "Step 2 - Query all the employees from a state"
+date: 2019-12-02T12:16:25-08:00
+weight: 2
+---
 
 You can use the new global secondary index to query the table. If you use only the state, the query does not use the sort key attribute. However, if the query has a value for the second parameter, the code uses the `GSI_3_SK` attribute of the global secondary index, which holds the same value as the `city_dept` attribute, to query all the values that begin with the parameter value.
 

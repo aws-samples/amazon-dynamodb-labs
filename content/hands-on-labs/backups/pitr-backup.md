@@ -1,9 +1,9 @@
-+++
-title = "Point-In-Time Recovery Backup"
-menuTitle = "Point-In-Time Recovery Backup"
-date = 2021-04-24T07:38:58-05:00
-weight = 62
-+++
+---
+title: "Point-In-Time Recovery Backup"
+menuTitle: "Point-In-Time Recovery Backup"
+date: 2021-04-24T07:38:58-05:00
+weight: 62
+---
 
 
 [DynamoDB Point-in-time recovery](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/PointInTimeRecovery.html) aka **"PITR"** helps to protect your DynamoDB

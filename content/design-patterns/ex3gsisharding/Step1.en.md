@@ -1,8 +1,8 @@
-+++
-title = "Step 1 - Creating the GSI"
-date = 2019-12-02T10:45:31-08:00
-weight = 1
-+++
+---
+title: "Step 1 - Creating the GSI"
+date: 2019-12-02T10:45:31-08:00
+weight: 1
+---
 
 
 The global secondary index for this exercise was created during the setup stage of this workshop. You can see the description of the global secondary index by executing the following AWS CLI command.

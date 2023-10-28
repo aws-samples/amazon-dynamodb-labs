@@ -1,8 +1,8 @@
-+++
-title = "Bank Payments Scenario"
-chapter = false
-weight = 2
-+++
+---
+title: "Bank Payments Scenario"
+chapter: false
+weight: 2
+---
 
 ## NoSQL Design: Bank Payments Scenario
 

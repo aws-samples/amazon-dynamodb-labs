@@ -1,12 +1,11 @@
-+++
-title = "Explore DynamoDB with the CLI"
-menuTitle = "Explore DynamoDB with the CLI"
-date = 2021-04-21T07:33:04-05:00
-weight = 20
-chapter = true
-pre = "<b>2. </b>"
-
-+++
+---
+title: "Explore DynamoDB with the CLI"
+menuTitle: "Explore DynamoDB with the CLI"
+date: 2021-04-21T07:33:04-05:00
+weight: 20
+chapter: true
+pre: "<b>2. </b>"
+---
 
 We will be exploring DynamoDB with the AWS CLI using the [AWS cloud9 management Console](https://console.aws.amazon.com/cloud9/home).  If you haven't already, choose *open IDE* to launch AWS Cloud9 environment. You can close the Welcome screen and adjust your terminal to increase screen area, or close all the windows and navigate to *Window* -> *New Terminal* to open a new terminal window.
 

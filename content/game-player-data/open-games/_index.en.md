@@ -1,12 +1,12 @@
-+++
-title = "Find open games"
-menuTitle = "Find open games"
-date = 2021-04-21T07:33:04-05:00
-weight = 40
-chapter = true
-pre = "<b>4. </b>"
-description = "In this module, you learn about using Global Secondary Indexes (GSIs) as a sparse index and use it to find open games."
-+++
+---
+title: "Find open games"
+menuTitle: "Find open games"
+date: 2021-04-21T07:33:04-05:00
+weight: 40
+chapter: true
+pre: "<b>4. </b>"
+description: "In this module, you learn about using Global Secondary Indexes (GSIs) as a sparse index and use it to find open games."
+---
 
 One of the biggest adjustments for users who are new to DynamoDB and NoSQL is how to model data to filter across an entire dataset. For example, in the gaming application, you need to find games with open spots so that you can show users which games they can join.
 

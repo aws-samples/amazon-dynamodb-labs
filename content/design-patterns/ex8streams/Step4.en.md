@@ -1,8 +1,8 @@
-+++
-title = "Step 4 - Enable DynamoDB Streams"
-date = 2019-12-02T12:34:07-08:00
-weight = 4
-+++
+---
+title: "Step 4 - Enable DynamoDB Streams"
+date: 2019-12-02T12:34:07-08:00
+weight: 4
+---
 
 Now that we have an AWS Lambda function created to process the DynamoDB Streams records, we need to enable the DynamoDB Stream on the `logfile` table. In the following step we will connect the stream with the function.
 
