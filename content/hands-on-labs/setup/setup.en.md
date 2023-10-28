@@ -1,8 +1,9 @@
 ---
 title: "Environment Set up"
-menuTitle: "Set Up"
+menuTitle: "On your own"
 date: 2021-04-21T07:39:31-05:00
-weight: 12
+weight: 5
+pre: "<b>Start: </b>"
 ---
 
 {{% notice warning %}}
@@ -11,7 +12,7 @@ Only complete this section once, and only if you're running it on your own accou
 {{% /notice %}}
 
 {{% notice info %}}
-Only complete this section if you are running the workshop on your own. If you are at an AWS hosted event (such as re:Invent, Immersion Day, etc), go to [At an AWS hosted Event]({{< ref "design-patterns/setup/start-here/aws-ws-event">}})
+Only complete this section if you are running the workshop on your own. If you are at an AWS hosted event (such as re:Invent, Immersion Day, etc), go to [At an AWS hosted Event]({{< ref "/hands-on-labs/setup/aws-ws-event">}})
 {{% /notice %}}
 
 ## Launch the CloudFormation stack
