@@ -25,4 +25,4 @@ During the course of the lab, you will make DynamoDB tables that will incur a co
 ![CloudFormation parameters](/images/awsconsole2.png)
   The stack will create DynamoDB tables, Lambda functions, Kinesis streams, and IAM roles and policies which will be used later on in the lab.
 
-1. After the CloudFormation stack is `CREATE_COMPLETE`, [continue onto Step 1]({{< ref "event-driven-architecture/ex1overview" >}}).  
+1. After the CloudFormation stack is `CREATE_COMPLETE`, [continue onto the overview]({{< ref "event-driven-architecture/ex1overview" >}}).  

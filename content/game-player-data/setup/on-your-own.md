@@ -3,7 +3,7 @@ title: "On your own Set up"
 menuTitle: "On your own"
 date: 2021-04-21T07:39:31-05:00
 weight: 12
-pre: "<b>Start here:</b> "
+pre: "<b>Start:</b> "
 ---
 
 {{% notice warning %}}
@@ -35,4 +35,4 @@ During the course of the lab, you will make DynamoDB tables that will incur a co
   The stack will create a Cloud9 lab instance, a role for the instance, and a role for the AWS Lambda function used later on in the lab. It will use Systems Manager to configure the Cloud9 instance.
 
 
-1. After the CloudFormation stack is `CREATE_COMPLETE`, [continue onto Step 1]({{< ref "design-patterns/setup/Step1" >}}).  
+1. After the CloudFormation stack is `CREATE_COMPLETE`, [continue onto connecting to Cloud9]({{< ref "game-player-data/setup/Step1" >}}).  

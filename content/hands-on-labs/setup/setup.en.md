@@ -35,4 +35,4 @@ During the course of the lab, you will make DynamoDB tables that will incur a co
   The stack will create a Cloud9 lab instance, a role for the instance, and a role for the AWS Lambda function used later on in the lab. It will use Systems Manager to configure the Cloud9 instance.
 
 
-1. After the CloudFormation stack is `CREATE_COMPLETE`, [continue onto Step 1]({{< ref "design-patterns/setup/Step1" >}}).  
+1. After the CloudFormation stack is `CREATE_COMPLETE`, [continue onto Prerequisites]({{< ref "hands-on-labs/setup/prerequisites" >}}).  
