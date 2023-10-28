@@ -4,7 +4,6 @@ menuTitle: "Relational Modeling & Migration"
 date: 2021-04-25T07:33:04-05:00
 weight: 50
 pre: "<b>5. </b>"
-
 ---
 
 In this module, you will learn how to design a target data model in DynamoDB for highly normalized relational data in a relational database.

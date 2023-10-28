@@ -2,7 +2,6 @@
 title: "Cleanup"
 chapter: true
 description: "Cleanup Resources Created During Lab"
-
 weight: 1000
 ---
 
