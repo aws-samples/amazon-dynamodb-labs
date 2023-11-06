@@ -13,7 +13,7 @@ Let's create the DMS resources for the workshop.
 5.  Under “Name, review, and create” add the role name as dms-vpc-role and click Create role
 
 {{% notice note %}}
-_Do not continue unless you have made the IAM role.**
+_Do not continue unless you have made the IAM role._
 {{% /notice %}}
 
 1. Launch the CloudFormation template in US East 1 to deploy the resources in your account:
