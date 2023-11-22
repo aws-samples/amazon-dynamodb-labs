@@ -24,22 +24,17 @@ jobs:
       with:
         submodules: 'recursive'
         fetch-depth: '0'
-    - name: Setup Hugo
-      uses: peaceiris/actions-hugo@v2
-      with:
-        hugo-version: '0.102.3'
-        # extended: true
     - name: Setup Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.10'
-    - name: Build Hugo
-      run: hugo --buildFuture
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
         aws-region: us-east-1
         role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+    - name: Pull preview build
+      run: aws s3 cp s3://amazon-dynamodb-labs-static/build/preview_build . && chmod +x preview_build
     - name: Build Assets
       run: python3 ./.github/scripts/build-assets.py
     - name: S3Sync

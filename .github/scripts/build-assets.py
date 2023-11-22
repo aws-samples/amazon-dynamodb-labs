@@ -1,8 +1,10 @@
 import os
 import sys
+import time
 import glob
 import shutil
 import ntpath
+import tempfile
 import subprocess
 from pathlib import Path
 from zipfile import ZipFile
@@ -69,4 +71,15 @@ for zip_name in zips_to_make:
             workshop_zip.write(python_script, tail)
     shutil.move(os.path.join(os.getcwd(), zip_file_name), os.path.join(dest_root, 'assets', zip_file_name))
 
+# Check build
+shell_out = tempfile.NamedTemporaryFile(mode='w')
+proc = subprocess.Popen(['preview_build'],
+						stdout=shell_out, stderr=shell_out)
+time.sleep(10)
+#os.system("ps -e | grep \"preview_build\" | awk")
+proc.kill()
+with open(shell_out.name) as f:
+	for line in f:
+		print(line)
+shell_out.close()
 exit()
