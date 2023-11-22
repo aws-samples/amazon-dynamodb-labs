@@ -16,4 +16,4 @@ Prior expertise with AWS and NoSQL databases is beneficial but not required to c
 If you're brand new to DynamoDB with no experience, you may want to begin with *Hands-on Labs for Amazon DynamoDB*. If you want to learn the design patterns for DynamoDB, check out *Advanced Design Patterns for DynamoDB* and the *Design Challenges* scenarios.
 
 Dive into the content:
-{{% children  depth="1" description="true" %}}
+::children{depth=1}

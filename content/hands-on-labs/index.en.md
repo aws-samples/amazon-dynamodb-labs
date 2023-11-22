@@ -9,7 +9,7 @@ In this workshop, you will learn to create and work with [Amazon DynamoDB](https
 
 Here's what this workshop includes:
 
-{{% children depth="1" description="true" %}}
+::children{depth=1}
 
 ### Target audience
 

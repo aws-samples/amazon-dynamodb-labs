@@ -13,7 +13,7 @@ Over the course of two labs you will have to first connect all the elements of t
 
 Here's what this workshop includes:
 
-{{% children  depth="1" description="true" %}}
+::children{depth=1}
 
 ### Target audience
 

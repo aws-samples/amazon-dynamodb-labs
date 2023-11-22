@@ -14,7 +14,7 @@ https://aws.amazon.com/dynamodb/gaming/
 
 Here's what this workshop includes:
 
-{{% children depth="1" description="true" %}}
+::children{depth=1}
 
 
 ### Target audience

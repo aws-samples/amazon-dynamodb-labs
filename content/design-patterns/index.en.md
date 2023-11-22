@@ -9,7 +9,9 @@ In this workshop, you review [Amazon DynamoDB](https://docs.aws.amazon.com/amazo
 
 Here's what this workshop includes:
 
-{{% children  depth="1" description="true" %}}
+::children{depth=1}
+
+
 
 ### Target audience
 
