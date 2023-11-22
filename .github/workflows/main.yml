@@ -34,11 +34,11 @@ jobs:
         aws-region: us-east-1
         role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
     - name: Pull preview build
-      run: aws s3 cp s3://amazon-dynamodb-labs-static/build/preview_build . && chmod +x preview_build
+      run: aws s3 sync s3://amazon-dynamodb-labs-static/build/ . && chmod +x preview_build
     - name: Build Assets
       run: python3 ./.github/scripts/build-assets.py
     - name: S3Sync
-      run: aws s3 sync public/assets/ s3://assets/$STEP_S3_BUCKET --delete
+      run: aws s3 sync public/assets/ s3://$STEP_S3_BUCKET/assets/ --delete
     - name: SetS3Acl
       run: aws s3api put-object-acl --grant-read uri=http://acs.amazonaws.com/groups/global/AllUsers --bucket $STEP_S3_BUCKET --key assets/lab.yaml
     - name: SetS3Acl
