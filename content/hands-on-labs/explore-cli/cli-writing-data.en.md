@@ -76,7 +76,7 @@ The solution is expandable below but try to figure it out yourself before moving
 
 **Click below to expand and see the exercise solutions**
 
-{{%expand "Expand this to see the solution" %}}
+::::expand{header="Expand this to see the solution"}
 
 First we need to see what the item looks like:
 
@@ -154,5 +154,4 @@ aws dynamodb update-item \
 ```
 
 You can use the `get-item` command to verify that these changes were made after each step.
-
-{{% /expand%}}
+::::

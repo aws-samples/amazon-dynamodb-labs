@@ -28,4 +28,4 @@ pre: "<b>Start: </b>"
   The stack will create a Cloud9 lab instance, a role for the instance, and a role for the AWS Lambda function used later on in the lab. It will use Systems Manager to configure the Cloud9 instance.
 
 
-1. After the CloudFormation stack is `CREATE_COMPLETE`, [continue onto Step 1]{href="design-patterns/setup/Step1"}.  
+1. After the CloudFormation stack is `CREATE_COMPLETE`, :link[continue onto Step 1]{href="design-patterns/setup/Step1"}.  

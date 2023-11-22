@@ -43,7 +43,7 @@ The solution is expandable below but try to figure it out yourself before moving
 
 **Click below to expand and see the exercise solutions**
 
-{{%expand "Expand this to see the solution" %}}
+::::expand{header="Expand this to see the solution"}
 
 Navigate to the **ProductCatalog** Table and click the `Id` 201 hyperlink to bring up the Item Editor for that item. Click the `+` icon next to the *Color* attribute to expand that List.
 
@@ -60,5 +60,4 @@ We can see by expanding the Items Preview that those two list entries were added
 Return to the item editor for `Id` 201 and use the `Remove` button next to the Silver and Green list entries to remove them from the `Color` attribute, then click `Save changes`.
 
 ![Console Modify Item 4](/static/images/hands-on-labs/explore-console/console_modify_item_4.png)
-
-{{% /expand%}}
+::::

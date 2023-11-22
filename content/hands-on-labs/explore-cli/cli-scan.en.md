@@ -71,7 +71,7 @@ The solution is expandable below but try to figure it out yourself before moving
 
 **Click below to expand and see the exercise solutions**
 
-{{%expand "Expand this to see the solution" %}}
+::::expand{header="Expand this to see the solution"}
 First we need to understand the structure of the data in the Forum Table so let's do a scan to see what attributes exist:
 
 ```bash
@@ -148,5 +148,4 @@ aws dynamodb scan \
     --expression-attribute-names '{"#Views" : "Views"}' \
     --return-consumed-capacity TOTAL
 ```
-
-{{% /expand%}}
+::::

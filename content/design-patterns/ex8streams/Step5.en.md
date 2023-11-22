@@ -15,15 +15,13 @@ aws lambda create-event-source-mapping \
 
 ::alert[You must copy the full stream label ARN, including the timestamp on the end]
 
-{{%expand "Click here for an example" %}}
-
+::::expand{header="Click here for an example"}
 ```bash
 aws lambda create-event-source-mapping \
 --function-name ddbreplica_lambda --enabled --batch-size 100 --starting-position TRIM_HORIZON \
 --event-source-arn arn:aws:dynamodb:<REGION>:<ACCOUNTID>:table/logfile/stream/2021-12-31T00:00:00.000
 ```
-
-{{% /expand%}}
+::::
 
 The following is the expected result.
 

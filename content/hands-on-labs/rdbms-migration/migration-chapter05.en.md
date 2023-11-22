@@ -360,12 +360,12 @@ Replace the string "REPLACE THIS STRING BY MOVIES LIST" with list of movies copi
 }
 ```
 #### Solutions 
-{{%expand "If you are having trouble with making the JSON documents for the tasks, expand this section to get the solutions!" %}}
+::::expand{header="If you are having trouble with making the JSON documents for the tasks, expand this section to get the solutions!"}
 
 -   [First Task - historical-migration01](/files/hands-on-labs/Task_1.json)
 -   [Second Task - historical-migration02](/files/hands-on-labs/Task_2.json)
 -   [Third Task - historical-migration03](/files/hands-on-labs/Task_3.json)
-{{% /expand%}}
+::::
 
 ### Monitor and the restart/resume the tasks
 The replication task for historical migration will start moving data from MySQL imdb.movies view, title_akas and title_ratings to DynamoDB table will start in a few minutes.

@@ -49,9 +49,9 @@ The solution is expandable below but try to figure it out yourself before moving
 
 **Click below to expand and see the exercise solutions**
 
-{{%expand "Expand this to see the solution" %}}
+::::expand{header="Expand this to see the solution"}
 If we want to order items in descending order of the sort key there are two ways to accomplish this in the console. We could either choose the **Sort descending** checkbox before running the query, or we could run the query and click the arrow next to the *ReplyDateTime* attribute name in the **Items returned** pane to change the sort order on that attribute.
 
 ![Item Explorer Query Reply 4](/static/images/hands-on-labs/explore-console/console_item_explorer_query_reply_4.png)
+::::
 
-{{% /expand%}}

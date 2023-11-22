@@ -28,15 +28,14 @@ The solution is expandable below but try to figure it out yourself before moving
 
 **Click below to expand and see the exercise solutions**
 
-{{%expand "Expand this to see the solution" %}}
+::::expand{header="Expand this to see the solution"}
 
 1. Navigate to the Item Explorer for the **Reply** table. Running a Query on a GSI is no different than running it against a table, except we need to select the GSI we want to use for the Query and we'll use the GSI key attributes in the KeyConditionExpression.
 
 Even if the table has a billion **Reply** items authored by other Users, this query will only cost us to read the exact 3 items we're hoping to return (unlike a `Scan`).
 
 ![Console Create GSI 2](/static/images/hands-on-labs/explore-console/console_create_gsi_2.png)
-
-{{% /expand%}}
+::::
 
 ### Cleanup
 

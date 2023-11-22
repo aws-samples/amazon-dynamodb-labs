@@ -46,7 +46,7 @@ You can try a different US state by changing the last parameter of the command. 
 python query_employees.py employees state 'TX'
 ```
 
-{{%expand "If you want to query other states, click here to open the list of US states with some data in the table" %}}
+::::expand{header="If you want to query other states, click here to open the list of US states with some data in the table"}
 
 |     |     |     |     |     |
 | --- | --- | --- | --- | --- |
@@ -54,7 +54,7 @@ python query_employees.py employees state 'TX'
 | MA  | MD  | MI  | NC  | NY  |
 | OR  | PA  | TN  | TX  | WA  |
 
-{{% /expand%}}
+::::
 
 <!-- **The list of US states with some data in the sample data is: AZ, CA, CO, IL, IN, MA, MD, MI, NC, NY, OR, PA, TN, TX, and WA.** -->
 
@@ -95,7 +95,7 @@ You also can try a different title, as shown in the following python command.
 python query_employees.py employees current_title 'IT Support Manager'
 ```
 
-{{%expand "If you want to know the list of all the available titles, click here!" %}}
+::::expand{header="If you want to know the list of all the available titles, click here!"}
 
 |                                          |                               |                                    |                                    |                                         |                                 |
 | ---------------------------------------- | ----------------------------- | ---------------------------------- | ---------------------------------- | --------------------------------------- | ------------------------------- |
@@ -112,7 +112,7 @@ python query_employees.py employees current_title 'IT Support Manager'
 | Systems Analyst                          | System Architect              | Systems Designer                   | Systems Software Engineer          | Technical Operations Officer            | Technical Support Engineer      |
 | Technical Support Specialist             | Technical Specialist          | Telecommunications Specialist      | Web Administrator                  | Web Developer                           | Webmaster                       |
 
-{{% /expand%}}
+::::
 
 <!-- **The list of available titles is:** Application Developer,Application Support Analyst,Applications Engineer,Associate Developer,Chief Technology Officer (CTO) ,Chief Information Officer (CIO) ,Computer and Information Systems Manager,Computer Systems Manager,Customer Support Administrator,Customer Support Specialist,Data Center Support Specialist,Data Quality Manager,Database Administrator,Desktop Support Manager,Desktop Support Specialist,Developer,Director of Technology,Front End Developer,Help Desk Specialist,Help Desk Technician,Information Technology Coordinator,Information Technology Director,Information Technology Manager,IT Support Manager,IT Support Specialist,IT Systems Administrator,Java Developer,Junior Software Engineer,Management Information Systems Director,.NET Developer,Network Architect,Network Engineer,Network Systems Administrator,Programmer,Programmer Analyst,Security Specialist,Senior Applications Engineer,Senior Database Administrator,Senior Network Architect,Senior Network Engineer,Senior Network System Administrator,Senior Programmer,Senior Programmer Analyst,Senior Security Specialist,Senior Software Engineer,Senior Support Specialist,Senior System Administrator,Senior System Analyst,Senior System Architect,Senior System Designer,Senior Systems Analyst,Senior Systems Software Engineer,Senior Web Administrator,Senior Web Developer,Software Architect,Software Developer,Software Engineer,Software Quality Assurance Analyst,Support Specialist,Systems Administrator,Systems Analyst,System Architect,Systems Designer,Systems Software Engineer,Technical Operations Officer,Technical Support Engineer,Technical Support Specialist,Technical Specialist,Telecommunications Specialist,Web Administrator,Web Developer,Webmaster -->
 

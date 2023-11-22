@@ -32,9 +32,8 @@ The solution is expandable below but try to figure it out yourself before moving
 
 **Click below to expand and see the exercise solutions**
 
-{{%expand "Expand this to see the solution" %}}
+::::expand{header="Expand this to see the solution"}
 For this access pattern we will need to make a FilterCondition with clauses on both the *Threads* and *Views* attributes before clicking **Run**.
 
 ![Item Explorer Scan Reply 2](/static/images/hands-on-labs/explore-console/console_item_explorer_scan_reply_2.png)
-
-{{% /expand%}}
+::::
