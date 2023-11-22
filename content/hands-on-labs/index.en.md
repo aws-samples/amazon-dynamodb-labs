@@ -24,4 +24,4 @@ This workshop is designed for developers, engineers, and database administrators
 
 ### Recommended study before taking the lab
 
-If you're not part of an AWS event and you haven't recently reviewed DynamoDB design concepts, we suggest you watch this video on [Advanced Design Patterns for DynamoDB]({{% siteparam "latest_rh_design_pattern_yt" %}}), which is about an hour in duration.
+If you're not part of an AWS event and you haven't recently reviewed DynamoDB design concepts, we suggest you watch this video on [Advanced Design Patterns for DynamoDB](:param{key="latest_rh_design_pattern_yt"}), which is about an hour in duration.

@@ -61,6 +61,6 @@ If you ran the lab on your own AWS account, you should delete all the tables mad
 
 #### Reporting issues
 
-Firstly, if you encounter an issue running the lab that needs to be addressed we recommend you fork the code on GitHub and make a pull request with your change. Please review [our contributing guide on GitHub.com]({{% siteparam "github_contributing_guide" %}}).
+Firstly, if you encounter an issue running the lab that needs to be addressed we recommend you fork the code on GitHub and make a pull request with your change. Please review [our contributing guide on GitHub.com](:param{key="github_contributing_guide"}).
 
-Secondly, if you have a feature request or you are unable to fork the package to make a change yourself please submit [an issue on our GitHub page]({{% siteparam "github_issues_link" %}}).
+Secondly, if you have a feature request or you are unable to fork the package to make a change yourself please submit [an issue on our GitHub page](:param{key="github_issues_link"}).

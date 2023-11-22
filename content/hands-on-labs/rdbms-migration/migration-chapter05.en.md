@@ -362,9 +362,9 @@ Replace the string "REPLACE THIS STRING BY MOVIES LIST" with list of movies copi
 #### Solutions 
 ::::expand{header="If you are having trouble with making the JSON documents for the tasks, expand this section to get the solutions!"}
 
--   [First Task - historical-migration01](/files/hands-on-labs/Task_1.json)
--   [Second Task - historical-migration02](/files/hands-on-labs/Task_2.json)
--   [Third Task - historical-migration03](/files/hands-on-labs/Task_3.json)
+-   [First Task - historical-migration01](:assetUrl{path="/files/hands-on-labs/Task_1.json"})
+-   [Second Task - historical-migration02](:assetUrl{path="/files/hands-on-labs/Task_2.json"})
+-   [Third Task - historical-migration03](:assetUrl{path="/files/hands-on-labs/Task_3.json"})
 ::::
 
 ### Monitor and the restart/resume the tasks
