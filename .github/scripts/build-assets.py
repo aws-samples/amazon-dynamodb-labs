@@ -75,11 +75,11 @@ for zip_name in zips_to_make:
 preview_build = os.path.join(pkg_root, 'preview_build')
 shell_out = tempfile.NamedTemporaryFile(mode='w')
 try:
-    proc = subprocess.Popen([preview_build],
-		stdout=shell_out, stderr=shell_out)
+    proc = subprocess.Popen([preview_build," -disable-refresh"],
+		stdout=shell_out, stderr=shell_out, cwd=pkg_root)
 except FileNotFoundError as err:
-	proc = subprocess.Popen(["preview_build"],
-		stdout=shell_out, stderr=shell_out)
+	proc = subprocess.Popen(["preview_build", "-disable-refresh"],
+		stdout=shell_out, stderr=shell_out, cwd=pkg_root)
 
 
 time.sleep(10)
