@@ -35,9 +35,7 @@ Next, we want to connect the `ReduceLambda` function to the DynamoDB stream of t
 
 3. Click the `Add` button in the bottom right corner.
 
-{{% notice warning %}}
-You will see an error here! Before we can enable this trigger we need to add IAM permissions to this Lambda functions.
-{{% /notice %}}
+::alert[You will see an error here! Before we can enable this trigger we need to add IAM permissions to this Lambda functions.]{type="warning"}
 
 ![Architecture-1](/static/images/event-driven-architecture/lab1/reduce-lambda-error-permissions.png)
 
@@ -56,9 +54,7 @@ The error message above informs you that the `ReduceLambda` function doesn't hav
 ![Architecture-1](/static/images/event-driven-architecture/lab1-permissions/click_on_edit_policy.png)
 
 ### Modify the IAM policy  
-{{% notice info %}}
-There is already an IAM permission in place for DynamoDB: this is necessary to ensure the workshop runs as expected. Don't get confused by this and please don't delete the permissions we've already granted! All of the Lambda functions need to be able to access the ParameterTable to check the current progress of the lab and the respective failure modes.
-{{% /notice %}}
+::alert[There is already an IAM permission in place for DynamoDB: this is necessary to ensure the workshop runs as expected. Don't get confused by this and please don't delete the permissions we've already granted! All of the Lambda functions need to be able to access the ParameterTable to check the current progress of the lab and the respective failure modes.]
 
 * First we need to add permissions so the `ReduceLambda` function is able to read messages from the stream of the `ReduceTable`.
     * Click on `Add additional permissions`
@@ -75,9 +71,7 @@ Now we need to associate these permissions with specific resources (e.g. we want
  * `Stream label` - Ensure the `Any` box is checked so that any stream label is supported. A Stream label is a unique identifier for a DynamoDB stream.
 * Finally, click on `Add`. You've now granted permission for the `ReduceLambda` to read from the `ReduceTable` stream, but there is more to be done still.
 
-{{% notice info %}}
-The pre-filled value for `Account` is your AWS Account ID: This is already the correct value for this field, so please don't change it.
-{{% /notice %}}
+::alert[The pre-filled value for `Account` is your AWS Account ID: This is already the correct value for this field, so please don't change it.]
 
 ![Architecture-1](/static/images/event-driven-architecture/lab1-permissions/resource_stream.png)
 
@@ -99,9 +93,7 @@ If we make no further change, the `ReduceLambda` function will not be able to up
 
 If all of the above steps are executed correctly you will be able to connect the `ReduceLambda` to the DynamoDB stream of the `ReduceTable` by switching back to the open tab and again trying to click on `Add`. You may need to wait a couple of seconds for the IAM policy changes to propagate.
 
-{{% notice info %}}
-If you're not able to add the trigger, this may be due to a misconfiguration of the IAM policy. If you need help, go to `Summary & Conclusions` on the left, then `Solutions`, and you should see the desired `ReduceLambdaPolicy`.
-{{% /notice %}}
+::alert[If you're not able to add the trigger, this may be due to a misconfiguration of the IAM policy. If you need help, go to `Summary & Conclusions` on the left, then `Solutions`, and you should see the desired `ReduceLambdaPolicy`.]
 
 ## How do you know it is working?
 
@@ -111,8 +103,6 @@ Another way to verify it is working is to observe the items written by `ReduceLa
 
 ![AggregateTable items](/static/images/event-driven-architecture/lab1/aggregate-table-items.png)
 
-{{% notice info %}}
-AWS Event: If Steps 1, 2, and 3 of *Lab 1* were completed successfully you should start gaining score points within one to two minutes. Please check the scoreboard! Ask your lab moderator to provide a link to the scoreboard.
-{{% /notice %}}
+::alert[AWS Event: If Steps 1, 2, and 3 of *Lab 1* were completed successfully you should start gaining score points within one to two minutes. Please check the scoreboard! Ask your lab moderator to provide a link to the scoreboard.]
 
 Continue on to: [Lab 2]({{< ref "event-driven-architecture/ex3fixbugs" >}})

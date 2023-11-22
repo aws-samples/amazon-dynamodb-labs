@@ -20,9 +20,7 @@ The following code block scans the table.
       ProjectionExpression='bytessent')
 ```
 
-{{% notice info %}}
-You can review the file on your own with `vim ~/workshop/scan_logfile_simple.py`. Type `:q` and hit enter to exit vim.
-{{% /notice %}}
+::alert[You can review the file on your own with `vim ~/workshop/scan_logfile_simple.py`. Type `:q` and hit enter to exit vim.]
 
 Notice that there is a `Limit` parameter set in the `Scan` command. A single `Scan` operation will read up to the maximum number of items set (if using the `Limit` parameter) or a maximum of 1 MB of data, and then apply any filtering to the results by using `FilterExpression`. If the total number of scanned items exceeds the maximum set by the limit parameter or the data set size limit of 1 MB, the scan stops and results are returned to the user as a `LastEvaluatedKey` value. This value can be used in a subsequent operation so that you can pick up where you left off.
 

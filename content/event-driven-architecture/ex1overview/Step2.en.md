@@ -4,9 +4,7 @@ date: 2019-12-02T10:26:28-08:00
 weight: 3
 ---
 
-{{% notice info %}}
-Understanding how the pipeline works internally is recommended, however reading this page is not mandatory to complete the workshop.
-{{% /notice %}}
+::alert[Understanding how the pipeline works internally is recommended, however reading this page is not mandatory to complete the workshop.]
 
 This section explains in detail how the pipeline works from end-to-end. For a simplified explanation refer to the figure below where we have divided the pipeline into three stages. For each stage we outline the input and the output of the stage.
 

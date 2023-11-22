@@ -60,9 +60,7 @@ except Exception as e:
     print(e)
 ```
 
-{{% notice info %}}
-Edit **scripts/add_secondary_index.py**, set both `ReadCapacityUnits` and `WriteCapacityUnits` to **100** for `OpenGamesIndex`.
-{{% /notice %}}
+::alert[Edit **scripts/add_secondary_index.py**, set both `ReadCapacityUnits` and `WriteCapacityUnits` to **100** for `OpenGamesIndex`.]
 
 Whenever attributes are used in a primary key for a table or secondary index, they must be defined in `AttributeDefinitions`. Then, you `Create` a new GSI in the `GlobalSecondaryIndexUpdates` property. For this GSI, you specify the index name, the schema of the primary key, the provisioned throughput, and the attributes you want to project. 
 

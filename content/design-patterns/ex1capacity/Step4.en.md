@@ -18,9 +18,7 @@ The CloudWatch metrics will look like what you see in the following image.
 
 ![The Cloud Watch metrics for the base table](/static/images/tablelogfile-stats.png)
 
-{{% notice note %}}
-You might not see provisioned capacity data in your read or write capacity graphs, which are displayed as red lines. It takes time for DynamoDB to generate provisioned capacity CloudWatch metrics, especially for new tables.
-{{% /notice %}}
+::alert[You might not see provisioned capacity data in your read or write capacity graphs, which are displayed as red lines. It takes time for DynamoDB to generate provisioned capacity CloudWatch metrics, especially for new tables.]
 
 The CloudWatch metrics will look like what you see in the following image for the global secondary index.
 

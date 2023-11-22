@@ -88,9 +88,7 @@ Apply these changes to your Lambda function code, either manually or just by cop
 
 Check your scoreboard. If all the previous steps are completed successfully you should start accumulating a score above 300 points. If not, check the CloudWatch Logs of the `ReduceLambda` function to check for any errors. If you see any errors, they may provide a hint on how to fix them. If you need help, go to `Summary & Conclusions` on the left, then `Solutions`, and you can see the desired code of the `ReduceLambda`.
 
-{{% notice info %}}
-Even if you've done everything correctly, the error rate won't drop to zero! The manually induced failures will still be there, but now the pipeline is able to sustain them and still ensure consistent aggregation.
-{{% /notice %}}
+::alert[Even if you've done everything correctly, the error rate won't drop to zero! The manually induced failures will still be there, but now the pipeline is able to sustain them and still ensure consistent aggregation.]
 
 Continue on  to: [Summary & Conclusions]({{< ref "event-driven-architecture/ex4summary" >}})
 

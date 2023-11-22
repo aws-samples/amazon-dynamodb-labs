@@ -12,9 +12,7 @@ In this exercise, we will set up Database Migration Service (DMS) jobs to migrat
 1. Go to [DMS Console](https://console.aws.amazon.com/dms/v2/home?region=us-east-1#dashboard) and click on Replication Instances. You can able to see a replication instance with Class dms.c5.2xlarge in Available Status.
     ![Final Deployment Architecture](/static/images/migration20.jpg)
 
-{{% notice note %}}
-_Make sure the DMS instance is Available before you continue. If it is not Available, return to the CloudFormation console to review and troubleshoot the CloudFormation stack._
-{{% /notice %}}
+::alert[_Make sure the DMS instance is Available before you continue. If it is not Available, return to the CloudFormation console to review and troubleshoot the CloudFormation stack._]
 
 ## Create source and target endpoints
 
@@ -382,7 +380,5 @@ If you were to run this exercise again but do a full load, the load times would 
 You can track the status of data loading under the Table statistics of the migration task. Once loading is in progress, feel free to move to the next section of the exercise.
   ![Final Deployment Architecture](/static/images/migration27.jpg)
 
-{{% notice warning %}}
-_Make sure all tasks are running or complete before you continue. If a task says **Ready**, check its box and choose "Restart/Resume" under the Actions button to start the task._
-{{% /notice %}}
+::alert[_Make sure all tasks are running or complete before you continue. If a task says **Ready**, check its box and choose "Restart/Resume" under the Actions button to start the task._]
 

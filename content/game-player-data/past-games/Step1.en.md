@@ -62,9 +62,7 @@ except Exception as e:
     print(e)
 ```
 
-{{% notice info %}}
-Edit **scripts/add_inverted_index.py**, set both `ReadCapacityUnits` and `WriteCapacityUnits` to **100** for `InvertedIndex`.
-{{% /notice %}}
+::alert[Edit **scripts/add_inverted_index.py**, set both `ReadCapacityUnits` and `WriteCapacityUnits` to **100** for `InvertedIndex`.]
 
 In this script, you call an `update_table()` method on the DynamoDB client. In the method, you pass details about the secondary index you want to create, including the key schema for the index, the provisioned throughput, and the attributes to project into the index. 
 

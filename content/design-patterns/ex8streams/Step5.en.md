@@ -13,9 +13,7 @@ aws lambda create-event-source-mapping \
 --event-source-arn YOUR_STREAM_ARN_HERE
 ```
 
-{{% notice info %}}
-You must copy the full stream label ARN, including the timestamp on the end
-{{% /notice %}}
+::alert[You must copy the full stream label ARN, including the timestamp on the end]
 
 {{%expand "Click here for an example" %}}
 

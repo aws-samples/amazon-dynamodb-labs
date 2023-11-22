@@ -21,6 +21,4 @@ The CloudFormation template used below will create Source VPC, EC2 hosting MySQL
  ![Final Deployment Architecture](/static/images/migration8.jpg)
 
 
-{{% notice note %}}
-_Do not continue unless the MySQL instance is passing both health checks, 2/2._
-{{% /notice %}}
+::alert[_Do not continue unless the MySQL instance is passing both health checks, 2/2._]

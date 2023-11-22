@@ -4,9 +4,7 @@ date: 2019-12-02T10:35:42-08:00
 weight: 2
 ---
 
-{{% notice info %}}
-The `MapLambda` function is already connected for you, so let us quickly check if it works as expected!
-{{% /notice %}}
+::alert[The `MapLambda` function is already connected for you, so let us quickly check if it works as expected!]
 
 ![Architecture-1](/static/images/event-driven-architecture/architecture/step2.png)
 

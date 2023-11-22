@@ -21,6 +21,4 @@ row: 2000 in 0.8817043304443359
 RowCount: 2000, Total seconds: 17.13607406616211
 ```
 
-{{% notice note %}}
-With the new capacity, the total load time is lower.
-{{% /notice %}}
+::alert[With the new capacity, the total load time is lower.]

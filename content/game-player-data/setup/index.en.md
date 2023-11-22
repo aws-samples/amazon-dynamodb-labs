@@ -22,9 +22,7 @@ In this module, you'll configure your environment and download code that you wil
 
 To set up this workshop, choose one of the following paths, depending on whether you are:
 
-{{% notice warning %}}
-If following the lab in your own AWS Account, you will create DynamoDB tables that will incur a cost that could approach tens of dollars per day. **Ensure you delete the DynamoDB tables using the DynamoDB console, and make sure you [delete the Cloud9 environment](https://docs.aws.amazon.com/cloud9/latest/user-guide/delete-environment.html) as soon as the lab is complete**.
-{{% /notice %}}
+::alert[If following the lab in your own AWS Account, you will create DynamoDB tables that will incur a cost that could approach tens of dollars per day. **Ensure you delete the DynamoDB tables using the DynamoDB console, and make sure you [delete the Cloud9 environment](https://docs.aws.amazon.com/cloud9/latest/user-guide/delete-environment.html) as soon as the lab is complete**.]{type="warning"}
 
 - […running the workshop on your own (in your own AWS account)]({{< ref "/game-player-data/setup/on-your-own" >}}), which guides you to launch a Cloud9 environment using CloudFormation
 

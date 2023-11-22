@@ -10,9 +10,7 @@ In this step, you will start an AWS Cloud9 instance and run a Python frontend th
 
 ![Architecture-1](/static/images/event-driven-architecture/lab2/lab2-optional.png)
 
-{{% notice info %}}
-AWS Cloud9 is by far not the only option to run this Python-based frontend! If you're motivated, feel free to try running it locally on your PC (make sure you run `aws configure` first - you can get your credentials on the EventEngine dashboard), or from any EC2 instance (e.g. assign an IAM role to the EC2 instance that allows access to the `AggregateTable`).
-{{% /notice %}}
+::alert[AWS Cloud9 is by far not the only option to run this Python-based frontend! If you're motivated, feel free to try running it locally on your PC (make sure you run `aws configure` first - you can get your credentials on the EventEngine dashboard), or from any EC2 instance (e.g. assign an IAM role to the EC2 instance that allows access to the `AggregateTable`).]
 
 ## Start an AWS Cloud9 instance
 Since you're clearly experienced with AWS - making it through all of the lab - we'll leave this task up to you!
@@ -26,10 +24,8 @@ pip3 install --user boto3
 
 Now, you can copy the code below into a file, give it a descriptive name (e.g. `frontend.py`) and run it (`python3 frontend.py`). You should see the current aggregates from the `AggregationTable`, with new messages coming in every 60 seconds!
 
-{{% notice info %}}
-Edit the script to update the correct region value of **REGION_NAME** as per the region you are running the lab in. Use the value in **Code** from [AWS Docs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
-For example, for Ireland, enter **eu-west-1**.
-{{% /notice %}}
+::alert[Edit the script to update the correct region value of **REGION_NAME** as per the region you are running the lab in. Use the value in **Code** from [AWS Docs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
+For example, for Ireland, enter **eu-west-1**.]
 
 ```python
 # Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.

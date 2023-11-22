@@ -12,9 +12,7 @@ Let's create the DMS resources for the workshop.
 3.  Under “Add permissions” use the search box to find the “AmazonDMSVPCManagementRole” policy and select it, then click “Next”
 5.  Under “Name, review, and create” add the role name as dms-vpc-role and click Create role
 
-{{% notice note %}}
-_Do not continue unless you have made the IAM role._
-{{% /notice %}}
+::alert[_Do not continue unless you have made the IAM role._]
 
 1. Launch the CloudFormation template in US East 1 to deploy the resources in your account:
   <a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=dynamodbmigration&templateURL={{% siteparam "lhol_migration_dms_setup_yaml" %}}" target="_blank"><img src="/images/cloudformation-launch-stack.png" alt="CloudFormation"/></a>
@@ -27,6 +25,4 @@ _Do not continue unless you have made the IAM role._
 1.  Click Submit. The CloudFormation template will take about 15 minutes to build a replication environment. You should continue the lab while the stack creates in the background.
     ![Final Deployment Architecture](/static/images/migration19.jpg)
 
-{{% notice note %}}
-_Do not wait for the stack to complete creation._ **Please continue the lab and allow it to create in the background.**
-{{% /notice %}}
+::alert[_Do not wait for the stack to complete creation._ **Please continue the lab and allow it to create in the background.**]
