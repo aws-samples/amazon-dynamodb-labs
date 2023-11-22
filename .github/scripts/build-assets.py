@@ -72,9 +72,16 @@ for zip_name in zips_to_make:
     shutil.move(os.path.join(os.getcwd(), zip_file_name), os.path.join(dest_root, 'assets', zip_file_name))
 
 # Check build
+preview_build = os.path.join(pkg_root, 'preview_build')
 shell_out = tempfile.NamedTemporaryFile(mode='w')
-proc = subprocess.Popen(['preview_build'],
-						stdout=shell_out, stderr=shell_out)
+try:
+    proc = subprocess.Popen([preview_build],
+		stdout=shell_out, stderr=shell_out)
+except FileNotFoundError as err:
+	proc = subprocess.Popen(["preview_build"],
+		stdout=shell_out, stderr=shell_out)
+
+
 time.sleep(10)
 #os.system("ps -e | grep \"preview_build\" | awk")
 proc.kill()
