@@ -9,7 +9,7 @@ pre: "<b>Start:</b> "
 ::alert[ {type="warning"}These setup instructions are identitical for LADV, LHOL, and LGME - all of which use the same Cloud9 template.
 Only complete this section once, and only if you're running it on your own account.]
 
-::alert[Only complete this section if you are running the workshop on your own. If you are at an AWS hosted event (such as re\:Invent, Immersion Day, etc), go to [At an AWS hosted Event]({{< ref "game-player-data/setup/aws-ws-event">}})]
+::alert[Only complete this section if you are running the workshop on your own. If you are at an AWS hosted event (such as re\:Invent, Immersion Day, etc), go to [At an AWS hosted Event]{href="game-player-data/setup/aws-ws-event">}})]
 ## Launch the CloudFormation stack
 ::alert[During the course of the lab, you will make DynamoDB tables that will incur a cost that could approach tens or hundreds of dollars per day. Ensure you delete the DynamoDB tables using the DynamoDB console, and make sure you delete the CloudFormation stack as soon as the lab is complete.]{type="warning"}
 
@@ -28,4 +28,4 @@ Only complete this section once, and only if you're running it on your own accou
   The stack will create a Cloud9 lab instance, a role for the instance, and a role for the AWS Lambda function used later on in the lab. It will use Systems Manager to configure the Cloud9 instance.
 
 
-1. After the CloudFormation stack is `CREATE_COMPLETE`, [continue onto connecting to Cloud9]({{< ref "game-player-data/setup/Step1" >}}).  
+1. After the CloudFormation stack is `CREATE_COMPLETE`, :link[continue onto connecting to Cloud9]{href="game-player-data/setup/Step1"}.  

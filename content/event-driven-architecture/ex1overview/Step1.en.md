@@ -19,6 +19,6 @@ However, once you reach 300 points we're increasing the difficulty for you. In *
 
 The workshop operators will display the scoring of all participants during the workshop, but you can check the scoreboard on your own.
 
-Continue on to: [Connect the Pipeline]({{< ref "event-driven-architecture/ex2pipeline" >}})
+Continue on to: :link[Connect the Pipeline]{href="/event-driven-architecture/ex2pipeline"}
 
-or: [Optional - Pipeline Deep Dive]({{< ref "event-driven-architecture/ex1overview/step2.html" >}})
+or: :link[Optional - Pipeline Deep Dive]{href="/event-driven-architecture/ex1overview/step2"}

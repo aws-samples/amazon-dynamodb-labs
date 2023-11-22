@@ -83,4 +83,4 @@ The final output in the `AggregateTable` closely resembles the `Hierarchy` attri
 
 ![DD Part3](/static/images/event-driven-architecture/deep-dive/pipeline-explanation-part-3.png)
 
-Continue on to: [Connect the Pipeline]({{< ref "event-driven-architecture/ex2pipeline" >}})
+Continue on to: :link[Connect the Pipeline]{href="/event-driven-architecture/ex2pipeline"}

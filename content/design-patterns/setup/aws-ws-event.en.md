@@ -29,4 +29,4 @@ pre: "<b>Start: </b>"
 8. On the event dashboard, click on **Open AWS console** to federate into AWS Management Console in a new tab. On the same page, click **Get started** to open the workshop instructions.
 ![Event dashboard](/static/images/aws-ws-event5.png)
 
-9. Now that you are connected continue on to: [Step 1]({{< ref "design-patterns/setup/Step1" >}}).
+9. Now that you are connected continue on to: :link[Step 1]{href="design-patterns/setup/Step1"}.

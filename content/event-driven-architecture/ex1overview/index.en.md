@@ -37,4 +37,4 @@ The *Pipeline deep dive with example* subsection contains a detailed explanation
 
 To make this workshop more exciting, when run at an AWS event all participants are rated on how many messages they can aggregate correctly using a scoreboard. The *Game rules* subsection outlines the rules of the game, and how the `GeneratorLambda` function ingests data into the start of the pipeline!
 
-Continue on to: [Game Rules]({{< ref "event-driven-architecture/ex1overview/step1.html" >}}).
+Continue on to: :link[Game Rules]{href="/event-driven-architecture/ex1overview/step1"}.

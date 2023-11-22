@@ -17,13 +17,13 @@ If you're running this lab as part of an AWS event on an account we provided, no
 
 This workshop is based on a 2-part blog series on the AWS Database blog initially published in November 2021.
 
-1. Part 1: [Build a near real-time data aggregation pipeline using a serverless, event-driven architecture](https://aws.amazon.com/blogs/database/build-a-near-real-time-data-aggregation-pipeline-using-a-serverless-event-driven-architecture/)
-2. Part 2: [Build a fault-tolerant, serverless data aggregation pipeline with exactly-once processing](https://aws.amazon.com/blogs/database/build-a-fault-tolerant-serverless-data-aggregation-pipeline-with-exactly-once-processing/)
+1. Part 1: :link[Build a near real-time data aggregation pipeline using a serverless, event-driven architecture](href="https://aws.amazon.com/blogs/database/build-a-near-real-time-data-aggregation-pipeline-using-a-serverless-event-driven-architecture/")
+2. Part 2: :link[Build a fault-tolerant, serverless data aggregation pipeline with exactly-once processing](href="https://aws.amazon.com/blogs/database/build-a-fault-tolerant-serverless-data-aggregation-pipeline-with-exactly-once-processing/")
 
 ## Blog Source
 
-While this workshop is open-sourced, the blogs were released with a GitHub repository with much of the same code that you use in this workshop. [The repo *aws-serverless-realtime-aggregation*](https://github.com/aws-samples/aws-serverless-realtime-aggregation) is on GitHub.
+While this workshop is open-sourced, the blogs were released with a GitHub repository with much of the same code that you use in this workshop. :link[The repo *aws-serverless-realtime-aggregation*](href="https://github.com/aws-samples/aws-serverless-realtime-aggregation") is on GitHub.
 
 ## Solutions
 
-[View Solutions]({{< ref "event-driven-architecture/ex4summary/step1" >}})
+:link[View Solutions]{href="event-driven-architecture/ex4summary/step1"}

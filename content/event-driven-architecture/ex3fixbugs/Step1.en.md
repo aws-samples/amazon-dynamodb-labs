@@ -139,4 +139,4 @@ Copy the code snippet above and replace it with the existing `table.update_item(
 
 Navigate to `StateLambda` and open `Logs` under the `Monitor` tab. Check the log messages by clicking on the hyperlinked LogStream cell and validate that you see the following string in the log lines: `Conditional put failed. This is either a duplicate...`. This message is produced by the exception handling code above. This tells us that the conditional expression is working as expected.
 
-Continue on to: [Step 2]({{< ref "event-driven-architecture/ex3fixbugs/step2" >}})
+Continue on to: :link[Step 2]{href="event-driven-architecture/ex3fixbugs/step2"}

@@ -10,8 +10,8 @@ description: "Setup the lab environment and connect to the lab instance on Amazo
 ## GETTING STARTED
 
 To set up this workshop, choose one of the following links, depending on whether you are:
-- […running the workshop on your own (in your own account)]({{< ref "/design-patterns/setup/user-account" >}}), or
-- […attending an AWS-hosted event (using AWS-provided access codes)]({{< ref "/design-patterns/setup/aws-ws-event" >}}), or
+- […running the workshop on your own (in your own account)]{href="/design-patterns/setup/user-account"}, or
+- […attending an AWS-hosted event (using AWS-provided access codes)]{href="/design-patterns/setup/aws-ws-event"}, or
 
 Once you have completed with either setup, continue on to:
-- [Exercise 1: DynamoDB Capacity Units and Partitioning]({{< ref "/design-patterns/ex1capacity" >}})
+- [Exercise 1: DynamoDB Capacity Units and Partitioning]{href="/design-patterns/ex1capacity"}

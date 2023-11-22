@@ -7,7 +7,7 @@ pre: "<b>Start: </b>"
 ---
 
 
-::alert[Only complete this section if you are running the workshop on your own. If you are at an AWS hosted event (such as re\:Invent, Immersion Day, etc), go to [At an AWS hosted Event]({{< ref "event-driven-architecture/setup/start-here/aws-ws-event">}})]
+::alert[Only complete this section if you are running the workshop on your own. If you are at an AWS hosted event (such as re\:Invent, Immersion Day, etc), go to [At an AWS hosted Event]{href="event-driven-architecture/setup/start-here/aws-ws-event">}})]
 ## Launch the CloudFormation stack
 ::alert[During the course of the lab, you will make DynamoDB tables that will incur a cost that could approach tens or hundreds of dollars per day. Ensure you delete the DynamoDB tables using the DynamoDB console, and make sure you delete the CloudFormation stack as soon as the lab is complete.]{type="warning"}
 
@@ -21,4 +21,4 @@ pre: "<b>Start: </b>"
 ![CloudFormation parameters](/static/images/awsconsole2.png)
   The stack will create DynamoDB tables, Lambda functions, Kinesis streams, and IAM roles and policies which will be used later on in the lab.
 
-1. After the CloudFormation stack is `CREATE_COMPLETE`, [continue onto the overview]({{< ref "event-driven-architecture/ex1overview" >}}).  
+1. After the CloudFormation stack is `CREATE_COMPLETE`, :link[continue onto the overview]{href="event-driven-architecture/ex1overview"}.  

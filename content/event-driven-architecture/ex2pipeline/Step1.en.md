@@ -41,4 +41,4 @@ At this stage you should see multiple rows similar to the image below. The numbe
 
 ![Architecture-1](/static/images/event-driven-architecture/lab1/state-table-data.png)
 
-Continue on to: [Step 2]({{< ref "event-driven-architecture/ex2pipeline/step2" >}}).
+Continue on to: :link[Step 2]{href="event-driven-architecture/ex2pipeline/step2"}.

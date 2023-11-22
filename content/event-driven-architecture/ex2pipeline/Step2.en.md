@@ -24,4 +24,4 @@ Alternatively, you can observe the outputs of the `MapLambda` function in the Dy
 
 ![Reduce table items](/static/images/event-driven-architecture/lab1/reduce-table-items.png)
 
-Continue on to: [Step 3]({{< ref "event-driven-architecture/ex2pipeline/step3" >}}).
+Continue on to: :link[Step 3]{href="event-driven-architecture/ex2pipeline/step3"}.
