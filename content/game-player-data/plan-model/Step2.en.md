@@ -26,6 +26,6 @@ Thus, there is a many-to-many relationship between `Users` and `Games`. You can 
 
 With these entities and relationships in mind, the entity-relationship diagram is shown below.
 
-![ERD](/images/game-player-data/plan-model/erd.png)
+![ERD](/static/images/game-player-data/plan-model/erd.png)
 
 Next, we will take a look at the access patterns the data model needs to support.

@@ -10,7 +10,7 @@ You can often query the data from multiple tables and assemble at the presentati
 To support high-traffic queries with ultra-low latency, designing a schema to take advantage of a NoSQL system generally makes technical and economic sense.
 
 To start designing a target data model in Amazon DynamoDB that will scale efficiently, you must identify the common access patterns. For the IMDb use case we have identified a set of access patterns as described below:
-![Final Deployment Architecture](/images/migration32.png)
+![Final Deployment Architecture](/static/images/migration32.png)
 
 A common approach to DynamoDB schema design is to identify application layer entities and use denormalization and composite key aggregation to reduce query complexity.
 In DynamoDB, this means using [composite sort keys](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-sort-keys.html), [overloaded global secondary indexes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-gsi-overloading.html), and other design patterns.
@@ -39,11 +39,11 @@ During target modelling the data is migrated as is to the DynamoDB table.
 - `RTNG`: Contains IMDb rating and number of votes. This is considered dynamic and frequent changing records for a movie.
 In order to reduce I/O during update scenario, the record is not denormalized with other information in the the DynamoDB table.
 
-![Final Deployment Architecture](/images/migration33.png)
+![Final Deployment Architecture](/static/images/migration33.png)
 
 A new GSI is created on the movies table with new partion key: `nconst` (unique per movie's crew with entity type `nm`) and sort key: `startYear`. This will help to query access pattern by crew member (#6 inside the common access pattern table)
 
-![Final Deployment Architecture](/images/migration34.png)
+![Final Deployment Architecture](/static/images/migration34.png)
 
 Below small video demonstrates how all of these access pattern are evaluated against target DynamoDB model.
 

@@ -8,7 +8,7 @@ Congratulations, you successfully completed *Lab 2*! If you've made it here and 
 
 In this step, you will start an AWS Cloud9 instance and run a Python frontend that scans the DynamoDB `AggregateTable` twice per second and displays the results, i.e. the aggregated values for the different risk types, in your terminal.
 
-![Architecture-1](/images/event-driven-architecture/lab2/lab2-optional.png)
+![Architecture-1](/static/images/event-driven-architecture/lab2/lab2-optional.png)
 
 {{% notice info %}}
 AWS Cloud9 is by far not the only option to run this Python-based frontend! If you're motivated, feel free to try running it locally on your PC (make sure you run `aws configure` first - you can get your credentials on the EventEngine dashboard), or from any EC2 instance (e.g. assign an IAM role to the EC2 instance that allows access to the `AggregateTable`).

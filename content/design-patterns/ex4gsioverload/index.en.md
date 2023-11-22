@@ -18,4 +18,4 @@ The access patterns required for this scenario are:
 
 The following screenshot shows the design of the `employees table`. The attribute called `PK` has the employee ID, which is prefixed by the letter `e`. The hash sign (#) is used as a separator between the entity type identifier (`e`) and the actual employee ID. The `SK` is an overloaded attribute, and has either current title, previous title, or the keyword `root`, which denotes the primary item for the employee that holds most of their important attributes. The `GSI_1_PK` attribute includes the title or the name of the employee. The re-use of a given global secondary index for multiple entity types such as employees, employee locations, and employee titles lets us simplify our management of the DynamoDB table because we only need to monitor and pay for one global secondary index as opposed to three separate indexes.
 
-![Sample design for the Employees table using the GSI overloading pattern](/images/employeestablenew.png)
+![Sample design for the Employees table using the GSI overloading pattern](/static/images/employeestablenew.png)

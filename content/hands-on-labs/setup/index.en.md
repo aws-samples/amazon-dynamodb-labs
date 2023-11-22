@@ -12,4 +12,4 @@ In this chapter, we'll cover the prerequisites needed to get started with [Amazo
 
 The deployment architecture that you will be building in this lab will look like the below.
 
-![Final Deployment Architecture](/images/hands-on-labs/setup/dynamodb_lab_architecture.png)
+![Final Deployment Architecture](/static/images/hands-on-labs/setup/dynamodb_lab_architecture.png)

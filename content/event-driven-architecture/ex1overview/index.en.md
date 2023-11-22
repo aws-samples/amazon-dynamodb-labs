@@ -15,13 +15,13 @@ The workshop contains two labs. The objective of the first lab is to establish c
 
 However, the pipeline you build in the first lab doesn't ensure exactly once message processing. Therefore, establishing exactly once processing is the goal of *Lab 2*.
 
-![Architecture-1](/images/event-driven-architecture/architecture/before-lab-1.png)
+![Architecture-1](/static/images/event-driven-architecture/architecture/before-lab-1.png)
 
 ## Lab 1
 The diagram below outlines a set of steps that you will need to perform in order to connect all the AWS resources.
 The *Lab 1* section will give you more information and will explain how to perform each step.
 
-![Architecture-2](/images/event-driven-architecture/architecture/after-lab-1.png)
+![Architecture-2](/static/images/event-driven-architecture/architecture/after-lab-1.png)
 
 
 ## Lab 2
@@ -29,7 +29,7 @@ The *Lab 1* section will give you more information and will explain how to perfo
 In *Lab 2*, we will enhance the pipeline to ensure exactly once processing for any ingested message. To make sure that our pipeline can withstand different failure modes and achieve exactly once message processing we will modify two Lambda functions.
 
 The *Lab 2* section will give you more information and will explain how to perform each step.
-![Architecture-3](/images/event-driven-architecture/architecture/after-lab-2.png)
+![Architecture-3](/static/images/event-driven-architecture/architecture/after-lab-2.png)
 
 ## Next steps and competition
 

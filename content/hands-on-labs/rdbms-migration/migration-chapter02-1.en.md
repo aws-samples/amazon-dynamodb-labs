@@ -21,11 +21,11 @@ _Do not continue unless you have made the IAM role._
   *Optionally, download [the YAML template]({{% siteparam "lhol_migration_dms_setup_yaml" %}}) and launch it your own way in the [CloudFormation Console](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/template)*
 9.  Click Next
 10. Confirm the Stack Name *dynamodbmigration* and keep the default parameters (modify if necessary)
-    ![Final Deployment Architecture](/images/migration18.jpg)
+    ![Final Deployment Architecture](/static/images/migration18.jpg)
 11. Click “Next” twice
 12. Check “I acknowledge that AWS CloudFormation might create IAM resources with custom names.”
 1.  Click Submit. The CloudFormation template will take about 15 minutes to build a replication environment. You should continue the lab while the stack creates in the background.
-    ![Final Deployment Architecture](/images/migration19.jpg)
+    ![Final Deployment Architecture](/static/images/migration19.jpg)
 
 {{% notice note %}}
 _Do not wait for the stack to complete creation._ **Please continue the lab and allow it to create in the background.**

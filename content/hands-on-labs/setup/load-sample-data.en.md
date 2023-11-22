@@ -33,4 +33,4 @@ After each data load you should get this message saying that there were no Unpro
 ```
 
 #### Sample output
-![Cloud9 Setup](/images/hands-on-labs/setup/load_data.png)
+![Cloud9 Setup](/static/images/hands-on-labs/setup/load_data.png)

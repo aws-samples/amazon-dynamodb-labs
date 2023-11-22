@@ -12,13 +12,13 @@ The CloudFormation template used below will create Source VPC, EC2 hosting MySQL
   *Optionally, download [the YAML template]({{% siteparam "lhol_migration_setup_yaml" %}}) and launch it your own way in the [CloudFormation Console](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/template)*
  4. Click Next
  5. Confirm the Stack Name *rdbmsmigration* and update parameters if necessary (leave the default options if at all possible)
-   ![Final Deployment Architecture](/images/migration6.jpg)
+   ![Final Deployment Architecture](/static/images/migration6.jpg)
  6. Click “Next” twice then check “I acknowledge that AWS CloudFormation might create IAM resources with custom names.”
  7. Click "Submit"
  8. The CloudFormation stack will take about 5 minutes to build the environment
-  ![Final Deployment Architecture](/images/migration7.jpg)
+  ![Final Deployment Architecture](/static/images/migration7.jpg)
  9. Go to [EC2 Dashboard](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Instances:)  and ensure the Status check column is 2/2 checks passed before moving to the next step.
- ![Final Deployment Architecture](/images/migration8.jpg)
+ ![Final Deployment Architecture](/static/images/migration8.jpg)
 
 
 {{% notice note %}}

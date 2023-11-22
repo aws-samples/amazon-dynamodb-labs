@@ -74,20 +74,20 @@ The following image shows the write capacity metric for the `logfile_gsi_low` ta
 It may take a few minutes for the provisioned capacity (red line) to show up in the graphs. The provisioned capacity metrics are synthetic and there can be delays of five to ten minutes until they show a change.
 {{% /notice %}}
 
-![Write capacity metric for the table](/images/lowgsi-table-wc.png)
+![Write capacity metric for the table](/static/images/lowgsi-table-wc.png)
 
 The following image shows the write capacity metric for the global secondary index. Note that the consumed writes (the blue line) were higher than the provisioned writes (red line) for the global secondary index during the test. This tells us the GSI was woefully under-provisioned for the requests it received.
 
-![Write capacity metric for the GSI](/images/lowgsi-gsi1-wc.png)
+![Write capacity metric for the GSI](/static/images/lowgsi-gsi1-wc.png)
 
 The following image shows the throttled write requests for the `logfile_gsi_low` table. Note that the table has throttled write requests, even though the base table was provisioned with sufficient WCUs. Each throttled API request on DynamoDB generates one datapoint for the `ThrottledRequests` metric. In this picture, about 20 API requests were throttled by DynamoDB. However, the table has a GSI and we do not yet know if it, or the base table was the source of the throttle. We must continue investigating.
-![Throttled writes for the table](/images/lowgsi-table-throttles.png)
+![Throttled writes for the table](/static/images/lowgsi-table-throttles.png)
 
 To identify the source of these throttled write requests, review the throttled write events metric. If the DynamoDB base table is the throttle source, it will have `WriteThrottleEvents`. However, if the GSI has insufficient write capacity, it will have `WriteThrottleEvents`.
 
 When you review the throttle events for the GSI, you will see the source of our throttles! Only the GSI has 'Throttled write events', which means it is the source of throttling on the table, and the cause of the throttled Batch write requests.
 
-![Throttled writes for the GSI](/images/lowgsi-gsi1-throttles.png)
+![Throttled writes for the GSI](/static/images/lowgsi-gsi1-throttles.png)
 {{% notice note %}}
 It may take some time for the write throttle events to appear on the GSI throttled write events graph. If you don't immediately see metrics, re-run the command above to load data into DynamoDB and let it continue for several minutes so that many throttling events are created.
 {{% /notice %}}

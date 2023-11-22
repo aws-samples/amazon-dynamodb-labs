@@ -6,7 +6,7 @@ weight: 1
 
 The objective of this step is to modify the `StateLambda` function such that it does not successfully write duplicate messages to downstream resources.
 
-![Architecture-1](/images/event-driven-architecture/architecture/lab2-step1.png)
+![Architecture-1](/static/images/event-driven-architecture/architecture/lab2-step1.png)
 
 ## Study the StateLambda code
 

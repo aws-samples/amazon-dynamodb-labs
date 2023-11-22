@@ -8,4 +8,4 @@ Let's begin by navigating to [AWS cloud9 management Console](https://console.aws
 
 Then run the command `aws sts get-caller-identity` just to verify that your AWS credentials have been properly configured.
 
-![Cloud9 Setup](/images/hands-on-labs/setup/cloud9_setup.png)
+![Cloud9 Setup](/static/images/hands-on-labs/setup/cloud9_setup.png)

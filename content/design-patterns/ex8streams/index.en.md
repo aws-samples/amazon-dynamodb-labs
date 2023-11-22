@@ -17,4 +17,4 @@ DynamoDB Streams captures a time-ordered sequence of item-level modifications in
 
 You will reuse the `logfile` table that you created in Exercise 1. You will enable DynamoDB Streams on the `logfile` table. Whenever a change is made to the `logfile` table, this change appears immediately in a stream. Next, you attach a Lambda function to the stream. The purpose of the Lambda function is to query DynamoDB Streams for updates to the `logfile` table and write the updates to a newly created table named `logfile_replica`. The following diagram shows an overview of this implementation.
 
-![DynamoDB stream with Lambda](/images/image6.jpg)
+![DynamoDB stream with Lambda](/static/images/image6.jpg)

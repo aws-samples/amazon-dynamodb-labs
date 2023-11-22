@@ -25,4 +25,4 @@ There are multiple factors that will influence our decisions in building the tar
 
 We will briefly discuss the key aspects of creating a model that will serve various access patters with ultralow latency and low I/O and cost.
 
-![Final Deployment Architecture](/images/denormalization.png)
+![Final Deployment Architecture](/static/images/denormalization.png)

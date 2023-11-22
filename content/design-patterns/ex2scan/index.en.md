@@ -16,4 +16,4 @@ In order to maximize the utilization of table-level provisioning, use a parallel
 
 The following diagram shows how a multithreaded application performs a parallel `Scan` with three application worker threads. The application spawns three threads and each thread issues a `Scan` request, scans its designated segment, retrieving data 1 MB at a time, and returns the data to the main application thread.
 
-![Parallel Scan](/images/image7.jpg)
+![Parallel Scan](/static/images/image7.jpg)

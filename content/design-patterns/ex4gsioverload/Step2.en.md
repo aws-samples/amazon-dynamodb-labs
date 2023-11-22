@@ -34,11 +34,11 @@ The output confirms that 1000 items have been inserted to the table.
 
 Review the `employees` table in the DynamoDB console (as shown in the following screenshot) by choosing the **employees** table and then choosing the **Items** menu item.
 
-![Employees table](/images/employeestablenew.png)
+![Employees table](/static/images/employeestablenew.png)
 
 On the same page in the right pane, choose **[Index]** from the dropdown menu and then click **Run**.
 
-![Searching the GSI](/images/awsconsolescan.png)
+![Searching the GSI](/static/images/awsconsolescan.png)
 
 Now you can see result of "Scan" operation on an overloaded global secondary index. There are many different entity types in the result set: a root, a previous title, and a current title.
-![Global Secondary Index](/images/employees-scan-GSI.png)
+![Global Secondary Index](/static/images/employees-scan-GSI.png)

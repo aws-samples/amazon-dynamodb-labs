@@ -28,10 +28,10 @@ During the course of the lab, you will make DynamoDB tables that will incur a co
 
 1. In the Parameters section, note the *Timeout* is set to zero. This means the Cloud9 instance will not sleep; you may want to change this manually to a value such as 60 to protect against unexpected charges if you forget to delete the stack at the end.  
     Leave the *WorkshopZIP* parameter unchanged and click *Next*
-![CloudFormation parameters](/images/awsconsole1.png)
+![CloudFormation parameters](/static/images/awsconsole1.png)
 
 1. Scroll to the bottom and click *Next*, and then review the *Template* and *Parameters*. When you are ready to create the stack, scroll to the bottom, check the box acknowledging the creation of IAM resources, and click *Create stack*.
-![CloudFormation parameters](/images/awsconsole2.png)
+![CloudFormation parameters](/static/images/awsconsole2.png)
   The stack will create a Cloud9 lab instance, a role for the instance, and a role for the AWS Lambda function used later on in the lab. It will use Systems Manager to configure the Cloud9 instance.
 
 

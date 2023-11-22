@@ -91,9 +91,9 @@ users belonging to this IAM group will inherit the permission.
 
 Let’s say now the user tries to delete the backup in AWS backup.
 
-![Restrict Backup Deletion 1](/images/hands-on-labs/backup/restrict_delete_1.png)
+![Restrict Backup Deletion 1](/static/images/hands-on-labs/backup/restrict_delete_1.png)
 
 User gets the access denied error due to insufficient permission to
 delete the backup.
 
-![Restrict Backup Deletion 2](/images/hands-on-labs/backup/restrict_delete_2.png)
+![Restrict Backup Deletion 2](/static/images/hands-on-labs/backup/restrict_delete_2.png)

@@ -18,7 +18,7 @@ Amazon DynamoDB is a massive horizontally scaled NoSQL database designed for sin
 
 This diagram shows the features and integrations for DynamoDB:
 
-![DynamoDB ecosystem](/images/event-driven-architecture/lab1/dynamodb-ecosystem.png)
+![DynamoDB ecosystem](/static/images/event-driven-architecture/lab1/dynamodb-ecosystem.png)
 If you want to learn more [you can review the DynamoDB's features page on aws.amazon.com](https://aws.amazon.com/dynamodb/features/)
 
 

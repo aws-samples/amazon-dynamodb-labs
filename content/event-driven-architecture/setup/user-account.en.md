@@ -22,7 +22,7 @@ During the course of the lab, you will make DynamoDB tables that will incur a co
 1. Click *Next* on the first dialog.
 
 1. Scroll to the bottom and click *Next*, and then review the *Template*. When you are ready to create the stack, scroll to the bottom, check the box acknowledging the creation of IAM resources, and click *Create stack*.
-![CloudFormation parameters](/images/awsconsole2.png)
+![CloudFormation parameters](/static/images/awsconsole2.png)
   The stack will create DynamoDB tables, Lambda functions, Kinesis streams, and IAM roles and policies which will be used later on in the lab.
 
 1. After the CloudFormation stack is `CREATE_COMPLETE`, [continue onto the overview]({{< ref "event-driven-architecture/ex1overview" >}}).  

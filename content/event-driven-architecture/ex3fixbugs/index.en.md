@@ -22,13 +22,13 @@ Before proceeding to *Lab 2* let's verify that *Lab 1* was successfully complete
 If the dashboard has 300 points, then congratulations: you can start Lab 2!
 {{% /notice %}}
 
-![Architecture-1](/images/event-driven-architecture/lab2/failing-lambdas.png)
+![Architecture-1](/static/images/event-driven-architecture/lab2/failing-lambdas.png)
 
 
 # Let’s utilize different features of DynamoDB to ensure data integrity and fault tolerance
 
 In *Lab 2* we will achieve exactly once processing of the messages. To make sure that our pipeline can withstand different failure modes and achieve exactly once message processing.
 
-![Architecture-3](/images/event-driven-architecture/architecture/after-lab-2.png)
+![Architecture-3](/static/images/event-driven-architecture/architecture/after-lab-2.png)
 
 Continue on to: [Step 1]({{< ref "event-driven-architecture/ex3fixbugs/step1" >}})

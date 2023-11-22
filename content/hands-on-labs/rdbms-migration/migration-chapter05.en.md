@@ -10,7 +10,7 @@ In this exercise, we will set up Database Migration Service (DMS) jobs to migrat
 ## Verify DMS creation
 
 1. Go to [DMS Console](https://console.aws.amazon.com/dms/v2/home?region=us-east-1#dashboard) and click on Replication Instances. You can able to see a replication instance with Class dms.c5.2xlarge in Available Status.
-    ![Final Deployment Architecture](/images/migration20.jpg)
+    ![Final Deployment Architecture](/static/images/migration20.jpg)
 
 {{% notice note %}}
 _Make sure the DMS instance is Available before you continue. If it is not Available, return to the CloudFormation console to review and troubleshoot the CloudFormation stack._
@@ -19,7 +19,7 @@ _Make sure the DMS instance is Available before you continue. If it is not Avail
 ## Create source and target endpoints
 
 1.  Click on Endpoints and Create endpoint button
-    ![Final Deployment Architecture](/images/migration21.jpg)
+    ![Final Deployment Architecture](/static/images/migration21.jpg)
 2.  Create the source endpoint. Use the following parameters to configure the endpoint:
 
     | Parameter           |                                                                                 Value                                                                                 |
@@ -34,9 +34,9 @@ _Make sure the DMS instance is Available before you continue. If it is not Avail
     | User name           |                                            Value of DbMasterUsername added as parameter during Configure MySQL Environment                                            |
     | Password            |                                            Value of DbMasterPassword added as parameter during Configure MySQL Environment                                            |
 
-    ![Final Deployment Architecture](/images/migration22.jpg)
+    ![Final Deployment Architecture](/static/images/migration22.jpg)
     Open Test endpoint connection (optional) section, then in the VPC drop-down select DMS-VPC and click the Run test button to verify that your endpoint configuration is valid. The test will run for a minute and you should see a successful message in the Status column. Click on the Create endpoint button to create the endpoint. If you see a connection error, re-type the username and password to ensure no mistakes were made. Further, ensure you provided the IPv4 DNS name ending in amazonaws.com in the field **Server name**.
-    ![Final Deployment Architecture](/images/migration23.jpg)
+    ![Final Deployment Architecture](/static/images/migration23.jpg)
 
 4.  Create the target endpoint. Repeat all steps to create the target endpoint with the following parameter values:
 
@@ -47,7 +47,7 @@ _Make sure the DMS instance is Available before you continue. If it is not Avail
     | Target engine           |                                                                                       Amazon DynamoDB                                                                                       |
     | Service access role ARN | CloudFormation template has created new role with full access to Amazon DynamoDB. Copy Role ARN from [dynamodb-access](https://us-east-1.console.aws.amazon.com/iamv2/home#/roles/details/dynamodb-access?section=permissions) role |
 
-    ![Final Deployment Architecture](/images/migration24.jpg)
+    ![Final Deployment Architecture](/static/images/migration24.jpg)
     Open Test endpoint connection (optional) section, then in the VPC drop-down select DMS-VPC and click the Run test button to verify that your endpoint configuration is valid. The test will run for a minute and you should see a successful message in the Status column. Click on the Create endpoint button to create the endpoint.
 
 ## Configure and Run a Replication Task
@@ -68,8 +68,8 @@ Still in the AWS DMS console, go to Database migration tasks and click the Creat
    | Task settings: Turn on CloudWatch logs       |                                    Checked                                    |
    | Table mappings: Editing mode                 | Select JSON editor option and follow the instructions after below screenshots |
 
-![Final Deployment Architecture](/images/migration25.jpg)
-![Final Deployment Architecture](/images/migration26.jpg)
+![Final Deployment Architecture](/static/images/migration25.jpg)
+![Final Deployment Architecture](/static/images/migration26.jpg)
 
 Start with the JSON editor section open in your browser. In this section we will create Table mappings JSON document to replace what you see in the JSON editor. This document includes source to target mapping including any transformation on the records that will be performed during migration.
 To reduce the loading time during Immersion Day, we have narrowed down the migration list to selective movies. Below JSON document has list of 28 movies worked by Clint Eastwood.
@@ -239,7 +239,7 @@ Replace the string “REPLACE THIS STRING BY MOVIES LIST” with list of movies 
 }
 ```
 
-![Final Deployment Architecture](/images/migration36.png)
+![Final Deployment Architecture](/static/images/migration36.png)
 Go to the bottom and click on Create task. At this point the task will be created and will automatically start loading selected movies from source to target DynamoDB table. 
 You can move forward and create two more tasks with similar steps (historical-migration02 and historical-migration03).
 Use the same settings as above except the Table Mappings JSON document. For historical-migration02 and historical-migration03 tasks use the JSON document mentioned below.
@@ -380,7 +380,7 @@ If you were to run this exercise again but do a full load, the load times would 
 
 
 You can track the status of data loading under the Table statistics of the migration task. Once loading is in progress, feel free to move to the next section of the exercise.
-  ![Final Deployment Architecture](/images/migration27.jpg)
+  ![Final Deployment Architecture](/static/images/migration27.jpg)
 
 {{% notice warning %}}
 _Make sure all tasks are running or complete before you continue. If a task says **Ready**, check its box and choose "Restart/Resume" under the Actions button to start the task._
