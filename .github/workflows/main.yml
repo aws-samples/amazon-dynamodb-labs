@@ -3,6 +3,10 @@ name: PushToProd
 permissions:
   id-token: write
 on:
+  push: 
+    branches:
+       - master
+    
   workflow_dispatch:
     inputs:
       website:
@@ -18,7 +22,7 @@ jobs:
   buildAndDeploy:
     runs-on: ubuntu-latest
     env:
-      STEP_S3_BUCKET: ${{ github.event.inputs.website }}
+      STEP_S3_BUCKET: "${{ github.ref == 'refs/heads/master' && 'amazon-dynamodb-labs.com || ${{github.event.inputs.website}} }}"
     steps:
     - name: Checkout
       uses: actions/checkout@v3
