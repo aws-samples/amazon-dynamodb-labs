@@ -9,6 +9,7 @@ on:
         description: 'Name of the S3 bucket aka website to publish to'
         required: true
         default: 'amazon-dynamodb-labs.com'
+        type: choice
         options:
         - 'test.amazon-dynamodb-labs.com'
         - 'amazon-dynamodb-labs.com'

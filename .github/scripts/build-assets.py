@@ -1,4 +1,5 @@
 import os
+import re
 import sys
 import time
 import glob
@@ -72,6 +73,7 @@ for zip_name in zips_to_make:
     shutil.move(os.path.join(os.getcwd(), zip_file_name), os.path.join(dest_root, 'assets', zip_file_name))
 
 # Check build
+
 preview_build = os.path.join(pkg_root, 'preview_build')
 shell_out = tempfile.NamedTemporaryFile(mode='w')
 try:
@@ -85,8 +87,32 @@ except FileNotFoundError as err:
 time.sleep(10)
 #os.system("ps -e | grep \"preview_build\" | awk")
 proc.kill()
+build_result_error = r'.*(Build complete with [0-9].*)'
+build_result_success = r'.*(Build succeeded.*)'
+status = None
+status_message = None
+count = 0
 with open(shell_out.name) as f:
-	for line in f:
-		print(line)
+    for line in f:
+        if count > 10000:
+            break
+        count += 1
+        if status == None:
+            match_error = re.search(build_result_error, line)
+            match_success = re.search(build_result_success, line)
+            if match_error:
+                status_message = match_error.group(1)
+                status = 1
+                print("Discovered an error in the build process.\n{}".format(status_message))
+            elif match_success:
+                status_message = match_success.group(1)
+                status = 0
+                print("Success. Build result is: \n{}".format(status_message))
+        elif status == 1:
+            err_match = re.search(r'^.*ERR(.*)', line)
+            err_ignore = re.search(r'^.*Error hosting local preview site.*', line)
+            if err_match and err_ignore is None:
+                print("{}".format(err_match.group(1)))
+
 shell_out.close()
-exit()
+exit(status)
