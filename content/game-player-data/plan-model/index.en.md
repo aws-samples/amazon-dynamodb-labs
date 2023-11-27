@@ -1,10 +1,8 @@
 ---
-title: "Plan your data model"
-menuTitle: "Plan your data model"
+title: "2. Plan your data model"
 date: 2021-04-21T07:33:04-05:00
 weight: 20
 chapter: true
-pre: "<b>2. </b>"
 description: "In this module, you learn about DynamoDB data modelling best practices and review application access patterns."
 ---
 

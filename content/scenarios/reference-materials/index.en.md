@@ -1,8 +1,7 @@
 ---
-title: "NoSQL Design: Reference Materials"
+title: "Links: NoSQL Design: Reference Materials"
 chapter: true
 description: "A set of links and reference materials describing how DynamoDB works and best practices for building data models."
-pre: "<b>Links: </b>"
 weight: 3
 ---
 

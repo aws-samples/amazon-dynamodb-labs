@@ -1,9 +1,8 @@
 ---
-title: "Advanced Design Patterns for Amazon DynamoDB"
+title: "LADV: Advanced Design Patterns for Amazon DynamoDB"
 chapter: true
 description: "300 level: Hands-on exercise using Python and DynamoDB best practices."
-pre: "<b>LADV: </b>"
-weight: 1
+weight: 10
 ---
 In this workshop, you review [Amazon DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html) design patterns and best practices to build highly scalable applications that are optimized for performance and cost. This workshop implements these design patterns by using Python scripts. At the end of this workshop, you will have the knowledge to build and monitor DynamoDB applications that can grow to any size and scale.
 

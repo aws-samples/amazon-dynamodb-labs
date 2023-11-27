@@ -4,7 +4,6 @@ menuTitle: "Obtain & Review Code"
 date: 2021-04-21T07:33:04-05:00
 weight: 14
 chapter: false
-pre: ""
 description: "To get started, you configure your environment and download code that you use during the lab."
 ---
 

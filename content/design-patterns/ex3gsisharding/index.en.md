@@ -1,9 +1,8 @@
 ---
-title: "Global Secondary Index Write Sharding"
+title: "Exercise 3: Global Secondary Index Write Sharding"
 date: 2019-12-02T10:17:22-08:00
 weight: 4
 chapter: true
-pre: "<b>Exercise 3: </b>"
 description: "Query a sharded global secondary index to quickly read sorted data by status code and date."
 ---
 

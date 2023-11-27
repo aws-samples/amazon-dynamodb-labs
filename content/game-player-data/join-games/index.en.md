@@ -1,10 +1,8 @@
 ---
-title: "Join and close games"
-menuTitle: "Join and close games"
+title: "5. Join and close games"
 date: 2021-04-21T07:33:04-05:00
 weight: 50
 chapter: true
-pre: "<b>5. </b>"
 description: "In this module, you learn about DynamoDB transactions and you use a DynamoDB transaction when adding new users to a game while preventing the game from becoming overloaded."
 ---
 

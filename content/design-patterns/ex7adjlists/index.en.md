@@ -1,9 +1,8 @@
 ---
-title: "Adjacency Lists"
+title: "Exercise 7: Adjacency Lists"
 date: 2020-04-07T10:18:07-08:00
 weight: 8
 chapter: true
-pre: "<b>Exercise 7: </b>"
 description: "Learn how to store multiple entity types in one DynamoDB table."
 ---
 

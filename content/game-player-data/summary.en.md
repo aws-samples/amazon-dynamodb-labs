@@ -4,7 +4,6 @@ menuTitle: "Summary & Cleanup"
 date: 2021-04-21T07:33:04-05:00
 weight: 70
 chapter: true
-pre: "<b></b>"
 description: "Final words"
 ---
 

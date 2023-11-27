@@ -1,10 +1,8 @@
 ---
-title: "Find open games"
-menuTitle: "Find open games"
+title: "4. Find open games"
 date: 2021-04-21T07:33:04-05:00
 weight: 40
 chapter: true
-pre: "<b>4. </b>"
 description: "In this module, you learn about using Global Secondary Indexes (GSIs) as a sparse index and use it to find open games."
 ---
 

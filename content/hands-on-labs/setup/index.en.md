@@ -1,10 +1,8 @@
 ---
-title: "Getting Started"
-menuTitle: "Getting Started"
+title: "1. Getting Started"
 date: 2021-04-21T07:33:04-05:00
 weight: 10
 chapter: true
-pre: "<b>1. </b>"
 ---
 
 

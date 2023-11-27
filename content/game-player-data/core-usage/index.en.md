@@ -1,10 +1,8 @@
 ---
-title: "Core usage: user profiles and games"
-menuTitle: "Core usage: user profiles and games"
+title: "3. Core usage: user profiles and games"
 date: 2021-04-21T07:33:04-05:00
 weight: 30
 chapter: true
-pre: "<b>3. </b>"
 description: "In this module, you design the primary key for the game application’s table, create the table and perform some basic actions."
 ---
 

@@ -1,10 +1,9 @@
 ---
-title: "View past games"
+title: "6. View past games"
 menuTitle: "View past games"
 date: 2021-04-21T07:33:04-05:00
 weight: 60
 chapter: true
-pre: "<b>6. </b>"
 description: "In this module, you handle the final access pattern — find all past games for a user. Users in the application might want to view games they’ve played to watch replays, or they might want to view their friend's games."
 ---
 

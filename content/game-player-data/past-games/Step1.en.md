@@ -4,7 +4,6 @@ menuTitle: "Add an inverted index"
 date: 2021-04-21T07:33:04-05:00
 weight: 61
 chapter: false
-pre: ""
 description: "In this step, you add an inverted index to the table. An inverted index is created like any other secondary index."
 ---
 
