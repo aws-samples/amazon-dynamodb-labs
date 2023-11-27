@@ -85,7 +85,6 @@ except FileNotFoundError as err:
 
 
 time.sleep(10)
-#os.system("ps -e | grep \"preview_build\" | awk")
 proc.kill()
 build_result_error = r'.*(Build complete with [0-9].*)'
 build_result_success = r'.*(Build succeeded.*)'

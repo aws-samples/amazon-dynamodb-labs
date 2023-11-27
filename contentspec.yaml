@@ -1,0 +1,14 @@
+# This is a stub to allow preview_build to run. Changes to this file do not make it to Workshop Studio
+version: 2.0
+
+defaultLocaleCode: en-US
+localeCodes:
+  - en-US
+params:
+  latest_rh_design_pattern_yt: "https://www.youtube.com/watch?v=xfxBhvGpoa0"
+  design_patterns_s3_lab_yaml : "https://s3.amazonaws.com/amazon-dynamodb-labs.com/assets/C9.yaml"
+  lhol_migration_setup_yaml : "https://s3.amazonaws.com/amazon-dynamodb-labs.com/assets/migration-env-setup.yaml"
+  lhol_migration_dms_setup_yaml : "https://s3.amazonaws.com/amazon-dynamodb-labs.com/assets/migration-dms-setup.yaml"
+  event_driven_architecture_lab_yaml : "https://s3.amazonaws.com/amazon-dynamodb-labs.com/assets/event-driven-cfn.yaml"
+  github_contributing_guide : "https://github.com/aws-samples/amazon-dynamodb-labs/blob/master/CONTRIBUTING.md"
+  github_issues_link : "https://github.com/aws-samples/amazon-dynamodb-labs/issues"
