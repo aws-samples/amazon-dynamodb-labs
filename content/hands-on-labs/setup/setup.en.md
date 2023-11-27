@@ -25,4 +25,4 @@ chapter: true
 ![CloudFormation parameters](/static/images/awsconsole2.png)
   The stack will create a Cloud9 lab instance, a role for the instance, and a role for the AWS Lambda function used later on in the lab. It will use Systems Manager to configure the Cloud9 instance.
 
-1. After the CloudFormation stack is `CREATE_COMPLETE`, :link[continue onto Prerequisites]{href="hands-on-labs/setup/prerequisites"}.  
+1. After the CloudFormation stack is `CREATE_COMPLETE`, :link[continue onto Prerequisites]{href="/hands-on-labs/setup/prerequisites"}.  

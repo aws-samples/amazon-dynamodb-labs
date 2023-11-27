@@ -26,4 +26,4 @@ In *Lab 2* we will achieve exactly once processing of the messages. To make sure
 
 ![Architecture-3](/static/images/event-driven-architecture/architecture/after-lab-2.png)
 
-Continue on to: :link[Step 1]{href="event-driven-architecture/ex3fixbugs/step1"}
+Continue on to: :link[Step 1]{href="/event-driven-architecture/ex3fixbugs/step1"}

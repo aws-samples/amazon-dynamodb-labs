@@ -28,4 +28,4 @@ chapter: true
 8. On the event dashboard, click on **Open AWS console** to federate into AWS Management Console in a new tab. On the same page, click **Get started** to open the workshop instructions.
 ![Event dashboard](/static/images/aws-ws-event5.png)
 
-Now that you are set up, continue on to: :link[Exercise 1: Overview]{href="event-driven-architecture/ex1overview"}.
+Now that you are set up, continue on to: :link[Exercise 1: Overview]{href="/event-driven-architecture/ex1overview"}.

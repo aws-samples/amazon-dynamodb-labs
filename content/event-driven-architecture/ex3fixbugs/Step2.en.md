@@ -90,7 +90,7 @@ Check your scoreboard. If all the previous steps are completed successfully you 
 
 ::alert[Even if you've done everything correctly, the error rate won't drop to zero! The manually induced failures will still be there, but now the pipeline is able to sustain them and still ensure consistent aggregation.]
 
-Continue on  to: :link[Summary & Conclusions]{href="event-driven-architecture/ex4summary"}
+Continue on  to: :link[Summary & Conclusions]{href="/event-driven-architecture/ex4summary"}
 
-or: :link[Optional: Add a simple Python frontend]{href="event-driven-architecture/ex3fixbugs/step3"}
+or: :link[Optional: Add a simple Python frontend]{href="/event-driven-architecture/ex3fixbugs/step3"}
 

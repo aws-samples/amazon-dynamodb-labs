@@ -16,7 +16,7 @@ The sample `employees.csv` record looks like the following:
 1000,Nanine Denacamp,Programmer Analyst,Development,San Francisco,CA,1981-09-30,2014-06-01,Senior Database Administrator,2014-01-25
 ```
 
-When you ingest this data into the table, you concatenate some of the attributes, such as `city_dept` (example: San Francisco:Development) because you have an access pattern in the query that takes advantage of this concatenated attribute. The `SK` attribute is also a derived attribute. The concatenation is handled in the Python script, which assembles the record and then executes a `put_item()` to write the record to the table.
+When you ingest this data into the table, you concatenate some of the attributes, such as `city_dept` (example: San Francisco\:Development) because you have an access pattern in the query that takes advantage of this concatenated attribute. The `SK` attribute is also a derived attribute. The concatenation is handled in the Python script, which assembles the record and then executes a `put_item()` to write the record to the table.
 
 Output:
 

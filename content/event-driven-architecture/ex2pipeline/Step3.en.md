@@ -105,4 +105,4 @@ Another way to verify it is working is to observe the items written by `ReduceLa
 
 ::alert[AWS Event: If Steps 1, 2, and 3 of *Lab 1* were completed successfully you should start gaining score points within one to two minutes. Please check the scoreboard! Ask your lab moderator to provide a link to the scoreboard.]
 
-Continue on to: :link[Lab 2]{href="event-driven-architecture/ex3fixbugs"}
+Continue on to: :link[Lab 2]{href="/event-driven-architecture/ex3fixbugs"}

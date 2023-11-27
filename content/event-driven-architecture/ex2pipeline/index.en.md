@@ -57,4 +57,4 @@ The Lambda service supports `Lambda function` triggers through what is called a 
 
 Now that you've learned way more about Lambda and DynamoDB than you thought possible (or perhaps more conservatively, you've skim-read more text than you expected to see on this page), let's begin Lab 1 in earnest!
 
-Continue on to: :link[Step 1]{href="event-driven-architecture/ex2pipeline/step1"}
+Continue on to: :link[Step 1]{href="/event-driven-architecture/ex2pipeline/step1"}
