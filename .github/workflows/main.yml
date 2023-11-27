@@ -6,23 +6,12 @@ on:
   push: 
     branches:
        - master
-    
-  workflow_dispatch:
-    inputs:
-      website:
-        description: 'Name of the S3 bucket aka website to publish to'
-        required: true
-        default: 'amazon-dynamodb-labs.com'
-        type: choice
-        options:
-        - 'test.amazon-dynamodb-labs.com'
-        - 'amazon-dynamodb-labs.com'
 
 jobs:
   buildAndDeploy:
     runs-on: ubuntu-latest
     env:
-      STEP_S3_BUCKET: "${{ github.ref == 'refs/heads/master' && 'amazon-dynamodb-labs.com || github.event.inputs.website }}"
+      STEP_S3_BUCKET: amazon-dynamodb-labs.com
     steps:
     - name: Checkout
       uses: actions/checkout@v3
