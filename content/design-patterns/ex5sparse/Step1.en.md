@@ -49,6 +49,4 @@ Wait until the new index is `ACTIVE` before proceeding.
 ]
 ```
 
-{{% notice warning %}}
-Do not continue until the `IndexStatus` is `ACTIVE` on both indexes. Querying the index before it is `ACTIVE` will result in a failed query.
-{{% /notice %}}
+::alert[Do not continue until the `IndexStatus` is `ACTIVE` on both indexes. Querying the index before it is `ACTIVE` will result in a failed query.]{type="warning"}

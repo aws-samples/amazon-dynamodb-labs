@@ -80,7 +80,7 @@ Hint: consider the *max-items* and *scan-index-forward* options.  The solution i
 
 **Click below to expand and see the exercise solutions**
 
-{{%expand "Expand this to see the solution" %}}
+::::expand{header="Expand this to see the solution"}
 If we want to order items in ascending order of the sort key then we tell DynamoDB to scan the index moving forward using the *\-\-scan-index-forward* option. If we want to limit the number of items then we use the *\-\-max-items* option. This would be analogous in SQL to "ORDER BY ReplyDateTime ASC LIMIT 1".
 
 ```bash
@@ -108,4 +108,4 @@ aws dynamodb query \
     --no-scan-index-forward  \
     --return-consumed-capacity TOTAL
 ```
-{{% /expand%}}
+::::

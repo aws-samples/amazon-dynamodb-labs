@@ -7,7 +7,7 @@ weight: 2
 You can use the new global secondary index to query the table. If you use only the state, the query does not use the sort key attribute. However, if the query has a value for the second parameter, the code uses the `GSI_3_SK` attribute of the global secondary index, which holds the same value as the `city_dept` attribute, to query all the values that begin with the parameter value.
 
 The following screenshot shows using composite key attributes to query by city and department.
-![Using Composite key attributes to query by city and department](/images/employees-GSI3.png)
+![Using Composite key attributes to query by city and department](/static/images/employees-GSI3.png)
 
 We can perform this same query in a Python script. This snippet shows how a script can take two input parameters (shown as value1 and value2) and craft a query against the GSI_3 global secondary index.
 

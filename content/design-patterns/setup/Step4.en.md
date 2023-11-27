@@ -91,6 +91,4 @@ ls -l ./data
 - logfile_small1.csv
 - logfile_stream.csv
 
-{{% notice info %}}
-_Note: The code provided is for instructional use only. It should not be used outside of this lab, and it is not fit for production use._
-{{% /notice %}}
+::alert[_Note: The code provided is for instructional use only. It should not be used outside of this lab, and it is not fit for production use._]{type="warning"}

@@ -6,7 +6,7 @@ weight: 1
 
 The objective of this step is to modify the `StateLambda` function such that it does not successfully write duplicate messages to downstream resources.
 
-![Architecture-1](/images/event-driven-architecture/architecture/lab2-step1.png)
+![Architecture-1](/static/images/event-driven-architecture/architecture/lab2-step1.png)
 
 ## Study the StateLambda code
 
@@ -83,9 +83,7 @@ The code in line 5 adds a compound condition that ensures an item is only insert
 
 To explain, the condition first states that at the moment of data insertion the table *should not* contain an item with partition key `pk` equal to the `record_id` or else the write should fail (see [the attribute_not_exists function](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.OperatorsAndFunctions.html#Expressions.OperatorsAndFunctions.Functions)), implying this is the first time such a item/message is inserted. Then, with the inclusion of the *OR* keyword the condition says that if a row is already present in the table and the version number of the row being inserted is greater than the current row then the write should succeed.
 
-{{% notice info %}}
-You don't need to change anything in your Lambda code yet, this will come in just a minute if you read on.
-{{% /notice %}}
+::alert[You don't need to change anything in your Lambda code yet, this will come in just a minute if you read on.]
 
 ### Why does it work?
 
@@ -135,12 +133,10 @@ except ClientError as e:
 
 Copy the code snippet above and replace it with the existing `table.update_item(...)` statement in your `StateLambda` function code. Then click on `Deploy` to apply the changes.
 
-{{% notice info %}}
-The above change will also help avoid duplicate writes when the Lambda service retries the `StateLambda` function after it has previously failed with a batch of incoming messages. With this change we avoid writing duplicates into `StateTable` which ensures we do not generate additional messages in the downstream `StateTable` DynamoDB stream.
-{{% /notice %}}
+::alert[The above change will also help avoid duplicate writes when the Lambda service retries the `StateLambda` function after it has previously failed with a batch of incoming messages. With this change we avoid writing duplicates into `StateTable` which ensures we do not generate additional messages in the downstream `StateTable` DynamoDB stream.]
 
 ## How do you know you fixed it?
 
 Navigate to `StateLambda` and open `Logs` under the `Monitor` tab. Check the log messages by clicking on the hyperlinked LogStream cell and validate that you see the following string in the log lines: `Conditional put failed. This is either a duplicate...`. This message is produced by the exception handling code above. This tells us that the conditional expression is working as expected.
 
-Continue on to: [Step 2]({{< ref "event-driven-architecture/ex3fixbugs/step2" >}})
+Continue on to: :link[Step 2]{href="/event-driven-architecture/ex3fixbugs/step2"}

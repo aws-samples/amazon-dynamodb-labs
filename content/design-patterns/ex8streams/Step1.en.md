@@ -4,7 +4,7 @@ date: 2019-12-02T12:34:06-08:00
 weight: 1
 ---
 
-![DynamoDB stream with Lambda](/images/image6.jpg)
+![DynamoDB stream with Lambda](/static/images/image6.jpg)
 
 Let's create a table named `logfile_replica` to hold the replicated rows. This `create-table` command is based on the command to create the `logfile` table. As a result, it creates a table that can hold the same items as its upstream table.
 

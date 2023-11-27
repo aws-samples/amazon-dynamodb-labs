@@ -4,13 +4,11 @@ date: 2019-12-02T10:26:28-08:00
 weight: 3
 ---
 
-{{% notice info %}}
-Understanding how the pipeline works internally is recommended, however reading this page is not mandatory to complete the workshop.
-{{% /notice %}}
+::alert[Understanding how the pipeline works internally is recommended, however reading this page is not mandatory to complete the workshop.]
 
 This section explains in detail how the pipeline works from end-to-end. For a simplified explanation refer to the figure below where we have divided the pipeline into three stages. For each stage we outline the input and the output of the stage.
 
-![DD Stages](/images/event-driven-architecture/deep-dive/stages.png)
+![DD Stages](/static/images/event-driven-architecture/deep-dive/stages.png)
 
 ## Stage 1: 'State'
 
@@ -37,7 +35,7 @@ The business problem of near real-time data aggregation is faced by customers in
 
 Consider an example where five risk messages are ingested in the pipeline, as represented in the following figure. For visibility we labeled each message with an identifier from M1 to M5. Each message has a unique `TradeID`, a risk `Value`, and a group of hierarchy attributes (as explained above). For simplicity, all messages have the `RiskType` `"Delta"` and the `Version` attribute is always set to `1`.
 
-![DD Part1](/images/event-driven-architecture/deep-dive/pipeline-explanation-part-1.png)
+![DD Part1](/static/images/event-driven-architecture/deep-dive/pipeline-explanation-part-1.png)
 
 The pipeline is event driven by an upstream data source that writes records into a Kinesis Data Stream, and the `StateLambda` function is invoked to process these messages further.
 
@@ -54,7 +52,7 @@ In order to handle a high volume of incoming messages, multiple `MapLambda` inst
 The responsibility of the `MapLambda` is to perform initial pre-aggregation of the messages, or more specifically to perform arithmetic summation based on the message attributes. The pre-aggregated output of each `MapLambda` function is written into the `ReduceTable` as a single row, as seen in "Output state of the `ReduceTable`" in the above figure. For simplicity, we refer to these rows as AM1 and AM2.
 
 
-![DD Part2](/images/event-driven-architecture/deep-dive/pipeline-explanation-part-2.png)
+![DD Part2](/static/images/event-driven-architecture/deep-dive/pipeline-explanation-part-2.png)
 
 ### How does the pre-aggregation work?
 
@@ -83,6 +81,6 @@ Note: there is only one instance of the `ReduceLambda` function, which is achiev
 
 The final output in the `AggregateTable` closely resembles the `Hierarchy` attribute elements, and can be easily read and displayed by a front-end!
 
-![DD Part3](/images/event-driven-architecture/deep-dive/pipeline-explanation-part-3.png)
+![DD Part3](/static/images/event-driven-architecture/deep-dive/pipeline-explanation-part-3.png)
 
-Continue on to: [Connect the Pipeline]({{< ref "event-driven-architecture/ex2pipeline" >}})
+Continue on to: :link[Connect the Pipeline]{href="/event-driven-architecture/ex2pipeline"}

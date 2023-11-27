@@ -10,7 +10,7 @@ The objective of this step is to modify the `ReduceLambda` function to ensure id
 We compute the hash over all messages in the batch that the Lambda function is invoked with to use as the `ClientRequestToken`. Lambda ensures that the function is retried with the same batch of messages on failure. Therefore, by ensuring that all code paths in the Lambda function are deterministic we can ensure idempotency of the transactions and achieve exactly once processing at this last stage of the pipeline. This method has a weakness because we only protect against re-processed messages within a 10-minute window after the first completed `TransactWriteItems` call since a `ClientRequestToken` is valid for no more than 10 minutes, as outlined [in the official documentation](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_TransactWriteItems.html#DDB-TransactWriteItems-request-ClientRequestToken).
 
 
-![Architecture-1](/images/event-driven-architecture/architecture/lab2-step2.png)
+![Architecture-1](/static/images/event-driven-architecture/architecture/lab2-step2.png)
 
 1. Navigate to the AWS Lambda service within the AWS Management console.
 2. Click on the `ReduceLambda` function to edit its configuration.
@@ -88,11 +88,9 @@ Apply these changes to your Lambda function code, either manually or just by cop
 
 Check your scoreboard. If all the previous steps are completed successfully you should start accumulating a score above 300 points. If not, check the CloudWatch Logs of the `ReduceLambda` function to check for any errors. If you see any errors, they may provide a hint on how to fix them. If you need help, go to `Summary & Conclusions` on the left, then `Solutions`, and you can see the desired code of the `ReduceLambda`.
 
-{{% notice info %}}
-Even if you've done everything correctly, the error rate won't drop to zero! The manually induced failures will still be there, but now the pipeline is able to sustain them and still ensure consistent aggregation.
-{{% /notice %}}
+::alert[Even if you've done everything correctly, the error rate won't drop to zero! The manually induced failures will still be there, but now the pipeline is able to sustain them and still ensure consistent aggregation.]
 
-Continue on  to: [Summary & Conclusions]({{< ref "event-driven-architecture/ex4summary" >}})
+Continue on  to: :link[Summary & Conclusions]{href="/event-driven-architecture/ex4summary"}
 
-or: [Optional: Add a simple Python frontend]({{< ref "event-driven-architecture/ex3fixbugs/step3" >}})
+or: :link[Optional: Add a simple Python frontend]{href="/event-driven-architecture/ex3fixbugs/step3"}
 

@@ -32,6 +32,4 @@ Sample output:
 aws-cli/2.13.26 Python/3.11.6 Linux/6.2.0-1013-aws exe/x86_64.ubuntu.22 prompt/off
 ```
 
-{{% notice note %}}
-_Make sure you have AWS CLI version 2.x or higher and python 3.10 or higher before proceeding. If you do not have these versions, you may have difficultly successfully completing the lab._
-{{% /notice %}}
+::alert[_Make sure you have AWS CLI version 2.x or higher and python 3.10 or higher before proceeding. If you do not have these versions, you may have difficultly successfully completing the lab._]

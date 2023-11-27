@@ -62,6 +62,4 @@ The `KeyConditionExpression` looks like the following.
 Key('GSI_3_PK').eq("state#{}".format('TX')) & Key('GSI_3_SK').begins_with('Austin')
 ```
 
-{{% notice warning %}}
-Wait until the `IndexStatus` is `ACTIVE` on all indexes before continuing. If you try to query a GSI but it is not finished creating, you will receive an error.
-{{% /notice %}}
+::alert[Wait until the `IndexStatus` is `ACTIVE` on all indexes before continuing. If you try to query a GSI but it is not finished creating, you will receive an error.]{type="warning"}

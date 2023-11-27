@@ -59,9 +59,7 @@ Scanning 1 million rows of the `logfile_scan` table to get the total of bytes se
 Total bytessent 6054250 in 8.544446229934692 seconds
 ```
 
-{{% notice note %}}
-The execution time using a parallel scan will be shorter than the execution time for a sequential scan. The difference in execution time will be even more exaggerated for larger tables.
-{{% /notice %}}
+::alert[The execution time using a parallel scan will be shorter than the execution time for a sequential scan. The difference in execution time will be even more exaggerated for larger tables.]
 
 #### Summary
 

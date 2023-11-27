@@ -4,7 +4,6 @@ menuTitle: "Obtain & Review Code"
 date: 2021-04-21T07:33:04-05:00
 weight: 14
 chapter: false
-pre: ""
 description: "To get started, you configure your environment and download code that you use during the lab."
 ---
 
@@ -21,7 +20,7 @@ description: "To get started, you configure your environment and download code t
 
 You should now see your AWS Cloud9 environment. You need to be familiar with the three areas of the AWS Cloud9 console shown in the following screenshot:
 
-![Cloud9 Environment](/images/game-player-data/setup/cloud9-environment.png)
+![Cloud9 Environment](/static/images/game-player-data/setup/cloud9-environment.png)
 
 - **File explorer**: On the left side of the IDE, the file explorer shows a list of the files in your directory.
   

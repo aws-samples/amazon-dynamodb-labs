@@ -4,12 +4,8 @@ date: 2019-12-02T10:26:23-08:00
 weight: 2
 ---
 
-{{% notice info %}}
-Points and scoreboard only apply when this lab is run during an AWS Event. If you're running this lab independently, you have the top score!
-{{% /notice %}}
-{{% notice info %}}
-AWS Event: Be sure you've set a family-friendly team name in Workshop Studio, especially if you think you'll be on the top of the scoreboard!
-{{% /notice %}}
+::alert[Points and scoreboard only apply when this lab is run during an AWS Event. If you're running this lab independently, you have the top score!]
+::alert[AWS Event: Be sure you've set a family-friendly team name in Workshop Studio, especially if you think you'll be on the top of the scoreboard!]
 
 To make this workshop more interesting we introduced a scoring element! As you move through the workshop and fix the pipeline you are awarded points for successfully aggregating messages.
 
@@ -23,6 +19,6 @@ However, once you reach 300 points we're increasing the difficulty for you. In *
 
 The workshop operators will display the scoring of all participants during the workshop, but you can check the scoreboard on your own.
 
-Continue on to: [Connect the Pipeline]({{< ref "event-driven-architecture/ex2pipeline" >}})
+Continue on to: :link[Connect the Pipeline]{href="/event-driven-architecture/ex2pipeline"}
 
-or: [Optional - Pipeline Deep Dive]({{< ref "event-driven-architecture/ex1overview/step2.html" >}})
+or: :link[Optional - Pipeline Deep Dive]{href="/event-driven-architecture/ex1overview/step2"}

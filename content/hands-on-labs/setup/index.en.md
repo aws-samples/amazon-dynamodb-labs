@@ -1,0 +1,13 @@
+---
+title: "1. Getting Started"
+date: 2021-04-21T07:33:04-05:00
+weight: 10
+chapter: true
+---
+
+
+In this chapter, we'll cover the prerequisites needed to get started with [Amazon DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html). You'll create DynamoDB tables and use a AWS Cloud9 envrironment to query these tables.
+
+The deployment architecture that you will be building in this lab will look like the below.
+
+![Final Deployment Architecture](/static/images/hands-on-labs/setup/dynamodb_lab_architecture.png)

@@ -14,7 +14,7 @@ Armed with this knowledge of GSIs, we can now create a GSI on the **Reply** tabl
 
 Navigate to the **Reply** table, switch to the **Indexes** tab and click `Create Index`.
 
-![Console Create GSI 1](/images/hands-on-labs/explore-console/console_create_gsi_1.png)
+![Console Create GSI 1](/static/images/hands-on-labs/explore-console/console_create_gsi_1.png)
 
 Enter `PostedBy` as the Partition key, `ReplyDateTime` as the Sort key, and `PostedBy-ReplyDateTime-gsi` as the Index name.  Leave the other settings as defaults and click `Create Index`.  Once the index leaves the `Creating` state you can continue on to the exercise below.
 
@@ -28,18 +28,17 @@ The solution is expandable below but try to figure it out yourself before moving
 
 **Click below to expand and see the exercise solutions**
 
-{{%expand "Expand this to see the solution" %}}
+::::expand{header="Expand this to see the solution"}
 
 1. Navigate to the Item Explorer for the **Reply** table. Running a Query on a GSI is no different than running it against a table, except we need to select the GSI we want to use for the Query and we'll use the GSI key attributes in the KeyConditionExpression.
 
 Even if the table has a billion **Reply** items authored by other Users, this query will only cost us to read the exact 3 items we're hoping to return (unlike a `Scan`).
 
-![Console Create GSI 2](/images/hands-on-labs/explore-console/console_create_gsi_2.png)
-
-{{% /expand%}}
+![Console Create GSI 2](/static/images/hands-on-labs/explore-console/console_create_gsi_2.png)
+::::
 
 ### Cleanup
 
 When you're done, make sure to remove the GSI. Return to the Indexes tab, select the `PostedBy-ReplyDateTime-gsi` index and click `Delete`.
 
-![Console Delete GSI](/images/hands-on-labs/explore-console/console_delete_gsi.png)
+![Console Delete GSI](/static/images/hands-on-labs/explore-console/console_delete_gsi.png)

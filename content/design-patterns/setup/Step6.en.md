@@ -4,9 +4,7 @@ date: 2019-12-02T10:20:18-08:00
 weight: 60
 ---
 
-{{% notice info %}}
-_Reminder: All commands are executed in the shell console connected to the EC2 instance, not your local machine. (If you are not sure you can always validate going back to [step 1](/design-patterns/setup/step1.html))_
-{{% /notice %}}
+::alert[_Reminder: All commands are executed in the shell console connected to the EC2 instance, not your local machine. (If you are not sure you can always validate going back to [step 1](/design-patterns/setup/step1.html))_]
 
 In the upcoming Exercise #2 we will discuss table scan and its best practices. In this step, let's populate the table with 1 million items in preparation for that exercise.
 
@@ -57,9 +55,7 @@ disown
 
 `nohup` is used to run the process in the background, and `disown` allows the load to continue in case you are disconnected.
 
-{{% notice note %}}
-_The following command will take about ten minutes to complete. It will run in the background._
-{{% /notice %}}
+::alert[_The following command will take about ten minutes to complete. It will run in the background._]
 
 Run `pgrep -l python` to verify the script is loading data in the background.
 
@@ -73,9 +69,7 @@ Output:
 3257 python
 ```
 
-{{% notice note %}}
-_The process id - the 4 digit number in the above example - will be different for everyone._
-{{% /notice %}}
+::alert[_The process id - the 4 digit number in the above example - will be different for everyone._]
 
 The script will continue to run in the background while you work on the next exercise.
 
