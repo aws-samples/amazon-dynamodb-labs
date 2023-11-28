@@ -45,9 +45,5 @@ A new GSI is created on the movies table with new partion key: `nconst` (unique 
 
 ![Final Deployment Architecture](/static/images/migration34.png)
 
-Below small video demonstrates how all of these access pattern are evaluated against target DynamoDB model.
+[Click here to view a video that demonstrates how all of these access pattern are evaluated against target DynamoDB model](https://www.amazondynamodblabs.com/static/rdbms-migration/migration36.mp4)
 
-<video width=100% controls autoplay>
-    <source src="https://www.amazondynamodblabs.com/static/rdbms-migration/migration36.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
