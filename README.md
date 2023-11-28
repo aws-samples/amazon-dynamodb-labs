@@ -8,10 +8,12 @@ You can make code changes and markdown changes, but in order to test the build y
 
 #### Clone this repo:
 We suggest you make a fork. From wherever you are you can checkout the repo:
+
 `git clone git@github.com:aws-samples/amazon-dynamodb-labs.git` (or your fork)
 
 #### Making edits:
 Amazon employees only: Make changes, run preview_build, check localhost:8080 to see the site locally
+
 Everyone else: make changes, make a pull request, and wait for the automations to run. They will tell you if you have errors in your changes.
 
 #### Pull requests
