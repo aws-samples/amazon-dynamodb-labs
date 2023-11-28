@@ -7,7 +7,7 @@ weight: 20
 This chapter will create source environment on AWS as discussed during Exercise Overview.
 The CloudFormation template used below will create Source VPC, EC2 hosting MySQL server, IMDb database and load IMDb public dataset into 6 tables.
 
-1. Launch the CloudFormation template in US West 2 to deploy the resources in your account: [![CloudFormation](/static/images/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=amazon-dynamodb-labs&templateURL=:param{key="lhol_migration_setup_yaml"})  
+1. Launch the CloudFormation template in US West 2 to deploy the resources in your account: [![CloudFormation](/static/images/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=rdbmsmigration&templateURL=:param{key="lhol_migration_setup_yaml"})  
     1. *Optionally, download [the YAML template](:param{key="lhol_migration_setup_yaml"}) and launch it your own way*
  4. Click Next
  5. Confirm the Stack Name *rdbmsmigration* and update parameters if necessary (leave the default options if at all possible)

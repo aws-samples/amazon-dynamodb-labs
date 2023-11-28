@@ -6,7 +6,7 @@ weight: 14
 
 We will now create tables (and in a subsequent step load data into them) based on [sample data from the DynamoDB Developer Guide](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SampleData.html).
 
-Copy the `create-table` commands below along with their corresponding `wait` commands and paste them in your AWS Cloud9 command prompt. Each command waits for the table to finish creating. If you get an error from the wait command, you may have submitted it too fast; re-run the wait command in this case.
+Copy the `create-table` commands below and paste them into your AWS Cloud9 command prompt, hitting enter on the last command to execute it. Then use the corresponding `wait` commands by pasting them into the same terminal and running them.
 
 ```bash
 aws dynamodb create-table \
@@ -16,10 +16,8 @@ aws dynamodb create-table \
     --key-schema \
         AttributeName=Id,KeyType=HASH \
     --provisioned-throughput \
-        ReadCapacityUnits=10,WriteCapacityUnits=5
-
-aws dynamodb wait table-exists --table-name ProductCatalog
-
+        ReadCapacityUnits=10,WriteCapacityUnits=5 \
+    --query "TableDescription.TableStatus"
 aws dynamodb create-table \
     --table-name Forum \
     --attribute-definitions \
@@ -27,10 +25,8 @@ aws dynamodb create-table \
     --key-schema \
         AttributeName=Name,KeyType=HASH \
     --provisioned-throughput \
-        ReadCapacityUnits=10,WriteCapacityUnits=5
-
-aws dynamodb wait table-exists --table-name Forum
-
+        ReadCapacityUnits=10,WriteCapacityUnits=5 \
+    --query "TableDescription.TableStatus"
 aws dynamodb create-table \
     --table-name Thread \
     --attribute-definitions \
@@ -40,10 +36,8 @@ aws dynamodb create-table \
         AttributeName=ForumName,KeyType=HASH \
         AttributeName=Subject,KeyType=RANGE \
     --provisioned-throughput \
-        ReadCapacityUnits=10,WriteCapacityUnits=5
-
-aws dynamodb wait table-exists --table-name Thread
-
+        ReadCapacityUnits=10,WriteCapacityUnits=5 \
+    --query "TableDescription.TableStatus"
 aws dynamodb create-table \
     --table-name Reply \
     --attribute-definitions \
@@ -53,7 +47,14 @@ aws dynamodb create-table \
         AttributeName=Id,KeyType=HASH \
         AttributeName=ReplyDateTime,KeyType=RANGE \
     --provisioned-throughput \
-        ReadCapacityUnits=10,WriteCapacityUnits=5
+        ReadCapacityUnits=10,WriteCapacityUnits=5 \
+    --query "TableDescription.TableStatus"
+```
 
+Run the wait commands. When they all run and end, you can move on:
+```bash
+aws dynamodb wait table-exists --table-name ProductCatalog
+aws dynamodb wait table-exists --table-name Forum
+aws dynamodb wait table-exists --table-name Thread
 aws dynamodb wait table-exists --table-name Reply
 ```
