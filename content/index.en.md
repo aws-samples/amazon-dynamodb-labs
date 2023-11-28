@@ -17,3 +17,5 @@ If you're brand new to DynamoDB with no experience, you may want to begin with *
 
 Dive into the content:
 ::children{depth=1}
+
+:button[Fork these docs on GitHub]{href="https://github.com/aws-samples/amazon-dynamodb-labs"}

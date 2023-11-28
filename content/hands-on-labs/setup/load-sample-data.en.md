@@ -7,7 +7,7 @@ weight: 15
 Download and unzip the sample data:
 
 ```bash
-wget https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/samples/sampledata.zip
+curl -O https://amazon-dynamodb-labs.com/static/hands-on-labs/sampledata.zip
 
 unzip sampledata.zip
 ```

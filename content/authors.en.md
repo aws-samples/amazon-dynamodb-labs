@@ -6,7 +6,7 @@ description: "Our editors and hall of fame."
 weight: 100
 ---
 
-
+:button[Fork these docs on GitHub]{href="https://github.com/aws-samples/amazon-dynamodb-labs"}
 
 ### Launch team
 
