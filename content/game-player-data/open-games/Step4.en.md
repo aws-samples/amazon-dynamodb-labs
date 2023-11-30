@@ -61,7 +61,7 @@ Game<0ab37cf1-fc60-4d93-b72b-89335f759581 --Green Grasslands>
 
 Additionally, using [PartiQL](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ql-reference.html), you can run SQL-compatible query language to retrieve items from the table and its indexes in DynamoDB. You can navigate to PartiQL editor under **Services**, **Database**, **DynamoDB** in the AWS console, and run a `Scan` to receive a similar result.
 
-![PartiQL editor in the AWS console](/static/images/game-player-data/open-games/partiql-consolev2.png)
+![PartiQL editor in the AWS console](/static/images/game-player-data/open-games/aws-console-dynamodb-battle-royale-partiql-editor.png)
 
 In this step, you saw how using the `Scan` operation can be the right choice in specific circumstances. You used `Scan` to grab an assortment of entities from the sparse global secondary index (GSI) to show open games to players.
 
