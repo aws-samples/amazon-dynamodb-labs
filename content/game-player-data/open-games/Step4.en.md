@@ -59,7 +59,8 @@ Game<683680f0-02b0-4e5e-a36a-be4e00fc93f3 --Green Grasslands>
 Game<0ab37cf1-fc60-4d93-b72b-89335f759581 --Green Grasslands>
 ```
 
-Additionally, using [PartiQL](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ql-reference.html), you can run SQL-compatible query language to retrieve items from the table and its indexes in DynamoDB. You can navigate to PartiQL editor under **Services**, **Database**, **DynamoDB** in the AWS console, and run a `Scan` to receive a similar result.
+Again, using [PartiQL](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ql-reference.html), you can run a `Scan index` query to receive a similar result.  
+Click on the 3 dots (...) next to the OpenGamesIndex and choose **Scan index**.
 
 ![PartiQL editor in the AWS console](/static/images/game-player-data/open-games/aws-console-dynamodb-battle-royale-partiql-editor.png)
 

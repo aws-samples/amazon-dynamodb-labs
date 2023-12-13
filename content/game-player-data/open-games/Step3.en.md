@@ -60,3 +60,22 @@ Game<3d4285f0-e52b-401a-a59b-112b38c4a26b --Green Grasslands>
 Game<683680f0-02b0-4e5e-a36a-be4e00fc93f3 --Green Grasslands>
 Game<0ab37cf1-fc60-4d93-b72b-89335f759581 --Green Grasslands>
 ```
+
+Additionally, using [PartiQL](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ql-reference.html), you can run SQL-compatible query language to retrieve items from the table and its indexes in DynamoDB. You can navigate to PartiQL editor under **Services**, **Database**, **DynamoDB** in the AWS console, and run a `Query` to receive a similar result.  
+![AWS Console DynamoDB PartiQL editor](/static/images/game-player-data/open-games/aws-console-menu-partiql-editor.png)
+
+In the query window, you can run the SQL query from below. You will see the same four open games for the Green Grasslands map as above:
+
+```sql
+SELECT * FROM "battle-royale"."OpenGamesIndex"
+WHERE map = 'Green Grasslands'
+```
+
+![DynamoDB PartiQL editor query open games for Green Grasslands map](/static/images/game-player-data/open-games/aws-console-dynamodb-partiql-editor-opengamesindex-query.png)
+
+You can change the map name in the where clause to see open games for other maps. For example, check how many open games there are for the map named **Dirty Desert**.
+
+```sql
+SELECT * FROM "battle-royale"."OpenGamesIndex"
+WHERE map = 'Dirty Desert'
+```

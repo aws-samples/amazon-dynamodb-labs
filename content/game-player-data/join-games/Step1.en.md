@@ -79,6 +79,12 @@ In the transaction’s first operation, you use a `Put` operation to insert a ne
 
 The second operation is an `Update` operation on the `Game` entity to increment the `people` attribute by one. As part of this operation, you add a conditional check that the current value of `people` is not greater than 50. As soon as 50 people join a game, the game is full and ready to begin.
 
+Before we add `vlopez` to the game, we can verify the current number of users already in the game by querying the sparse GSI we made. In the AWS DynamoDB console choose `Explore items` on the left and filter for the table named `Battle Royale`. Choose **Query** and then select the GSI named **OpenGamesIndex** from the dropdown. Specify `Urban Underground` as the value for the `map (Partition Key)` and click the orange **Run** button. You should see a single item returned with a vale of 49 for the `people` attribute.
+
+![Query a sparse GSI index from the DynamoDB console](/static/images/game-player-data/join-games/aws-console-dynamodb-gsi-query-opengamesindex.png)
+
+::alert[You can choose to run either the `join_game.py` python script or the AWS CLI command below. Both are provided to show different methods of interacting with DynamoDB.]
+
 Run this script with the following command in your terminal:
 
 ```sh
@@ -91,6 +97,48 @@ The output in your terminal should indicate that the user was added to the game.
 Added vlopez to game c6f38a6a-d1c5-4bdf-8468-24692ccc4646
 ```
 
+You can return to the DynamoDB console and click `Run` again to query the GSI and you will see that the `people` attribute now shows **50**
+
 Note that if you try to run the script again, the function fails. User `vlopez` has been added to the game already, so trying to add the user again does not satisfy the conditions you specified.
+
+Alternatively, you can also submit transactions via the AWS CLI. The command would look like this:  
+While not shown here, you can submit the json blob for the `transact-items` parameter as a separate file.  
+You can find [examples here](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/transact-write-items.html#examples).
+
+```sh
+aws dynamodb transact-write-items \
+--transact-items \
+"[
+  {
+    \"Put\": {
+      \"TableName\": \"battle-royale\",
+      \"Item\": {
+        \"PK\": {\"S\": \"GAME#c6f38a6a-d1c5-4bdf-8468-24692ccc4646\" },
+        \"SK\": {\"S\": \"USER#vlopez\" },
+        \"game_id\": {\"S\": \"c6f38a6a-d1c5-4bdf-8468-24692ccc4646\" },
+        \"username\": {\"S\": \"vlopez\" }
+      },
+      \"ConditionExpression\": \"attribute_not_exists(SK)\",
+      \"ReturnValuesOnConditionCheckFailure\": \"ALL_OLD\"
+    }
+  },
+  {
+    \"Update\": {
+      \"TableName\": \"battle-royale\",
+      \"Key\": {
+        \"PK\": { \"S\": \"GAME#c6f38a6a-d1c5-4bdf-8468-24692ccc4646\" },
+        \"SK\": { \"S\": \"#METADATA#c6f38a6a-d1c5-4bdf-8468-24692ccc4646\" }
+      },
+      \"UpdateExpression\": \"SET people = people + :p\",
+      \"ConditionExpression\": \"people < :limit\",
+      \"ExpressionAttributeValues\": {
+        \":p\": { \"N\": \"1\" },
+        \":limit\": { \"N\": \"50\" }
+      },
+      \"ReturnValuesOnConditionCheckFailure\": \"ALL_OLD\"
+    }
+  }
+]"
+```
 
 The addition of DynamoDB transactions greatly simplifies the workflow around complex operations like these. Without transactions, this would have required multiple API calls with complex conditions and manual rollbacks in the event of conflicts. Now, you can implement such complex operations with fewer than 50 lines of code.
