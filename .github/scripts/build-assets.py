@@ -61,6 +61,14 @@ with ZipFile('scenario-solutions.zip', 'w') as workshop_zip:
 shutil.move(os.path.join(os.getcwd(), 'scenario-solutions.zip'), os.path.join(dest_root, 'assets', 'scenario-solutions.zip'))
 
 
+#Create Game-Player-Data Python Scripts ZIP
+os.chdir(os.path.join(pkg_root, 'static', 'game-player-data'))
+with ZipFile('battle-royale.zip', 'w') as workshop_zip:
+	for pyscript in glob.glob('./scripts/*.py'):
+		workshop_zip.write(pyscript)
+shutil.move(os.path.join(os.getcwd(), 'battle-royale.zip'), os.path.join(dest_root, 'assets', 'battle-royale.zip'))
+
+
 #Create Event Driven ZIPs
 zips_to_make = ['MapLambdaPackage', 'ReduceLambdaPackage', 'StateLambdaPackage', 'GeneratorLambdaPackage']
 for zip_name in zips_to_make:
