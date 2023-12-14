@@ -62,7 +62,7 @@ shutil.move(os.path.join(os.getcwd(), 'scenario-solutions.zip'), os.path.join(de
 
 
 #Create Game-Player-Data Python Scripts ZIP
-os.chdir(os.path.join(pkg_root, 'static', 'game-player-data'))
+os.chdir(os.path.join(pkg_root, 'game-player-data'))
 with ZipFile('battle-royale.zip', 'w') as workshop_zip:
 	for pyscript in glob.glob('./scripts/*.py'):
 		workshop_zip.write(pyscript)
