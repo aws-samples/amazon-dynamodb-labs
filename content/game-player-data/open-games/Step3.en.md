@@ -81,7 +81,9 @@ Game: 873aaf13-0847-4661-ba26-21e0c66ebe64   Map: Dirty Desert
 Game: fe89e561-8a93-4e08-84d8-efa88bef383d   Map: Dirty Desert
 ```
 
-Additionally, using [PartiQL](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ql-reference.html), you can run SQL-compatible query language to retrieve items from the table and its indexes in DynamoDB. You can navigate to PartiQL editor under **Services**, **Database**, **DynamoDB** in the AWS console, and run a `Query` to receive a similar result.  
+Additionally, using [PartiQL](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ql-reference.html), you can run SQL-compatible query language to retrieve items from the table and its indexes in DynamoDB.  
+You can navigate to PartiQL editor in the left hand menu as shown below after navigating to the DynamoDB service under **Services**, **Database**, **DynamoDB** in the AWS console, and run a `Query` to receive a similar result.
+
 ![AWS Console DynamoDB PartiQL editor](/static/images/game-player-data/open-games/aws-console-menu-partiql-editor.png)
 
 In the query window, you can run the SQL query from below. You will see the same four open games for the Green Grasslands map as above:
