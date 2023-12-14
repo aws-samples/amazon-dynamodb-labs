@@ -13,6 +13,7 @@ Creating a GSI is similar to creating a table. In the code you downloaded, you w
 
 ```python
 import boto3
+
 dynamodb = boto3.client('dynamodb')
 
 try:
@@ -53,7 +54,7 @@ try:
             }
         ],
     )
-    print("Table updated successfully.")
+    print("Table 'battle-royale' updated successfully.")
 except Exception as e:
     print("Could not update table. Error:")
     print(e)
@@ -73,8 +74,11 @@ Create your global secondary index (GSI) by running the following command:
 python scripts/add_secondary_index.py
 ```
 
-You should see the following message in the console:  
-**“Table updated successfully.”**
+You should see the following message in the console:
+
+```text
+Table 'battle-royale' updated successfully.
+```
 
 Alternatively, you can create the global secondary index (GSI) by running the AWS CLI command below.
 

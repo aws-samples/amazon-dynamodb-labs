@@ -43,7 +43,7 @@ try:
             "WriteCapacityUnits": 1
         }
         )
-        print("Table created successfully.")
+        print("Table 'battle-royale' created successfully.")
 except Exception as e:
     print("Could not create table. Error:")
     print(e)
@@ -67,8 +67,11 @@ You can run the Python script with the following command in the Cloud9 Terminal.
 python scripts/create_table.py
 ```
 
-The script should return this message:  
-**“Table created successfully.”**
+The script should return this message:
+
+```text
+Table 'battle-royale' created successfully.
+```
 
 As an alternative, you can run the AWS CLI command from your Cloud9 Terminal.
 

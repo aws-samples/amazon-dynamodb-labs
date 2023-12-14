@@ -17,17 +17,16 @@ When adding a new user to a game, you need to:
  
 Note that accomplishing all of these things requires write actions across the existing `Game` entity and the new `UserGameMapping` entity as well as conditional logic for each of the entities. This is the kind of operation that is a perfect fit for DynamoDB transactions because you need to work on multiple entities in the same request, and you want the entire request to succeed or fail together.
 
-In the code you downloaded, a **join_game.py** script is in the **application/** directory. The function in that script uses a DynamoDB transaction to add a user to a game.
+In the code you downloaded, a **join_game.py** script is in the **scripts/** directory. The function in that script uses a DynamoDB transaction to add a user to a game.
 
 ```python
 import boto3
-from entities import Game, UserGameMapping
 
 dynamodb = boto3.client('dynamodb')
 
 GAME_ID = "c6f38a6a-d1c5-4bdf-8468-24692ccc4646"
-
 USERNAME = 'vlopez'
+
 
 def join_game_for_user(game_id, username):
     try:
@@ -37,8 +36,8 @@ def join_game_for_user(game_id, username):
                     "Put": {
                         "TableName": "battle-royale",
                         "Item": {
-                            "PK": {"S": "GAME#{}".format(game_id) },
-                            "SK": {"S": "USER#{}".format(username) },
+                            "PK": {"S": f"GAME#{game_id}" },
+                            "SK": {"S": f"USER#{username}" },
                             "game_id": {"S": game_id },
                             "username": {"S": username }
                         },
@@ -50,8 +49,8 @@ def join_game_for_user(game_id, username):
                     "Update": {
                         "TableName": "battle-royale",
                         "Key": {
-                            "PK": { "S": "GAME#{}".format(game_id) },
-                            "SK": { "S": "#METADATA#{}".format(game_id) },
+                            "PK": { "S": f"GAME#{game_id}" },
+                            "SK": { "S": f"#METADATA#{game_id}" },
                         },
                         "UpdateExpression": "SET people = people + :p",
                         "ConditionExpression": "people < :limit",
@@ -64,11 +63,10 @@ def join_game_for_user(game_id, username):
                 }
             ]
         )
-        print("Added {} to game {}".format(username, game_id))
-    return True
-
-except Exception as e:
-    print("Could not add user to game")
+        print(f"Added user: {username} to game: {game_id}")
+        return True
+    except Exception as e:
+        print("Could not add user to game")
 
 join_game_for_user(GAME_ID, USERNAME)
 ```
@@ -88,22 +86,21 @@ Before we add `vlopez` to the game, we can verify the current number of users al
 Run this script with the following command in your terminal:
 
 ```sh
-python application/join_game.py
+python scripts/join_game.py
 ```
 
 The output in your terminal should indicate that the user was added to the game.
 
 ```text
-Added vlopez to game c6f38a6a-d1c5-4bdf-8468-24692ccc4646
+Added user: vlopez to game: c6f38a6a-d1c5-4bdf-8468-24692ccc4646
 ```
 
 You can return to the DynamoDB console and click `Run` again to query the GSI and you will see that the `people` attribute now shows **50**
 
 Note that if you try to run the script again, the function fails. User `vlopez` has been added to the game already, so trying to add the user again does not satisfy the conditions you specified.
 
-Alternatively, you can also submit transactions via the AWS CLI. The command would look like this:  
-While not shown here, you can submit the json blob for the `transact-items` parameter as a separate file.  
-You can find [examples here](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/transact-write-items.html#examples).
+Alternatively, you can also submit transactions via the AWS CLI.  
+Run the following command to add user `ebarton` to a game using the `Juicy Jungle` map:  
 
 ```sh
 aws dynamodb transact-write-items \
@@ -113,10 +110,10 @@ aws dynamodb transact-write-items \
     \"Put\": {
       \"TableName\": \"battle-royale\",
       \"Item\": {
-        \"PK\": {\"S\": \"GAME#c6f38a6a-d1c5-4bdf-8468-24692ccc4646\" },
-        \"SK\": {\"S\": \"USER#vlopez\" },
-        \"game_id\": {\"S\": \"c6f38a6a-d1c5-4bdf-8468-24692ccc4646\" },
-        \"username\": {\"S\": \"vlopez\" }
+        \"PK\": {\"S\": \"GAME#248dd9ef-6b17-42f0-9567-2cbd3dd63174\" },
+        \"SK\": {\"S\": \"USER#ebarton\" },
+        \"game_id\": {\"S\": \"248dd9ef-6b17-42f0-9567-2cbd3dd63174\" },
+        \"username\": {\"S\": \"ebarton\" }
       },
       \"ConditionExpression\": \"attribute_not_exists(SK)\",
       \"ReturnValuesOnConditionCheckFailure\": \"ALL_OLD\"
@@ -126,8 +123,8 @@ aws dynamodb transact-write-items \
     \"Update\": {
       \"TableName\": \"battle-royale\",
       \"Key\": {
-        \"PK\": { \"S\": \"GAME#c6f38a6a-d1c5-4bdf-8468-24692ccc4646\" },
-        \"SK\": { \"S\": \"#METADATA#c6f38a6a-d1c5-4bdf-8468-24692ccc4646\" }
+        \"PK\": { \"S\": \"GAME#248dd9ef-6b17-42f0-9567-2cbd3dd63174\" },
+        \"SK\": { \"S\": \"#METADATA#248dd9ef-6b17-42f0-9567-2cbd3dd63174\" }
       },
       \"UpdateExpression\": \"SET people = people + :p\",
       \"ConditionExpression\": \"people < :limit\",

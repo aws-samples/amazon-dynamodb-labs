@@ -54,8 +54,7 @@ try:
             }
         ],
     )
-    print("Table updated successfully.")
-    
+    print("Table 'battle-royale' updated successfully.")
 except Exception as e:
     print("Could not update table. Error:")
     print(e)
@@ -73,8 +72,11 @@ Run the script by typing the following command in your terminal:
 python scripts/add_inverted_index.py
 ```
 
-Your terminal will display output that your index was created successfully.  
-"**Table updated successfully.**"
+Your terminal will display output that your index was created successfully.
+
+```text
+Table 'battle-royale' updated successfully.
+```
 
 Alternatively, you can create the `InvertedIndex` GSI by running the AWS CLI command below:
 
