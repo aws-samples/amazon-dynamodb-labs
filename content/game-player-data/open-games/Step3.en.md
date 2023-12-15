@@ -69,7 +69,7 @@ Game: 0ab37cf1-fc60-4d93-b72b-89335f759581   Map: Green Grasslands
 You can run the python script again and use a specific `map name`. Try running the code below for the map named `Dirty Desert`.
 
 ```sh
-python find_open_games_by_map.py "Dirty Desert"
+python scripts/find_open_games_by_map.py "Dirty Desert"
 ```
 
 The terminal will show the following output with three open games for the Dirty Desert map.

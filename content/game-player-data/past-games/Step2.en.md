@@ -68,7 +68,7 @@ You can run the script for other users by adding their username as a command lin
 Try running the script again and finding games for user vlopez:
 
 ```sh
-python find_games_for_user.py vlopez
+python scripts/find_games_for_user.py vlopez
 ```
 
 The output should look like this:
