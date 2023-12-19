@@ -1,13 +1,14 @@
 name: ValidatePR
 
-permissions:
-  id-token: write
 on:
-  pull_request:
+  pull_request_target:
     branches: [ master ]
 
 jobs:
   buildAndVerify:
+    permissions:
+      id-token: write
+      contents: write
     runs-on: ubuntu-latest
     env:
       STEP_S3_BUCKET: 'test.amazon-dynamodb-labs.com'
@@ -22,7 +23,7 @@ jobs:
       with:
         python-version: '3.10'
     - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v1
+      uses: aws-actions/configure-aws-credentials@v4
       with:
         aws-region: us-east-1
         role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
