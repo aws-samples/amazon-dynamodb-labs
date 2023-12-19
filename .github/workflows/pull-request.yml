@@ -2,6 +2,7 @@ name: ValidatePR
 
 permissions:
   id-token: write
+  contents: write
 on:
   pull_request:
     branches: [ master ]
