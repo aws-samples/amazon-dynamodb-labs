@@ -1,14 +1,14 @@
 name: ValidatePR
 
-permissions:
-  id-token: write
-  contents: write
 on:
   pull_request:
     branches: [ master ]
 
 jobs:
   buildAndVerify:
+    permissions:
+      id-token: write
+      contents: write
     runs-on: ubuntu-latest
     env:
       STEP_S3_BUCKET: 'test.amazon-dynamodb-labs.com'
