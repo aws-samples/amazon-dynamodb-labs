@@ -71,4 +71,4 @@ This lambda function receives events from the Orders Kinesis data stream and wri
 
 12. Deploy the code changes to your function by selecting **Deploy**.
 
-![AWS Lambda function creation wizard](/static/images/change-data-capture/ex1/deploy-code.png)
+![AWS Lambda function creation wizard](/static/images/change-data-capture/ex2/deploy-code.png)

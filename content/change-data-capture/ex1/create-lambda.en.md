@@ -80,3 +80,5 @@ This lambda function receives events from DynamoDB streams and writes new items 
 12. Deploy the code changes to your function by selecting **Deploy**.
 
 ![AWS Lambda function creation wizard](/static/images/change-data-capture/ex1/deploy-code.png)
+
+::alert[**Note**: Do not try to execute the lambda function you created yet. Additional configuration is required for the set up to work correctly. You will update your lambda function configuration in the next step.]

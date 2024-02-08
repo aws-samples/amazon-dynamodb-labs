@@ -10,6 +10,8 @@ chapter: true
 
 ## Create a Cloud9 Environment
 
+::alert[To complete the steps in these labs, you need an IAM role that has the privileges to create, update and delete AWS Cloud9 environments, Lambda functions, DynamoDB tables, IAM roles, Kinesis Data Streams and DynamoDB Streams]
+
 * Log into the AWS Management Console, go to the AWS Cloud9 service dashboard then select **Create environment**.
 
 ![Create Cloud9 environment](/static/images/change-data-capture/setup/cloud9-create-env.png)
@@ -25,5 +27,20 @@ chapter: true
 * Wait for creation of your Cloud9 environment to complete then select **Open** to launch your Cloud9 evironment.
 
 ![Launch Cloud9 environment](/static/images/change-data-capture/setup/cloud9-launch-env.png)
+
+Start a command line terminal in Cloud9 and set up the `Region` and `Account ID` environment variables.
+
+```bash
+export REGION={your aws region} &&
+export ACCOUNT_ID={your aws account ID}
+```
+
+Install jq on your AWS Cloud9 environment using the command below.
+
+```bash
+sudo yum install jq -y
+```
+
+::alert[*After completing the workshop, remember to complete the :link[Clean Up]{href="/change-data-capture/clean-up"} section to remove AWS resources that you no longer require.*]
 
 Now that your environment is set up, continue on to the :link[2. Scenario Overview]{href="/change-data-capture/overview"}.  

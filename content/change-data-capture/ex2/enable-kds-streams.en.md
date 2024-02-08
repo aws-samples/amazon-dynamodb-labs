@@ -5,7 +5,7 @@ weight: 205
 chapter: true
 ---
 
-Disable DynamoDB streams for the **Orders** table using the AWS CLI commands below.
+Disable DynamoDB streams for the Orders table using the AWS CLI commands below.
 
 ```bash
 aws dynamodb update-table \

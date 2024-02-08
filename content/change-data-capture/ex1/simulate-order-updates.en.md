@@ -360,4 +360,4 @@ The status of order ID 4514280 on the Orders table should be **COMPLETE** as sho
 
 ![OrdersHistory Table Items](/static/images/change-data-capture/ex1/orders-history-two.png)
 
-::alert[_The order of updates to the Orders table is preserved by DynamoDB streams when changes are sent to the create order history lambda function. Hence, items on the OrdersHistory table can be sorted in the order that they were created._]
+::alert[**Note:** The order of updates to the Orders table is preserved by DynamoDB streams when changes are sent to the create order history lambda function. Since items on the OrdersHistory table have a sort key - sk, that is a timestamp, items on the OrderHistory table can be sorted in the order that they were created.]

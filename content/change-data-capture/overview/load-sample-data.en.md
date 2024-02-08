@@ -1,7 +1,7 @@
 ---
 title: "Load Sample Data"
 date: 2023-12-01T00:00:00-00:00
-weight: 20
+weight: 15
 chapter: true
 ---
 

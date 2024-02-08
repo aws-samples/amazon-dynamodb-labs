@@ -5,7 +5,7 @@ weight: 15
 chapter: true
 ---
 
-Amazon Kinesis Data Streams can be used to collect and process large streams of data records from applications that produce streaming data in real-time. At a high level, data producers push data records to Amazon Kinesis Data Streams and consumers can read and process the data in real-time.
+[Amazon Kinesis Data Streams](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/kds.html) can be used to collect and process large streams of data records from applications that produce streaming data in real-time. At a high level, data producers push data records to Amazon Kinesis Data Streams and consumers can read and process the data in real-time.
 
 Data on Amazon Kinesis Data Streams is by default available for 24 hours after the data is written to the stream and the retention period can be increased to a maximum of 365 days.
 

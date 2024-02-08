@@ -5,7 +5,7 @@ weight: 10
 chapter: true
 ---
 
-DynamoDB streams records a time ordered sequence of item level changes that occur on a DynamoDB table. Once enabled, information about all item level changes will be logged and stored for up to 24 hours.
+[DynamoDB streams](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html) records a time ordered sequence of item level changes that occur on a DynamoDB table. Once enabled, information about all item level changes will be logged and stored for up to 24 hours.
 
 Changes to items on DynamoDB tables with streams enabled are captured in near real-time so the events can be used as triggers for event driven applications that consume data from your DynamoDB stream.
 

@@ -5,14 +5,14 @@ weight: 105
 chapter: true
 ---
 
-When enabling DynamoDB streams on a table, you can choose to record one of the following.
+When [enabling DynamoDB streams](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html#Streams.Enabling) on a table, you can choose to record one of the following.
 
 * **Key attributes** only - the key attributes of the item being updated
 * **New image** - the new image of an item after it is updated
 * **Old image** - the original image of an item before it was updated
 * **New and old images** - the before and after image of an item following an update. 
 
-You will set the DynamoDB stream on the Orders table to only hold the image of an item before an update was performed.
+Since the requirement for this scenario is to retain only the current view of orders on the Orders table, you need to set the DynamoDB stream for the table to only hold the **old image** of items when updates are performed. The **new image** does not need to be written to the stream since it is not required.
 
 Enable DynamoDB streams on the Orders table by running the AWS CLI command below.
 
