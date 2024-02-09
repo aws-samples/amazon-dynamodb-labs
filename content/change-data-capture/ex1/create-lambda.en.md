@@ -1,7 +1,7 @@
 ---
 title: "Create Lambda Function"
 date: 2023-12-01T00:00:00-00:00
-weight: 110
+weight: 115
 chapter: true
 ---
 
@@ -69,7 +69,7 @@ def lambda_handler(event, context):
     event: DynamoDBStreamEvent = DynamoDBStreamEvent(event)
 
     for record in event.records:
-        if record.event_name == DynamoDBRecordEventName.MODIFY:
+        if record.event_name == DynamoDBRecordEventName.MODIFY or record.event_name == DynamoDBRecordEventName.REMOVE:
             logger.debug({"record": record})
             store_history_record(record.dynamodb.old_image)
 
@@ -77,8 +77,10 @@ def lambda_handler(event, context):
 
 This lambda function receives events from DynamoDB streams and writes new items to a DynamoDB table i.e. the OrdersHistory table.
 
+Since we only need to record changes to items on the Orders table, the lambda function is set to process only stream events for modified and deleted items from the Orders table.
+
 12. Deploy the code changes to your function by selecting **Deploy**.
 
 ![AWS Lambda function creation wizard](/static/images/change-data-capture/ex1/deploy-code.png)
 
-::alert[**Note**: Do not try to execute the lambda function you created yet. Additional configuration is required for the set up to work correctly. You will update your lambda function configuration in the next step.]
+Do not execute the lambda function you created yet. Additional configuration is required for the set up to work correctly. You will update your lambda function configuration in the next step.

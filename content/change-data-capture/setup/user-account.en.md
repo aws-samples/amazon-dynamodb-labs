@@ -10,7 +10,7 @@ chapter: true
 
 ## Create a Cloud9 Environment
 
-::alert[To complete the steps in these labs, you need an IAM role that has the privileges to create, update and delete AWS Cloud9 environments, Lambda functions, DynamoDB tables, IAM roles, Kinesis Data Streams and DynamoDB Streams]
+To complete the steps in these labs, you need an IAM role that has the privileges to create, update and delete AWS Cloud9 environments, Lambda functions, DynamoDB tables, IAM roles, Kinesis Data Streams and DynamoDB Streams
 
 * Log into the AWS Management Console, go to the AWS Cloud9 service dashboard then select **Create environment**.
 

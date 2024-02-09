@@ -1,7 +1,7 @@
 ---
 title: "Configure Lambda Function"
 date: 2023-12-01T00:00:00-00:00
-weight: 215
+weight: 220
 chapter: true
 ---
 
@@ -48,6 +48,11 @@ Configure your lambda function to copy changed records from the Orders DynamoDB 
             "Effect": "Allow",
             "Action": "dynamodb:PutItem",
             "Resource": "arn:aws:dynamodb:{aws-region}:{aws-account-id}:table/OrdersHistory"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "sqs:SendMessage",
+            "Resource": "arn:aws:sqs:{aws-region}:{aws-account-id}:orders-kds-dlq"
         }
     ]
 }
@@ -88,4 +93,10 @@ arn:aws:lambda:{aws-region}:017000801446:layer:AWSLambdaPowertoolsPythonV2:58
 
 ![AWS Lambda function console](/static/images/change-data-capture/ex2/trigger.png) 
 
-12. Select **Add**.
+12. Click **Additional settings** to expand the section.
+13. Provide the ARN of the orders-kds-dlq SQS queue you created earlier.
+14. Set the Retry attempts to 3.
+
+![AWS Lambda function console](/static/images/change-data-capture/ex2/trigger-settings.png) 
+
+15. Select **Add**.

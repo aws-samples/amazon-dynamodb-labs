@@ -13,6 +13,7 @@ To run this lab, you will need an AWS account, and a user identity with access t
 * Amazon DynamoDB
 * Amazon Kinesis
 * AWS Lambda
+* Amazon Simple Queue Service
 * AWS Cloud9 Environment
 
 You can use your own account, or an account provided through Event Engine as part of an AWS organized workshop.  Using an account provided by Event Engine is the easier path, as you will have full access to all AWS services, and the account will terminate automatically when the event is over.

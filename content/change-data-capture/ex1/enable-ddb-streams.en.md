@@ -12,7 +12,7 @@ When [enabling DynamoDB streams](https://docs.aws.amazon.com/amazondynamodb/late
 * **Old image** - the original image of an item before it was updated
 * **New and old images** - the before and after image of an item following an update. 
 
-Since the requirement for this scenario is to retain only the current view of orders on the Orders table, you need to set the DynamoDB stream for the table to only hold the **old image** of items when updates are performed. The **new image** does not need to be written to the stream since it is not required.
+Since the requirement for this scenario is to retain only the current view of orders on the Orders table, you will set the DynamoDB stream for the table to only hold the **old image** of items when updates are performed. The **new image** does not need to be written to the stream since it is not required.
 
 Enable DynamoDB streams on the Orders table by running the AWS CLI command below.
 
@@ -20,7 +20,7 @@ Enable DynamoDB streams on the Orders table by running the AWS CLI command below
 aws dynamodb update-table \
     --table-name Orders \
     --stream-specification \
-        StreamEnabled=true,StreamViewType=OLD_IMAGE > output.log
+        StreamEnabled=true,StreamViewType=OLD_IMAGE >> output.log
 ```
 Confirm that DynamoDB streams has been enabled using the AWS CLI commands below.
 

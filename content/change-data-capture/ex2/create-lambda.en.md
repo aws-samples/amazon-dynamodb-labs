@@ -1,7 +1,7 @@
 ---
 title: "Create Lambda Function"
 date: 2023-12-01T00:00:00-00:00
-weight: 210
+weight: 215
 chapter: true
 ---
 
@@ -63,11 +63,17 @@ def lambda_handler(event: KinesisStreamEvent, context):
 
     kinesis_record = next(event.records).kinesis
     data = kinesis_record.data_as_json()
-    store_history_record(data["dynamodb"]["OldImage"])
+    if data["eventName"] == "MODIFY" or data["eventName"] == "REMOVE":
+        logger.debug({"data": data})
+        if "dynamodb" in data:
+            if "OldImage" in data["dynamodb"]:
+                store_history_record(data["dynamodb"]["OldImage"])
 
 ```
 
 This lambda function receives events from the Orders Kinesis data stream and writes them to the OrdersHistory dynamoDB table.
+
+Since we only need to record changes to items on the Orders table, the lambda function is set to process only Kinesis stream events for modified and deleted items from the Orders table.
 
 12. Deploy the code changes to your function by selecting **Deploy**.
 

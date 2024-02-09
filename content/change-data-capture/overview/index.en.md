@@ -5,13 +5,13 @@ weight: 5
 chapter: true
 ---
 
-Imagine you have an e-commerce website where customers place orders for different items. The website relies on Amazon DynamoDB and it requires logging of all events from when an order is placed until the item delivered.
+Imagine you have an e-commerce website where customers place orders for different items. The website relies on Amazon DynamoDB and it requires logging of all events from when an order is placed until the item is delivered.
 
 Website Requirements:
 
 * The status of orders placed on your website can be `ACTIVE`, `PLACED`, `COMPLETE` or `CANCELLED`.
 * You need to keep the current view of customers' orders on the main database table used by your application.
-* Each order as a `status` attribute and contains a list of one or more items.
+* Each order has a `status` attribute and contains a list of one or more items.
 
 In JSON format, an item on the orders table has the following attributes.
 

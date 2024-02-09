@@ -44,6 +44,13 @@ aws dynamodb delete-table --table-name Orders >> output.log
 aws dynamodb delete-table --table-name OrdersHistory >> output.log
 ```
 
+* The Amazon SQS queues created during the labs:
+
+```bash
+aws sqs delete-queue --queue-url https://sqs.${REGION}.amazonaws.com/${ACCOUNT_ID}/orders-ddbs-dlq
+aws sqs delete-queue --queue-url https://sqs.${REGION}.amazonaws.com/${ACCOUNT_ID}/orders-kds-dlq
+```
+
 * The IAM policies attached to the IAM execution roles you created:
 
 ![Delete IAM Policies](/static/images/change-data-capture/cleanup/delete-policies-one.png)

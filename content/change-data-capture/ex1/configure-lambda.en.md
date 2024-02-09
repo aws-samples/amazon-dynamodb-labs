@@ -1,7 +1,7 @@
 ---
 title: "Configure Lambda Function"
 date: 2023-12-01T00:00:00-00:00
-weight: 115
+weight: 120
 chapter: true
 ---
 
@@ -50,10 +50,17 @@ Configure your lambda function to copy changed records from the Orders DynamoDB 
             "Effect": "Allow",
             "Action": "dynamodb:PutItem",
             "Resource": "arn:aws:dynamodb:{aws-region}:{aws-account-id}:table/OrdersHistory"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "sqs:SendMessage",
+            "Resource": "arn:aws:sqs:{aws-region}:{aws-account-id}:orders-ddbs-dlq"
         }
     ]
 }
 ```
+
+The updated IAM policy gives the create-order-history-ddbs lambda function the permissions required to read events from the Orders DynamoDB stream, write new items to the OrdersHistory DynamoDB table and send messages to the orders-ddbs-dlq SQS queue.
 
 ::alert[Replace **{aws-region}** and **{aws-account-id}** in the policy statement above with the correct value for your AWS region and your AWS account ID.]
 
@@ -93,4 +100,10 @@ arn:aws:lambda:{aws-region}:017000801446:layer:AWSLambdaPowertoolsPythonV2:58
 
 ![AWS Lambda function console](/static/images/change-data-capture/ex1/trigger-config.png) 
 
-12. Select **Add**.
+12. Click **Additional settings** to expand the section.
+13. Provide the ARN of the **orders-ddbs-dlq** SQS queue you created earlier.
+14. Set the Retry attempts to 3.
+
+![AWS Lambda function console](/static/images/change-data-capture/ex1/trigger-settings.png) 
+
+15. Select **Add**.

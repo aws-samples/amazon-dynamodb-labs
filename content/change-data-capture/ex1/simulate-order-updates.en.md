@@ -1,7 +1,7 @@
 ---
 title: "Simulate Order Updates"
 date: 2023-12-01T00:00:00-00:00
-weight: 120
+weight: 125
 chapter: false
 ---
 
@@ -84,7 +84,7 @@ aws dynamodb update-item \
     --expression-attribute-values file://6421680-items.json \
     --return-values ALL_NEW \
     --return-consumed-capacity TOTAL \
-    --return-item-collection-metrics SIZE > output.log
+    --return-item-collection-metrics SIZE >> output.log
 ```
 
 The output should be similar to the one below.
@@ -333,7 +333,7 @@ aws dynamodb update-item \
     --expression-attribute-values file://4514280-complete-items.json \
     --return-values ALL_NEW \
     --return-consumed-capacity TOTAL \
-    --return-item-collection-metrics SIZE > output.log
+    --return-item-collection-metrics SIZE >> output.log
 ```
 
 Followed by
@@ -347,7 +347,7 @@ aws dynamodb update-item \
     --expression-attribute-values file://4514280-returned-items.json \
     --return-values ALL_NEW \
     --return-consumed-capacity TOTAL \
-    --return-item-collection-metrics SIZE > output.log
+    --return-item-collection-metrics SIZE >> output.log
 ```
 
 Explore the items on the Orders and OrdersHistory tables to see the result of your updates.
