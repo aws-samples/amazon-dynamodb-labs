@@ -71,6 +71,17 @@ def lambda_handler(event: KinesisStreamEvent, context):
 
 ```
 
+::::expand{header="Expand this section for an explanation of the function code"}
+
+| Line Number |  Description  |
+|:-------------------- | :------------------ |
+| 8 - 11 | Get the Orders History DynamoDB table name from an environment variable, instantiate a logger for the lambda function then create a boto3 client for interacting with DynamoDB tables. |
+| 19 - 24 | Create a new item for the Orders History table using an old image of an item updated on the Orders table. Set the partition key for the new item to the `id` of the updated order then set the sort key for the new item to the current time. |
+| 27 - 35 | Write the new item to the Orders History table. Raise an exception if the item is not successfully written to the table. |
+| 42 - 48 | Process old images of update item event and delete item event received from the Orders Kinesis Data stream. |
+
+::::
+
 This lambda function receives events from the Orders Kinesis data stream and writes them to the OrdersHistory dynamoDB table.
 
 Since we only need to record changes to items on the Orders table, the lambda function is set to process only Kinesis stream events for modified and deleted items from the Orders table.
