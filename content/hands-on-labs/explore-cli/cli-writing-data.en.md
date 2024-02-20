@@ -132,11 +132,11 @@ aws dynamodb update-item \
     --key '{
         "Id" : {"N": "201"}
     }' \
-    --update-expression "SET #Color = list_append(#Color, :values)" \
-    --expression-attribute-names '{"#Color": "Color"}' \
+    --update-expression "SET #Color = list_append(Color, :values)" \
     --expression-attribute-values '{
         ":values" : {"L": [{"S" : "Blue"}, {"S" : "Yellow"}]}
     }' \
+    --return-values ALL_NEW \
     --return-consumed-capacity TOTAL
 ```
 
@@ -148,8 +148,8 @@ aws dynamodb update-item \
     --key '{
         "Id" : {"N": "201"}
     }' \
-    --update-expression "REMOVE #Color[2], #Color[3]" \
-    --expression-attribute-names '{"#Color": "Color"}' \
+    --update-expression "REMOVE Color[2], Color[3]" \
+    --return-values ALL_NEW \
     --return-consumed-capacity TOTAL
 ```
 
