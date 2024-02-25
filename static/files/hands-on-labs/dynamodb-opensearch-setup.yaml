@@ -1,0 +1,114 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: A CloudFormation template that creates an OpenSearch Service domain.
+
+Parameters:
+  MasterUserPassword:
+    Type: String
+    Description: The password for the master user of the OpenSearch domain.
+    Default: "nyz@5k%Ty&KUEG5@"
+  OpenSearchClusterName:
+    Type: String
+    Description: The name for the OpenSearch cluster.
+    Default: "workshop"
+    AllowedPattern: '[a-z][a-z0-9\-]+'
+    MaxLength: 21
+    ConstraintDescription: The cluster name must start with a lowercase letter and can only contain lowercase letters, numbers, and dashes.
+
+Resources:
+
+  ProductDetailsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: ProductDetails
+      AttributeDefinitions:
+        - AttributeName: ProductID
+          AttributeType: S
+      KeySchema:
+        - AttributeName: ProductID
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: True
+      StreamSpecification:
+        StreamViewType: NEW_AND_OLD_IMAGES
+
+  OpenSearchServiceDomain:
+    Type: AWS::OpenSearchService::Domain
+    Properties:
+      DomainName: !Sub "ddb-os-${OpenSearchClusterName}"
+      ClusterConfig:
+        DedicatedMasterEnabled: false
+        ZoneAwarenessEnabled: false
+        InstanceCount: '1'
+        InstanceType: 'r6g.large.search'
+      DomainEndpointOptions:
+        EnforceHTTPS: true
+      EBSOptions:
+        EBSEnabled: true
+        VolumeSize: 20
+        VolumeType: "gp3"
+      NodeToNodeEncryptionOptions:
+        Enabled: true
+      EncryptionAtRestOptions:
+        Enabled: true
+      AccessPolicies:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              AWS: !ImportValue Cloud9RoleArn
+            Action: 'es:*'
+            Resource:
+              !Join
+                - ''
+                - - 'arn:aws:es:'
+                  - !Ref "AWS::Region"
+                  - ':'
+                  - !Ref "AWS::AccountId"
+                  - ':domain/ddb-os-'
+                  - !Ref 'OpenSearchClusterName'
+                  - '/*'
+          - Effect: Allow
+            Principal: '*'
+            Action: '*'
+            Resource: '*'
+      AdvancedSecurityOptions:
+        Enabled: true
+        InternalUserDatabaseEnabled: true
+        MasterUserOptions:
+          MasterUserName: "master-user"
+          MasterUserPassword: !Ref MasterUserPassword
+
+Outputs:
+
+  Cloud9IdeUrl:
+    Description: URL to launch the Cloud9 IDE
+    Value: !ImportValue Cloud9IdeUrl
+  OSDashboardsURL:
+    Description: URL to the OpenSearch Dashboards
+    Value: !Sub "https://${OpenSearchServiceDomain.DomainEndpoint}/_dashboards/"
+  OSMasterUserName:
+    Description: The user name for the master user of the OpenSearch domain.
+    Value: "master-user"
+  OSMasterUserPassword:
+    Description: The password for the master user of the OpenSearch domain. Handle with care.
+    Value: !Ref MasterUserPassword
+  OSDomainEndpoint:
+    Description: The endpoint of the OpenSearch domain.
+    Value: !Sub "https://${OpenSearchServiceDomain.DomainEndpoint}"
+    Export:
+      Name: OpenSearchServiceDomain
+  Region:
+    Description: The region you deployed in.
+    Value: !Ref "AWS::Region"
+  DdbTableArn:
+    Description: "ARN of the DynamoDB Table"
+    Value: !GetAtt ProductDetailsTable.Arn
+  Role:
+    Description: "ARN of the Role used to provide access"
+    Value: !ImportValue Cloud9RoleArn
+  S3Bucket:
+    Description: "Name of the S3 Bucket"
+    Value: !ImportValue Cloud9LogBucket

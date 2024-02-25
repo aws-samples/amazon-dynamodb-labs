@@ -130,6 +130,8 @@ Resources:
               Service:
                 - ec2.amazonaws.com
                 - ssm.amazonaws.com
+                - opensearchservice.amazonaws.com
+                - osis-pipelines.amazonaws.com
             Action:
               - sts:AssumeRole
       ManagedPolicyArns:
@@ -720,4 +722,18 @@ Outputs:
   Cloud9IdeUrl:
     Description: URL to launch the Cloud9 IDE
     Value: !Sub https://${AWS::Region}.console.aws.amazon.com/cloud9/ide/${Cloud9Instance}?region=${AWS::Region}
-
+    Export:
+      Name: Cloud9IdeUrl
+  Cloud9LogBucketArn:
+    Description: S3 Bucket Arn
+    Value: !GetAtt Cloud9LogBucket.Arn
+  Cloud9LogBucketName:
+    Description: S3 Bucket Name
+    Value: !Ref Cloud9LogBucket
+    Export:
+      Name: Cloud9LogBucket
+  Cloud9RoleArn:
+    Description: Role Arn
+    Value: !GetAtt Cloud9Role.Arn
+    Export:
+      Name: Cloud9RoleArn
