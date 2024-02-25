@@ -6,7 +6,7 @@ weight: 10
 ---
 In this module, you will create DynamoDB and OpenSearch Service resources, configure integrations, and execute example queries.
 All the initial resources required are deployed via [Amazon CloudFormation](https://aws.amazon.com/cloudformation/) template.
-There is one CloudFormation template used in this exercise, but it has a dependency on the Cloud9 environment deployed in [Getting Started]({{< relref "/hands-on-labs/setup/setup.en.md" >}} "Getting Started"). The Cloudformation template will deploy following resources.
+There is one CloudFormation template used in this exercise, but it has a dependency on the Cloud9 environment deployed in **LHOL: Hands-on Labs for Amazon DynamoDB step 1. Getting Started**. The Cloudformation template will deploy following resources.
 
 CloudFormation Template Resources:
   - DynamoDB Table: DynamoDB table to store product descriptions. Has Point-in-time Recovery (PITR) and DynamoDB Streams enabled.
