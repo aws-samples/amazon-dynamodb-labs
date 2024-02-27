@@ -9,7 +9,7 @@ Configure your lambda function to copy changed records from the Orders DynamoDB 
 
 1. Go to the IAM dashboard on the AWS Management Console and inspect the IAM policy, i.e. **AWSLambdaMicroserviceExecutionRole...**, created when you created the **create-order-history-kds** lambda function.
 
-```json
+```
 {
     "Version": "2012-10-17",
     "Statement": [

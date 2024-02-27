@@ -20,19 +20,19 @@ Enable DynamoDB streams on the Orders table by running the AWS CLI command below
 aws dynamodb update-table \
     --table-name Orders \
     --stream-specification \
-        StreamEnabled=true,StreamViewType=OLD_IMAGE >> output.log
+        StreamEnabled=true,StreamViewType=OLD_IMAGE \
+    --query "TableDescription.LatestStreamArn"
 ```
 Confirm that DynamoDB streams has been enabled using the AWS CLI commands below.
 
 ```bash
-aws dynamodb describe-table --table-name Orders \
-    | jq '.Table | .TableStatus, .StreamSpecification.StreamEnabled, .LatestStreamArn'
+aws dynamodb describe-table \
+    --table-name Orders \
+    --query "Table.StreamSpecification.StreamEnabled"
 ```
 
-The output would show the table status, whether DynamoDB streams is enabled for the table and the Amazon resource name (ARN) for the tables stream as shown below.
+The output should return a boolean as shown below.
 
 ```
-"ACTIVE"
 true
-"arn:aws:dynamodb:{REGION}:{ACCOUNT_ID}:table/Orders/stream/YYYY-MM-DDThh:mm:ss.SSS"
 ```

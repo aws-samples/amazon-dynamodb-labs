@@ -7,11 +7,15 @@ chapter: false
 
 After creating the Orders table, you uploaded some sample orders to the table. Lets explore the items on the Orders table before simulating any updates to any orders on the table.
 
-Navigate to the DynamoDB Service page using the AWS Management Console. 
+1. Navigate to the DynamoDB Service page using the AWS Management Console. 
 
-Select the **Orders** table then select the **Explore table items** button to view the orders on the table. 
+![Orders Table Items](/static/images/change-data-capture/ex1/select-dynamodb-service.png)
 
-See the :link[Viewing Table Data]{href="/hands-on-labs/explore-console/console-read-data"} section of the Hands-on Labs for Amazon DynamoDB if you need a refresher on exploring table items using the AWS Management Console.
+2. Select the **Orders** table then select the **Explore table items** button to view the orders on the table. 
+
+![Orders Table Items](/static/images/change-data-capture/ex1/view-orders-table.png)
+
+![Orders Table Items](/static/images/change-data-capture/ex1/explore-table-items.png)
 
 There will be 4 orders on the table all having a status of **PLACED** as shown in the image below.
 
@@ -21,59 +25,32 @@ Feel free to explore the content of each order by selecting the **id** of the it
 
 There will be no data on the **OrdersHistory** table at this point beacuse no data has been written to it.
 
-Copy the JSON data below into a file called **6421680-items.json**.
+You can simulate updates to items on Orders table by using the AWS Management Console or by using the AWS CLI. Expand the appropriate section below for instructions on how to proceed with your preferred method.
 
-```bash
-{
-	":val2": {
-		"S": "COMPLETE"
-	},
-	":val1": {
-		"L": [
-			{
-				"M": {
-					"id": {
-						"S": "23769901"
-					},
-					"name": {
-						"S": "Hydrating Face Cream"
-					},
-					"price": {
-						"S": "£12.00"
-					},
-					"quantity": {
-						"S": "8"
-					},
-					"status": {
-						"S": " COMPLETE"
-					}
-				}
-			},
-			{
-				"M": {
-					"id": {
-						"S": "23673445"
-					},
-					"name": {
-						"S": "EXTRA Repair Serum"
-					},
-					"price": {
-						"S": "£10.00"
-					},
-					"quantity": {
-						"S": "5"
-					},
-					"status": {
-						"S": " COMPLETE"
-					}
-				}
-			}
-		]
-	}
-}
-```
+::::expand{header="Simulate update using the AWS Management Console"}
 
-In the json file you just created, the status of the items on the order and the status of the order are set as **COMPLETE**. Apply the update to order ID **6421680** using the command below. 
+1. Select the **Orders** table.
+
+![AWS Lambda function console](/static/images/change-data-capture/ex1/select-orders-table.png)
+
+2. Select the **Explore table items** button.
+
+![AWS Lambda function console](/static/images/change-data-capture/ex1/explore-items.png)
+
+3. Click on order ID **6421680** on the table.
+
+![AWS Lambda function console](/static/images/change-data-capture/ex1/select-item.png)
+
+4. Change the status of the order from `PLACED` to `COMPLETE`.
+5. Selectthe **Save and close** button.
+
+![AWS Lambda function console](/static/images/change-data-capture/ex1/edit-item.png)
+
+::::
+
+::::expand{header="Simulate update using the AWS CLI"}
+
+Apply an update to order ID **6421680** using the command below. 
 
 ```bash
 aws dynamodb update-item \
@@ -81,15 +58,21 @@ aws dynamodb update-item \
     --key '{ "id": {"S": "6421680"} }' \
     --update-expression "SET #items = :val1, #status = :val2" \
     --expression-attribute-names '{ "#items": "items", "#status": "status" }' \
-    --expression-attribute-values file://6421680-items.json \
+    --expression-attribute-values '{ ":val2": { "S": "COMPLETE" },
+        ":val1": { "L": [
+            { "M": { "id": { "S": "23769901"}, "name": { "S": "Hydrating Face Cream" }, "price": { "S": "£12.00" }, "quantity": { "S": "8"}, "status": { "S": " COMPLETE" } } },
+            { "M": { "id": { "S": "23673445" }, "name": { "S": "EXTRA Repair Serum" }, "price": { "S": "£10.00" }, "quantity": { "S": "5" }, "status": { "S": " COMPLETE" } } }
+          ]
+        } 
+      }' \
     --return-values ALL_NEW \
-    --return-consumed-capacity TOTAL \
-    --return-item-collection-metrics SIZE >> output.log
+    --return-item-collection-metrics SIZE \
+    --return-consumed-capacity TOTAL
 ```
 
 The output should be similar to the one below.
 
-```json
+```
 {
     "Attributes": {
         "orderDate": {
@@ -170,6 +153,8 @@ The output should be similar to the one below.
 }
 ```
 
+::::
+
 Now explore the **Orders** and **OrdersHistory** tables to see the effects item update you performed.
 
 The status of order ID 6421680 on the **Orders** table should be **COMPLETE** as shown in the image below.
@@ -180,148 +165,6 @@ The status of order ID 6421680 on the **Orders** table should be **COMPLETE** as
 
 ![OrdersHistory Table Items](/static/images/change-data-capture/ex1/orders-history-one.png)
 
-Create two **expression attribute value** files named **4514280-complete-items.json** and **4514280-returned-items.json** using the JSON objects below. 
-
-```json
-{
-  ":val1": {
-    "L": [
-      {
-        "M": {
-          "id": {
-            "S": "23884750"
-          },
-          "name": {
-            "S": "Metallic Long-Wear Cream Shadow"
-          },
-          "price": {
-            "S": "£15.00"
-          },
-          "quantity": {
-            "S": "13"
-          },
-          "status": {
-            "S": "COMPLETE"
-          }
-        }
-      },
-      {
-        "M": {
-          "id": {
-            "S": "23699354"
-          },
-          "name": {
-            "S": "Eye Liner"
-          },
-          "price": {
-            "S": "£9.00"
-          },
-          "quantity": {
-            "S": "8"
-          },
-          "status": {
-            "S": "COMPLETE"
-          }
-        }
-      },
-      {
-        "M": {
-          "id": {
-            "S": "23599030"
-          },
-          "name": {
-            "S": "Bronzing Powder"
-          },
-          "price": {
-            "S": "£12.00"
-          },
-          "quantity": {
-            "S": "10"
-          },
-          "status": {
-            "S": "COMPLETE"
-          }
-        }
-      }
-    ]
-  },
-  ":val2": {
-    "S": "COMPLETE"
-  }
-}
-```
-
-and
-
-```json
-{
-  ":val1": {
-    "L": [
-      {
-        "M": {
-          "id": {
-            "S": "23884750"
-          },
-          "name": {
-            "S": "Metallic Long-Wear Cream Shadow"
-          },
-          "price": {
-            "S": "£15.00"
-          },
-          "quantity": {
-            "S": "13"
-          },
-          "status": {
-            "S": "COMPLETE"
-          }
-        }
-      },
-      {
-        "M": {
-          "id": {
-            "S": "23699354"
-          },
-          "name": {
-            "S": "Eye Liner"
-          },
-          "price": {
-            "S": "£9.00"
-          },
-          "quantity": {
-            "S": "8"
-          },
-          "status": {
-            "S": "RETURNED"
-          }
-        }
-      },
-      {
-        "M": {
-          "id": {
-            "S": "23599030"
-          },
-          "name": {
-            "S": "Bronzing Powder"
-          },
-          "price": {
-            "S": "£12.00"
-          },
-          "quantity": {
-            "S": "10"
-          },
-          "status": {
-            "S": "RETURNED"
-          }
-        }
-      }
-    ]
-  },
-  ":val2": {
-    "S": "COMPLETE"
-  }
-}
-```
-
 Perform additional updates for order ID **4514280** on the Orders table. This time first change the status of the order to **COMPLETE** then alter the status of some items on the same order to **RETURNED** using the commands below.
 
 ```bash
@@ -330,10 +173,16 @@ aws dynamodb update-item \
     --key '{ "id": {"S": "4514280"} }' \
     --update-expression "SET #items = :val1, #status = :val2" \
     --expression-attribute-names '{ "#items": "items", "#status": "status" }' \
-    --expression-attribute-values file://4514280-complete-items.json \
+    --expression-attribute-values '{ ":val1": { "L": [ 
+        { "M": { "id": { "S": "23884750" }, "name": { "S": "Metallic Long-Wear Cream Shadow" }, "price": { "S": "£15.00" }, "quantity": { "S": "13" }, "status": { "S": "COMPLETE" } } },
+        { "M": { "id": { "S": "23699354" }, "name": { "S": "Eye Liner" }, "price": { "S": "£9.00" }, "quantity": { "S": "8" }, "status": { "S": "COMPLETE" } } },
+        { "M": { "id": { "S": "23599030" }, "name": { "S": "Bronzing Powder" }, "price": { "S": "£12.00" }, "quantity": { "S": "10" }, "status": { "S": "COMPLETE" } } }
+          ] },
+        ":val2": { "S": "COMPLETE" }
+      }' \
     --return-values ALL_NEW \
-    --return-consumed-capacity TOTAL \
-    --return-item-collection-metrics SIZE >> output.log
+    --return-item-collection-metrics SIZE \
+    --return-consumed-capacity TOTAL
 ```
 
 Followed by
@@ -344,10 +193,15 @@ aws dynamodb update-item \
     --key '{ "id": {"S": "4514280"} }' \
     --update-expression "SET #items = :val1, #status = :val2" \
     --expression-attribute-names '{ "#items": "items", "#status": "status" }' \
-    --expression-attribute-values file://4514280-returned-items.json \
+    --expression-attribute-values '{ ":val1": { "L": [ 
+        { "M": { "id": { "S": "23884750" }, "name": { "S": "Metallic Long-Wear Cream Shadow" }, "price": { "S": "£15.00" }, "quantity": { "S": "13" }, "status": { "S": "COMPLETE" } } },
+        { "M": { "id": { "S": "23699354" }, "name": { "S": "Eye Liner" }, "price": { "S": "£9.00" }, "quantity": { "S": "8" }, "status": { "S": "RETURNED" } } },
+        { "M": { "id": { "S": "23599030" }, "name": { "S": "Bronzing Powder" }, "price": { "S": "£12.00" }, "quantity": { "S": "10" }, "status": { "S": "RETURNED" } } } ] },
+        ":val2": { "S": "COMPLETE" }
+      }' \
     --return-values ALL_NEW \
-    --return-consumed-capacity TOTAL \
-    --return-item-collection-metrics SIZE >> output.log
+    --return-item-collection-metrics SIZE \
+    --return-consumed-capacity TOTAL
 ```
 
 Explore the items on the Orders and OrdersHistory tables to see the result of your updates.

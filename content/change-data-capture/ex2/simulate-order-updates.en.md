@@ -11,65 +11,13 @@ Navigate to the DynamoDB Service page using the AWS Management Console.
 
 Select the **Orders** table then select **Explore table items** button to view the orders on the table. 
 
-See the :link[Viewing Table Data]{href="/hands-on-labs/explore-console/console-read-data"} section of the Hands-on Labs for Amazon DynamoDB if you need a refresher on exploring table items using the AWS Management Console.
+Please refer to the :link[Simulate Order Updates]{href="../../ex1/simulate-order-updates"} section from the previous lab if you need a refresher on exploring table items using the AWS Management Console.
 
 The items on the table should look familiar from the previous lab. The status of items on the **Orders** table may vary if you performed additional simulations during the previous lab on change data capture using DynamoDB streams.  
 
 ![Orders Table Items](/static/images/change-data-capture/ex2/orders-lab2-initial.png)
 
 Also explore the orders on the **OrdersHistory** table. The number of items on the table will depend on the number of updates you made to the Orders table during the previous lab.
-
-Copy the JSON data below into a file called **9844720-items.json**.
-
-```bash
-{
-	":val2": {
-		"S": "COMPLETE"
-	},
-	":val1": {
-		"L": [
-			{
-				"M": {
-					"id": {
-						"S": "24002126"
-					},
-					"name": {
-						"S": "Shimmer Wash Eye Shadow"
-					},
-					"price": {
-						"S": "£13.00"
-					},
-					"quantity": {
-						"S": "10"
-					},
-					"status": {
-						"S": "COMPLETE"
-					}
-				}
-			},
-			{
-				"M": {
-					"id": {
-						"S": "23607685"
-					},
-					"name": {
-						"S": "Buffing Grains for Face"
-					},
-					"price": {
-						"S": "£8.00"
-					},
-					"quantity": {
-						"S": "11"
-					},
-					"status": {
-						"S": "COMPLETE"
-					}
-				}
-			}
-		]
-	}
-}
-```
 
 Update the status of order ID **9844720** from **PLACED** to **COMPLETE** using the command below. 
 
@@ -79,15 +27,21 @@ aws dynamodb update-item \
     --key '{ "id": {"S": "9844720"} }' \
     --update-expression "SET #items = :val1, #status = :val2" \
     --expression-attribute-names '{ "#items": "items", "#status": "status" }' \
-    --expression-attribute-values file://9844720-items.json \
+    --expression-attribute-values '{ ":val2": { "S": "COMPLETE" },
+        ":val1": { "L": [
+          { "M": { "id": { "S": "24002126" }, "name": { "S": "Shimmer Wash Eye Shadow" }, "price": { "S": "£13.00" }, "quantity": { "S": "10" }, "status": { "S": "COMPLETE" } } },
+          { "M": { "id": { "S": "23607685" }, "name": { "S": "Buffing Grains for Face" }, "price": { "S": "£8.00" }, "quantity": { "S": "11" }, "status": { "S": "COMPLETE" } } }
+          ]
+        }
+      }' \
     --return-values ALL_NEW \
-    --return-consumed-capacity TOTAL \
-    --return-item-collection-metrics SIZE > output.log
+    --return-item-collection-metrics SIZE \
+    --return-consumed-capacity TOTAL
 ```
 
 The output should be similar to the one below.
 
-```json
+```
 {
     "Attributes": {
         "orderDate": {
@@ -178,148 +132,6 @@ The status of order ID **9844720** on the **Orders** table should be **COMPLETE*
 
 ![OrdersHistory Table Items](/static/images/change-data-capture/ex2/orders-history-one.png)
 
-Create two **expression attribute value** files named **9953371-active-items.json** and **9953371-cancelled-items.json** using the JSON objects below. 
-
-```json
-{
-	":val1": {
-    "L": [
-      {
-        "M": {
-          "id": {
-            "S": "23924636"
-          },
-          "name": {
-            "S": "Protective Face Lotion"
-          },
-          "price": {
-            "S": "£3.00"
-          },
-          "quantity": {
-            "S": "9"
-          },
-          "status": {
-            "S": "CANCELLED"
-          }
-        }
-      },
-      {
-        "M": {
-          "id": {
-            "S": "23514506"
-          },
-          "name": {
-            "S": "Nail File"
-          },
-          "price": {
-            "S": "£11.00"
-          },
-          "quantity": {
-            "S": "13"
-          },
-          "status": {
-            "S": "PLACED"
-          }
-        }
-      },
-      {
-        "M": {
-          "id": {
-            "S": "23508704"
-          },
-          "name": {
-            "S": "Kitten Heels Powder Finish Foot Creme"
-          },
-          "price": {
-            "S": "£11.00"
-          },
-          "quantity": {
-            "S": "10"
-          },
-          "status": {
-            "S": "PLACED"
-          }
-        }
-      }
-    ]
-  },
-	":val2": {
-		"S": "ACTIVE"
-	}
-}
-```
-
-and
-
-```json
-{
-	":val1": {
-    "L": [
-      {
-        "M": {
-          "id": {
-            "S": "23924636"
-          },
-          "name": {
-            "S": "Protective Face Lotion"
-          },
-          "price": {
-            "S": "£3.00"
-          },
-          "quantity": {
-            "S": "9"
-          },
-          "status": {
-            "S": "CANCELLED"
-          }
-        }
-      },
-      {
-        "M": {
-          "id": {
-            "S": "23514506"
-          },
-          "name": {
-            "S": "Nail File"
-          },
-          "price": {
-            "S": "£11.00"
-          },
-          "quantity": {
-            "S": "13"
-          },
-          "status": {
-            "S": "CANCELLED"
-          }
-        }
-      },
-      {
-        "M": {
-          "id": {
-            "S": "23508704"
-          },
-          "name": {
-            "S": "Kitten Heels Powder Finish Foot Creme"
-          },
-          "price": {
-            "S": "£11.00"
-          },
-          "quantity": {
-            "S": "10"
-          },
-          "status": {
-            "S": "CANCELLED"
-          }
-        }
-      }
-    ]
-  },
-	":val2": {
-		"S": "CANCELLED"
-	}
-}
-```
-
 Perform additional updates FOR order ID **9953371** on the Orders table. Start by changing the status of the order to **ACTIVE** then perform another update by setting the status of the same order to **CANCELLED** using the commands below.
 
 ```bash
@@ -328,10 +140,17 @@ aws dynamodb update-item \
     --key '{ "id": {"S": "9953371"} }' \
     --update-expression "SET #items = :val1, #status = :val2" \
     --expression-attribute-names '{ "#items": "items", "#status": "status" }' \
-    --expression-attribute-values file://9953371-active-items.json \
+    --expression-attribute-values '{ ":val1": { "L": [
+        { "M": { "id": { "S": "23924636" }, "name": { "S": "Protective Face Lotion" }, "price": { "S": "£3.00" }, "quantity": { "S": "9" }, "status": { "S": "CANCELLED" } } },
+        { "M": { "id": { "S": "23514506" }, "name": { "S": "Nail File" }, "price": { "S": "£11.00" }, "quantity": { "S": "13" }, "status": { "S": "PLACED" } } },
+        { "M": { "id": { "S": "23508704" }, "name": { "S": "Kitten Heels Powder Finish Foot Creme" }, "price": { "S": "£11.00" }, "quantity": { "S": "10" }, "status": { "S": "PLACED" } } } 
+          ]
+        },
+        ":val2": { "S": "ACTIVE" }
+      }' \
     --return-values ALL_NEW \
-    --return-consumed-capacity TOTAL \
-    --return-item-collection-metrics SIZE > output.log
+    --return-item-collection-metrics SIZE \
+    --return-consumed-capacity TOTAL
 ```
 
 Followed by
@@ -342,10 +161,17 @@ aws dynamodb update-item \
     --key '{ "id": {"S": "9953371"} }' \
     --update-expression "SET #items = :val1, #status = :val2" \
     --expression-attribute-names '{ "#items": "items", "#status": "status" }' \
-    --expression-attribute-values file://9953371-cancelled-items.json \
+    --expression-attribute-values '{ ":val1": { "L": [
+        { "M": { "id": { "S": "23924636" }, "name": { "S": "Protective Face Lotion" }, "price": { "S": "£3.00" }, "quantity": { "S": "9" }, "status": { "S": "CANCELLED" } } },
+        { "M": { "id": { "S": "23514506" }, "name": { "S": "Nail File" }, "price": { "S": "£11.00" }, "quantity": { "S": "13" }, "status": { "S": "CANCELLED" } } },
+        { "M": { "id": { "S": "23508704" }, "name": { "S": "Kitten Heels Powder Finish Foot Creme" }, "price": { "S": "£11.00" }, "quantity": { "S": "10" }, "status": { "S": "CANCELLED" } } }
+          ]
+        },
+        ":val2": { "S": "CANCELLED" }
+      }' \
     --return-values ALL_NEW \
-    --return-consumed-capacity TOTAL \
-    --return-item-collection-metrics SIZE > output.log
+    --return-item-collection-metrics SIZE \
+    --return-consumed-capacity TOTAL
 ```
 
 Explore the items on the **Orders** and **OrdersHistory** tables to see the result of your updates. The status for order ID **9953371** should be updated on the Orders table and there should be two items on the OrdersHistory table for order ID **9953371**.

@@ -66,6 +66,9 @@ def lambda_handler(event: KinesisStreamEvent, context):
     if data["eventName"] == "MODIFY" or data["eventName"] == "REMOVE":
         logger.debug({"data": data})
         if "dynamodb" in data:
+            if "Keys" in data["dynamodb"]:
+                if "id" not in data["dynamodb"]["Keys"]:
+                    raise ValueError("Expected partition key attribute - 'id' not found.")
             if "OldImage" in data["dynamodb"]:
                 store_history_record(data["dynamodb"]["OldImage"])
 

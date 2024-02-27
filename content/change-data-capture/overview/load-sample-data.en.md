@@ -27,4 +27,8 @@ aws dynamodb batch-write-item --request-items file://Orders.json
 A successful load should produce a message similar to the one below.
 
 #### Sample output
-![sample-json](/static/images/change-data-capture/overview/load-data.png)
+```
+{
+    "UnprocessedItems": {}
+}
+```

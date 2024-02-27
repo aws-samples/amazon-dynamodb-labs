@@ -15,6 +15,28 @@ Website Requirements:
 
 In JSON format, an item on the orders table has the following attributes.
 
-![Order Profile](/static/images/change-data-capture/overview/order-profile.png)
+```
+{
+    "id": "string",
+    "status": "string",
+    "customer": {
+        "id": "string",
+        "address": "string",
+        "name": "string",
+        "phone": "string"
+    },
+    "orderDate": "YYYY-MM-DD hh:mm:ss",
+    "shipDate": "YYYY-MM-DD hh:mm:ss",
+    "items": [
+        {
+            "id": "string",
+            "name": "string",
+            "price": "string",
+            "quantity": "string",
+            "status": "string"
+        }
+    ]
+}
+```
 
 You will implement a solution to meet this requirement by using two DynamoDB tables - Orders and OrdersHistory; and a streaming solution to copy item level changes from the Orders table to OrdersHistory table.

@@ -15,7 +15,7 @@ aws sqs create-queue --queue-name orders-ddbs-dlq
 
 Sample output:
 
-```json
+```
 {
     "QueueUrl": "https://sqs.{aws-region}.amazonaws.com/{aws-account-id}/orders-ddbs-dlq"
 }

@@ -11,7 +11,7 @@ Configure your lambda function to copy changed records from the Orders DynamoDB 
 
 ![AWS Lambda function console](/static/images/change-data-capture/ex1/iam-edit-policy.png)
 
-```json
+```
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -102,6 +102,11 @@ arn:aws:lambda:{aws-region}:017000801446:layer:AWSLambdaPowertoolsPythonV2:58
 
 12. Click **Additional settings** to expand the section.
 13. Provide the ARN of the **orders-ddbs-dlq** SQS queue you created earlier.
+
+```bash
+arn:aws:sqs:{aws-region}:{aws-account-id}:orders-ddbs-dlq
+```
+
 14. Set the Retry attempts to 3.
 
 ![AWS Lambda function console](/static/images/change-data-capture/ex1/trigger-settings.png) 

@@ -71,7 +71,10 @@ def lambda_handler(event, context):
     for record in event.records:
         if record.event_name == DynamoDBRecordEventName.MODIFY or record.event_name == DynamoDBRecordEventName.REMOVE:
             logger.debug({"record": record})
-            store_history_record(record.dynamodb.old_image)
+            if "id" in record.dynamodb.keys:
+                store_history_record(record.dynamodb.old_image)
+            else:
+                raise ValueError("Expected partition key attribute - 'id' not found.")
 
 ```
 
