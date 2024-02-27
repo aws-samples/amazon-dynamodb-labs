@@ -14,16 +14,16 @@ In a production environment as a best practice, you would configure roles with t
 
  1. Open the "Outputs" tab of your recently deployed Stack in the CloudFormation Console.
    ![CloudFormation Outputs](/static/images/ddb-os-zetl3.jpg)
- 2. Open the link for OSDashboardsURL in a new tab.
- 3. Login to Dashboards with the username and password provided in CloudFormation Outputs. The attributes named "OSMasterUserName" and "OSMasterUserPassword" provide the correct values.
+ 1. Open the link for OSDashboardsURL in a new tab.
+ 1. Login to Dashboards with the username and password provided in CloudFormation Outputs. The attributes named "OSMasterUserName" and "OSMasterUserPassword" provide the correct values.
   ![OpenSearch Service Dashboards](/static/images/ddb-os-zetl4.jpg)
- 4. Open the top left menu and select "Security".
+ 1. Open the top left menu and select "Security".
   ![Security Settings](/static/images/ddb-os-zet5.jpg) 
- 5. Open the "Roles" tab, then click on the "all_access" role.
+ 1. Open the "Roles" tab, then click on the "all_access" role.
   ![Roles Settings](/static/images/ddb-os-zet6.jpg) 
- 6. Open the "Mapped users" tab, then select "Manage mapping".
+ 1. Open the "Mapped users" tab, then select "Manage mapping".
   ![Mapping Settings](/static/images/ddb-os-zet7.jpg)
- 7. In the "Backend roles" field, enter the Arn provided in the CloudFormation Stack Outputs. The attribute named "Role" provides the correct Arn. Click "Map".
+ 1. In the "Backend roles" field, enter the Arn provided in the CloudFormation Stack Outputs. The attribute named "Role" provides the correct Arn. Click "Map".
   ![ Settings](/static/images/ddb-os-zet8.jpg)
- 8. Verify that the "all_access" Role now has a "Backend role" listed.
+ 1. Verify that the "all_access" Role now has a "Backend role" listed.
   ![ Settings](/static/images/ddb-os-zet9.jpg)
