@@ -12,11 +12,11 @@ Building a sig-v4 signed request requires a session token, access key, and secre
     ```bash
       . ./credentials.sh 
     ```
- 2. Next, export an environmental variable with the OpenSearch endpoint URL. This URL is listed in the CloudFormation Stack Outputs tab as "OSDomainEndpoint". This variable will be used in subsequent commands.
+ 1. Next, export an environmental variable with the OpenSearch endpoint URL. This URL is listed in the CloudFormation Stack Outputs tab as "OSDomainEndpoint". This variable will be used in subsequent commands.
     ```bash
       export OPENSEARCH_ENDPOINT="https://search-ddb-os-xxxx-xxxxxxxxxxxxx.us-west-2.es.amazonaws.com"
     ```
- 3. Execute the following curl command to register the OpenSearch ML model
+ 1. Execute the following curl command to register the OpenSearch ML model
     ```bash
       curl --request POST \
         ${OPENSEARCH_ENDPOINT}'/_plugins/_ml/connectors/_create' \
@@ -53,11 +53,11 @@ Building a sig-v4 signed request requires a session token, access key, and secre
         ]
       }'
     ```
- 4. Note the "connector_id" returned in the previous command. Export it to an environmental variable for convenient substitution in future commands.
+ 1. Note the "connector_id" returned in the previous command. Export it to an environmental variable for convenient substitution in future commands.
     ```bash
       export CONNECTOR_ID='xxxxxxxxxxxxxx'
     ```
- 5. Run the next curl command to register the model group.
+ 1. Run the next curl command to register the model group.
     ```bash
       curl --request POST \
         ${OPENSEARCH_ENDPOINT}'/_plugins/_ml/model_groups/_register' \
@@ -71,11 +71,11 @@ Building a sig-v4 signed request requires a session token, access key, and secre
           "description": "This is an example description"
       }'
     ```
- 6. Note the "model_group_id" returned in the previous command. Export it to an environmental variable for later substitution.
+ 1. Note the "model_group_id" returned in the previous command. Export it to an environmental variable for later substitution.
     ```bash
       export MODEL_GROUP_ID='xxxxxxxxxxxxx'
     ```
- 7. The next curl command registers the model.
+ 1. The next curl command registers the model.
     ```bash
       curl --request POST \
         ${OPENSEARCH_ENDPOINT}'/_plugins/_ml/models/_register' \
@@ -92,15 +92,15 @@ Building a sig-v4 signed request requires a session token, access key, and secre
         "connector_id": "'${CONNECTOR_ID}'"
       }'
     ```
- 8. Note the "model_id" and export it.
+ 1. Note the "model_id" and export it.
     ```bash
       export MODEL_ID='xxxxxxxxxxxxx'
     ```
- 9. Note the "model_id" and export it.
+ 1. Note the "model_id" and export it.
     ```bash
       echo -e "CONNECTOR_ID=${CONNECTOR_ID}\nMODEL_GROUP_ID=${MODEL_GROUP_ID}\nMODEL_ID=${MODEL_ID}"
     ```
- 10. Next, we'll deploy the model with the following curl.
+ 1. Next, we'll deploy the model with the following curl.
     ```bash
       curl --request POST \
         ${OPENSEARCH_ENDPOINT}'/_plugins/_ml/models/'${MODEL_ID}'/_deploy' \
@@ -110,7 +110,7 @@ Building a sig-v4 signed request requires a session token, access key, and secre
         --aws-sigv4 aws:amz:${METADATA_AWS_REGION}:es \
         --user "${METADATA_AWS_ACCESS_KEY_ID}:${METADATA_AWS_SECRET_ACCESS_KEY}"
     ```
- 11. Now we can test the model. If you recieve results back with a "200" status code, everything is working properly.
+ 1. Now we can test the model. If you recieve results back with a "200" status code, everything is working properly.
     ```bash
       curl --request POST \
         ${OPENSEARCH_ENDPOINT}'/_plugins/_ml/models/'${MODEL_ID}'/_predict' \
@@ -125,7 +125,7 @@ Building a sig-v4 signed request requires a session token, access key, and secre
         }
       }'
     ```
- 12. Next, we'll create the Details table mapping pipeline.
+ 1. Next, we'll create the Details table mapping pipeline.
     ```bash
       curl --request PUT \
         ${OPENSEARCH_ENDPOINT}'/_ingest/pipeline/product-en-nlp-ingest-pipeline' \
@@ -153,7 +153,7 @@ Building a sig-v4 signed request requires a session token, access key, and secre
         ]
       }'
     ```
- 13. Followed by the Reviews table mapping pipeline.
+ 1. Followed by the Reviews table mapping pipeline.
     ```bash
       curl --request PUT \
         ${OPENSEARCH_ENDPOINT}'/_ingest/pipeline/product-reviews-nlp-ingest-pipeline' \
