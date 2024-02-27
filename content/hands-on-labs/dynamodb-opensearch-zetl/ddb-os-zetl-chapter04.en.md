@@ -11,7 +11,7 @@ In this application, Bedrock will be used to make natural language product recom
 Bedrock requires different FMs to be enabled before they are used.
 
  1. Open [Amazon Bedrock Model Access](https://us-west-2.console.aws.amazon.com/bedrock/home?region=us-west-2#/modelaccess)
- 2. Click on "Manage model access"
+ 1. Click on "Manage model access"
   ![Manage model access](/static/images/ddb-os-zetl10.jpg)
- 3. Select "Titan Embeddings G1 - Text" and "Claude", then click "Save changes"
+ 1. Select "Titan Embeddings G1 - Text" and "Claude", then click "Save changes"
   ![Manage model access](/static/images/ddb-os-zetl11.jpg)
