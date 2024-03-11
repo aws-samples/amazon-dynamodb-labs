@@ -163,7 +163,7 @@ Resources:
         Fn::Base64: !Sub |
           #!/bin/bash -ex
           sudo su
-          rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022
+          rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2023
           rpm -Uvh https://repo.mysql.com/mysql80-community-release-el7-3.noarch.rpm
           yum install -y mysql-community-server
           systemctl enable mysqld
