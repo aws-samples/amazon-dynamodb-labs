@@ -13,4 +13,6 @@ DynamoDB is a NoSQL database designed for high availability, performance, and sc
 
 This module will allow you to set up one such use case. DynamoDB will be the source of truth for product catalog information and OpenSearch will provide vector search capabilities to enable Amazon Bedrock (a generative AI service) to make product recommendations.
 
+::alert[_This lab creates OpenSearch Service, DynamoDB, and Secrets Manager resources. If running in you own account, these resources will incur charges of approximately $30 a month. Remember to delete the CloudFormation Stack after completing the lab._]
+
 ![Final Deployment Architecture](/static/images/ddb-os-zetl.png)

@@ -17,3 +17,5 @@ The script constructs a query that searches the OpenSearch index for products th
     ![Query results](/static/images/ddb-os-zetl17.jpg)
 
 Congratulations! You have completed the lab.
+
+::alert[_If running in you own account, remember to delete the CloudFormation Stack after completing the lab to avoid unexpected charges._]
