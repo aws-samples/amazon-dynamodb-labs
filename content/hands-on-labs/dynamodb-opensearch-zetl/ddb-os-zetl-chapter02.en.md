@@ -11,8 +11,11 @@ The CloudFormation template used below will create the DynamoDB Table and OpenSe
     1. *Optionally, download [the YAML template](:param{key="lhol_ddb_os_zetl_setup_yaml"}) and launch it your own way*
  1. Click Next
  1. Confirm the Stack Name *ddbzetl* and update parameters if necessary (leave the default options if at all possible)
+
    ![Final Deployment Architecture](/static/images/ddb-os-zetl1.jpg)
+   
  1. Click “Next” twice then check “I acknowledge that AWS CloudFormation might create IAM resources with custom names.”
  1. Click "Submit"
  1. The CloudFormation stack will take about 15 minutes to build the environment
+
   ![Final Deployment Architecture](/static/images/ddb-os-zetl2.jpg)

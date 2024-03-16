@@ -8,7 +8,9 @@ Amazon DynamoDB offers a zero-ETL integration with Amazon OpenSearch Service thr
 
  1. Open [OpenSearch Service Ingestion Pipelines](https://us-west-2.console.aws.amazon.com/aos/home?region=us-west-2#opensearch/ingestion-pipelines)
  1. Click "Create pipeline"
+
     ![Create pipeline](/static/images/ddb-os-zetl13.jpg)
+
  1. Name your pipeline, and include the following for your pipeline configuration. The configuration contains multiple values that need to be updated. The needed values are provided in the CloudFormation Stack Outputs as "Region", "Role", "S3Bucket", "DdbTableArn", and "OSDomainEndpoint".
     ```yaml
       version: "2"
@@ -90,8 +92,13 @@ Amazon DynamoDB offers a zero-ETL integration with Amazon OpenSearch Service thr
                 region: "{REGION}"
     ```
  1. Under Network, select "Public access", then click "Next".
+
     ![Create pipeline](/static/images/ddb-os-zetl14.jpg)
+
  1. Click "Create pipeline".
+
     ![Create pipeline](/static/images/ddb-os-zetl15.jpg)
+
  1. Wait until the pipeline has finished creating. After the pipeline is created, it will take some additional time for the initial export from DynamoDB and import into OpenSearch Service. After you have waited several minutes, you can check if items have replicated into OpenSearch by making a query in Dev Tools in the OpenSearch Dashboards. If your query does not have results, wait a few more minutes for the initial replication to finish.
+ 
     ![Create pipeline](/static/images/ddb-os-zetl16.jpg)

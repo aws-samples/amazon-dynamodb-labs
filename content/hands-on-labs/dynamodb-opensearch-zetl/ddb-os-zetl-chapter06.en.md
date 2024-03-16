@@ -16,7 +16,7 @@ Building a sig-v4 signed request requires a session token, access key, and secre
     ```bash
       export OPENSEARCH_ENDPOINT="https://search-ddb-os-xxxx-xxxxxxxxxxxxx.us-west-2.es.amazonaws.com"
     ```
- 1. Execute the following curl command to register the OpenSearch ML model
+ 1. Execute the following curl command to create the OpenSearch ML model connector.
     ```bash
       curl --request POST \
         ${OPENSEARCH_ENDPOINT}'/_plugins/_ml/connectors/_create' \
@@ -57,7 +57,7 @@ Building a sig-v4 signed request requires a session token, access key, and secre
     ```bash
       export CONNECTOR_ID='xxxxxxxxxxxxxx'
     ```
- 1. Run the next curl command to register the model group.
+ 1. Run the next curl command to create the model group.
     ```bash
       curl --request POST \
         ${OPENSEARCH_ENDPOINT}'/_plugins/_ml/model_groups/_register' \
@@ -75,7 +75,7 @@ Building a sig-v4 signed request requires a session token, access key, and secre
     ```bash
       export MODEL_GROUP_ID='xxxxxxxxxxxxx'
     ```
- 1. The next curl command registers the model.
+ 1. The next curl command registers the connector with the model group.
     ```bash
       curl --request POST \
         ${OPENSEARCH_ENDPOINT}'/_plugins/_ml/models/_register' \
@@ -96,7 +96,7 @@ Building a sig-v4 signed request requires a session token, access key, and secre
     ```bash
       export MODEL_ID='xxxxxxxxxxxxx'
     ```
- 1. Note the "model_id" and export it.
+ 1. Run the following command to verify that you have successfully exported the connector, model group, and model id.
     ```bash
       echo -e "CONNECTOR_ID=${CONNECTOR_ID}\nMODEL_GROUP_ID=${MODEL_GROUP_ID}\nMODEL_ID=${MODEL_ID}"
     ```
@@ -110,6 +110,11 @@ Building a sig-v4 signed request requires a session token, access key, and secre
         --aws-sigv4 aws:amz:${METADATA_AWS_REGION}:es \
         --user "${METADATA_AWS_ACCESS_KEY_ID}:${METADATA_AWS_SECRET_ACCESS_KEY}"
     ```
+
+    With the model created, OpenSearch can now use Bedrock's Titan embedding model for processing text. An embeddings model is a type of machine learning model that transforms high-dimensional data (like text or images) into lower-dimensional vectors, known as embeddings. These vectors capture the semantic or contextual relationships between the data points in a more compact, dense representation.
+
+    The embeddings represent the semantic meaning of the input data, in this case product descriptions. Words with similar meanings are represented by vectors that are close to each other in the vector space. For example, the vectors for "sturdy" and "strong" would be closer to each other than to "warm".
+
  1. Now we can test the model. If you recieve results back with a "200" status code, everything is working properly.
     ```bash
       curl --request POST \
@@ -181,3 +186,5 @@ Building a sig-v4 signed request requires a session token, access key, and secre
         ]
       }'
     ```
+    
+    These pipelines allow OpenSearch to preprocess and enrich data as it is written to the index by adding embeddings through the Bedrock connector.

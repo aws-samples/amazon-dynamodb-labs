@@ -2,10 +2,6 @@ AWSTemplateFormatVersion: '2010-09-09'
 Description: A CloudFormation template that creates an OpenSearch Service domain.
 
 Parameters:
-  MasterUserPassword:
-    Type: String
-    Description: The password for the master user of the OpenSearch domain.
-    Default: "nyz@5k%Ty&KUEG5@"
   OpenSearchClusterName:
     Type: String
     Description: The name for the OpenSearch cluster.
@@ -15,6 +11,15 @@ Parameters:
     ConstraintDescription: The cluster name must start with a lowercase letter and can only contain lowercase letters, numbers, and dashes.
 
 Resources:
+  OpenSearchSecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Description: This is a Secrets Manager secret for a the DynamoDB zero ETL to OpenSearch lab
+      GenerateSecretString:
+        SecretStringTemplate: '{"username": "master-user"}'
+        GenerateStringKey: password
+        PasswordLength: 16
+        ExcludeCharacters: "\"'@/\\"
 
   ProductDetailsTable:
     Type: AWS::DynamoDB::Table
@@ -42,7 +47,7 @@ Resources:
         DedicatedMasterEnabled: false
         ZoneAwarenessEnabled: false
         InstanceCount: '1'
-        InstanceType: 'r6g.large.search'
+        InstanceType: 't3.small.search'
       DomainEndpointOptions:
         EnforceHTTPS: true
       EBSOptions:
@@ -78,23 +83,22 @@ Resources:
         Enabled: true
         InternalUserDatabaseEnabled: true
         MasterUserOptions:
-          MasterUserName: "master-user"
-          MasterUserPassword: !Ref MasterUserPassword
+          MasterUserName:
+            Fn::Sub: "{{resolve:secretsmanager:${OpenSearchSecret}::username}}"
+          MasterUserPassword:
+            Fn::Sub: "{{resolve:secretsmanager:${OpenSearchSecret}::password}}"
 
 Outputs:
 
+  SecretConsoleLink:
+    Description: URL to the secret in AWS Secrets Manager console
+    Value: !Sub "https://${AWS::Region}.console.aws.amazon.com/secretsmanager/secret?name=${OpenSearchSecret}&region=${AWS::Region}"
   Cloud9IdeUrl:
     Description: URL to launch the Cloud9 IDE
     Value: !ImportValue Cloud9IdeUrl
   OSDashboardsURL:
     Description: URL to the OpenSearch Dashboards
     Value: !Sub "https://${OpenSearchServiceDomain.DomainEndpoint}/_dashboards/"
-  OSMasterUserName:
-    Description: The user name for the master user of the OpenSearch domain.
-    Value: "master-user"
-  OSMasterUserPassword:
-    Description: The password for the master user of the OpenSearch domain. Handle with care.
-    Value: !Ref MasterUserPassword
   OSDomainEndpoint:
     Description: The endpoint of the OpenSearch domain.
     Value: !Sub "https://${OpenSearchServiceDomain.DomainEndpoint}"

@@ -7,7 +7,9 @@ weight: 50
 Next, you'll load example product data into your DynamoDB Table. Pipelines will move this data into OpenSearch Service in later steps.
 
  1. Open the "Outputs" tab of your recently deployed Stack in the CloudFormation Console.
+
    ![CloudFormation Outputs](/static/images/ddb-os-zetl2.jpg)
+   
  1. Open the link for Cloud9IdeUrl in a new tab.
  1. Download the zip containing the zip containing sample data and scripts.
     ```bash
