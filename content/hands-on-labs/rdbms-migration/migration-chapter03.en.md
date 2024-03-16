@@ -50,12 +50,12 @@ It has also configured a remote MySQL user based on the CloudFormation input par
 
 For illustration purpose, below is a logical diagram represents relationship between various source tables hosting IMDb dataset.
 
-  - title_basics table has movies published in US after year 2000. tconst is an alphanumeric key uniquely assigned to each movie.
-  - title_akas has published regions, languages and respective movie titles. It's 1:many relationship with title_basics table.
-  - title_ratings has movies rating and vote count. For this exercise, we can assume the information has high frequency update post movie release. It's 1:1 related with title_basics table
-  - title_principals has cast and crew information. It's 1:many relationship with title_basics table.
-  - title_crew has writer and director information. The table is 1:1 related with title_basics table.
-  - name_basics has cast and crew details. Every member has unique nconst value assigned.
+  - `title_basics` table has movies published in US after year 2000. `tconst` is an alphanumeric key uniquely assigned to each movie.
+  - `title_akas` has published regions, languages and respective movie titles. It's 1\:many relationship with `title_basics` table.
+  - `title_ratings` has movies rating and vote count. For this exercise, we can assume the information has high frequency update post movie release. It's 1:1 related with `title_basics` table
+  - `title_principals` has cast and crew information. It's 1\:many relationship with `title_basics` table.
+  - `title_crew` has writer and director information. The table is 1:1 related with `title_basics` table.
+  - `name_basics` has cast and crew details. Every member has unique `nconst` value assigned.
   ![Final Deployment Architecture](/static/images/migration31.jpg)
 
 12. We will create denormalized view with 1:1 static information and get it ready for migration to Amazon DynamoDB table. For now, go ahead and copy below code and paste into the MySQL command line.
