@@ -17,15 +17,16 @@ The **scripts/** directory also has a file called **bulk_load_table.py** that re
 ```python
 import json
 import boto3
-dynamodb = boto3.resource('dynamodb')
 
+dynamodb = boto3.resource('dynamodb')
 table = dynamodb.Table('battle-royale')
+
 items = []
 
 with open('scripts/items.json', 'r') as f:
     for row in f:
         items.append(json.loads(row))
-        
+
 with table.batch_writer() as batch:
     for item in items:
         batch.put_item(Item=item)
@@ -65,6 +66,6 @@ You should see a `Count` of 835, indicating that all of your items were loaded s
 
 You can also browse the table by navigating to **Services** -> **Database** -> **DynamoDB** in the AWS console.
 
-![BaseTableConsole](/static/images/game-player-data/core-usage/basetable-consolev2.png)
+![Explore items in a DynamoDB table](/static/images/game-player-data/core-usage/aws-console-dynamodb-battle-royale-explore-items.png)
 
 In the next step, you see how to retrieve multiple entity types in a single request, which can reduce the total network requests you make in your application and enhance application performance.

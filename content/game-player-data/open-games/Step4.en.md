@@ -13,7 +13,7 @@ In general, you do not want to design your table to use the DynamoDB `Scan` oper
 
 However, sometimes `Scan` can be useful. For example, when you have a sparse secondary index, meaning that the index shouldn’t have that many entities in it. In addition, the index includes only those games that are open, and that is exactly what you need.
 
-For this use case, `Scan` works great. Let’s see how it works. In the code you downloaded, a **find_open_games.py** file is in the **application/** directory.
+For this use case, `Scan` works great. Let’s see how it works. In the code you downloaded, a **find_open_games.py** file is in the **scripts/** directory.
 
 ```python
 import boto3
@@ -26,12 +26,13 @@ def find_open_games():
         TableName='battle-royale',
         IndexName="OpenGamesIndex",
     )
+
     games = [Game(item) for item in resp['Items']]
+
     return games
 
 games = find_open_games()
 print("Open games:")
-
 for game in games:
     print(game)
 ```
@@ -41,27 +42,28 @@ This code is similar to the code in the previous step. However, rather than usin
 Run the script with the following command in your terminal:
 
 ```sh
-python application/find_open_games.py
+python scripts/find_open_games.py
 ```
 
 Your terminal should print a list of nine games that are open across a variety of maps.
 
 ```text
 Open games:
-Game<c6f38a6a-d1c5-4bdf-8468-24692ccc4646 --Urban Underground>
-Game<d06af94a-2363-441d-a69b-49e3f85e748a --Dirty Desert>
-Game<873aaf13-0847-4661-ba26-21e0c66ebe64 --Dirty Desert>
-Game<fe89e561-8a93-4e08-84d8-efa88bef383d --Dirty Desert>
-Game<248dd9ef-6b17-42f0-9567-2cbd3dd63174 --Juicy Jungle>
-Game<14c7f97e-8354-4ddf-985f-074970818215 --Green Grasslands>
-Game<3d4285f0-e52b-401a-a59b-112b38c4a26b --Green Grasslands>
-Game<683680f0-02b0-4e5e-a36a-be4e00fc93f3 --Green Grasslands>
-Game<0ab37cf1-fc60-4d93-b72b-89335f759581 --Green Grasslands>
+Game: c6f38a6a-d1c5-4bdf-8468-24692ccc4646   Map: Urban Underground
+Game: d06af94a-2363-441d-a69b-49e3f85e748a   Map: Dirty Desert
+Game: 873aaf13-0847-4661-ba26-21e0c66ebe64   Map: Dirty Desert
+Game: fe89e561-8a93-4e08-84d8-efa88bef383d   Map: Dirty Desert
+Game: 248dd9ef-6b17-42f0-9567-2cbd3dd63174   Map: Juicy Jungle
+Game: 14c7f97e-8354-4ddf-985f-074970818215   Map: Green Grasslands
+Game: 3d4285f0-e52b-401a-a59b-112b38c4a26b   Map: Green Grasslands
+Game: 683680f0-02b0-4e5e-a36a-be4e00fc93f3   Map: Green Grasslands
+Game: 0ab37cf1-fc60-4d93-b72b-89335f759581   Map: Green Grasslands
 ```
 
-Additionally, using [PartiQL](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ql-reference.html), you can run SQL-compatible query language to retrieve items from the table and its indexes in DynamoDB. You can navigate to PartiQL editor under **Services**, **Database**, **DynamoDB** in the AWS console, and run a `Scan` to receive a similar result.
+Again, using [PartiQL](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ql-reference.html), you can run a `Scan index` query to receive a similar result.  
+Click on the 3 dots (...) next to the OpenGamesIndex and choose **Scan index**.
 
-![PartiQLConsole](/static/images/game-player-data/open-games/partiql-consolev2.png)
+![PartiQL editor in the AWS console](/static/images/game-player-data/open-games/aws-console-dynamodb-battle-royale-partiql-editor.png)
 
 In this step, you saw how using the `Scan` operation can be the right choice in specific circumstances. You used `Scan` to grab an assortment of entities from the sparse global secondary index (GSI) to show open games to players.
 
