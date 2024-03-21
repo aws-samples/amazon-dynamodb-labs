@@ -130,7 +130,7 @@ aws dynamodb get-item \
 
 ### Web Application
 A single-page static web app is provided for you. 
- * https://dynamodbworkshop.s3.amazonaws.com/global-serverless/index.html
+ * https://amazon-dynamodb-labs.com/static/global-serverless-application/web/index.html
  * This app allows you to enter one or more API endpoints, and stores each one as a browser cookie.  
  * The stored API endpoints will remain in the browser even if the backend were to have problems.  
  * In this way, the web app could make decisions about routing itself to an alternate API if there are errors or no response from the API being used.  

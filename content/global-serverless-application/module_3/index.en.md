@@ -5,7 +5,7 @@ weight : 40
 
 ### Navigate to the Globalflix Web App
   Click the link below to open the Globalflix web app, or if you still have the app open from module 2, click the Globalflix logo on the top right. 
-  [https://dynamodbworkshop.s3.amazonaws.com/global-serverless/globalflix.html](https://dynamodbworkshop.s3.amazonaws.com/global-serverless/globalflix.html)
+  [https://amazon-dynamodb-labs.com/static/global-serverless-application/web/globalflix.html](https://amazon-dynamodb-labs.com/static/global-serverless-application/web/globalflix.html)
 
 If you have already successfully loaded the API urls in the last module, you should see a grid of 12 video thumbnails. This has been displayed by performing a query against DynamoDB for the sample data you loaded in module 1.
 
