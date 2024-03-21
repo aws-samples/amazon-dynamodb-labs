@@ -30,7 +30,9 @@ data_files = ['design-patterns/cloudformation/lab.yaml',
     'design-patterns/cloudformation/UserDataC9.sh',
     'event-driven/event-driven-cfn.yaml',
     'static/files/hands-on-labs/migration-env-setup.yaml',
-    'static/files/hands-on-labs/migration-dms-setup.yaml']
+    'static/files/hands-on-labs/migration-dms-setup.yaml',
+    'static/files/hands-on-labs/dynamodb-opensearch-setup.yaml'
+]
 for inp_file in data_files:
     src_file = os.path.join(pkg_root, inp_file)
     head, tail = ntpath.split(src_file)
