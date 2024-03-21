@@ -4,16 +4,8 @@ weight : 20
 ---
 
 
-
-## Prerequisites
-* CloudShell or an AWS Cloud9 instance
-
-Or
-
-* Command prompt with Python3, GIT, and the AWS Command Line Interface (CLI) installed and configured with credentials
-
 ## Setup Steps
-This lab requires a terminal shell with Python3, GIT, and the AWS Command Line Interface (CLI) installed and configured with admin credentials.
+This lab requires a terminal shell with Python3 and the AWS Command Line Interface (CLI) installed and configured with admin credentials.
 
 We will use AWS Cloud9 for this event. [AWS Cloud9](https://aws.amazon.com/cloud9/) is a cloud-based integrated development environment (IDE) that lets you write, run, and debug code with just a browser. AWS Cloud9 includes a code editor, debugger, and terminal. It also comes prepackaged with essential tools for popular programming languages and the AWS Command Line Interface (CLI) preinstalled so that you don’t have to install files or configure your laptop for this lab. Your AWS Cloud9 environment will have access to the same AWS resources as the user with which you signed in to the AWS Management Console.
 
@@ -38,13 +30,14 @@ You should now see your AWS Cloud9 environment. You need to be familiar with the
 ### Verify Environment
 1. Run ```aws sts get-caller-identity``` to verify the AWS CLI is functioning
 2. Run ```python3 --version``` to verify that python3 is installed
-3. Run ```sudo python3 -m pip install chalice boto3``` to install [Boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html) and [AWS Chalice](https://github.com/aws/chalice)
+3. Your Cloud9 environment is already configured with boto3, but for this lab we will also need AWS Chalice.  
+Run ```sudo python3 -m pip install chalice``` to install [AWS Chalice](https://github.com/aws/chalice). 
 
 ::alert[You may see a couple of WARNING lines near the bottom of the command output, these are safely ignored.]{type="info"}
 
-4. Run ```git clone https://github.com/aws-samples/aws-dynamodb-examples.git```
-5. Run ```cd aws-dynamodb-examples/global-serverless```
-6. To see what application resources we will be deploying you can open the **app.py** file by navigating to "aws-dynamodb-examples/global-serverless/app.py" in the file explorer. This code defines Lambda function and API Gateway routes.
+4. Run ```curl -0 https://amazon-dynamodb-labs.com/assets/global-serverless.zip```
+5. Run ```unzip global-serverless.zip && cd global-serverless```
+6. To see what application resources we will be deploying you can open the **app.py** file by navigating to "global-serverless/app.py" in the file explorer. This code defines Lambda function and API Gateway routes.
 
 ### Deploy a new DynamoDB table
 1. In your terminal, run:
