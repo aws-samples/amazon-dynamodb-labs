@@ -18,7 +18,7 @@ You can handle each of these checks in a [condition expression](https://docs.aws
 - Remove the `open_timestamp` attribute so that it does not appear as an open game in the sparse GSI created earlier.
 - Add a `start_time` attribute to indicate when the game started.
 
-In the code you downloaded, a **start_game.py** script is in the **application/** directory.
+In the code you downloaded, a **start_game.py** script is in the **scripts/** directory.
 
 ```python
 import datetime
@@ -28,7 +28,6 @@ from entities import Game
 dynamodb = boto3.client('dynamodb')
 
 GAME_ID = "c6f38a6a-d1c5-4bdf-8468-24692ccc4646"
-
 CREATOR = "gstanley"
 
 def start_game(game_id, requesting_user, start_time):
@@ -36,31 +35,27 @@ def start_game(game_id, requesting_user, start_time):
         resp = dynamodb.update_item(
             TableName='battle-royale',
             Key={
-                "PK": { "S": "GAME#{}".format(game_id) },
-                "SK": { "S": "#METADATA#{}".format(game_id) }
+                "PK": { "S": f"GAME#{game_id}" },
+                "SK": { "S": f"#METADATA#{game_id}" }
             },
             UpdateExpression="REMOVE open_timestamp SET start_time = :time",
-            ConditionExpression="people = :limit 
-                AND creator = :requesting_user 
-                AND attribute_not_exists(start_time)",
+            ConditionExpression="people = :limit AND creator = :requesting_user AND attribute_not_exists(start_time)",
             ExpressionAttributeValues={
                 ":time": { "S": start_time.isoformat() },
                 ":limit": { "N": "50" },
                 ":requesting_user": { "S": requesting_user }
             },
-            ReturnValues="ALL_NEW")
+            ReturnValues="ALL_NEW"
+        )
         return Game(resp['Attributes'])
-    
     except Exception as e:
         print('Could not start game')
         return False
-    
-    game = start_game(
-        GAME_ID, CREATOR, datetime.datetime(2019, 4, 16, 10, 15, 35)
-    )
-    
+
+game = start_game(GAME_ID, CREATOR, datetime.datetime(2019, 4, 16, 10, 15, 35))
+
 if game:
-    print("Started game: {}".format(game))
+    print(f"Started game: {game}")
 ```
 
 In this script, the `start_game` function is similar to the function you would have in your application. It takes a `game_id`, `requesting_user`, and `start_time`, and it runs a request to update the `Game` entity to start the game.
@@ -69,20 +64,79 @@ The `ConditionExpression` parameter in the `update_item()` call specifies each o
 
 In the `UpdateExpression` parameter, you can see the changes you want to make to the entity. First you remove the `open_timestamp` attribute from the entity, and then you set the `start_time` attribute to the game’s start time.
 
+::alert[You can choose to run either the `start_game.py` python script or the AWS CLI command below. Both are provided to show different methods of interacting with DynamoDB.]
+
 Run this script in your terminal with the following command:
 
 ```shell
-python application/start_game.py
+python scripts/start_game.py
 ```
 
 You should see output in your terminal indicating that the game was started successfully.
 
 ```text
 Started game: 
-Game<c6f38a6a-d1c5-4bdf-8468-24692ccc4646 --Urban Underground>
+Game: c6f38a6a-d1c5-4bdf-8468-24692ccc4646   Map: Urban Underground
 ```
 
 Try to run the script a second time in your terminal. This time, you should see an error message that indicates you could not start the game. This is because you have already started the game, so the `start_time` attribute exists. As a result, the request failed the conditional check on the entity.
+
+Alternatively, you can run this AWS CLI command to start the game:
+
+```sh
+aws dynamodb update-item \
+--table-name battle-royale \
+--key \
+"{
+  \"PK\": { \"S\": \"GAME#c6f38a6a-d1c5-4bdf-8468-24692ccc4646\" },
+  \"SK\": { \"S\": \"#METADATA#c6f38a6a-d1c5-4bdf-8468-24692ccc4646\" }
+}" \
+--update-expression "REMOVE open_timestamp SET start_time = :time" \
+--condition-expression \
+"people = :limit 
+  AND creator = :requesting_user 
+  AND attribute_not_exists(start_time)" \
+--expression-attribute-values \
+"{
+  \":time\": { \"S\": \"2019-04-16T10:15:35\" },
+  \":limit\": { \"N\": \"50\" },
+  \":requesting_user\": { \"S\": \"gstanley\" }
+}" \
+--return-values "ALL_NEW"
+```
+
+If you run the AWS CLI command, you will see the NEW values of the item you updated and you will notice that there is no longer an attribute named `open_timestamp` but there is an attribute named `start_time`.
+
+```json
+{
+  "Attributes": {
+    "creator": {
+      "S": "gstanley"
+    },
+    "people": {
+      "N": "50"
+    },
+    "SK": {
+      "S": "#METADATA#c6f38a6a-d1c5-4bdf-8468-24692ccc4646"
+    },
+    "create_time": {
+      "S": "2019-04-16T10:12:54"
+    },
+    "map": {
+      "S": "Urban Underground"
+    },
+    "start_time": {
+      "S": "2019-04-16T10:15:35"
+    },
+    "PK": {
+      "S": "GAME#c6f38a6a-d1c5-4bdf-8468-24692ccc4646"
+    },
+    "game_id": {
+      "S": "c6f38a6a-d1c5-4bdf-8468-24692ccc4646"
+    }
+  }
+}
+```
 
 ### Review
 

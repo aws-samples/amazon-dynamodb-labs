@@ -51,3 +51,5 @@ jobs:
       run: aws s3api put-object-acl --grant-read uri=http://acs.amazonaws.com/groups/global/AllUsers --bucket $STEP_S3_BUCKET --key assets/migration-env-setup.yaml
     - name: SetS3AclLHOLDMS
       run: aws s3api put-object-acl --grant-read uri=http://acs.amazonaws.com/groups/global/AllUsers --bucket $STEP_S3_BUCKET --key assets/migration-dms-setup.yaml
+    - name: SetS3AclLGME1
+      run: aws s3api put-object-acl --grant-read uri=http://acs.amazonaws.com/groups/global/AllUsers --bucket $STEP_S3_BUCKET --key assets/battle-royale.zip
