@@ -24,20 +24,20 @@ In a production environment as a best practice, you would configure roles with t
 
  1. Open the top left menu and select "Security".
 
-  ![Security Settings](/static/images/ddb-os-zet5.jpg) 
+  ![Security Settings](/static/images/ddb-os-zetl5.jpg) 
 
  1. Open the "Roles" tab, then click on the "all_access" role.
 
-  ![Roles Settings](/static/images/ddb-os-zet6.jpg) 
+  ![Roles Settings](/static/images/ddb-os-zetl6.jpg) 
 
  1. Open the "Mapped users" tab, then select "Manage mapping".
 
-  ![Mapping Settings](/static/images/ddb-os-zet7.jpg)
+  ![Mapping Settings](/static/images/ddb-os-zetl7.jpg)
 
  1. In the "Backend roles" field, enter the Arn provided in the CloudFormation Stack Outputs. The attribute named "Role" provides the correct Arn. Click "Map".
 
-  ![ Settings](/static/images/ddb-os-zet8.jpg)
+  ![ Settings](/static/images/ddb-os-zetl8.jpg)
 
  1. Verify that the "all_access" Role now has a "Backend role" listed.
 
-  ![ Settings](/static/images/ddb-os-zet9.jpg)
+  ![ Settings](/static/images/ddb-os-zetl9.jpg)
