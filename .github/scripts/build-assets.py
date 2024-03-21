@@ -71,9 +71,9 @@ shutil.move(os.path.join(os.getcwd(), 'battle-royale.zip'), os.path.join(dest_ro
 #Create Global Serverless ZIP
 os.chdir(os.path.join(pkg_root, 'global-serverless'))
 with ZipFile('global-serverless.zip', 'w') as workshop_zip:
-	for data_file in glob.glob('chalice/*'):
+	for data_file in glob.glob('global-serverless/*'):
 		workshop_zip.write(data_file)
-	workshop_zip.write(os.path.join(os.getcwd(), 'chalice/.chalice/config.json'))
+	workshop_zip.write('global-serverless/.chalice/config.json')
 shutil.move(os.path.join(os.getcwd(), 'global-serverless.zip'), os.path.join(dest_root, 'assets', 'global-serverless.zip'))
 
 
