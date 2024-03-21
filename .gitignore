@@ -5,3 +5,4 @@ __pycache__/
 .python-version
 build
 .hugo_build.lock
+preview_build
