@@ -54,8 +54,7 @@ try:
             }
         ],
     )
-    print("Table updated successfully.")
-    
+    print("Table 'battle-royale' updated successfully.")
 except Exception as e:
     print("Could not update table. Error:")
     print(e)
@@ -64,6 +63,8 @@ except Exception as e:
 ::alert[Edit **scripts/add_inverted_index.py**, set both `ReadCapacityUnits` and `WriteCapacityUnits` to **100** for `InvertedIndex`.]
 
 In this script, you call an `update_table()` method on the DynamoDB client. In the method, you pass details about the secondary index you want to create, including the key schema for the index, the provisioned throughput, and the attributes to project into the index. 
+
+::alert[You can choose to run either the `add_inverted_index.py` python script or the AWS CLI command below. Both are provided to show different methods of interacting with DynamoDB.]
 
 Run the script by typing the following command in your terminal:
 
@@ -74,8 +75,43 @@ python scripts/add_inverted_index.py
 Your terminal will display output that your index was created successfully.
 
 ```text
-Table updated successfully.
+Table 'battle-royale' updated successfully.
 ```
+
+Alternatively, you can create the `InvertedIndex` GSI by running the AWS CLI command below:
+
+```sh
+aws dynamodb update-table \
+--table-name battle-royale \
+--attribute-definitions AttributeName=PK,AttributeType=S AttributeName=SK,AttributeType=S \
+--global-secondary-index-updates \
+"[
+  {
+    \"Create\": {
+      \"IndexName\": \"InvertedIndex\",
+      \"KeySchema\": [
+        {
+          \"AttributeName\": \"SK\",
+          \"KeyType\": \"HASH\"
+        },
+        {
+          \"AttributeName\": \"PK\",
+          \"KeyType\": \"RANGE\"
+        }
+      ],
+      \"Projection\": {
+        \"ProjectionType\": \"ALL\"
+      },
+      \"ProvisionedThroughput\": {
+        \"ReadCapacityUnits\": 100,
+        \"WriteCapacityUnits\": 100
+      }
+    }
+  }
+]"
+```
+
+If you chose to run the AWS CLI command, the output will contain a full description of the `battle-royale` table including existing and newly creating indexes. You will notice the IndexStatus for the index `InvertedIndex` will show as **CREATING**.
 
 It will take a few minutes for the new secondary index to get populated. You need to wait until the secondary index is active. 
 
