@@ -71,12 +71,12 @@ This is telling us that the Key Condition Expression matched 2 items (ScannedCou
 
 ## Exercise
 
-Read the documentation for --max-items and write two queries:
+Read the documentation for[--max-items](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/query.html#synopsis) and write two queries:
 
 * return only the first reply to a thread
 * return only the most recent reply for a thread
 
-Hint: consider the *max-items* and *scan-index-forward* options.  The solution is expandable below but try to figure it out yourself before moving forward.
+Hint: consider the *max-items*, *scan-index-forward*, and *no-scan-index-forward* options. The solution is expandable below but try to figure it out yourself before moving forward.
 
 **Click below to expand and see the exercise solutions**
 
