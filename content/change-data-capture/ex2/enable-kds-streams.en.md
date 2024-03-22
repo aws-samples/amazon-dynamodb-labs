@@ -38,16 +38,19 @@ Confirm that the stream is active using the following command.
 ```bash
 aws kinesis describe-stream \
     --stream-name Orders \
-    --query "StreamDescription.StreamStatus"
+    --query "StreamDescription.[StreamStatus, StreamARN]
 ```
 
 Sample output:
 
 ```
-"ACTIVE"
+[
+    "ACTIVE",
+    "arn:aws:kinesis:${REGION}:${ACCOUNT_ID}:stream/Orders"
+]
 ```
 
-Enable Kinesis streaming for the Orders DynamoDB table using following command.
+Enable Kinesis streaming for the Orders DynamoDB table using following command. Copy the ARN from the previous command into the *--stream-arn* parameter.
 
 ```bash
 aws dynamodb enable-kinesis-streaming-destination \
@@ -61,7 +64,8 @@ Sample output:
 {
     "TableName": "Orders",
     "StreamArn": "arn:aws:kinesis:${REGION}:${ACCOUNT_ID}:stream/Orders",
-    "DestinationStatus": "ENABLING"
+    "DestinationStatus": "ENABLING",
+    "EnableKinesisStreamingConfiguration": {}
 }
 ```
 
