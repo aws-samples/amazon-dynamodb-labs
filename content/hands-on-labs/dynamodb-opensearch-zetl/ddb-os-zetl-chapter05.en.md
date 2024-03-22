@@ -8,12 +8,11 @@ Next, you'll load example product data into your DynamoDB Table. Pipelines will 
 
  1. Open the "Outputs" tab of your recently deployed Stack in the CloudFormation Console.
 
-   ![CloudFormation Outputs](/static/images/ddb-os-zetl2.jpg)
-   
+    ![CloudFormation Outputs](/static/images/ddb-os-zetl2.jpg)
  1. Open the link for Cloud9IdeUrl in a new tab.
  1. Download the zip containing the zip containing sample data and scripts.
     ```bash
-      curl -0 https://amazon-dynamodb-labs.com/assets/OpenSearchPipeline.zip
+      curl -O https://amazon-dynamodb-labs.com/assets/OpenSearchPipeline.zip
     ```
  1. Unzip the contents of the zip file.
     ```bash
