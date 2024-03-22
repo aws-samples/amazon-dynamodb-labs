@@ -11,7 +11,7 @@ Create a lambda function to copy changed records from the Orders DynamoDB stream
 2. In the **Functions** section, click on **Create function**.
 3. Select **Author from scratch**.
 4. Set **create-order-history-kds** as the function name.
-5. Select a version of **Python** as the runtime.
+5. Select **Python 3.11** as the runtime.
 6. Expand the **Change default execution role** section.
 7. Select **Create a new role from AWS policy templates**.
 8. Set **create-order-history-kds-execution-role** as the role name.

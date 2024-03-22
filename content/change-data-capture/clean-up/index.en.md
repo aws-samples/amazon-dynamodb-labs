@@ -1,5 +1,5 @@
 ---
-title: "5. Summary & Clean Up"
+title: "5. Summary and Clean Up"
 date: 2023-12-01T00:00:00-00:00
 weight: 20
 chapter: true
@@ -16,32 +16,30 @@ If you used your own account, please remove the following resources:
 * The Lambda Function Event Source Mappings:
 
 ```bash
-uuid=`aws lambda list-event-source-mappings \
-    --function-name create-order-history-kds | jq '.EventSourceMappings[].UUID' --raw-output`
-aws lambda delete-event-source-mapping --uuid ${uuid} > output.log
-uuid=`aws lambda list-event-source-mappings \
-    --function-name create-order-history-ddbs | jq '.EventSourceMappings[].UUID' --raw-output`
-aws lambda delete-event-source-mapping --uuid ${uuid} >> output.log
+UUID_1=`aws lambda list-event-source-mappings --function-name create-order-history-kds --query 'EventSourceMappings[].UUID' --output text`
+UUID_2=`aws lambda list-event-source-mappings --function-name create-order-history-ddbs --query 'EventSourceMappings[].UUID' --output text`
+aws lambda delete-event-source-mapping --uuid ${UUID_1}
+aws lambda delete-event-source-mapping --uuid ${UUID_2}
 ```
 
 * The AWS Lambda functions created during the labs:
 
 ```bash
-aws lambda delete-function --function-name create-order-history-ddbs >> output.log
-aws lambda delete-function --function-name create-order-history-kds >> output.log
+aws lambda delete-function --function-name create-order-history-ddbs
+aws lambda delete-function --function-name create-order-history-kds
 ```  
 
 * The AWS Kinesis data stream created during the labs:
 
 ```bash
-aws kinesis delete-stream --stream-name Orders >> output.log
+aws kinesis delete-stream --stream-name Orders
 ```
 
 * The Amazon DynamoDB tables created in the Getting Started section of the lab:
 
 ```bash
-aws dynamodb delete-table --table-name Orders >> output.log
-aws dynamodb delete-table --table-name OrdersHistory >> output.log
+aws dynamodb delete-table --table-name Orders
+aws dynamodb delete-table --table-name OrdersHistory
 ```
 
 * The Amazon SQS queues created during the labs:
