@@ -13,9 +13,9 @@ We will use AWS Cloud9 for this event. [AWS Cloud9](https://aws.amazon.com/cloud
 
 1. Choose **Services** at the top of the page, and then choose **Cloud9** under **Developer Tools**.
    
-2. There would be an environment ready to use under **Your environments**.
+2. There will be an environment ready to use under **My environments**.
 
-3. Click on **Open IDE**, your IDE should open with a welcome note.
+3. Click on **Open** under **Cloud9 IDE**, and your IDE should open with a welcome note.
 
 You should now see your AWS Cloud9 environment. You need to be familiar with the three areas of the AWS Cloud9 console shown in the following screenshot:
 
@@ -35,7 +35,7 @@ Run ```sudo python3 -m pip install chalice``` to install [AWS Chalice](https://g
 
 ::alert[You may see a couple of WARNING lines near the bottom of the command output, these are safely ignored.]{type="info"}
 
-4. Run ```curl -0 https://amazon-dynamodb-labs.com/assets/global-serverless.zip```
+4. Run ```curl -O https://amazon-dynamodb-labs.com/assets/global-serverless.zip```
 5. Run ```unzip global-serverless.zip && cd global-serverless```
 6. To see what application resources we will be deploying you can open the **app.py** file by navigating to "global-serverless/app.py" in the file explorer. This code defines Lambda function and API Gateway routes.
 
