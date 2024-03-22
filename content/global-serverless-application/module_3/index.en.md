@@ -37,7 +37,7 @@ Underneath the player you can see a log of each write operation performed, note 
 
 3. Return to the AWS console and search for "Lambda" using the search bar at the top
 4. A function named "global-serverless-dev" should be listed on the functions page, click the function name. If you do not see it listed check to make sure you are in one of the two regions you deployed to with Chalice on the top right of the page
-5. Use the "Throttle" button on the top right of the page to set the Lambda functions maximum concurrency to 0, halting any future invocations of the function in this region.
+5. Use the **Throttle** button on the top right of the page to set the Lambda functions maximum concurrency to 0, halting any future invocations of the function in this region.
 
 ![lambda_throttle](/static/images/global-serverless-application/module_3/lambda_throttle.png)
 

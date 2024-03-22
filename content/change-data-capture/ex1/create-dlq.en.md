@@ -20,3 +20,10 @@ Sample output:
     "QueueUrl": "https://sqs.{aws-region}.amazonaws.com/{aws-account-id}/orders-ddbs-dlq"
 }
 ```
+
+Later you will need the queue ARN. Use the below command, modifying the queue URL after *--queue-url* to match the result of the previous command, and then save the ARN for later use.
+
+```bash
+aws sqs get-queue-attributes --attribute-names "QueueArn" --query 'Attributes.QueueArn' --output text \
+--queue-url "https://sqs.{aws-region}.amazonaws.com/{aws-account-id}/orders-ddbs-dlq"
+```
