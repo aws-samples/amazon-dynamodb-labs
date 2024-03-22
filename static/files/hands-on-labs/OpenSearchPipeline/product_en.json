@@ -1,0 +1,424 @@
+{
+    "ProductDetails": [
+        {
+            "PutRequest": {
+                "Item": {
+                    "ProductID": {
+                        "S": "W001"
+                    },
+                    "Category": {
+                        "S": "Bottoms"
+                    },
+                    "ProductName": {
+                        "S": "Casual Street Jogger Pants"
+                    },
+                    "Image": {
+                        "S": "https://example.com/W001.jpg"
+                    },
+                    "Description": {
+                        "S": "{\"Color\": \"Gray\", \"Style\": \"Street\", \"Pattern Type\": \"Stripes\", \"Details\": \"Elastic Waist, Side Pockets\", \"Type\": \"Jogger Pants\", \"Closure Type\": \"Elastic Waist\", \"Waist Line\": \"Mid Rise\", \"Length\": \"Ankle-length\", \"Fit Type\": \"Relaxed Fit\", \"Fabric\": \"Cotton Blend\", \"Material\": \"Jersey\", \"Composition\": \"60% Cotton, 40% Polyester\", \"Care Instructions\": \"Machine wash cold, tumble dry low\", \"Temperature\": \"Spring/Fall\", \"Ideal For\": \"Casual Wear\", \"Stretch\": \"None\", \"Opacity\": \"Opaque\", \"Lining\": \"Yes\", \"Pockets\": \"Side Pockets\", \"Inseam Length\": \"28-30 Inches\", \"Outseam Length\": \"38-40 Inches\", \"Rise Measure\": \"8-10 Inches\", \"Leg Opening Circumference\": \"9-11 Inches\", \"Occasion\": \"Casual\", \"Season\": \"Spring, Fall, Winter\"}"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "ProductID": {
+                        "S": "T002"
+                    },
+                    "Category": {
+                        "S": "Tops"
+                    },
+                    "ProductName": {
+                        "S": "Striped Cotton T-shirt"
+                    },
+                    "Image": {
+                        "S": "https://example.com/T002.jpg"
+                    },
+                    "Description": {
+                        "S": "{\"Style\": \"Casual\", \"Pattern\": \"Striped\", \"Material\": \"Cotton\", \"Details\": \"Short Sleeve, Crew Neck\", \"Type\": \"T-shirt\", \"Neckline\": \"Crew Neck\", \"Sleeve Length\": \"Short\", \"Length\": \"Hip\", \"Print\": \"Striped\", \"Fabric\": \"Knit\", \"Composition\": \"100% Cotton\", \"Care Instructions\": \"Machine wash cold, tumble dry low\", \"Fit Type\": \"Classic\", \"Ideal For\": \"Casual Wear\", \"Stretch\": \"Minimal Stretch\", \"Opacity\": \"Opaque\", \"Lining\": \"No\", \"Pockets\": \"No Pockets\", \"Sleeve Style\": \"Set-In Sleeves\", \"Hem Style\": \"Straight Hem\", \"Occasion\": \"Casual\", \"Season\": \"Spring, Summer, Fall\"}"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "ProductID": {
+                        "S": "D003"
+                    },
+                    "Category": {
+                        "S": "Dress"
+                    },
+                    "ProductName": {
+                        "S": "Floral V-neck Midi Dress"
+                    },
+                    "Image": {
+                        "S": "https://example.com/D003.jpg"
+                    },
+                    "Description": {
+                        "S": "{\"Style\": \"Casual\", \"Pattern\": \"Floral\", \"Material\": \"Rayon\", \"Length\": \"Midi\", \"Neckline\": \"V-neck\", \"Sleeve Length\": \"Half\", \"Waist\": \"Empire\", \"Print\": \"Floral\", \"Fabric\": \"Woven\", \"Composition\": \"100% Rayon\", \"Care Instructions\": \"Dry clean only\", \"Ideal For\": \"Casual Wear\", \"Stretch\": \"No Stretch\", \"Opacity\": \"Semi-Sheer\", \"Lining\": \"No\", \"Pockets\": \"No Pockets\", \"Slit\": \"No Slit\", \"Straps\": \"Adjustable Spaghetti Straps\", \"Hem Style\": \"Asymmetrical Hem\", \"Occasion\": \"Casual\", \"Season\": \"Spring, Summer\"}"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "ProductID": {
+                        "S": "S004"
+                    },
+                    "Category": {
+                        "S": "Skirt"
+                    },
+                    "ProductName": {
+                        "S": "Solid High Waist Pencil Skirt"
+                    },
+                    "Image": {
+                        "S": "https://example.com/S004.jpg"
+                    },
+                    "Description": {
+                        "S": "{\"Style\": \"Formal\", \"Pattern\": \"Solid\", \"Material\": \"Polyester\", \"Length\": \"Knee\", \"Type\": \"Pencil\", \"Waist\": \"High\", \"Fabric\": \"Woven\", \"Composition\": \"65% Polyester, 35% Spandex\", \"Care Instructions\": \"Dry clean only\", \"Ideal For\": \"Workwear\", \"Stretch\": \"Stretchy\", \"Opacity\": \"Opaque\", \"Lining\": \"No\", \"Pockets\": \"No Pockets\", \"Slit\": \"Back Vent\", \"Closure\": \"Hidden Back Zipper\", \"Hem Style\": \"Straight Hem\", \"Occasion\": \"Work, Business Formal\", \"Season\": \"Spring, Summer, Fall, Winter\"}"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "ProductID": {
+                        "S": "B005"
+                    },
+                    "Category": {
+                        "S": "Blazer"
+                    },
+                    "ProductName": {
+                        "S": "Hounds tooth Wool Blazer"
+                    },
+                    "Image": {
+                        "S": "https://example.com/B005.jpg"
+                    },
+                    "Description": {
+                        "S": "{\"Style\": \"Business\", \"Pattern\": \"Hounds tooth\", \"Material\": \"Wool\", \"Type\": \"Single Breasted\", \"Details\": \"Notch Collar, Long Sleeve\", \"Length\": \"Hip\", \"Vent\": \"Center\", \"Fabric\": \"Woven\", \"Composition\": \"100% Wool\", \"Care Instructions\": \"Dry clean only\", \"Lining\": \"Yes\", \"Pockets\": \"Front Pockets\", \"Closures\": \"Single Button\", \"Lapel\": \"Notch Lapel\", \"Shoulders\": \"Padded\", \"Vents\": \"Center Back Vent\", \"Hem Style\": \"Straight Hem\", \"Occasion\": \"Professional, Formal\", \"Season\": \"Spring, Fall, Winter\"}"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "ProductID": {
+                        "S": "B006"
+                    },
+                    "Category": {
+                        "S": "Blazer"
+                    },
+                    "ProductName": {
+                        "S": "Solid Double Breasted Blazer"
+                    },
+                    "Image": {
+                        "S": "https://example.com/B006.jpg"
+                    },
+                    "Description": {
+                        "S": "{\"Style\": \"Business Casual\", \"Pattern\": \"Solid\", \"Material\": \"Polyester\", \"Type\": \"Double Breasted\", \"Details\": \"Peak Lapel, Long Sleeve\", \"Length\": \"Hip\", \"Vent\": \"Side\", \"Fabric\": \"Woven\", \"Composition\": \"95% Polyester, 5% Spandex\", \"Care Instructions\": \"Dry clean only\", \"Lining\": \"Yes\", \"Pockets\": \"Front Pockets\", \"Closures\": \"Double Breast Button\", \"Lapel\": \"Peak Lapel\", \"Shoulders\": \"Padded\", \"Vents\": \"Side Vents\", \"Hem Style\": \"Straight Hem\", \"Occasion\": \"Business Casual\", \"Season\": \"Spring, Fall, Winter\"}"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "ProductID": {
+                        "S": "J007"
+                    },
+                    "Category": {
+                        "S": "Jeans"
+                    },
+                    "ProductName": {
+                        "S": "Dark Wash Skinny Jeans"
+                    },
+                    "Image": {
+                        "S": "https://example.com/J007.jpg"
+                    },
+                    "Description": {
+                        "S": "{\"Style\": \"Casual\", \"Wash\": \"Dark\", \"Rise\": \"Mid\", \"Leg Opening\": \"Skinny\", \"Details\": \"5 Pockets, Zip Fly\", \"Fabric\": \"Denim\", \"Composition\": \"99% Cotton, 1% Spandex\", \"Care Instructions\": \"Machine wash cold inside out, line dry\", \"Ideal For\": \"Casual Wear\", \"Stretch\": \"Super Stretch\", \"Opacity\": \"Opaque\", \"Lining\": \"No\", \"Pockets\": \"Front & Back Pockets\", \"Inseam Length\": \"30 Inches\", \"Outseam Length\": \"40 Inches\", \"Rise Measure\": \"10 Inches\", \"Leg Opening Circumference\": \"10 Inches\", \"Closure Type\": \"Zip Fly\", \"Hem Style\": \"Clean Finished Hem\", \"Occasion\": \"Casual\", \"Season\": \"Year-round\"}"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "ProductID": {
+                        "S": "T008"
+                    },
+                    "Category": {
+                        "S": "Top"
+                    },
+                    "ProductName": {
+                        "S": "Off Shoulder Leopard Satin Crop Top"
+                    },
+                    "Image": {
+                        "S": "https://example.com/T008.jpg"
+                    },
+                    "Description": {
+                        "S": "{\"Style\": \"Going Out\", \"Neckline\": \"Off Shoulder\", \"Sleeve Length\": \"Long Bell\", \"Length\": \"Crop\", \"Pattern\": \"Leopard\", \"Fabric\": \"Satin\", \"Composition\": \"95% Polyester, 5% Spandex\", \"Care Instructions\": \"Hand wash cold\", \"Ideal For\": \"Going Out\", \"Stretch\": \"Stretchy\", \"Opacity\": \"Semi-Sheer\", \"Lining\": \"No\", \"Pockets\": \"No Pockets\", \"Sleeve Style\": \"Bell Sleeves\", \"Hem Style\": \"Curved Hem\", \"Occasion\": \"Going Out\", \"Season\": \"Spring, Summer, Fall\"}"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "ProductID": {
+                        "S": "P009"
+                    },
+                    "Category": {
+                        "S": "Pants"
+                    },
+                    "ProductName": {
+                        "S": "Plaid High Waist Straight Pants"
+                    },
+                    "Image": {
+                        "S": "https://example.com/P009.jpg"
+                    },
+                    "Description": {
+                        "S": "{\"Style\": \"Work\", \"Pattern\": \"Plaid\", \"Details\": \"Flat Front, Straight Leg\", \"Closure\": \"Zip Fly\", \"Rise\": \"High Waist\", \"Length\": \"Full\", \"Fabric\": \"Woven\", \"Composition\": \"63% Polyester, 34% Rayon, 3% Spandex\", \"Care Instructions\": \"Dry clean only\", \"Ideal For\": \"Workwear\", \"Stretch\": \"Slight Stretch\", \"Opacity\": \"Opaque\", \"Lining\": \"No\", \"Pockets\": \"Front Pockets\", \"Inseam Length\": \"32 Inches \", \"Outseam Length\": \"40 Inches\", \"Rise Measure\": \"12 Inches\", \"Leg Opening Circumference\": \"18 Inches\", \"Closure Type\": \"Zip Fly\", \"Hem Style\": \"Clean Finished Hem\", \"Occasion\": \"Work, Business Casual\", \"Season\": \"Year-round\"}"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "ProductID": {
+                        "S": "S010"
+                    },
+                    "Category": {
+                        "S": "Shorts"
+                    },
+                    "ProductName": {
+                        "S": "Solid Drawstring Jersey Shorts"
+                    },
+                    "Image": {
+                        "S": "https://example.com/S010.jpg"
+                    },
+                    "Description": {
+                        "S": "{\"Style\": \"Casual\", \"Pattern\": \"Solid\", \"Length\": \"Bermuda\", \"Closure\": \"Drawstring\", \"Waist\": \"Elastic\", \"Pocket\": \"Side\", \"Fabric\": \"Jersey\", \"Composition\": \"95% Rayon, 5% Spandex\", \"Care Instructions\": \"Machine wash cold, tumble dry low\", \"Ideal For\": \"Casual Wear\", \"Stretch\": \"Stretchy\", \"Opacity\": \"Opaque\", \"Lining\": \"No\", \"Pockets\": \"Side Pockets\", \"Inseam Length\": \"8-10 Inches\", \"Outseam Length\": \"14-16 Inches\", \"Rise Measure\": \"11-13 Inches\", \"Leg Opening Circumference\": \"20-22 Inches\", \"Closure Type\": \"Drawstring\", \"Hem Style\": \"Straight Hem\", \"Occasion\": \"Casual\", \"Season\": \"Spring, Summer\"}"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "ProductID": {
+                        "S": "S011"
+                    },
+                    "Category": {
+                        "S": "Skirt"
+                    },
+                    "ProductName": {
+                        "S": "Printed A-Line Mini Skirt"
+                    },
+                    "Image": {
+                        "S": "https://example.com/S011.jpg"
+                    },
+                    "Description": {
+                        "S": "{\"Style\": \"Casual\", \"Pattern\": \"Print\", \"Length\": \"Mini\", \"Type\": \"A-line\", \"Waist\": \"Mid\", \"Pocket\": \"Side\", \"Fabric\": \"Woven\", \"Composition\": \"100% Polyester\", \"Care Instructions\": \"Machine wash cold, tumble dry low\", \"Ideal For\": \"Casual Wear\", \"Stretch\": \"No Stretch\", \"Opacity\": \"Opaque\", \"Lining\": \"No\", \"Pockets\": \"Side Pockets\", \"Slit\": \"No Slit\", \"Closure\": \"Hidden Side Zipper\", \"Hem Style\": \"Flared Hem\", \"Occasion\": \"Casual\", \"Season\": \"Spring, Summer\"}"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "ProductID": {
+                        "S": "P012"
+                    },
+                    "Category": {
+                        "S": "Pajama"
+                    },
+                    "ProductName": {
+                        "S": "Plaid Cotton Long Pajama Set"
+                    },
+                    "Image": {
+                        "S": "https://example.com/P012.jpg"
+                    },
+                    "Description": {
+                        "S": "{\"Style\": \"Loungewear\", \"Pattern\": \"Plaid\", \"Length\": \"Long\", \"Details\": \"Long Sleeve, Notch Collar\", \"Pant Style\": \"Straight\", \"Fabric\": \"Flannel\", \"Composition\": \"100% Cotton\", \"Care Instructions\": \"Machine wash cold, tumble dry low\", \"Ideal For\": \"Loungewear, Sleepwear\", \"Stretch\": \"No Stretch\", \"Opacity\": \"Opaque\", \"Lining\": \"No\", \"Pockets\": \"No Pockets\", \"Inseam Length\": \"30-32 Inches\", \"Outseam Length\": \"40-42 Inches\", \"Rise Measure\": \"12-14 Inches\", \"Leg Opening Circumference\": \"15-17 Inches\", \"Closure Type\": \"Drawstring\", \"Hem Style\": \"Straight Hem\", \"Occasion\": \"Loungewear, Sleepwear\", \"Season\": \"Fall, Winter\"}"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "ProductID": {
+                        "S": "J013"
+                    },
+                    "Category": {
+                        "S": "Jeans"
+                    },
+                    "ProductName": {
+                        "S": "Light Wash Bootcut Jeans"
+                    },
+                    "Image": {
+                        "S": "https://example.com/J013.jpg"
+                    },
+                    "Description": {
+                        "S": "{\"Style\": \"Casual\", \"Wash\": \"Light\", \"Rise\": \"High\", \"Leg Opening\": \"Bootcut\", \"Details\": \"5 Pockets, Button Fly\", \"Fabric\": \"Denim\", \"Composition\": \"98% Cotton, 2% Elastane\", \"Care Instructions\": \"Machine wash cold inside out, line dry\", \"Ideal For\": \"Casual Wear\", \"Stretch\": \"Slight Stretch\", \"Opacity\": \"Opaque\", \"Lining\": \"No\", \"Pockets\": \"Front & Back Pockets\", \"Inseam Length\": \"32 Inches\", \"Outseam Length\": \"42 Inches\", \"Rise Measure\": \"10.5 Inches\", \"Leg Opening Circumference\": \"17 Inches\", \"Closure Type\": \"Button Fly\", \"Hem Style\": \"Flared Hem\", \"Occasion\": \"Casual\", \"Season\": \"Year-round\"}"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "ProductID": {
+                        "S": "C014"
+                    },
+                    "Category": {
+                        "S": "Cardigan"
+                    },
+                    "ProductName": {
+                        "S": "Colorblock Open Front Knit Cardigan"
+                    },
+                    "Image": {
+                        "S": "https://example.com/C014.jpg"
+                    },
+                    "Description": {
+                        "S": "{\"Style\": \"Casual\", \"Pattern\": \"Colorblock\", \"Length\": \"Hip\", \"Sleeve Length\": \"Long\", \"Details\": \"Open Front\", \"Fabric\": \"Knit\", \"Composition\": \"35% Nylon, 30% Wool, 25% Viscose, 10% Cashmere\", \"Care Instructions\": \"Hand wash cold, flat dry\", \"Ideal For\": \"Casual Wear\", \"Stretch\": \"No Stretch\", \"Opacity\": \"Opaque\", \"Lining\": \"No\", \"Pockets\": \"Side Pockets\", \"Sleeve Style\": \"Raglan Sleeves\", \"Hem Style\": \"Asymmetrical Hem\", \"Occasion\": \"Casual\", \"Season\": \"Fall, Winter\"}"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "ProductID": {
+                        "S": "D015"
+                    },
+                    "Category": {
+                        "S": "Dress"
+                    },
+                    "ProductName": {
+                        "S": "One Shoulder Lace Midi Dress"
+                    },
+                    "Image": {
+                        "S": "https://example.com/D015.jpg"
+                    },
+                    "Description": {
+                        "S": "{\"Style\": \"Cocktail\", \"Neckline\": \"One Shoulder\", \"Length\": \"Midi\", \"Pattern\": \"Lace\", \"Sleeve Length\": \"Long Bell\", \"Fabric\": \"Lace\", \"Composition\": \"100% Nylon\", \"Care Instructions\": \"Hand wash cold, flat dry\", \"Ideal For\": \"Cocktail, Party\", \"Stretch\": \"No Stretch\", \"Opacity\": \"Sheer\", \"Lining\": \"Yes\", \"Pockets\": \"No Pockets\", \"Slit\": \"Thigh-High Slit\", \"Straps\": \"One Shoulder Strap\", \"Hem Style\": \"Scalloped Hem\", \"Occasion\": \"Cocktail, Party\", \"Season\": \"Summer, Spring\"}"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "ProductID": {
+                        "S": "B016"
+                    },
+                    "Category": {
+                        "S": "Blouse"
+                    },
+                    "ProductName": {
+                        "S": "Polka Dot Chiffon Crop Top"
+                    },
+                    "Image": {
+                        "S": "https://example.com/B016.jpg"
+                    },
+                    "Description": {
+                        "S": "{\"Style\": \"Going Out\", \"Neckline\": \"Sweetheart\", \"Sleeve Length\": \"Short Puff\", \"Length\": \"Crop\", \"Pattern\": \"Dot\", \"Fabric\": \"Chiffon\", \"Composition\": \"100% Polyester\", \"Care Instructions\": \"Machine wash gentle, line dry\", \"Ideal For\": \"Going Out\", \"Stretch\": \"No Stretch\", \"Opacity\": \"Sheer\", \"Lining\": \"No\", \"Pockets\": \"No Pockets\", \"Sleeve Style\": \"Puff Sleeves\", \"Hem Style\": \"Straight Hem\", \"Occasion\": \"Going Out\", \"Season\": \"Spring, Summer\"}"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "ProductID": {
+                        "S": "P017"
+                    },
+                    "Category": {
+                        "S": "Pajama"
+                    },
+                    "ProductName": {
+                        "S": "Heart Print Satin Short Pajama Set"
+                    },
+                    "Image": {
+                        "S": "https://example.com/P017.jpg"
+                    },
+                    "Description": {
+                        "S": "{\"Style\": \"Loungewear\", \"Pattern\": \"Heart\", \"Length\": \"Shorts\", \"Details\": \"Short Sleeve\", \"Pant Style\": \"Wide Leg\", \"Fabric\": \"Satin\", \"Composition\": \"95% Polyester, 5% Spandex\", \"Care Instructions\": \"Machine wash cold, tumble dry low\", \"Ideal For\": \"Loungewear, Sleepwear\", \"Stretch\": \"Stretchy\", \"Opacity\": \"Opaque\", \"Lining\": \"No\", \"Pockets\": \"Side Pockets\", \"Inseam Length\": \"5 Inches\", \"Outseam Length\": \"10 Inches\", \"Rise Measure\": \"12 Inches\", \"Leg Opening Circumference\": \"20 Inches\", \"Closure Type\": \"Pull On\", \"Hem Style\": \"Straight Hem\", \"Occasion\": \"Loungewear, Sleepwear\", \"Season\": \"Spring, Summer, Fall\"}"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "ProductID": {
+                        "S": "S018"
+                    },
+                    "Category": {
+                        "S": "Suit"
+                    },
+                    "ProductName": {
+                        "S": "Pinstripe Wool Suit Set"
+                    },
+                    "Image": {
+                        "S": "https://example.com/S018.jpg"
+                    },
+                    "Description": {
+                        "S": "{\"Style\": \"Formal\", \"Pattern\": \"Pinstripe\", \"Details\": \"Long Sleeve, Notch Collar\", \"Length\": \"Full\", \"Type\": \"2 Piece\", \"Fabric\": \"Woven\", \"Composition\": \"96% Wool, 4% Spandex\", \"Care Instructions\": \"Dry clean only\", \"Ideal For\": \"Professional Wear\", \"Stretch\": \"Slight Stretch\", \"Opacity\": \"Opaque\", \"Lining\": \"Yes\", \"Pockets\": \"Inner Pockets\", \"Vents\": \"Center Back Vent\", \"Lapel\": \"Notch Lapel\", \"Hem Style\": \"Clean Finished Hem\", \"Occasion\": \"Professional, Formal\", \"Season\": \"Spring, Fall, Winter\"}"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "ProductID": {
+                        "S": "C019"
+                    },
+                    "Category": {
+                        "S": "Coat"
+                    },
+                    "ProductName": {
+                        "S": "Herringbone Wool Overcoat"
+                    },
+                    "Image": {
+                        "S": "https://example.com/C019.jpg"
+                    },
+                    "Description": {
+                        "S": "{\"Style\": \"Winter\", \"Pattern\": \"Herringbone\", \"Length\": \"Long\", \"Type\": \"Double Breasted\", \"Details\": \"Notch Collar\", \"Fabric\": \"Wool\", \"Composition\": \"80% Wool, 20% Nylon\", \"Care Instructions\": \"Dry clean only\", \"Lining\": \"Yes\", \"Pockets\": \"Outer Pockets\", \"Closures\": \"Double Breasted Button\", \"Shoulders\": \"Padded\", \"Vents\": \"Back Vent\", \"Sleeve Style\": \"Set-In Sleeves\", \"Hem Style\": \"Straight Hem\", \"Occasion\": \"Casual, Outdoor\", \"Season\": \"Winter\"}"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "ProductID": {
+                        "S": "S020"
+                    },
+                    "Category": {
+                        "S": "Socks"
+                    },
+                    "ProductName": {
+                        "S": "Polka Dot Cotton Ankle Socks"
+                    },
+                    "Image": {
+                        "S": "https://example.com/S020.jpg"
+                    },
+                    "Description": {
+                        "S": "{\"Style\": \"Casual\", \"Pattern\": \"Dot\", \"Length\": \"Ankle\", \"Type\": \"Low Cut\", \"Fabric\": \"Cotton\", \"Composition\": \"95% Cotton, 5% Spandex\", \"Care Instructions\": \"Machine wash cold, tumble dry low\", \"Ideal For\": \"Casual Wear\", \"Stretch\": \"Stretchy\", \"Opacity\": \"Opaque\", \"Lining\": \"No\", \"Pockets\": \"No Pockets\", \"Closure\": \"Pull On\", \"Shoe Height\": \"Low Cut\", \"Occasion\": \"Casual\", \"Season\": \"Year-round\"}"
+                    }
+                }
+            }
+        }
+    ]
+}

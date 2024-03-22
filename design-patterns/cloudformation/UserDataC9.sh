@@ -80,7 +80,9 @@ function setup_ladv
     echo ${DDB_REPLICATION_ROLE} > /home/ubuntu/workshop/ddb-replication-role-arn.txt
     rm /home/ubuntu/workshop/workshop.zip
     chown -R ubuntu:ubuntu /home/ubuntu/workshop/*
-    sudo pip3 install boto3 > /dev/null 2>&1 
+    sudo pip3 install boto3 > /dev/null 2>&1
+    log installing opensearch-py for zETL lab
+    sudo pip3 install opensearch-py > /dev/null 2>&1 
 }
 function lock_instance
 {
