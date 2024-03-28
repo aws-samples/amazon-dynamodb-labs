@@ -1,6 +1,6 @@
 ---
 title: "LMR: Build and Deploy a Global Serverless Application with Amazon DynamoDB"
-weight: 10
+weight: 40
 ---
 
 ## Workshop Overview 

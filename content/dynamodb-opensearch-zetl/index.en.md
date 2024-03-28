@@ -1,7 +1,7 @@
 ---
 title: "LETL: DynamoDB zero-ETL integration with Amazon OpenSearch"
 date: 2024-02-23T00:00:00-00:00
-weight: 10
+weight: 20
 chapter: true
 description: "In this module you will have a hands on experience setting up DynamoDB zero-ETL integration with Amazon OpenSearch Service."
 ---
