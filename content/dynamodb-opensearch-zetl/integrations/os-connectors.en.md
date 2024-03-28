@@ -2,9 +2,9 @@
 title: "Configure Integrations"
 menuTitle: "Load DynamoDB Data"
 date: 2024-02-23T00:00:00-00:00
-weight: 60
+weight: 20
 ---
-Next, you'll configure ML and Pipeline connectors in OpenSearch Service. These configurations are set up by a series of POST and PUT requests that are authenticated with AWS Signature Version 4 (sig-v4). Sigv4 is the standard authentication mechanism used by AWS services. While in most cases an SDK abstracts away sig-v4 but in this case we will be building the requests ourselves with curl.
+In this set you'll configure ML and Pipeline connectors in OpenSearch Service. These configurations are set up by a series of POST and PUT requests that are authenticated with AWS Signature Version 4 (sig-v4). Sigv4 is the standard authentication mechanism used by AWS services. While in most cases an SDK abstracts away sig-v4 but in this case we will be building the requests ourselves with curl.
 
 Building a sig-v4 signed request requires a session token, access key, and secret access key. You'll first retrieve these from your Cloud9 Instance metadata with the provided "credentials.sh" script which exports required values to environmental variables. In the following steps, you'll also export other values to environmental variables to allow for easy substitution into listed commands.
 

@@ -2,11 +2,11 @@
 title: "Configure OpenSearch Service Permissions"
 menuTitle: "Configure OpenSearch Service Permissions"
 date: 2024-02-23T00:00:00-00:00
-weight: 30
+weight: 20
 ---
 The OpenSearch Service Domain deployed by the CloudFormation Template uses Fine-grained access control. Fine-grained access control offers additional ways of controlling access to your data on Amazon OpenSearch Service. In order to configure integrations between OpenSearch Service, DynamoDB, and Bedrock certain OpenSearch Service permissions will need to be mapped to the IAM Role being used.
 
-Links to the OpenSearch Dashboards, credentials, and necessary values are provided in the Outputs of the CloudFormation Template. It is recommended that you leave Outputs open in one browser tab to easily refer to while following through the lab.
+Links to the OpenSearch Dashboards, credentials, and necessary values are provided in the Outputs of the DynamoDBzETL [CloudFormation](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/) Template. It is recommended that you leave Outputs open in one browser tab to easily refer to while following through the lab.
 
 In a production environment as a best practice, you would configure roles with the least privilege required. For simplicity in this lab, we will use the "all_access" OpenSearch Service role.
 
@@ -20,7 +20,7 @@ In a production environment as a best practice, you would configure roles with t
  1. Login to Dashboards with the username and password provided in Secrets Manager.
 
     ![OpenSearch Service Dashboards](/static/images/ddb-os-zetl4.jpg)
-1. When prompted to select your tenant, choose *Global* and click **Confirm**. Dismiss any modals that pop up.
+1. When prompted to select your tenant, choose *Global* and click **Confirm**. Dismiss any pop ups.
 
     ![OpenSearch Service Dashboards](/static/images/ddb-os-zetl18.jpg)
  1. Open the top left menu and select **Security** under the *Management* section.

@@ -1,7 +1,9 @@
 ---
-title: "6. LDOZ: DynamoDB zero-ETL integration with Amazon OpenSearch"
+title: "LETL: DynamoDB zero-ETL integration with Amazon OpenSearch"
 date: 2024-02-23T00:00:00-00:00
-weight: 60
+weight: 10
+chapter: true
+description: "In this module you will have a hands on experience setting up DynamoDB zero-ETL integration with Amazon OpenSearch Service."
 ---
 
 In this module you will have a hands on experience setting up DynamoDB zero-ETL integration with Amazon OpenSearch Service. You will create a pipeline from a DynamoDB table to OpenSearch Service, create an Amazon Bedrock Connector in OpenSearch Service, and query Bedrock leveraging OpenSearch Service as a vector store.

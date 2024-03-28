@@ -20,7 +20,7 @@ description: "To get started, you configure your environment and download code t
 
 You should now see your AWS Cloud9 environment. You need to be familiar with the three areas of the AWS Cloud9 console shown in the following screenshot:
 
-![Cloud9 Environment](/static/images/game-player-data/setup/cloud9-environment.png)
+![Cloud9 Environment](/static/images/zetl-cloud9-environment.png)
 
 - **File explorer**: On the left side of the IDE, the file explorer shows a list of the files in your directory.
   
@@ -30,18 +30,17 @@ You should now see your AWS Cloud9 environment. You need to be familiar with the
 
 
 
-In this lab, you use Python scripts to interact with the DynamoDB API. Run the following commands in your AWS Cloud9 terminal to download and unpack this lab’s code.
+In this lab, you use Bash and Python scripts to interact with AWS services. Run the following commands in your AWS Cloud9 terminal to download and unpack this lab’s code.
 
 ```bash
 cd ~/environment
-curl -sL https://amazon-dynamodb-labs.com/assets/battle-royale.zip -o battle-royal.zip && unzip -oq battle-royal.zip && rm battle-royal.zip
+curl -sL https://amazon-dynamodb-labs.com/assets/OpenSearchPipeline.zip -o OpenSearchPipeline.zip && unzip -oq OpenSearchPipeline.zip && rm OpenSearchPipeline.zip
 ```
 
-You should see two directories in the AWS Cloud9 file explorer:
+You should see a directory in the AWS Cloud9 file explorer **OpenSearchPipeline**:
 
-- **application**: The _application_ directory contains example code for reading and writing data in your table. This code is similar to code you would have in your real gaming application.
+The _OpenSearchPipeline_ directory contains example items that will be loaded into a DynamoDB table, as Bash script to simplify managing credentials when signing requests for OpenSearch, and a python script for executing a query to Bedrock.
 
-- **scripts**: The _scripts_ directory contains administrator-level scripts, such as for creating a table, adding a secondary index, or deleting a table.
+You are now ready to start the lab. In the next module, you will complete setup for each of the three services used in this lab before moving on to integrate them.
 
-
-You are now ready to start the lab. With DynamoDB, it is important to plan your data model up front so that you have fast, consistent performance in your application. In the next module, you will learn about planning your data model.
+:link[continue to Service Configuration]{href="/dynamodb-opensearch-zetl/service-config"}.  

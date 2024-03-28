@@ -2,7 +2,7 @@
 title: "Load DynamoDB Data"
 menuTitle: "Load DynamoDB Data"
 date: 2024-02-23T00:00:00-00:00
-weight: 50
+weight: 40
 ---
 Next, you'll load example product data into your DynamoDB Table. Pipelines will move this data into OpenSearch Service in later steps.
 
