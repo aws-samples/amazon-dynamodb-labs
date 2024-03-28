@@ -31,7 +31,7 @@ data_files = ['design-patterns/cloudformation/lab.yaml',
     'event-driven/event-driven-cfn.yaml',
     'static/files/hands-on-labs/migration-env-setup.yaml',
     'static/files/hands-on-labs/migration-dms-setup.yaml',
-    'static/files/hands-on-labs/dynamodb-opensearch-setup.yaml'
+    'static/files/dynamodb-opensearch-zetl/dynamodb-opensearch-setup.yaml'
 ]
 for inp_file in data_files:
     src_file = os.path.join(pkg_root, inp_file)
@@ -63,7 +63,7 @@ with ZipFile('scenario-solutions.zip', 'w') as workshop_zip:
 shutil.move(os.path.join(os.getcwd(), 'scenario-solutions.zip'), os.path.join(dest_root, 'assets', 'scenario-solutions.zip'))
 
 #Create LHOL zETL ZIP
-os.chdir(os.path.join(pkg_root, 'static', 'files', 'hands-on-labs'))
+os.chdir(os.path.join(pkg_root, 'static', 'files', 'dynamodb-opensearch-zetl'))
 with ZipFile('OpenSearchPipeline.zip', 'w') as workshop_zip:
 	for pyscript in glob.glob('./OpenSearchPipeline/*'):
 		workshop_zip.write(pyscript)
