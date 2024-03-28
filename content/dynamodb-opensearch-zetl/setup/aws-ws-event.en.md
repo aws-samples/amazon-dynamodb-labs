@@ -33,4 +33,4 @@ chapter: true
 
 ![Event dashboard](/static/images/aws-ws-event5.png)
 
-9. Now that you are connected continue on to: :link[Step 1]{href="/game-player-data/setup/Step1"}.
+9. Now that you are connected continue on to: :link[Step 1]{href="/dynamodb-opensearch-zetl/setup/step1"}.

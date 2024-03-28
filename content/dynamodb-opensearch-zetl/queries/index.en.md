@@ -1,8 +1,8 @@
 ---
-title: "Query and Conclusion"
+title: "4. Query and Conclusion"
 menuTitle: "Query and Conclusion"
 date: 2024-02-23T00:00:00-00:00
-weight: 80
+weight: 40
 ---
 Now that you've created all required connectors and pipelines and data has replicated from DynamoDB into OpenSearch Service, you have quite a few options for how you want to query your data. You can do key/value looksups directly to DynamoDB, execute search queries against OpenSearch, and use Bedrock togther with Opensearch for natural language product recommendation. 
 

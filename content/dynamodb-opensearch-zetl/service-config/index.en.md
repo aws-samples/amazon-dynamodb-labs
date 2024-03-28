@@ -1,12 +1,12 @@
 ---
-title: "Service Configuration"
+title: "2. Service Configuration"
 menuTitle: "Service Configuration"
 date: 2024-02-23T00:00:00-00:00
-weight: 10
+weight: 20
 ---
 In this section, you will load data into your DynamoDB table and configure your OpenSearch Service resources.
 
-Before beginning this section, make sure that :link[setup]{href="/game-player-data/setup/"} has been completed for whichever way you're running this lab. Setup will deploy several resources.
+Before beginning this section, make sure that :link[setup]{href="/dynamodb-opensearch-zetl/setup/"} has been completed for whichever way you're running this lab. Setup will deploy several resources.
 
 Dependencies from Cloud9 CloudFormation Template:
   - S3 Bucket: Used to store the initial export of DynamoDB data for the Zero-ETL Pipeline.
