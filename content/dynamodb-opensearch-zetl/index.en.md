@@ -1,5 +1,5 @@
 ---
-title: "LBED: Enable Gen AI and search in Amazon DynamoDB workloads with Amazon Bedrock and the zero-ETL connector to Amazon OpenSearch Service"
+title: "LBED: DynamoDB GenAI with Amazon Bedrock & Zero-ETL to OpenSearch Integration"
 date: 2024-02-23T00:00:00-00:00
 weight: 20
 chapter: true
@@ -15,6 +15,6 @@ DynamoDB is a NoSQL database designed for high availability, performance, and sc
 
 This module will allow you to set up one such use case. DynamoDB will be the source of truth for product catalog information and OpenSearch will provide vector search capabilities to enable Amazon Bedrock (a generative AI service) to make product recommendations.
 
-::alert[_This lab creates OpenSearch Service, DynamoDB, Amazon Bedrock, and Secrets Manager resources. If running in you own account, these resources will incur charges of approximately $30 a month. Remember to delete the CloudFormation Stack after completing the lab._]
+::alert[_This lab creates OpenSearch Service, DynamoDB, and Secrets Manager resources. If running in you own account, these resources will incur charges of approximately $30 a month. Remember to delete the CloudFormation Stack after completing the lab._]{type="warning"}
 
 ![Final Deployment Architecture](/static/images/ddb-os-zetl.png)

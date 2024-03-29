@@ -99,7 +99,7 @@ Amazon DynamoDB offers a zero-ETL integration with Amazon OpenSearch Service thr
 
     ![Create pipeline](/static/images/ddb-os-zetl15.jpg)
 
- 1. Wait until the pipeline has finished creating. This will take 5 minutes or more.
+ 1. **Wait until the pipeline has finished creating**. This will take 5 minutes or more.
 
 
  After the pipeline is created, it will take some additional time for the initial export from DynamoDB and import into OpenSearch Service. After you have waited several more minutes, you can check if items have replicated into OpenSearch by making a query in Dev Tools in the OpenSearch Dashboards.
@@ -109,7 +109,10 @@ Amazon DynamoDB offers a zero-ETL integration with Amazon OpenSearch Service thr
 ```text
 GET /product-details-index-en/_search
 ```
-
-If your query does not have results, wait a few more minutes for the initial replication to finish and try again.
+You may encounter a few types of results:
+- If you see a 404 error of type *index_not_found_exception*, then you need to wait until the pipeline is `Active`. Once it is, this exception will go away.
+- If your query does not have results, wait a few more minutes for the initial replication to finish and try again.
 
 ![Create pipeline](/static/images/ddb-os-zetl16.jpg)
+
+Only continue once you see a return like the above, with a response body. Your hits may vary.

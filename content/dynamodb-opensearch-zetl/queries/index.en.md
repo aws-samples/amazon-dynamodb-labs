@@ -55,18 +55,18 @@ The script constructs a query that searches the OpenSearch index for products th
       }' | jq .
     ```
 
-    Try changing "Spandex" to "Polyester" and see how the results change.
+    Try changing `Spandex` to `Polyester` and see how the results change.
 
  1. Finally, let's ask Bedrock to provide some product recommendations using one of the scripted provided with the lab. 
 
-    This query will use OpenSearch as a vector database to find the product that most closely matches your desired intent.The contents of the OpenSearch index were created through the DynamoDB Zero ETL connector. When records are added to DynamoDB, the connector automatically moves them into OpenSearch. OpenSearch then uses the Titan Embeddings model to decorate that data. 
+    This query will use OpenSearch as a vector database to find the product that most closely matches your desired intent. The contents of the OpenSearch index were created through the DynamoDB Zero ETL connector. When records are added to DynamoDB, the connector automatically moves them into OpenSearch. OpenSearch then uses the Titan Embeddings model to decorate that data. 
 
     The script constructs a query that searches the OpenSearch index for products that are most relevant to your input text. This is done using a "neural" query, which leverages the embeddings stored in OpenSearch to find products with similar textual content. After retrieving relevant products, the script uses Bedrock to generate a more sophisticated response through the Claude model. This involves creating a prompt that combines your original query with the retrieved data and sending this prompt to Bedrock for processing. 
 
 
     In the console, execute the provided python script to make a query to Bedrock and return product results.
     ```bash
-      python bedrock_query.py product_recommend en "I need a warm winter coat" $METADATA_AWS_REGION $OPENSEARCH_ENDPOINT $MODEL_ID 
+    python bedrock_query.py product_recommend en "I need a warm winter coat" $METADATA_AWS_REGION $OPENSEARCH_ENDPOINT $MODEL_ID | jq .
     ```
 
     ![Query results](/static/images/ddb-os-zetl17.jpg)
@@ -87,6 +87,8 @@ The script constructs a query that searches the OpenSearch index for products th
 
  1. Try modifying the DynamoDB get-item above to retrieve your new item. Next, try modifying the OpenSearch query to search for "Socks" that contain "Wool". Finally, tell Bedrock "I need warm socks for hiking in winter". Did it recommend your new item?
 
+::alert[Don't just stop there with your queries. Trying asking for clothing for winter (will it recommend products with wool?) or for bedtime. Note that there is a very small catalog of products to be embedded, so your search terms should be limited based on what you saw when you reviewed the DynamoDB table.]{header="Keeping querying!" type="info"}
+
 Congratulations! You have completed the lab.
 
-::alert[_If running in you own account, remember to delete the CloudFormation Stack after completing the lab to avoid unexpected charges._]
+::alert[_If running in you own account, remember to delete the CloudFormation Stack after completing the lab to avoid unexpected charges._]{type="warning"}
