@@ -13,7 +13,7 @@ Dependencies from Cloud9 CloudFormation Template:
   - IAM Role: Used to grant permissions for pipeline integration and queries.
   - Cloud9 IDE: Console for executing commands, building integrations, and running sample queries.
 
-ZETL CloudFormation Template Resources:
+zETL CloudFormation Template Resources:
   - DynamoDB Table: DynamoDB table to store product descriptions. Has Point-in-time Recovery (PITR) and DynamoDB Streams enabled.
   - Amazon OpenSearch Service Domain: Single-node OpenSearch Service cluster to recieve data from DynamoDB and act as a vector database.
 

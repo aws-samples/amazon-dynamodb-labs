@@ -1,6 +1,6 @@
 ---
-title: "Create zero-ETL Pipeline"
-menuTitle: "Create zero-ETL Pipeline"
+title: "Create the zero-ETL Pipeline"
+menuTitle: "Create the zero-ETL Pipeline"
 date: 2024-02-23T00:00:00-00:00
 weight: 30
 ---
@@ -100,12 +100,16 @@ Amazon DynamoDB offers a zero-ETL integration with Amazon OpenSearch Service thr
     ![Create pipeline](/static/images/ddb-os-zetl15.jpg)
 
  1. Wait until the pipeline has finished creating. This will take 5 minutes or more.
- 1. After the pipeline is created, it will take some additional time for the initial export from DynamoDB and import into OpenSearch Service. After you have waited several more minutes, you can check if items have replicated into OpenSearch by making a query in Dev Tools in the OpenSearch Dashboards. To open Dev Tools, click on the menu in the top left of OpenSearch Dashboards, scroll down to the "Management" section, then click on "Dev Tools". Enter the following query in the left pane, then click the "play" arrow.
 
-    ```
-      GET /product-details-index-en/_search
-    ```
 
-    If your query does not have results, wait a few more minutes for the initial replication to finish and try again.
+ After the pipeline is created, it will take some additional time for the initial export from DynamoDB and import into OpenSearch Service. After you have waited several more minutes, you can check if items have replicated into OpenSearch by making a query in Dev Tools in the OpenSearch Dashboards.
  
-    ![Create pipeline](/static/images/ddb-os-zetl16.jpg)
+ To open Dev Tools, click on the menu in the top left of OpenSearch Dashboards, scroll down to the `Management` section, then click on `Dev Tools`. Enter the following query in the left pane, then click the "play" arrow.
+
+```text
+GET /product-details-index-en/_search
+```
+
+If your query does not have results, wait a few more minutes for the initial replication to finish and try again.
+
+![Create pipeline](/static/images/ddb-os-zetl16.jpg)

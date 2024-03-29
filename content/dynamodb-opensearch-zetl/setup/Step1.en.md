@@ -43,4 +43,4 @@ The _OpenSearchPipeline_ directory contains example items that will be loaded in
 
 You are now ready to start the lab. In the next module, you will complete setup for each of the three services used in this lab before moving on to integrate them.
 
-:link[continue to Service Configuration]{href="/dynamodb-opensearch-zetl/service-config"}.  
+:link[Continue to Service Configuration]{href="/dynamodb-opensearch-zetl/service-config"}.  
