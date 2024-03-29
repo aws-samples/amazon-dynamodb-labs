@@ -9,7 +9,7 @@ Congratulations! You have made it to the end of the workshop.
 
 In this workshop you explored capturing item level changes on a DynamoDB table using DynamoDB Streams and Kinesis Data Streams. In this instance, you wrote the previous version of updated items to a different DynamoDB table. By applying these same techniques, you can build complex event driven solutions that are triggered by changes to items you have stored on DynamoDB.
 
-If you used an account provided by Event Engine, you do not need to do any cleanup. The account terminates when the event is over.
+If you used an account provided by Workshop Studio, you do not need to do any cleanup. The account terminates when the event is over.
 
 If you used your own account, please remove the following resources:
 
