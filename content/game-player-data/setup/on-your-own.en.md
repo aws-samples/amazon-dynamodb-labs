@@ -5,7 +5,7 @@ weight: 5
 chapter: true
 ---
 
-::alert[These setup instructions are identitical for LADV, LHOL, LMR, and LGME - all of which use the same Cloud9 template. Only complete this section once, and only if you're running it on your own account.]{type="warning"}
+::alert[These setup instructions are identitical for LADV, LHOL, LBED, LMR, and LGME - all of which use the same Cloud9 template. Only complete this section once, and only if you're running it on your own account.]{type="warning"}
 
 ::alert[Only complete this section if you are running the workshop on your own. If you are at an AWS hosted event (such as re\:Invent, Immersion Day, etc), go to :link[At an AWS hosted Event]{href="/game-player-data/setup/aws-ws-event"}]
 

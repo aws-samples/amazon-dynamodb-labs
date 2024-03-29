@@ -5,12 +5,12 @@ weight: 5
 chapter: true
 ---
 
-::alert[The first half of these setup instructions are identitical for LADV, LHOL, LMR, and LGME - all of which use the same Cloud9 template. Only complete this section once, and only if you're running it on your own account. If you have already launched the Cloud9 stack in a different lab, skip to the **Launch the zETL CloudFormation stack** section]{type="warning"}
+::alert[The first half of these setup instructions are identitical for LADV, LHOL, LMR, LBED, and LGME - all of which use the same Cloud9 template. Only complete this section once, and only if you're running it on your own account. If you have already launched the Cloud9 stack in a different lab, skip to the **Launch the zETL CloudFormation stack** section]{type="warning"}
 
 ::alert[Only complete this section if you are running the workshop on your own. If you are at an AWS hosted event (such as re\:Invent, Immersion Day, etc), go to :link[At an AWS hosted Event]{href="/dynamodb-opensearch-zetl/setup/aws-ws-event"}]
 
 ## Launch the Cloud9 CloudFormation stack
-::alert[During the course of the lab, you will create resources that will incur a cost that could approach tens of dollars per day. Ensure you delete theCloudFormation stack as soon as the lab is complete and verify all resources are deleted.]
+::alert[During the course of the lab, you will create resources that will incur a cost that could approach tens of dollars per day. Ensure you delete the CloudFormation stack as soon as the lab is complete and verify all resources are deleted.]
 
 1. Launch the CloudFormation template in US West 2 to deploy the resources in your account:  [![CloudFormation](/static/images/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=DynamoDBID&templateURL=:param{key="design_patterns_s3_lab_yaml"})  
   *Optionally, download [the YAML template](:param{key="design_patterns_s3_lab_yaml"}) and launch it your own way*
