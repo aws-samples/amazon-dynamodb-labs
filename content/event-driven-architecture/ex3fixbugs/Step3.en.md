@@ -6,26 +6,27 @@ weight: 3
 
 Congratulations, you successfully completed *Lab 2*! If you've made it here and still have time left, we have added one optional step to the workshop for you!
 
-In this step, you will start an AWS Cloud9 instance and run a Python frontend that scans the DynamoDB `AggregateTable` twice per second and displays the results, i.e. the aggregated values for the different risk types, in your terminal.
+In this step, you will use an AWS Cloud9 instance and run a Python frontend that scans the DynamoDB `AggregateTable` twice per second and displays the results, i.e. the aggregated values for the different risk types, in your terminal.
 
 ![Architecture-1](/static/images/event-driven-architecture/lab2/lab2-optional.png)
 
-::alert[AWS Cloud9 is by far not the only option to run this Python-based frontend! If you're motivated, feel free to try running it locally on your PC (make sure you run `aws configure` first - you can get your credentials on the EventEngine dashboard), or from any EC2 instance (e.g. assign an IAM role to the EC2 instance that allows access to the `AggregateTable`).]
+::alert[AWS Cloud9 is by far not the only option to run this Python-based frontend! If you're motivated, feel free to try running it locally on your PC (make sure you run `aws configure` first - you can get your credentials on the Workshop Studio dashboard), or from any EC2 instance (e.g. assign an IAM role to the EC2 instance that allows access to the `AggregateTable`).]
 
-## Start an AWS Cloud9 instance
+## On your own? Start an AWS Cloud9 instance
 Since you're clearly experienced with AWS - making it through all of the lab - we'll leave this task up to you!
-
-## Run the Python frontend
 Once you're Cloud9 instance is running, make sure that the required Python library `boto3` is installed:
 
 ```python
 pip3 install --user boto3
 ```
 
+## At an AWS event? Connect to Cloud9
+Navigate to the Cloud9 section of the AWS Management Console. Ensure you're in the correct region, the same as the resource you've worked with so far. There should be an IDE ready - click `Open`.
+
+## Let's continue...
 Now, you can copy the code below into a file, give it a descriptive name (e.g. `frontend.py`) and run it (`python3 frontend.py`). You should see the current aggregates from the `AggregationTable`, with new messages coming in every 60 seconds!
 
-::alert[Edit the script to update the correct region value of **REGION_NAME** as per the region you are running the lab in. Use the value in **Code** from [AWS Docs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
-For example, for Ireland, enter **eu-west-1**.]
+::alert[Edit the script to update the correct region value of **REGION_NAME** as per the region you are running the lab in. Use the value in **Code** from [AWS Docs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions). For example, for Ireland, enter **eu-west-1**.]
 
 ```python
 # Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
@@ -48,7 +49,7 @@ import boto3
 # Constants
 # --------------------------------------------------------------------------------------------------
 
-REGION_NAME                     = 'us-west-1'
+REGION_NAME                     = 'us-west-2'
 
 AGGREGATE_TABLE_NAME            = 'AggregateTable'
 AGGREGATE_TABLE_KEY             = 'Identifier'

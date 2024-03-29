@@ -2,7 +2,7 @@
 title: "LCDC: Change Data Capture for Amazon DynamoDB"
 chapter: true
 description: "200 level: Hands-on exercises with DynamoDB Streams and Kinesis Data Streams with Kinesis Analytics."
-weight: 2
+weight: 40
 ---
 In this workshop, you will learn how to perform change data capture of item level changes on DynamoDB tables using [Amazon DynamoDB Streams](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html) and [Amazon Kinesis Data Streams](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/kds.html). This technique allows you to develop event-driven solutions that are initiated by alterations made to item-level data stored in DynamoDB.
 

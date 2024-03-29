@@ -1,7 +1,7 @@
 ---
 title: "LDC: Design Challenges"
 chapter: true
-weight: 20
+weight: 70
 description: "400 level: A collection of data model design challenge labs to help you understand the decisions required when building efficient data models."
 ---
 ## Design Challenges

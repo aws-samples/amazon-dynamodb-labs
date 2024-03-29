@@ -49,7 +49,7 @@ The error message above informs you that the `ReduceLambda` function doesn't hav
 
 ![Architecture-1](/static/images/event-driven-architecture/lab1-permissions/click_on_role.png)
 
-4. Now you're redirected to the IAM service, where you see the details of the `ReduceLambdaRole`. There is a policy associated with this role, the `ReduceLambdaPolicy`. Expand the view to see the current permissions of the `ReduceLambda` function. Now, click on the button `Edit policy` to add additional permissions.
+4. Now you're redirected to the IAM service, where you see the details of the `ReduceLambdaRole`. There is a policy associated with this role, the `ReduceLambdaPolicy`. Expand the view to see the current permissions of the `ReduceLambda` function. Now, click on the button `Edit` to add additional permissions.
 
 ![Architecture-1](/static/images/event-driven-architecture/lab1-permissions/click_on_edit_policy.png)
 
@@ -57,37 +57,33 @@ The error message above informs you that the `ReduceLambda` function doesn't hav
 ::alert[There is already an IAM permission in place for DynamoDB: this is necessary to ensure the workshop runs as expected. Don't get confused by this and please don't delete the permissions we've already granted! All of the Lambda functions need to be able to access the ParameterTable to check the current progress of the lab and the respective failure modes.]
 
 * First we need to add permissions so the `ReduceLambda` function is able to read messages from the stream of the `ReduceTable`.
-    * Click on `Add additional permissions`
-    * For `Service`, select  `DynamoDB`
-    * At `Actions`, under `Access level`, expand `Read`
-    * Check the following four checkboxes: `DescribeStream`, `GetRecords`, `GetShardIterator`, and `ListStreams`
+    * Click on `Add new statement`
+      ![Architecture-1](/static/images/event-driven-architecture/lab1-permissions/click_add_new_statement.png)
+    * For `Service`, select `DynamoDB`
+    * Under `Access level - read`, check the following four checkboxes: `DescribeStream`, `GetRecords`, `GetShardIterator`, and `ListStreams`
 
-![Architecture-1](/static/images/event-driven-architecture/lab1-permissions/add_permissions.png)
 
-Now we need to associate these permissions with specific resources (e.g. we want the `ReduceLambda` to be able to read exclusively from the `ReduceTable` alone). Hence, expand `Resources`, and click on `Add ARN to restrict access`. Next, fill out the following:
- * `Region` - The lab defaults to us-west-1, but verify your region and ensure the correct one is entered
- * `Account` - The AWS account id. It should be pre-filled
- * `Table name` - The name should be `ReduceTable`
- * `Stream label` - Ensure the `Any` box is checked so that any stream label is supported. A Stream label is a unique identifier for a DynamoDB stream.
-* Finally, click on `Add`. You've now granted permission for the `ReduceLambda` to read from the `ReduceTable` stream, but there is more to be done still.
+Now we need to associate these permissions with specific resources (e.g. we want the `ReduceLambda` to be able to read exclusively from the `ReduceTable` alone). Hence, under `Add a resouce`, and click on `Add`. Then in `Resource type` choose `stream`. Next, fill out the following:
+ * `{Region}` - The lab defaults to us-west-2, but verify your region and ensure the correct one is entered
+ * `{Account}` - The AWS account id. You can put an asterisk here if you don't want to get the exact account id.
+ * `{TableName}` - The name should be `ReduceTable`
+ * `{StreamLabel}` - Add an asterisk `*` so that any stream label is supported. A Stream label is a unique identifier for a DynamoDB stream.
+* Finally, click on `Add resource`. You've now granted permission for the `ReduceLambda` to read from the `ReduceTable` stream, but there is more to be done still.
 
-::alert[The pre-filled value for `Account` is your AWS Account ID: This is already the correct value for this field, so please don't change it.]
+::alert[Be sure to remove all curly braces from your ARN before clicking `Add resource`]
 
 ![Architecture-1](/static/images/event-driven-architecture/lab1-permissions/resource_stream.png)
 
 If we make no further change, the `ReduceLambda` function will not be able to update the final results in the `AggregateTable`. We must modify the policy to add additional permissions to grant `UpdateItem` access to the function.
-     * Click on `Add additional permissions`
-    * For `Service`, select  `DynamoDB`
-    * At `Actions`, under `Access level`, expand `Write`
-    * Select the checkbox `UpdateItem`
-![Architecture-1](/static/images/event-driven-architecture/lab1-permissions/add-permissions-write.png)
-
-* Again, we want to associate theses permissions with a specific resources: We want the `ReduceLambda` to be able to write to the `AggregateTable` alone. Hence, expand `Resources`, and click on `Add ARN to restrict access`. Next, enter the values for `Region` (using the same region as before), `Account` (leave the pre-filled account id), and `Table name` (this time it should be `AggregateTable`).
-* Click `Add`.
+ * Click on `Add new statement`
+ * For `Service`, select  `DynamoDB`
+ * Under `Access level - read or write`, select the checkbox `UpdateItem`
+* Again, we want to associate theses permissions with a specific resources: We want the `ReduceLambda` to be able to write to the `AggregateTable` alone. Hence, click on `Add a resource` and in the `Resource type` drop down choose `table`. Next, enter the values for `Region` (using the same region as before), `Account` (consider using an asterisk `*`), and `TableName` (this time it should be `AggregateTable`).
+* Click `Add resource`.
 
 ![Architecture-1](/static/images/event-driven-architecture/lab1-permissions/resource_stream_2.png)
 
-* Finally, click `Review Policy` and then `Save changes` in the bottom right corner.
+* Finally, click `Next` and then `Save changes` in the bottom right corner.
 
 ## Try again to connect ReduceLambda to the ReduceTable stream
 
