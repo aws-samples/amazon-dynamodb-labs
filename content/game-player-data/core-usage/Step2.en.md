@@ -13,6 +13,7 @@ The code you downloaded in the initial steps include a Python script in the **sc
 
 ```py
 import boto3
+
 dynamodb = boto3.client('dynamodb')
 
 try:
@@ -42,14 +43,14 @@ try:
             "ReadCapacityUnits": 1,
             "WriteCapacityUnits": 1
         }
-        )
-        print("Table 'battle-royale' created successfully.")
+    )
+    print("Table 'battle-royale' created successfully.")
 except Exception as e:
     print("Could not create table. Error:")
     print(e)
 ```
 
-::alert[Edit **scripts/create_table.py**, set both `ReadCapacityUnits` and `WriteCapacityUnits` to **100** for *battle-royale* table.]
+::alert[Edit **scripts/create_table.py**, set both `ReadCapacityUnits` and `WriteCapacityUnits` to **100** for *battle-royale* table.]{header="Change the capacity units."}
 
 The preceding script uses the [CreateTable](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_CreateTable.html) operation using [Boto 3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html), the AWS SDK for Python. The operation declares two attribute definitions, which are typed attributes to be used in the primary key. Though DynamoDB is [schemaless](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SQLtoNoSQL.CreateTable.html), you must declare the names and types of attributes that are used for primary keys. The attributes must be included on every item that is written to the table and thus must be specified as you are creating a table.
 

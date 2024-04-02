@@ -75,8 +75,7 @@ python scripts/start_game.py
 You should see output in your terminal indicating that the game was started successfully.
 
 ```text
-Started game: 
-Game: c6f38a6a-d1c5-4bdf-8468-24692ccc4646   Map: Urban Underground
+Started game: Game: c6f38a6a-d1c5-4bdf-8468-24692ccc4646   Map: Urban Underground
 ```
 
 Try to run the script a second time in your terminal. This time, you should see an error message that indicates you could not start the game. This is because you have already started the game, so the `start_time` attribute exists. As a result, the request failed the conditional check on the entity.
