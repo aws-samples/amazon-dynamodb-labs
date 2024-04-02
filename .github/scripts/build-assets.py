@@ -73,6 +73,8 @@ os.chdir(os.path.join(pkg_root, 'game-player-data'))
 with ZipFile('battle-royale.zip', 'w') as workshop_zip:
 	for pyscript in glob.glob('./scripts/*.py'):
 		workshop_zip.write(pyscript)
+	for js_script in glob.glob('./scripts/*.json'):
+		workshop_zip.write(js_script)
 shutil.move(os.path.join(os.getcwd(), 'battle-royale.zip'), os.path.join(dest_root, 'assets', 'battle-royale.zip'))
 
 #Create Global Serverless ZIP
