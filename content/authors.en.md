@@ -1,5 +1,5 @@
 ---
-title: "Contributors to Amazon DynamoDB Labs"
+title: "Contributors to the Immersion Day"
 hidden: false
 chapter: true
 description: "Our editors and hall of fame."
