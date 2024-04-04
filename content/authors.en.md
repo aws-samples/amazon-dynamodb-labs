@@ -1,5 +1,5 @@
 ---
-title: "Contributors to Amazon DynamoDB Labs"
+title: "Contributors to the Immersion Day"
 hidden: false
 chapter: true
 description: "Our editors and hall of fame."
@@ -13,8 +13,13 @@ weight: 100
 1. Sean Shriver ([switch180](https://github.com/switch180)) - Ported the whole lab to amazon-dynamodb-labs.com with a custom Hugo theme. Made the "bullet-proof" CloudFormation template for the lab. Updated the hands on lab to Python3
 1. Daniel Yoder ([danielsyoder](https://github.com/danielsyoder)) - The brains behind amazon-dynamodb-labs.com and the co-creator of the design scenarios
 
-### 2023 additions
+### 2024 additions
+The Generative AI workshop LBED was released in 2024:
+1. John Terhune - ([@terhunej](https://github.com/terhunej)) - Primary author
+1. Zhang Xin - ([@SEZ9](https://github.com/SEZ9)) - Content contributor and original author of a lab that John used as the basis of LBED
+1. Sean Shriver - ([@switch180](https://github.com/switch180)) - Editor, tech reviewer, and merger
 
+### 2023 additions
 The serverless event driven architecture lab was added in 2023:
 
 1. Lucas Rettenmeier ([@rettenls](https://github.com/rettenls)) - Workshop creator for re\:Invent 2021

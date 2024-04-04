@@ -1,4 +1,4 @@
-# Amazon DynamoDB Labs
+# Amazon DynamoDB Labs / Amazon DynamoDB Immersion Day
 The repo for https://catalog.workshops.aws/dynamodb-labs/en-US , formerly https://amazon-dynamodb-labs.com
 
 ### Dev:
