@@ -5,7 +5,7 @@ weight: 220
 chapter: true
 ---
 
-Configure your lambda function to copy changed records from the Orders DynamoDB streams to the OrdersHistory table.
+Configure your lambda function to copy changed records from the Orders Kinesis Data Stream to the OrdersHistory table.
 
 1. Go to the IAM dashboard on the AWS Management Console and inspect the IAM policy, i.e. **AWSLambdaMicroserviceExecutionRole...**, created when you created the **create-order-history-kds** lambda function.
 
@@ -87,7 +87,7 @@ arn:aws:lambda:{aws-region}:017000801446:layer:AWSLambdaPowertoolsPythonV2:58
 ![AWS Lambda function console](/static/images/change-data-capture/ex1/new-env-var.png) 
 
 8. Go to the configuration section of the lambda console editor. Select **Triggers** then select **Add trigger**.
-9. Select **DynamoDB** as the trigger source.
+9. Select **Kinesis** as the trigger source.
 10. Select the **Orders** DynamoDB table.
 11. Set the **Batch size** to **10** and leave all other values unchanged.
 
