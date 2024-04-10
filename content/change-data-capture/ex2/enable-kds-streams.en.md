@@ -38,7 +38,7 @@ Confirm that the stream is active using the following command.
 ```bash
 aws kinesis describe-stream \
     --stream-name Orders \
-    --query "StreamDescription.[StreamStatus, StreamARN]
+    --query "StreamDescription.[StreamStatus, StreamARN]"
 ```
 
 Sample output:
