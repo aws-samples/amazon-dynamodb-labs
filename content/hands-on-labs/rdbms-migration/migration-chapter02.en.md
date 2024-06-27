@@ -16,7 +16,7 @@ The CloudFormation template used below will create Source VPC, EC2 hosting MySQL
  7. Click "Submit"
  8. The CloudFormation stack will take about 5 minutes to build the environment
   ![Final Deployment Architecture](/static/images/migration7.jpg)
- 9. Go to [EC2 Dashboard](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Instances:)  and ensure the Status check column is 2/2 checks passed before moving to the next step.
+ 9. Go to [EC2 Dashboard](https://console.aws.amazon.com/ec2/v2/home?region=us-west-2#Instances:)  and ensure the Status check column is 2/2 checks passed before moving to the next step.
  ![Final Deployment Architecture](/static/images/migration8.jpg)
 
 
