@@ -318,7 +318,7 @@ Resources:
                       print(err)
                       status = cfnresponse.FAILED
                       print(traceback.format_exc())
-                      responseData = {'Error': traceback.format_exc()}
+                      responseData = {'Error': traceback.format_exc(err)}
                   finally:
                       cfnresponse.send(event, context, status, responseData, 'CustomResourcePhysicalID')
                       
