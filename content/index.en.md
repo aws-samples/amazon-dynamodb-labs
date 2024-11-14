@@ -16,7 +16,8 @@ Prior expertise with AWS and NoSQL databases is beneficial but not required to c
 If you're brand new to DynamoDB with no experience, you may want to begin with *Hands-on Labs for Amazon DynamoDB*. If you want to learn the design patterns for DynamoDB, check out *Advanced Design Patterns for DynamoDB* and the *Design Challenges* scenarios.
 
 ### Looking for a larger challenge?
-The DynamoDB Immersion Day has a series of workshops designed to cover advanced topics. If you want to dig deep into streaming aggregations with AWS Lambda and DynamoDB Streams, consider LEDA. Or if you want an easier introduction CDC you can consider LCDC.
+The DynamoDB Immersion Day has a series of workshops designed to cover advanced topics. If you want to dig deep into streaming aggregations with AWS Lambda and DynamoDB Streams, consider LEDA. Or if you want an easier introduction CDC you can consider LCDC. Do you have a relational database to migrate to DynamoDB? We offer LSQL and a AWS DMS lab LDMS: we highly recommend LSQL unless you have a need to use DMS.
+
 Do you want to integrate Generative AI to create a context-aware reasoning application? If so consider LBED, a lab that takes a product catalog from DynamoDB and contiously indexes it into OpenSearch Service for natural language queries supported by Amazon Bedrock.
 
 Dive into the content:

@@ -1,6 +1,6 @@
 ---
-title: "Relational Migration to DynamoDB"
-weight: 0
+title: "LSQL: Relational Migration to DynamoDB"
+weight: 35
 ---
 
 ![Relational Migration](/static/images/relational-migration/frontpage.png)

@@ -1,10 +1,10 @@
 ---
-title: "5. LMIG: Relational Modeling & Migration"
+title: "LDMS: AWS DMS Migration"
 date: 2021-04-25T07:33:04-05:00
 weight: 50
 ---
 
-In this module, also classified as LMIG, you will learn how to design a target data model in DynamoDB for highly normalized relational data in a relational database.
+In this module, classified as LDMS, you will learn how to design a target data model in DynamoDB for highly normalized relational data in a relational database.
 The exercise also guides a step by step migration of an IMDb dataset from a self-managed MySQL database instance on EC2 to a fully managed key-value pair database Amazon DynamoDB.
 At the end of this lesson, you should feel confident in your ability to design and migrate an existing relational database to Amazon DynamoDB.
 
