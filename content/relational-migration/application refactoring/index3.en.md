@@ -22,9 +22,14 @@ Let's make a small code change to demonstrate the process to customize the Dynam
 
 6. In Cloud9, left nav, locate the chalicelib folder and open it.
 7. Locate and open the file dynamodb_calls.py
-8. Look on about line 148 for the line ```get_request['ConsistentRead'] = False```
+8. Search for the text ```get_request['ConsistentRead'] = False```
 9. Update this from False to True and click File/Save to save your work.
-10. In the terminal prompt, redeploy:  ```chalice deploy --stage dynamodb```
+10. In the terminal prompt, redeploy:  
+
+```bash
+chalice deploy --stage dynamodb
+```
+
 11. Return to the web app, click on the Customers table, and enter cust_id value "0001" and click the GET ITEM button.
 12. Verify a record was retrieved for you. This record was found using a strongly consistent read.
 13. Feel free to extend the DynamoDB code to add new functions or modify existing ones.

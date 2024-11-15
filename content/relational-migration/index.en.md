@@ -52,7 +52,8 @@ You will run a set of scripts that:
 * Converts the results of a SQL query into DynamoDB JSON format, and stores in the Amazon S3 bucket.
 * Perform a full migration by running a SQL query, transforming results to DynamoDB JSON, writing to Amazon S3, then starting a DynamoDB Import job.
 
-Developer challenge: Tour various SQL data modeling techniques, then combine them into a custom VIEW for a single-table transformation.
+Developer challenge: Run provided SQL samples showing data modeling techniques, then apply them to create a new VIEW.
+
 Developer challenge: Write a new set of data access functions that point to DynamoDB.
  
 

@@ -31,41 +31,10 @@ motivations in mind so that you can make the best choices to satisfy your most
 important requirements.
 
 ## Additional considerations
-To further maximize the benefits of DynamoDB, these metrics should be 
-documented for future use.
+To further maximize the benefits of DynamoDB, consider the questions below and  
+document your answers, for future use.
 
 * What is the maximum write velocity and read velocity (per second) now and in the future?
 * For any large, growing tables: How long will records live before they are safe to delete or archive?
 
 
-
-[//]: # (## Pre-requisites)
-
-[//]: # (This migration is designed to be run during an AWS-sponsored event,)
-
-[//]: # (where a starting environment is created and provided for you.)
-
-[//]: # (The starting environment includes a running MySQL instance, an S3 bucket, and Cloud9 developer workstation)
-
-[//]: # (for performing the workshop steps.)
-
-[//]: # ()
-[//]: # ()
-[//]: # (You can also setup and run the migration using your own laptop, )
-
-[//]: # (AWS account, and your existing MySQL database, by updating the file: )
-
-[//]: # ([.chalice/config.json]&#40;https://github.com/aws-samples/aws-dynamodb-examples/blob/master/relational-migration/.chalice/config.json&#41;)
-
-[//]: # ()
-[//]: # ()
-[//]: # ()
-[//]: # (## Workshop Overview)
-
-[//]: # (You will practice a relational migration by identifying existing tables, )
-
-[//]: # (migrating them first one by one into DynamoDB, )
-
-[//]: # (then by creating a custom SQL VIEW that transforms data using SQL expressions.)
-
-[//]: # ()
