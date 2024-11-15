@@ -730,7 +730,7 @@ Resources:
   ############ RELATIONAL MIGRATION  STAGING BUCKET #########
   MigrationS3Bucket:
     Type: AWS::S3::Bucket
-  ###### RELATIONAL MIGRATION MYSQL EC2 INSTANCE ######
+  ###### RELATIONAL MIGRATION MYSQL EC2 PUBLIC INSTANCE ######
   DbSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
@@ -740,10 +740,6 @@ Resources:
           IpProtocol: tcp
           FromPort: 3306
           ToPort: 3306
-        - CidrIp: 172.31.0.0/16
-          IpProtocol: tcp
-          FromPort: 22
-          ToPort: 22
       Tags:
         - Key: Name
           Value: MySQL-SecurityGroup
@@ -785,7 +781,7 @@ Resources:
         - DeviceName: /dev/xvda
           Ebs:
             VolumeType: gp2
-            VolumeSize: 200
+            VolumeSize: 50
             DeleteOnTermination: True
             Encrypted: True
       UserData:
@@ -798,7 +794,7 @@ Resources:
           systemctl enable mysqld
           systemctl start mysqld
           export DbMasterPassword=${DbMasterPassword}
-          export DbMasterUsername=dbuser
+          export DbMasterUsername=&{DbMasterUsername}
           mysql -u root "-p$(grep -oP '(?<=root@localhost\: )\S+' /var/log/mysqld.log)" -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${DbMasterPassword}'" --connect-expired-password
           mysql -u root "-p${DbMasterPassword}" -e "CREATE USER '${DbMasterUsername}' IDENTIFIED BY '${DbMasterPassword}'"
           mysql -u root "-p${DbMasterPassword}" -e "GRANT ALL PRIVILEGES ON *.* TO '${DbMasterUsername}'"
@@ -807,8 +803,6 @@ Resources:
       Tags:
         - Key: Name
           Value: MySQL-Instance
-  S3Bucket:
-    Type: AWS::S3::Bucket
 
 
 ################## OUTPUTS #####################
