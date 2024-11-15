@@ -1,41 +1,34 @@
 ---
-title : "Generate Table Definition"
-weight : 22
+title : "Table and Index Survey"
+weight : 25
 ---
 
-## Review a table
+## Consider what indexes exist on the table
 
-Returning to the Web App, click on the Tables button.
-You should now see a list of the tables in the database. Click on the Customers table.
-
-![Customers Table](/static/images/relational-migration/customers.png)
-
-The table has columns with VARCHAR, INT, and DATETIME data types. The Primary Key column, cust_id, is indicated in blue.
-
-If we were to move this table's data into DynamoDB, we could convert the VARCHAR types into 
-DynamoDB String (S) format, and the INT into DynamoDB Number (N) format. 
-However, DynamoDB does not have a native date format.
-
-Instead, dates are usually written as Strings in ISO 8601 format like this: ```"2025-12-13 09:45:37"```
-
-Dates can also be stored as Numbers. The DynamoDB TTL automatic expiration feature requires future
-dates to be stored in Epoch number format like this: ```1731934325```
-
-## Convert Table to DynamoDB Table Definition
-
-The tool provides a routine to generate a DynamoDB table definition based on the
-columns and keys from a given relational table. Click the GENERATE button below the table details.
-
-![Generate Customer Table](/static/images/relational-migration/customers_ddb.png)
-
-This JSON format can be used to create a table with various automation tools, 
-such as the [AWS CLI](https://docs.aws.amazon.com/cli/) 
-**[create-table](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/create-table.html)** command.
+Within the Web App, notice the two Access Pattern tabs near the top of the page.
+Click on the second tab called **Querying**
 
 
-Notice that there is no details on the last_updated datetime column or any other columns, apart from cust_id. 
-DynamoDB tables are schema-less, meaning that the developer would indicate the data type
-attribute values (columns) only when they write a new record. And, each record could have different attributes,
-since the database itself will not enforce any data record convention.
+![Tab for Querying](/static/images/relational-migration/querying_tab.png)
+
+
+
+You will now see a form listing the Primary Key index, along with other secondary indexes.
+
+![Customers Table With Indexes Form](/static/images/relational-migration/customers_indexes_ddb_form.png)
+
+
+## Convert Table with Indexes to DynamoDB Table Definition
+Now, click on the Generate button below the form. You should see a new version of the DynamoDB
+table definition, this time with one Global Secondary Index (GSI) for each relational table index.
+
+The GSI is a separate data structure that stores your table's data organized by a different primary key,
+and can be used to perform efficient queries against a large table. It is similar to a relational database index
+
+![Customers Table With Indexes](/static/images/relational-migration/customers_indexes_ddb.png)
+
+Notice that a few more attribute (column) names are defined in the AttributeDefinitions section. 
+This is because any attributes that are involved in a GSI
+definition need to be declared in advance.
 
 

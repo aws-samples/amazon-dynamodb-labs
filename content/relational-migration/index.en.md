@@ -29,31 +29,30 @@ You can review this guidance when considering and planning your own relational m
 
 [AWS Documentation: Relational Migration to DynamoDB Developer Guide](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/migration-guide.html)
 
-[//]: # (## Workshop overview)
 
-[//]: # (The workshop includes a Cloud9 developer workstation and an S3 bucket for staging data.)
+## Workshop overview
 
-[//]: # (The source database for migration is a deployed a MySQL instance, running on EC2. )
+The workshop provides a MySQL instance running on EC2, a Cloud9 developer workstation,
+and an S3 bucket for staging data.
 
-[//]: # (Run a script to deploy the sample set of MySQL tables and data.)
+You will create a serverless API and Python Lambda function that
+performs database read and write operations against the relational database, 
+and then deploy a new version that performs read and write operations against DynamoDB.
 
-[//]: # (You will create a serverless API and Python Lambda function that)
+A sample web app is provided that:
+* Acts as a GUI test harness for the serverless API
+* Converts tables and indexes into suggested DynamoDB tables and GSIs
+* Has a SQL editor with a set of sample queries, and hints on how to combine tables
+* Performs read and write operations to both MySQL and DynamoDB
+and provides hints and suggestions for building a migration
 
-[//]: # (performs database read and write operations against the relational database. )
+You will run a set of scripts that:
+* Deploys a set of sample MySQL tables, views, and data.
+* Converts MySQL table metadata to a DynamoDB table definition.
+* Converts the results of a SQL query into DynamoDB JSON format, and stores in the Amazon S3 bucket.
+* Perform a full migration by running a SQL query, transforming results to DynamoDB JSON, writing to Amazon S3, then starting a DynamoDB Import job.
 
-[//]: # (A sample web app provides a GUI interface as a test harness for the serverless API. )
-
-[//]: # ()
-[//]: # (An end-to-end migration script is run that performs a SQL query, transforms results to DynamoDB JSON and writes to Amazon S3, then starts a DynamoDB Import job.)
-
-[//]: # ()
-[//]: # (Developer challenge: Tour various SQL data modeling techniques, then combine them into a final single-table transformation. )
-
-[//]: # (Developer challenge: write a new set of data access functions that point to DynamoDB. )
-
-[//]: # ()
-
-
-
+Developer challenge: Tour various SQL data modeling techniques, then combine them into a custom VIEW for a single-table transformation.
+Developer challenge: Write a new set of data access functions that point to DynamoDB.
  
 

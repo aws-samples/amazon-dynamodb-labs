@@ -20,8 +20,10 @@ From within the terminal:
 
 ```bash 
 git clone https://github.com/aws-samples/aws-dynamodb-examples.git
+git checkout cea34bc520512c70091aba2995de0e99a31d1078
 ```
 
+*This checkout command ensures you are using a specific, tested version of the repository*
 
 ```bash
 cd aws-dynamodb-examples/workshops/relational-migration

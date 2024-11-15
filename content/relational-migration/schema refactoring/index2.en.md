@@ -1,28 +1,43 @@
 ---
-title : "Table survey"
-weight : 21
+title : "Table Survey"
+weight : 23
 ---
 
-## Discovering Table columns, data types, and indexes
+## Review a table
 
-As consultants, we need to do some discovery and scoping to define what our starting parameters are 
-for the migration. In particular, we want to find out all we can about existing tables including their:
-* Columns and data types
-* Primary Key column(s)
-* Indexes
-* Constraints
+Returning to the Web App, click on the Tables button.
+You should now see a list of the tables in the database. Click on the Customers table.
 
-In MySQL, a system schema called INFORMATION_SCHEMA holds the answers to these questions. We could query 
-this schema and learn what currently exists. We could also use the standard MySQL Workbench tool to do the same.
-However, what would be even better would be to get suggestions for how to convert the table metadata 
-to DynamoDB format. The Chalice API and Web App are designed to help us with this.
+![Customers Table](/static/images/relational-migration/customers.png)
 
-## NOT NULL Constraints 
-Tables have both required and optional columns, indicated by NULL and NOT NULL in the CREATE TABLE command.
+The table has columns with VARCHAR, INT, and DATETIME data types. The Primary Key column, cust_id, is indicated in blue.
 
-DynamoDB does not have required columns, apart from the Primary Key values.  If needed, the application itself
-can require column data before allowing a write to DynamoDB.
+If we were to move this table's data into DynamoDB, we could convert the VARCHAR types into
+DynamoDB String (S) format, and the INT into DynamoDB Number (N) format.
+However, DynamoDB does not have a native date format.
 
-## Foreign Key Constraints 
-Later we will see how we might combine tables with a JOIN to produce a denormalized data set.  For now, we would 
-like to see whether any Foreign Key constraints exist, so that we would know how to build a query to JOIN tables.
+Instead, dates are usually written as Strings in ISO 8601 format like this: ```"2025-12-13 09:45:37"```
+
+Dates can also be stored as Numbers. The DynamoDB TTL automatic expiration feature requires future
+dates to be stored in Epoch number format like this: ```1731934325```
+
+## Convert Table to DynamoDB Table Definition
+
+The tool provides a routine to generate a DynamoDB table definition based on the
+columns and keys from a given relational table. Click the GENERATE button below the table details.
+
+![Generate Customer Table](/static/images/relational-migration/customers_ddb.png)
+
+This JSON format can be used to create a table with various automation tools,
+such as the [AWS CLI](https://docs.aws.amazon.com/cli/)
+**[create-table](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/create-table.html)** command.
+
+
+Notice that there are no details on the last_updated datetime column or any other columns, apart from cust_id.
+DynamoDB tables are schema-less, meaning that the developer would indicate the data type
+attribute values (columns) only when they write a new record. And, each record could have different attributes,
+since the database itself will not enforce any data record convention.
+
+
+
+
