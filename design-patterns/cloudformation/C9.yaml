@@ -37,6 +37,17 @@ Parameters:
     Type: String
     Description: Location of LADV code ZIP
     Default: https://amazon-dynamodb-labs.com/assets/workshop.zip
+  DBLatestAmiId:
+    Type:  'AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>'
+    Default: '/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2'
+  DbMasterUsername:
+    Description: The datbase master user name
+    Type: String
+    Default: dbuser
+  DbMasterPassword:
+    Description: The database master password
+    Type: String
+    Default: m7de4uwt2eG#
 
 Metadata:
   AWS::CloudFormation::Interface:
@@ -658,7 +669,7 @@ Resources:
                       "  if [[ \"$RESULT\" -ne 0 ]]; then",
                       "    sleep_delay",
                       "  else",
-                      "    /bin/bash /tmp/dynamodbworkshop.sh ${SUB_VERSION} ${AWS::AccountId} ${AWS::Region} \"${WorkshopZIP}\"  \"${SUB_REPL_ROLE}\" &&",
+                      "    /bin/bash /tmp/dynamodbworkshop.sh ${SUB_VERSION} ${AWS::AccountId} ${AWS::Region} \"${WorkshopZIP}\"  \"${SUB_REPL_ROLE}\" \"${SUB_DB_USER}\" \"${SUB_DB_PASSWORD}\" &&",
                       "    exit 0",
                       "  fi",
                       "done"
@@ -672,6 +683,8 @@ Resources:
           SUB_USERDATA_URL: !FindInMap [DesignPatterns, options, UserDataURL],
           SUB_VERSION: !FindInMap [DesignPatterns, options, version],
           SUB_REPL_ROLE: !GetAtt ['DDBReplicationRole', 'Arn'],
+          SUB_DB_USER: !Ref 'DbMasterUsername',
+          SUB_DB_PASSWORD: !Ref 'DbMasterPassword',
           }
   Cloud9BootstrapAssociation:
     Type: AWS::SSM::Association
@@ -716,6 +729,83 @@ Resources:
           Value: Active
         - Key: Environment
           Value: !Ref EnvironmentName
+  ############ RELATIONAL MIGRATION  STAGING BUCKET #########
+  MigrationS3Bucket:
+    Type: AWS::S3::Bucket
+  ###### RELATIONAL MIGRATION MYSQL EC2 PUBLIC INSTANCE ######
+  DbSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: MySQL security group
+      SecurityGroupIngress:
+        - CidrIp: 172.31.0.0/16
+          IpProtocol: tcp
+          FromPort: 3306
+          ToPort: 3306
+      Tags:
+        - Key: Name
+          Value: MySQL-SecurityGroup
+  DBInstanceProfile:
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+      InstanceProfileName: DBInstanceProfile
+      Path: /
+      Roles:
+        - !Ref DBInstanceRole
+  DBInstanceRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: DBInstanceRole
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          -
+            Effect: Allow
+            Principal:
+              Service:
+                - ec2.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      Path: /
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonS3FullAccess
+        - arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
+  DbInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: !Ref DBLatestAmiId
+      InstanceType: !GetAtt Cloud9FindTheInstanceTypeLambda.InstanceType
+      SecurityGroupIds:
+        - !GetAtt DbSecurityGroup.GroupId
+      SubnetId: !GetAtt Cloud9FindTheInstanceTypeLambda.SubnetId
+      IamInstanceProfile: !Ref DBInstanceProfile
+      BlockDeviceMappings:
+        - DeviceName: /dev/xvda
+          Ebs:
+            VolumeType: gp2
+            VolumeSize: 50
+            DeleteOnTermination: True
+            Encrypted: True
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash -ex
+          sudo su
+          rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2023
+          rpm -Uvh https://repo.mysql.com/mysql80-community-release-el7-3.noarch.rpm
+          yum install -y mysql-community-server
+          systemctl enable mysqld
+          systemctl start mysqld
+          export DbMasterPassword=${DbMasterPassword}
+          export DbMasterUsername=${DbMasterUsername}
+          mysql -u root "-p$(grep -oP '(?<=root@localhost\: )\S+' /var/log/mysqld.log)" -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${DbMasterPassword}'" --connect-expired-password
+          mysql -u root "-p${DbMasterPassword}" -e "CREATE USER '${DbMasterUsername}' IDENTIFIED BY '${DbMasterPassword}'"
+          mysql -u root "-p${DbMasterPassword}" -e "GRANT ALL PRIVILEGES ON *.* TO '${DbMasterUsername}'"
+          mysql -u root "-p${DbMasterPassword}" -e "FLUSH PRIVILEGES"
+          mysql -u root "-p${DbMasterPassword}" -e "CREATE DATABASE app_db;"
+      Tags:
+        - Key: Name
+          Value: MySQL-Instance
+
 
 ################## OUTPUTS #####################
 Outputs:
@@ -732,6 +822,11 @@ Outputs:
     Value: !Ref Cloud9LogBucket
     Export:
       Name: Cloud9LogBucket
+  MigrationS3BucketName:
+    Description: S3 Bucket Name
+    Value: !Ref MigrationS3Bucket
+    Export:
+      Name: MigrationS3Bucket
   Cloud9RoleArn:
     Description: Role Arn
     Value: !GetAtt Cloud9Role.Arn
