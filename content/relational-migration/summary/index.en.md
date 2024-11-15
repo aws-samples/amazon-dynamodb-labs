@@ -9,3 +9,6 @@ and gained hands-on experience with the components of an end-to-end custom migra
 
 If you are running this event in your own account, be sure to terminate the Cloudformation stack
 that launched the workshop, to avoid any unexpected charges. 
+
+You used scripts and tools from the /workshops/relational-migration folder in the
+[github.com/aws-samples/aws-dynamodb-examples](https://github.com/aws-samples/aws-dynamodb-examples/) repository.

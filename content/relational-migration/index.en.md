@@ -56,3 +56,9 @@ Developer challenge: Tour various SQL data modeling techniques, then combine the
 Developer challenge: Write a new set of data access functions that point to DynamoDB.
  
 
+
+### Technical Depth
+This workshop is a L300 level workshop. Having SQL, Python, and Bash skills will help but are not required.
+### Code Project
+Attendees will use scripts and tools from the /workshops/relational-migration folder of the
+[github.com/aws-samples/aws-dynamodb-examples](https://github.com/aws-samples/aws-dynamodb-examples/) repository.
