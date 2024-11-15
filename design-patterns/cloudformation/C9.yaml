@@ -669,7 +669,7 @@ Resources:
                       "  if [[ \"$RESULT\" -ne 0 ]]; then",
                       "    sleep_delay",
                       "  else",
-                      "    /bin/bash /tmp/dynamodbworkshop.sh ${SUB_VERSION} ${AWS::AccountId} ${AWS::Region} \"${WorkshopZIP}\"  \"${SUB_REPL_ROLE}\" &&",
+                      "    /bin/bash /tmp/dynamodbworkshop.sh ${SUB_VERSION} ${AWS::AccountId} ${AWS::Region} \"${WorkshopZIP}\"  \"${SUB_REPL_ROLE}\" \"${SUB_DB_USER}\" \"${SUB_DB_PASSWORD}\" &&",
                       "    exit 0",
                       "  fi",
                       "done"
@@ -683,6 +683,8 @@ Resources:
           SUB_USERDATA_URL: !FindInMap [DesignPatterns, options, UserDataURL],
           SUB_VERSION: !FindInMap [DesignPatterns, options, version],
           SUB_REPL_ROLE: !GetAtt ['DDBReplicationRole', 'Arn'],
+          SUB_DB_USER: !Ref 'DbMasterUsername',
+          SUB_DB_PASSWORD: !Ref 'DbMasterPassword',
           }
   Cloud9BootstrapAssociation:
     Type: AWS::SSM::Association
