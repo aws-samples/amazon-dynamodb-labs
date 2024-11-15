@@ -794,7 +794,7 @@ Resources:
           systemctl enable mysqld
           systemctl start mysqld
           export DbMasterPassword=${DbMasterPassword}
-          export DbMasterUsername=&{DbMasterUsername}
+          export DbMasterUsername=${DbMasterUsername}
           mysql -u root "-p$(grep -oP '(?<=root@localhost\: )\S+' /var/log/mysqld.log)" -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${DbMasterPassword}'" --connect-expired-password
           mysql -u root "-p${DbMasterPassword}" -e "CREATE USER '${DbMasterUsername}' IDENTIFIED BY '${DbMasterPassword}'"
           mysql -u root "-p${DbMasterPassword}" -e "GRANT ALL PRIVILEGES ON *.* TO '${DbMasterUsername}'"
