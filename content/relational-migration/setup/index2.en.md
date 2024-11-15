@@ -16,13 +16,11 @@ Chalice deploys the following components:
 
 In this workshop, we will focus on the AWS Lambda source code.
 
-* *NOTE: Chalice allows us to run unit tests against this code locally, before deploying to Lambda,
-  and further allows for a mock deployment to localhost:8000 in case you wish to launch the
-  web service privately, from your laptop.*
+::alert[Chalice allows us to run unit tests against this code locally, before deploying to Lambda, and further allows for a mock deployment to localhost:8000 in case you wish to launch the web service privately, from your laptop.]{header="Note"}
 
 The Lambda source code project has been setup as follows
 * Entry point : **app.py** 
-* Read & write function implementations: 
+* Read and write function implementations: 
   * **chalicelib/mysql_calls.py**
   * **chalicelib/dynamodb_calls.py**
 

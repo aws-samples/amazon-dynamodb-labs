@@ -19,7 +19,7 @@ However, DynamoDB does not have a native date format.
 Instead, dates are usually written as Strings in ISO 8601 format like this: ```"2025-12-13 09:45:37"```
 
 Dates can also be stored as Numbers. The DynamoDB TTL automatic expiration feature requires future
-dates to be stored in Epoch number format like this: ```1731934325```
+dates to be stored in Epoch number format like this: ```1731934325```. DynamoDB TTL (Time To Live) is a feature that automatically deletes items from a DynamoDB table after a specified time. For more information see [using time to live](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html) in our developer documentation.
 
 ## Convert Table to DynamoDB Table Definition
 

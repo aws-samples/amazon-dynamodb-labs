@@ -22,7 +22,7 @@ The table definition includes details about the table including:
 * Sort Key name and type (optional)
 * Global Secondary Index (GSI) definitions (optional)
 
-GSIs are optional, but the decision of whether and how to add these indexes to our table is an important one.
+[Global secondary indexes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.html) (GSIs) are optional, but the decision of whether and how to add these indexes to our table is an important one.
 Done right, a GSI will unlock efficient new search capabilities on our DynamoDB table, but would increase the cost
 of a write-heavy workload.  We will learn how to automate or customize the index definitions created
 during the Import process. 

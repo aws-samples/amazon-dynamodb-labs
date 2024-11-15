@@ -16,7 +16,7 @@ various search patterns. The first table scores high on the dimensions of
 Low Cost and Simplicity, but may perform poorly if the table is large and 
 queries need to perform a full table scan to execute a search.
 
-Another trade off comes with deciding how many tables will be required in 
+Another trade-off comes with deciding how many tables will be required in 
 your DynamoDB schema. Without JOIN operators, you may need to make multiple calls to 
 read from separate tables when retrieving data. This table schema may match the 
 existing relational schema, greatly simplifying and streamlining the migration process,
@@ -24,7 +24,7 @@ but at the expense of more complex and potentially slower read operations.
 With DynamoDB, you can choose to transform existing tables' data into 
 single-table or single-item format to bring related data close together, 
 adding some complexity to the write process, but also unlocking the ability 
-to do fast sub-10 millisecond read operations. 
+to do fast single-digit millisecond read operations. 
 
 As you learn the features of DynamoDB and plan your migration, keep the starting
 motivations in mind so that you can make the best choices to satisfy your most 

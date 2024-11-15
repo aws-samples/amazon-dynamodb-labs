@@ -20,8 +20,9 @@ From within the terminal:
 
 ```bash 
 git clone https://github.com/aws-samples/aws-dynamodb-examples.git
-git checkout cea34bc520512c70091aba2995de0e99a31d1078
+git checkout :param{key="lsql_git_commit"}
 ```
+
 
 *This checkout command ensures you are using a specific, tested version of the repository*
 
@@ -32,7 +33,7 @@ cd aws-dynamodb-examples/workshops/relational-migration
 4. Next, run this to install three components: Boto3 (AWS SDK for Python), Chalice, and the MySQL connector for Python.
 
 ```bash
-sudo python3 -m pip install boto3 chalice mysql-connector-python
+pip3 install --user chalice mysql-connector-python
 ```
 
 5. From the left navigation panel, locate our project folder by
@@ -51,7 +52,7 @@ sudo python3 -m pip install boto3 chalice mysql-connector-python
 source ./setenv.sh
 ```
 
-You should see output similar to this:
+You should see output similar to this:  
 ![setenv.sh settings](/static/images/relational-migration/setenv.png)
 
 Your developer desktop is now configured for testing and deployment!

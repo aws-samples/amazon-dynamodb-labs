@@ -17,7 +17,7 @@ If your application can tolerate some downtime during the migration, it will sim
 You can keep the relational application in read-only mode to allow for partial availability during the migration window.
 
 * *In this workshop, we will focus on Offline Migrations.*
-* *We will use the **DynamoDB Import from S3** feature to populate new tables from staged data.*
+* *We will use the [DynamoDB Import from S3 feature](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/S3DataImport.HowItWorks.html) to populate new tables from staged data.*
 
 ## Hybrid Migration
 You might allow users to perform both reads and inserts, but not updates and deletes, during a migration.

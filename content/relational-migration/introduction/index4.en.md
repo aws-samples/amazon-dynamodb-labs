@@ -7,9 +7,9 @@ weight : 13
 
 ![One for One table migration](/static/images/relational-migration/oneforone.png)
 
-Is this even a good idea? This question generates a great deal of debate and interest in the data modeling community.
+Consider the question in this section header. Is this even a good idea? This question generates a great deal of debate and interest in the data modeling community.
 
-The DynamoDB **Single Table Philosophy** is to store different types of records together in a single table in DynamoDB.
+The DynamoDB **single table philosophy** is to store different types of records together in a single table in DynamoDB.
 
 Here are some pros and cons of migrating relational tables directly into DynamoDB tables.
 
