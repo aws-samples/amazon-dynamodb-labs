@@ -17,10 +17,16 @@ You can repeat this process to migrate the custom view vCustOrders.
 
 The script assumes you want a two-part primary key of Partition Key and Sort Key, found in the two leading columns.
 
-In case you want a Partition Key only table, you could specify this like so.
+In case you want a Partition Key only table, you could specify this like so. 
+
 ```bash
 ./migrate.sh vCustOrders 1
 ```
+
+But don't run this command, because if you do, the S3 Import will fail as you already have a table called vCustOrders.
+You could create another view with a different name and import that, or just delete the DynamoDB table
+from the DynamoDB console before attempting another migration of vCustOrders.
+
 However, this is not advisable since this particular dataset is not unique by just the first column.
 
 ![View output](/static/images/relational-migration/view_result.png)

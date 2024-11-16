@@ -52,11 +52,13 @@ You will run a set of scripts that:
 * Converts the results of a SQL query into DynamoDB JSON format, and stores in the Amazon S3 bucket.
 * Perform a full migration by running a SQL query, transforming results to DynamoDB JSON, writing to Amazon S3, then starting a DynamoDB Import job.
 
-Developer challenge: Run provided SQL samples showing data modeling techniques, then apply them to create a new VIEW.
+Developer challenge: Run the provided SQL samples showing data modeling techniques, 
+then apply them to create a new VIEW and use this to perform a custom import.
 
 Developer challenge: Write a new set of data access functions that point to DynamoDB.
  
-
+### Runtime environment
+This workshop is designed to run in an AWS-provided environment that includes a MySQL database on EC2.
 
 ### Technical Depth
 This workshop is a L300 level workshop. Having SQL, Python, and Bash skills will help but are not required.

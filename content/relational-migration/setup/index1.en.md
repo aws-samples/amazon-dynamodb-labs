@@ -3,14 +3,26 @@ title : "Dev Environment"
 weight : 16
 ---
 
-### Launch Cloud9 Developer Desktop
+[AWS Cloud9](https://aws.amazon.com/cloud9/) is a cloud-based integrated development environment (IDE) that lets you write, run, and debug code with just a browser. AWS Cloud9 includes a code editor, debugger, and terminal. It also comes prepackaged with essential tools for popular programming languages and the AWS Command Line Interface (CLI) preinstalled so that you don’t have to install files or configure your laptop for this lab. Your AWS Cloud9 environment will have access to the same AWS resources as the user with which you signed in to the AWS Management Console.
 
-1. Begin by navigating to [AWS Cloud9 Console](https://console.aws.amazon.com/cloud9/home) or just type in *Cloud9* to the search box.
+### To set up your AWS Cloud9 development environment:
 
-Notice the DynamoDBC9 instance, followed by an **Open** link under the Cloud9 IDE column.
-   Click **Open** to launch AWS Cloud9 environment.
-   You can close the Welcome page and find the command terminal at the bottom. Feel free to increase screen area,
-   and navigate to Window - New Terminal at any time, to open a new terminal window.
+1. Choose **Services** at the top of the page, and then choose **Cloud9** under **Developer Tools**.
+
+2. There would be an environment ready to use under **Your environments**.
+
+3. Click on **Open IDE**, your IDE should open with a welcome note.
+
+You should now see your AWS Cloud9 environment. You need to be familiar with the three areas of the AWS Cloud9 console shown in the following screenshot:
+
+![Cloud9 Environment](/static/images/zetl-cloud9-environment.png)
+
+- **File explorer**: On the left side of the IDE, the file explorer shows a list of the files in your directory.
+
+- **File editor**: On the upper right area of the IDE, the file editor is where you view and edit files that you’ve selected in the file explorer.
+
+- **Terminal**: On the lower right area of the IDE, this is where you run commands to execute code samples.
+
 
 From within the terminal:
 
