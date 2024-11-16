@@ -31,7 +31,9 @@ From within the terminal:
 3. Clone the repository containing the Chalice code and migration scripts. Run:
 
 ```bash 
+cd ~/environment
 git clone https://github.com/aws-samples/aws-dynamodb-examples.git
+cd aws-dynamodb-examples
 git checkout :param{key="lsql_git_commit"}
 ```
 
@@ -39,7 +41,7 @@ git checkout :param{key="lsql_git_commit"}
 *This checkout command ensures you are using a specific, tested version of the repository*
 
 ```bash
-cd aws-dynamodb-examples/workshops/relational-migration
+cd workshops/relational-migration
 ```
 
 4. Next, run this to install three components: Boto3 (AWS SDK for Python), Chalice, and the MySQL connector for Python.
