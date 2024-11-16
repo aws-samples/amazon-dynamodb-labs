@@ -42,7 +42,7 @@ chalice deploy --stage relational
 A single-page web application is included in the /webapp project folder.
 The web app has already been deployed for you in a public S3 bucket for convenience. 
 
-5. Navigate to [https://dynamodbworkshop.s3.amazonaws.com/migration/index.html](https://dynamodbworkshop.s3.amazonaws.com/migration/index.html)
+5. Navigate to [https://amazon-dynamodb-labs.com/static/relational-migration/web/index.html](https://amazon-dynamodb-labs.com/static/relational-migration/web/index.html)
 
 The webapp stores the API URL you provide as a browser cookie.
     Then, Javascript functions will call the API for you, when you click on

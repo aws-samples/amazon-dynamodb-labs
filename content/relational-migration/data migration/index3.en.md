@@ -44,6 +44,7 @@ We can also check the import status within the AWS Console.
 4. In the search box, type DynamoDB to visit the DyanmoDB console.
 5. From the left nav, click Imports from S3.
 6. Notice your import is listed along with the current status. 
+ ![Import from S3](/static/images/relational-migration/import-from-s3.png)
 7. Once the import has completed, you can click it to see a summary including item count and the size of the import.
 8. On the left nav, click to Tables.
 9. In the list of tables, click on the Customers table.
