@@ -24,9 +24,9 @@ the original browser has a cookie set to the relational Rest API.
 4. If you have multiple browsers on your laptop, such as Edge, Firefox, or Safari, 
 open a different browser and navigate to the web app:
 
-[https://amazon-dynamodb-labs.com/static/relational-migration/web/index.html](https://amazon-dynamodb-labs.com/static/relational-migration/web/index.html).
+[https://dynamodbworkshop.s3.amazonaws.com/migration/index.html](https://dynamodbworkshop.s3.amazonaws.com/migration/index.html).
 
 (You can also open the same browser in Incognito Mode for this step.)
 
 5. Click the Target API button and paste in the new Rest API URL.
-6. Notice the title of the page has updated to **DynamoDB App** in a blue color. If it isn't blue, you can refresh the page and see the color change.
+6. Notice the title of the page has updated to **DynamoDB App** in a blue color.
