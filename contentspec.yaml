@@ -13,4 +13,4 @@ params:
   event_driven_architecture_lab_yaml : "https://s3.amazonaws.com/amazon-dynamodb-labs.com/assets/event-driven-cfn.yaml"
   github_contributing_guide : "https://github.com/aws-samples/amazon-dynamodb-labs/blob/master/CONTRIBUTING.md"
   github_issues_link : "https://github.com/aws-samples/amazon-dynamodb-labs/issues"
-  lsql_git_commit : "47a43bedf75bc0859e9141ad1bdd1f330f0933f1"
+  lsql_git_commit : "cea34bc520512c70091aba2995de0e99a31d1078"
