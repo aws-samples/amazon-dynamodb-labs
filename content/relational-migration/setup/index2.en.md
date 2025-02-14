@@ -26,8 +26,6 @@ The Lambda source code project has been setup as follows
 
 
 1. Next, let's deploy the Chalice application stack.
-   The deploy may take up to three minutes, be patient.
-
 ```bash
 chalice deploy --stage relational
 ```
