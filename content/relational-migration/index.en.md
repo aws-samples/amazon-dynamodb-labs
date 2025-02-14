@@ -57,7 +57,7 @@ then apply them to create a new VIEW and use this to perform a custom import.
 
 Developer challenge: Write a new set of data access functions that point to DynamoDB.
  
-### Runtime environment
+### Requirements
 This workshop is designed to run in an immersion day on Workshop Studio in an AWS-provided environment that includes a MySQL database on EC2. It cannot be run in your own AWS account, however the code is all open source.
 
 ### Technical Depth
