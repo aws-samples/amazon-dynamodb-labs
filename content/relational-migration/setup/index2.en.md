@@ -25,7 +25,7 @@ The Lambda source code project has been setup as follows
   * **chalicelib/dynamodb_calls.py**
 
 
-1. Next, let's deploy the Chalice application stack.
+1. Next, let's deploy the Chalice application stack. This step may take a few minutes to complete.
 ```bash
 chalice deploy --stage relational
 ```
