@@ -32,7 +32,9 @@ To explore the dataset, follow the instructions below to log in to the EC2 serve
     ![Final Deployment Architecture](/static/images/migration12.jpg)
  7. Feel free to explore the files.
  8. If you are completing this workshop at an AWS hosted event, go to [AWS CloudFormation Console](https://console.aws.amazon.com/cloudformation/home#/stacks?filteringStatus=active&filteringText=&viewNested=true&hideStacks=false) and select the stack named **ddb**. Go to the **Parameters** tab and copy the username and password listed next to **DbMasterUsername** and **DbMasterPassword**.
- ::alert[_If you are completing this workshop in your AWS account copy the **DbMasterUsername** and **DbMasterPassword** from the CloudFormation stack used to configure the MySQL environment._]
+
+ ::alert[_If you are completing this workshop in your AWS account copy the DbMasterUsername and DbMasterPassword from the CloudFormation stack used to configure the MySQL environment._]
+
    ![Final Deployment Architecture](/static/images/migration13.jpg)
  9. Go back to EC2 Instance console and login to mysql.
   ```bash

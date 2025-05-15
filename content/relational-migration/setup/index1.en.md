@@ -48,7 +48,7 @@ cd workshops/relational-migration
 
 ```bash
 pip3 install chalice mysql-connector-python
-export PATH="/home/ubuntu/.local/bin:$PATH"
+export PATH="~/.local/bin:$PATH"
 ```
 
 5. From the left navigation panel, locate our project folder by
