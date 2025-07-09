@@ -6,7 +6,7 @@ weight: 10
 ---
 In this module, you will create an environment to host the MySQL database on Amazon EC2. This instance will be used to host source database and simulate on-premise side of migration architecture.
 All the resources to configure source infrastructure are deployed via [Amazon CloudFormation](https://aws.amazon.com/cloudformation/) template.
-There are two CloudFormation templates used in this exercise which deploy following resources.
+There are two CloudFormation templates used in this exercise which deploy the following resources.
 
 CloudFormation MySQL Template Resources (**Already deployed**):
   - **OnPrem VPC**: Source VPC will represent an on-premise source environment in the workshop region. This VPC will host source MySQL database on Amazon EC2
