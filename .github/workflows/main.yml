@@ -29,6 +29,10 @@ jobs:
         role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
     - name: S3SyncStaticWeb
       run: aws s3 sync ./global-serverless/web/ s3://amazon-dynamodb-labs-static/static/global-serverless-application/web/
+    - name: StaticYearReplacer
+      run: sed -i "s/<<PRESENTYEAR>>/$(date +%Y)/" ./static/files/visualizer/index.html
+    - name: S3SyncVisualizer
+      run: aws s3 sync ./static/files/visualizer/ s3://amazon-dynamodb-labs-static/static/visualizer/
     - name: Pull preview build
       run: aws s3 sync s3://amazon-dynamodb-labs-static/build/ . && chmod +x preview_build
     - name: Build Assets
