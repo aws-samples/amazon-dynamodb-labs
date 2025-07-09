@@ -86,6 +86,7 @@ perform_sync() {
         mkdir -p "$dest_dir"
         rsync $rsync_options "$SOURCE_REPO/${src_files[$i]}" "$DEST_REPO/${dest_files[$i]}"
     done
+    echo "Great! Now follow instructions in the amazon-dynamodb-immersion-day README.md document to complete the sync."
 }
 
 # Verify destination repository exists
