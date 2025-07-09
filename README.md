@@ -23,5 +23,10 @@ Make a pull request with changes. PRs will be automatically checked to make sure
 
 On merge to master, a GitHub action will deploy the assets to amazon-dynamodb-labs.com and verify the build to ensure the markdown and other files are correctly formatted. From there, a maintainer must manually pull the changes and push to https://catalog.workshops.aws/dynamodb-labs/en-US
 
+#### Internal maintainer: sync changes to internal copy of this repo
+This public repo is pushed to the internal repo in workshop studio using a combination of rsync (we assume you are on macOS) and git. The file `sync.sh` copies the source files to the WS repo folder, and after that you follow the internal README.md to complete the sync.
+1. Run sync.sh to sync the public repo to the amazon-dynamodb-immersion-day repo. e.g. `./sync.sh  -d /Users/$USER/workspace/amazon-dynamodb-immersion-day` . Choose y to sync the files.
+2. Change into the directory for amazon-dynamodb-immersion-day (the workshop studio version), open README.md, and follow the instructions there to git add and push the changes internally. Note that some assets, specifically the LEDA central account resources, are only authored on the internal repo, and they have a separate set of commands to push updates because they are assets that must be in a special S3 bucket owned by WS.
+
 ## License
 This project is licensed under the Apache-2.0 License.
