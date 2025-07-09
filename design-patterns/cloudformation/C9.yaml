@@ -37,6 +37,17 @@ Parameters:
     Type: String
     Description: Location of LADV code ZIP
     Default: https://amazon-dynamodb-labs.com/assets/workshop.zip
+  DBLatestAmiId:
+    Type:  'AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>'
+    Default: '/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2'
+  DbMasterUsername:
+    Description: The datbase master user name
+    Type: String
+    Default: dbuser
+  DbMasterPassword:
+    Description: The database master password
+    Type: String
+    Default: m7de4uwt2eG#
 
 Metadata:
   AWS::CloudFormation::Interface:
@@ -74,8 +85,45 @@ Mappings:
     options:
       UserDataURL: "https://amazon-dynamodb-labs.com/assets/UserDataC9.sh"
       version: "1"
+  # AWS Managed Prefix Lists for EC2 InstanceConnect
+  AWSRegions2PrefixListID:
+    ap-south-1:
+      PrefixList: pl-0fa83cebf909345ca
+    eu-north-1:
+      PrefixList: pl-0bd77a95ba8e317a6
+    eu-west-3:
+      PrefixList: pl-0f2a97ab210dbbae1
+    eu-west-2:
+      PrefixList: pl-067eefa539e593d55
+    eu-west-1:
+      PrefixList: pl-0839cc4c195a4e751
+    ap-northeast-3:
+      PrefixList: pl-086543b458dc7add9
+    ap-northeast-2:
+      PrefixList: pl-00ec8fd779e5b4175
+    ap-northeast-1:
+      PrefixList: pl-08d491d20eebc3b95
+    ca-central-1:
+      PrefixList: pl-0beea00ad1821f2ef
+    sa-east-1:
+      PrefixList: pl-029debe66aa9d13b3
+    ap-southeast-1:
+      PrefixList: pl-073f7512b7b9a2450
+    ap-southeast-2:
+      PrefixList: pl-0e1bc5673b8a57acc
+    eu-central-1:
+      PrefixList: pl-03384955215625250
+    us-east-1:
+      PrefixList: pl-0e4bcff02b13bef1e
+    us-east-2:
+      PrefixList: pl-03915406641cb1f53
+    us-west-1:
+      PrefixList: pl-0e99958a47b22d6ab
+    us-west-2:
+      PrefixList: pl-047d464325e7bf465
+
 Resources:
-#LADV Role
+  #LADV Role
   DDBReplicationRole:
       Type: AWS::IAM::Role
       Properties:
@@ -658,7 +706,7 @@ Resources:
                       "  if [[ \"$RESULT\" -ne 0 ]]; then",
                       "    sleep_delay",
                       "  else",
-                      "    /bin/bash /tmp/dynamodbworkshop.sh ${SUB_VERSION} ${AWS::AccountId} ${AWS::Region} \"${WorkshopZIP}\"  \"${SUB_REPL_ROLE}\" &&",
+                      "    /bin/bash /tmp/dynamodbworkshop.sh ${SUB_VERSION} ${AWS::AccountId} ${AWS::Region} \"${WorkshopZIP}\"  \"${SUB_REPL_ROLE}\" \"${SUB_DB_USER}\" \"${SUB_DB_PASSWORD}\" &&",
                       "    exit 0",
                       "  fi",
                       "done"
@@ -672,6 +720,8 @@ Resources:
           SUB_USERDATA_URL: !FindInMap [DesignPatterns, options, UserDataURL],
           SUB_VERSION: !FindInMap [DesignPatterns, options, version],
           SUB_REPL_ROLE: !GetAtt ['DDBReplicationRole', 'Arn'],
+          SUB_DB_USER: !Ref 'DbMasterUsername',
+          SUB_DB_PASSWORD: !Ref 'DbMasterPassword',
           }
   Cloud9BootstrapAssociation:
     Type: AWS::SSM::Association
@@ -716,6 +766,106 @@ Resources:
           Value: Active
         - Key: Environment
           Value: !Ref EnvironmentName
+  ############ RELATIONAL MIGRATION  STAGING BUCKET #########
+  MigrationS3Bucket:
+    Type: AWS::S3::Bucket
+  ###### RELATIONAL MIGRATION MYSQL EC2 PUBLIC INSTANCE ######
+  DbSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: MySQL security group
+      SecurityGroupIngress:
+        - CidrIp: 172.31.0.0/16
+          IpProtocol: tcp
+          FromPort: 3306
+          ToPort: 3306
+        - Description: "Allow Instance Connect"
+          FromPort: 22
+          ToPort: 22
+          IpProtocol: tcp
+          SourcePrefixListId: !FindInMap [AWSRegions2PrefixListID, !Ref 'AWS::Region', PrefixList]
+      Tags:
+        - Key: Name
+          Value: MySQL-SecurityGroup
+  DBInstanceProfile:
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+      InstanceProfileName: DBInstanceProfile
+      Path: /
+      Roles:
+        - !Ref DBInstanceRole
+  DBInstanceRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: DBInstanceRole
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          -
+            Effect: Allow
+            Principal:
+              Service:
+                - ec2.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      Path: /
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonS3FullAccess
+        - arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
+  DbInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: !Ref DBLatestAmiId
+      InstanceType: !GetAtt Cloud9FindTheInstanceTypeLambda.InstanceType
+      SecurityGroupIds:
+        - !GetAtt DbSecurityGroup.GroupId
+      SubnetId: !GetAtt Cloud9FindTheInstanceTypeLambda.SubnetId
+      IamInstanceProfile: !Ref DBInstanceProfile
+      BlockDeviceMappings:
+        - DeviceName: /dev/xvda
+          Ebs:
+            VolumeType: gp2
+            VolumeSize: 50
+            DeleteOnTermination: True
+            Encrypted: True
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash -ex
+          sudo su
+          rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2023
+          rpm -Uvh https://repo.mysql.com/mysql80-community-release-el7-3.noarch.rpm
+          yum install -y mysql-community-server
+          systemctl enable mysqld
+          systemctl start mysqld
+          export DbMasterPassword=${DbMasterPassword}
+          export DbMasterUsername=${DbMasterUsername}
+          mysql -u root "-p$(grep -oP '(?<=root@localhost\: )\S+' /var/log/mysqld.log)" -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${DbMasterPassword}'" --connect-expired-password
+          mysql -u root "-p${DbMasterPassword}" -e "CREATE USER '${DbMasterUsername}' IDENTIFIED BY '${DbMasterPassword}'"
+          mysql -u root "-p${DbMasterPassword}" -e "GRANT ALL PRIVILEGES ON *.* TO '${DbMasterUsername}'"
+          mysql -u root "-p${DbMasterPassword}" -e "FLUSH PRIVILEGES"
+          mysql -u root "-p${DbMasterPassword}" -e "CREATE DATABASE app_db;"
+          ## Setup MySQL Tables
+          cd /var/lib/mysql-files/
+          curl -O https://www.amazondynamodblabs.com/static/rdbms-migration/rdbms-migration.zip
+          unzip -q rdbms-migration.zip
+          chmod 775 *.*
+          mysql -u root "-p${DbMasterPassword}" -e "CREATE DATABASE imdb;"
+          mysql -u root "-p${DbMasterPassword}" -e "CREATE TABLE imdb.title_akas (titleId VARCHAR(200), ordering VARCHAR(200),title VARCHAR(1000), region VARCHAR(1000), language VARCHAR(1000), types VARCHAR(1000),attributes VARCHAR(1000),isOriginalTitle VARCHAR(5),primary key (titleId, ordering));"
+          mysql -u root "-p${DbMasterPassword}" -e "CREATE TABLE imdb.title_basics (tconst  VARCHAR(200), titleType  VARCHAR(1000),primaryTitle  VARCHAR(1000), originalTitle  VARCHAR(1000), isAdult  VARCHAR(1000), startYear  VARCHAR(1000),endYear  VARCHAR(1000),runtimeMinutes  VARCHAR(1000),genres  VARCHAR(1000),primary key (tconst));"
+          mysql -u root "-p${DbMasterPassword}" -e "CREATE TABLE imdb.title_crew (tconst  VARCHAR(200), directors  VARCHAR(1000),writers  VARCHAR(1000),primary key (tconst));"
+          mysql -u root "-p${DbMasterPassword}" -e "CREATE TABLE imdb.title_principals (tconst  VARCHAR(200), ordering  VARCHAR(200),nconst  VARCHAR(200), category  VARCHAR(1000), job  VARCHAR(1000), characters  VARCHAR(1000),primary key (tconst,ordering,nconst));"
+          mysql -u root "-p${DbMasterPassword}" -e "CREATE TABLE imdb.title_ratings (tconst  VARCHAR(200), averageRating float,numVotes  integer,primary key (tconst));"
+          mysql -u root "-p${DbMasterPassword}" -e "CREATE TABLE imdb.name_basics (nconst  VARCHAR(200), primaryName  VARCHAR(1000),birthYear  VARCHAR(1000), deathYear  VARCHAR(1000), primaryProfession  VARCHAR(1000), knownForTitles VARCHAR(1000),primary key (nconst));"
+          mysql -u root "-p${DbMasterPassword}" -e "LOAD DATA INFILE '/var/lib/mysql-files/title_ratings.tsv' IGNORE INTO TABLE imdb.title_ratings FIELDS TERMINATED BY '\t';"
+          mysql -u root "-p${DbMasterPassword}" -e "LOAD DATA INFILE '/var/lib/mysql-files/title_basics.tsv'  IGNORE INTO TABLE imdb.title_basics FIELDS TERMINATED BY '\t';"
+          mysql -u root "-p${DbMasterPassword}" -e "LOAD DATA INFILE '/var/lib/mysql-files/title_crew.tsv' IGNORE INTO TABLE imdb.title_crew FIELDS TERMINATED BY '\t';"
+          mysql -u root "-p${DbMasterPassword}" -e "LOAD DATA INFILE '/var/lib/mysql-files/title_principals.tsv' IGNORE INTO TABLE imdb.title_principals FIELDS TERMINATED BY '\t';"
+          mysql -u root "-p${DbMasterPassword}" -e "LOAD DATA INFILE '/var/lib/mysql-files/name_basics.tsv' IGNORE INTO TABLE imdb.name_basics FIELDS TERMINATED BY '\t';"
+          mysql -u root "-p${DbMasterPassword}" -e "LOAD DATA INFILE '/var/lib/mysql-files/title_akas.tsv' IGNORE INTO  TABLE imdb.title_akas FIELDS TERMINATED BY '\t';"
+      Tags:
+        - Key: Name
+          Value: MySQL-Instance
+
 
 ################## OUTPUTS #####################
 Outputs:
@@ -732,6 +882,11 @@ Outputs:
     Value: !Ref Cloud9LogBucket
     Export:
       Name: Cloud9LogBucket
+  MigrationS3BucketName:
+    Description: S3 Bucket Name
+    Value: !Ref MigrationS3Bucket
+    Export:
+      Name: MigrationS3Bucket
   Cloud9RoleArn:
     Description: Role Arn
     Value: !GetAtt Cloud9Role.Arn

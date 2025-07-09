@@ -5,7 +5,6 @@ weight: 2
 ---
 
 ::alert[Points and scoreboard only apply when this lab is run during an AWS Event. If you're running this lab independently, you have the top score!]
-::alert[AWS Event: Be sure you've set a family-friendly team name in Workshop Studio, especially if you think you'll be on the top of the scoreboard!]
 
 To make this workshop more interesting we introduced a scoring element! As you move through the workshop and fix the pipeline you are awarded points for successfully aggregating messages.
 
@@ -17,7 +16,7 @@ Your task for *Lab 1* is to connect the different resources of the pipeline that
 
 However, once you reach 300 points we're increasing the difficulty for you. In *Lab 2*, the `GeneratorLambda` intentionally writes duplicate records into the pipeline, and we introduce artificial random failures of your Lambda functions. Due to these challenges, your pipeline will initially not be able to accurately aggregate the ingested messages. Therefore, you will not receive additional points until you improve your pipeline to ensure accurate error handling and exactly once processing. This is the objective of *Lab 2*: if you have completed all parts, your pipeline can withstand duplicate messages and Lambda failures. Once you've successfully fixed the pipeline you will be awarded 100 points every 60 seconds for the duration of the workshop.
 
-The workshop operators will display the scoring of all participants during the workshop, but you can check the scoreboard on your own.
+The workshop operators will display the scoring of all participants during the workshop, but you can check the scoreboard on your own. Use your AWS account ID to find your score.
 
 Continue on to: :link[Connect the Pipeline]{href="/event-driven-architecture/ex2pipeline"}
 

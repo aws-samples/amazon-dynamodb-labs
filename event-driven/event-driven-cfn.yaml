@@ -82,7 +82,7 @@ Resources:
       Handler: "lambda_function.lambda_handler"
       MemorySize: 256
       Role: !Sub "arn:aws:iam::${AWS::AccountId}:role/StateLambdaRole"
-      Runtime: "python3.8"
+      Runtime: "python3.10"
       Timeout: 180
       TracingConfig:
         Mode: "PassThrough"
@@ -99,7 +99,7 @@ Resources:
       Handler: "lambda_function.lambda_handler"
       MemorySize: 256
       Role: !Sub "arn:aws:iam::${AWS::AccountId}:role/MapLambdaRole"
-      Runtime: "python3.8"
+      Runtime: "python3.10"
       Timeout: 60
       TracingConfig:
         Mode: "PassThrough"
@@ -116,7 +116,7 @@ Resources:
       Handler: "lambda_function.lambda_handler"
       MemorySize: 256
       Role: !Sub "arn:aws:iam::${AWS::AccountId}:role/ReduceLambdaRole"
-      Runtime: "python3.8"
+      Runtime: "python3.10"
       Timeout: 30
       TracingConfig:
         Mode: "PassThrough"
@@ -133,7 +133,7 @@ Resources:
       Handler: "lambda_function.lambda_handler"
       MemorySize: 256
       Role: !Sub "arn:aws:iam::${AWS::AccountId}:role/GeneratorLambdaRole"
-      Runtime: "python3.8"
+      Runtime: "python3.10"
       Timeout: 55
       TracingConfig:
         Mode: "PassThrough"

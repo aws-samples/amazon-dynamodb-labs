@@ -14,9 +14,13 @@ weight: 100
 1. Daniel Yoder ([danielsyoder](https://github.com/danielsyoder)) - The brains behind amazon-dynamodb-labs.com and the co-creator of the design scenarios
 
 ### 2024 additions
-The Generative AI workshop LBED was released in 2024:
+The Generative AI workshop LBED was released in early 2024:
 1. John Terhune - ([@terhunej](https://github.com/terhunej)) - Primary author
 1. Zhang Xin - ([@SEZ9](https://github.com/SEZ9)) - Content contributor and original author of a lab that John used as the basis of LBED
+1. Sean Shriver - ([@switch180](https://github.com/switch180)) - Editor, tech reviewer, and merger
+
+The LSQL relational migration lab was released in late 2024:
+1. Robert McCauley - ([robm26](https://github.com/robm26)) - Primary author
 1. Sean Shriver - ([@switch180](https://github.com/switch180)) - Editor, tech reviewer, and merger
 
 ### 2023 additions

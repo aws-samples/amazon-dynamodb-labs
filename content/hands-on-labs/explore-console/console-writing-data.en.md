@@ -29,7 +29,7 @@ Click `JSON view`, ensure `View DynamoDB JSON` is deselected, paste the followin
 
 The DynamoDB [UpdateItem API](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_UpdateItem.html) is used to create a new item or to replace existing items completely with a new item.  It is invoked using the [update-item CLI command](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/update-item.html).  This API requires you to specify the full Primary Key and can selectively modify specific attributes without changing others(you don't need to pass in the full item).
 
-The DynamoDB [DeleteItem API](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_DeleteItem.html) is used to create a new item or to replace existing items completely with a new item.  It is invoked using the [delete-item CLI command](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/delete-item.html).
+The DynamoDB [DeleteItem API](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_DeleteItem.html) is used to delete a single item from the table.  It is invoked using the [delete-item CLI command](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/delete-item.html).
 
 You can easily modify or delete an item using the console by selecting the checkbox next to the item of interest, clicking the **Actions** dropdown and performing the desired action.
 
