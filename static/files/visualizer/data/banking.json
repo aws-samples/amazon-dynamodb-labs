@@ -1,0 +1,512 @@
+{
+	"ModelName": "Online Banking",
+	"ModelMetadata": {
+		"Author": "",
+		"DateCreated": "2021-05-20T18:39:58.705Z",
+		"DateLastModified": "2021-05-20T18:39:58.705Z",
+		"Description": "",
+		"AWSService": "Amazon DynamoDB",
+		"Version": "2.0"
+	},
+	"DataModel": [{
+		"TableName": "data",
+		"KeyAttributes": {
+			"PartitionKey": {
+				"AttributeName": "PK",
+				"AttributeType": "S"
+			},
+			"SortKey": {
+				"AttributeName": "SK",
+				"AttributeType": "S"
+			}
+		},
+		"NonKeyAttributes": [{
+			"AttributeName": "type",
+			"AttributeType": "S"
+		}, {
+			"AttributeName": "custType",
+			"AttributeType": "S"
+		}, {
+			"AttributeName": "type",
+			"AttributeType": "S"
+		}, {
+			"AttributeName": "acctType",
+			"AttributeType": "S"
+		}, {
+			"AttributeName": "balance",
+			"AttributeType": "S"
+		}, {
+			"AttributeName": "GSI1PK",
+			"AttributeType": "S"
+		}, {
+			"AttributeName": "type",
+			"AttributeType": "S"
+		}, {
+			"AttributeName": "acctId",
+			"AttributeType": "S"
+		}, {
+			"AttributeName": "timestamp",
+			"AttributeType": "S"
+		}, {
+			"AttributeName": "transId",
+			"AttributeType": "S"
+		}, {
+			"AttributeName": "transType",
+			"AttributeType": "S"
+		}, {
+			"AttributeName": "balance",
+			"AttributeType": "S"
+		}, {
+			"AttributeName": "amount",
+			"AttributeType": "S"
+		}, {
+			"AttributeName": "GSI1PK",
+			"AttributeType": "S"
+		}, {
+			"AttributeName": "GSI1SK",
+			"AttributeType": "S"
+		}, {
+			"AttributeName": "type",
+			"AttributeType": "S"
+		}, {
+			"AttributeName": "type",
+			"AttributeType": "S"
+		}, {
+			"AttributeName": "GSI1SK",
+			"AttributeType": "S"
+		}, {
+			"AttributeName": "dailies",
+			"AttributeType": "S"
+		}, {
+			"AttributeName": "type",
+			"AttributeType": "S"
+		}, {
+			"AttributeName": "type",
+			"AttributeType": "S"
+		}, {
+			"AttributeName": "pType",
+			"AttributeType": "S"
+		}, {
+			"AttributeName": "timestamp",
+			"AttributeType": "S"
+		}, {
+			"AttributeName": "pId",
+			"AttributeType": "S"
+		}, {
+			"AttributeName": "aId",
+			"AttributeType": "S"
+		}, {
+			"AttributeName": "GSI2PK",
+			"AttributeType": "S"
+		}, {
+			"AttributeName": "GSI2SK",
+			"AttributeType": "S"
+		}, {
+			"AttributeName": "type",
+			"AttributeType": "S"
+		}, {
+			"AttributeName": "GSI2PK",
+			"AttributeType": "S"
+		}, {
+			"AttributeName": "GSI2SK",
+			"AttributeType": "S"
+		}],
+		"GlobalSecondaryIndexes": [{
+			"KeyAttributes": {
+				"PartitionKey": {
+					"AttributeName": "GSI1PK",
+					"AttributeType": "S"
+				},
+				"SortKey": {
+					"AttributeName": "GSI1SK",
+					"AttributeType": "S"
+				}
+			},
+			"IndexName": "GSI1",
+			"Projection": {
+				"ProjectionType": "ALL"
+			}
+		}, {
+			"KeyAttributes": {
+				"PartitionKey": {
+					"AttributeName": "GSI2PK",
+					"AttributeType": "S"
+				},
+				"SortKey": {
+					"AttributeName": "GSI2SK",
+					"AttributeType": "S"
+				}
+			},
+			"IndexName": "GSI2",
+			"Projection": {
+				"ProjectionType": "ALL"
+			}
+		}],
+		"TableData": [{
+			"PK": {
+				"S": "C1"
+			},
+			"SK": {
+				"S": "A"
+			},
+			"type": {
+				"S": "customer"
+			},
+			"custType": {
+				"S": "individual"
+			}
+		}, {
+			"PK": {
+				"S": "C1"
+			},
+			"SK": {
+				"S": "A1"
+			},
+			"type": {
+				"S": "account"
+			},
+			"acctType": {
+				"S": "checking"
+			},
+			"balance": {
+				"S": "1900"
+			},
+			"GSI1PK": {
+				"S": "C1"
+			},
+			"GSI1SK": {
+				"S": "A1"
+			},
+			"dailies": {
+				"S": "map"
+			}
+		}, {
+			"PK": {
+				"S": "C1"
+			},
+			"SK": {
+				"S": "A1#2021-05-20T18:46:50"
+			},
+			"type": {
+				"S": "transaction"
+			},
+			"acctId": {
+				"S": "A1"
+			},
+			"timestamp": {
+				"S": "2021-05-20T18:46:50"
+			},
+			"transId": {
+				"S": "T1"
+			},
+			"transType": {
+				"S": "atm"
+			},
+			"balance": {
+				"S": "1900"
+			},
+			"amount": {
+				"S": "100"
+			}
+		}, {
+			"PK": {
+				"S": "C1"
+			},
+			"SK": {
+				"S": "A1#2021-05-20T18:47:59"
+			},
+			"type": {
+				"S": "transaction"
+			},
+			"acctId": {
+				"S": "A1"
+			},
+			"timestamp": {
+				"S": "2021-05-20T18:47:59"
+			},
+			"transId": {
+				"S": "T2"
+			},
+			"transType": {
+				"S": "wire"
+			},
+			"balance": {
+				"S": "1400"
+			},
+			"amount": {
+				"S": "500"
+			},
+			"GSI1PK": {
+				"S": "A1"
+			},
+			"GSI1SK": {
+				"S": "2021-05-20T18:47:59"
+			}
+		}, {
+			"PK": {
+				"S": "C1"
+			},
+			"SK": {
+				"S": "A2"
+			},
+			"type": {
+				"S": "account"
+			},
+			"acctType": {
+				"S": "savings"
+			},
+			"balance": {
+				"S": "5000"
+			},
+			"GSI1PK": {
+				"S": "C1"
+			},
+			"GSI1SK": {
+				"S": "A2"
+			},
+			"dailies": {
+				"S": "map"
+			}
+		}, {
+			"PK": {
+				"S": "C1"
+			},
+			"SK": {
+				"S": "A2#2021-05-20T18:51:46"
+			},
+			"type": {
+				"S": "transaction"
+			},
+			"acctId": {
+				"S": "A2"
+			},
+			"timestamp": {
+				"S": "2021-05-20T18:51:46"
+			},
+			"transId": {
+				"S": "T3"
+			},
+			"transType": {
+				"S": "deposit"
+			},
+			"balance": {
+				"S": "5000"
+			},
+			"amount": {
+				"S": "1000"
+			}
+		}, {
+			"PK": {
+				"S": "C1"
+			},
+			"SK": {
+				"S": "purchase#2021-05-20T18:54:28#P1"
+			},
+			"type": {
+				"S": "purchase"
+			},
+			"pType": {
+				"S": "checks"
+			},
+			"timestamp": {
+				"S": "2021-05-20T18:54:28"
+			},
+			"pId": {
+				"S": "P1"
+			},
+			"aId": {
+				"S": "A1"
+			},
+			"GSI2PK": {
+				"S": "P1"
+			},
+			"GSI2SK": {
+				"S": "2021-05-20T18:54:28"
+			}
+		}, {
+			"PK": {
+				"S": "C1"
+			},
+			"SK": {
+				"S": "A1#2021-05-20T18:54:28"
+			},
+			"type": {
+				"S": "transaction"
+			},
+			"acctId": {
+				"S": "A1"
+			},
+			"timestamp": {
+				"S": "2021-05-20T18:54:28"
+			},
+			"transId": {
+				"S": "T4"
+			},
+			"transType": {
+				"S": "purchase"
+			},
+			"balance": {
+				"S": "1375"
+			},
+			"amount": {
+				"S": "25"
+			},
+			"GSI2PK": {
+				"S": "P1"
+			},
+			"GSI2SK": {
+				"S": "2021-05-20T18:54:28"
+			}
+		}],
+		"ModelSchema": {
+			"indexes": {
+				"primary": {
+					"hash": "PK",
+					"sort": "SK"
+				},
+				"GSI1": {
+					"hash": "GSI1PK",
+					"sort": "GSI1SK",
+					"projection": "ALL"
+				},
+				"GSI2": {
+					"hash": "GSI2PK",
+					"sort": "GSI2SK",
+					"projection": "ALL"
+				}
+			},
+			"models": {
+				"~new~": {
+					"PK": {
+						"type": "String"
+					},
+					"SK": {
+						"type": "String"
+					},
+					"type": {
+						"type": "String"
+					}
+				},
+				"customer": {
+					"type": {
+						"type": "String"
+					},
+					"PK": {
+						"type": "String"
+					},
+					"SK": {
+						"type": "String"
+					},
+					"custType": {
+						"type": "String"
+					}
+				},
+				"account": {
+					"type": {
+						"type": "String"
+					},
+					"PK": {
+						"type": "String"
+					},
+					"SK": {
+						"type": "String"
+					},
+					"acctType": {
+						"type": "String"
+					},
+					"balance": {
+						"type": "String"
+					},
+					"GSI1PK": {
+						"type": "String",
+						"value": "${PK}"
+					},
+					"GSI1SK": {
+						"type": "String"
+					},
+					"dailies": {
+						"type": "String"
+					}
+				},
+				"transaction": {
+					"type": {
+						"type": "String"
+					},
+					"PK": {
+						"type": "String"
+					},
+					"SK": {
+						"type": "String",
+						"value": "${acctId}#${timestamp}"
+					},
+					"acctId": {
+						"type": "String"
+					},
+					"timestamp": {
+						"type": "String"
+					},
+					"transId": {
+						"type": "String"
+					},
+					"transType": {
+						"type": "String"
+					},
+					"balance": {
+						"type": "String"
+					},
+					"amount": {
+						"type": "String"
+					},
+					"GSI1PK": {
+						"type": "String",
+						"value": "${acctId}"
+					},
+					"GSI1SK": {
+						"type": "String",
+						"value": "${timestamp}"
+					},
+					"GSI2PK": {
+						"type": "String"
+					},
+					"GSI2SK": {
+						"type": "String",
+						"value": "${timestamp}"
+					}
+				},
+				"purchase": {
+					"type": {
+						"type": "String"
+					},
+					"PK": {
+						"type": "String"
+					},
+					"SK": {
+						"type": "String",
+						"value": "${type}#${timestamp}#${pId}"
+					},
+					"pType": {
+						"type": "String"
+					},
+					"timestamp": {
+						"type": "String"
+					},
+					"pId": {
+						"type": "String"
+					},
+					"aId": {
+						"type": "String"
+					},
+					"GSI2PK": {
+						"type": "String",
+						"value": "${pId}"
+					},
+					"GSI2SK": {
+						"type": "String",
+						"value": "${timestamp}"
+					}
+				}
+			},
+			"queries": {}
+		}
+	}]
+}

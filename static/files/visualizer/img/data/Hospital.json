@@ -1,0 +1,331 @@
+{
+	"ModelName": "Hospital",
+	"ModelMetadata": {
+		"Author": "",
+		"DateCreated": "Nov 24, 2020, 08:00 PM",
+		"DateLastModified": "Nov 25, 2020, 12:03 PM",
+		"Description": "",
+		"AWSService": "Amazon DynamoDB",
+		"Version": "2.0"
+	},
+	"DataModel": [{
+		"TableName": "data",
+		"KeyAttributes": {
+			"PartitionKey": {
+				"AttributeName": "PK",
+				"AttributeType": "S"
+			},
+			"SortKey": {
+				"AttributeName": "SK",
+				"AttributeType": "S",
+				"MapFunction": {
+					"treatment": "${timestamp}#${treatmentId}",
+					"admission": "${timestamp}#${roomId}"
+				}
+			}
+		},
+		"NonKeyAttributes": [{
+				"AttributeName": "type",
+				"AttributeType": "S"
+			},
+			{
+				"AttributeName": "timestamp",
+				"AttributeType": "S"
+			},
+			{
+				"AttributeName": "treatmentId",
+				"AttributeType": "S"
+			},
+			{
+				"AttributeName": "roomId",
+				"AttributeType": "S"
+			},
+			{
+				"AttributeName": "PK1",
+				"AttributeType": "S"
+			},
+			{
+				"AttributeName": "SK1",
+				"AttributeType": "S"
+			},
+			{
+				"AttributeName": "PK2",
+				"AttributeType": "S"
+			},
+			{
+				"AttributeName": "SK2",
+				"AttributeType": "S"
+			},
+			{
+				"AttributeName": "PK3",
+				"AttributeType": "S"
+			},
+			{
+				"AttributeName": "SK3",
+				"AttributeType": "S"
+			},
+			{
+				"AttributeName": "PK4",
+				"AttributeType": "S"
+			},
+			{
+				"AttributeName": "SK4",
+				"AttributeType": "S"
+			},
+			{
+				"AttributeName": "condition",
+				"AttributeType": "S"
+			}
+		],
+		"GlobalSecondaryIndexes": [{
+				"IndexName": "GSI1",
+				"KeyAttributes": {
+					"PartitionKey": {
+						"AttributeName": "PK1",
+						"AttributeType": "S"
+					},
+					"SortKey": {
+						"AttributeName": "SK1",
+						"AttributeType": "S"
+					}
+				},
+				"Projection": {
+					"ProjectionType": "ALL"
+				}
+			},
+			{
+				"IndexName": "GSI2",
+				"KeyAttributes": {
+					"PartitionKey": {
+						"AttributeName": "PK2",
+						"AttributeType": "S"
+					},
+					"SortKey": {
+						"AttributeName": "SK2",
+						"AttributeType": "S"
+					}
+				},
+				"Projection": {
+					"ProjectionType": "ALL"
+				}
+			},
+			{
+				"IndexName": "GSI3",
+				"KeyAttributes": {
+					"PartitionKey": {
+						"AttributeName": "PK3",
+						"AttributeType": "S"
+					},
+					"SortKey": {
+						"AttributeName": "SK3",
+						"AttributeType": "S"
+					}
+				},
+				"Projection": {
+					"ProjectionType": "ALL"
+				}
+			},
+			{
+				"IndexName": "GSI4",
+				"KeyAttributes": {
+					"PartitionKey": {
+						"AttributeName": "PK4",
+						"AttributeType": "S"
+					},
+					"SortKey": {
+						"AttributeName": "SK4",
+						"AttributeType": "S"
+					}
+				},
+				"Projection": {
+					"ProjectionType": "ALL"
+				}
+			}
+		],
+		"TableData": [{
+				"PK": {
+					"S": "P1"
+				},
+				"SK": {
+					"S": "A"
+				},
+				"type": {
+					"S": "patient"
+				}
+			},
+			{
+				"PK": {
+					"S": "P1"
+				},
+				"SK": {
+					"S": "2020-11-25T12:00:00#T1"
+				},
+				"type": {
+					"S": "treatment"
+				},
+				"timestamp": {
+					"S": "2020-11-25T12:00:00"
+				},
+				"treatmentId": {
+					"S": "T11"
+				},
+				"PK1": {
+					"S": "D1"
+				},
+				"SK1": {
+					"S": "2020-11-25T12:00:00"
+				},
+				"PK2": {
+					"S": "hospitalId-T"
+				},
+				"SK2": {
+					"S": "2020-11-25T12:00:00"
+				}
+			},
+			{
+				"PK": {
+					"S": "P1"
+				},
+				"SK": {
+					"S": "2020-11-25T12:00:00#M1"
+				},
+				"type": {
+					"S": "medicine"
+				},
+				"PK1": {
+					"S": "D1"
+				},
+				"SK1": {
+					"S": "2020-11-25T12:00:00"
+				},
+				"PK2": {
+					"S": "hospitalId-M"
+				},
+				"SK2": {
+					"S": "2020-11-25T12:00:00"
+				}
+			},
+			{
+				"PK": {
+					"S": "P1"
+				},
+				"SK": {
+					"S": "2020-11-25T12:00:00#R1"
+				},
+				"type": {
+					"S": "admission"
+				},
+				"timestamp": {
+					"S": "2020-11-25T12:00:00"
+				},
+				"roomId": {
+					"S": "R1"
+				},
+				"PK1": {
+					"S": "N1"
+				},
+				"SK1": {
+					"S": "2020-11-25T12:00:00"
+				},
+				"PK2": {
+					"S": "normal"
+				},
+				"SK2": {
+					"S": "2020-11-26T00:00:00"
+				},
+				"PK3": {
+					"S": "R1"
+				},
+				"SK3": {
+					"S": "2020-11-25T12:00:00"
+				},
+				"PK4": {
+					"S": "hospitalId"
+				},
+				"SK4": {
+					"S": "2020-11-25T12:00:00"
+				},
+				"condition": {
+					"S": "minor trauma"
+				}
+			},
+			{
+				"PK": {
+					"S": "D1"
+				},
+				"SK": {
+					"S": "A"
+				},
+				"type": {
+					"S": "doctor"
+				},
+				"PK1": {
+					"S": "D1"
+				},
+				"SK1": {
+					"S": "A"
+				},
+				"PK2": {
+					"S": "specialty"
+				},
+				"SK2": {
+					"S": "hospitalId"
+				}
+			},
+			{
+				"PK": {
+					"S": "N1"
+				},
+				"SK": {
+					"S": "A"
+				},
+				"type": {
+					"S": "nurse"
+				},
+				"PK1": {
+					"S": "N1"
+				},
+				"SK1": {
+					"S": "A"
+				}
+			},
+			{
+				"PK": {
+					"S": "R1"
+				},
+				"SK": {
+					"S": "A"
+				},
+				"type": {
+					"S": "room"
+				},
+				"PK3": {
+					"S": "R1"
+				},
+				"SK3": {
+					"S": "A"
+				}
+			},
+			{
+				"PK": {
+					"S": "P1"
+				},
+				"SK": {
+					"S": "2020-11-25T12:00:00#A1"
+				},
+				"type": {
+					"S": "activity"
+				},
+				"PK1": {
+					"S": "N1"
+				},
+				"SK1": {
+					"S": "2020-11-25T12:00:00"
+				}
+			}
+		],
+		"DataAccess": {
+			"MySql": {}
+		}
+	}]
+}

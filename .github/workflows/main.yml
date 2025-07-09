@@ -27,14 +27,18 @@ jobs:
       with:
         aws-region: us-east-1
         role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+    - name: S3SyncStaticWeb
+      run: aws s3 sync ./global-serverless/web/ s3://amazon-dynamodb-labs-static/static/global-serverless-application/web/
+    - name: StaticYearReplacer
+      run: sed -i "s/<<PRESENTYEAR>>/$(date +%Y)/" ./static/files/visualizer/index.html
+    - name: S3SyncVisualizer
+      run: aws s3 sync ./static/files/visualizer/ s3://amazon-dynamodb-labs-static/static/visualizer/
     - name: Pull preview build
       run: aws s3 sync s3://amazon-dynamodb-labs-static/build/ . && chmod +x preview_build
     - name: Build Assets
       run: python3 ./.github/scripts/build-assets.py
     - name: S3Sync
       run: aws s3 sync public/assets/ s3://$STEP_S3_BUCKET/assets/ --delete
-    - name: SetS3Acl
-      run: aws s3api put-object-acl --grant-read uri=http://acs.amazonaws.com/groups/global/AllUsers --bucket $STEP_S3_BUCKET --key assets/lab.yaml
     - name: SetS3Acl
       run: aws s3api put-object-acl --grant-read uri=http://acs.amazonaws.com/groups/global/AllUsers --bucket $STEP_S3_BUCKET --key assets/C9.yaml
     - name: SetS3AclED1
@@ -51,3 +55,11 @@ jobs:
       run: aws s3api put-object-acl --grant-read uri=http://acs.amazonaws.com/groups/global/AllUsers --bucket $STEP_S3_BUCKET --key assets/migration-env-setup.yaml
     - name: SetS3AclLHOLDMS
       run: aws s3api put-object-acl --grant-read uri=http://acs.amazonaws.com/groups/global/AllUsers --bucket $STEP_S3_BUCKET --key assets/migration-dms-setup.yaml
+    - name: SetS3AclLHOLzETL
+      run: aws s3api put-object-acl --grant-read uri=http://acs.amazonaws.com/groups/global/AllUsers --bucket $STEP_S3_BUCKET --key assets/OpenSearchPipeline.zip
+    - name: SetS3AclLHOLzETLYaml
+      run: aws s3api put-object-acl --grant-read uri=http://acs.amazonaws.com/groups/global/AllUsers --bucket $STEP_S3_BUCKET --key assets/dynamodb-opensearch-setup.yaml
+    - name: SetS3AclLGME1
+      run: aws s3api put-object-acl --grant-read uri=http://acs.amazonaws.com/groups/global/AllUsers --bucket $STEP_S3_BUCKET --key assets/battle-royale.zip
+    - name: SetS3AclLMR
+      run: aws s3api put-object-acl --grant-read uri=http://acs.amazonaws.com/groups/global/AllUsers --bucket $STEP_S3_BUCKET --key assets/global-serverless.zip

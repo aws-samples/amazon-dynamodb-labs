@@ -6,6 +6,8 @@ AWS_ACCOUNT_ID=$2
 AWS_REGION=$3
 WorkshopZIP="$4" # ${WorkshopZIP}"
 DDB_REPLICATION_ROLE="$5" #!Sub echo ${DDBReplicationRole.Arn} 
+DB_USER="$6"
+DB_PASSWORD="$7"
 
 function log
 {
@@ -52,12 +54,15 @@ output = json
 EOF
         #chmod 600 /home/ubuntu/.aws/config
         cat >> /home/ubuntu/.bashrc <<EOF
-PATH=$PATH:/usr/local/bin'
-export PATH' >> /home/ubuntu/.bashrc
+PATH=$PATH:/usr/local/bin
+export PATH >> /home/ubuntu/.bashrc
 EOF
         cat >> /home/ubuntu/.bash_profile <<EOF
 export AWS_ACCOUNT_ID="${AWS_ACCOUNT_ID}" 
 export AWS_REGION="${AWS_REGION}"
+export AWS_DEFAULT_REGION="${AWS_REGION}"
+export MYSQL_PASSWORD="${DB_PASSWORD}"
+export MYSQL_USERNAME="${DB_USER}"
 aws cloud9 update-environment --environment-id \$C9_PID --managed-credentials-action DISABLE --region $AWS_REGION &> /dev/null
 rm -vf ${HOME}/.aws/credentials  &> /dev/null
 EOF
@@ -80,7 +85,9 @@ function setup_ladv
     echo ${DDB_REPLICATION_ROLE} > /home/ubuntu/workshop/ddb-replication-role-arn.txt
     rm /home/ubuntu/workshop/workshop.zip
     chown -R ubuntu:ubuntu /home/ubuntu/workshop/*
-    sudo pip3 install boto3 > /dev/null 2>&1 
+    sudo pip3 install boto3 > /dev/null 2>&1
+    log installing opensearch-py for zETL lab
+    sudo pip3 install opensearch-py > /dev/null 2>&1 
 }
 function lock_instance
 {

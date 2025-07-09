@@ -28,20 +28,23 @@ The following is the expected result.
 ```json
 {
   "UUID": "0dcede66-709c-4073-a628-724d01b92095",
+  "StartingPosition": "TRIM_HORIZON",
   "BatchSize": 100,
   "MaximumBatchingWindowInSeconds": 0,
   "ParallelizationFactor": 1,
   "EventSourceArn": "arn:aws:dynamodb:<REGION>:<ACCOUNTID>:table/logfile/stream/2021-12-31T00:00:00.000",
   "FunctionArn": "arn:aws:lambda:<REGION>:<ACCOUNTID>:function:ddbreplica_lambda",
-  "LastModified": 1663286115.972,
+  "LastModified":  "2025-09-20T15:54:35.020000+00:00",
   "LastProcessingResult": "No records processed",
   "State": "Creating",
   "StateTransitionReason": "User action",
   "DestinationConfig": {
-    "OnFailure": {}
+      "OnFailure": {}
   },
   "MaximumRecordAgeInSeconds": -1,
   "BisectBatchOnFunctionError": false,
-  "MaximumRetryAttempts": -1
+  "MaximumRetryAttempts": -1,
+  "TumblingWindowInSeconds": 0,
+  "FunctionResponseTypes": []
 }
 ```

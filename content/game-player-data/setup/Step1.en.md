@@ -34,7 +34,7 @@ In this lab, you use Python scripts to interact with the DynamoDB API. Run the f
 
 ```bash
 cd ~/environment
-curl -sL https://amazon-dynamodb-labs.com/static/game-player-data/battle-royale.tar | tar -xv
+curl -sL https://amazon-dynamodb-labs.com/assets/battle-royale.zip -o battle-royal.zip && unzip -oq battle-royal.zip && rm battle-royal.zip
 ```
 
 You should see two directories in the AWS Cloud9 file explorer:

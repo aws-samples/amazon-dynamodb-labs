@@ -2,7 +2,7 @@
 title: "LGME: Modeling Game Player Data with Amazon DynamoDB"
 chapter: true
 description: "300 level: Hands-on exercise with Cloud9, Python, and data modelling best practices."
-weight: 5
+weight: 50
 ---
 
 

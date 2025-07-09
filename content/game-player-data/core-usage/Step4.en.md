@@ -15,7 +15,7 @@ In this step, you retrieve multiple entity types in a single request. In the gam
 
 This request spans two entity types: the `Game` entity and the `UserGameMapping` entity. However, this doesn’t mean you need to make multiple requests.
 
-In the code you downloaded, a **fetch_game_and_players.py** script is in the **application/** directory. This script shows how you can structure your code to retrieve both the `Game` entity and the `UserGameMapping` entity for the game in a single request.
+In the code you downloaded, a **fetch_game_and_players.py** script is in the **scripts/** directory. This script shows how you can structure your code to retrieve both the `Game` entity and the `UserGameMapping` entity for the game in a single request.
 
 The following code composes the **fetch_game_and_players.py** script:
 
@@ -27,11 +27,11 @@ dynamodb = boto3.client('dynamodb')
 
 GAME_ID = "3d4285f0-e52b-401a-a59b-112b38c4a26b"
 
+
 def fetch_game_and_users(game_id):
     resp = dynamodb.query(
         TableName='battle-royale',
-        KeyConditionExpression="PK = :pk AND SK BETWEEN :metadata 
-            AND :users",
+        KeyConditionExpression="PK = :pk AND SK BETWEEN :metadata AND :users",
         ExpressionAttributeValues={
             ":pk": { "S": "GAME#{}".format(game_id) },
             ":metadata": { "S": "#METADATA#{}".format(game_id) },
@@ -39,11 +39,13 @@ def fetch_game_and_users(game_id):
         },
         ScanIndexForward=True
     )
+
     game = Game(resp['Items'][0])
     game.users = [UserGameMapping(item) for item in resp['Items'][1:]]
-    
+
     return game
-    
+
+
 game = fetch_game_and_users(GAME_ID)
 
 print(game)
@@ -51,7 +53,7 @@ for user in game.users:
     print(user)
 ```
 
-At the beginning of this script, you import the Boto 3 library and some simple classes to represent the objects in the application code. You can see the definitions for those entities in the **application/entities.py** file.
+At the beginning of this script, you import the Boto 3 library and some simple classes to represent the objects in the application code. You can see the definitions for those entities in the **scripts/entities.py** file.
 
 The real work of the script happens in the `fetch_game_and_users` function that’s defined in the module. This is similar to a function you would define in your application to be used by any endpoints that need this data.
 
@@ -64,30 +66,30 @@ The end of the script shows the usage of the function and prints out the resulti
 You can run the script in the Cloud9 Terminal with the following command:
 
 ```sh
-python application/fetch_game_and_players.py
+python scripts/fetch_game_and_players.py
 ```
 
 The script should print the `Game` object and all `UserGameMapping` objects to the console.
 
 ```text
-Game<3d4285f0-e52b-401a-a59b-112b38c4a26b --Green Grasslands>
-UserGameMapping<3d4285f0-e52b-401a-a59b-112b38c4a26b --branchmichael>
-UserGameMapping<3d4285f0-e52b-401a-a59b-112b38c4a26b --deanmcclure>
-UserGameMapping<3d4285f0-e52b-401a-a59b-112b38c4a26b --emccoy>
-UserGameMapping<3d4285f0-e52b-401a-a59b-112b38c4a26b --emma83>
-UserGameMapping<3d4285f0-e52b-401a-a59b-112b38c4a26b --iherrera>
-UserGameMapping<3d4285f0-e52b-401a-a59b-112b38c4a26b --jeremyjohnson>
-UserGameMapping<3d4285f0-e52b-401a-a59b-112b38c4a26b --lisabaker>
-UserGameMapping<3d4285f0-e52b-401a-a59b-112b38c4a26b --maryharris>
-UserGameMapping<3d4285f0-e52b-401a-a59b-112b38c4a26b --mayrebecca>
-UserGameMapping<3d4285f0-e52b-401a-a59b-112b38c4a26b --meghanhernandez>
-UserGameMapping<3d4285f0-e52b-401a-a59b-112b38c4a26b --nruiz>
-UserGameMapping<3d4285f0-e52b-401a-a59b-112b38c4a26b --pboyd>
-UserGameMapping<3d4285f0-e52b-401a-a59b-112b38c4a26b --richardbowman>
-UserGameMapping<3d4285f0-e52b-401a-a59b-112b38c4a26b --roberthill>
-UserGameMapping<3d4285f0-e52b-401a-a59b-112b38c4a26b --robertwood>
-UserGameMapping<3d4285f0-e52b-401a-a59b-112b38c4a26b --victoriapatrick>
-UserGameMapping<3d4285f0-e52b-401a-a59b-112b38c4a26b --waltervargas>
+Game: 3d4285f0-e52b-401a-a59b-112b38c4a26b   Map: Green Grasslands
+UserGameMapping: 3d4285f0-e52b-401a-a59b-112b38c4a26b   Username: branchmichael
+UserGameMapping: 3d4285f0-e52b-401a-a59b-112b38c4a26b   Username: deanmcclure
+UserGameMapping: 3d4285f0-e52b-401a-a59b-112b38c4a26b   Username: emccoy
+UserGameMapping: 3d4285f0-e52b-401a-a59b-112b38c4a26b   Username: emma83
+UserGameMapping: 3d4285f0-e52b-401a-a59b-112b38c4a26b   Username: iherrera
+UserGameMapping: 3d4285f0-e52b-401a-a59b-112b38c4a26b   Username: jeremyjohnson
+UserGameMapping: 3d4285f0-e52b-401a-a59b-112b38c4a26b   Username: lisabaker
+UserGameMapping: 3d4285f0-e52b-401a-a59b-112b38c4a26b   Username: maryharris
+UserGameMapping: 3d4285f0-e52b-401a-a59b-112b38c4a26b   Username: mayrebecca
+UserGameMapping: 3d4285f0-e52b-401a-a59b-112b38c4a26b   Username: meghanhernandez
+UserGameMapping: 3d4285f0-e52b-401a-a59b-112b38c4a26b   Username: nruiz
+UserGameMapping: 3d4285f0-e52b-401a-a59b-112b38c4a26b   Username: pboyd
+UserGameMapping: 3d4285f0-e52b-401a-a59b-112b38c4a26b   Username: richardbowman
+UserGameMapping: 3d4285f0-e52b-401a-a59b-112b38c4a26b   Username: roberthill
+UserGameMapping: 3d4285f0-e52b-401a-a59b-112b38c4a26b   Username: robertwood
+UserGameMapping: 3d4285f0-e52b-401a-a59b-112b38c4a26b   Username: victoriapatrick
+UserGameMapping: 3d4285f0-e52b-401a-a59b-112b38c4a26b   Username: waltervargas
 ```
 
 This script shows how you can model your table and write your queries to retrieve multiple entity types in a single DynamoDB request. In a relational database, you use joins to retrieve multiple entity types from different tables in a single request. With DynamoDB, you specifically model your data, so that entities you should access together are located next to each other in a single table. This approach replaces the need for joins in a typical relational database and keeps your application high-performing as you scale up.

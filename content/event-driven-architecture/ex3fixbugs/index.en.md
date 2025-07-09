@@ -11,7 +11,7 @@ description: "Query a sharded global secondary index to quickly read sorted data
 # Are you ready to start Lab 2?
 
 Before proceeding to *Lab 2* let's verify that *Lab 1* was successfully completed. There are two phases to complete before continuing:
-* First, you started to accumulate points on the scoreboard. If you have non-zero points then this phase is complete. Open the scoreboard and find your team. If you forgot to name your team in Workshop Studio, set your team name now and wait for the scoreboard to update.
+* First, you started to accumulate points on the scoreboard. If you have non-zero points then this phase is complete. Open the scoreboard and find your team. Find your account ID in the AWS Management Console on the top right of the console.
 * Second, you need accumulate 300 points to continue. The workshop will automatically switch to *Lab 2* when you reach this milestone, and this phase is complete.
  * Once 300 points are accumulated, new failure modes will be introduced and all three Lambda functions (`StateLambda`, `MapLambda`, and `ReduceLambda`) will start failing randomly. This is a pre-programmed evolution of the workshop. In the Lambda console, click on any of the three Lambda functions, navigate to  the `Monitor` tab and then to the `Metrics` sub-tab. You should expect to see a non-zero error rate on some of the graphs!
 

@@ -13,6 +13,7 @@ The code you downloaded in the initial steps include a Python script in the **sc
 
 ```py
 import boto3
+
 dynamodb = boto3.client('dynamodb')
 
 try:
@@ -42,14 +43,14 @@ try:
             "ReadCapacityUnits": 1,
             "WriteCapacityUnits": 1
         }
-        )
-        print("Table created successfully.")
+    )
+    print("Table 'battle-royale' created successfully.")
 except Exception as e:
     print("Could not create table. Error:")
     print(e)
 ```
 
-::alert[Edit **scripts/create_table.py**, set both `ReadCapacityUnits` and `WriteCapacityUnits` to **100** for *battle-royale* table.]
+::alert[Edit **scripts/create_table.py**, set both `ReadCapacityUnits` and `WriteCapacityUnits` to **100** for *battle-royale* table and save the file.]{header="Change the capacity units."}
 
 The preceding script uses the [CreateTable](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_CreateTable.html) operation using [Boto 3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html), the AWS SDK for Python. The operation declares two attribute definitions, which are typed attributes to be used in the primary key. Though DynamoDB is [schemaless](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SQLtoNoSQL.CreateTable.html), you must declare the names and types of attributes that are used for primary keys. The attributes must be included on every item that is written to the table and thus must be specified as you are creating a table.
 
@@ -59,13 +60,67 @@ After configuring the attributes in the key schema, you specify the [provisioned
 
 In DynamoDB on-demand capacity mode, you pay per request. The cost per request is slightly higher than if you were to use provisioned throughput fully, but you don’t have to spend time doing capacity planning or worrying about getting throttled. On-demand mode works great for spiky or unpredictable workloads. In this lab, provisioned capacity mode is used.
 
-To create the table, run the Python script with the following command in the Cloud9 Terminal.
+::alert[You can choose to run either the `create_table.py` python script or the AWS CLI command below. Both are provided to show different methods of interacting with DynamoDB.]
+
+You can run the Python script with the following command in the Cloud9 Terminal.
 
 ```sh
 python scripts/create_table.py
 ```
 
-The script should return this message: 
+The script should return this message:
+
 ```text
-“Table created successfully.”
+Table 'battle-royale' created successfully.
+```
+
+As an alternative, you can run the AWS CLI command from your Cloud9 Terminal.
+
+```sh
+aws dynamodb create-table \
+--table-name battle-royale \
+--attribute-definitions AttributeName=PK,AttributeType=S AttributeName=SK,AttributeType=S \
+--key-schema AttributeName=PK,KeyType=HASH AttributeName=SK,KeyType=RANGE \
+--provisioned-throughput ReadCapacityUnits=100,WriteCapacityUnits=100
+```
+
+The CLI command should return this JSON:
+```json
+{
+  "TableDescription": {
+    "AttributeDefinitions": [
+      {
+        "AttributeName": "PK",
+        "AttributeType": "S"
+      },
+      {
+        "AttributeName": "SK",
+        "AttributeType": "S"
+      }
+    ],
+    "TableName": "battle-royale",
+    "KeySchema": [
+      {
+        "AttributeName": "PK",
+        "KeyType": "HASH"
+      },
+      {
+        "AttributeName": "SK",
+        "KeyType": "RANGE"
+      }
+    ],
+    "TableStatus": "CREATING",
+    "CreationDateTime": "2023-12-06T13:52:52.187000-06:00",
+    "ProvisionedThroughput": {
+      "NumberOfDecreasesToday": 0,
+      "ReadCapacityUnits": 1,
+      "WriteCapacityUnits": 1
+    },
+    "TableSizeBytes": 0,
+    "ItemCount": 0,
+    "TableArn": "arn:aws:dynamodb:<AWS Region>:<Account ID>:table/battle-royale",
+    "TableId": "<Unique Identifier>",
+    "DeletionProtectionEnabled": false
+  }
+}
 ```

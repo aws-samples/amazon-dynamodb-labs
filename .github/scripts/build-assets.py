@@ -24,13 +24,13 @@ shutil.rmtree(os.path.join(dest_root,'assets'), ignore_errors=True)
 
 #Move static assets
 Path(dest_root, 'assets').mkdir(parents=True, exist_ok=False)
-data_files = ['design-patterns/cloudformation/lab.yaml',
-    'design-patterns/cloudformation/C9.yaml',
-    'design-patterns/cloudformation/UserData.sh',
+data_files = ['design-patterns/cloudformation/C9.yaml',
     'design-patterns/cloudformation/UserDataC9.sh',
     'event-driven/event-driven-cfn.yaml',
     'static/files/hands-on-labs/migration-env-setup.yaml',
-    'static/files/hands-on-labs/migration-dms-setup.yaml']
+    'static/files/hands-on-labs/migration-dms-setup.yaml',
+    'static/files/dynamodb-opensearch-zetl/dynamodb-opensearch-setup.yaml'
+]
 for inp_file in data_files:
     src_file = os.path.join(pkg_root, inp_file)
     head, tail = ntpath.split(src_file)
@@ -59,6 +59,31 @@ with ZipFile('scenario-solutions.zip', 'w') as workshop_zip:
 	for scenario2 in glob.glob('./bank-payments/*'):
 		workshop_zip.write(scenario2)
 shutil.move(os.path.join(os.getcwd(), 'scenario-solutions.zip'), os.path.join(dest_root, 'assets', 'scenario-solutions.zip'))
+
+#Create LHOL zETL ZIP
+os.chdir(os.path.join(pkg_root, 'static', 'files', 'dynamodb-opensearch-zetl'))
+with ZipFile('OpenSearchPipeline.zip', 'w') as workshop_zip:
+	for pyscript in glob.glob('./OpenSearchPipeline/*'):
+		workshop_zip.write(pyscript)
+shutil.move(os.path.join(os.getcwd(), 'OpenSearchPipeline.zip'), os.path.join(dest_root, 'assets', 'OpenSearchPipeline.zip'))
+
+
+#Create Game-Player-Data Python Scripts ZIP
+os.chdir(os.path.join(pkg_root, 'game-player-data'))
+with ZipFile('battle-royale.zip', 'w') as workshop_zip:
+	for pyscript in glob.glob('./scripts/*.py'):
+		workshop_zip.write(pyscript)
+	for js_script in glob.glob('./scripts/*.json'):
+		workshop_zip.write(js_script)
+shutil.move(os.path.join(os.getcwd(), 'battle-royale.zip'), os.path.join(dest_root, 'assets', 'battle-royale.zip'))
+
+#Create Global Serverless ZIP
+os.chdir(os.path.join(pkg_root, 'global-serverless'))
+with ZipFile('global-serverless.zip', 'w') as workshop_zip:
+	for data_file in glob.glob('global-serverless/*'):
+		workshop_zip.write(data_file)
+	workshop_zip.write('global-serverless/.chalice/config.json')
+shutil.move(os.path.join(os.getcwd(), 'global-serverless.zip'), os.path.join(dest_root, 'assets', 'global-serverless.zip'))
 
 
 #Create Event Driven ZIPs

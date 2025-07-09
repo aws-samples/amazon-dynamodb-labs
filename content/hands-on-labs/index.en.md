@@ -2,7 +2,7 @@
 title: "LHOL: Hands-on Labs for Amazon DynamoDB"
 chapter: true
 description: "200 level: Hands-on exercises with Cloud9 using the AWS CLI and Console."
-weight: 1
+weight: 10
 ---
 In this workshop, you will learn to create and work with [Amazon DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html).
 
