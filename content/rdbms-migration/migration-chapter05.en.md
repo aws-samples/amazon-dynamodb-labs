@@ -9,14 +9,28 @@ In this exercise, we will set up Database Migration Service (DMS) jobs to migrat
 
 ## Verify DMS creation
 
-1. Go to [DMS Console](https://console.aws.amazon.com/dms/v2/home?region=us-east-1#dashboard) and click on Replication Instances. You can able to see a replication instance with Class dms.c5.2xlarge in Available Status.
+1. Go to [DMS Console](https://console.aws.amazon.com/dms/v2/home?region=us-east-1#dashboard) and click on **Replication Instances**. You should be able to see a replication instance with **Class** `dms.c5.2xlarge` in `Available` **Status**.
     ![Final Deployment Architecture](/static/images/migration20.jpg)
 
 ::alert[_Make sure the DMS instance is Available before you continue. If it is not Available, return to the CloudFormation console to review and troubleshoot the CloudFormation stack._]
 
+## Update inbound rules for MySQL instance security group to allow access from DMS IP
+
+1. Select the `mysqltodynamo-instance` DMS replication instance, copy its **Public IP address**.
+
+![Copy DMS Public IP](/static/images/migration52.png)
+
+2. Open [EC2 console](https://console.aws.amazon.com/ec2/v2/home#Instances:instanceState=running), select **MySQL-Instance**. Under the **Security** tab, select the security group of the MySQL instance (eg: `sg-xxxxx`).
+
+![Open MySQL EC2 Security Group](/static/images/migration53.png)
+
+3. Select **Edit inbound rules**, then **Add rule**. Select **MYSQL/Aurora** in **Type**, and paste the Public IP address of the MySQL Instance with a `/32` suffix. For example, for IP `54.X.X.X`, enter `54.X.X.X/32` in **Source**. Finally, select **Save rules**.
+
+![Edit inbound rules of Security Group](/static/images/migration54.png)
+
 ## Create source and target endpoints
 
-1.  Click on Endpoints and Create endpoint button
+1.  From the DMS console, select **Endpoints** and then **Create endpoint**.
     ![Final Deployment Architecture](/static/images/migration21.jpg)
 2.  Create the source endpoint. Use the following parameters to configure the endpoint:
 
@@ -26,17 +40,19 @@ In this exercise, we will set up Database Migration Service (DMS) jobs to migrat
     | Endpoint identifier |                                                                            mysql-endpoint                                                                             |
     | Source engine       |                                                                                 MySQL                                                                                 |
     | Access to endpoint database |                                         Select the "Provide access information manually" radio button                                                         |
-    | Server name         | From the [EC2 dashboard](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Instances:instanceState=running), select MySQL-Instance and copy Public IPv4 DNS |
+    | Server name         | From the [EC2 dashboard](https://console.aws.amazon.com/ec2/v2/home#Instances:instanceState=running), select MySQL-Instance and copy Public IPv4 DNS |
     | Port                |                                                                                 3306                                                                                  |
     | SSL mode            |                                                                                 none                                                                                  |
     | User name           |                                            Value of DbMasterUsername added as parameter during Configure MySQL Environment                                            |
     | Password            |                                            Value of DbMasterPassword added as parameter during Configure MySQL Environment                                            |
 
-    ![Final Deployment Architecture](/static/images/migration22.jpg)
-    Open Test endpoint connection (optional) section, then in the VPC drop-down select DMS-VPC and click the Run test button to verify that your endpoint configuration is valid. The test will run for a minute and you should see a successful message in the Status column. Click on the Create endpoint button to create the endpoint. If you see a connection error, re-type the username and password to ensure no mistakes were made. Further, ensure you provided the IPv4 DNS name ending in amazonaws.com in the field **Server name**.
-    ![Final Deployment Architecture](/static/images/migration23.jpg)
+![Final Deployment Architecture](/static/images/migration22.jpg)
 
-4.  Create the target endpoint. Repeat all steps to create the target endpoint with the following parameter values:
+3. Open **Test endpoint connection (optional)** section, then in the **VPC** drop-down select **DMS-VPC** and click the **Run test** to verify that your endpoint configuration is valid. The test will run for a minute and you should see a *successful* message in the **Status** column. Click on the **Create endpoint** to create the endpoint. If you see a connection error, re-type the username and password to ensure no mistakes were made. Further, ensure you provided the IPv4 DNS name ending in `amazonaws.com` in the field **Server name**.
+
+![Final Deployment Architecture](/static/images/migration23.jpg)
+
+4. Create the target endpoint. Repeat all steps to create the target endpoint with the following parameter values:
 
     | Parameter               |                                                                                            Value                                                                                            |
     | ----------------------- | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
@@ -45,18 +61,19 @@ In this exercise, we will set up Database Migration Service (DMS) jobs to migrat
     | Target engine           |                                                                                       Amazon DynamoDB                                                                                       |
     | Service access role ARN | CloudFormation template has created new role with full access to Amazon DynamoDB. Copy Role ARN from [dynamodb-access](https://us-east-1.console.aws.amazon.com/iamv2/home#/roles/details/dynamodb-access?section=permissions) role |
 
-    ![Final Deployment Architecture](/static/images/migration24.jpg)
-    Open Test endpoint connection (optional) section, then in the VPC drop-down select DMS-VPC and click the Run test button to verify that your endpoint configuration is valid. The test will run for a minute and you should see a successful message in the Status column. Click on the Create endpoint button to create the endpoint.
+![Final Deployment Architecture](/static/images/migration24.jpg)
+
+5. Open **Test endpoint connection (optional)** section, then in the **VPC** drop-down select **DMS-VPC** and select **Run test** to verify that your endpoint configuration is valid. The test will run for a minute and you should see a *successful* message in the **Status** column. Click **Create endpoint** to create the endpoint.
 
 ## Configure and Run a Replication Task
 
-Still in the AWS DMS console, go to Database migration tasks and click the Create Task button. We will create 3 replication jobs to migrate denormalized view, ratings (title_ratings) and regions/languages (title_akas) information.
+Still in the AWS DMS console, go to **Database migration tasks** and click on **Create database migration task**. We will create 3 replication jobs to migrate denormalized view, ratings (`title_ratings`) and regions/languages (`title_akas`) information.
 
 1. Task1: Enter the following parameter values in the Create database migration task screen:
 
    | Parameter                                    |                                     Value                                     |
    | -------------------------------------------- | :---------------------------------------------------------------------------: |
-   | Task identified                              |                            historical-migration01                             |
+   | Task identifier                              |                            historical-migration01                             |
    | Replication instance                         |                          mysqltodynamodb-instance-\*                          |
    | Source database endpoint                     |                                mysql-endpoint                                 |
    | Target database endpoint                     |                               dynamodb-endpoint                               |
@@ -76,7 +93,7 @@ Some statistics around full dataset is give at the bottom of this chapter.
 
 Copy list of selective movies by Clint Eastwood.
 
-```
+```json
     {
       "filter-operator": "eq",
       "value": "tt0309377"
@@ -179,7 +196,7 @@ Copy list of selective movies by Clint Eastwood.
     }
 ```
 
-Below JSON document will migrate denormalized view from imdb MySQL database (Task identified: historical-migration01).
+Below JSON document will migrate denormalized view from imdb MySQL database (Task identifier: `historical-migration01`).
 Replace the string “REPLACE THIS STRING BY MOVIES LIST” with list of movies copied earlier (Checkout following screenshot for any confusion). Then paste the resulting JSON code in to the JSON editor, replacing the existing code.
 ```json
 {
@@ -238,11 +255,14 @@ Replace the string “REPLACE THIS STRING BY MOVIES LIST” with list of movies 
 ```
 
 ![Final Deployment Architecture](/static/images/migration36.png)
-Go to the bottom and click on Create task. At this point the task will be created and will automatically start loading selected movies from source to target DynamoDB table. 
-You can move forward and create two more tasks with similar steps (historical-migration02 and historical-migration03).
-Use the same settings as above except the Table Mappings JSON document. For historical-migration02 and historical-migration03 tasks use the JSON document mentioned below.
 
-Below JSON document will migrate title_akas table from imdb MySQL database (Task identified: historical-migration02)
+::alert[Make sure the **Turn on premigration assessment** is un-checked. For MySQL based source databases, AWS DMS supports running a bunch of validations as part of a premigration assessment like if binlog compression is disabled, or DMS has replication priveleges. Full list in [AWS Documentation](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.AssessmentReport.MySQL.html).]
+
+Go to the bottom and click on **Create database migraton task**. At this point the task will be created and will automatically start loading selected movies from source to target DynamoDB table. 
+You can move forward and create two more tasks with similar steps (`historical-migration02` and `historical-migration03`).
+Use the same settings as above except the Table Mappings JSON document. For `historical-migration02` and `historical-migration03` tasks use the JSON document mentioned below.
+
+Below JSON document will migrate title_akas table from imdb MySQL database (Task identifier: `historical-migration02`)
 Replace the string "REPLACE THIS STRING BY MOVIES LIST" with list of movies copied earlier.
 
 ```json
@@ -301,7 +321,7 @@ Replace the string "REPLACE THIS STRING BY MOVIES LIST" with list of movies copi
 }
 ```
 
-Below JSON document will migrate title_ratings table from imdb MySQL database (Task identified: historical-migration03)
+Below JSON document will migrate title_ratings table from imdb MySQL database (Task identifier: `historical-migration03`)
 Replace the string "REPLACE THIS STRING BY MOVIES LIST" with list of movies copied earlier.
 
 ```json
@@ -368,7 +388,7 @@ Replace the string "REPLACE THIS STRING BY MOVIES LIST" with list of movies copi
 ::::
 
 ### Monitor and the restart/resume the tasks
-The replication task for historical migration will start moving data from MySQL imdb.movies view, title_akas and title_ratings to DynamoDB table will start in a few minutes.
+The replication task for historical migration will start moving data from MySQL `imdb.movies` view, `title_akas` and `title_ratings` to DynamoDB table will start in a few minutes.
 If you are loading selective records based on the list above, it may take 5-10 minutes to complete all three tasks.
 
 If you were to run this exercise again but do a full load, the load times would be as follows:

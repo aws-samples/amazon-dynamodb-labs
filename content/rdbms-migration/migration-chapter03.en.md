@@ -13,10 +13,10 @@ It created a MySQL database called `imdb`, added 6 new tables (one for each IMDb
 The CloudFormation template also configured a remote MySQL user based on input parameters for the template. 
 To explore the dataset, follow the instructions below to log in to the EC2 server.
 
- 1. Go to [EC2 console](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Instances:instanceState=running).
- 2. Select the MySQL Instance and click Connect.
+ 1. Go to [EC2 console](https://console.aws.amazon.com/ec2/v2/home#Instances:instanceState=running).
+ 2. Select the MySQL Instance and click **Connect**.
     ![Final Deployment Architecture](/static/images/migration9.jpg)
- 3. Make sure "ec2-user" is in the Username field. Click Connect.
+ 3. Make sure `ec2-user` is in the **User name** field. Click **Connect**.
     ![Final Deployment Architecture](/static/images/migration10.jpg)
  4. Elevate your privileges using the `sudo` command.
     ```bash
@@ -31,7 +31,7 @@ To explore the dataset, follow the instructions below to log in to the EC2 serve
  6. You can see all the 6 files copied from the IMDB dataset to the local EC2 directory.
     ![Final Deployment Architecture](/static/images/migration12.jpg)
  7. Feel free to explore the files.
- 8. Go to AWS CloudFormation [Stacks](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks?filteringStatus=active&filteringText=&viewNested=true&hideStacks=false) and click on the stack you created earlier. Go to the Parameters tab and copy the username and password listed next to "DbMasterUsername" and "DbMasterPassword".
+ 8. Go to [AWS CloudFormation Console](https://console.aws.amazon.com/cloudformation/home#/stacks?filteringStatus=active&filteringText=&viewNested=true&hideStacks=false) and click on the stack you created earlier. Go to the **Parameters** tab and copy the username and password listed next to **DbMasterUsername** and **DbMasterPassword**.
    ![Final Deployment Architecture](/static/images/migration13.jpg)
  9. Go back to EC2 Instance console and login to mysql.
   ```bash
