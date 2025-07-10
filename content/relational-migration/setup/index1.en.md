@@ -47,8 +47,7 @@ cd workshops/relational-migration
 4. Next, run this to install three components: Boto3 (AWS SDK for Python), Chalice, and the MySQL connector for Python.
 
 ```bash
-pip3 install chalice mysql-connector-python
-export PATH="~/.local/bin:$PATH"
+sudo pip3 install chalice mysql-connector-python
 ```
 
 5. From the left navigation panel, locate our project folder by
