@@ -16,7 +16,7 @@ When your AI assistant (the LLM) first looked at this problem, it came up with a
 
 You might wonder why we're not just using `product_id` as our main identifier. The reason is like building a house with room to expand later. By using PK (Primary Key) and SK (Sort Key), we're creating space to add related information about each product in the future without having to rebuild our entire system.
 
-For now, our PK will be the product ID, and our SK will be "#META" (which means "this contains the main product information"). This setup is like having a filing cabinet where each product gets its own folder, and we can add different types of documents to that folder later.
+For now, our PK will be the product ID, and our SK will be `#META` (which means "this contains the main product information"). This setup is like having a filing cabinet where each product gets its own folder, and we can add different types of documents to that folder later.
 
 ## What Information Do We Store About Each Product?
 
@@ -54,7 +54,7 @@ This lets sellers quickly see all their products, and lets customers browse ever
 
 **Important Note:** Sellers with lots of products might create the same crowding issue as popular categories, so we'll monitor this too.
 
-## What Makes This Design Future-Proof?
+## What Makes This Design Flexible?
 
 The beauty of our setup is that it's designed to grow. Right now, each product just has one record (the #META record with all its basic information). But later, we could add:
 

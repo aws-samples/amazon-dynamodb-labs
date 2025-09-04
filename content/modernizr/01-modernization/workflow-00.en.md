@@ -24,7 +24,7 @@ Think of it like a mechanic who needs to understand every part of your current e
 
 This is where the real design work happens! Using all the information we gathered in Stage 1, we create a completely new data model designed specifically for DynamoDB. This stage is highly interactive - you'll work closely with the AI to make important decisions about how to structure your data.
 
-It's like working with an architect to design your dream house renovation. The AI provides technical expertise and suggestions, but you need to guide the process and make the final decisions about what works best for your specific needs. This collaboration ensures the new design perfectly fits your application's requirements.
+It's like working with an architect to design your dream house renovation. The AI provides technical expertise and suggestions, but you need to guide the process and make the final decisions about what works best for your specific needs. This collaboration ensures the new design fits your application's requirements.
 
 ## Stage 3: Building the Bridge - Creating a Database Abstraction Layer
 
@@ -44,7 +44,7 @@ This is the most complex stage, where your application learns to write data to b
 
 During this stage, we also create a special admin control panel that lets you monitor and control the modernization process. It's like having a control room where you can watch both the old and new systems running side by side and manage the transition safely.
 
-## Stage 6: Going Live - Deploying to the Cloud
+## Stage 6: Moving to the Cloud - Deploying the cloud Infrastructure
 
 Once everything is tested and working locally, we deploy your new DynamoDB tables to the actual AWS cloud environment. This is like moving your furniture into your newly renovated house - everything needs to be in the right place and working properly.
 

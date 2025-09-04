@@ -69,7 +69,7 @@ As you work through this stage, you'll encounter several "checkpoint" moments wh
 
 ## Being Patient with AI
 
-During this intensive design stage, you might occasionally see messages about rate limiting or throttling. This is normal - it just means the AI is working hard and needs a moment to catch up! Simply wait a few seconds and try again. The system can handle about 4 requests per second, which is more than enough for our workshop.
+During this intensive design stage, you might occasionally see messages about rate limiting or throttling. This is normal! Simply wait a few seconds and try again. The system can handle about 4 requests per minute, which should be enough for our workshop. If your task fails to execute please re-try, and just ignore the message that says "Try breaking down the task into smaller steps" as this is not our case, we know it is rate limiting!
 
 ![Start conversation](/static/images/modernizr/2/stage02-06.png)
 
@@ -83,13 +83,13 @@ At some point, Cline will ask for permission to use the DynamoDB MCP Server - th
 
 The DynamoDB specialist will first create a summary file called `dynamodb_requirements.md`. This is like having an architect show you the summary of everything you've discussed before they start drawing the blueprints.
 
-**Important:** Read this file carefully! Sometimes AI can accidentally add requirements that were never discussed, or miss important details. This is your chance to catch any errors before they become part of the final design.
+::alert[ **Important:** Read this file carefully! Sometimes AI can accidentally add requirements that were never discussed, or miss important details. This is your chance to catch any errors before they become part of the final design.]{type="info"}
 
 ![Start conversation](/static/images/modernizr/2/stage02-08.png)
 
 ## Your First Database Design
 
-Once you approve the requirements summary, Cline will create your actual DynamoDB data model. This is exciting - you're seeing your new database structure come to life!
+Once you approve the requirements summary, Cline will create your actual DynamoDB data model. This is exciting - you're seeing your new database structure come to life! Cline has generated the new data model file `artifacts/stage-02/dynamodb_data_model.md` please open it and read it carefully.
 
 ![Start conversation](/static/images/modernizr/2/stage02-09.png)
 

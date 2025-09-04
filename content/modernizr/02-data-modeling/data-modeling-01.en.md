@@ -18,11 +18,11 @@ If the system doesn't automatically advance to task 3.1, manually initiate the n
 Great please continue with task 3.1 available here prompts/02-dynamodb-data-modeling/tasks.md
 ```
 
-## Access Pattern Validation Protocol
+## Access Pattern Validations
 
-Task 3.1 implements a critical validation step that verifies your DynamoDB design supports all identified access patterns from the requirements analysis. This validation process serves as a quality assurance checkpoint, detecting potential AI-generated artifacts that don't correspond to actual system requirements—a common issue in AI-assisted development where models may extrapolate beyond provided specifications.
+Task 3.1 implements a validation step that verifies your DynamoDB design supports all identified access patterns from the requirements analysis. This validation process serves as a quality assurance checkpoint, detecting potential AI-generated artifacts that don't correspond to actual system requirements—a common issue in AI-assisted development where models may extrapolate beyond provided specifications.
 
-Following validation, you'll receive a comprehensive table-by-table analysis of your data model. Before proceeding, review the generated design document at `artifacts/stage-02/dynamodb_data_model.md` to understand the proposed architecture.
+Following validation, you'll receive a table-by-table analysis of your data model. Before proceeding, review the generated design document at `artifacts/stage-02/dynamodb_data_model.md` to understand the proposed architecture.
 
 ::alert[Pro-TIP! for an easier visualization right click on the file and select open preview]{type="info"}
 ::alert[Given the non-deterministic nature of GenAI the data model might be different for everyone that is running this workshop. Some of them might have gotten a single table design and other closer to normalization (basically SQL in NoSQL which we don't want). ]{type="warning"}
@@ -31,11 +31,13 @@ Following validation, you'll receive a comprehensive table-by-table analysis of 
 
 Rather than following prescriptive instructions, focus on understanding the core data modeling concepts underlying your e-commerce application. Analyzing entity relationships and data dependencies is fundamental to creating an effective NoSQL design that supports all required access patterns.
 
+This picture is an Entity Relationship Mapping that will help you understand in detail what it needs to be modeled. 
+
 ![Start conversation](/static/images/modernizr/2/stage02-10.png)
 
 ## Entity Relationship Mapping
 
-The e-commerce application exhibits several key one-to-many relationships that inform the DynamoDB design strategy:
+The e-commerce application presents several one-to-many relationships that inform the DynamoDB design strategy:
 
 ### Primary Relationship Patterns:
 

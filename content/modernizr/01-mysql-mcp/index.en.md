@@ -5,6 +5,8 @@ weight: 30
 chapter: true
 ---
 
+::alert[In this workshop this stage has already been completed for you. Please review the artifacts available on `/artifacts/stage-01` ]{type="info"}
+
 ## Comprehensive MySQL Database Analysis
 
 Stage 1 establishes the foundation for your modernization project by conducting a systematic analysis of your existing MySQL database. This phase involves using specialized AI tools to automatically discover and document your current data architecture, relationships, and usage patterns.

@@ -19,7 +19,6 @@ This phase represents your application's current operational state, serving as t
 - **Risk Level**: Minimal - no changes to existing data operations
 - **Validation Focus**: Confirm abstraction layer doesn't introduce performance overhead
 
-**Operational Considerations:**
 During this phase, implement comprehensive monitoring to establish baseline performance metrics. These measurements become reference points for evaluating the success of subsequent migration phases. Monitor response times, throughput rates, error frequencies, and resource utilization patterns to create a complete performance profile of your current system.
 
 The abstraction layer validation ensures that the additional software layer doesn't negatively impact application performance or introduce unexpected behavior changes. This phase provides confidence that your migration infrastructure is solid before introducing DynamoDB operations.
@@ -34,7 +33,6 @@ This phase introduces DynamoDB writes while maintaining MySQL as the exclusive r
 - **Performance Testing**: Evaluate DynamoDB write performance under real traffic patterns  
 - **Error Detection**: Identify and resolve integration issues without user impact
 
-**Implementation Strategy:**
 Configure your dual database abstraction layer to write to both MySQL and DynamoDB simultaneously while routing all read operations to MySQL. Implement comprehensive logging to track any discrepancies between successful MySQL writes and failed DynamoDB operations. This logging provides debugging information for resolving integration issues.
 
 **Parallel Data Migration Process:**
@@ -52,7 +50,6 @@ This phase expands functionality to include reads from both databases while main
 - **Consistency Checking**: System compares responses and logs discrepancies
 - **Fallback Logic**: Any DynamoDB errors automatically fall back to MySQL results
 
-**Performance Analysis:**
 This phase provides the first opportunity to compare query performance between MySQL and DynamoDB under real traffic conditions. Monitor response times, throughput capabilities, and resource utilization for both systems. These metrics inform capacity planning decisions and help identify optimization opportunities.
 
 **Data Consistency Validation:**
@@ -61,7 +58,6 @@ Implement automated comparison logic that validates data consistency between MyS
 - **Timing Issues**: Identify any eventual consistency issues in DynamoDB reads
 - **Query Logic Equivalence**: Verify that DynamoDB queries return functionally equivalent results
 
-**Developer Confidence Building:**
 This phase serves as a critical confidence-building period for development teams. Seeing consistent, accurate results from DynamoDB builds trust in the new system and provides validation that the migration effort is proceeding successfully.
 
 ## Phase 4: DynamoDB Primary with MySQL Fallback (Performance Validation)
@@ -74,17 +70,14 @@ This phase represents a significant milestone: DynamoDB becomes the primary data
 - **Automatic Fallback**: MySQL serves as backup for any DynamoDB failures
 - **Confidence Building**: Validate that DynamoDB can handle production traffic reliably
 
-**Rollback Preparedness:**
 Maintain dual write operations during this phase to ensure MySQL data remains current for potential rollback scenarios. This configuration provides maximum safety while allowing real-world validation of DynamoDB performance and reliability.
 
-**Critical Metrics Monitoring:**
 Focus monitoring efforts on:
 - **Response Time Comparison**: Measure DynamoDB performance against MySQL baseline
 - **Error Rate Analysis**: Track any increase in application errors or timeouts
 - **User Experience Impact**: Monitor user-facing performance metrics and satisfaction indicators
 - **Capacity Utilization**: Ensure DynamoDB capacity settings handle production traffic appropriately
 
-**Performance Optimization:**
 Use real traffic patterns to identify optimization opportunities in your DynamoDB configuration. Adjust capacity settings, optimize query patterns, or refine GSI usage based on actual performance data rather than theoretical projections.
 
 ## Phase 5: DynamoDB Only (Complete Migration)
@@ -97,7 +90,6 @@ The final phase represents complete migration success: DynamoDB handles all data
 - **Feature Parity**: All application functionality works correctly with DynamoDB
 - **Operational Readiness**: Support teams are trained and confident with DynamoDB operations
 
-**Legacy System Decommissioning:**
 Plan careful decommissioning of MySQL infrastructure:
 - **Data Archival**: Preserve historical MySQL data according to compliance requirements
 - **Monitoring Cleanup**: Remove MySQL-specific monitoring and alerting
@@ -110,7 +102,6 @@ Plan careful decommissioning of MySQL infrastructure:
 - **Cost Optimization**: Calculate cost savings from improved resource utilization
 - **Development Velocity**: Assess improvements in development team productivity with modern data access patterns
 
-**Long-term Monitoring:**
 Maintain enhanced monitoring during the initial post-migration period to quickly identify and resolve any issues that emerge in the fully migrated system. This vigilance ensures stable operation and builds confidence in the migration's long-term success.
 
 ## Migration Control Panel 
@@ -121,7 +112,7 @@ To simplify all of this process we created an Admin portal that allows you to co
 
 This process will consist of 3 different actions:
 
-1. Using the `migrationContract.json` generate MySQL views, and use MySQL mcp server to create them. 
+1. Using the `migrationContract.json` generate MySQL views, and use MySQL MCP server to create them. 
 2. Using the DynamoDB MCP server create the respective DynamoDB tables that are specified in the `migrationContract.json`
 3. Create the Glue ETL scripts and run them to move the data from MySQL to DynamoDB using the Data processing MCP server (Glue MCP Server).
 

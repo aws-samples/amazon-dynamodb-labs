@@ -14,7 +14,7 @@ In NoSQL databases like DynamoDB, we have can use "denormalization." This means 
 
 Let's start with the most important piece: **the user**. Think of this as a digital ID card that contains everything we need to know about a person using our application.
 
-We'll use their email address as the main identifier (called PK or Primary Key) because everyone has a unique email. Then we'll add a special tag called "#META" (that's our SK or Sort Key) to indicate this contains all the user's basic information.
+We'll use their email address as the main identifier (called PK or Primary Key) because everyone has a unique email. Then we'll add a special tag called `#META` (that's our SK or Sort Key) to indicate this contains all the user's basic information.
 
 | What We Store | Type of Data | Why We Need It |
 |---------------|--------------|----------------|
@@ -38,7 +38,7 @@ During our transition from the old system to the new one, we need to be able to 
 
 Imagine you're walking through a store with a shopping basket. Each item you pick up gets added to your basket with a note about what it is and how many you want. That's exactly what our shopping cart entity does digitally.
 
-We link each cart item to the person's email (PK) and give each item a special label that starts with "CART#" followed by the product ID (SK).
+We link each cart item to the person's email (PK) and give each item a special label that starts with `CART#` followed by the product ID (SK).
 
 | What We Store | Type of Data | Why We Need It |
 |---------------|--------------|----------------|
@@ -93,37 +93,63 @@ Now it's time to put our design into action! We need to provide all this informa
 
 When you're ready to create this database structure, you'll need to provide your AI assistant (like Cline) with all the details we've discussed. Here's exactly what information to share:
 
-**The Complete Data Model:**
+```shell
+Products table updates
 
-Our table uses a "single table design" with three different types of data (entities) all stored together:
+For simplicity let's have a table with PK = product_id and SK = #META this allow us future expansion if we need to start denormalizing the attributes. (MAKE SURE THE ATTRIBUTE NAME MATCHES WHAT IT SAYS HERE!!)
 
-1. **User Information** - Uses email as the main identifier and "#META" as the sort key
-2. **Shopping Cart Items** - Uses email + "CART#" + product ID  
-3. **Order Records** - Uses email + "ORDER#" + date + order ID
+| Attribute | Type | Purpose |
+|-----------|------|---------|
+| PK | String | product_id |
+| SK | String | #META |
+| product_id | String | product_id |
+| seller_id | String | Seller identifier |
+| category_id | String | Category identifier |
+| category_path | String | Full category hierarchy |
+| product_name | String | Product title |
+| description | String | Product description |
+| price | Number | Current price |
+| inventory_quantity | Number | Available quantity |
+| image_url | String | Image URL |
+| search_terms | String | Searchable text |
+| created_at | String | ISO timestamp |
+| updated_at | String | ISO timestamp |
+| status | String | active/inactive |
 
-**Example of Real User Data:**
+{
+ "PK": "6",
+ "SK": "#META",
+ "category_id": "11",
+ "category_path": "Tools",
+ "created_at": "2025-08-14 21:16:07",
+ "description": "20V MAX cordless drill with 2 batteries, charger, and carrying case. 1/2-inch chuck, LED light, and 15 clutch settings.",
+ "GSI1PK": "11",
+ "GSI1SK": "Cordless Drill Kit",
+ "GSI2PK": "1",
+ "GSI2SK": "Cordless Drill Kit",
+ "id": 6,
+ "image_url": "https://images.unsplash.com/photo-1504148455328-c376907d081c?w=600&h=600&fit=crop&auto=format",
+ "inventory_quantity": 19,
+ "price": 129.99,
+ "product_name": "Cordless Drill Kit",
+ "seller_id": "1",
+ "updated_at": "2025-08-17T15:05:47.840Z"
+}
+
+We will add two indexes, that are possible future hot partitions, but with the numbers that we have discussed so far, this will be fine for this design. 
+
+**GSI-1: Category Products (Potential Hot Partition)**
+- PK: GSI1PK = category_id, SK: GSI1SK = category_id
+- Projection: ALL
+- Purpose: Category-based browsing 
+- **Warning:** Monitor for hot partitions with popular categories
+
+**GSI-2: Seller Products (Potential Hot Partition)**
+- PK: GSI2PK = seller_id, SK: GSI2SK = seller_id
+- Projection: ALL
+- Purpose: Seller product management
+- **Warning:** Monitor for hot partitions with high-volume sellers
 ```
-Email: seller1@example.com
-Type: #META (user information)
-Username: seller1
-First Name: John
-Last Name: Seller
-Is Seller: Yes
-```
-
-**Example of Real Order Data:**
-```
-Email: user@email.com
-Type: ORDER#2025-08-17T15:05:45.964Z#1755443145964
-Items: Laptop ($1999.99), Novel ($12.99), Drill Kit ($129.99)
-Total: $2142.97
-Status: Completed
-```
-
-**Important Search Methods (GSIs):**
-- **GSI-1**: Find users by their old ID numbers (needed during migration)
-- **GSI-2**: Find users by username (needed during migration)  
-- **GSI-3**: Find orders by order number (always needed)
 
 ![User entitiy modifcation](/static/images/modernizr/2/stage02-11.png)
 

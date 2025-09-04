@@ -14,8 +14,6 @@ The system will use the DynamoDB MCP server to automatically create tables based
 
 ## Understanding DynamoDB Table Creation
 
-### What Gets Created
-
 The automation process will create three main tables based on your migration contract:
 
 - **Users Table**: With partition key (PK), sort key (SK), and the GSIs (Global Secondary Indexes) you designed in Stage 2
@@ -57,9 +55,7 @@ The "CREATING" status means AWS is:
 
 This process usually takes 1-3 minutes per table, depending on the complexity of your GSI configuration.
 
-## Verifying Your Tables
-
-### Step 4: Check the AWS Console
+### Step 4: Verifying Your Tables
 
 Once all tables show as created, verify them in the AWS DynamoDB console. You should see your three tables: `Users`, `Products`, and `Categories`.
 
@@ -71,14 +67,6 @@ For each table, check:
 - **GSIs**: All indexes are listed and active
 - **Item Count**: Should be 0 (empty tables ready for data)
 
-### Step 5: Understanding Empty Tables
-
 The tables are intentionally empty at this stage - they're like empty warehouses ready to receive inventory. The actual data will come from the ETL process in the next steps.
-
-Each table is now configured with:
-- **Correct Structure**: Ready to receive data in the exact format your MySQL views produce
-- **Proper Indexes**: Set up to support all the query patterns from your migration contract  
-- **Performance Settings**: Configured with appropriate capacity for your data migration
-- **Security**: Proper permissions for the Glue ETL jobs to write data
 
 With your DynamoDB tables successfully created and active, you're ready to move to the next phase: configuring and running the ETL jobs that will actually move your data from MySQL to DynamoDB.

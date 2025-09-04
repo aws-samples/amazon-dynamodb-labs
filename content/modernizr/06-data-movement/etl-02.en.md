@@ -23,9 +23,7 @@ MySQL views are like virtual tables that show data from your real tables in a di
 
 The views act like a "dress rehearsal" for your migration - you can see the final result without actually changing anything in your production database.
 
-## Running the View Generation Process
-
-### Step 1: Execute the Migration Tasks
+### Step 1: Running the View Generation Process
 
 Run the following command to start the automated view creation process:
 
@@ -55,8 +53,6 @@ The system creates one view at a time, allowing you to:
 - **Review the SQL**: See exactly how each view combines and transforms your data
 - **Understand the Logic**: Learn how relational data becomes NoSQL items
 - **Catch Issues Early**: Spot problems with the transformation logic before migration
-
-## Validating Your Views
 
 ### Step 4: Test the Generated Views
 

@@ -6,52 +6,29 @@ weight: 35
 chapter: false
 ---
 
-## Accessing Your Migration Control Center
-
 Now that your data has been successfully migrated to DynamoDB, it's time to access the admin portal that controls your feature flag system from Stage 5. Think of this as getting the keys to your spaceship's control panel - you need special administrator access to safely control the migration between databases.
 
 The admin portal is where you'll manage the transition from MySQL-only operation to DynamoDB-only operation through the 5 migration phases you learned about in Stage 5.
-
-## Understanding Super Admin Access
 
 ### What Is Super Admin Access?
 
 The migration control system is too powerful to let just anyone access it. Imagine if any employee could decide to switch your entire company's database system on a whim! That's why the system requires "super admin" privileges.
 
-In your user database, there's a special field called `super_admin` that acts like a VIP pass. When this field is set to `1` (true) for a user, it means they have permission to:
+In your user database, there's a special field called `super_admin` that acts like a VIP pass. When this field is set to `1` (true) for a user, it means they have permission to: View the hidden migration control panel, switch between migration phases, control individual feature flags, monitor the dual-database validation system and make critical decisions about your database migration.
 
-- View the hidden migration control panel
-- Switch between migration phases
-- Control individual feature flags
-- Monitor the dual-database validation system
-- Make critical decisions about your database migration
-
-### The Missing Field Problem
-
-There's a small issue we need to fix first. During the data modeling process in Stage 2, the `super_admin` field wasn't included in the migration contract. This means:
-
-- The MySQL views don't include this field
-- The DynamoDB tables don't have this attribute
-- No users currently have admin access to the migration panel
-
-We need to manually add this field to both databases so you can access the control panel.
+There's a small issue we need to fix first. During the data modeling process in Stage 2, the `super_admin` field wasn't included in the migration contract. This means the MySQL views don't include this field and the DynamoDB tables don't have this attribute. In other words no users currently have admin access to the migration panel, we need to manually add this field to both databases so you can access the control panel.
 
 ## Setting Up Admin Access
 
 ### Step 1: Update MySQL Database
 
-First, we'll give the `admin` user super admin privileges in the MySQL database:
+First, we'll give the `admin` user super admin privileges in the MySQL database, using the MySQL MCP Server:
 
 ```shell
 Could you please use the MySQL MCP server to update the `admin` user from the Users table and set the attribute `super_admin` to 1?
 ```
 
 ![Migration control panel](/static/images/modernizr/6/stage06-23.png)
-
-This command tells Cline to:
-- Find the user named `admin` in the MySQL Users table
-- Add or update the `super_admin` field
-- Set the value to `1` (which means "true" in database terms)
 
 The MCP server will first retrieve the user information, then apply the update.
 
@@ -78,11 +55,7 @@ You might wonder why we need to update both databases. Remember, your applicatio
 
 ### Step 3: Navigate to the Admin Portal
 
-Once both database updates are complete, you can access the hidden admin portal at:
-
-```
-/store/admin/migration-control
-```
+Once both database updates are complete, you can access the hidden admin portal at `[your-url]/store/admin/migration-control`
 
 This URL isn't linked anywhere in your normal application - it's a hidden page that only super administrators know about.
 
@@ -106,9 +79,7 @@ Once you're in the admin portal, you'll see the migration control interface with
 - **Monitor Validation**: Check how well the dual-database system is working
 - **Control Individual Flags**: Fine-tune the feature flags for testing
 
-## Your First Migration Step
-
-### Enable Dual Writes (Phase 2)
+## Your First Modernization Step
 
 Now that you have access to the control panel, you can take your first step in the controlled migration process. Click the button to enable "Phase 2: Dual Write + MySQL Read".
 

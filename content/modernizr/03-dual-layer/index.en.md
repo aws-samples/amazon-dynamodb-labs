@@ -4,6 +4,7 @@ date: 2025-09-02T15:41:04-05:00
 weight: 30
 chapter: true
 ---
+::alert[In this workshop this stage has already been completed for you. Please review the artifacts available on `/artifacts/stage-03` ]{type="info"}
 
 ## Implementing Database Abstraction for Zero-Downtime Migration
 
@@ -12,8 +13,6 @@ Stage 3 introduces a database abstraction layer that enables your application to
 The abstraction layer functions as an intelligent data access facade that routes queries to appropriate databases based on configurable migration phases. This architecture pattern enables controlled, incremental migration while maintaining full application functionality throughout the transition process.
 
 ## Abstraction Layer Architecture
-
-### Repository Pattern Implementation
 
 The dual database system implements the [Repository Pattern](https://martinfowler.com/eaaCatalog/repository.html), a well-established software design pattern that encapsulates data access logic behind a consistent interface. This approach provides:
 

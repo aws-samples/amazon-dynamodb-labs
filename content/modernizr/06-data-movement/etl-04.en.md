@@ -43,21 +43,19 @@ You'll see Cline creating files with names like:
 - `product_migration.py` - Handles migrating product data  
 - `categories_migration.py` - Handles migrating category data
 
-### Step 2: Upload Scripts to Cloud Storage
+### Step 2: Upload Supporting Files
 
 Once the Python scripts are created, they need to be stored in Amazon S3 (cloud storage) where Glue can access them. This is like putting your moving instructions in a place where all the moving trucks can read them.
 
 ![Migration control panel](/static/images/modernizr/6/stage06-15.png)
 
-The system will upload each script file to S3, making sure they're in the right location with the correct permissions for Glue to use them.
-
-### Step 3: Upload Supporting Files
-
-The process also uploads any supporting files the jobs might need, such as configuration files or utility libraries. This ensures the jobs have everything they need to run successfully.
+The system will upload each script file to S3, making sure they're in the right location with the correct permissions for Glue to use them. The process also uploads any supporting files the jobs might need, such as configuration files or utility libraries. This ensures the jobs have everything they need to run successfully.
 
 ![Migration control panel](/static/images/modernizr/6/stage06-16.png)
 
-### Step 4: Create the Glue Jobs
+Please notice the workflow needs to run this process 3 times, once for each table. 
+
+### Step 3: Create the Glue Jobs
 
 Finally, the system creates the actual Glue jobs in AWS. Each job is configured with:
 
@@ -71,9 +69,7 @@ Finally, the system creates the actual Glue jobs in AWS. Each job is configured 
 
 Remember to approve each job creation when Cline asks - this gives you control over the process and lets you review what's being created.
 
-## Verifying Job Creation
-
-### Step 5: Check the AWS Console
+### Step 4: Verifying Job Creation
 
 After all jobs are created, you can see them in the AWS Glue console. They should appear as "Ready" and waiting to be executed.
 
@@ -86,9 +82,7 @@ You'll see three jobs corresponding to your three tables:
 
 Each job is like a loaded moving truck, ready to start the migration when you give the signal.
 
-## Running the Migration
-
-### Step 6: Start the Data Migration
+### Step 5: Start the Data Migration
 
 You have complete control over when to start the actual data migration. For this workshop, we'll start the migration immediately while your application is still using MySQL (Phase 1 of your feature flags from Stage 5).
 
@@ -102,7 +96,7 @@ This approach is safe because:
 
 When you approve the job executions, all three jobs will start running simultaneously, each handling its portion of the data migration.
 
-### Step 7: Monitor Progress
+### Step 6: Monitor Progress
 
 Once the jobs start, you can watch their progress in the AWS Glue console. You'll see real-time information about:
 
@@ -115,7 +109,7 @@ Once the jobs start, you can watch their progress in the AWS Glue console. You'l
 
 The jobs will process your data in parallel, which means the migration completes faster than if you moved each table one at a time.
 
-### Step 8: Completion Confirmation
+### Step 7: Completion Confirmation
 
 When all jobs finish successfully, the system will notify you that the migration is complete.
 
@@ -129,7 +123,7 @@ This completion message means:
 
 ## Validating the Migration
 
-### Step 9: Verify Your Data
+### Step 8: Verify Your Data
 
 The final step is to check that your data actually made it to DynamoDB. Go to the AWS DynamoDB console and look at your tables - they should now contain data.
 

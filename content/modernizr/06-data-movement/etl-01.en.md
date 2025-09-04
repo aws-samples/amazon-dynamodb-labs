@@ -39,15 +39,15 @@ Find the connection named `mysql-modernizr-connection`, select it, and click **E
 
 Retrieve the database password from the file `tools/config.json` (it should be around line 16). Enter this password in the connection configuration and click **Save**.
 
-![Migration control panel](/static/images/modernizr/6/stage06-04.png)
-
 This password allows Glue to authenticate with your MySQL database. Without it, the ETL process can't access your data.
-
-## Testing the Connection
 
 ### Step 4: Verify Connectivity
 
-Once the connection status shows "Ready", select the connection and click **Actions**, then **Test Connection**. This starts a connectivity validation process that typically takes about 1 minute.
+Once the connection status shows "Ready", select the connection and click **Actions**, then **Test Connection**. 
+
+![Migration control panel](/static/images/modernizr/6/stage06-04.png)
+
+This starts a connectivity validation process that typically takes about 1 minute.
 
 ![Migration control panel](/static/images/modernizr/6/stage06-05.png)
 

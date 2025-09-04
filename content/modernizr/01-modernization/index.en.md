@@ -105,7 +105,7 @@ Explore the application functionality to understand the data access patterns tha
 
 **Admin Access:** Use the administrative account (username: `admin`, password: `0137183966133de0ace3d7e65e025d12`) to access extended functionality
 
-**E-commerce Operations:** Navigate through product browsing, cart management, and checkout processes
+**E-commerce Operations:** Navigate through product browsing, cart management, and checkout processes. We have two simulated payment methods, paypal and credit card, both will auto-approve any order!
 
 Pay close attention to the backend terminal output as you interact with the application. Each user action generates specific database queries that represent the access patterns you'll need to replicate in your DynamoDB implementation.
 

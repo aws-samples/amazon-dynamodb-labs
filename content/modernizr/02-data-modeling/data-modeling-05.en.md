@@ -8,7 +8,7 @@ chapter: false
 
 ## Initiating the Design Refinement Process
 
-At this stage, you'll execute the most critical phase of the data modeling process: iterative design refinement. This process transforms your initial conceptual model into a production-ready DynamoDB schema that efficiently supports all identified access patterns.
+At this stage, you'll execute the most critical phase of the data modeling process: iterative design refinement. This process transforms your initial conceptual model into a DynamoDB schema that efficiently supports all identified access patterns.
 
 ```shell
 Great! Now it is time to mark as completed task 3.2 and proceed with the next one as listed here `prompts/02-dynamodb-data-modeling/tasks.md`
@@ -35,7 +35,7 @@ This iterative approach reflects industry best practices where database designs 
 
 ## Design Validation Checkpoints
 
-As the system progresses through task 3.3, verify that the final design adheres to established naming conventions and structural standards. Specifically, ensure no entity prefixes are applied to primary key values such as `PROD_<product_id>` or `USER_<user_id>` or `USER_<email>`. These prefixes, while common in relational databases, are unnecessary in DynamoDB and can complicate query operations.
+As the system progresses through task 3.3, verify that the final design adheres to established naming conventions and structural standards. Specifically, ensure no entity prefixes are applied to primary key values such as `PROD_<product_id>` or `USER_<user_id>` or `USER_<email>`.
 
 The validation process serves as quality assurance, catching potential issues before they propagate to subsequent implementation phases. Investing time in thorough validation at this stage prevents costly rework during later development phases.
 

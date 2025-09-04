@@ -7,9 +7,7 @@ chapter: true
 
 ## Development Environment Setup
 
-Before beginning the modernization process, you need to configure your development environment. You'll be working with Visual Studio Code Web running on a pre-configured EC2 instance that includes all necessary AWS permissions and tooling for this workshop.
-
-This cloud-based development environment provides immediate access to AWS services and the specialized MCP servers required for the modernization workflow, eliminating the need for local environment configuration.
+Before beginning the modernization process, you need to configure your development environment. You'll be working with Visual Studio Code Web running on a pre-configured EC2 instance that includes all necessary AWS permissions and tooling for this workshop. This cloud-based development environment provides immediate access to AWS services and the specialized MCP servers required for the modernization workflow, eliminating the need for local environment configuration.
 
 ## Step 1: Accessing Your Development Environment
 
@@ -17,11 +15,11 @@ Navigate to the workshop studio page and access the "Outputs" tab to retrieve yo
 
 ![Workshop studio tab](/static/images/modernizr/0/setup-01.png)
 
-Locate these two critical values:
+Locate these two important values:
 - **VSCodeServerPassword** - Authentication credential for your VS Code instance
 - **VSCodeServerURL** - Direct endpoint to your cloud-based IDE
 
-Click the VSCodeServerURL to launch your development environment. Enter the password when prompted and allow approximately 60 seconds for the environment to initialize. Any startup notifications can be safely dismissed.
+Click the `VSCodeServerURL` to launch your development environment. Enter the password when prompted and allow approximately 60 seconds for the environment to initialize. Any startup notifications can be safely dismissed.
 
 ## Step 2: Configuring the Cline AI Agent
 
@@ -45,6 +43,10 @@ Apply the following configuration parameters:
 Confirm the settings and initialize the connection:
 
 ![Cline plugin config](/static/images/modernizr/0/setup-04.png)
+
+
+::alert[You are working in a lab environment, the foundational models have configured rate limiting, it is highly likely during the workshop you will get throttled and you will have to retry the operations. You have 4 request per minute using Claude 4 and 6 request per minute using Claude 3.7.]{type="info"}
+
 
 ## Step 4: Validating the Integration
 
@@ -83,7 +85,7 @@ Access the MCP server management interface (stacked server icon) to confirm all 
 
 Test the MCP server functionality by querying existing DynamoDB resources:
 
-```
+```shell
 Please show me the DynamoDB tables that I have in this region
 ```
 

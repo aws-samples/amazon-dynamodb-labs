@@ -10,7 +10,7 @@ chapter: false
 
 The Migration Contract represents the culmination of all previous analysis and design work. This JSON artifact serves as the definitive mapping specification that translates your existing MySQL schema into the optimized DynamoDB structure. Think of it as a detailed transformation blueprint that precisely defines how each piece of data moves from the relational model to the NoSQL implementation.
 
-The contract encapsulates critical information including source table mappings, data transformation logic, attribute conversions, and relationship restructuring. Every subsequent stage of the modernization workflow depends on this contract, making its accuracy paramount to project success.
+The contract encapsulates important information including source table mappings, data transformation logic, attribute conversions, and relationship restructuring. Every subsequent stage of the modernization workflow depends on this contract, making its accuracy paramount to project success.
 
 ## Initiating Contract Generation
 
@@ -22,7 +22,7 @@ Thanks. Please mark tasks 3 as completed, and continue with the task 4.1 `prompt
 
 ## Understanding Contract Architecture
 
-The Migration Contract implements a sophisticated transformation engine that supports multiple data conversion patterns. The system includes built-in validation guardrails that ensure the generated JSON adheres to strict specification requirements, preventing arbitrary or invalid transformations.
+The Migration Contract implements a transformation engine that supports multiple data conversion patterns. The system includes built-in validation guardrails that ensure the generated JSON adheres to strict specification requirements, preventing arbitrary or invalid transformations.
 
 Explore the `contracts` folder to understand the supported transformation patterns, validation rules, and architectural constraints. This reference documentation provides comprehensive details on how the contract functions as both a specification document and an execution engine for the data migration process.
 
@@ -63,15 +63,13 @@ Thoroughly review the generated `migrationContract.json` for:
 - **Data Type Mapping**: Confirm MySQL data types are correctly mapped to DynamoDB equivalents
 - **Relationship Preservation**: Validate that entity relationships are properly represented in the NoSQL structure
 
-## Backup and Recovery Strategy
+## Workshop consistency for next steps
 
-Given the critical nature of this artifact, the workshop provides a verified migration contract as a fallback option. This ensures project continuity even if the AI-generated contract contains errors.
+Given the critical nature of this artifact, this workshop provides a verified migration contract as a fallback option. This ensures project continuity even if the AI-generated contract contains errors.
 
-### Recovery Process
+To continue with this worksohp please:
 
-If your generated contract contains significant issues:
-
-1. Rename your current `artifacts/stage-02` folder to `artifacts/stage-02-workshop`
+1. Rename your current `artifacts/stage-02` folder to `artifacts/stage-02-backup`
 2. Copy the `core-outputs/stage-02` folder to the `artifacts` directory
 3. Compare the provided artifacts with your generated versions to identify differences
 4. Use the comparison analysis to improve future contract generation sessions
