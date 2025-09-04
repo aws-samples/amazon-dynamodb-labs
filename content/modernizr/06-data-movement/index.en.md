@@ -1,5 +1,5 @@
 ---
-title: "Stage 7: Data movement"
+title: "Stage 6 and 7: Infra and Data movement"
 date: 2025-09-02T15:41:04-05:00
 weight: 30
 chapter: true
@@ -20,7 +20,7 @@ This phase represents your application's current operational state, serving as t
 - **Validation Focus**: Confirm abstraction layer doesn't introduce performance overhead
 
 **Operational Considerations:**
-During this phase, implement comprehensive monitoring to establish baseline performance metrics. These measurements become critical reference points for evaluating the success of subsequent migration phases. Monitor response times, throughput rates, error frequencies, and resource utilization patterns to create a complete performance profile of your current system.
+During this phase, implement comprehensive monitoring to establish baseline performance metrics. These measurements become reference points for evaluating the success of subsequent migration phases. Monitor response times, throughput rates, error frequencies, and resource utilization patterns to create a complete performance profile of your current system.
 
 The abstraction layer validation ensures that the additional software layer doesn't negatively impact application performance or introduce unexpected behavior changes. This phase provides confidence that your migration infrastructure is solid before introducing DynamoDB operations.
 
@@ -35,10 +35,10 @@ This phase introduces DynamoDB writes while maintaining MySQL as the exclusive r
 - **Error Detection**: Identify and resolve integration issues without user impact
 
 **Implementation Strategy:**
-Configure your dual database abstraction layer to write to both MySQL and DynamoDB simultaneously while routing all read operations to MySQL. Implement comprehensive logging to track any discrepancies between successful MySQL writes and failed DynamoDB operations. This logging provides crucial debugging information for resolving integration issues.
+Configure your dual database abstraction layer to write to both MySQL and DynamoDB simultaneously while routing all read operations to MySQL. Implement comprehensive logging to track any discrepancies between successful MySQL writes and failed DynamoDB operations. This logging provides debugging information for resolving integration issues.
 
 **Parallel Data Migration Process:**
-While shadow mode operates, execute a comprehensive ETL (Extract, Transform, Load) process to migrate existing MySQL data to DynamoDB. This bulk migration uses your migration contract specifications to transform historical data according to your new NoSQL data model. The ETL process should validate data integrity and provide detailed reports on migration success rates and any encountered issues.
+While shadow mode operates, execute a ETL (Extract, Transform, Load) process to migrate existing MySQL data to DynamoDB. This bulk migration uses your migration contract specifications to transform historical data according to your new NoSQL data model. The ETL process should validate data integrity and provide detailed reports on migration success rates and any encountered issues.
 
 Monitor dual write success rates carefully, aiming for near-perfect parity between MySQL and DynamoDB write operations. Any persistent discrepancies indicate issues with your migration contract implementation or DynamoDB integration that must be resolved before proceeding.
 
@@ -117,4 +117,12 @@ Maintain enhanced monitoring during the initial post-migration period to quickly
 
 To simplify all of this process we created an Admin portal that allows you to control the migration phases using feature flags.
 
-![Migration control panel](/static/images/modernizr/7/stage07-01.png)
+![Migration control panel](/static/images/modernizr/6/stage06-01.png)
+
+This process will consist of 3 different actions:
+
+1. Using the `migrationContract.json` generate MySQL views, and use MySQL mcp server to create them. 
+2. Using the DynamoDB MCP server create the respective DynamoDB tables that are specified in the `migrationContract.json`
+3. Create the Glue ETL scripts and run them to move the data from MySQL to DynamoDB using the Data processing MCP server (Glue MCP Server).
+
+
