@@ -22,7 +22,7 @@ The e-commerce application follows a standard three-tier architecture:
 2. **Frontend Application** - React-based user interface for customer interactions
 3. **MySQL Database** - Relational database storing all application data
 
-You'll need to start both the backend and frontend services to establish a baseline for analysis.
+While your application environment is already preconfigured, you'll still need to start both the backend and frontend services to establish a baseline for analysis.
 
 ### Initializing the Backend Service
 

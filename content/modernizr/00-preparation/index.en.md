@@ -53,7 +53,7 @@ Confirm the settings and initialize the connection:
 
 ## Step 4: Validating the Integration
 
-Verify the Bedrock connection is functioning correctly by sending the below test prompt to Cline. If you encounter an error asking you to please wait before trying again, press "proceed anyway" to retry the request.
+Verify the Bedrock connection is functioning correctly by sending the below test prompt to Cline. If you are throttled, press "proceed anyway" to retry the request.
 
 ```terminal
 Hello and Welcome to this modernization project, can you confirm you can read and list all the files in the workspace?
