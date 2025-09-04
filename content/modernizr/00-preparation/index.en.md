@@ -17,9 +17,9 @@ Navigate to the workshop studio page and access the "Outputs" tab to retrieve yo
 
 Locate these two important values:
 - **VSCodeServerPassword** - Authentication credential for your VS Code instance
-- **VSCodeServerURL** - Direct endpoint to your cloud-based IDE
+- **VSCodeServerURLModernizr** - Direct endpoint to your cloud-based IDE
 
-Click the `VSCodeServerURL` to launch your development environment. Enter the password when prompted and allow approximately 60 seconds for the environment to initialize. Any startup notifications can be safely dismissed.
+Click the `VSCodeServerURLModernizr` to launch your development environment. Enter the password when prompted and allow approximately 60 seconds for the environment to initialize. Any startup notifications can be safely dismissed.
 
 ## Step 2: Configuring the Cline AI Agent
 
