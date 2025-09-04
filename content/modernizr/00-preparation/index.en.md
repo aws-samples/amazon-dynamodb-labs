@@ -19,6 +19,8 @@ Locate these two important values:
 - **VSCodeServerPassword** - Authentication credential for your VS Code instance
 - **VSCodeServerURLModernizr** - Direct endpoint to your cloud-based IDE
 
+Your values are unique to you and will differ from the above example.
+
 Click the `VSCodeServerURLModernizr` to launch your development environment. Enter the password when prompted and allow approximately 60 seconds for the environment to initialize. Any startup notifications can be safely dismissed.
 
 ## Step 2: Configuring the Cline AI Agent
@@ -36,7 +38,8 @@ Configure Cline to use Amazon Bedrock as its foundation model provider. Select "
 ![Cline plugin API config](/static/images/modernizr/0/setup-03.png)
 
 Apply the following configuration parameters:
-- **Profile**: default 
+- **Authentication**: AWS Profile
+- **Profile**: empty (default)
 - **Region**: us-west-2
 - **Cross region inference**: enabled
 
@@ -50,7 +53,7 @@ Confirm the settings and initialize the connection:
 
 ## Step 4: Validating the Integration
 
-Verify the Bedrock connection is functioning correctly by sending this test prompt to Cline:
+Verify the Bedrock connection is functioning correctly by sending the below test prompt to Cline. If you encounter an error asking you to please wait before trying again, press "proceed anyway" to retry the request.
 
 ```terminal
 Hello and Welcome to this modernization project, can you confirm you can read and list all the files in the workspace?
