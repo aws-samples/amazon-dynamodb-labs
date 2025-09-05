@@ -36,7 +36,7 @@ During our transition from the old system to the new one, we need to be able to 
 
 ## The Shopping Cart Entity - Your Digital Shopping Basket
 
-Imagine you're walking through a store with a shopping basket. Each item you pick up gets added to your basket with a note about what it is and how many you want. That's exactly what our shopping cart entity does digitally.
+Imagine you're walking through a store with a shopping basket. You'll select various quantities of different items to add to your cart. That's exactly what our shopping cart entity does digitally, except instead of a phyical item its a small note representing what is what is being purchased and in what quantity.
 
 We link each cart item to the person's email (PK) and give each item a special label that starts with `CART#` followed by the product ID (SK).
 

@@ -20,7 +20,7 @@ Great please continue with task 3.1 available here prompts/02-dynamodb-data-mode
 
 ## Access Pattern Validations
 
-Task 3.1 implements a validation step that verifies your DynamoDB design supports all identified access patterns from the requirements analysis. This validation process serves as a quality assurance checkpoint, detecting potential AI-generated artifacts that don't correspond to actual system requirements—a common issue in AI-assisted development where models may extrapolate beyond provided specifications.
+Task 3.1 implements a validation step that verifies your DynamoDB design supports all identified access patterns from the requirements analysis. This validation process serves as a quality assurance checkpoint, detecting potential AI-generated artifacts that don't correspond to actual system requirements — a common issue in AI-assisted development where models may extrapolate beyond provided specifications.
 
 Following validation, you'll receive a table-by-table analysis of your data model. Before proceeding, review the generated design document at `artifacts/stage-02/dynamodb_data_model.md` to understand the proposed architecture.
 
@@ -51,11 +51,11 @@ The e-commerce application presents several one-to-many relationships that infor
 
 ## DynamoDB Entity Aggregation Strategy
 
-These relationships reveal natural aggregation opportunities where related entities can be co-located within the same table partition. For instance, user-centric data including profile information, order history, and active cart contents share logical cohesion and similar access patterns.
+These relationships reveal natural aggregation opportunities where related entities can be co-located within the same table partition. For instance, user-centric data including profile information, order history, and active cart contents share logical cohesion and similar access patterns. Generally a good mantra for data modeling in DynamoDB is that "data accessed together should be stored together".
 
 ## Partition Key Design Principles
 
-DynamoDB enables semantic partition key selection that provides both uniqueness guarantees and meaningful data organization. Rather than relying on surrogate keys, you can implement partition keys like `user_email` that enforce natural business constraints while enabling intuitive data access patterns.
+DynamoDB lets you use real business attributes as partition keys instead of generated IDs. For example, using `user_email` as the key ensures each record is unique while also making it easier to organize and query data in ways that match how the application actually uses it.
 
 For additional query flexibility during the migration phase, Global Secondary Indexes (GSI) can provide alternate access paths based on `userID` or `username` attributes without impacting primary table performance.
 
@@ -68,7 +68,7 @@ Example entity co-location for the Users table:
 - **User Order History**: Historical order records associated with the user
 - **Active Cart Items**: Current shopping session state data
 
-This co-location strategy leverages DynamoDB's partition-level consistency and enables efficient retrieval of all user-related information through single query operations.
+This co-location strategy enables efficient retrieval of all user-related information through single query operations, reducing read cost and improving performance.
 
 ## Implementation Considerations
 

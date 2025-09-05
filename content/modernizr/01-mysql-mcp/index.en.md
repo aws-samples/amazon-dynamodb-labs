@@ -11,7 +11,7 @@ chapter: true
 
 Stage 1 establishes the foundation for your modernization project by conducting a systematic analysis of your existing MySQL database. This phase involves using specialized AI tools to automatically discover and document your current data architecture, relationships, and usage patterns.
 
-The analysis process leverages the MySQL MCP Server—a specialized AI assistant designed specifically for relational database analysis. This tool connects directly to your running MySQL instance to extract comprehensive metadata about your database schema, including table structures, relationships, indexes, and constraints.
+The analysis process leverages the MySQL MCP Server — a specialized AI assistant designed specifically for relational database analysis. This tool connects directly to your running MySQL instance to extract comprehensive metadata about your database schema.
 
 ## Key Analysis Components
 
@@ -28,9 +28,9 @@ The MySQL MCP Server performs automated schema discovery by querying the MySQL i
 
 Understanding how your data entities relate to each other is crucial for designing an effective NoSQL structure. The analysis identifies:
 
-- **One-to-Many Relationships**: Parent-child relationships that may benefit from document embedding in DynamoDB
-- **Many-to-Many Relationships**: Complex associations that require careful modeling in NoSQL
-- **Hierarchical Data Patterns**: Nested structures that can be optimized using DynamoDB's flexible schema
+- **One-to-Many Relationships**: Parent-child relationships that may benefit from modeling as DynamoDB item collections
+- **Many-to-Many Relationships**: Associations that require designs such as adjacency lists to model in NoSQL
+- **Hierarchical Data Patterns**: Nested structures that can modeled with composite sort keys
 
 ### Access Pattern Analysis
 
@@ -46,10 +46,10 @@ The MySQL MCP Server generates comprehensive documentation artifacts that serve 
 
 - **Entity Relationship Diagrams**: Visual representations of your current data model
 - **Schema Documentation**: Detailed specifications of all database objects
-- **Access Pattern Catalog**: Systematic documentation of how your application interacts with data
+- **Access Pattern Catalog**: Documentation of how your application interacts with data
 
 ## Setting Up the Analysis Environment
 
 Before beginning the analysis, ensure your MySQL database is accessible and the MCP Server has appropriate permissions to read schema metadata. The analysis process is read-only and does not modify your production data.
 
-This systematic approach to database analysis provides the detailed understanding necessary to design an optimal DynamoDB architecture that preserves all existing functionality while improving performance and scalability.
+Information gathered in this step of database analysis provides the detailed understanding necessary to design an optimal DynamoDB architecture that preserves all existing functionality while improving performance and scalability.

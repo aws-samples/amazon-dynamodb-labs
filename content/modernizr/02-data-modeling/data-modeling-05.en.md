@@ -37,7 +37,7 @@ This iterative approach reflects industry best practices where database designs 
 
 As the system progresses through task 3.3, verify that the final design adheres to established naming conventions and structural standards. Specifically, ensure no entity prefixes are applied to primary key values such as `PROD_<product_id>` or `USER_<user_id>` or `USER_<email>`.
 
-The validation process serves as quality assurance, catching potential issues before they propagate to subsequent implementation phases. Investing time in thorough validation at this stage prevents costly rework during later development phases.
+The validation process serves as quality assurance, catching potential issues before they propagate to subsequent implementation phases. Investing time in thorough validation at this stage prevents costly rework during later development phases as the quality of each stage's output depends on the quality of it's input.
 
 ## Final Schema Verification
 

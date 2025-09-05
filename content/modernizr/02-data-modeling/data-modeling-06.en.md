@@ -43,7 +43,7 @@ During contract generation, monitor for these frequent issues that require manua
 AI systems sometimes deviate from specified naming conventions, creating custom table or attribute names instead of using the standardized schema:
 
 ```bash
-You will need to validate the creation of the migration contract, I see you have defined your own table names, and you didn't used the table names I have provided, same for the GSIs I specifically asked for generic names for the GIS and the PK and SK to avoid issues or hardcoded values. To give you an example in the migration contract artifacts/stage-02/migrationContract.json the first table `UserOrdersCart` should be called `Users`, the partition key should be PK and the sort tkey SK, Please re-read the data_model and update my migration contract
+You will need to validate the creation of the migration contract, I see you have defined your own table names, and you didn't used the table names I have provided, same for the GSIs I specifically asked for generic names for the GIS and the PK and SK to avoid issues or hardcoded values. To give you an example in the migration contract artifacts/stage-02/migrationContract.json the first table `UserOrdersCart` should be called `Users`, the partition key should be PK and the sort key SK, Please re-read the data_model and update my migration contract
 ```
 
 ### Invalid Transformation Methods
@@ -51,7 +51,7 @@ You will need to validate the creation of the migration contract, I see you have
 The system may generate non-existent transformation functions instead of using the supported contract specifications:
 
 ```bash
-I noticed you have a made up transformation called `json-parse` it should be `json-construction` The format of that attribute is a map so you need to use JSON contruction, can you please update that attribute name?  and validate you have no created other made up methods? you need to follow the specifications as directed in the  `contracts` folder
+I noticed you have a made up transformation called `json-parse` it should be `json-construction` The format of that attribute is a map so you need to use JSON contruction, can you please update that attribute name and validate you have no created other made up methods? you need to follow the specifications as directed in the  `contracts` folder
 ```
 
 ## Contract Validation Protocol

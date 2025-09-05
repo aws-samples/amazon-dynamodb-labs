@@ -14,7 +14,7 @@ When your AI assistant (the LLM) first looked at this problem, it came up with a
 
 ## Why Are We Using PK and SK Instead of Just Product ID?
 
-You might wonder why we're not just using `product_id` as our main identifier. The reason is like building a house with room to expand later. By using PK (Primary Key) and SK (Sort Key), we're creating space to add related information about each product in the future without having to rebuild our entire system.
+You might wonder why we're not just using `product_id` as our main identifier. The reason is like building a house with room to expand later. By using PK (Primary Key) and SK (Sort Key), we're creating space to add related information about each product in the future without having to rebuild our entire system. As a side benefit, shorter key names save storage too!
 
 For now, our PK will be the product ID, and our SK will be `#META` (which means "this contains the main product information"). This setup is like having a filing cabinet where each product gets its own folder, and we can add different types of documents to that folder later.
 
