@@ -8,9 +8,9 @@ chapter: true
 
 ## Building the Control System for Your Migration
 
-Stage 5 is where you build the actual control system that lets you safely switch between MySQL and DynamoDB. Think of this as building the cockpit controls for a spaceship - you need precise controls to navigate the transition from your old database system to the new one without crashing anything.
+Stage 5 is where you build the actual control system that lets you safely switch between MySQL and DynamoDB. This provides the precise controls needed to navigate the transition from your old database system to the new one without issues.
 
-This stage takes the dual database abstraction layer from Stage 3 and the DynamoDB connectivity from Stage 4, then adds the **feature flag** API system that gives you complete control over your migration process.
+This stage takes the dual database abstraction layer from Stage 3 and the DynamoDB connectivity from Stage 4, then adds the **feature flag** API system that gives you complete control over your migration process. Feature Flags allow you to easily enable or disable features without the need to modify source code or deploy new software.
 
 ## What You'll Build
 

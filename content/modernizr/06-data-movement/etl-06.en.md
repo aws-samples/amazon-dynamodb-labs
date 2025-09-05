@@ -8,7 +8,7 @@ chapter: false
 
 Now comes the most exciting part - actually testing your migration system with real user actions! You'll see firsthand how the feature flag system controls where data goes, and you'll prove that your migration from MySQL to DynamoDB actually works.
 
-Think of this as taking your newly built spaceship for a test flight - you want to see all the systems working together before you declare the mission successful.
+This is your test flight - you want to see all the systems working together before you declare the mission successful.
 
 ### Monitoring the Migration Process
 
@@ -92,7 +92,7 @@ Finally, check your MySQL user views. You should NOT see the completed order the
 
 ![Migration control panel](/static/images/modernizr/6/stage06-32.png)
 
-This confirms the Phase 5  configuration is working correctly, your application is truly running on DynamoDB, MySQL is no longer part of your active system and the migration is functionally complete.
+This confirms the Phase 5 configuration is working correctly, your application is truly running on DynamoDB, MySQL is no longer part of your active system and the migration is functionally complete.
 
 ## What You've Accomplished
 

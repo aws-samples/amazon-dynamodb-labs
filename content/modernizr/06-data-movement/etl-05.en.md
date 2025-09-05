@@ -6,7 +6,7 @@ weight: 35
 chapter: false
 ---
 
-Now that your data has been successfully migrated to DynamoDB, it's time to access the admin portal that controls your feature flag system from Stage 5. Think of this as getting the keys to your spaceship's control panel - you need special administrator access to safely control the migration between databases.
+Now that your data has been successfully migrated to DynamoDB, it's time to access the admin portal that controls your feature flag system from Stage 5. You need special administrator access to safely control the migration between databases.
 
 The admin portal is where you'll manage the transition from MySQL-only operation to DynamoDB-only operation through the 5 migration phases you learned about in Stage 5.
 

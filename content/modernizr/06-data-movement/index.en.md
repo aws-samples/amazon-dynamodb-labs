@@ -7,7 +7,7 @@ chapter: true
 
 ## Moving the data from MySQL to DynamoDB
 
-At this point, we have created the dual database layer that allows our application to connect to DynamoDB and MySQL, we have configured the connectivity to DynamoDB, and we have refactored the entire application implementing the applicaton access patterns we need to support. What we need to do is to gradually move the data from one database to the other. There are several approaches you can follow in this regards, however we have choosen to use a Dual Write approach, where we will be sending data gradually to the DynamoDB table. This process consists of 5 different stages. 
+At this point, we have created the dual database layer that allows our application to connect to DynamoDB and MySQL, we have configured the connectivity to DynamoDB, and we have refactored the entire application implementing the applicaton access patterns we need to support. Now we need to do is to gradually move the data from one database to the other. There are several approaches you can follow in this regards, however we have choosen to use a Dual Write approach, where we will be sending data gradually to the DynamoDB table. This process consists of 5 different stages. 
 
 ## Phase 1: MySQL Only (Baseline State)
 
@@ -114,6 +114,6 @@ This process will consist of 3 different actions:
 
 1. Using the `migrationContract.json` generate MySQL views, and use MySQL MCP server to create them. 
 2. Using the DynamoDB MCP server create the respective DynamoDB tables that are specified in the `migrationContract.json`
-3. Create the Glue ETL scripts and run them to move the data from MySQL to DynamoDB using the Data processing MCP server (Glue MCP Server).
+3. Create the Glue ETL scripts and run them to move bulk data from MySQL to DynamoDB using the Data processing MCP server (Glue MCP Server).
 
 

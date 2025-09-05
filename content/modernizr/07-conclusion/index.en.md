@@ -64,7 +64,7 @@ Database migrations are among the most critical operations in software developme
 
 While AI tools like `Cline` can generate a lot of code and configurations automatically, you still need to understand the fundamentals to:
 
-- **Validate AI Output**: AI tools sometimes make mistakes or choose suboptimal approaches. You need to understand enough to spot problems and ask better questions.
+- **Validate AI Output**: AI tools can often be a little too "creative" and may make mistakes or choose suboptimal approaches. You need to understand enough to spot problems and ask better questions.
 - **Debug Issues**: When something goes wrong in production (and it will), you need to understand the underlying systems to diagnose and fix problems quickly.
 - **Make Design Decisions**: AI can implement solutions, but you need to decide what problems to solve and what trade-offs to make.
 - **Optimize Performance**: Fine-tuning database performance requires deep understanding of how data flows through your system.
