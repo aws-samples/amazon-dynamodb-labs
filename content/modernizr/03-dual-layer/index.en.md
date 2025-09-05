@@ -10,7 +10,7 @@ chapter: true
 
 Stage 3 introduces a database abstraction layer that enables your application to simultaneously interact with both MySQL and DynamoDB databases. This dual-database approach is essential for achieving zero-downtime migrations by allowing gradual transition from the legacy relational system to the modern NoSQL architecture.
 
-The abstraction layer functions as an intelligent data access facade that routes queries to appropriate databases based on configurable migration phases. This architecture pattern enables controlled, incremental migration while maintaining full application functionality throughout the transition process.
+The abstraction layer functions as an intelligent data access router which directs queries to appropriate databases based on configurable migration phases. This architecture pattern enables controlled, incremental migration while maintaining full application functionality throughout the transition process and the ability to roll-back if any issues are encountered.
 
 ## Abstraction Layer Architecture
 
