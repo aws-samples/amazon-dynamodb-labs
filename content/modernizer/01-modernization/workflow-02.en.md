@@ -14,7 +14,7 @@ Each stage generates "Artifacts" — deliverables that will be used in the futur
 
 Let's start exploring the artifacts available for the first stage `stage-01`. This stage is focused on capturing the data that is available from the source database and application backend logic. We use the MySQL MCP server to understand table structure, constraints and data. Next we use the MySQL query logs to identify the data . Finally, we explore the application logic to capture all the access patterns that we will need to modernize. 
 
-![Artifacts](/static/images/modernizr/1/workflow-artifacts-01.png)
+![Artifacts](/static/images/modernizer/1/workflow-artifacts-01.png)
 
 DynamoDB is all about application the access patterns that we need to support. The secret to DynamoDB data modelling is to store data exactly in the format your application will consume it, structing your data in a way that can be read as efficiently as possible with the smallest number of queries.
 

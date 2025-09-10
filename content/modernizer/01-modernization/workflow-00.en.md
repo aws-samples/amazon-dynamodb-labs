@@ -12,7 +12,7 @@ Think of database modernization like renovating a house while people are still l
 
 Our process consists of seven carefully designed stages, each one building on the previous step. It's like following a recipe — each ingredient needs to be added at the right time and in the right order to get the perfect result.
 
-![Modernization workflow](/static/images/modernizr/1/workflow-base-01.png)
+![Modernization workflow](/static/images/modernizer/1/workflow-base-01.png)
 
 ## Stage 1: Understanding What You Have — Database Detective Work
 

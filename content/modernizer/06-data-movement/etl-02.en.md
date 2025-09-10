@@ -31,7 +31,7 @@ Run the following command to start the automated view creation process:
 Please execute all the tasks listed in this file `prompts/07-data-migration-execution/tasks.md`
 ```
 
-![Migration control panel](/static/images/modernizr/6/stage06-07.png)
+![Migration control panel](/static/images/modernizer/6/stage06-07.png)
 
 This command triggers Cline (the AI assistant) to read your migration contract from Stage 2 and automatically generate the MySQL views based on your data model specifications.
 
@@ -39,7 +39,7 @@ This command triggers Cline (the AI assistant) to read your migration contract f
 
 The system will start by creating an artifacts folder, then reading the `migrationContract.json` file from Stage 2. This process involves multiple rapid file operations that might seem fast, but remember that Cline has rate limits (4 executions per minute), so you may need to be patient or retry if something times out.
 
-![Migration control panel](/static/images/modernizr/6/stage06-08.png)
+![Migration control panel](/static/images/modernizer/6/stage06-08.png)
 
 Each step of the process is automated, but Cline will ask for your approval before executing each task. This safety mechanism ensures you can review what's happening before it makes changes to your database.
 
@@ -47,7 +47,7 @@ Each step of the process is automated, but Cline will ask for your approval befo
 
 As the process runs, Cline will ask for permission to create each MySQL view. You'll see detailed explanations of what each view will do and how it transforms your data.
 
-![Migration control panel](/static/images/modernizr/6/stage06-09.png)
+![Migration control panel](/static/images/modernizer/6/stage06-09.png)
 
 The system creates one view at a time, allowing you to:
 - **Review the SQL**: See exactly how each view combines and transforms your data
@@ -63,7 +63,7 @@ After each view is created, you should manually query it to verify the results. 
 - **Transformations Work**: MySQL data types are properly converted
 - **Relationships are Preserved**: Related data is correctly combined
 
-![Migration control panel](/static/images/modernizr/6/stage06-10.png)
+![Migration control panel](/static/images/modernizer/6/stage06-10.png)
 
 Run queries like:
 ```sql

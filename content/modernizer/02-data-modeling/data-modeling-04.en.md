@@ -170,12 +170,12 @@ GSI1: Category Hierarchy Lookup (Migration Support)
 
 Always remember to check if the input was added in the working log and the instructions were followed.
 
-![Working Log](/static/images/modernizr/2/stage02-17.png)
+![Working Log](/static/images/modernizer/2/stage02-17.png)
 
 Make sure that everything that is not needed, such other tables that might have been suggested before are not longer there, we don't need to send noise when we will re-generate the data model. 
 
-![Working Log](/static/images/modernizr/2/stage02-18.png)
+![Working Log](/static/images/modernizer/2/stage02-18.png)
 
 At this point `Cline` should tell you the summary of the work, and that it has effectively created a 3 table architecture. 
 
-![Working Log](/static/images/modernizr/2/stage02-19.png)
+![Working Log](/static/images/modernizer/2/stage02-19.png)

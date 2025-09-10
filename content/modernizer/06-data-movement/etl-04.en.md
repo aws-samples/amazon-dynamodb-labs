@@ -36,7 +36,7 @@ The automation process will create specialized Python scripts for each of your t
 - Write the data to the correct DynamoDB tables
 - Handle any errors or data quality issues
 
-![Migration control panel](/static/images/modernizr/6/stage06-14.png)
+![Migration control panel](/static/images/modernizer/6/stage06-14.png)
 
 You'll see Cline creating files with names like:
 - `users_migration.py` - Handles migrating user data
@@ -47,11 +47,11 @@ You'll see Cline creating files with names like:
 
 Once the Python scripts are created, they need to be stored in Amazon S3 (cloud storage) where Glue can access them. This is like putting your moving instructions in a place where all the moving trucks can read them.
 
-![Migration control panel](/static/images/modernizr/6/stage06-15.png)
+![Migration control panel](/static/images/modernizer/6/stage06-15.png)
 
 The system will upload each script file to S3, making sure they're in the right location with the correct permissions for Glue to use them. The process also uploads any supporting files the jobs might need, such as configuration files or utility libraries. This ensures the jobs have everything they need to run successfully.
 
-![Migration control panel](/static/images/modernizr/6/stage06-16.png)
+![Migration control panel](/static/images/modernizer/6/stage06-16.png)
 
 Please notice the workflow needs to run this process 3 times, once for each table. 
 
@@ -65,7 +65,7 @@ Finally, the system creates the actual Glue jobs in AWS. Each job is configured 
 - **Resource Allocation**: How much computing power to use
 - **Error Handling**: What to do if something goes wrong
 
-![Migration control panel](/static/images/modernizr/6/stage06-17.png)
+![Migration control panel](/static/images/modernizer/6/stage06-17.png)
 
 Remember to approve each job creation when Cline asks - this gives you control over the process and lets you review what's being created.
 
@@ -73,7 +73,7 @@ Remember to approve each job creation when Cline asks - this gives you control o
 
 After all jobs are created, you can see them in the AWS Glue console. They should appear as "Ready" and waiting to be executed.
 
-![Migration control panel](/static/images/modernizr/6/stage06-18.png)
+![Migration control panel](/static/images/modernizer/6/stage06-18.png)
 
 You'll see three jobs corresponding to your three tables:
 - **Users ETL Job**: Ready to migrate user data
@@ -92,7 +92,7 @@ This approach is safe because:
 - You can validate the DynamoDB data before switching over
 - If anything goes wrong, your application is unaffected
 
-![Migration control panel](/static/images/modernizr/6/stage06-19.png)
+![Migration control panel](/static/images/modernizer/6/stage06-19.png)
 
 When you approve the job executions, all three jobs will start running simultaneously, each handling its portion of the data migration.
 
@@ -105,7 +105,7 @@ Once the jobs start, you can watch their progress in the AWS Glue console. You'l
 - **Processing Speed**: How fast the migration is progressing
 - **Error Count**: Any issues that need attention
 
-![Migration control panel](/static/images/modernizr/6/stage06-20.png)
+![Migration control panel](/static/images/modernizer/6/stage06-20.png)
 
 The jobs will process your data in parallel, which means the migration completes faster than if you moved each table one at a time.
 
@@ -113,7 +113,7 @@ The jobs will process your data in parallel, which means the migration completes
 
 When all jobs finish successfully, the system will notify you that the migration is complete.
 
-![Migration control panel](/static/images/modernizr/6/stage06-21.png)
+![Migration control panel](/static/images/modernizer/6/stage06-21.png)
 
 This completion message means:
 - All your MySQL data has been successfully transformed
@@ -127,7 +127,7 @@ This completion message means:
 
 The final step is to check that your data actually made it to DynamoDB. Go to the AWS DynamoDB console and look at your tables - they should now contain data.
 
-![Migration control panel](/static/images/modernizr/6/stage06-22.png)
+![Migration control panel](/static/images/modernizer/6/stage06-22.png)
 
 For each table, verify:
 - **Item Count**: Should match (approximately) the number of records in your MySQL tables
