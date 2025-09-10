@@ -25,13 +25,13 @@ Let's begin by telling Cline to start working on data modeling. Use this command
 Please open this file `prompts/02-dynamodb-data-modeling/tasks.md` and start working in the first available task.
 ```
 
-![Start conversation](/static/images/modernizr/2/stage02-01.png)
+![Start conversation](/static/images/modernizer/2/stage02-01.png)
 
 ## Watching the Magic Happen
 
 You'll know the workshop is working because you'll see Cline actively creating new files in real-time! It uses a visual diff system (like track changes in a document) to show you exactly what's being added or modified. This helps you understand each step of the process.
 
-![Gitdiff](/static/images/modernizr/2/stage02-02.png)
+![Gitdiff](/static/images/modernizer/2/stage02-02.png)
 
 **Take your time** with each file that gets generated. Don't rush through this process! Read everything, understand what Cline is doing at each step and why, and don't hesitate to ask questions. This is interactive learning - if you get confused at any point, just ask Cline to explain what's happening.
 
@@ -59,25 +59,25 @@ Order processing is the critical part of our business! this is what it generates
 Finally a very small set of operations are allocated to sellers, it is less than 1 QPS, representing 0.1% of the traffic. Maybe 0.05 QPS on product management, and 0.25 QPS on seller profiles, there is very low traffic on category management as they barely change.
 ```
 
-![Questions](/static/images/modernizr/2/stage02-03.png)
+![Questions](/static/images/modernizer/2/stage02-03.png)
 
 ## The Collaborative Design Process
 
 As you work through this stage, you'll encounter several "checkpoint" moments where Cline stops and asks for your input. These aren't interruptions - they're important collaboration points designed to ensure the design stays on track and meets your specific needs.
 
-![Start conversation](/static/images/modernizr/2/stage02-05.png)
+![Start conversation](/static/images/modernizer/2/stage02-05.png)
 
 ## Being Patient with AI
 
 During this intensive design stage, you might occasionally see messages about rate limiting or throttling. This is normal! Simply wait a few seconds and try again. The system can handle about 4 requests per minute, which should be enough for our workshop. If your task fails to execute please re-try, and just ignore the message that says "Try breaking down the task into smaller steps" as this is not our case, we know it is rate limiting!
 
-![Start conversation](/static/images/modernizr/2/stage02-06.png)
+![Start conversation](/static/images/modernizer/2/stage02-06.png)
 
 ## Using Specialized AI Tools
 
 At some point, Cline will ask for permission to use the DynamoDB MCP Server — this is like accessing a specialized AI consultant who's an expert specifically in DynamoDB design. When asked, give permission for this. This expert AI will help analyze all the data we've collected and create a proper database design.
 
-![Start conversation](/static/images/modernizr/2/stage02-07.png)
+![Start conversation](/static/images/modernizer/2/stage02-07.png)
 
 ## Quality Control Checkpoint
 
@@ -85,13 +85,13 @@ Cline will first create a summary file called `dynamodb_requirements.md`. This i
 
 ::alert[ **Important:** Read this file carefully! Sometimes AI can accidentally add requirements that were never discussed, or miss important details. This is your chance to catch any errors before they become part of the final design.]{type="info"}
 
-![Start conversation](/static/images/modernizr/2/stage02-08.png)
+![Start conversation](/static/images/modernizer/2/stage02-08.png)
 
 ## Your First Database Design
 
 Once you approve the requirements summary, Cline will create your actual DynamoDB data model. This is exciting — you're seeing your new database structure come to life! Cline has generated the new data model file `artifacts/stage-02/dynamodb_data_model.md` please open it and read it carefully.
 
-![Start conversation](/static/images/modernizr/2/stage02-09.png)
+![Start conversation](/static/images/modernizer/2/stage02-09.png)
 
 ## What Comes Next
 

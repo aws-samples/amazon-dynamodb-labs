@@ -1,5 +1,5 @@
 ---
-title: "Database Modernizr Workflow"
+title: "Database Modernizer Workflow"
 date: 2025-09-01T10:41:04-05:00
 weight: 30
 chapter: true
@@ -13,7 +13,7 @@ Begin by reviewing the application documentation in the `README.md` file, which 
 
 ::alert[You don't have to follow the `README.md` instructions as your environment is already pre-configured for you. ]{type="info"}
 
-![README](/static/images/modernizr/1/workflow-01.png)
+![README](/static/images/modernizer/1/workflow-01.png)
 
 ## Starting the Application Services
 
@@ -28,7 +28,7 @@ While your application environment is already preconfigured, you'll still need t
 
 The backend API server manages all client requests and database transactions. Navigate to the `/backend` directory and open an integrated terminal (right-click > "Open in Integrated Terminal"). Grant any requested permissions when prompted.
 
-![menu](/static/images/modernizr/1/workflow-02.png)
+![menu](/static/images/modernizer/1/workflow-02.png)
 
 Build and start the backend service using these commands:
 
@@ -87,7 +87,7 @@ Verify the API server is responding correctly by accessing the health endpoint:
 
 This endpoint should return status information confirming the backend is operational:
 
-![Backend](/static/images/modernizr/1/workflow-03.png)
+![Backend](/static/images/modernizer/1/workflow-03.png)
 
 Monitor your backend terminal for request logging, which demonstrates the API request flow.
 
@@ -95,7 +95,7 @@ Monitor your backend terminal for request logging, which demonstrates the API re
 
 Access the e-commerce frontend by navigating to `[your-url]/store/`:
 
-![Store](/static/images/modernizr/1/workflow-04.png)
+![Store](/static/images/modernizer/1/workflow-04.png)
 
 ## System Interaction Analysis
 

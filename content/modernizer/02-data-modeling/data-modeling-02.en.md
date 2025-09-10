@@ -151,23 +151,23 @@ We will add two indexes, that are possible future hot partitions, but with the n
 - **Warning:** Monitor for hot partitions with high-volume sellers
 ```
 
-![User entitiy modifcation](/static/images/modernizr/2/stage02-11.png)
+![User entitiy modifcation](/static/images/modernizer/2/stage02-11.png)
 
 Make sure all the modifications are stored in the `working_log.md` file! sometimes `Cline` ignores what you say!!
 
-![Working Log](/static/images/modernizr/2/stage02-12.png)
+![Working Log](/static/images/modernizer/2/stage02-12.png)
 
 In my specific scenario, `Cline` was having a hard time understanding it needed to create the GSIs and it wasn't including them in the data model. It is your responsibility to make sure every access patterns is properly identified and recorded, remember this is the base of data modeling and all the future steps depend on the decisions you make at this point. 
 
-![Working Log](/static/images/modernizr/2/stage02-13.png)
+![Working Log](/static/images/modernizer/2/stage02-13.png)
 
 Even at some points it actually suggested me to have a different table for my shopping cart entity. 
 
-![Working Log](/static/images/modernizr/2/stage02-14.png)
+![Working Log](/static/images/modernizer/2/stage02-14.png)
 
 But with a little patience, and making sure all the data is there I was able to guide `Cline` to obtain the outcome and table structure that we originally intended. 
 
-![Working Log](/static/images/modernizr/2/stage02-15.png)
+![Working Log](/static/images/modernizer/2/stage02-15.png)
 
 Before completing this workshop section, make sure the content you approve is valid, we are trying to use one table with 3 different entities, one for User metadata, another for User cart items and finally one for User orders! If in your case you are still getting suggestions to have another table for orders or shopping cart items, make sure you tell `Cline` we don't need it anymore. 
 

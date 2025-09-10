@@ -26,7 +26,7 @@ The Migration Contract implements a transformation engine that supports multiple
 
 Explore the `contracts` folder to understand the supported transformation patterns, validation rules, and architectural constraints. This reference documentation provides comprehensive details on how the contract functions as both a specification document and an execution engine for the data migration process.
 
-![Data model](/static/images/modernizr/2/stage02-23.png)
+![Data model](/static/images/modernizer/2/stage02-23.png)
 
 ## Contract Quality Assurance
 

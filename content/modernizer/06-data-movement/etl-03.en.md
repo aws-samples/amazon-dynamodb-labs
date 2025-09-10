@@ -37,7 +37,7 @@ For each table creation, Cline will ask for your approval and show you exactly w
 - **GSI Configuration**: Check that all your planned indexes are included
 - **Capacity Settings**: Confirm the read/write capacity makes sense for your data size
 
-![Migration control panel](/static/images/modernizr/6/stage06-11.png)
+![Migration control panel](/static/images/modernizer/6/stage06-11.png)
 
 This approval step is important because once a DynamoDB table is created with a specific key schema, you can't change it without deleting and recreating the table.
 
@@ -45,7 +45,7 @@ This approval step is important because once a DynamoDB table is created with a 
 
 After you approve each table, the MCP server will send the creation request to AWS. You'll see a response showing the table in "CREATING" status.
 
-![Migration control panel](/static/images/modernizr/6/stage06-12.png)
+![Migration control panel](/static/images/modernizer/6/stage06-12.png)
 
 The "CREATING" status means AWS is:
 - **Allocating Resources**: Setting up the infrastructure to support your table
@@ -59,7 +59,7 @@ This process usually takes 1-3 minutes per table, depending on the complexity of
 
 Once all tables show as created, verify them in the AWS DynamoDB console. You should see your three tables: `Users`, `Products`, and `Categories`.
 
-![Migration control panel](/static/images/modernizr/6/stage06-13.png)
+![Migration control panel](/static/images/modernizer/6/stage06-13.png)
 
 For each table, check:
 - **Status**: Should be "ACTIVE" 

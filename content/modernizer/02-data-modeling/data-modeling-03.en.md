@@ -135,6 +135,6 @@ We will add two indexes, that are possible future hot partitions, but with the n
 - **Warning:** Monitor for hot partitions with high-volume sellers
 ```
 
-![Working Log](/static/images/modernizr/2/stage02-16.png)
+![Working Log](/static/images/modernizer/2/stage02-16.png)
 
 In my execution, I was getting throttled, please remember to be patient and just retry! but also review the changes made by `Cline`.

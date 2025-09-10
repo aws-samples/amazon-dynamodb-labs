@@ -16,7 +16,7 @@ Great! Now it is time to mark as completed task 3.2 and proceed with the next on
 
 This task involves comprehensive analysis and redesign of your initial data model based on the validation results from the previous step. The DynamoDB MCP Server will perform detailed optimization analysis, potentially recommending significant structural changes to improve performance and cost efficiency.
 
-![Data model](/static/images/modernizr/2/stage02-20.png)
+![Data model](/static/images/modernizer/2/stage02-20.png)
 
 ## Critical Review and Validation Phase
 
@@ -31,7 +31,7 @@ The design refinement process often reveals opportunities for optimization that 
 
 This iterative approach reflects industry best practices where database designs undergo multiple refinement cycles before reaching production readiness.
 
-![Data model](/static/images/modernizr/2/stage02-21.png)
+![Data model](/static/images/modernizer/2/stage02-21.png)
 
 ## Design Validation Checkpoints
 
@@ -49,6 +49,6 @@ Confirm that the final data model maintains the standardized naming convention f
 
 This generic naming convention provides flexibility for future schema evolution while maintaining consistency across the application architecture.
 
-![Data model](/static/images/modernizr/2/stage02-22.png)
+![Data model](/static/images/modernizer/2/stage02-22.png)
 
 The standardized naming approach also simplifies application code by providing predictable patterns for GSI references, reducing the likelihood of configuration errors during deployment.

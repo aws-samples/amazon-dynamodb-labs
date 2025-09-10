@@ -33,7 +33,7 @@ Rather than following prescriptive instructions, focus on understanding the core
 
 This picture is an Entity Relationship Mapping that will help you understand in detail what it needs to be modeled. 
 
-![Start conversation](/static/images/modernizr/2/stage02-10.png)
+![Start conversation](/static/images/modernizer/2/stage02-10.png)
 
 ## Entity Relationship Mapping
 

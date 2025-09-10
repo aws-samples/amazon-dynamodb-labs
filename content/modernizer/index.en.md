@@ -10,9 +10,9 @@ In this module, you'll modernize an existing e-commerce application from a tradi
 
 The application you'll be working with is an online shopping platform built with an Express.js backend and React frontend, currently running on MySQL. Your goal is to transform this into a cloud-native, serverless architecture while maintaining full functionality and improving performance.
 
-## The Database Modernizr Solution
+## The Database Modernizer Solution
 
-This workshop introduces the **Database Modernizr** - an AI-driven workflow that accelerates database modernization projects from traditional 12-18 month timelines to days. Rather than manual code rewriting, you'll leverage generative AI to systematically analyze existing systems and guide the modernization process.
+This workshop introduces the **Database Modernizer** - an AI-driven workflow that accelerates database modernization projects from traditional 12-18 month timelines to days. Rather than manual code rewriting, you'll leverage generative AI to systematically analyze existing systems and guide the modernization process.
 
 You'll work with multiple AWS MCP (Model Context Protocol) servers that provide specialized capabilities for different aspects of the modernization process. Model Context Protocol is an open standard for endpoints that an AI agent can call to expose functionality from databases, filesystems, or external APIs in a consistent way. These include MySQL analysis, DynamoDB modeling, and data processing tools. Additionally, you'll learn advanced prompt engineering techniques optimized for database design and application refactoring, minimizing the risk of AI hallucinations during the execution of this workflow.
 

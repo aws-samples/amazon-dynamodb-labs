@@ -14,7 +14,7 @@ This is your test flight - you want to see all the systems working together befo
 
 When you use the admin portal to toggle feature flags, you're actually calling REST API endpoints that control your application's database behavior. The system logs every phase change so you can track what's happening.
 
-![Migration control panel](/static/images/modernizr/6/stage06-26.png)
+![Migration control panel](/static/images/modernizer/6/stage06-26.png)
 
 These log messages are crucial for understanding:
 - **When** changes happen (timestamps for troubleshooting)
@@ -34,7 +34,7 @@ This setup lets you control the migration and immediately test the results.
 
 While in Phase 2 (dual write + MySQL read), go to the shopping store and add an item to your cart.
 
-![Migration control panel](/static/images/modernizr/6/stage06-27.png)
+![Migration control panel](/static/images/modernizer/6/stage06-27.png)
 
 What happens behind the scenes:
 - **Write Operation**: The system writes the cart item to BOTH MySQL and DynamoDB
@@ -44,13 +44,13 @@ What happens behind the scenes:
 
 Check the MySQL database first. Look at the user views you created earlier - you should see the new cart item for the admin user.
 
-![Migration control panel](/static/images/modernizr/6/stage06-28.png)
+![Migration control panel](/static/images/modernizer/6/stage06-28.png)
 
 This confirms the MySQL write operation worked correctly, your existing database is still receiving updates and the application can still function normally if you need to roll back.
 
 Now check the AWS DynamoDB console. Open the `Users` table and look for the admin user's record - you should see the same cart item there too.
 
-![Migration control panel](/static/images/modernizr/6/stage06-29.png)
+![Migration control panel](/static/images/modernizer/6/stage06-29.png)
 
 This proves the dual-write system is working correctly, data transformation from MySQL to DynamoDB format is working, both databases now have the same information, you're ready to start reading from DynamoDB.
 
@@ -66,7 +66,7 @@ In Phase 5:
 
 Go back to your shopping cart and complete the checkout process for the item you added earlier.
 
-![Migration control panel](/static/images/modernizr/6/stage06-30.png)
+![Migration control panel](/static/images/modernizer/6/stage06-30.png)
 
 This transaction is critical because it:
 - **Reads** your cart data from DynamoDB (not MySQL)
@@ -80,7 +80,7 @@ Refresh the DynamoDB Users table and look for changes in the admin user's record
 - **New Order Created**: A new `ORDER#` record has appeared
 - **Complete Transaction**: The checkout process worked entirely with DynamoDB
 
-![Migration control panel](/static/images/modernizr/6/stage06-31.png)
+![Migration control panel](/static/images/modernizer/6/stage06-31.png)
 
 This proves that your application can:
 - Read complex data from DynamoDB correctly
@@ -90,7 +90,7 @@ This proves that your application can:
 
 Finally, check your MySQL user views. You should NOT see the completed order there, because in Phase 5, the application doesn't write to MySQL anymore.
 
-![Migration control panel](/static/images/modernizr/6/stage06-32.png)
+![Migration control panel](/static/images/modernizer/6/stage06-32.png)
 
 This confirms the Phase 5 configuration is working correctly, your application is truly running on DynamoDB, MySQL is no longer part of your active system and the migration is functionally complete.
 

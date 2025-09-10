@@ -108,7 +108,7 @@ Maintain enhanced monitoring during the initial post-migration period to quickly
 
 To simplify all of this process we created an Admin portal that allows you to control the migration phases using feature flags.
 
-![Migration control panel](/static/images/modernizr/6/stage06-01.png)
+![Migration control panel](/static/images/modernizer/6/stage06-01.png)
 
 This process will consist of 3 different actions:
 
