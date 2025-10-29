@@ -13,6 +13,15 @@ weight: 100
 1. Sean Shriver ([switch180](https://github.com/switch180)) - Ported the whole lab to amazon-dynamodb-labs.com with a custom Hugo theme. Made the "bullet-proof" CloudFormation template for the lab. Updated the hands on lab to Python3
 1. Daniel Yoder ([danielsyoder](https://github.com/danielsyoder)) - The brains behind amazon-dynamodb-labs.com and the co-creator of the design scenarios
 
+### 2025 additions
+Removing Cloud9 due to End of Life from all the workshops (October 2025):
+1. Esteban Serna ([@tebanieo](https://github.com/tebanieo)) - Primary author, and merger
+
+Database modernizer workshop was released in August 2025:
+1. Esteban Serna ([@tebanieo](https://github.com/tebanieo)) - Primary author, and merger
+2. John Terhune - ([@terhunej](https://github.com/terhunej)) - Editor, tech reviewer.
+3. Sean Shriver - ([@switch180](https://github.com/switch180)) - Tech reviewer
+
 ### 2024 additions
 The Generative AI workshop LBED was released in early 2024:
 1. John Terhune - ([@terhunej](https://github.com/terhunej)) - Primary author
