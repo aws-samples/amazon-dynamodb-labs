@@ -14,13 +14,13 @@ so that it could be included in a script and automated.
 
 3. Run:
 ```bash 
-python3 mysql_desc_ddb.py Customers 
+python mysql_desc_ddb.py Customers 
 ```
 The script should output a table definition in JSON format, like we saw within the web app.
 
 3. Next, let's pipe the output to a new file so we can more easily review it:
 ```bash 
-python3 mysql_desc_ddb.py Customers > Customers.json
+python mysql_desc_ddb.py Customers > Customers.json
 ```
 
 4. Within the left nav, find ```Customers.json``` and double click to open it in the editor.
