@@ -2,65 +2,57 @@
 title : "Dev Environment"
 weight : 16
 ---
+### Login to AWS Workshop Studio Portal
 
-[AWS Cloud9](https://aws.amazon.com/cloud9/) is a cloud-based integrated development environment (IDE) that lets you write, run, and debug code with just a browser. AWS Cloud9 includes a code editor, debugger, and terminal. It also comes prepackaged with essential tools for popular programming languages and the AWS Command Line Interface (CLI) preinstalled so that you don’t have to install files or configure your laptop for this lab. Your AWS Cloud9 environment will have access to the same AWS resources as the user with which you signed in to the AWS Management Console.
+On the event dashboard, click on **Open AWS console** to federate into AWS Management Console in a new tab. On the same page, click **Get started** to open the workshop instructions.
+![Event dashboard](/static/images/common/workshop-studio-01.png)
 
-### To set up your AWS Cloud9 development environment:
+In addition to the AWS console you should open your Visual Studio code server, by clicking in the `VSCodeServerURL` parameter, available from the "Event Outputs" section. When prompted for a password use the value from `VSCodeServerPassword`. 
 
-1. Choose **Services** at the top of the page, and then choose **Cloud9** under **Developer Tools**.
+![Event dashboard](/static/images/common/workshop-studio-02.png)
 
-2. There would be an environment ready to use under **Your environments**.
+During the first 60 seconds, the environment will automatically update extensions and plugins. Any startup notification can be safely dismissed. 
+ 
+![VS Code Setup](/static/images/common/common-vs-code-01.png)
 
-3. Click on **Open IDE**, your IDE should open with a welcome note.
+If a terminal is not available at the bottom left side of your screen, please open a new one like the following picture indicates.
 
-You should now see your AWS Cloud9 environment. You need to be familiar with the three areas of the AWS Cloud9 console shown in the following screenshot:
+![VS Code Setup](/static/images/common/common-vs-code-02.png)
 
-![Cloud9 Environment](/static/images/zetl-cloud9-environment.png)
+Then run the command `aws sts get-caller-identity` just to verify that your AWS credentials have been properly configured.
 
-- **File explorer**: On the left side of the IDE, the file explorer shows a list of the files in your directory.
-
-- **File editor**: On the upper right area of the IDE, the file editor is where you view and edit files that you’ve selected in the file explorer.
-
-- **Terminal**: On the lower right area of the IDE, this is where you run commands to execute code samples.
+![VS Code Setup](/static/images/common/common-vs-code-03.png)
 
 
 From within the terminal:
 
-2. Run the command ```aws sts get-caller-identity``` just to verify that your AWS credentials have been properly configured.
-
-3. Clone the repository containing the Chalice code and migration scripts. Run:
-
-```bash 
-cd ~/environment
-git clone https://github.com/aws-samples/aws-dynamodb-examples.git
-cd aws-dynamodb-examples
-git checkout :param{key="lsql_git_commit"}
-```
-
-
-*This checkout command ensures you are using a specific, tested version of the repository*
+To keep our python files and dependencies organized lets create a python virtual environment:
 
 ```bash
+python -m venv .venv
+source .venv/bin/activate
+```
+
+Clone the repository containing the Chalice code and migration scripts. Run:
+
+```bash 
+cd /home/participant/workshop/LSQL
+git clone https://github.com/aws-samples/aws-dynamodb-examples.git
+cd aws-dynamodb-examples
 cd workshops/relational-migration
 ```
 
-4. Next, run this to install three components: Boto3 (AWS SDK for Python), Chalice, and the MySQL connector for Python.
+Next, run this to install three components: Boto3 (AWS SDK for Python), Chalice, and the MySQL connector for Python.
 
 ```bash
 sudo pip3 install chalice mysql-connector-python
 ```
 
-5. From the left navigation panel, locate our project folder by
-   clicking into ```aws-dynamodb-examples / workshops / relational-migration```
+From the left navigation panel, locate our project folder by clicking into ```LSQL / aws-dynamodb-examples / workshops / relational-migration```
 
-6. Find the gear icon near the top of the left nav panel, and click "show hidden files" .
-   You may now see a folder called ```.chalice``` under the main **relational-migration** folder.
-   Within this folder is the ```config.json``` file that holds the MySQL connection details.
-   A script will automatically update this file in the next step.
+Navigate to the `.chalice` folder under the main **relational-migration** folder. Within this folder is the ```config.json``` file that holds the MySQL connection details. A script will automatically update this file in the next step.
 
-7. Return to the terminal prompt window. Run this file which
-   uses AWS CLI commands to find the MySQL host's IP address and S3 bucket name, then sets them as
-   environment variables, while also updating the Chalice config.json file:
+Return to the terminal prompt window. Run this file which, uses AWS CLI commands to find the MySQL host's IP address and S3 bucket name, then sets them as environment variables, while also updating the Chalice config.json file:
 
 ```bash
 source ./setenv.sh

@@ -20,6 +20,7 @@ Understanding Distributed Systems and DynamoDB:
 - **[Amazon DynamoDB: How It Works](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.html)**
 
 DynamoDB Related Tools:
+- **[Amazon DynamoDB learning resources and tools](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/AdditionalResources.html)** 
 - **[NoSQL Workbench for Amazon DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.html)**
 - **[EMR-DynamoDB-Connector: Access data stored in Amazon DynamoDB with Apache Hadoop, Apache Hive, and Apache Spark](https://github.com/awslabs/emr-dynamodb-connector)**
 

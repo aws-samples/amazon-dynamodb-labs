@@ -15,8 +15,7 @@ aws dynamodb create-table \
         AttributeName=Id,AttributeType=N \
     --key-schema \
         AttributeName=Id,KeyType=HASH \
-    --provisioned-throughput \
-        ReadCapacityUnits=10,WriteCapacityUnits=5 \
+    --billing-mode PAY_PER_REQUEST \
     --query "TableDescription.TableStatus"
 aws dynamodb create-table \
     --table-name Forum \
@@ -24,8 +23,7 @@ aws dynamodb create-table \
         AttributeName=Name,AttributeType=S \
     --key-schema \
         AttributeName=Name,KeyType=HASH \
-    --provisioned-throughput \
-        ReadCapacityUnits=10,WriteCapacityUnits=5 \
+    --billing-mode PAY_PER_REQUEST \
     --query "TableDescription.TableStatus"
 aws dynamodb create-table \
     --table-name Thread \
@@ -35,8 +33,7 @@ aws dynamodb create-table \
     --key-schema \
         AttributeName=ForumName,KeyType=HASH \
         AttributeName=Subject,KeyType=RANGE \
-    --provisioned-throughput \
-        ReadCapacityUnits=10,WriteCapacityUnits=5 \
+    --billing-mode PAY_PER_REQUEST \
     --query "TableDescription.TableStatus"
 aws dynamodb create-table \
     --table-name Reply \
@@ -46,8 +43,7 @@ aws dynamodb create-table \
     --key-schema \
         AttributeName=Id,KeyType=HASH \
         AttributeName=ReplyDateTime,KeyType=RANGE \
-    --provisioned-throughput \
-        ReadCapacityUnits=10,WriteCapacityUnits=5 \
+    --billing-mode PAY_PER_REQUEST \
     --query "TableDescription.TableStatus"
 ```
 

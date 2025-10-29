@@ -14,7 +14,7 @@ python --version
 Output:
 
 ```plain
-Python 3.10.12
+Python 3.13.9
 ```
 **Note: The major and minor version of Python may vary from what you see above**
 
@@ -29,7 +29,7 @@ Sample output:
 
 ```bash
 #Note that your linux kernel version may differ from the example.
-aws-cli/2.13.26 Python/3.11.6 Linux/6.2.0-1013-aws exe/x86_64.ubuntu.22 prompt/off
+aws-cli/2.31.24 Python/3.13.7 Linux/6.1.155-176.282.amzn2023.aarch64 exe/aarch64.amzn.2023
 ```
 
 ::alert[_Make sure you have AWS CLI version 2.x or higher and python 3.10 or higher before proceeding. If you do not have these versions, you may have difficultly successfully completing the lab._]

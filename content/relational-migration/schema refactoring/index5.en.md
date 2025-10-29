@@ -48,7 +48,7 @@ Now, let's generate a DynamoDB table definition based on this view's output.
 
 8. Run: 
 ```bash
-python3 mysql_desc_ddb.py vCustOrders 
+python mysql_desc_ddb.py vCustOrders 
 ```
 
 The script returns a new table definition based on the name of the view, with the first 
@@ -59,7 +59,7 @@ first TWO column names as the Partition Key and Sort Key.
 
 9. Run:
 ```bash
-python3 mysql_desc_ddb.py vCustOrders 2
+python mysql_desc_ddb.py vCustOrders 2
 ```
 Now we can see that the DynamoDB table's Key Schema includes both columns.
 

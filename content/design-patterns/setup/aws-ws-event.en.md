@@ -1,7 +1,7 @@
 ---
 title: "Start: At an AWS Hosted Event"
 date: 2019-12-02T07:05:12-08:00
-weight: 3
+weight: 4
 chapter: true
 ---
 
@@ -26,6 +26,10 @@ chapter: true
 7. Select on **I agree with the Terms and Conditions** on the bottom of the next page and click **Join event** to continue to the event dashboard.
 
 8. On the event dashboard, click on **Open AWS console** to federate into AWS Management Console in a new tab. On the same page, click **Get started** to open the workshop instructions.
-![Event dashboard](/static/images/aws-ws-event5.png)
+![Event dashboard](/static/images/common/workshop-studio-01.png)
 
-9. Now that you are connected continue on to: :link[Step 1]{href="/design-patterns/setup/Step1"}.
+9. In addition to the AWS console you should open your Visual Studio code server, by clicking in the `VSCodeServerURL` parameter, available from the "Event Outputs" section. When prompted for a password use the value from `VSCodeServerPassword`. 
+
+![Event dashboard](/static/images/common/workshop-studio-02.png)
+
+10. Continue with the steps as listed in the section :link[Launch Visual Studio Code]{href="/design-patterns/setup/step1"}.  

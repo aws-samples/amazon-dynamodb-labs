@@ -3,41 +3,54 @@ title : "Module 1: Deploy the backend resources"
 weight : 20
 ---
 
+### Login to AWS Workshop Studio Portal
 
-## Setup Steps
-This lab requires a terminal shell with Python3 and the AWS Command Line Interface (CLI) installed and configured with admin credentials.
+On the event dashboard, click on **Open AWS console** to federate into AWS Management Console in a new tab. On the same page, click **Get started** to open the workshop instructions.
+![Event dashboard](/static/images/common/workshop-studio-01.png)
 
-We will use AWS Cloud9 for this event. [AWS Cloud9](https://aws.amazon.com/cloud9/) is a cloud-based integrated development environment (IDE) that lets you write, run, and debug code with just a browser. AWS Cloud9 includes a code editor, debugger, and terminal. It also comes prepackaged with essential tools for popular programming languages and the AWS Command Line Interface (CLI) preinstalled so that you don’t have to install files or configure your laptop for this lab. Your AWS Cloud9 environment will have access to the same AWS resources as the user with which you signed in to the AWS Management Console.
+In addition to the AWS console you should open your Visual Studio code server, by clicking in the `VSCodeServerURL` parameter, available from the "Event Outputs" section. When prompted for a password use the value from `VSCodeServerPassword`. 
 
-### To set up your AWS Cloud9 development environment:
+![Event dashboard](/static/images/common/workshop-studio-02.png)
 
-1. Choose **Services** at the top of the page, and then choose **Cloud9** under **Developer Tools**.
-   
-2. There will be an environment ready to use under **My environments**.
+During the first 60 seconds, the environment will automatically update extensions and plugins. Any startup notification can be safely dismissed. 
+ 
+![VS Code Setup](/static/images/common/common-vs-code-01.png)
 
-3. Click on **Open** under **Cloud9 IDE**, and your IDE should open with a welcome note.
+If a terminal is not available at the bottom left side of your screen, please open a new one like the following picture indicates.
 
-You should now see your AWS Cloud9 environment. You need to be familiar with the three areas of the AWS Cloud9 console shown in the following screenshot:
+![VS Code Setup](/static/images/common/common-vs-code-02.png)
 
-![Cloud9 Environment](/static/images/global-serverless-application/module_1/cloud9-environment.png)
+Then run the command `aws sts get-caller-identity` just to verify that your AWS credentials have been properly configured.
 
-- **File explorer**: On the left side of the IDE, the file explorer shows a list of the files in your directory.
-  
-- **File editor**: On the upper right area of the IDE, the file editor is where you view and edit files that you’ve selected in the file explorer.
-  
-- **Terminal**: On the lower right area of the IDE, this is where you run commands to execute code samples.
+![VS Code Setup](/static/images/common/common-vs-code-03.png)
 
-### Verify Environment
-1. Run ```aws sts get-caller-identity``` to verify the AWS CLI is functioning
-2. Run ```python3 --version``` to verify that python3 is installed
-3. Your Cloud9 environment is already configured with boto3, but for this lab we will also need AWS Chalice.  
-Run ```sudo python3 -m pip install chalice``` to install [AWS Chalice](https://github.com/aws/chalice). 
+
+From within the terminal:
+
+To keep our python files and dependencies organized lets create a python virtual environment, in the LMR folder:
+
+```bash
+cd LMR
+python -m venv .venv
+source .venv/bin/activate
+```
+
+Your VS Code environment is already configured with boto3, but for this lab we will also need [AWS Chalice](https://github.com/aws/chalice). 
+
+```bash
+pip install chalice 
+```
 
 ::alert[You may see a couple of WARNING lines near the bottom of the command output, these are safely ignored.]{type="info"}
 
-4. Run ```curl -O https://amazon-dynamodb-labs.com/assets/global-serverless.zip```
-5. Run ```unzip global-serverless.zip && cd global-serverless```
-6. To see what application resources we will be deploying you can open the **app.py** file by navigating to "global-serverless/app.py" in the file explorer. This code defines Lambda function and API Gateway routes.
+Download the global serverless workshop:
+
+```bash 
+curl -O https://amazon-dynamodb-labs.com/assets/global-serverless.zip
+unzip global-serverless.zip && cd global-serverless
+```
+
+To see what application resources we will be deploying you can open the **app.py** file by navigating to "global-serverless/app.py" in the file explorer. This code defines Lambda function and API Gateway routes.
 
 ### Deploy a new DynamoDB table
 1. In your terminal, run:
@@ -121,10 +134,18 @@ aws dynamodb get-item \
 
 ### Deploy the backend API service to the first region
 
-1. Run ```export AWS_DEFAULT_REGION=us-west-2``` to instruct Chalice to deploy into us-west-2 for our first region
-2. Run ```chalice deploy``` and wait for the infrastructure to be created. Chalice is a Python based serverless framework.
+1. Run the following instruction to instruct Chalice to deploy into us-west-2 for our first region
+```bash 
+export AWS_DEFAULT_REGION=us-west-2
+``` 
+
+2. Run the following instruction and wait for the infrastructure to be created. Chalice is a Python based serverless framework.
+```bash
+chalice deploy
+```
+
 3. When the script completes, it reports a list of resources deployed. **Copy and paste the Rest API URL into a note as you will need it later.**
-4. Copy that REST API URL and paste it into a new browser tab to test it. You should see a JSON response of {ping: "ok"}
+4. Copy that REST API URL and paste it into a new browser tab to test it. You should see a JSON response of `{ping: "ok"}`
 5. You can type in certain paths to the end of the URL. Add the word scan so that the URL now ends with ```/api/scan```
  You should see a JSON response representing the results of a table scan.
 
@@ -149,13 +170,20 @@ Click Ping again and check the latency.
 You now have a test harness where you can perform reads and writes to a DynamoDB record via the custom API.
 
 ### Deploy the service stack to the second region, Ireland
-1. Run ```export AWS_DEFAULT_REGION=eu-west-1``` to instruct Chalice to deploy into eu-west-1 for our second region.
-2. Run ```chalice deploy``` and wait for the infrastructure to be created in eu-west-1.
+1. Run the following instruction to instruct Chalice to deploy into eu-west-1 for our second region.
+```bash 
+export AWS_DEFAULT_REGION=eu-west-1
+``` 
+
+2. Run the following instruction and wait for the infrastructure to be created in eu-west-1.
+```bash
+chalice deploy
+```
 3. When the script completes, it reports a list of resources deployed. Again, copy down the new REST API URL to a note for later use.
 4. Return to the web app.
 5. Click **Add API** again and paste in the new API URL. A second row of buttons appears in an alternate color.
 
-Note: In this workshop you have permissions for Global Tables in us-west-2 and eu-west-1. 
+Note: In this workshop you have permissions for Global Tables in `us-west-2` and `eu-west-1`.
 In your own account you could add any number of replicas in any regions.
 
 Note 2: If you make any changes to the code in ```app.py```, you can push the updates to your Lambda function  
