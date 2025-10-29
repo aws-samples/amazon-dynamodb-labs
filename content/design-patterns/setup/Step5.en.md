@@ -24,10 +24,11 @@ The Server Logs file has the following structure:
 - bytessent (number)
 - useragent (string)
 
-To view a sample record in the file, execute:
-```bash
-head -n1 ./data/logfile_small1.csv
-```
+To view a sample record in the file, just click on the files over the left side pannel:
+
+![Small file](/static/images/ladv-small-file.png)
+
+
 Sample log record:
 ```csv
 1,66.249.67.3,2017-07-20,20,GMT-0700,GET,"/gallery/main.php?g2_controller=exif.SwitchDetailMode&g2_mode=detailed&g2_return=%2Fgallery%2Fmain.php%3Fg2_itemId%3D15741&g2_returnName=photo",302,5,"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
@@ -47,9 +48,7 @@ The Employees data file has the following structure:
 - is a manager (string), 1 for manager employees, non-existent for others
 
 To view a sample record in the file, execute:
-```bash
-head -n1 ./data/employees.csv
-```
+
 Sample employee record:
 ```csv
 1,Onfroi Greeno,Systems Administrator,Operation,Portland,OR,1992-03-31,2014-10-24,Application Support Analyst,2014-04-12
