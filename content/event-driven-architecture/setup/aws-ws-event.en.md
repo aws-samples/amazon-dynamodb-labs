@@ -7,7 +7,9 @@ chapter: true
 
 ### Login to AWS Workshop Studio Portal
 
-1. If you are provided a one-click join link, skip to step 3.
+### Login to AWS Workshop Studio Portal
+
+1. If you are provided a one-click join link, use it and skip to step 3.
 
 2. Visit [https://catalog.us-east-1.prod.workshops.aws](https://catalog.us-east-1.prod.workshops.aws). If you attended any other workshop earlier on this portal, please logout first. Click on **Get Started** on the right hand side of the window.
 ![Workshop Studio Landing Page](/static/images/aws-ws-event1.png)
@@ -26,6 +28,10 @@ chapter: true
 7. Select on **I agree with the Terms and Conditions** on the bottom of the next page and click **Join event** to continue to the event dashboard.
 
 8. On the event dashboard, click on **Open AWS console** to federate into AWS Management Console in a new tab. On the same page, click **Get started** to open the workshop instructions.
-![Event dashboard](/static/images/aws-ws-event5.png)
+![Event dashboard](/static/images/common/workshop-studio-01.png)
+
+9. In addition to the AWS console you should open your Visual Studio code server, by clicking in the `VSCodeServerURL` parameter, available from the "Event Outputs" section. When prompted for a password use the value from `VSCodeServerPassword`. 
+
+![Event dashboard](/static/images/common/workshop-studio-02.png)
 
 Now that you are set up, continue on to: :link[Exercise 1: Overview]{href="/event-driven-architecture/ex1overview"}.
