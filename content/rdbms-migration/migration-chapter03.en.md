@@ -45,7 +45,7 @@ cd LDMS
    mysql -u dbuser -p 
   ```
  
-   ![Final Deployment Architecture](/static/images/LMR/mysql-connecting.png)
+   ![Final Deployment Architecture](/static/images/LDMS/mysql-connecting.png)
 
 Congratulations! You are now connected to a self-managed MySQL source database on EC2. In the following steps, we will explore the database and tables hosting IMDb datasets.
   
@@ -53,14 +53,14 @@ Congratulations! You are now connected to a self-managed MySQL source database o
   use imdb;
   ```
 
-   ![Final Deployment Architecture](/static/images/LMR/mysql-use-imdb.png)
+   ![Final Deployment Architecture](/static/images/LDMS/mysql-use-imdb.png)
 
 List all the tables created by the CloudFormation stack.
    ```bash
    show tables;
    ```
 
-   ![Final Deployment Architecture](/static/images/LMR/mysql-show-tables.png)
+   ![Final Deployment Architecture](/static/images/LDMS/mysql-show-tables.png)
 
 For illustration purposes, below is a logical diagram represents relationship between various source tables hosting IMDb dataset.
 
