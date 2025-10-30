@@ -40,7 +40,7 @@ jobs:
     - name: S3Sync
       run: aws s3 sync public/assets/ s3://$STEP_S3_BUCKET/assets/ --delete
     - name: SetS3Acl
-      run: aws s3api put-object-acl --grant-read uri=http://acs.amazonaws.com/groups/global/AllUsers --bucket $STEP_S3_BUCKET --key assets/C9.yaml
+      run: aws s3api put-object-acl --grant-read uri=http://acs.amazonaws.com/groups/global/AllUsers --bucket $STEP_S3_BUCKET --key assets/vscode.yaml
     - name: SetS3AclED1
       run: aws s3api put-object-acl --grant-read uri=http://acs.amazonaws.com/groups/global/AllUsers --bucket $STEP_S3_BUCKET --key assets/GeneratorLambdaPackage.zip
     - name: SetS3AclED2
