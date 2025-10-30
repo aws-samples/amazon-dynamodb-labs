@@ -51,7 +51,7 @@ dest_dirs=(
 
 # Define source and destination file pairs
 src_files=(
-    "design-patterns/cloudformation/C9.yaml"
+    "design-patterns/cloudformation/vscode.yaml"
 )
 
 dest_files=(

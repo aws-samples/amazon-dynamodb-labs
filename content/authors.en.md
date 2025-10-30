@@ -14,6 +14,10 @@ weight: 100
 1. Daniel Yoder ([danielsyoder](https://github.com/danielsyoder)) - The brains behind amazon-dynamodb-labs.com and the co-creator of the design scenarios
 
 ### 2025 additions
+zETL Workshop update with OS pipeline changes (October 2025):
+1. John Terhune - ([@terhunej](https://github.com/terhunej)) - Primary author
+2. Esteban Serna - ([@tebanieo](https://github.com/tebanieo)) - Editor, Tech reviewer and merger.
+
 Removing Cloud9 due to End of Life from all the workshops (October 2025):
 1. Esteban Serna ([@tebanieo](https://github.com/tebanieo)) - Primary author, and merger
 

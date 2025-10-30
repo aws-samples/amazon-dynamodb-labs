@@ -10,47 +10,57 @@ The dataset has over 106K movies, ratings, votes, and cast/crew information.
 
 The CloudFormation template launched an EC2 Amazon Linux 2 instance with MySQL installed and running.
 It created a MySQL database called `imdb`, added 6 new tables (one for each IMDb dataset), downloaded the IMDb TSV files to MySQL server local directory, and loaded the file contents into the 6 tables. 
-The CloudFormation template also configured a remote MySQL user based on input parameters for the template. 
-To explore the dataset, follow the instructions below to log in to the EC2 server.
 
- 1. Go to [EC2 console](https://console.aws.amazon.com/ec2/v2/home#Instances:instanceState=running).
- 2. Select the MySQL Instance and click **Connect**.
-    ![Final Deployment Architecture](/static/images/migration9.jpg)
- 3. Make sure `ec2-user` is in the **User name** field. Click **Connect**.
-    ![Final Deployment Architecture](/static/images/migration10.jpg)
- 4. Elevate your privileges using the `sudo` command.
-    ```bash
-      sudo su
-    ```
-    ![Final Deployment Architecture](/static/images/migration11.jpg)
- 5. Go to the file directory.
-    ```bash
-      cd /var/lib/mysql-files/
-      ls -lrt
-    ```
- 6. You can see all the 6 files copied from the IMDB dataset to the local EC2 directory.
-    ![Final Deployment Architecture](/static/images/migration12.jpg)
- 7. Feel free to explore the files.
- 8. If you are completing this workshop at an AWS hosted event, go to [AWS CloudFormation Console](https://console.aws.amazon.com/cloudformation/home#/stacks?filteringStatus=active&filteringText=&viewNested=true&hideStacks=false) and select the stack named **ddb**. Go to the **Parameters** tab and copy the username and password listed next to **DbMasterUsername** and **DbMasterPassword**.
+On the event dashboard, click on **Open AWS console** to federate into AWS Management Console in a new tab. On the same page, click **Get started** to open the workshop instructions.
+
+![Event dashboard](/static/images/common/workshop-studio-01.png)
+
+In addition to the AWS console you should open your Visual Studio code server, by clicking in the `VSCodeServerURL` parameter, available from the "Event Outputs" section. When prompted for a password use the value from `VSCodeServerPassword`. 
+
+![Event dashboard](/static/images/common/workshop-studio-02.png)
+
+During the first 60 seconds, the environment will automatically update extensions and plugins. Any startup notification can be safely dismissed. 
+ 
+![VS Code Setup](/static/images/common/common-vs-code-01.png)
+
+If a terminal is not available at the bottom left side of your screen, please open a new one like the following picture indicates.
+
+![VS Code Setup](/static/images/common/common-vs-code-02.png)
+
+In the terminal type:
+
+```bash
+cd LDMS
+
+```
+
+ If you are completing this workshop at an AWS hosted event, go to [AWS CloudFormation Console](https://console.aws.amazon.com/cloudformation/home#/stacks?filteringStatus=active&filteringText=&viewNested=true&hideStacks=false) and select the stack named **ddb**. Go to the **Parameters** tab and copy the username and password listed next to **DbMasterUsername** and **DbMasterPassword**.
 
  ::alert[_If you are completing this workshop in your AWS account copy the DbMasterUsername and DbMasterPassword from the CloudFormation stack used to configure the MySQL environment._]
 
    ![Final Deployment Architecture](/static/images/migration13.jpg)
- 9. Go back to EC2 Instance console and login to mysql.
+ 
+ Go to the terminal and login to mysql.
   ```bash
-  mysql -u DbMasterUsername -pDbMasterPassword
+   mysql -u dbuser -p 
   ```
-   ![Final Deployment Architecture](/static/images/migration14.jpg)
-10. Congratulations! You are now connected to a self-managed MySQL source database on EC2. In the following steps, we will explore the database and tables hosting IMDb datasets.
+ 
+   ![Final Deployment Architecture](/static/images/LDMS/mysql-connecting.png)
+
+Congratulations! You are now connected to a self-managed MySQL source database on EC2. In the following steps, we will explore the database and tables hosting IMDb datasets.
+  
   ```bash
   use imdb;
   ```
-   ![Final Deployment Architecture](/static/images/migration15.jpg)
-11. List all the tables created by the CloudFormation stack.
+
+   ![Final Deployment Architecture](/static/images/LDMS/mysql-use-imdb.png)
+
+List all the tables created by the CloudFormation stack.
    ```bash
    show tables;
    ```
-   ![Final Deployment Architecture](/static/images/migration16.jpg)
+
+   ![Final Deployment Architecture](/static/images/LDMS/mysql-show-tables.png)
 
 For illustration purposes, below is a logical diagram represents relationship between various source tables hosting IMDb dataset.
 
@@ -60,10 +70,14 @@ For illustration purposes, below is a logical diagram represents relationship be
   - `title_principals` has cast and crew information. It has a 1\:many relationship with the `title_basics` table.
   - `title_crew` has writer and director information. It has a 1:1 relationship with the `title_basics` table.
   - `name_basics` has cast and crew details. Every member has unique `nconst` value assigned.
-  ![Final Deployment Architecture](/static/images/migration31.jpg)
 
-12. We will create a denormalized view with 1:1 static information and get it ready for migration to Amazon DynamoDB table. For now, go ahead and copy the code below and paste into the MySQL command line.
+
+![Final Deployment Architecture](/static/images/migration31.jpg)
+
+We will create a denormalized view with 1:1 static information and get it ready for migration to Amazon DynamoDB table. For now, go ahead and copy the code below and paste into the MySQL command line.
+
 We will discuss the details around the target data model in the next chapter.
+
 ```bash
 CREATE VIEW imdb.movies AS\
     SELECT tp.tconst,\

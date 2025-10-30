@@ -6,40 +6,31 @@ chapter: true
 ---
 
 
-::alert[Only complete this section if you are running the workshop on your own. If you are at an AWS hosted event (such as re\:Invent, Immersion Day, etc), go to :link[At an AWS hosted Event]{href="/event-driven-architecture/setup/start-here/aws-ws-event"}]
+::alert[These setup instructions are identitical for LADV, LHOL, LBED, LMR, and LGME - all of which use the same Visual Studio Code template. Only complete this section once, and only if you're running it on your own account.]{type="warning"}
 
-## Create a Cloud9 Environment
+::alert[Only complete this section if you are running the workshop on your own. If you are at an AWS hosted event (such as re\:Invent, Immersion Day, etc), go to :link[At an AWS hosted Event]{href="/hands-on-labs/setup/aws-ws-event"}]
 
-To complete the steps in these labs, you need an IAM role that has the privileges to create, update and delete AWS Cloud9 environments, Lambda functions, DynamoDB tables, IAM roles, Kinesis Data Streams and DynamoDB Streams
+## Launch the CloudFormation stack
+::alert[During the course of the lab, you will make DynamoDB tables that will incur a cost that could approach tens or hundreds of dollars per day. Ensure you delete the DynamoDB tables using the DynamoDB console, and make sure you delete the CloudFormation stack as soon as the lab is complete.]
 
-* Log into the AWS Management Console, go to the AWS Cloud9 service dashboard then select **Create environment**.
+1. **[Deprecated]** - Launch the CloudFormation template in US West 2 to deploy the resources in your account: [![CloudFormation](/static/images/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=DynamoDBID&templateURL=:param{key="design_patterns_s3_lab_yaml"})  
 
-![Create Cloud9 environment](/static/images/change-data-capture/setup/cloud9-create-env.png)
+1. *Optionally, download [the YAML template](https://github.com/aws-samples/aws-dynamodb-examples/blob/master/workshops/modernizer/modernizer-db.yaml) from our GitHub repository and launch it your own way*
 
-* Give your new environment a name - **DynamoDB Labs** then provide an optional description for the environment.
+1. Click *Next* on the first dialog.
 
-![Name Cloud9 environment](/static/images/change-data-capture/setup/cloud9-name-env.png)
+1. Provide a CloudFormation stack name.
 
-* Select **t2.small** as your instance type, leave all other fields as the default values then select **Create**.
+1. In the Parameters section, note the *AllowedIP** contains a default IP Address, if you want to access the instance via SSH obtain your own public IP address. Ensure to add the `/32` network mask at the end. Do not modify any other parameter and click *Next*.
 
-![Select Cloud9 instance](/static/images/change-data-capture/setup/cloud9-select-ec2.png)
+![CloudFormation parameters](/static/images/common/on-your-own-cf-01.png)
 
-* Wait for creation of your Cloud9 environment to complete then select **Open** to launch your Cloud9 evironment.
+6. Scroll to the bottom and click *Next*, and then review the *Template* and *Parameters*. When you are ready to create the stack, scroll to the bottom, check the box acknowledging the creation of IAM resources, and click *Create stack*.
 
-![Launch Cloud9 environment](/static/images/change-data-capture/setup/cloud9-launch-env.png)
+![CloudFormation parameters](/static/images/common/on-your-own-cf-02.png)
+  
+  The stack will create a Visual Studio Code EC2 instance, a role for the instance, and a role for the AWS Lambda function used later on in the lab. The CloudFormation template will create a set of folders that can be used to execute individually the lab modules presented in this guide. 
 
-Start a command line terminal in Cloud9 and set up the `Region` and `Account ID` environment variables.
-
-```bash
-export REGION={your aws region} &&
-export ACCOUNT_ID={your aws account ID}
-```
-
-Install jq on your AWS Cloud9 environment using the command below.
-
-```bash
-sudo yum install jq -y
-```
 
 ::alert[*After completing the workshop, remember to complete the :link[Clean Up]{href="/change-data-capture/clean-up"} section to remove AWS resources that you no longer require.*]
 

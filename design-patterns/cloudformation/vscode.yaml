@@ -1117,132 +1117,7 @@ Resources:
               exit 1
           }
           
-          # Setup IMDB database and tables
-          echo "Setting up IMDB database..."
-          mysql -u root -p"$DbMasterPassword" -e "CREATE DATABASE IF NOT EXISTS imdb;" || {
-              echo "ERROR: Failed to create imdb database"
-              exit 1
-          }
-          
-          # Download and extract data files
-          echo "Downloading IMDB data files..."
-          cd /var/lib/mysql-files/ || {
-              echo "ERROR: Could not change to mysql-files directory"
-              exit 1
-          }
-          
-          # Download with retry
-          retry_command curl -L -o rdbms-migration.zip https://www.amazondynamodblabs.com/static/rdbms-migration/rdbms-migration.zip || {
-              echo "ERROR: Failed to download data files"
-              exit 1
-          }
-          
-          # Extract files
-          echo "Extracting data files..."
-          unzip -q rdbms-migration.zip || {
-              echo "ERROR: Failed to extract data files"
-              exit 1
-          }
-          
-          # Set proper permissions
-          chmod 644 *.tsv 2>/dev/null || echo "Warning: Could not set permissions on TSV files"
-          chown mysql:mysql *.tsv 2>/dev/null || echo "Warning: Could not change ownership of TSV files"
-          
-          # Create tables
-          echo "Creating IMDB tables..."
-          mysql -u root -p"$DbMasterPassword" -e "
-          CREATE TABLE IF NOT EXISTS imdb.title_akas (
-              titleId VARCHAR(200), 
-              ordering VARCHAR(200),
-              title VARCHAR(1000), 
-              region VARCHAR(1000), 
-              language VARCHAR(1000), 
-              types VARCHAR(1000),
-              attributes VARCHAR(1000),
-              isOriginalTitle VARCHAR(5),
-              PRIMARY KEY (titleId, ordering)
-          );" || echo "Warning: Failed to create title_akas table"
-          
-          mysql -u root -p"$DbMasterPassword" -e "
-          CREATE TABLE IF NOT EXISTS imdb.title_basics (
-              tconst VARCHAR(200), 
-              titleType VARCHAR(1000),
-              primaryTitle VARCHAR(1000), 
-              originalTitle VARCHAR(1000), 
-              isAdult VARCHAR(1000), 
-              startYear VARCHAR(1000),
-              endYear VARCHAR(1000),
-              runtimeMinutes VARCHAR(1000),
-              genres VARCHAR(1000),
-              PRIMARY KEY (tconst)
-          );" || echo "Warning: Failed to create title_basics table"
-          
-          mysql -u root -p"$DbMasterPassword" -e "
-          CREATE TABLE IF NOT EXISTS imdb.title_crew (
-              tconst VARCHAR(200), 
-              directors VARCHAR(1000),
-              writers VARCHAR(1000),
-              PRIMARY KEY (tconst)
-          );" || echo "Warning: Failed to create title_crew table"
-          
-          mysql -u root -p"$DbMasterPassword" -e "
-          CREATE TABLE IF NOT EXISTS imdb.title_principals (
-              tconst VARCHAR(200), 
-              ordering VARCHAR(200),
-              nconst VARCHAR(200), 
-              category VARCHAR(1000), 
-              job VARCHAR(1000), 
-              characters VARCHAR(1000),
-              PRIMARY KEY (tconst,ordering,nconst)
-          );" || echo "Warning: Failed to create title_principals table"
-          
-          mysql -u root -p"$DbMasterPassword" -e "
-          CREATE TABLE IF NOT EXISTS imdb.title_ratings (
-              tconst VARCHAR(200), 
-              averageRating FLOAT,
-              numVotes INTEGER,
-              PRIMARY KEY (tconst)
-          );" || echo "Warning: Failed to create title_ratings table"
-          
-          mysql -u root -p"$DbMasterPassword" -e "
-          CREATE TABLE IF NOT EXISTS imdb.name_basics (
-              nconst VARCHAR(200), 
-              primaryName VARCHAR(1000),
-              birthYear VARCHAR(1000), 
-              deathYear VARCHAR(1000), 
-              primaryProfession VARCHAR(1000), 
-              knownForTitles VARCHAR(1000),
-              PRIMARY KEY (nconst)
-          );" || echo "Warning: Failed to create name_basics table"
-          
-          # Load data with error handling
-          echo "Loading data into tables..."
-          
-          # Function to load data with error handling
-          load_data() {
-              local file=$1
-              local table=$2
-              
-              if [ -f "$file" ]; then
-                  echo "Loading data from $file into $table..."
-                  mysql -u root -p"$DbMasterPassword" -e "
-                  LOAD DATA INFILE '/var/lib/mysql-files/$file' 
-                  IGNORE INTO TABLE imdb.$table 
-                  FIELDS TERMINATED BY '\t' 
-                  LINES TERMINATED BY '\n'
-                  IGNORE 1 LINES;" || echo "Warning: Failed to load data from $file"
-              else
-                  echo "Warning: File $file not found"
-              fi
-          }
-          
-          # Load all data files
-          load_data "title_ratings.tsv" "title_ratings"
-          load_data "title_basics.tsv" "title_basics"
-          load_data "title_crew.tsv" "title_crew"
-          load_data "title_principals.tsv" "title_principals"
-          load_data "name_basics.tsv" "name_basics"
-          load_data "title_akas.tsv" "title_akas"
+          # Note: IMDB database setup is now handled by the VSCode instance SSM document
           
           # Verify setup
           echo "Verifying database setup..."
@@ -2229,6 +2104,161 @@ Resources:
                   sudo -u ${VSCodeUser} bash -c 'cd ${VSCodeHomeFolder}/LGAM/backend && source ~/.bashrc && export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && npm run db:seed'
                 - echo "Database seeding completed successfully."
                 - echo "Database setup completed successfully."
+          - name: SetupIMDBDatabase
+            action: aws:runShellScript
+            inputs:
+              timeoutSeconds: 1200
+              runCommand:
+                - "#!/bin/bash"
+                - "set -euo pipefail"
+                - echo "Setting up IMDB database and tables..."
+                - !Sub |
+                  # Create IMDB database
+                  mysql -u ${DbMasterUsername} -p"${DbMasterPassword}" -e "CREATE DATABASE IF NOT EXISTS imdb;" || {
+                    echo "ERROR: Failed to create imdb database"
+                    exit 1
+                  }
+                - echo "IMDB database created successfully."
+                - echo "Downloading IMDB data files..."
+                - !Sub |
+                  # Create temporary directory for IMDB data
+                  mkdir -p /tmp/imdb-data
+                  cd /tmp/imdb-data
+                - !Sub |
+                  # Download IMDB data files with retry
+                  for i in {1..3}; do
+                    if curl -L -o rdbms-migration.zip https://www.amazondynamodblabs.com/static/rdbms-migration/rdbms-migration.zip; then
+                      echo "Download successful on attempt $i"
+                      break
+                    else
+                      echo "Download failed on attempt $i, retrying..."
+                      sleep 5
+                    fi
+                  done
+                - echo "Extracting IMDB data files..."
+                - !Sub |
+                  cd /tmp/imdb-data
+                  unzip -q rdbms-migration.zip || {
+                    echo "ERROR: Failed to extract data files"
+                    exit 1
+                  }
+                - echo "Creating IMDB tables..."
+                - !Sub |
+                  # Create IMDB tables
+                  mysql -u ${DbMasterUsername} -p"${DbMasterPassword}" -e "
+                  CREATE TABLE IF NOT EXISTS imdb.title_akas (
+                      titleId VARCHAR(200), 
+                      ordering VARCHAR(200),
+                      title VARCHAR(1000), 
+                      region VARCHAR(1000), 
+                      language VARCHAR(1000), 
+                      types VARCHAR(1000),
+                      attributes VARCHAR(1000),
+                      isOriginalTitle VARCHAR(5),
+                      PRIMARY KEY (titleId, ordering)
+                  );" || echo "Warning: Failed to create title_akas table"
+                - !Sub |
+                  mysql -u ${DbMasterUsername} -p"${DbMasterPassword}" -e "
+                  CREATE TABLE IF NOT EXISTS imdb.title_basics (
+                      tconst VARCHAR(200), 
+                      titleType VARCHAR(1000),
+                      primaryTitle VARCHAR(1000), 
+                      originalTitle VARCHAR(1000), 
+                      isAdult VARCHAR(1000), 
+                      startYear VARCHAR(1000),
+                      endYear VARCHAR(1000),
+                      runtimeMinutes VARCHAR(1000),
+                      genres VARCHAR(1000),
+                      PRIMARY KEY (tconst)
+                  );" || echo "Warning: Failed to create title_basics table"
+                - !Sub |
+                  mysql -u ${DbMasterUsername} -p"${DbMasterPassword}" -e "
+                  CREATE TABLE IF NOT EXISTS imdb.title_crew (
+                      tconst VARCHAR(200), 
+                      directors VARCHAR(1000),
+                      writers VARCHAR(1000),
+                      PRIMARY KEY (tconst)
+                  );" || echo "Warning: Failed to create title_crew table"
+                - !Sub |
+                  mysql -u ${DbMasterUsername} -p"${DbMasterPassword}" -e "
+                  CREATE TABLE IF NOT EXISTS imdb.title_principals (
+                      tconst VARCHAR(200), 
+                      ordering VARCHAR(200),
+                      nconst VARCHAR(200), 
+                      category VARCHAR(1000), 
+                      job VARCHAR(1000), 
+                      characters VARCHAR(1000),
+                      PRIMARY KEY (tconst,ordering,nconst)
+                  );" || echo "Warning: Failed to create title_principals table"
+                - !Sub |
+                  mysql -u ${DbMasterUsername} -p"${DbMasterPassword}" -e "
+                  CREATE TABLE IF NOT EXISTS imdb.title_ratings (
+                      tconst VARCHAR(200), 
+                      averageRating FLOAT,
+                      numVotes INTEGER,
+                      PRIMARY KEY (tconst)
+                  );" || echo "Warning: Failed to create title_ratings table"
+                - !Sub |
+                  mysql -u ${DbMasterUsername} -p"${DbMasterPassword}" -e "
+                  CREATE TABLE IF NOT EXISTS imdb.name_basics (
+                      nconst VARCHAR(200), 
+                      primaryName VARCHAR(1000),
+                      birthYear VARCHAR(1000), 
+                      deathYear VARCHAR(1000), 
+                      primaryProfession VARCHAR(1000), 
+                      knownForTitles VARCHAR(1000),
+                      PRIMARY KEY (nconst)
+                  );" || echo "Warning: Failed to create name_basics table"
+                - echo "Loading IMDB data into tables..."
+                - !Sub |
+                  # Copy files to MySQL secure file directory
+                  sudo cp /tmp/imdb-data/*.tsv /var/lib/mysql-files/ 2>/dev/null || {
+                    echo "Warning: Could not copy TSV files to MySQL secure directory"
+                    # Try alternative approach - load from tmp directory with LOCAL INFILE
+                    mysql -u ${DbMasterUsername} -p"${DbMasterPassword}" -e "SET GLOBAL local_infile=1;"
+                  }
+                - !Sub |
+                  # Function to load data with error handling
+                  load_imdb_data() {
+                    local file=$1
+                    local table=$2
+                    
+                    if [ -f "/var/lib/mysql-files/$file" ]; then
+                      echo "Loading data from $file into $table..."
+                      mysql -u ${DbMasterUsername} -p"${DbMasterPassword}" -e "
+                      LOAD DATA INFILE '/var/lib/mysql-files/$file' 
+                      IGNORE INTO TABLE imdb.$table 
+                      FIELDS TERMINATED BY '\t' 
+                      LINES TERMINATED BY '\n'
+                      IGNORE 1 LINES;" || echo "Warning: Failed to load data from $file"
+                    elif [ -f "/tmp/imdb-data/$file" ]; then
+                      echo "Loading data from /tmp/imdb-data/$file into $table..."
+                      mysql -u ${DbMasterUsername} -p"${DbMasterPassword}" --local-infile=1 -e "
+                      LOAD DATA LOCAL INFILE '/tmp/imdb-data/$file' 
+                      IGNORE INTO TABLE imdb.$table 
+                      FIELDS TERMINATED BY '\t' 
+                      LINES TERMINATED BY '\n'
+                      IGNORE 1 LINES;" || echo "Warning: Failed to load data from $file"
+                    else
+                      echo "Warning: File $file not found"
+                    fi
+                  }
+                - !Sub |
+                  # Load all IMDB data files
+                  cd /tmp/imdb-data
+                  load_imdb_data "title_ratings.tsv" "title_ratings"
+                  load_imdb_data "title_basics.tsv" "title_basics"
+                  load_imdb_data "title_crew.tsv" "title_crew"
+                  load_imdb_data "title_principals.tsv" "title_principals"
+                  load_imdb_data "name_basics.tsv" "name_basics"
+                  load_imdb_data "title_akas.tsv" "title_akas"
+                - echo "Verifying IMDB database setup..."
+                - !Sub |
+                  mysql -u ${DbMasterUsername} -p"${DbMasterPassword}" -e "USE imdb; SHOW TABLES;" || echo "Warning: Could not show imdb tables"
+                  mysql -u ${DbMasterUsername} -p"${DbMasterPassword}" -e "USE imdb; SELECT COUNT(*) as title_basics_count FROM title_basics;" || echo "Warning: Could not count title_basics records"
+                - echo "Cleaning up temporary files..."
+                - rm -rf /tmp/imdb-data
+                - echo "IMDB database setup completed successfully."
           - name: SetupFrontEnd
             action: aws:runShellScript
             inputs:
@@ -2962,13 +2992,17 @@ Outputs:
     Description: Role Arn
     Value: !GetAtt CodeInstanceRole.Arn
     Export:
-      Name: CodeInstanceRole
+      Name: CodeInstanceRoleArn
   VSCodeServerURL:
     Description: VSCode-Server URL
     Value: !Sub https://${CloudFrontDistribution.DomainName}/?folder=${VSCodeHomeFolder}&tkn=${SecretPlaintext.password}
+    Export:
+      Name: VSCodeUrl
   VSCodeServerPassword:
     Description: VSCode-Server Password
     Value: !GetAtt SecretPlaintext.password
+    Export:
+      Name: VSCodePassword
   VSCodeServerURLModernizer:
     Description: VSCode-Server with Modernizer workspace
     Value: !Sub https://${CloudFrontDistribution.DomainName}/?folder=${VSCodeHomeFolder}/LGAM&tkn=${SecretPlaintext.password}
