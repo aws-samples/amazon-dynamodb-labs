@@ -67,21 +67,23 @@ def product_recommend(input_text, language, region, opensearch_host, model_id):
         llm_prompt = 'Human: 你现在是一个导购客服，需要帮助客户推荐商品，根据商品的描述信息，给客户推荐具体的商品名称和编号. 客户的问题如下: ' + input_text + ',你必须基于以下商品信息进行推荐.适当的时候如果客户问题不清晰，可以反问一些关键信息.' + str(es_res) + ' Assistant:'
     
     llm_request_body = json.dumps({
-        "prompt": llm_prompt,
-        "max_tokens_to_sample": 4000,
+        "anthropic_version": "bedrock-2023-05-31",
+        "messages": [
+            {"role": "user", "content": llm_prompt}
+        ],
+        "max_tokens": 4000,
         "temperature": 0.1,
         "top_p": 0.9,
     })
     
-    modelId = 'anthropic.claude-v2:1'
+    modelId = 'anthropic.claude-haiku-4-5-20251001-v1:0'
     accept = 'application/json'
     contentType = 'application/json'
     
     response = brt.invoke_model(body=llm_request_body, modelId=modelId, accept=accept, contentType=contentType)
-    
     response_body = json.loads(response.get('body').read())
-    
-    llm_result = response_body.get('completion')
+    #llm_result = response_body.get('completion')
+    llm_result = response_body.get('content', [{}])[0].get('text', '')
     return llm_result,es_response
 
 def reviews_analytis(input_text, language, region, opensearch_host, model_id):
@@ -135,21 +137,23 @@ def reviews_analytis(input_text, language, region, opensearch_host, model_id):
         llm_prompt = 'Human: 你现在是一个导购客服，需要帮助客户分析商品的评价，根据商品过去的评论信息，给客户做评论总结，主要关注商品的评分，评论内容的情绪表达. 客户的问题如下: ' + input_text + ',你必须基于以下商品评价信息进行总结.适当的时候如果客户问题不清晰，可以反问一些关键信息.' + str(es_res) + ' Assistant:'
     
     llm_request_body = json.dumps({
-        "prompt": llm_prompt,
-        "max_tokens_to_sample": 4000,
+        "anthropic_version": "bedrock-2023-05-31",
+        "messages": [
+              {"role": "user", "content": llm_prompt}
+        ],
+        "max_tokens": 4000,
         "temperature": 0.1,
         "top_p": 0.9,
     })
     
-    modelId = 'anthropic.claude-v2:1'
+    modelId = 'anthropic.claude-haiku-4-5-20251001-v1:0'
     accept = 'application/json'
     contentType = 'application/json'
     
     response = brt.invoke_model(body=llm_request_body, modelId=modelId, accept=accept, contentType=contentType)
-    
     response_body = json.loads(response.get('body').read())
     
-    llm_result = response_body.get('completion')
+    llm_result = response_body.get('content', [{}])[0].get('text', '')
     return llm_result,es_response
 
 
