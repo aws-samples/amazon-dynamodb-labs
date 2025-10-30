@@ -11,7 +11,7 @@ set into S3. We can run this script in preview mode by using the "stdout" parame
 
 1. Run:
 ```bash
-python3 mysql_s3.py Customers stdout
+python mysql_s3.py Customers stdout
 ```
 You should see results in DynamoDB JSON format:
 
@@ -19,7 +19,7 @@ You should see results in DynamoDB JSON format:
 
 2. Next, run it for our view:
 ```bash
-python3 mysql_s3.py vCustOrders stdout
+python mysql_s3.py vCustOrders stdout
 ```
 You should see similar output from the view results.
 
@@ -27,7 +27,7 @@ The script can write these to S3 for us. We just need to omit the "stdout" comma
 
 3. Now, run the script without preview mode:
 ```bash
-python3 mysql_s3.py Customers 
+python mysql_s3.py Customers 
 ```
 You should see confirmation that objects have been written to S3:
 

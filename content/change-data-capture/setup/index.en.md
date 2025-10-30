@@ -14,7 +14,7 @@ To run this lab, you will need an AWS account, and a user identity with access t
 * Amazon Kinesis
 * AWS Lambda
 * Amazon Simple Queue Service
-* AWS Cloud9 Environment
+* Visual Studio Code 
 
 You can use your own account, or an account provided through Workshop Studio as part of an AWS organized workshop.  Using an account provided by Workshop Studio is the easier path, as you will have full access to all AWS services, and the account will terminate automatically when the event is over.
 
