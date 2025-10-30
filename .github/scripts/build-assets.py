@@ -24,7 +24,7 @@ shutil.rmtree(os.path.join(dest_root,'assets'), ignore_errors=True)
 
 #Move static assets
 Path(dest_root, 'assets').mkdir(parents=True, exist_ok=False)
-data_files = ['design-patterns/cloudformation/C9.yaml',
+data_files = ['design-patterns/cloudformation/vscode.yaml',
     'design-patterns/cloudformation/UserDataC9.sh',
     'event-driven/event-driven-cfn.yaml',
     'static/files/hands-on-labs/migration-env-setup.yaml',
