@@ -18,39 +18,38 @@ default, PITR is disabled.
 ### How to enable PITR
 
 1.  First, go to the [DynamoDB Console](https://console.aws.amazon.com/dynamodbv2/) and click on *Tables* from the side menu.
-In the list of tables, choose the ProductCatalog table.On the **Backups** tab of the ProductCatalog table in the  **Point-in-time recovery** section, choose **Edit**.
+In the list of tables, choose the ProductCatalog table. On the **Backups** tab of the ProductCatalog table in the **Point-in-time recovery** section, choose **Edit**.
 
-![PITR Backup 1](/static/images/hands-on-labs/backup/pitr_backup_1.png)
+:image[PITR Backup 1]{src="/static/images/hands-on-labs/backup/pitr_backup_1.png" disableZoom=true width=850}
 
 2.  Select **Enable Point-in-time-recovery** and choose **Save changes**.
 
-![PITR Backup 2](/static/images/hands-on-labs/backup/pitr_backup_2.png)
+:image[PITR Backup 2]{src="/static/images/hands-on-labs/backup/pitr_backup_2.png" disableZoom=true width=850}
 
 ### To restore a table to a point in time
 
 Now let us say we get some unwanted records in ProductCatalog table as highlighted below.
 
-![PITR Unwanted Records](/static/images/hands-on-labs/backup/pitr_unwanted_records.png)
+:image[PITR Unwanted Records]{src="/static/images/hands-on-labs/backup/pitr_unwanted_records.png" disableZoom=true width=1150}
 
-Follow the below steps to restore ProductCatalog using Point-in-time-recovery.
+Follow the steps below to restore the ProductCatalog table using Point-in-time-recovery.
 
-1.  Sign in to the AWS Management Console and open the DynamoDB console.
-    In the navigation pane on the left side of the console, choose
+1.  In the navigation pane on the left side of the console, choose
     **Tables**. In the list of tables, choose the ProductCatalog table.
     On the **Backups** tab of the ProductCatalog table, in the
     **Point-in-time recovery** section, choose **Restore to
     point-in-time**.
 
-![PITR Restore 1](/static/images/hands-on-labs/backup/pitr_restore_1.png)
+:image[PITR Restore 1]{src="/static/images/hands-on-labs/backup/pitr_restore_1.png" disableZoom=true width=950}
 
 2. For the new table name, enter ProductCatalogPITR. To confirm
-the restorable time, set the **Restore date and time** to the **Latest
+the restore time, set the **Restore date and time** to the **Latest
 restore date**. Choose **Restore** to start the restore process.
 
-![PITR Restore 2](/static/images/hands-on-labs/backup/pitr_restore_2.png)
+:image[PITR Restore 2]{src="/static/images/hands-on-labs/backup/pitr_restore_2.png" disableZoom=true width=950}
 
 *Note : You can restore the table to the same AWS Region or to a
-different Region from where the backup resides. You can also exclude
+different region from where the backup resides. You can also exclude
 secondary indexes from being created on the new restored table. In
 addition, you can specify a different encryption mode.*
 
@@ -58,4 +57,4 @@ The table that is being restored is shown with the status **Restoring**.
 After the restore process is finished, the status of the
 *ProductCatalogPITR* table changes to **Active**.
 
-![PITR Restore 3](/static/images/hands-on-labs/backup/pitr_restore_3.png)
+:image[PITR Restore 3]{src="/static/images/hands-on-labs/backup/pitr_restore_3.png" disableZoom=true width=950}
