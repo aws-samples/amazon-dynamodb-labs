@@ -16,7 +16,7 @@ This workshop is designed for developers, engineers, and database administrators
 
 ### Requirements
 #### Basic knowledge of AWS services
-- Among other services this lab will guide you through the use of [AWS Cloud9](https://aws.amazon.com/cloud9/) and [AWS Lambda](https://aws.amazon.com/lambda/).
+- Among other services this lab will guide you through the use of Visual Studio Code and [AWS Lambda](https://aws.amazon.com/lambda/).
 
 #### Basic understanding of DynamoDB
 - If you're not familiar with DynamoDB or are not participating in this lab as part of an AWS event, consider reviewing the documentation on "[What is Amazon DynamoDB?](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html)"
