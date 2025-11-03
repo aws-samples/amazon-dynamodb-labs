@@ -41,9 +41,6 @@ aws dynamodb update-table \
                     "KeyType" : "RANGE"
                 }
             ],
-            "ProvisionedThroughput": {
-                "ReadCapacityUnits": 5, "WriteCapacityUnits": 5
-            },
             "Projection": {
                 "ProjectionType": "ALL"
             }
