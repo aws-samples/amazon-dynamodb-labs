@@ -7,37 +7,27 @@ chapter: false
 description: "To get started, you configure your environment and download code that you use during the lab."
 ---
 
+During the first 60 seconds, the environment will automatically update extensions and plugins. Any startup notification can be safely dismissed. 
+ 
+![VS Code Setup](/static/images/common/common-vs-code-01.png)
 
-[AWS Cloud9](https://aws.amazon.com/cloud9/) is a cloud-based integrated development environment (IDE) that lets you write, run, and debug code with just a browser. AWS Cloud9 includes a code editor, debugger, and terminal. It also comes prepackaged with essential tools for popular programming languages and the AWS Command Line Interface (CLI) preinstalled so that you don’t have to install files or configure your laptop for this lab. Your AWS Cloud9 environment will have access to the same AWS resources as the user with which you signed in to the AWS Management Console.
+If a terminal is not available at the bottom left side of your screen, please open a new one like the following picture indicates.
 
-### To set up your AWS Cloud9 development environment:
+![VS Code Setup](/static/images/common/common-vs-code-02.png)
 
-1. Choose **Services** at the top of the page, and then choose **Cloud9** under **Developer Tools**.
-   
-2. There would be an environment ready to use under **Your environments**.
+Then run the command `aws sts get-caller-identity` just to verify that your AWS credentials have been properly configured.
 
-3. Click on **Open IDE**, your IDE should open with a welcome note.
-
-You should now see your AWS Cloud9 environment. You need to be familiar with the three areas of the AWS Cloud9 console shown in the following screenshot:
-
-![Cloud9 Environment](/static/images/game-player-data/setup/cloud9-environment.png)
-
-- **File explorer**: On the left side of the IDE, the file explorer shows a list of the files in your directory.
-  
-- **File editor**: On the upper right area of the IDE, the file editor is where you view and edit files that you’ve selected in the file explorer.
-  
-- **Terminal**: On the lower right area of the IDE, this is where you run commands to execute code samples.
+![VS Code Setup](/static/images/common/common-vs-code-03.png)
 
 
-
-In this lab, you use Python scripts to interact with the DynamoDB API. Run the following commands in your AWS Cloud9 terminal to download and unpack this lab’s code.
+In this lab, you use Python scripts to interact with the DynamoDB API. Run the following commands in your VS Code terminal to download and unpack this lab’s code.
 
 ```bash
-cd ~/environment
+cd ~/workshop/LGME
 curl -sL https://amazon-dynamodb-labs.com/assets/battle-royale.zip -o battle-royal.zip && unzip -oq battle-royal.zip && rm battle-royal.zip
 ```
 
-You should see two directories in the AWS Cloud9 file explorer:
+You should see two directories in the file explorer:
 
 - **application**: The _application_ directory contains example code for reading and writing data in your table. This code is similar to code you would have in your real gaming application.
 
