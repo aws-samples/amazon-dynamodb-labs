@@ -9,18 +9,21 @@ The [Scan API](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/AP
 The Scan API is similar to the Query API except that since we want to scan the whole table and not just a single Item Collection, there is no Key Condition Expression for a Scan.  However, you can specify a [Filter Expression](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.FilterExpression) which will reduce the size of the result set (even though it will not reduce the amount of capacity consumed).
 
 Let us look at the data in the **Reply** table which has both a Partition Key and a Sort Key. Select the left menu bar **Explore items**.
-![Console Menu Item Explorer](/static/images/hands-on-labs/explore-console/console_menu_explore_item.png)
+
+:image[Console Menu Item Explorer]{src="/static/images/hands-on-labs/explore-console/console_menu_explore_item.png" disableZoom=true width=250}
+
 You may need to click the hamburger menu icon to expand the left menu if its hidden.
-![Console Menu Hamburger Icon](/static/images/hands-on-labs/explore-console/console_menu_hamburger_icon.png)
+
+:image[Console Menu Hamburger Icon]{src="/static/images/hands-on-labs/explore-console/console_menu_hamburger_icon.png" disableZoom=true width=900}
 
 
 Once you enter the Explore Items you need to select the **Reply** table and then expand the Scan/Query items box.
 
-![Item Explorer Expand Tables](/static/images/hands-on-labs/explore-console/console_explore_item_select_table.png)
+:image[Item Explorer Expand Tables]{src="/static/images/hands-on-labs/explore-console/console_explore_item_select_table.png" disableZoom=true width=900}
 
 For example, we could find all the replies in the Reply that were posted by User A.   
 
-![Item Explorer Scan Reply 1](/static/images/hands-on-labs/explore-console/console_item_explorer_scan_reply_1.png)
+:image[Item Explorer Scan Reply 1]{src="/static/images/hands-on-labs/explore-console/console_item_explorer_scan_reply_1.png" disableZoom=true width=900}
 
 You should see 3 **Reply** items posted by User A.
 
@@ -35,5 +38,6 @@ The solution is expandable below but try to figure it out yourself before moving
 ::::expand{header="Expand this to see the solution"}
 For this access pattern we will need to make a FilterCondition with clauses on both the *Threads* and *Views* attributes before clicking **Run**.
 
-![Item Explorer Scan Reply 2](/static/images/hands-on-labs/explore-console/console_item_explorer_scan_reply_2.png)
+:image[Item Explorer Scan Reply 2]{src="/static/images/hands-on-labs/explore-console/console_item_explorer_scan_reply_2.png" disableZoom=true width=900}
+
 ::::
