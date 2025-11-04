@@ -41,6 +41,7 @@ After each data load you should get this message saying that there were no Unpro
 ```
 
 #### Sample output
-![Processed Items](/static/images/hands-on-labs/load-sample-data.png)
+
+:image[Processed Items]{src="/static/images/hands-on-labs/load-sample-data.png" disableZoom=true width=900}
 
 You can now continue with the section :link[Explore DynamoDB with the CLI]{href="/hands-on-labs/explore-cli"}.  

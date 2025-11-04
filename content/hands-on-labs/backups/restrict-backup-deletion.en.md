@@ -5,13 +5,9 @@ date: 2020-04-21T07:38:58-05:00
 weight: 65
 ---
 
-Customer has a common ask when they want their developer/admin should be
-allowed to create and delete DynamoDB tables but they shouldn’t be
-allowed to delete the backups.
+Customers often request that their developers or administrators be allowed to create and delete DynamoDB tables, but not be permitted to delete the backups.
 
-You can achieve this by creating IAM policy. Following is an example of
-the AWS IAM policy which allow “Create Table”, “List Table”, “Create
-Backup” and “Delete Table” and denies “Delete Backup” of DynamoDB table.
+This can be achieved by creating an IAM policy. The following is an example of an AWS IAM policy that allows “Create Table,” “List Tables,” “Create Backup,” and “Delete Table”, while denying the “Delete Backup” action on DynamoDB tables.
 
 ```json
 
@@ -49,8 +45,7 @@ Backup” and “Delete Table” and denies “Delete Backup” of DynamoDB tabl
 
 
 
-You can restrict in AWS backup by denying as well by denying
-“DeleteBackupSelection” in IAM policy.
+You can also restrict backup deletion in AWS Backup by adding an explicit Deny statement for the “DeleteBackupSelection” Action in an IAM policy.
 
 ```json
 
@@ -61,7 +56,6 @@ You can restrict in AWS backup by denying as well by denying
             "Sid": "VisualEditor0",
             "Effect": "Allow",
             "Action": [
-                "backup:DeleteBackupSelection",
                 "backup:CreateBackupSelection",
                 "backup:StartBackupJob",
                 "backup:CreateBackupPlan",
@@ -86,14 +80,11 @@ You can restrict in AWS backup by denying as well by denying
 
 
 ```
-You can apply the policy to role and assign the role to IAM group. Now
-users belonging to this IAM group will inherit the permission.
+You can apply the policy to a role and assign the role to an IAM group, so users belonging to the IAM group inherit the permission.
 
-Let’s say now the user tries to delete the backup in AWS backup.
-
-![Restrict Backup Deletion 1](/static/images/hands-on-labs/backup/restrict_delete_1.png)
-
-User gets the access denied error due to insufficient permission to
+If a user now tries to delete the backup in AWS backup, they will received an access denied error due to insufficient permissions to
 delete the backup.
 
-![Restrict Backup Deletion 2](/static/images/hands-on-labs/backup/restrict_delete_2.png)
+:image[Restrict Backup Deletion 1]{src="/static/images/hands-on-labs/backup/restrict_delete_1.png" disableZoom=true width=1150}
+
+:image[Restrict Backup Deletion 2]{src="/static/images/hands-on-labs/backup/restrict_delete_2.png" disableZoom=true width=1050}

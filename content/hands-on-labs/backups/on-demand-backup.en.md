@@ -16,11 +16,12 @@ table performance or availability.
 1.  First, go to the [DynamoDB Console](https://console.aws.amazon.com/dynamodbv2/) and click on *Tables* from the side menu.Choose ProductCatalog table.
     On the **Backups** tab of the ProductCatalog table, choose **Create backup**.
 
-![OD Backup 1](/static/images/hands-on-labs/backup/od_backup_1.png)
+:image[OD Backup 1]{src="/static/images/hands-on-labs/backup/od_backup_1.png" disableZoom=true width=950}
 
 2.  Make sure that ProductCatalog is the source table name. Choose **Customize settings** and then select **Backup with DynamoDB**. Enter the name `ProductCatalogBackup`. Click **Create backup** to create the backup.
 
-![OD Backup 2](/static/images/hands-on-labs/backup/od_backup_2.png)
+:image[OD Backup 2]{src="/static/images/hands-on-labs/backup/od_backup_2.png" disableZoom=true width=850}
+
 
 While the backup is being created, the backup status is set to
 **Creating**. After the backup is complete, the backup status changes to
@@ -28,11 +29,11 @@ While the backup is being created, the backup status is set to
 
 ### Restore Backup
 
-1.  Go to the [DynamoDB Console](https://console.aws.amazon.com/dynamodbv2/) and click on *Tables* from the side menu.Choose ProductCatalog table.
-    Choose **Backups** tab. In the list of backups, choose ProductCatalogBackup.
+1.  Click on *Tables* from the side menu. Choose the ProductCatalog table.
+    Choose the **Backups** tab. In the list of backups, choose ProductCatalogBackup.
 	Choose **Restore**.
 
-![OD Backup 3](/static/images/hands-on-labs/backup/od_backup_3.png)
+:image[OD Backup 3]{src="/static/images/hands-on-labs/backup/od_backup_3.png" disableZoom=true width=850}
 
 2.  Enter `ProductCatalogODRestore` as the new table name. Confirm the
     backup name and other backup details. Choose **Restore**
@@ -41,7 +42,7 @@ While the backup is being created, the backup status is set to
     finished, the status of the `ProductCatalogODRestore` table changes to
     **Active**.
 
-![OD Backup 4](/static/images/hands-on-labs/backup/od_backup_4.png)
+:image[OD Backup 4]{src="/static/images/hands-on-labs/backup/od_backup_4.png" disableZoom=true width=850}
 
 ### To delete a backup
 
@@ -52,10 +53,11 @@ ProductCatalogBackup. You can only delete the backup after the table `ProductCat
 1. Choose ProductCatalog table.
 1. Choose **Backups** tab.
 1. In the list of backups, choose ProductCatalogBackup.
-1. Click **Delete**:
+1. Click **Delete**.
 
-![OD Backup 5](/static/images/hands-on-labs/backup/od_backup_5.png)
+:image[OD Backup 5]{src="/static/images/hands-on-labs/backup/od_backup_5.png" disableZoom=true width=850}
 
 Finally, type the world `Delete` and click **Delete** to delete the backup.
 
-![OD Backup 6](/static/images/hands-on-labs/backup/od_backup_6.png)
+:image[OD Backup 6]{src="/static/images/hands-on-labs/backup/od_backup_6.png" disableZoom=true width=550}
+

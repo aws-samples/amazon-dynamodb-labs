@@ -10,7 +10,7 @@ The DynamoDB [PutItem API](https://docs.aws.amazon.com/amazondynamodb/latest/API
 
 Let's say we wanted to insert a new item into the *Reply* table from the console.  First, navigate to the **Reply** table click the **Create Item** button.
 
-![Console Create Item 1](/static/images/hands-on-labs/explore-console/console_create_item_1.png)
+:image[Console Create Item 1]{src="/static/images/hands-on-labs/explore-console/console_create_item_1.png" disableZoom=true width=650}
 
 Click `JSON view`, ensure `View DynamoDB JSON` is deselected, paste the following JSON, and then click **Create Item** to insert the new item.
 
@@ -23,7 +23,7 @@ Click `JSON view`, ensure `View DynamoDB JSON` is deselected, paste the followin
 }
 ```
 
-![Console Create Item 2](/static/images/hands-on-labs/explore-console/console_create_item_2.png)
+:image[Console Create Item 2]{src="/static/images/hands-on-labs/explore-console/console_create_item_2.png" disableZoom=true width=850}
 
 ## Updating or Deleting Data
 
@@ -33,7 +33,7 @@ The DynamoDB [DeleteItem API](https://docs.aws.amazon.com/amazondynamodb/latest/
 
 You can easily modify or delete an item using the console by selecting the checkbox next to the item of interest, clicking the **Actions** dropdown and performing the desired action.
 
-![Console Delete Item](/static/images/hands-on-labs/explore-console/console_delete_item.png)
+:image[Console Delete Item]{src="/static/images/hands-on-labs/explore-console/console_delete_item.png" disableZoom=true width=650}
 
 ## Exercise
 
@@ -47,17 +47,17 @@ The solution is expandable below but try to figure it out yourself before moving
 
 Navigate to the **ProductCatalog** Table and click the `Id` 201 hyperlink to bring up the Item Editor for that item. Click the `+` icon next to the *Color* attribute to expand that List.
 
-![Console Modify Item 1](/static/images/hands-on-labs/explore-console/console_modify_item_1.png)
+:image[Console Modify Item 1]{src="/static/images/hands-on-labs/explore-console/console_modify_item_1.png" disableZoom=true width=750}
 
 Click `Insert a field` and pick the `String` type.  Do this twice.  Add the colors "Silver" and "Green" to the list, then click `Save changes`.
 
-![Console Modify Item 2](/static/images/hands-on-labs/explore-console/console_modify_item_2.png)
+:image[Console Modify Item 2]{src="/static/images/hands-on-labs/explore-console/console_modify_item_2.png" disableZoom=true width=750}
 
 We can see by expanding the Items Preview that those two list entries were added.
 
-![Console Modify Item 3](/static/images/hands-on-labs/explore-console/console_modify_item_3.png)
+:image[Console Modify Item 3]{src="/static/images/hands-on-labs/explore-console/console_modify_item_3.png" disableZoom=true width=750}
 
 Return to the item editor for `Id` 201 and use the `Remove` button next to the Silver and Green list entries to remove them from the `Color` attribute, then click `Save changes`.
 
-![Console Modify Item 4](/static/images/hands-on-labs/explore-console/console_modify_item_4.png)
+:image[Console Modify Item 4]{src="/static/images/hands-on-labs/explore-console/console_modify_item_4.png" disableZoom=true width=750}
 ::::
