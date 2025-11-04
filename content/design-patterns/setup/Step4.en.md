@@ -4,10 +4,10 @@ date: 2019-12-02T10:07:55-08:00
 weight: 40
 ---
 
-On the EC2 instance, go to the workshop folder and run the ls command:
+On the Visual Studio Code terminal, go to the workshop folder and run the ls command:
 
 ```bash
-participant:~/workshop/LADV$ cd /home/participant/workshop/LADV
+cd /home/participant/workshop/LADV
 ls -l .
 ```
 
