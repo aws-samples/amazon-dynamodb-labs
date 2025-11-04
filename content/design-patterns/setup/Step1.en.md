@@ -1,20 +1,20 @@
 ---
-title: "Step 1 - Open the AWS Systems Manager Console "
+title: "Step 1 - Launch Visual Studio Code"
 date: 2019-12-02T10:07:45-08:00
 weight: 10
 ---
 
 During the first 60 seconds, the environment will automatically update extensions and plugins. Any startup notification can be safely dismissed. 
  
-![VS Code Setup](/static/images/common/common-vs-code-01.png)
+:image[VS Code Setup]{src="/static/images/common/common-vs-code-01.png" disableZoom=true width=900}
 
 If a terminal is not available at the bottom left side of your screen, please open a new one like the following picture indicates.
 
-![VS Code Setup](/static/images/common/common-vs-code-02.png)
+:image[VS Code Setup]{src="/static/images/common/common-vs-code-02.png" disableZoom=true width=900}
 
 Then run the command `aws sts get-caller-identity` just to verify that your AWS credentials have been properly configured.
 
-![VS Code Setup](/static/images/common/common-vs-code-03.png)
+:image[VS Code Setup]{src="/static/images/common/common-vs-code-03.png" disableZoom=true width=900}
 
 Change your directory to use LADV and browse the content:
 
