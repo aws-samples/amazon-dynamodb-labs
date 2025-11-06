@@ -4,38 +4,37 @@ menuTitle: "Configure OpenSearch Service Permissions"
 date: 2024-02-23T00:00:00-00:00
 weight: 20
 ---
-The OpenSearch Service Domain deployed by the CloudFormation Template uses Fine-grained access control. Fine-grained access control offers additional ways of controlling access to your data on Amazon OpenSearch Service. In order to configure integrations between OpenSearch Service, DynamoDB, and Bedrock certain OpenSearch Service permissions will need to be mapped to the IAM Role being used.
+The OpenSearch Service Domain deployed by the CloudFormation Template uses Fine-grained access control (FGAC). In order to configure easy integrations between OpenSearch Service, DynamoDB, and Bedrock, we need to map the IAM role that was created by the CloudFormation Template and will be used by the integration into an OpenSearch Service role called "all_access". With that, the IAM role will have permissions to access OpenSearch.
 
-Links to the OpenSearch Dashboards, credentials, and necessary values are provided in the Outputs of the DynamoDBzETL [CloudFormation](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/) Template. It is recommended that you leave Outputs open in one browser tab to easily refer to while following through the lab.
+For this section, we will need to know the names and paths of various resources constructed by the CloudFormation Template. For example, the URL to the OpenSearch Dashboards, the access credentials, and other values. These can be found in the Outputs of the **CloudFormation-Outputs.txt** file created by the credentials.sh script you ran in the previous section. Open this file so that the values are easily available.
 
-In a production environment as a best practice, you would configure roles with the least privilege required. For simplicity in this lab, we will use the "all_access" OpenSearch Service role.
+In a production environment as a best practice, you should configure roles with the least privilege required for exactly what's needed by your application. For simplicity in this lab, we will use the "all_access" OpenSearch Service role.
 
-::alert[_Do not continue unless the CloudFormation Template has finished deploying._]
+ 1. In the **CloudFormation-Outputs.txt** file, find the value for **OpenSearchPassword** and copy it to your clipboard. Next, find the value for **OSDashboardsURL** and hold ctrl while you click it to follow the link.
 
- 1. Open the "Outputs" tab of the stack named `dynamodb-opensearch-setup` in the CloudFormation Console.
+    ![OpenSearch Dashboard Login](/static/images/code-cloudformation-opensearch.png)
+ 1. Type "master-user" as the username, paste the password from your clipboard, then click **Log in**.
 
-    ![CloudFormation Outputs](/static/images/ddb-os-zetl3.jpg)
- 1. Open the link for SecretConsoleLink in a new tab. This will take you to the AWS Secrets Manager secret which contains the login information for OpenSearch. Click on the `Retrieve secret value` button to see the username and password for the OpenSearch Cluster.
- 1. Return to the CloudFormation Console "Outputs" and open the link for **OSDashboardsURL** in a new tab.
- 1. Login to Dashboards with the username and password provided in Secrets Manager.
+    ![OpenSearch Service Dashboards](/static/images/ddb-os-zetl4-small.jpg)
+ 1. You will get the 'Welcome to OpenSearch Dashboards'. Select **Explore on my own**.
 
-    ![OpenSearch Service Dashboards](/static/images/ddb-os-zetl4.jpg)
-1. When prompted to select your tenant, choose *Global* and click **Confirm**. Dismiss any pop ups.
+    ![Welcome Page OpenSearch](/static/images/Welcome-os.png)
+ 1. When prompted to select your tenant, choose *Global* and click **Confirm**. Dismiss any pop ups.
 
-    ![OpenSearch Service Dashboards](/static/images/ddb-os-zetl18.jpg)
+    ![OpenSearch Service Dashboards](/static/images/ddb-os-zetl18-small.jpg)
  1. Open the top left menu and select **Security** under the *Management* section.
 
-    ![Security Settings](/static/images/ddb-os-zetl5.jpg) 
- 1. Open the "Roles" tab, then click on the "all_access" role.
+    ![Security Settings](/static/images/ddb-os-zetl5-small.jpg) 
+ 1. Open the "Roles" tab, search for "all_access" and then click on the "all_access" role.
 
-    ![Roles Settings](/static/images/ddb-os-zetl6.jpg) 
+    ![Roles Settings](/static/images/ddb-os-zetl6-small.jpg) 
  1. Open the "Mapped users" tab, then select "Manage mapping".
 
-    ![Mapping Settings](/static/images/ddb-os-zetl7.jpg)
- 1. In the "Backend roles" field, enter the Arn provided in the CloudFormation Stack Outputs. The attribute named "Role" provides the correct Arn.  
+    ![Mapping Settings](/static/images/ddb-os-zetl7-small.jpg)
+ 1. In the "Backend roles" field, enter the ARN provided in the **CloudFormation-Outputs.txt** file. The attribute named "Role" provides the correct ARN.  
    Be absolutely sure you have removed any white space characters from the start and end of the ARN to ensure you do not have permissions issues later. Click "Map".  
 
-    ![ Settings](/static/images/ddb-os-zetl8.jpg)
+    ![ Settings](/static/images/ddb-os-zetl8-small.jpg)
  1. Verify that the "all_access" Role now has a "Backend role" listed.
 
-    ![ Settings](/static/images/ddb-os-zetl9.jpg)
+    ![ Settings](/static/images/ddb-os-zetl9-small.jpg)

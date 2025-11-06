@@ -11,6 +11,10 @@ Parameters:
     Type: String
     Description: Location of LADV code ZIP
     Default: https://amazon-dynamodb-labs.com/assets/workshop.zip
+  LBEDZIP:
+    Type: String
+    Description: Location of LBED code ZIP
+    Default: https://amazon-dynamodb-labs.com/assets/OpenSearchPipeline.zip
   DBLatestAmiId:
     Type:  'AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>'
     Default: '/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-arm64'
@@ -1636,6 +1640,8 @@ Resources:
                 - mkdir -p /tmp
                 - !Sub curl -o /tmp/workshop.zip "${WorkshopZIP}"
                 - !Sub unzip -o /tmp/workshop.zip -d ${VSCodeHomeFolder}/LADV
+                - !Sub curl -o /tmp/lbed.zip "${LBEDZIP}"
+                - !Sub unzip -jo /tmp/lbed.zip unzip -jo /tmp/lbed.zip "OpenSearchPipeline/*" -d ${VSCodeHomeFolder}/LBED
                 - rm /tmp/workshop.zip
                 - !Sub echo "${DDBReplicationRole.Arn}" > ${VSCodeHomeFolder}/ddb-replication-role-arn.txt
                 - !Sub chown -R ${VSCodeUser}:${VSCodeUser} ${VSCodeHomeFolder}
