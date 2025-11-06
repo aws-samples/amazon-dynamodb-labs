@@ -6,112 +6,96 @@ weight: 30
 ---
 Amazon DynamoDB offers a zero-ETL integration with Amazon OpenSearch Service through the DynamoDB plugin for OpenSearch Ingestion. Amazon OpenSearch Ingestion offers a fully managed, no-code experience for ingesting data into Amazon OpenSearch Service. 
 
- 1. Open [OpenSearch Service Ingestion Pipelines](https://us-west-2.console.aws.amazon.com/aos/home?region=us-west-2#opensearch/ingestion-pipelines)
- 1. Click "Create pipeline"
+Please follow the steps to setup zero-ETL. Here we use the AWS Console instead of Curl commands:
 
-    ![Create pipeline](/static/images/ddb-os-zetl13.jpg)
+ 1. Open [OpenSearch Service](https://us-west-2.console.aws.amazon.com/aos/home?region=us-west-2#opensearch) within the Console
 
- 1. Name your pipeline, and include the following for your pipeline configuration. The configuration contains multiple values that need to be updated. The needed values are provided in the CloudFormation Stack Outputs as "Region", "Role", "S3Bucket", "DdbTableArn", and "OSDomainEndpoint".
-    ```yaml
-      version: "2"
-      dynamodb-pipeline:
-        source:
-          dynamodb:
-            acknowledgments: true
-            tables:
-              # REQUIRED: Supply the DynamoDB table ARN
-              - table_arn: "{DDB_TABLE_ARN}"
-                stream:
-                  start_position: "LATEST"
-                export:
-                  # REQUIRED: Specify the name of an existing S3 bucket for DynamoDB to write export data files to
-                  s3_bucket: "{S3BUCKET}"
-                  # REQUIRED: Specify the region of the S3 bucket
-                  s3_region: "{REGION}"
-                  # Optionally set the name of a prefix that DynamoDB export data files are written to in the bucket.
-                  s3_prefix: "pipeline"
-            aws:
-              # REQUIRED: Provide the role to assume that has the necessary permissions to DynamoDB, OpenSearch, and S3.
-              sts_role_arn: "{ROLE}"
-              # REQUIRED: Provide the region
-              region: "{REGION}"
-        sink:
-          - opensearch:
-              hosts:
-                  # REQUIRED: Provide an AWS OpenSearch endpoint, including https://
-                [
-                  "{OS_DOMAIN_ENDPOINT}"
-                ]
-              index: "product-details-index-en"
-              index_type: custom
-              template_type: "index-template"
-              template_content: |
-                {
-                  "template": {
-                    "settings": {
-                      "index.knn": true,
-                      "default_pipeline": "product-en-nlp-ingest-pipeline"
-                    },
-                    "mappings": {
-                      "properties": {
-                        "ProductID": {
-                          "type": "keyword"
-                        },
-                        "ProductName": {
-                          "type": "text"
-                        },
-                        "Category": {
-                          "type": "text"
-                        },
-                        "Description": {
-                          "type": "text"
-                        },
-                        "Image": {
-                           "type": "text"
-                        },
-                        "combined_field": {
-                          "type": "text"
-                        },
-                        "product_embedding": {
-                          "type": "knn_vector",
-                          "dimension": 1536,
-                          "method": {
-                            "engine": "nmslib",
-                            "name": "hnsw",
-                            "space_type": "l2"
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              aws:
-                # REQUIRED: Provide the role to assume that has the necessary permissions to DynamoDB, OpenSearch, and S3.
-                sts_role_arn: "{ROLE}"
-                # REQUIRED: Provide the region
-                region: "{REGION}"
-    ```
- 1. Under Network, select "Public access", then click "Next".
+ 2. Select **Pipelines** from the left pane and click on **"Create pipeline"**. 
+![Create pipeline](/static/images/ddb-os-zetl13.jpg) 
 
-    ![Create pipeline](/static/images/ddb-os-zetl14.jpg)
+ 3. Select **"Blank"** from the Ingestion pipeline blueprints.
+![BluePrint Selection](/static/images/CreatePipeline.png)
 
- 1. Click "Create pipeline".
+ 4. Configure the source by selecting the source as **"Amazon DynamoDB"** and fill the details as below. Once done, click "Next"
+![Configure source](/static/images/configure_source.png)
+
+ 5. Skip the **Processor** configuration
+
+![Skip processor](/static/images/processor_blank.png) 
+
+ 6. Configure the sink by filling up the Opensearch details as below:
+![Configure Sink](/static/images/configure_sink.png)
+
+ 7. Use the following content under **Schema mapping**:
+
+```yaml
+{
+    "template": {
+      "settings": {
+        "index.knn": true,
+        "default_pipeline": "product-en-nlp-ingest-pipeline"
+      },
+      "mappings": {
+        "properties": {
+          "ProductID": {
+            "type": "keyword"
+          },
+          "ProductName": {
+            "type": "text"
+          },
+          "Category": {
+            "type": "text"
+          },
+          "Description": {
+            "type": "text"
+          },
+          "Image": {
+            "type": "text"
+          },
+          "combined_field": {
+            "type": "text"
+          },
+          "product_embedding": {
+            "type": "knn_vector",
+            "dimension": 1536
+          }
+        }
+      }
+    }
+}
+```
+
+Once done, click on **"Next"**
+
+ 8. Configure pipeline and then click "Next".
+
+    ![Configure pipeline](/static/images/ddb-os-zetl14.jpg) 
+
+
+ 9. Click "Create pipeline".
 
     ![Create pipeline](/static/images/ddb-os-zetl15.jpg)
 
- 1. **Wait until the pipeline has finished creating**. This will take 5 minutes or more.
+ 10. **Wait until the pipeline has finished creating and status is "Active"**. This will take 5 minutes or more.
 
 
- After the pipeline is created, it will take some additional time for the initial export from DynamoDB and import into OpenSearch Service. After you have waited several more minutes, you can check if items have replicated into OpenSearch by making a query in Dev Tools in the OpenSearch Dashboards.
+ After the pipeline is created, it will take some additional time for the initial export from DynamoDB and import into OpenSearch Service. After you have waited several more minutes, you can check if items have replicated into OpenSearch by making a query using the OpenSearch Dashboards feature called Dev Tools.
  
- To open Dev Tools, click on the menu in the top left of OpenSearch Dashboards, scroll down to the `Management` section, then click on `Dev Tools`. Enter the following query in the left pane, then click the "play" arrow.
+- To open Dev Tools, click on the menu in the top left of OpenSearch Dashboards, scroll down to the `Management` section, then click on `Dev Tools`. 
+	
+	![Devtools](/static/images/Devtools.png)
+
+- Enter the following query in the left pane, then click the "play" arrow to execute it.
 
 ```text
 GET /product-details-index-en/_search
 ```
-You may encounter a few types of results:
-- If you see a 404 error of type *index_not_found_exception*, then you need to wait until the pipeline is `Active`. Once it is, this exception will go away.
-- If your query does not have results, wait a few more minutes for the initial replication to finish and try again.
+
+- The output will the list of documents that have all the fields mentioned under the zero-ETL pipeline mapping.
+
+ You may encounter a few types of results:
+ - If you see a 404 error of type *index_not_found_exception*, then you need to wait until the pipeline is `Active`. Once it is, this exception will go away.
+ - If your query does not have results, wait a few more minutes for the initial replication to finish and try again.
 
 ![Create pipeline](/static/images/ddb-os-zetl16.jpg)
 

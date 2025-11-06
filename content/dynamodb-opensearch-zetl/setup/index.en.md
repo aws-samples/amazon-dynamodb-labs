@@ -19,7 +19,7 @@ In this lab, we will learn how to integrate DynamoDB with Amazon OpenSearch Serv
 
 To set up this workshop, choose one of the following paths, depending on whether you are:
 
-::alert[**If following the lab in your own AWS Account, you will create OpenSearch Service clusters, DynamoDB tables, and Secrets Manager resources that will incur a cost that could approach tens of dollars per day. Ensure you delete the CloudFormation stacks as soon as the lab is complete and verify all resources are deleted by checking the DynamoDB console, OpenSearch Service console, and Secrets Manager console. Make sure you [delete the Cloud9 environment](https://docs.aws.amazon.com/cloud9/latest/user-guide/delete-environment.html) as soon as the lab is complete**.]{type="warning"}
+::alert[**If following the lab in your own AWS Account, you will create OpenSearch Service clusters, DynamoDB tables, and Secrets Manager resources that will incur a cost that could approach tens of dollars per day. Ensure you delete the CloudFormation stacks as soon as the lab is complete and verify all resources are deleted by checking the DynamoDB console, OpenSearch Service console, and Secrets Manager console. Make sure you delete the environment as soon as the lab is complete**.]{type="warning"}
 
 - :link[…running the workshop on your own (in your own AWS account)]{href="/dynamodb-opensearch-zetl/setup/on-your-own"}, which guides you to create resources using CloudFormation
 
@@ -27,4 +27,4 @@ To set up this workshop, choose one of the following paths, depending on whether
 
 
 Once you have completed with either setup, continue on to:
-- :link[Step 1: Setup AWS Cloud9 IDE]{href="/dynamodb-opensearch-zetl/setup/step1"}
+- :link[Step 1: Setup AWS Visual Studio Code Server IDE]{href="/dynamodb-opensearch-zetl/setup/step1"}
