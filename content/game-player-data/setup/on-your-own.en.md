@@ -14,7 +14,8 @@ chapter: true
 
 1. **[Deprecated]** - Launch the CloudFormation template in US West 2 to deploy the resources in your account: [![CloudFormation](/static/images/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=DynamoDBID&templateURL=:param{key="design_patterns_s3_lab_yaml"})  
 
-1. *Optionally, download [the YAML template](https://github.com/aws-samples/aws-dynamodb-examples/blob/master/workshops/modernizer/modernizer-db.yaml) from our GitHub repository and launch it your own way*
+1. *Optionally, download [the YAML template](https://s3.amazonaws.com/amazon-dynamodb-labs.com/assets/vscode.yaml) from our GitHub repository and launch it your own way
+*
 
 1. Click *Next* on the first dialog.
 
