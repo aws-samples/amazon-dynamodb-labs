@@ -540,7 +540,7 @@ Resources:
     Properties:
       CatalogId: !Ref AWS::AccountId
       DatabaseInput:
-        Name: modernizer-migration-db-noc9
+        Name: modernizer-migration-db
         Description: Database for MySQL to DynamoDB modernization migration
 
   # CloudWatch Log Group for Glue Jobs
