@@ -11,10 +11,6 @@ Parameters:
     Type: String
     Description: Location of LADV code ZIP
     Default: https://amazon-dynamodb-labs.com/assets/workshop.zip
-  LBEDZIP:
-    Type: String
-    Description: Location of LBED code ZIP
-    Default: https://amazon-dynamodb-labs.com/assets/OpenSearchPipeline.zip
   DBLatestAmiId:
     Type:  'AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>'
     Default: '/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-arm64'
@@ -1640,8 +1636,6 @@ Resources:
                 - mkdir -p /tmp
                 - !Sub curl -o /tmp/workshop.zip "${WorkshopZIP}"
                 - !Sub unzip -o /tmp/workshop.zip -d ${VSCodeHomeFolder}/LADV
-                - !Sub curl -o /tmp/lbed.zip "${LBEDZIP}"
-                - !Sub unzip -jo /tmp/lbed.zip unzip -jo /tmp/lbed.zip "OpenSearchPipeline/*" -d ${VSCodeHomeFolder}/LBED
                 - rm /tmp/workshop.zip
                 - !Sub echo "${DDBReplicationRole.Arn}" > ${VSCodeHomeFolder}/ddb-replication-role-arn.txt
                 - !Sub chown -R ${VSCodeUser}:${VSCodeUser} ${VSCodeHomeFolder}
@@ -1783,10 +1777,10 @@ Resources:
                   UPDATE mysql.user SET host='%' WHERE user='${DbMasterUsername}';
                   FLUSH PRIVILEGES;
                   "
-                - echo "Configuring MySQL settings for remote access and performance logging..."
+                - echo "Creating MySQL configuration file for remote access..."
                 - !Sub |
-                  cat >> /etc/mysql/mysql.conf.d/mysqld.cnf <<EOF
-                  
+                  sudo tee /etc/my.cnf.d/mysql-server-custom.cnf <<EOF
+                  [mysqld]
                   # Remote access configuration
                   bind-address = 0.0.0.0
                   
@@ -1802,6 +1796,9 @@ Resources:
                   
                   # Performance schema for detailed monitoring
                   performance_schema = ON
+                  
+                  # Security settings for remote access
+                  skip-name-resolve
                   EOF
                 - echo "Creating MySQL log directory and setting permissions..."
                 - sudo mkdir -p /var/log/mysql
@@ -1979,6 +1976,8 @@ Resources:
                 - "docker --version"
                 - "docker-compose --version"
                 - echo "Docker installation completed successfully."
+                - echo "Restarting code-server to pick up docker group membership..."
+                - !Sub "systemctl restart code-server@${VSCodeUser}"                
           - name: CloneWorkshop
             action: aws:runShellScript
             inputs:
@@ -2216,13 +2215,15 @@ Resources:
                       PRIMARY KEY (nconst)
                   );" || echo "Warning: Failed to create name_basics table"
                 - echo "Loading IMDB data into tables..."
+                - echo "Creating secure file directory for MySQL..."
+                - sudo mkdir -p /var/lib/mysql-files
+                - sudo chown mysql:mysql /var/lib/mysql-files
+                - sudo chmod 755 /var/lib/mysql-files
                 - !Sub |
-                  # Copy files to MySQL secure file directory
-                  sudo cp /tmp/imdb-data/*.tsv /var/lib/mysql-files/ 2>/dev/null || {
-                    echo "Warning: Could not copy TSV files to MySQL secure directory"
-                    # Try alternative approach - load from tmp directory with LOCAL INFILE
-                    mysql -u ${DbMasterUsername} -p"${DbMasterPassword}" -e "SET GLOBAL local_infile=1;"
-                  }
+                  # Copy files to MySQL secure file directory with proper permissions
+                  sudo cp /tmp/imdb-data/*.tsv /var/lib/mysql-files/
+                  sudo chown mysql:mysql /var/lib/mysql-files/*.tsv
+                  sudo chmod 644 /var/lib/mysql-files/*.tsv
                 - !Sub |
                   # Function to load data with error handling
                   load_imdb_data() {
