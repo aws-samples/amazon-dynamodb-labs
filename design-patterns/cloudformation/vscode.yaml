@@ -6,11 +6,14 @@ Parameters:
     Description: An environment name that is tagged to the resources.
     Type: String
     Default: DynamoDBID
-
   WorkshopZIP:
     Type: String
     Description: Location of LADV code ZIP
     Default: https://amazon-dynamodb-labs.com/assets/workshop.zip
+  OpenSearchPipelineZIP:
+    Type: String
+    Description: Location of LBED code ZIP
+    Default: https://amazon-dynamodb-labs.com/assets/OpenSearchPipeline.zip
   DBLatestAmiId:
     Type:  'AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>'
     Default: '/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-arm64'
@@ -1637,6 +1640,9 @@ Resources:
                 - !Sub curl -o /tmp/workshop.zip "${WorkshopZIP}"
                 - !Sub unzip -o /tmp/workshop.zip -d ${VSCodeHomeFolder}/LADV
                 - rm /tmp/workshop.zip
+                - !Sub curl -o /tmp/OpenSearchPipeline.zip "${OpenSearchPipelineZIP}"
+                - !Sub unzip -o /tmp/OpenSearchPipeline.zip -d ${VSCodeHomeFolder}/LBED
+                - rm /tmp/OpenSearchPipeline.zip
                 - !Sub echo "${DDBReplicationRole.Arn}" > ${VSCodeHomeFolder}/ddb-replication-role-arn.txt
                 - !Sub chown -R ${VSCodeUser}:${VSCodeUser} ${VSCodeHomeFolder}
                 - echo "Installing pyenv dependencies..."
