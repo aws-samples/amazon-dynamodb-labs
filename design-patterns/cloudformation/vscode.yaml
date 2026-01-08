@@ -1616,10 +1616,12 @@ Resources:
                 - echo "Starting code-server service..."
                 - !Sub systemctl restart code-server@${VSCodeUser}
                 - echo "Installing VSCode extensions..."
-                - !Sub sudo -u ${VSCodeUser} --login code-server --install-extension AmazonWebServices.aws-toolkit-vscode --force
+                # Removed AWS Toolkit to prevent notification spam
+                # - !Sub sudo -u ${VSCodeUser} --login code-server --install-extension AmazonWebServices.aws-toolkit-vscode --force
                 - !Sub sudo -u ${VSCodeUser} --login code-server --install-extension ms-vscode.live-server --force
                 - !Sub sudo -u ${VSCodeUser} --login code-server --install-extension synedra.auto-run-command --force
-                - !Sub sudo -u ${VSCodeUser} --login code-server --install-extension saoudrizwan.claude-dev --force
+                # Pinned to specific version to prevent auto-updates
+                - !Sub sudo -u ${VSCodeUser} --login code-server --install-extension saoudrizwan.claude-dev@3.46.1 --force
                 - !Sub chown -R ${VSCodeUser}:${VSCodeUser} /home/${VSCodeUser}
                 - echo "Verifying services..."
                 - nginx -t 2>&1
