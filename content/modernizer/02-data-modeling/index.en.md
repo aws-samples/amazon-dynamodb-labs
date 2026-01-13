@@ -25,13 +25,15 @@ Let's begin by telling Cline to start working on data modeling. Use this command
 Please open this file `prompts/02-dynamodb-data-modeling/tasks.md` and start working in the first available task.
 ```
 
-![Start conversation](/static/images/modernizer/2/stage02-01.png)
+:image[Cline API config 3]{src="/static/images/modernizer/2/LGAM-02-prompt-01.png" disableZoom=false width=830}
+
+::alert[By default Cline starts in the left sidebar. You can move it to the right sidebar by dragging and dropping it to the right. This might help with the workshop visualization. However, if you have a small screen it will reduce the space to view the content of the files.]{type="info"}
 
 ## Watching the Magic Happen
 
 You'll know the workshop is working because you'll see Cline actively creating new files in real-time! It uses a visual diff system (like track changes in a document) to show you exactly what's being added or modified. This helps you understand each step of the process.
 
-![Gitdiff](/static/images/modernizer/2/stage02-02.png)
+:image[Cline git diff]{src="/static/images/modernizer/2/LGAM-02-stage02-02.png" disableZoom=false width=830}
 
 **Take your time** with each file that gets generated. Don't rush through this process! Read everything, understand what Cline is doing at each step and why, and don't hesitate to ask questions. This is interactive learning - if you get confused at any point, just ask Cline to explain what's happening.
 
@@ -59,25 +61,57 @@ Order processing is the critical part of our business! this is what it generates
 Finally a very small set of operations are allocated to sellers, it is less than 1 QPS, representing 0.1% of the traffic. Maybe 0.05 QPS on product management, and 0.25 QPS on seller profiles, there is very low traffic on category management as they barely change.
 ```
 
-![Questions](/static/images/modernizer/2/stage02-03.png)
+:image[Questions and Feedback]{src="/static/images/modernizer/2/LGAM-02-stage02-03.png" disableZoom=false width=830}
 
 ## The Collaborative Design Process
 
 As you work through this stage, you'll encounter several "checkpoint" moments where Cline stops and asks for your input. These aren't interruptions - they're important collaboration points designed to ensure the design stays on track and meets your specific needs.
 
-![Start conversation](/static/images/modernizer/2/stage02-05.png)
+:image[Prompt 05]{src="/static/images/modernizer/2/LGAM-02-stage02-05.png" disableZoom=false width=425}
+
+::alert[Your application must have 48 different access patterns, make sure your output matches this number!]{type="info"}
+
+Remember the process have several decision gates, intended for the humans to review all the information that has been presented. The workflow won't continue on its own until you ask it to move to the next step or approve the decision gate. 
+
+```bash
+Correct, there are 48 different access patterns, and the estimates align with our business expectations. There are no additional use cases that need to be considered. 
+```
+
+There are some scenarios where Cline is not able to automatically capture the terminal's output, making a task to remain in a `Pending` state for very long time. If this happens to you:
+
+Click twice in the Cancel button.
+
+:image[Prompt 05 error]{src="/static/images/modernizer/2/LGAM-02-stage02-05-error.png" disableZoom=false width=850}
+
+Copy paste the results of the task from the terminal and click Resume task. 
+
+:image[Prompt 05 fix]{src="/static/images/modernizer/2/LGAM-02-stage02-05-fix.png" disableZoom=false width=850}
 
 ## Being Patient with AI
 
 During this intensive design stage, you might occasionally see messages about rate limiting or throttling. This is normal! Simply wait a few seconds and try again. The system can handle about 4 requests per minute, which should be enough for our workshop. If your task fails to execute please re-try, and just ignore the message that says "Try breaking down the task into smaller steps" as this is not our case, we know it is rate limiting!
 
-![Start conversation](/static/images/modernizer/2/stage02-06.png)
+:image[Throttling]{src="/static/images/modernizer/2/LGAM-02-stage02-06.png" disableZoom=false width=425}
 
-## Using Specialized AI Tools
+## Using the MCP Servers
 
 At some point, Cline will ask for permission to use the DynamoDB MCP Server — this is like accessing a specialized AI consultant who's an expert specifically in DynamoDB design. When asked, give permission for this. This expert AI will help analyze all the data we've collected and create a proper database design.
 
-![Start conversation](/static/images/modernizer/2/stage02-07.png)
+::alert[The DynamoDB MCP server provides Cline with expert advice on DynamoDB data modeling. Calling the MCP server on its own will not produce a data model, instead you will see how Cline uses the retrieved prompt to generate the requirements and the data model itself. ]{type="info"}
+
+:image[MCP Server]{src="/static/images/modernizer/2/LGAM-02-stage02-07.png" disableZoom=false width=425}
+
+## Source Database Analyser
+
+The DynamoDB MCP server offers the possibility to connect to the source database and extract schema and access patterns that can be used for DynamoDB data modeling. We already have this information as collected in the stage 01 artifacts. If prompted to use the MCP for this objective please, let Cline know we already have these artifacts. 
+
+:image[MCP Server]{src="/static/images/modernizer/2/LGAM-02-stage02-08.png" disableZoom=false width=425}
+
+```bash
+We have already collected these numbers. Please use the in the `artifacts/stage-01` folder so we don't duplicate efforts. Continue with Task 2.1 
+```
+
+:image[MCP Server]{src="/static/images/modernizer/2/LGAM-02-stage02-09.png" disableZoom=false width=850}
 
 ## Quality Control Checkpoint
 
@@ -85,13 +119,13 @@ Cline will first create a summary file called `dynamodb_requirements.md`. This i
 
 ::alert[ **Important:** Read this file carefully! Sometimes AI can accidentally add requirements that were never discussed, or miss important details. This is your chance to catch any errors before they become part of the final design.]{type="info"}
 
-![Start conversation](/static/images/modernizer/2/stage02-08.png)
+:image[MCP Server]{src="/static/images/modernizer/2/LGAM-02-stage02-09-req.png" disableZoom=false width=850}
 
 ## Your First Database Design
 
 Once you approve the requirements summary, Cline will create your actual DynamoDB data model. This is exciting — you're seeing your new database structure come to life! Cline has generated the new data model file `artifacts/stage-02/dynamodb_data_model.md` please open it and read it carefully.
 
-![Start conversation](/static/images/modernizer/2/stage02-09.png)
+:image[MCP Server]{src="/static/images/modernizer/2/LGAM-02-stage02-09-files.png" disableZoom=false width=850}
 
 ## What Comes Next
 
