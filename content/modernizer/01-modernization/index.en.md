@@ -13,7 +13,7 @@ Begin by reviewing the application documentation in the `README.md` file, which 
 
 ::alert[You don't have to follow the `README.md` instructions as your environment is already pre-configured for you. ]{type="info"}
 
-![README](/static/images/modernizer/1/workflow-01.png)
+:image[README]{src="/static/images/modernizer/1/LGAM-01-Readme.png" disableZoom=false width=850}
 
 ## Starting the Application Services
 
@@ -28,7 +28,7 @@ While your application environment is already preconfigured, you'll still need t
 
 The backend API server manages all client requests and database transactions. Navigate to the `/backend` directory and open an integrated terminal (right-click > "Open in Integrated Terminal"). Grant any requested permissions when prompted.
 
-![menu](/static/images/modernizer/1/workflow-02.png)
+:image[Backend folder]{src="/static/images/modernizer/1/LGAM-01-Backend.png" disableZoom=false width=425}
 
 Build and start the backend service using these commands:
 
@@ -36,6 +36,10 @@ Build and start the backend service using these commands:
 npm run build
 npm run start
 ```
+
+When you run the backend application, Visual Studio Code automatically detects the port and initiates a port forwarding process. We will not use port forwarding in this lab. Dismiss the notification by clicking on the close button.    
+
+:image[Backend port forwarding]{src="/static/images/modernizer/1/LGAM-01-Backend-8100.png" disableZoom=false width=500}
 
 Monitor the startup sequence output. A successful initialization will display output similar to:
 
@@ -61,7 +65,7 @@ Server setup complete with comprehensive error handling
 📈 Metrics: http://localhost:8100/api/metrics
 ```
 
-**Important:** Keep this terminal window open! If you close it, the backend service will stop working, and our application won't function properly.
+::alert[**Important:** Keep this terminal window open! If you close it, the backend service will stop working, and our application won't function properly.]{type="warning"}
 
 ### Launching the Frontend Application
 
@@ -71,7 +75,11 @@ Initialize the React frontend application by opening a terminal in the `/fronten
 npm run serve:prod
 ```
 
+:image[Frontend folder]{src="/static/images/modernizer/1/LGAM-01-FrontEnd.png" disableZoom=false width=425}
+
 Allow several minutes for the build process to complete. Dismiss any popup notifications that may appear during startup.
+
+:image[Frontend port forwarding]{src="/static/images/modernizer/1/LGAM-01-FrontEnd-3000.png" disableZoom=false width=500}
 
 ## Application Verification and Analysis
 
@@ -87,7 +95,7 @@ Verify the API server is responding correctly by accessing the health endpoint:
 
 This endpoint should return status information confirming the backend is operational:
 
-![Backend](/static/images/modernizer/1/workflow-03.png)
+:image[API check]{src="/static/images/modernizer/1/LGAM-01-API.png" disableZoom=false width=425}
 
 Monitor your backend terminal for request logging, which demonstrates the API request flow.
 
@@ -95,7 +103,7 @@ Monitor your backend terminal for request logging, which demonstrates the API re
 
 Access the e-commerce frontend by navigating to `[your-url]/store/`:
 
-![Store](/static/images/modernizer/1/workflow-04.png)
+:image[ShopStore check]{src="/static/images/modernizer/1/LGAM-01-ShopStore.png" disableZoom=true width=830}
 
 ## System Interaction Analysis
 

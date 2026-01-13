@@ -10,7 +10,7 @@ chapter: false
 
 The `/prompts` directory implements a structured approach to AI-driven development through organized subfolders that correspond to each stage of the modernization workflow. Each subfolder contains three components: Requirements, Design, and Tasks documents. This architectural pattern creates a comprehensive framework that systematically guides the entire modernization process from initial analysis through final implementation.
 
-![Prompts](/static/images/modernizer/1/workflow-prompt-01.png)
+:image[Prompt Design]{src="/static/images/modernizer/1/LGAM-01-2-Prompt-01.png" disableZoom=false width=830}
 
 ### Requirements Documentation — Defining Objectives and Success Criteria
 
@@ -32,4 +32,4 @@ The structured approach provides several advantages. The LLM receives explicit g
 
 To conceptualize this framework using a navigation analogy: the Requirements document defines the destination and the reasons for traveling there, the Design document provides the comprehensive route map showing all available paths and optimal strategies, and the Tasks document functions as turn-by-turn GPS navigation that guides execution through each specific step of the journey. This structured approach transforms complex modernization challenges into systematic, manageable processes that can be executed reliably through AI-assisted development workflows.
 
-![Tasks](/static/images/modernizer/1/workflow-prompt-02.png)
+:image[Prompt Task]{src="/static/images/modernizer/1/LGAM-01-2-Prompt-02.png" disableZoom=true width=830}
