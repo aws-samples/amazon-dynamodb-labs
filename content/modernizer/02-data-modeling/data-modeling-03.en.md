@@ -78,27 +78,41 @@ When you're ready to create the products table, make sure your AI assistant unde
 The changes we're making are small adjustments to what the AI originally suggested, but these details matter a lot for making sure everything works smoothly together.
 
 ```shell
-Products table updates
+Products Table
+- **Purpose**: Product catalog with future expansion capability through sort key pattern
+- **Partition Key**: `PK = product_id` - Direct product access for high-frequency lookups, no prefixes
+- **Sort Key**: `SK = #META` - Enables future entity expansion with denormalization 
+- **Attributes**:
+  - `PK` (S): product_id
+  - `SK` (S): #META
+  - `seller_id` (S): seller identifier
+  - `category_id` (S): category identifier
+  - `category_path` (S): full category hierarchy
+  - `product_name` (S): product title
+  - `description` (S): product description
+  - `price` (N): current price
+  - `inventory_quantity` (N): available quantity
+  - `image_url` (S): image URL
+  - `search_terms` (S): searchable text
+  - `created_at` (S): ISO timestamp
+  - `updated_at` (S): ISO timestamp
+  - `status` (S): active/inactive
 
-For simplicity let's have a table with PK = product_id and SK = #META this allow us future expansion if we need to start denormalizing the attributes. (MAKE SURE THE ATTRIBUTE NAME MATCHES WHAT IT SAYS HERE!!)
+We will add two indexes, that are possible future hot partitions, but with the numbers that we have discussed so far, this will be fine for this design. 
 
-| Attribute | Type | Purpose |
-|-----------|------|---------|
-| PK | String | product_id |
-| SK | String | #META |
-| product_id | String | product_id |
-| seller_id | String | Seller identifier |
-| category_id | String | Category identifier |
-| category_path | String | Full category hierarchy |
-| product_name | String | Product title |
-| description | String | Product description |
-| price | Number | Current price |
-| inventory_quantity | Number | Available quantity |
-| image_url | String | Image URL |
-| search_terms | String | Searchable text |
-| created_at | String | ISO timestamp |
-| updated_at | String | ISO timestamp |
-| status | String | active/inactive |
+### GSI1: Category Products
+- **Purpose**: Category-based product browsing and filtering
+- **Partition Key**: `GSI1PK = category_id` - Category-based product grouping, no prefix
+- **Sort Key**: `GSI1SK = category_id` - Category identifier
+- **Warning:** Monitor for hot partitions with popular categories
+
+### GSI2: Seller Products (Potential Hot Partition)
+- **Purpose**: Seller product management and dashboard functionality
+- **Partition Key**: `GSI2PK = seller_id` - Seller-based product grouping, no prefix
+- **Sort Key**: `GSI2SK = seller_id` - Seller identifier
+- **Warning:** Monitor for hot partitions with high-volume sellers
+
+This is a sample attribute in the Products table. 
 
 {
  "PK": "6",
@@ -119,22 +133,10 @@ For simplicity let's have a table with PK = product_id and SK = #META this allow
  "seller_id": "1",
  "updated_at": "2025-08-17T15:05:47.840Z"
 }
-
-We will add two indexes, that are possible future hot partitions, but with the numbers that we have discussed so far, this will be fine for this design. 
-
-**GSI-1: Category Products (Potential Hot Partition)**
-- PK: GSI1PK = category_id, SK: GSI1SK = category_id
-- Projection: ALL
-- Purpose: Category-based browsing 
-- **Warning:** Monitor for hot partitions with popular categories
-
-**GSI-2: Seller Products (Potential Hot Partition)**
-- PK: GSI2PK = seller_id, SK: GSI2SK = seller_id
-- Projection: ALL
-- Purpose: Seller product management
-- **Warning:** Monitor for hot partitions with high-volume sellers
 ```
 
-![Working Log](/static/images/modernizer/2/stage02-16.png)
+:image[Products table]{src="/static/images/modernizer/2/LGAM-02-stage02-13.png" disableZoom=false width=425}
 
-In my execution, I was getting throttled, please remember to be patient and just retry! but also review the changes made by `Cline`.
+`Cline` will be asking for confirmation whenever there is a difference in the datamodel it has suggested vs our comments, remember the human in this workflow execution is who decide the next steps. 
+
+When the updates are complete, please remember to review the `dynamodb_data_model.md` file to ensure all the changes were incorporated.

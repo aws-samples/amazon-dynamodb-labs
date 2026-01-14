@@ -6,17 +6,13 @@ weight: 36
 chapter: false
 ---
 
+::alert[Some of the workshop executions the validations presented in this section has been done table by table. Given the undeterministic nature of LLMs we can't assume the output from every workshop participant will be the same. Please make sure before you continue with task 4, that your data model is writen as intended and you have validated all the recommendations in this section.]{type="warning"}
+
 ## Initiating the Design Refinement Process
 
 At this stage, you'll execute the most critical phase of the data modeling process: iterative design refinement. This process transforms your initial conceptual model into a DynamoDB schema that efficiently supports all identified access patterns.
 
-```shell
-Great! Now it is time to mark as completed task 3.2 and proceed with the next one as listed here `prompts/02-dynamodb-data-modeling/tasks.md`
-```
-
 This task involves comprehensive analysis and redesign of your initial data model based on the validation results from the previous step. The DynamoDB MCP Server will perform detailed optimization analysis, potentially recommending significant structural changes to improve performance and cost efficiency.
-
-![Data model](/static/images/modernizer/2/stage02-20.png)
 
 ## Critical Review and Validation Phase
 
@@ -30,8 +26,6 @@ The design refinement process often reveals opportunities for optimization that 
 - **Sort key design** that enables efficient range queries and supports multiple access patterns
 
 This iterative approach reflects industry best practices where database designs undergo multiple refinement cycles before reaching production readiness.
-
-![Data model](/static/images/modernizer/2/stage02-21.png)
 
 ## Design Validation Checkpoints
 
@@ -49,6 +43,8 @@ Confirm that the final data model maintains the standardized naming convention f
 
 This generic naming convention provides flexibility for future schema evolution while maintaining consistency across the application architecture.
 
-![Data model](/static/images/modernizer/2/stage02-22.png)
-
 The standardized naming approach also simplifies application code by providing predictable patterns for GSI references, reducing the likelihood of configuration errors during deployment.
+
+When you are happy with all the review process you can continue with the next step. 
+
+:image[3 Table Design]{src="/static/images/modernizer/2/LGAM-02-stage02-16.png" disableZoom=false width=850}

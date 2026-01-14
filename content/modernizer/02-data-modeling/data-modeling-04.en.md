@@ -103,24 +103,37 @@ This categories system is the backbone of how customers will find products, so g
 This is the prompt you should send. 
 
 ```shell
-Categories table updates
-This table contains two entities, it uses single table design as well. 
+Categories Table
+- **Purpose**: Hierarchical category management using parent-child relationships in partition/sort key structure with ID-based migration support
+- **Partition Key**: `PK = parent_category_name` (or "ROOT" for root categories) - Groups child categories under parent
+- **Sort Key**: `SK = category_name` - Enables alphabetical ordering within parent groups
+- **Entity Types**:
+  - **ROOT Categories**: `PK = "ROOT"`, `SK = category_name` - For root categories 
+  - **CHILD Categories**: `PK = parent_category_name`, `SK = category_name` - For all the others
+- **Attributes**:
+  - `PK` (S): parent_category_name (ROOT for root categories)
+  - `SK` (S): category_name
+  - `category_id` (S): MySQL category ID for migration compatibility
+  - `parent_id` (S): MySQL parent category ID (null for roots) - no prefix
+  - `parent_name` (S): parent category name (null for roots) - no prefix
+  - `category_name` (S): category display name
+  - `category_path` (S): full hierarchy path
+  - `level` (N): hierarchy level (0 = root)
+  - `children_count` (N): number of child categories
+  - `product_count` (N): number of products
+  - `created_at` (S): ISO timestamp
 
-Parent category entity: **ROOT Categories (PK = ROOT, SK = category_name)**
-Child category entity: **CHILD Categories (PK = parent_category_name, SK = category_name)**
+**CRITICAL BACKEND IMPLEMENTATION NOTE:**
+- **MySQL Logic**: Find root categories with `WHERE parent_id IS NULL`
+- **DynamoDB Logic**: Find root categories with `WHERE PK = "ROOT"` (base table) or `WHERE GSI1PK = "ROOT"` (GSI1)
+- **Backend must map**: `NULL parent_id` → `"ROOT"` string value in DynamoDB
 
-| Attribute | Type | Purpose |
-|-----------|------|---------|
-| PK | String | parent_category_name (ROOT for root categories) |
-| SK | String | category_name |
-| parent_name | String | Parent category name (null for roots) |
-| category_name | String | Category display name |
-| category_path | String | Full hierarchy path |
-| level | Number | Hierarchy level (0 = root) |
-| children_count | Number | Number of child categories |
-| product_count | Number | Number of products |
-| created_at | String | ISO timestamp |
+### GSI1: Category Hierarchy Lookup (Migration Support)
+- **Purpose**: Enable hierarchical category queries by parent ID and direct category ID lookups for migration compatibility
+- **Partition Key**: `GSI1PK = parent_id` (or "ROOT" for root categories) - Groups child categories under parent, no prefixes
+- **Sort Key**: `GSI1SK = category_id` - Individual category identifier, No prefixes
 
+Here you can find some sample items, one for the Parent and another for a child category
 {
  "PK": "ROOT",
  "SK": "Electronics",
@@ -152,30 +165,14 @@ Child category entity: **CHILD Categories (PK = parent_category_name, SK = categ
  "parent_name": "Electronics",
  "product_count": 0
 }
-
-GSI1: Category Hierarchy Lookup (Migration Support)
-
-* Purpose: Enable hierarchical category queries by parent ID and direct category ID lookups for migration compatibility
-* Partition Key: GSI1PK = parent_id (or "ROOT" for root categories) - Groups child categories under parent
-* Sort Key: GSI1SK = category_id - Individual category identifier
-* Projection: ALL - Complete category data for hierarchical access
-* Sparse: No - All categories have parent relationships (ROOT for roots)
-* Access Patterns Served:
-    * Find child categories by parent ID (AP22: GSI1PK = parent_id)
-    * Direct category lookup by ID (AP24: GSI1SK = category_id)
-    * Root categories lookup (AP21: GSI1PK = "ROOT")
-* Capacity Planning: 210 RPS reads for hierarchical and ID-based category access
-* Migration Critical: Supports both hierarchical navigation and legacy ID-based lookups
 ```
 
 Always remember to check if the input was added in the working log and the instructions were followed.
 
-![Working Log](/static/images/modernizer/2/stage02-17.png)
+:image[Categories table]{src="/static/images/modernizer/2/LGAM-02-stage02-14.png" disableZoom=false width=425}
 
 Make sure that everything that is not needed, such other tables that might have been suggested before are not longer there, we don't need to send noise when we will re-generate the data model. 
 
-![Working Log](/static/images/modernizer/2/stage02-18.png)
-
 At this point `Cline` should tell you the summary of the work, and that it has effectively created a 3 table architecture. 
 
-![Working Log](/static/images/modernizer/2/stage02-19.png)
+:image[3 Tables]{src="/static/images/modernizer/2/LGAM-02-stage02-15.png" disableZoom=false width=850}

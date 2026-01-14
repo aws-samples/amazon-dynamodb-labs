@@ -14,7 +14,7 @@ In NoSQL databases like DynamoDB, we have can use "denormalization." This means 
 
 Let's start with the most important piece: **the user**. Think of this as a digital ID card that contains everything we need to know about a person using our application.
 
-We'll use their email address as the main identifier (called PK or Primary Key) because everyone has a unique email. Then we'll add a special tag called `#META` (that's our SK or Sort Key) to indicate this contains all the user's basic information.
+We'll use their email address as the main identifier (called PK or Primary Key) because everyone has a unique email. Then we'll add a special tag called `#META` (that's our SK or Sort Key) to indicate this contains all the user's basic information (Metadata).
 
 | What We Store | Type of Data | Why We Need It |
 |---------------|--------------|----------------|
@@ -78,7 +78,8 @@ When someone actually buys something, we create an order record. Think of this l
 Sometimes we need to find information in different ways, like when a customer calls and says "I have order number 12345, where is my package?" We need to be able to find that order quickly just from the order number.
 
 **GSI-1 & GSI-2: Temporary Helpers for Migration**
-- These help us find users by their old ID numbers and usernames while we're switching systems
+- These help us find users by their old ID numbers and usernames while we're switching systems. We will use the `user_id` as the partition key and sort key. This is for legacy support only. 
+- For the second GSI we will keep the `username` as partition key and sort key, again used only for legacy support while we complete the migration. 
 - Think of them as temporary bridges while we move from the old way to the new way
 
 **GSI-3: Order Finder**
@@ -94,82 +95,81 @@ Now it's time to put our design into action! We need to provide all this informa
 When you're ready to create this database structure, you'll need to provide your AI assistant (like Cline) with all the details we've discussed. Here's exactly what information to share:
 
 ```shell
-Products table updates
+Users Table:
+We will have a single table that will support multiple entities, using generic Partition Key `PK` and Sort Key `SK`.
+- **Partition Key**: `PK = <user_email>`. Notice it is not prefixed with any text, this will allow direct authentication and groups all user-related data. 
+- **Sort keys**: It is based on the different entities:
+    - `SK = #META` - User profile and authentication data. User entity
+    - `SK = CART#<product_id>` - Shopping cart items. Shoping cart entity
+    - `SK = ORDER#<isodate>#<order_id>` - Stores orders with chronological sorting. Order Entity.
 
-For simplicity let's have a table with PK = product_id and SK = #META this allow us future expansion if we need to start denormalizing the attributes. (MAKE SURE THE ATTRIBUTE NAME MATCHES WHAT IT SAYS HERE!!)
+**USER Entity** (`PK = <user_email>`, `SK = #META`):
+- `PK` (S): user email
+- `SK` (S): #META
+- `username` (S): unique username
+- `email` (S): user email
+- `password_hash` (S): authentication credential
+- `profile_data` (M): flexible profile information
+- `is_seller` (BOOL): seller capability flag
+- `seller_profile` (M): seller-specific data
+- `created_at` (S): ISO timestamp
+- `updated_at` (S): ISO timestamp
+- `status` (S): active/inactive
 
-| Attribute | Type | Purpose |
-|-----------|------|---------|
-| PK | String | product_id |
-| SK | String | #META |
-| product_id | String | product_id |
-| seller_id | String | Seller identifier |
-| category_id | String | Category identifier |
-| category_path | String | Full category hierarchy |
-| product_name | String | Product title |
-| description | String | Product description |
-| price | Number | Current price |
-| inventory_quantity | Number | Available quantity |
-| image_url | String | Image URL |
-| search_terms | String | Searchable text |
-| created_at | String | ISO timestamp |
-| updated_at | String | ISO timestamp |
-| status | String | active/inactive |
+**SHOPPING CART Entity** (`PK = <user_email>`, `SK = CART#<product_id>`):
+- `PK` (S): user email
+- `SK` (S): CART#<product_id>
+- `product_id` (S): product identifier
+- `quantity` (N): item quantity
+- `price` (N): price at add time
+- `product_name` (S): denormalized product name
+- `seller_id` (S): denormalized seller info
+- `created_at` (S): ISO timestamp
+- `updated_at` (S): ISO timestamp
 
-{
- "PK": "6",
- "SK": "#META",
- "category_id": "11",
- "category_path": "Tools",
- "created_at": "2025-08-14 21:16:07",
- "description": "20V MAX cordless drill with 2 batteries, charger, and carrying case. 1/2-inch chuck, LED light, and 15 clutch settings.",
- "GSI1PK": "11",
- "GSI1SK": "Cordless Drill Kit",
- "GSI2PK": "1",
- "GSI2SK": "Cordless Drill Kit",
- "id": 6,
- "image_url": "https://images.unsplash.com/photo-1504148455328-c376907d081c?w=600&h=600&fit=crop&auto=format",
- "inventory_quantity": 19,
- "price": 129.99,
- "product_name": "Cordless Drill Kit",
- "seller_id": "1",
- "updated_at": "2025-08-17T15:05:47.840Z"
-}
+**ORDER Entity** (`PK = <user_email>`, `SK = ORDER#<isodate>#<order_id>`):
+- `PK` (S): user email
+- `SK` (S): ORDER#<created_at>#<order_id>
+- `user_id` (S): customer identifier (migration support)
+- `order_status` (S): pending/confirmed/shipped/delivered
+- `total_amount` (N): order total
+- `order_items` (L): denormalized product details
+- `shipping_address` (M): delivery information
+- `payment_info` (M): payment method (encrypted)
+- `seller_orders` (M): orders grouped by seller
+- `created_at` (S): ISO timestamp
+- `updated_at` (S): ISO timestamp
+- `order_id` (S): UUID
 
-We will add two indexes, that are possible future hot partitions, but with the numbers that we have discussed so far, this will be fine for this design. 
+### GSI1: Legacy User ID Support (Migration Only)
+- **Purpose**: Temporary support for legacy user_id-based queries during migration phase
+- **Partition Key**: `GSI1PK = <user_id>` - Legacy user identifier lookup, no prefix
+- **Sort Key**: `GSI1SK = <user_id>` - Simple user mapping, no prefix
+- **Projection**: ALL - Complete user data access during migration
 
-**GSI-1: Category Products (Potential Hot Partition)**
-- PK: GSI1PK = category_id, SK: GSI1SK = category_id
-- Projection: ALL
-- Purpose: Category-based browsing 
-- **Warning:** Monitor for hot partitions with popular categories
+### GSI2: Username Lookup (Migration Only)  
+- **Purpose**: Username-based queries and uniqueness validation during migration
+- **Partition Key**: `GSI2PK = username` - Username lookup capability
+- **Sort Key**: `GSI2SK = username` - Direct username mapping
+- **Projection**: ALL - Complete user data for username-based access
 
-**GSI-2: Seller Products (Potential Hot Partition)**
-- PK: GSI2PK = seller_id, SK: GSI2SK = seller_id
-- Projection: ALL
-- Purpose: Seller product management
-- **Warning:** Monitor for hot partitions with high-volume sellers
+### GSI3: Order Lookup
+- **Purpose**: Direct order retrieval by order ID for customer service and order management
+- **Partition Key**: `GSI3PK = <order_id>` - Order identifier lookup
+- **Sort Key**: `GSI3SK = <order_id>` - Direct order mapping  
+- **Projection**: ALL - Complete order data for management operations
 ```
 
-![User entitiy modifcation](/static/images/modernizer/2/stage02-11.png)
+:image[User entity modification]{src="/static/images/modernizer/2/LGAM-02-stage02-11a.png" disableZoom=false width=425}
 
 Make sure all the modifications are stored in the `working_log.md` file! sometimes `Cline` ignores what you say!!
 
-![Working Log](/static/images/modernizer/2/stage02-12.png)
+Moving forward the output might be different given the undeterministc nature of LLMs, in some scenarios the models don't include all the attributes, in others, you have to explain it needed to create the GSIs. It is your responsibility to make sure every access patterns is properly identified and recorded, remember this is the base of data modeling and all the future steps depend on the decisions you make at this point. 
 
-In my specific scenario, `Cline` was having a hard time understanding it needed to create the GSIs and it wasn't including them in the data model. It is your responsibility to make sure every access patterns is properly identified and recorded, remember this is the base of data modeling and all the future steps depend on the decisions you make at this point. 
-
-![Working Log](/static/images/modernizer/2/stage02-13.png)
-
-Even at some points it actually suggested me to have a different table for my shopping cart entity. 
-
-![Working Log](/static/images/modernizer/2/stage02-14.png)
-
-But with a little patience, and making sure all the data is there I was able to guide `Cline` to obtain the outcome and table structure that we originally intended. 
-
-![Working Log](/static/images/modernizer/2/stage02-15.png)
+:image[User entity modification]{src="/static/images/modernizer/2/LGAM-02-stage02-11b.png" disableZoom=false width=425}
 
 Before completing this workshop section, make sure the content you approve is valid, we are trying to use one table with 3 different entities, one for User metadata, another for User cart items and finally one for User orders! If in your case you are still getting suggestions to have another table for orders or shopping cart items, make sure you tell `Cline` we don't need it anymore. 
 
+:image[User entity modification]{src="/static/images/modernizer/2/LGAM-02-stage02-12.png" disableZoom=false width=425}
 
 
