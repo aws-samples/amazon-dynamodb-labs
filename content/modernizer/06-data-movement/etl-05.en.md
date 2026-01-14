@@ -28,7 +28,7 @@ First, we'll give the `admin` user super admin privileges in the MySQL database,
 Could you please use the MySQL MCP server to update the `admin` user from the Users table and set the attribute `super_admin` to 1?
 ```
 
-![Migration control panel](/static/images/modernizer/6/stage06-23.png)
+:image[Migration control panel]{src="/static/images/modernizer/6/LGAM-06-stage06-5-01.png" disableZoom=false width=425}
 
 The MCP server will first retrieve the user information, then apply the update.
 
@@ -37,10 +37,10 @@ The MCP server will first retrieve the user information, then apply the update.
 Next, we need to make the same change in DynamoDB so both databases have consistent information:
 
 ```shell
-Could you please use the DynamoDB MCP server to update the `admin` user from the `Users` table and set the its attribute `super_admin` value to 1?
+Could you please use the AWS CLI to update the `admin` user from the Users table and set the attribute `super_admin` to 1?
 ```
 
-![Migration control panel](/static/images/modernizer/6/stage06-24.png)
+:image[Migration control panel]{src="/static/images/modernizer/6/LGAM-06-stage06-5-02.png" disableZoom=false width=425}
 
 This ensures that:
 - Both databases have the same user permissions
@@ -83,7 +83,7 @@ Once you're in the admin portal, you'll see the migration control interface with
 
 Now that you have access to the control panel, you can take your first step in the controlled migration process. Click the button to enable "Phase 2: Dual Write + MySQL Read".
 
-![Migration control panel](/static/images/modernizer/6/stage06-25.png)
+:image[Migration control panel]{src="/static/images/modernizer/6/LGAM-06-stage06-5-03.png" disableZoom=false width=850}
 
 This phase is the first safe step in your migration because it:
 - **Keeps Reading from MySQL**: Your application continues to serve data from the reliable MySQL database

@@ -14,7 +14,7 @@ The contract encapsulates important information including source table mappings,
 
 ## Initiating Contract Generation
 
-Execute the contract generation process with this command:
+In case the contract generation process didn't start. Execute the contract generation process with this command:
 
 ```shell
 Thanks. Please mark tasks 3 as completed, and continue with the task 4.1 `prompts/02-dynamodb-data-modeling/tasks.m`
@@ -26,7 +26,7 @@ The Migration Contract implements a transformation engine that supports multiple
 
 Explore the `contracts` folder to understand the supported transformation patterns, validation rules, and architectural constraints. This reference documentation provides comprehensive details on how the contract functions as both a specification document and an execution engine for the data migration process.
 
-![Data model](/static/images/modernizer/2/stage02-23.png)
+:image[3 Table Design]{src="/static/images/modernizer/2/LGAM-02-stage02-17.png" disableZoom=false width=850}
 
 ## Contract Quality Assurance
 
@@ -43,7 +43,7 @@ During contract generation, monitor for these frequent issues that require manua
 AI systems sometimes deviate from specified naming conventions, creating custom table or attribute names instead of using the standardized schema:
 
 ```bash
-You will need to validate the creation of the migration contract, I see you have defined your own table names, and you didn't used the table names I have provided, same for the GSIs I specifically asked for generic names for the GIS and the PK and SK to avoid issues or hardcoded values. To give you an example in the migration contract artifacts/stage-02/migrationContract.json the first table `UserOrdersCart` should be called `Users`, the partition key should be PK and the sort key SK, Please re-read the data_model and update my migration contract
+You will need to validate the creation of the migration contract, I see you have defined your own table names, and you didn't used the table names I have provided, same for the GSIs I specifically asked for generic names for the GIS and the PK and SK to avoid issues or hardcoded values. To give you an example in the migration contract artifacts/stage-02/migrationContract.json the first table `UserOrdersCart` should be called `Users`, the partition key should be PK and the sort key SK, Please re-read the data_model, the task 4.1, and update the migration contract. 
 ```
 
 ### Invalid Transformation Methods
