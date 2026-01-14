@@ -6,6 +6,8 @@ weight: 33
 chapter: false
 ---
 
+::alert[Given the undeterministic nature of LLMs the steps below could be executed in a different order. Some of our workshop participants have got the creation of the views first followed by the creation of the DynamoDB tables, some others have got the creation of the DynamoDB tables first. Just follow your own environment and use the instructions here as a reference.]{type="info"}
+
 ## Building Your NoSQL Database Structure
 
 Now that you have MySQL views showing how your data will look in DynamoDB format, it's time to create the actual DynamoDB tables that will store your migrated data. Think of this as building the containers that will hold your transformed data.
@@ -26,7 +28,7 @@ The automation process will create three main tables based on your migration con
 
 This table creation process should happen automatically as part of the initial migration command you ran. The system reads your migration contract and creates each table according to your specifications.
 
-If the process stops or gets interrupted, you can simply ask Cline to "continue where you left off" or "restart the table creation process."
+If the process stops or gets interrupted, you can simply ask Cline to `"continue with the creation of DynamoDB tables as indicated in task 1.1"`
 
 ### Step 2: Approve Each Table
 
@@ -37,29 +39,15 @@ For each table creation, Cline will ask for your approval and show you exactly w
 - **GSI Configuration**: Check that all your planned indexes are included
 - **Capacity Settings**: Confirm the read/write capacity makes sense for your data size
 
-![Migration control panel](/static/images/modernizer/6/stage06-11.png)
+:image[Migration control panel]{src="/static/images/modernizer/6/LGAM-06-stage06-3-01.png" disableZoom=false width=425}
 
 This approval step is important because once a DynamoDB table is created with a specific key schema, you can't change it without deleting and recreating the table.
 
-### Step 3: Monitor Creation Status
-
-After you approve each table, the MCP server will send the creation request to AWS. You'll see a response showing the table in "CREATING" status.
-
-![Migration control panel](/static/images/modernizer/6/stage06-12.png)
-
-The "CREATING" status means AWS is:
-- **Allocating Resources**: Setting up the infrastructure to support your table
-- **Configuring Keys**: Implementing your partition key and sort key structure
-- **Building Indexes**: Creating your GSIs in the background
-- **Setting Permissions**: Configuring access controls for your application
-
-This process usually takes 1-3 minutes per table, depending on the complexity of your GSI configuration.
-
-### Step 4: Verifying Your Tables
+### Step 3: Verifying Your Tables
 
 Once all tables show as created, verify them in the AWS DynamoDB console. You should see your three tables: `Users`, `Products`, and `Categories`.
 
-![Migration control panel](/static/images/modernizer/6/stage06-13.png)
+:image[Migration control panel]{src="/static/images/modernizer/6/LGAM-06-stage06-3-02.png" disableZoom=false width=850}
 
 For each table, check:
 - **Status**: Should be "ACTIVE" 

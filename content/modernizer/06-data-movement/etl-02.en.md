@@ -1,10 +1,12 @@
 ---
-title: "6.2 Creating MySQL views"
-menuTitle: "Creating MySQL views"
+title: "6.2 Creating the tables"
+menuTitle: "Creating the tables"
 date: 2025-09-02T16:43:04-05:00
 weight: 32
 chapter: false
 ---
+
+::alert[Given the undeterministic nature of LLMs the steps below could be executed in a different order. Some of our workshop participants have got the creation of the views first followed by the creation of the DynamoDB tables, some others have got the creation of the DynamoDB tables first. Just follow your own environment and use the instructions here as a reference.]{type="info"}
 
 ## Preparing Your Data for Migration
 
@@ -31,15 +33,15 @@ Run the following command to start the automated view creation process:
 Please execute all the tasks listed in this file `prompts/07-data-migration-execution/tasks.md`
 ```
 
-![Migration control panel](/static/images/modernizer/6/stage06-07.png)
+:image[Migration control panel]{src="/static/images/modernizer/6/LGAM-06-stage06-2-01.png" disableZoom=false width=850}
 
-This command triggers Cline (the AI assistant) to read your migration contract from Stage 2 and automatically generate the MySQL views based on your data model specifications.
+This command triggers Cline (the AI assistant) to read your migration contract from Stage 2 and automatically generate the MySQL views based on your data model specifications. It also validates there is the respective database connection avaiable in Glue (step 6.1).
 
 ### Step 2: Watch the Automation Process
 
 The system will start by creating an artifacts folder, then reading the `migrationContract.json` file from Stage 2. This process involves multiple rapid file operations that might seem fast, but remember that Cline has rate limits (4 executions per minute), so you may need to be patient or retry if something times out.
 
-![Migration control panel](/static/images/modernizer/6/stage06-08.png)
+:image[Migration control panel]{src="/static/images/modernizer/6/LGAM-06-stage06-2-02.png" disableZoom=false width=425}
 
 Each step of the process is automated, but Cline will ask for your approval before executing each task. This safety mechanism ensures you can review what's happening before it makes changes to your database.
 
@@ -47,7 +49,7 @@ Each step of the process is automated, but Cline will ask for your approval befo
 
 As the process runs, Cline will ask for permission to create each MySQL view. You'll see detailed explanations of what each view will do and how it transforms your data.
 
-![Migration control panel](/static/images/modernizer/6/stage06-09.png)
+:image[Migration control panel]{src="/static/images/modernizer/6/LGAM-06-stage06-2-03.png" disableZoom=false width=425}
 
 The system creates one view at a time, allowing you to:
 - **Review the SQL**: See exactly how each view combines and transforms your data
@@ -56,14 +58,14 @@ The system creates one view at a time, allowing you to:
 
 ### Step 4: Test the Generated Views
 
-After each view is created, you should manually query it to verify the results. This step is crucial - you need to confirm that:
+After each view is created, the workflow will query it to verify the results. This step is crucial - you need to confirm that:
 
 - **Data Exists**: The views actually return records (not empty results)
 - **Format is Correct**: The data matches your expected DynamoDB item structure  
 - **Transformations Work**: MySQL data types are properly converted
 - **Relationships are Preserved**: Related data is correctly combined
 
-![Migration control panel](/static/images/modernizer/6/stage06-10.png)
+:image[Migration control panel]{src="/static/images/modernizer/6/LGAM-06-stage06-2-04.png" disableZoom=false width=425}
 
 Run queries like:
 ```sql
