@@ -47,7 +47,7 @@ Let's populate this table with a large dataset. You will use a multi-threaded ve
 python load_logfile_parallel.py logfile_gsi_low
 ```
 
-After a few minutes, the execution of this script will be throttled and show an error message similar to the following error. This indicates you should increase the provisioned capacity of the DynamoDB table, or enable DynamoDB auto scaling if you have not already (read more about [DynamoDB auto scaling in the AWS documentation](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.AutoScaling)).
+After a few minutes, the execution of this script will be throttled and show an error message similar to the following error. This indicates you should increase the provisioned capacity of the DynamoDB table, or enable DynamoDB auto scaling if you have not already (read more about [DynamoDB auto scaling in the AWS documentation](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/AutoScaling.html).
 
 ```txt
 ProvisionedThroughputExceededException: An error occurred (ProvisionedThroughputExceededException) when calling the BatchWriteItem operation (reached max retries: 9): The level of configured provisioned throughput for one or more global secondary indexes of the table was exceeded. Consider increasing your provisioning level for the under-provisioned global secondary indexes with the UpdateTable API
