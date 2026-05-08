@@ -49,6 +49,18 @@ The Employees data file has the following structure:
 
 To view a sample record in the file, execute:
 
+```terminal
+cd ~/workshop/LADV/data
+python
+
+import csv
+
+with open('employees.csv', mode='r', newline='') as file:
+    reader = csv.reader(file)
+    first_row = next(reader)  # Reads only the first row
+    print(first_row)
+```
+
 Sample employee record:
 ```csv
 1,Onfroi Greeno,Systems Administrator,Operation,Portland,OR,1992-03-31,2014-10-24,Application Support Analyst,2014-04-12
