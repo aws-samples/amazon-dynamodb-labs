@@ -1724,6 +1724,25 @@ Resources:
                 - echo "Verifying global access:"
                 - !Sub sudo -u ${VSCodeUser} bash -c '/home/${VSCodeUser}/.local/bin/node --version'
                 - !Sub sudo -u ${VSCodeUser} bash -c '/home/${VSCodeUser}/.local/bin/npm --version'
+          - name: InstallGo
+            action: aws:runShellScript
+            inputs:
+              timeoutSeconds: 300
+              runCommand:
+                - "#!/bin/bash"
+                - echo "Installing Go..."
+                - curl -fsSL https://go.dev/dl/go1.26.3.linux-arm64.tar.gz -o /tmp/go.tar.gz
+                - rm -rf /usr/local/go && tar -C /usr/local -xzf /tmp/go.tar.gz
+                - rm /tmp/go.tar.gz
+                - !Sub echo 'export PATH=$PATH:/usr/local/go/bin' >> /home/${VSCodeUser}/.bashrc
+                - !Sub echo 'export PATH=$PATH:/usr/local/go/bin' >> /home/${VSCodeUser}/.profile
+                - !Sub echo 'export GOPATH=/home/${VSCodeUser}/go' >> /home/${VSCodeUser}/.bashrc
+                - !Sub echo 'export PATH=$PATH:/home/${VSCodeUser}/go/bin' >> /home/${VSCodeUser}/.bashrc
+                - ln -sf /usr/local/go/bin/go /usr/local/bin/go
+                - ln -sf /usr/local/go/bin/gofmt /usr/local/bin/gofmt
+                - !Sub chown -R ${VSCodeUser}:${VSCodeUser} /home/${VSCodeUser}
+                - echo "Go installation completed. Version:"
+                - /usr/local/go/bin/go version
           - name: SetupMySQL
             action: aws:runShellScript
             inputs:

@@ -7,3 +7,4 @@ build
 .hugo_build.lock
 preview_build
 .vscode/
+static/files/dynamodb-simple-inventory/
